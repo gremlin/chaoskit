@@ -1,0 +1,26 @@
+.docs__wrapper {
+  margin: #{$global-whitespace-regular} 0;
+
+  @media (min-width: $global-viewport-medium) {
+    display: flex;
+    margin: $global-whitespace-large 0;
+  }
+}
+
+.docs__sidebar {
+  display: none;
+
+  @media (min-width: $global-viewport-medium) {
+    display: block;
+    flex: 0 0 250px;
+    max-width: 250px;
+  }
+}
+
+.docs__content {
+  @media (min-width: $global-viewport-medium) {
+    padding-left: $global-whitespace-regular;
+    flex: 0 0 100%;
+    max-width: calc(100% - 250px);
+  }
+}

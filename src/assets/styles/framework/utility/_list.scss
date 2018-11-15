@@ -1,0 +1,83 @@
+//
+// Variables
+//
+
+$list-nav-link: $global-muted !default;
+$list-nav-link-hover: $global-font-color !default;
+$list-nav-link-active: $global-primary !default;
+
+//
+// Component
+//
+
+@mixin list_choasMonkey_inner() {
+  $list-chaosMonkey-inner-offset: ($global-font-size / 2); // Using font-size here so we can accurately position element next to it vertically
+
+  display: block;
+  position: relative;
+  padding-left: ($global-whitespace-regular + $list-chaosMonkey-inner-offset);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    transform: translateY(100%);
+    left: 0;
+    display: inline-block;
+    size: $list-chaosMonkey-inner-offset;
+    border-radius: 50%;
+    border: 1px solid $GREMLIN_chaosMonkey;
+  }
+
+  &:hover,
+  &:focus {
+    &::before {
+      background: $GREMLIN_chaosMonkey-light;
+    }
+  }
+}
+
+@mixin list() {
+  // Unordered list with no bullets
+  .u-list {
+    list-style: none;
+    padding-left: 0;
+
+    &--space {
+      > * {
+        + * {
+          margin-top: $global-whitespace-regular;
+        }
+      }
+    }
+
+    &--border {
+      > * {
+        padding-top: $global-whitespace-large;
+        padding-bottom: $global-whitespace-large;
+
+        + * {
+          border-top: 1px solid $global-border;
+        }
+      }
+    }
+
+    &--number {
+      counter-reset: list-counter;
+
+      > li {
+        list-style: none;
+
+        &::before {
+          content: counter(list-counter, decimal);
+          counter-increment: list-counter;
+          margin-right: $global-whitespace-small;
+          font-weight: $global-font-weight-bold;
+          color: $global-primary;
+        }
+      }
+    }
+
+    @if (mixin-exists(hook-utility-list)) { @include hook-utility-list(); }
+  }
+}

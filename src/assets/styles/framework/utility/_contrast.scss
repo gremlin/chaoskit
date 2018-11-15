@@ -1,0 +1,88 @@
+//
+// Variables
+//
+
+$contrast-color: $global-contrast !default;
+$contrast-link-color: $global-contrast-link !default;
+$contrast-link-hover-color: $global-contrast-link !default;
+$contrast-bold-color: $global-contrast !default;
+$contrast-italic-color: $global-contrast-muted !default;
+$contrast-heading-color: $global-contrast !default;
+$contrast-muted-color: rgba($global-contrast, 0.45) !default;
+$contrast-hr-color: rgba($global-contrast, 0.05) !default;
+
+//
+// Mixins
+//
+
+// Placeholders
+@mixin contrast-link-styles() {
+  color: $contrast-link-color !important;
+  position: relative;
+
+  @if (mixin-exists(hook-contrast-link)) { @include hook-contrast-link(); }
+
+  &:hover,
+  &:focus,
+  &.is-active {
+    @extend .u-textUnderline;
+
+    color: $contrast-link-hover-color !important;
+
+    @if (mixin-exists(hook-contrast-link-hover)) { @include hook-contrast-link-hover(); }
+  }
+}
+
+//
+// Component
+//
+
+@mixin contrast() {
+  .u-contrast {
+    // Text
+    color: $contrast-color;
+
+    // Links
+    a:not([class]),
+    .u-link {
+      @include contrast-link-styles();
+    }
+
+    i,
+    em {
+      color: $contrast-italic-color;
+
+      @if (mixin-exists(hook-contrast-italic)) { @include hook-contrast-italic(); }
+    }
+
+    .u-textMuted {
+      color: $contrast-muted-color !important;
+    }
+
+    // Code
+    :not(pre) > code,
+    :not(pre) > kbd,
+    :not(pre) > samp {
+      color: $contrast-color;
+      border-color: $global-contrast-border;
+      background: transparent;
+    }
+
+    // Headings
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      color: $contrast-heading-color;
+
+      @if (mixin-exists(hook-contrast-heading)) { @include hook-contrast-heading(); }
+    }
+
+    hr {
+      border-top-color: $contrast-hr-color;
+    }
+
+    @if (mixin-exists(hook-contrast)) { @include hook-contrast(); }
+  }
+}

@@ -1,0 +1,42 @@
+//
+// Variables
+//
+
+$social-icon-size: 40px;
+
+$social-icon-background: $global-panel-background;
+$social-icon-color: $global-font-color;
+
+//
+// Component
+//
+
+@mixin social-icon() {
+  // 1. Fix issue with alignment of inlined avatars
+  .socialIcon {
+    background-color: $social-icon-background;
+    border-radius: 50%;
+    color: $social-icon-color;
+    display: inline-flex;
+    margin-bottom: 0;
+    overflow: hidden;
+    position: relative;
+    vertical-align: bottom; // 1
+    size: $social-icon-size;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.25s easeOutBack;
+    transform-origin: center center;
+
+    &:hover,
+    &:focus {
+      color: $social-icon-color;
+      transform: scale(1.1);
+    }
+
+    .icon {
+      size: $icon-size-large;
+      top: auto;
+    }
+  }
+}

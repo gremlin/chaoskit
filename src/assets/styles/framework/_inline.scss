@@ -1,0 +1,78 @@
+//
+// Component
+//
+
+@mixin inline() {
+  .inline {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: (-$global-whitespace-regular) 0 0 (-$global-whitespace-regular);
+
+    > * {
+      margin-left: $global-whitespace-regular;
+      margin-top: $global-whitespace-regular;
+    }
+
+    &--center {
+      justify-content: center;
+    }
+
+    &--right {
+      justify-content: flex-end;
+    }
+
+    &--between {
+      justify-content: space-between;
+    }
+
+    &--small {
+      margin-top: (-$global-whitespace-small);
+      margin-left: (-$global-whitespace-small);
+
+      > * {
+        margin-left: $global-whitespace-small;
+        margin-top: $global-whitespace-small;
+      }
+    }
+
+    &--medium {
+      margin-top: (-$global-whitespace-medium);
+      margin-left: (-$global-whitespace-medium);
+
+      > * {
+        margin-left: $global-whitespace-medium;
+        margin-top: $global-whitespace-medium;
+      }
+    }
+
+    &--large {
+      margin-top: (-$global-whitespace-large);
+      margin-left: (-$global-whitespace-large);
+
+      > * {
+        margin-left: $global-whitespace-large;
+        margin-top: $global-whitespace-large;
+      }
+    }
+
+    &--xlarge {
+      margin-top: (-$global-whitespace-xlarge);
+      margin-left: (-$global-whitespace-xlarge);
+
+      > * {
+        margin-left: $global-whitespace-xlarge;
+        margin-top: $global-whitespace-xlarge;
+      }
+    }
+
+    &--noWrap {
+      white-space: nowrap;
+      flex-wrap: nowrap;
+    }
+
+    @if (mixin-exists(hook-inline)) { @include hook-inline(); }
+  }
+}

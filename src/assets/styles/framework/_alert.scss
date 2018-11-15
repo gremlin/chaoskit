@@ -1,0 +1,112 @@
+//
+// Variables
+//
+
+$alert-border-width: 8px !default;
+
+$alert-default-color: tint($global-border, 75%) !default;
+$alert-default-border: $global-border !default;
+
+$alert-primary-enable: true !default;
+$alert-primary-background: $global-primary-light !default;
+$alert-primary-color: $global-primary !default;
+
+$alert-warning-enable: true !default;
+$alert-warning-background: $global-warning-light !default;
+$alert-warning-color: $global-warning !default;
+
+$alert-danger-enable: true !default;
+$alert-danger-background: $global-danger-light !default;
+$alert-danger-color: $global-danger !default;
+
+$alert-chaosMonkey-enable: true !default;
+$alert-chaosMonkey-background: $GREMLIN_chaosMonkey-light !default;
+$alert-chaosMonkey-color: $GREMLIN_chaosMonkey !default;
+
+//
+// Component
+//
+
+@mixin alert() {
+  .alert {
+    @include trimChildren();
+
+    background: $alert-default-color;
+    border-left: $alert-border-width solid $alert-default-border;
+    padding: $global-whitespace-regular;
+
+    @media (min-width: $global-viewport-medium) {
+      padding: $global-whitespace-large;
+    }
+
+    // For `gatsby-remark-custom-blocks` integration
+    .custom-block-heading {
+      @extend h4;
+    }
+
+    // Reset emphasis and link colors
+    a,
+    a:hover,
+    a:focus {
+      color: currentColor;
+    }
+
+    a:not([class]),
+    .u-link {
+      @extend .u-textUnderline;
+    }
+
+    @if $alert-primary-enable {
+      &--primary {
+        background: $alert-primary-background;
+        border-color: $alert-primary-color;
+
+        @if (mixin-exists(hook-alert-primary)) { @include hook-alert-primary(); }
+      }
+    }
+
+    @if $alert-warning-enable {
+      &--warning {
+        background: $alert-warning-background;
+        border-color: $alert-warning-color;
+
+        @if (mixin-exists(hook-alert-warning)) { @include hook-alert-warning(); }
+      }
+    }
+
+    @if $alert-danger-enable {
+      &--danger {
+        background: $alert-danger-background;
+        border-color: $alert-danger-color;
+
+        .alert-title,
+        .custom-block-heading {
+          color: $alert-danger-color;
+        }
+
+        @if (mixin-exists(hook-alert-danger)) { @include hook-alert-danger(); }
+      }
+    }
+
+    @if $alert-chaosMonkey-enable {
+      &--chaosMonkey {
+        background: $alert-chaosMonkey-background;
+        border-color: $alert-chaosMonkey-color;
+
+        .alert-title,
+        .custom-block-heading {
+          color: $alert-chaosMonkey-color;
+        }
+
+        @if (mixin-exists(hook-alert-chaosMonkey)) { @include hook-alert-chaosMonkey(); }
+      }
+    }
+
+    @if (mixin-exists(hook-alert)) { @include hook-alert(); }
+  }
+
+  // Add margin if adjacent element
+  * + .alert {
+    margin-top: $global-whitespace-regular;
+  }
+}

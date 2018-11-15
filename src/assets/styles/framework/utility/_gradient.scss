@@ -1,0 +1,25 @@
+@mixin gradient() {
+  .u-gradient--blue-green {
+    background: linear-gradient(to right, $GREMLIN_blue, $GREMLIN_green);
+  }
+
+  .u-gradient--teal-darkBlue {
+    background: linear-gradient(to right, $GREMLIN_teal, $GREMLIN_darkblue);
+  }
+
+  .u-gradient--teal-brightTeal {
+    background: linear-gradient(to right, $GREMLIN_teal, lighten($GREMLIN_teal, 12.5%));
+  }
+
+  .u-gradient--green-teal {
+    background: linear-gradient(to right, $GREMLIN_teal, $GREMLIN_green);
+  }
+
+  .u-gradient--darkerBlue-darkestBlue {
+    background: linear-gradient(to right, $GREMLIN_darkerblue, $GREMLIN_darkestblue);
+  }
+
+  .u-gradient--darkBlue-purple {
+    background: linear-gradient(to right, $GREMLIN_darkblue, $GREMLIN_purple);
+  }
+}

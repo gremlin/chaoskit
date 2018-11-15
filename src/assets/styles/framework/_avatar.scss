@@ -1,0 +1,61 @@
+//
+// Variables
+//
+
+$avatar-size: 40px;
+$avatar-size-large: 80px;
+
+$avatar-background: $global-panel-background;
+$avatar-font-color: $global-font-color;
+
+//
+// Component
+//
+
+@mixin avatar() {
+  // 1. Fix issue with alignment of inlined avatars
+  .avatar {
+    background-color: $avatar-background;
+    background-position: center center;
+    background-size: cover;
+    border-radius: 50%;
+    color: $avatar-font-color;
+    display: inline-flex;
+    margin-bottom: 0;
+    overflow: hidden;
+    pointer-events: none;
+    position: relative;
+    vertical-align: bottom; // 1
+    size: $avatar-size;
+
+    // Placed inside of `.avatar` to override default `icon` styles
+    .avatar-icon {
+      position: absolute;
+      fill: currentColor;
+      height: 80%;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0.75;
+      bottom: -2.5%;
+      width: 80%;
+      top: auto;
+
+      .icon-stroke {
+        stroke-width: none;
+      }
+    }
+
+    circle {
+      fill: $avatar-background;
+    }
+
+    text {
+      fill: $avatar-font-color;
+      text-transform: uppercase;
+    }
+  }
+
+  .avatar--large {
+    size: $avatar-size-large;
+  }
+}

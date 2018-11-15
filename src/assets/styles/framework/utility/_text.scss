@@ -1,0 +1,269 @@
+//
+// Component
+//
+
+@mixin text__underline-styles() {
+  text-decoration: underline !important;
+  text-decoration-skip: ink;
+}
+
+@mixin text() {
+  .u-text {
+    &Xsmall {
+      font-size: $global-font-size-xsmall !important;
+    }
+
+    &Small {
+      font-size: $global-font-size-small !important;
+    }
+
+    &Regular {
+      font-size: $global-font-size !important;
+    }
+
+    &Medium {
+      font-size: $global-font-size-medium !important;
+    }
+
+    &Large {
+      font-size: $global-font-size-large !important;
+    }
+
+    &Xlarge {
+      font-size: $global-font-size-xlarge !important;
+    }
+
+    &Heading {
+      font-family: $base-heading-font-family !important;
+      font-weight: $global-font-weight-bold !important;
+      text-transform: $base-heading-text-transform !important;
+      letter-spacing: $base-heading-letter-spacing !important;
+      line-height: $base-heading-line-height !important;
+    }
+
+    &Fluid--h1-h2 {
+      @include fluid-type($base-h2-font-size, $base-h1-font-size);
+    }
+
+    &Fluid--h2-h3 {
+      @include fluid-type($base-h3-font-size, $base-h2-font-size);
+    }
+
+    &Fluid--h3-h4 {
+      @include fluid-type($base-h4-font-size, $base-h3-font-size);
+    }
+
+    &Fluid--medium {
+      @include fluid-type($global-font-size, $global-font-size-medium);
+    }
+
+    &Fluid--large {
+      @include fluid-type($global-font-size, $global-font-size-large);
+    }
+
+    &Fluid--xlarge {
+      @include fluid-type($global-font-size-large, $global-font-size-xlarge);
+    }
+
+    &Normal {
+      font-weight: $global-font-weight !important;
+    }
+
+    &MediumWeight {
+      font-weight: $global-font-weight-medium !important;
+    }
+
+    &Italic {
+      font-style: italic !important;
+    }
+
+    &Bold {
+      font-weight: $global-font-weight-bold !important;
+    }
+
+    &Default {
+      color: $global-font-color !important;
+    }
+
+    &HDefault {
+      color: $global-heading-color !important;
+    }
+
+    &Primary {
+      color: $global-primary !important;
+    }
+
+    &Teal {
+      color: $GREMLIN_teal;
+    }
+
+    &Danger {
+      color: $global-danger !important;
+    }
+
+    &ChaosMonkey {
+      color: $GREMLIN_chaosMonkey !important;
+    }
+
+    &Contrast {
+      color: $global-contrast !important;
+    }
+
+    &Muted {
+      color: $global-muted !important;
+    }
+
+    &Underline {
+      @include text__underline-styles();
+    }
+
+    // Prevent text from wrapping onto multiple lines, and truncate with an ellipsis
+    &Truncate {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    // Break strings if their length exceeds the width of their container
+    &Break {
+      hyphens: auto;
+      word-wrap: break-word;
+    }
+
+    // Prevents text from wrapping into multiple lines
+    &NoBreak {
+      white-space: nowrap !important;
+    }
+
+    &Uppercase {
+      text-transform: uppercase !important;
+    }
+
+    // Overrides line-height for sub-text on wrapping lines
+    &Sub {
+      line-height: $global-line-height-small !important;
+    }
+
+    &Left {
+      text-align: left !important;
+    }
+
+    &Center {
+      text-align: center !important;
+    }
+
+    &Right {
+      text-align: right !important;
+    }
+
+    @media (min-width: $global-viewport-small) {
+      &Left\@small {
+        text-align: left !important;
+      }
+
+      &Center\@small {
+        text-align: center !important;
+      }
+
+      &Right\@small {
+        text-align: right !important;
+      }
+    }
+
+    @media (min-width: $global-viewport-medium) {
+      &Left\@medium {
+        text-align: left !important;
+      }
+
+      &Center\@medium {
+        text-align: center !important;
+      }
+
+      &Right\@medium {
+        text-align: right !important;
+      }
+    }
+
+    @media (min-width: $global-viewport-large) {
+      &Left\@large {
+        text-align: left !important;
+      }
+
+      &Center\@large {
+        text-align: center !important;
+      }
+
+      &Right\@large {
+        text-align: right !important;
+      }
+    }
+
+    @if (mixin-exists(hook-utility-text)) { @include hook-utility-text(); }
+  }
+
+  .u-link {
+    color: $global-primary !important;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $global-primary-hover !important;
+    }
+
+    &Default {
+      color: $global-font-color !important;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: $global-font-color !important;
+      }
+    }
+
+    &Contrast {
+      @include contrast-link-styles();
+    }
+
+    &Muted {
+      color: $global-muted !important;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: darken($global-muted, 10) !important;
+      }
+    }
+
+    &Heading {
+      color: $global-heading-color !important;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: darken($global-heading-color, 5) !important;
+      }
+    }
+
+    &Underline {
+      &:hover,
+      &:focus,
+      &:active {
+        text-decoration: underline !important;
+        text-decoration-skip: ink;
+      }
+    }
+
+    &ChaosMonkey {
+      color: $GREMLIN_chaosMonkey !important;
+
+      &:hover,
+      &:focus {
+        @include text__underline-styles();
+
+        color: $GREMLIN_chaosMonkey !important;
+      }
+    }
+
+    @if (mixin-exists(hook-utility-link)) { @include hook-utility-link(); }
+  }
+}

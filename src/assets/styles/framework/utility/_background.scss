@@ -1,0 +1,45 @@
+//
+// Component
+//
+
+@mixin background() {
+  .u-bg {
+    &Primary {
+      background: $global-primary;
+
+      @if (mixin-exists(hook-utility-background-primary)) { @include hook-utility-background-primary(); }
+    }
+
+    &PrimaryLight {
+      background: $global-primary-light;
+
+      @if (mixin-exists(hook-utility-background-primary-light)) { @include hook-utility-background-primary-light(); }
+    }
+
+    &Danger {
+      background: $global-danger;
+
+      @if (mixin-exists(hook-utility-background-danger)) { @include hook-utility-background-danger(); }
+    }
+
+    &ChaosMonkey {
+      background: $GREMLIN_chaosMonkey;
+
+      @if (mixin-exists(hook-utility-background-chaosMonkey)) { @include hook-utility-background-chaosMonkey(); }
+    }
+
+    &ChaosMonkeyLight {
+      background: $GREMLIN_chaosMonkey-light;
+
+      @if (mixin-exists(hook-utility-background-chaosMonkey-light)) { @include hook-utility-background-chaosMonkey-light(); }
+    }
+
+    &Panel {
+      background: $global-panel-background;
+
+      @if (mixin-exists(hook-utility-background-panel)) { @include hook-utility-background-panel(); }
+    }
+
+    @if (mixin-exists(hook-utility-background)) { @include hook-utility-background(); }
+  }
+}
