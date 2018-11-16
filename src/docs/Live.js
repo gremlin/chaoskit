@@ -25,7 +25,7 @@ class Live extends React.Component {
   }
 
   render() {
-    const { component, propDescriptions, code, scope } = this.props;
+    const { component, propDescriptions, code, showDocs, scope } = this.props;
     const { loading } = this.state;
 
     // Add `Fragment` to every scope by default
@@ -34,7 +34,7 @@ class Live extends React.Component {
 
     return (
       <Fragment>
-        <Docs component={component} propDescriptions={propDescriptions} />
+        {showDocs && <Docs component={component} propDescriptions={propDescriptions} />}
         {loading ? (
           <div className="u-textCenter">
             <Loader className="u-textXlarge u-textPrimary" />
@@ -61,6 +61,11 @@ Live.propTypes = {
   code: PropTypes.string.isRequired,
   scope: PropTypes.object.isRequired,
   propDescriptions: PropTypes.object,
+  showDocs: PropTypes.bool,
+};
+
+Live.defaultProps = {
+  showDocs: true,
 };
 
 export default Live;

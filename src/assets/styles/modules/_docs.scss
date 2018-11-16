@@ -24,3 +24,19 @@
     max-width: calc(100% - 250px);
   }
 }
+
+.docs__box {
+  border: 1px solid $global-border;
+  border-radius: $global-border-radius;
+  box-shadow: $global-box-shadow;
+  padding: $global-whitespace-medium;
+}
+
+//
+// Icons
+//
+
+.docs__iconAllExample {
+  display: block;
+  margin: 0 auto $global-whitespace-small auto;
+}
