@@ -64,6 +64,7 @@ const IconDocs = () => (
       scope={IconScope}
       component={Icon}
       showDocs={false}
+      showEditor={false}
     />
 
     <h3>Manipulating icons</h3>

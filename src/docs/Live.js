@@ -25,7 +25,7 @@ class Live extends React.Component {
   }
 
   render() {
-    const { component, propDescriptions, code, showDocs, scope } = this.props;
+    const { component, propDescriptions, code, showDocs, showEditor, scope } = this.props;
     const { loading } = this.state;
 
     // Add `Fragment` to every scope by default
@@ -46,7 +46,7 @@ class Live extends React.Component {
             mountStylesheet={false}
             transformCode={input => window.Babel.transform(input, { presets: ['stage-0', 'react'] }).code}
           >
-            <LiveEditor />
+            {showEditor && <LiveEditor />}
             <LivePreview />
             <LiveError />
           </LiveProvider>
@@ -62,10 +62,12 @@ Live.propTypes = {
   scope: PropTypes.object.isRequired,
   propDescriptions: PropTypes.object,
   showDocs: PropTypes.bool,
+  showEditor: PropTypes.bool,
 };
 
 Live.defaultProps = {
   showDocs: true,
+  showEditor: true,
 };
 
 export default Live;
