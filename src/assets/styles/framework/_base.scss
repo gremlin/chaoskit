@@ -14,7 +14,7 @@ $base-link-text-decoration: none !default;
 $base-link-hover-color: $global-primary-hover !default;
 $base-link-hover-text-decoration: none !default;
 $base-code-color: $global-danger !default;
-$base-code-font-size: 1em !default;
+$base-code-font-size: $global-font-size-small !default;
 $base-code-font-family: 'Operator Mono', Consolas, monospace, serif !default;
 $base-em-color: $global-font-color !default;
 $base-ins-background: #ffa !default;

@@ -8,6 +8,7 @@ import { styles } from '../helpers/styles';
 import { config } from '../helpers/config';
 import { List, ListItem } from '../components';
 
+import mascot from '../assets/media/logo-mascot.svg';
 import GiraLight from '../assets/fonts/gira-sans-light.woff';
 import GiraMedium from '../assets/fonts/gira-sans-regular.woff';
 import GiraBold from '../assets/fonts/gira-sans-bold.woff';
@@ -95,12 +96,16 @@ const Foundation = props => (
           <div className="container">
             <div className="docs__wrapper">
               <aside className="docs__sidebar">
-                <List type={['space']}>
+                <Link to="/" className="docs__mascot">
+                  <img src={mascot} alt="ChaosKit" />
+                </Link>
+                <h5>Components</h5>
+                <List>
                   <ListItem>
-                    <Link to="/" activeClassName={config.classes.active}>Overview</Link>
+                    <Link to="/button/" activeClassName={config.classes.active}>Button</Link>
                   </ListItem>
                   <ListItem>
-                    <Link to="/icon/" activeClassName={config.classes.active}>Icons</Link>
+                    <Link to="/icon/" activeClassName={config.classes.active}>Icon</Link>
                   </ListItem>
                 </List>
               </aside>

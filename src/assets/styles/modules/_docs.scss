@@ -15,6 +15,29 @@
     flex: 0 0 250px;
     max-width: 250px;
   }
+
+  a {
+    color: $global-muted;
+
+    &:hover,
+    &:focus {
+      color: $global-font-color;
+    }
+
+    &.is-active {
+      @include text__underline-styles();
+
+      color: $global-font-color;
+    }
+  }
+}
+
+.docs__mascot {
+  display: inline-block;
+
+  img {
+    width: 100px;
+  }
 }
 
 .docs__content {
@@ -22,6 +45,12 @@
     padding-left: $global-whitespace-regular;
     flex: 0 0 100%;
     max-width: calc(100% - 250px);
+  }
+
+  h3 {
+    padding-top: $global-whitespace-large;
+    margin-top: $global-whitespace-large;
+    border-top: 2px solid $global-border;
   }
 }
 

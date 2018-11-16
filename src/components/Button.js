@@ -80,7 +80,7 @@ Button.propTypes = {
   loading: PropTypes.bool,
   noContrast: PropTypes.bool,
   noRadius: PropTypes.bool,
-  size: PropTypes.oneOf(['small', 'xsmall']),
+  size: PropTypes.oneOf(['xsmall', 'small']),
   type: PropTypes.oneOf(['reset', 'default', 'primary', 'secondary', 'danger', 'chaosMonkey', 'outlinePrimary']),
   url: PropTypes.string,
 };

@@ -378,6 +378,16 @@ $button-icon-enable: true !default;
             }
           }
         }
+
+        @if $button-xsmall-enable {
+          &.button--xsmall {
+            width: $global-height-xsmall;
+
+            svg {
+              size: $icon-size;
+            }
+          }
+        }
       }
     }
 
