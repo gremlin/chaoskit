@@ -27,7 +27,7 @@ const IconExampleAll = `
     </li>
   ))}
 </ul>
-`;
+`.trim();
 
 const IconExampleManipulate = `
 <Fragment>
@@ -36,7 +36,7 @@ const IconExampleManipulate = `
     <Icon icon="user" className="u-textLarge u-textDanger" />
   </Inline>
 </Fragment>
-`;
+`.trim();
 
 const IconScope = {
   Icon,
