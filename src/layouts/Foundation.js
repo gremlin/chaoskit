@@ -99,6 +99,12 @@ const Foundation = props => (
                 <Link to="/" className="docs__mascot">
                   <img src={mascot} alt="ChaosKit" />
                 </Link>
+                <h5>Concepts</h5>
+                <List>
+                  <ListItem>
+                    <Link to="/sass/" activeClassName={config.classes.active}>Sass</Link>
+                  </ListItem>
+                </List>
                 <h5>Components</h5>
                 <List>
                   <ListItem>
@@ -123,7 +129,7 @@ const Foundation = props => (
 
 Foundation.propTypes = {
   children: PropTypes.node,
-  pageTitle: PropTypes.string.isRequired,
+  pageTitle: PropTypes.string,
 };
 
 export default Foundation;
