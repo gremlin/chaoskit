@@ -13,21 +13,24 @@ class Tooltip extends React.Component {
 
   // @NOTE Attaching event listeners here is not ideal, but `onMouseEnter` (and `onMouseOver`) is not reliably fired; as well as the context of the currentTarget being incorrect.
   componentDidMount() {
+    const { mobileTap } = this.props;
     const $tooltipTrigger = this.getTooltipTrigger();
 
     // Add event listeners
     // Tooltips are not triggered on touch-devices to not interfere with actionable items
-    if (!isTouchDevice()) {
+    // This can be overidden with the `mobileTap` prop
+    if (!isTouchDevice() || mobileTap) {
       $tooltipTrigger.addEventListener('mouseenter', this.renderTooltip.bind(this));
       $tooltipTrigger.addEventListener('mouseleave', this.closeTooltip.bind(this));
     }
   }
 
   componentWillUnmount() {
+    const { mobileTap } = this.props;
     const $tooltipTrigger = this.getTooltipTrigger();
 
     // Remove event listeners from non-touch devices
-    if (!isTouchDevice()) {
+    if (!isTouchDevice() || mobileTap) {
       $tooltipTrigger.removeEventListener('mouseenter', this.renderTooltip.bind(this));
       $tooltipTrigger.removeEventListener('mouseleave', this.closeTooltip.bind(this));
     }
@@ -202,10 +205,12 @@ Tooltip.propTypes = {
   children: PropTypes.node.isRequired,
   content: PropTypes.any.isRequired,
   placement: PropTypes.oneOf(['top', 'bottom', 'left', 'right']),
+  mobileTap: PropTypes.bool,
 };
 
 Tooltip.defaultProps = {
   placement: 'top',
+  mobileTap: false,
 };
 
 export default Tooltip;
