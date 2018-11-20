@@ -1,8 +1,160 @@
 //
-// Component
+// Variables
 //
 
-@mixin prism() {
+$prism-light: (
+  comment: slategray,
+  punctuation: #999,
+  property: #905,
+  selector: #690,
+  operator: #a67f59,
+  atrule: #07a,
+  function: #dd4a68,
+  regex: #e90
+) !default;
+$prism-theme: light !default;
+
+//
+// Mixins
+//
+
+// Light theme
+@mixin prism-light() {
+  code[class*="language-"],
+  pre[class*="language-"] {
+    color: $base-body-color;
+    font-family: $base-code-font-family;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: $global-line-height;
+    tab-size: 4;
+    hyphens: none;
+  }
+
+  /* Code blocks */
+  pre[class*="language-"] {
+    padding: $base-pre-padding;
+    overflow: auto;
+  }
+
+  /* Inline code */
+  :not(pre) > code[class*="language-"] {
+    white-space: normal;
+  }
+
+  .token.comment,
+  .token.prolog,
+  .token.doctype,
+  .token.cdata {
+    color: map-get($prism-light, comment);
+  }
+
+  .token.punctuation {
+    color: map-get($prism-light, punctuation);
+  }
+
+  .namespace {
+    opacity: 0.7;
+  }
+
+  .token.property,
+  .token.tag,
+  .token.boolean,
+  .token.number,
+  .token.constant,
+  .token.symbol,
+  .token.deleted {
+    color: map-get($prism-light, property);
+  }
+
+  .token.selector,
+  .token.attr-name,
+  .token.string,
+  .token.char,
+  .token.builtin,
+  .token.inserted {
+    color: map-get($prism-light, selector);
+  }
+
+  .token.operator,
+  .token.entity,
+  .token.url,
+  .language-css .token.string,
+  .style .token.string {
+    color: map-get($prism-light, operator);
+  }
+
+  .token.atrule,
+  .token.attr-value,
+  .token.keyword {
+    color: map-get($prism-light, atrule);
+  }
+
+  .token.function {
+    color: map-get($prism-light, function);
+  }
+
+  .token.regex,
+  .token.important,
+  .token.variable {
+    color: map-get($prism-light, regex);
+  }
+
+  .token.important,
+  .token.bold {
+    font-weight: $global-font-weight-bold;
+  }
+
+  .token.italic {
+    font-style: italic;
+  }
+
+  .token.entity {
+    cursor: help;
+  }
+
+  pre.line-numbers {
+    position: relative;
+    padding-left: 3.8em;
+    counter-reset: linenumber;
+  }
+
+  pre.line-numbers > code {
+    position: relative;
+  }
+
+  .line-numbers .line-numbers-rows {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    font-size: 100%;
+    left: -3.8em;
+    width: 3em; /* works for line-numbers below 1000 lines */
+    letter-spacing: -1px;
+    border-right: 1px solid $global-muted;
+    user-select: none;
+  }
+
+  .line-numbers-rows > span {
+    pointer-events: none;
+    display: block;
+    counter-increment: linenumber;
+  }
+
+  .line-numbers-rows > span::before {
+    content: counter(linenumber);
+    color: $global-muted;
+    display: block;
+    padding-right: 0.8em;
+    text-align: right;
+  }
+}
+
+// Dark theme
+@mixin prism-dark() {
   code[class*="language-"],
   pre[class*="language-"] {
     color: #abb2bf;
@@ -166,5 +318,19 @@
     display: block;
     padding-right: 0.8em;
     text-align: right;
+  }
+}
+
+//
+// Component
+//
+
+@mixin prism() {
+  @if $prism-theme == 'light' {
+    @include prism-light();
+  }
+
+  @else {
+    @include prism-dark();
   }
 }

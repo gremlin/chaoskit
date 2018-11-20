@@ -19,7 +19,7 @@ const IconExample = `
 const IconExampleAll = `
 <ul className="blockGrid blockGrid-2@small blockGrid-4@medium">
   {Object.entries(icons).map(icon => (
-    <li>
+    <li key={icon[0]}>
       <div className="docs__box u-textCenter">
         <Icon className="docs__iconAllExample" icon={icon[0]} />
         <code>{icon[0]}</code>

@@ -114,6 +114,12 @@ const Foundation = props => (
                     <Link to="/icon/" activeClassName={config.classes.active}>Icon</Link>
                   </ListItem>
                 </List>
+                <h5>Utilities</h5>
+                <List>
+                  <ListItem>
+                    <Link to="/flex/" activeClassName={config.classes.active}>Flex</Link>
+                  </ListItem>
+                </List>
               </aside>
               <main className="docs__content">
                 <h1>{pageTitle}</h1>

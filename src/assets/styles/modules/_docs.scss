@@ -61,6 +61,13 @@
   padding: $global-whitespace-medium;
 }
 
+.docs__box--fill {
+  padding: $global-whitespace-medium;
+  background: $global-primary;
+  border-radius: $global-border-radius;
+  color: $global-contrast;
+}
+
 //
 // Icons
 //
@@ -68,4 +75,16 @@
 .docs__iconAllExample {
   display: block;
   margin: 0 auto $global-whitespace-small auto;
+}
+
+// Override for blockquote styles
+blockquote {
+  @extend .alert;
+  @extend .alert--warning;
+
+  font-style: normal;
+
+  p:first-child {
+    @extend h4;
+  }
 }
