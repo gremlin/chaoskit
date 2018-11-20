@@ -6,14 +6,12 @@ import Live from '../docs/Live';
 import icons from '../assets/icons/icons.json';
 
 const IconExample = `
-<Fragment>
-  <Inline>
-    <Icon icon="arrow-up" size="small" />
-    <Icon icon="arrow-right" />
-    <Icon icon="arrow-down" />
-    <Icon icon="arrow-left" size="large" />
-  </Inline>
-</Fragment>
+<Inline>
+  <Icon icon="arrow-up" size="small" />
+  <Icon icon="arrow-right" />
+  <Icon icon="arrow-down" />
+  <Icon icon="arrow-left" size="large" />
+</Inline>
 `.trim();
 
 const IconExampleAll = `
@@ -30,12 +28,10 @@ const IconExampleAll = `
 `.trim();
 
 const IconExampleManipulate = `
-<Fragment>
-  <Inline>
-    <Icon icon="arrow-up" className="u-textFluid--h1-h2 u-textPrimary" />
-    <Icon icon="user" className="u-textLarge u-textDanger" />
-  </Inline>
-</Fragment>
+<Inline>
+  <Icon icon="arrow-up" className="u-textFluid--h1-h2 u-textPrimary" />
+  <Icon icon="user" className="u-textLarge u-textDanger" />
+</Inline>
 `.trim();
 
 const IconScope = {
