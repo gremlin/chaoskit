@@ -12,8 +12,8 @@
 
   @media (min-width: $global-viewport-medium) {
     display: block;
-    flex: 0 0 250px;
-    max-width: 250px;
+    flex: 0 0 200px;
+    max-width: 200px;
   }
 
   a {
@@ -45,12 +45,6 @@
     padding-left: $global-whitespace-regular;
     flex: 0 0 100%;
     max-width: calc(100% - 250px);
-  }
-
-  h3 {
-    padding-top: $global-whitespace-large;
-    margin-top: $global-whitespace-large;
-    border-top: 2px solid $global-border;
   }
 }
 
@@ -87,4 +81,38 @@ blockquote {
   p:first-child {
     @extend h4;
   }
+}
+
+//
+// React Live
+//
+
+// 1. Override default style to <pre> since it butts-up against preview
+.react-live {
+  pre {
+    // 1
+    margin-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .prism-code + .react-live-preview {
+    border-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+}
+
+.react-live-preview {
+  border-radius: $global-border-radius;
+  border: 1px solid $global-border;
+  padding: $global-whitespace-large;
+  box-shadow: $global-box-shadow;
+}
+
+.react-live-error {
+  @extend .alert;
+  @extend .alert--danger;
+
+  font-family: $base-code-font-family;
 }
