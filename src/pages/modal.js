@@ -58,7 +58,7 @@ const ModalDocs = () => (
       propDescriptions={ModalPropDescriptions}
     />
     <Alert type="warning" title="Note">
-      <p>When resetting UI on-close (like form-values), use the <code>onReverseCopmlete</code> prop; which waits until the animation is complete to fire</p>
+      <p>When resetting UI on-close (like form-values), use the <code>onReverseComplete</code> prop; which waits until the animation is complete to fire</p>
     </Alert>
   </FoundationLayout>
 );
