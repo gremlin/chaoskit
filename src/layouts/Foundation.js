@@ -111,6 +111,12 @@ const Foundation = props => (
                     <Link to="/button/" activeClassName={config.classes.active}>Button</Link>
                   </ListItem>
                   <ListItem>
+                    <Link to="/choices-single/" activeClassName={config.classes.active}>Choices Single</Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link to="/choices-multi/" activeClassName={config.classes.active}>Choices Multi</Link>
+                  </ListItem>
+                  <ListItem>
                     <Link to="/icon/" activeClassName={config.classes.active}>Icon</Link>
                   </ListItem>
                   <ListItem>

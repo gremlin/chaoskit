@@ -11,6 +11,7 @@
 @import 'avatar';
 @import 'badge';
 @import 'button';
+@import 'choices';
 @import 'close';
 @import 'container';
 @import 'form';
@@ -70,6 +71,10 @@
 
   @else if $component == 'button' {
     @include button();
+  }
+
+  @else if $component == 'choices' {
+    @include choices();
   }
 
   @else if $component == 'container' {
