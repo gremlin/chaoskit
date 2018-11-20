@@ -18,7 +18,7 @@ const WhitespaceDocs = () => {
       <p>To add space to any element we add a class of <code>.u-{'{type}'}{'{direction}'}--{'{amount}'}</code>. For example, if we wanted to add 32px of margin below an element, we would add a class of <code>.u-mb--large</code>.</p>
 
       <Alert type="warning" title="Note">
-        <p>Do not use these modifiers to impact Grid or BlockGrid spacing. They have their own spacing modifiers you can use.</p>
+        <p>Do not use these modifiers to impact Grid, BlockGrid, or <a href="/inline/">Inline</a> spacing. They have their own spacing modifiers you can use.</p>
       </Alert>
 
       <h3>Type</h3>

@@ -45,6 +45,8 @@ module.exports = {
         postCssPlugins,
       },
     },
+    'gatsby-plugin-catch-links',
+    'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-mdx',
       options: {
