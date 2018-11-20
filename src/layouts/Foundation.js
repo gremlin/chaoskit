@@ -119,6 +119,9 @@ const Foundation = props => (
                   <ListItem>
                     <Link to="/flex/" activeClassName={config.classes.active}>Flex</Link>
                   </ListItem>
+                  <ListItem>
+                    <Link to="/whitespace/" activeClassName={config.classes.active}>Whitespace</Link>
+                  </ListItem>
                 </List>
               </aside>
               <main className="docs__content">

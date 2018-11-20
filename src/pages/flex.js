@@ -4,7 +4,7 @@ import FoundationLayout from '../layouts/Foundation';
 import { Alert } from '../components';
 import Live from '../docs/Live';
 
-const Flexdocs = () => {
+const FlexDocs = () => {
   const FlexDeeptMatchExample = `
 <div className="row">
   <div className="column-6@medium">
@@ -146,4 +146,4 @@ const Flexdocs = () => {
   );
 };
 
-export default Flexdocs;
+export default FlexDocs;
