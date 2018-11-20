@@ -16,18 +16,6 @@
       margin-top: $global-whitespace-regular;
     }
 
-    &--center {
-      justify-content: center;
-    }
-
-    &--right {
-      justify-content: flex-end;
-    }
-
-    &--between {
-      justify-content: space-between;
-    }
-
     &--small {
       margin-top: (-$global-whitespace-small);
       margin-left: (-$global-whitespace-small);

@@ -128,7 +128,7 @@ const Foundation = props => (
                 </List>
               </aside>
               <main className="docs__content">
-                <h1>{pageTitle}</h1>
+                {pageTitle && <h1>{pageTitle}</h1>}
                 {children}
               </main>
             </div>

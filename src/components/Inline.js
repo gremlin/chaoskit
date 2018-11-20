@@ -9,9 +9,6 @@ const Inline = (props) => {
     'inline--medium': size === 'medium',
     'inline--large': size === 'large',
     'inline--xlarge': size === 'xlarge',
-    'inline--center': align === 'center',
-    'inline--right': align === 'right',
-    'inline--between': align === 'between',
     'inline--noWrap': !wrap,
   });
 
@@ -23,7 +20,6 @@ const Inline = (props) => {
 };
 
 Inline.propTypes = {
-  align: PropTypes.oneOf(['center', 'right', 'between']),
   className: PropTypes.string,
   children: PropTypes.node,
   size: PropTypes.oneOf(['small', 'medium', 'large', 'xlarge']),
