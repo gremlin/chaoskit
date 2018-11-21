@@ -111,19 +111,10 @@ const Foundation = props => (
                     <Link to="/button/" activeClassName={config.classes.active}>Button</Link>
                   </ListItem>
                   <ListItem>
-                    <Link to="/choices-single/" activeClassName={config.classes.active}>Choices Single</Link>
-                  </ListItem>
-                  <ListItem>
-                    <Link to="/choices-multi/" activeClassName={config.classes.active}>Choices Multi</Link>
-                  </ListItem>
-                  <ListItem>
                     <Link to="/icon/" activeClassName={config.classes.active}>Icon</Link>
                   </ListItem>
                   <ListItem>
                     <Link to="/inline/" activeClassName={config.classes.active}>Inline</Link>
-                  </ListItem>
-                  <ListItem>
-                    <Link to="/input/" activeClassName={config.classes.active}>Input</Link>
                   </ListItem>
                   <ListItem>
                     <Link to="/loader/" activeClassName={config.classes.active}>Loader</Link>
@@ -132,10 +123,25 @@ const Foundation = props => (
                     <Link to="/modal/" activeClassName={config.classes.active}>Modal</Link>
                   </ListItem>
                   <ListItem>
-                    <Link to="/radio/" activeClassName={config.classes.active}>Radio</Link>
+                    <Link to="/reveal/" activeClassName={config.classes.active}>Reveal</Link>
+                  </ListItem>
+                </List>
+                <h5>Forms</h5>
+                <List>
+                  <ListItem>
+                    <Link to="/checkbox/" activeClassName={config.classes.active}>Checkbox</Link>
                   </ListItem>
                   <ListItem>
-                    <Link to="/reveal/" activeClassName={config.classes.active}>Reveal</Link>
+                    <Link to="/choices-single/" activeClassName={config.classes.active}>Choices Single</Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link to="/choices-multi/" activeClassName={config.classes.active}>Choices Multi</Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link to="/input/" activeClassName={config.classes.active}>Input</Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link to="/radio/" activeClassName={config.classes.active}>Radio</Link>
                   </ListItem>
                   <ListItem>
                     <Link to="/select/" activeClassName={config.classes.active}>Select</Link>

@@ -2,7 +2,7 @@ import cx from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { FormLabel, FormFooter, Inline, List, ListItem, Radio } from '.';
+import { FormLabel, FormFooter, Inline, List, ListItem } from '.';
 import { config } from '../helpers/config';
 
 class RadioGroup extends React.Component {
@@ -41,7 +41,7 @@ class RadioGroup extends React.Component {
     let returnChild = null;
 
     return React.Children.map(children, (child) => {
-      if (child.type === Radio) {
+      if (child.type && child.type.displayName === 'Radio') {
         const onChangeFunc = () => {
           if (child.props.value) {
             if (onChange) {
