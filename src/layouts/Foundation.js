@@ -117,6 +117,9 @@ const Foundation = props => (
                     <Link to="/inline/" activeClassName={config.classes.active}>Inline</Link>
                   </ListItem>
                   <ListItem>
+                    <Link to="/list/" activeClassName={config.classes.active}>List</Link>
+                  </ListItem>
+                  <ListItem>
                     <Link to="/loader/" activeClassName={config.classes.active}>Loader</Link>
                   </ListItem>
                   <ListItem>
@@ -148,6 +151,9 @@ const Foundation = props => (
                   </ListItem>
                   <ListItem>
                     <Link to="/textarea/" activeClassName={config.classes.active}>Textarea</Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link to="/toggle/" activeClassName={config.classes.active}>Toggle</Link>
                   </ListItem>
                 </List>
                 <h5>Utilities</h5>

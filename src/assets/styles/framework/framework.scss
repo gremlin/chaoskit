@@ -28,6 +28,7 @@
 @import 'social-icon';
 @import 'subnav';
 @import 'table';
+@import 'toggle';
 @import 'tooltip';
 
 //
@@ -172,6 +173,10 @@
 
   @else if $component == 'subnav' {
     @include subnav();
+  }
+
+  @else if $component == 'toggle' {
+    @include toggle();
   }
 
   @else if $component == 'visibility' {

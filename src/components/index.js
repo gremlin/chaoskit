@@ -27,6 +27,7 @@ import Select from './Select';
 import SocialIcon from './SocialIcon';
 import Subnav from './Subnav';
 import Textarea from './Textarea';
+import Toggle from './Toggle';
 import Tooltip from './Tooltip';
 
 export {
@@ -59,5 +60,6 @@ export {
   SocialIcon,
   Subnav,
   Textarea,
+  Toggle,
   Tooltip,
 };

@@ -30,7 +30,6 @@ const CheckboxPropDescriptions = {};
 
 const CheckboxDocs = () => (
   <FoundationLayout pageTitle="Checkbox">
-    <h2>Checkbox</h2>
     <Live
       code={CheckboxExample}
       scope={CheckboxScope}
