@@ -39,4 +39,19 @@ exports.onCreateWebpackConfig = ({
       ],
     });
   }
+
+  // Get around certain 3rd party modules that define `window`
+  // https://next.gatsbyjs.org/docs/debugging-html-builds/#debugging-html-builds
+  if (stage.includes('html')) {
+    actions.setWebpackConfig({
+      module: {
+        rules: [
+          {
+            test: /scriptjs/,
+            use: loaders.null(),
+          },
+        ],
+      },
+    });
+  }
 };
