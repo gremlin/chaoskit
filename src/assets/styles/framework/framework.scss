@@ -23,6 +23,7 @@
 @import 'modal';
 @import 'pagination';
 @import 'prism';
+@import 'reveal';
 @import 'section';
 @import 'social-icon';
 @import 'subnav';
@@ -131,6 +132,10 @@
 
   @else if $component == 'prism' {
     @include prism();
+  }
+
+  @else if $component == 'reveal' {
+    @include reveal();
   }
 
   @else if $component == 'table' {

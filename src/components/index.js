@@ -22,6 +22,7 @@ import ModalFooter from './ModalFooter';
 import Pagination from './Pagination';
 import Radio from './Radio';
 import RadioGroup from './RadioGroup';
+import Reveal from './Reveal';
 import Select from './Select';
 import SocialIcon from './SocialIcon';
 import Subnav from './Subnav';
@@ -53,6 +54,7 @@ export {
   Pagination,
   Radio,
   RadioGroup,
+  Reveal,
   Select,
   SocialIcon,
   Subnav,

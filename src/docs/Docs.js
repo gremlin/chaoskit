@@ -75,7 +75,7 @@ const Docs = (props) => {
   }));
 
   return (
-    <table>
+    <table className="u-textSmall">
       <thead>
         <tr>
           <th>Prop</th>

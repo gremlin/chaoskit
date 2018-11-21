@@ -123,10 +123,25 @@ const Foundation = props => (
                     <Link to="/inline/" activeClassName={config.classes.active}>Inline</Link>
                   </ListItem>
                   <ListItem>
+                    <Link to="/input/" activeClassName={config.classes.active}>Input</Link>
+                  </ListItem>
+                  <ListItem>
                     <Link to="/loader/" activeClassName={config.classes.active}>Loader</Link>
                   </ListItem>
                   <ListItem>
                     <Link to="/modal/" activeClassName={config.classes.active}>Modal</Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link to="/radio/" activeClassName={config.classes.active}>Radio</Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link to="/reveal/" activeClassName={config.classes.active}>Reveal</Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link to="/select/" activeClassName={config.classes.active}>Select</Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link to="/textarea/" activeClassName={config.classes.active}>Textarea</Link>
                   </ListItem>
                 </List>
                 <h5>Utilities</h5>

@@ -1,0 +1,24 @@
+//
+// Variables
+//
+
+$reveal-transition: 0.5s easeInOutCubic; // Brought over from JS component so we can match CSS transitions when needed
+
+//
+// Component
+//
+
+@mixin reveal() {
+  // 1. Take care of overflowing content
+  .reveal {
+    // 1
+    overflow: hidden;
+    display: none;
+
+    @if (mixin-exists(hook-reveal)) { @include hook-reveal(); }
+  }
+
+  .reveal-content {
+    @include trimChildren();
+  }
+}

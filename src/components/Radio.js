@@ -35,8 +35,6 @@ const Radio = (props) => {
   );
 };
 
-Radio.displayName = 'Rhinodio';
-
 Radio.propTypes = {
   className: PropTypes.string,
   disabled: PropTypes.bool,
