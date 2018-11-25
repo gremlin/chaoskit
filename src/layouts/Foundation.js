@@ -108,6 +108,9 @@ const Foundation = props => (
                 <h5>Components</h5>
                 <List>
                   <ListItem>
+                    <Link to="/block-grid/" activeClassName={config.classes.active}>Block Grid</Link>
+                  </ListItem>
+                  <ListItem>
                     <Link to="/button/" activeClassName={config.classes.active}>Button</Link>
                   </ListItem>
                   <ListItem>

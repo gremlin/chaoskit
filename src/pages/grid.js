@@ -5,39 +5,39 @@ import { Alert } from '../components';
 import Live from '../docs/Live';
 
 const GridExample = `
-<div class="row">
-  <div class="column-3">
-    <div class="docs__box--fill">
+<div className="row">
+  <div className="column-3">
+    <div className="docs__box--fill">
       .column-3
     </div>
   </div>
-  <div class="column-4">
-    <div class="docs__box--fill">
+  <div className="column-4">
+    <div className="docs__box--fill">
       .column-4
     </div>
   </div>
-  <div class="column-5">
-    <div class="docs__box--fill">
+  <div className="column-5">
+    <div className="docs__box--fill">
       .column-5
     </div>
   </div>
-  <div class="column-6">
-    <div class="docs__box--fill">
+  <div className="column-6">
+    <div className="docs__box--fill">
       .column-6
     </div>
   </div>
-  <div class="column-6">
-    <div class="docs__box--fill">
+  <div className="column-6">
+    <div className="docs__box--fill">
       .column-6
     </div>
   </div>
-  <div class="column-8">
-    <div class="docs__box--fill">
+  <div className="column-8">
+    <div className="docs__box--fill">
       .column-8
     </div>
   </div>
-  <div class="column-4">
-    <div class="docs__box--fill">
+  <div className="column-4">
+    <div className="docs__box--fill">
       .column-4
     </div>
   </div>
@@ -45,24 +45,24 @@ const GridExample = `
 `.trim();
 
 const GridSpacingExample = `
-<div class="row row--collapse row--largeGutter@small row--xlargeGutter@medium">
-  <div class="column-6">
-    <div class="docs__box--fill">
+<div className="row row--collapse row--largeGutter@small row--xlargeGutter@medium">
+  <div className="column-6">
+    <div className="docs__box--fill">
       .column-6
     </div>
   </div>
-  <div class="column-6">
-    <div class="docs__box--fill">
+  <div className="column-6">
+    <div className="docs__box--fill">
       .column-6
     </div>
   </div>
-  <div class="column-6">
-    <div class="docs__box--fill">
+  <div className="column-6">
+    <div className="docs__box--fill">
       .column-6
     </div>
   </div>
-  <div class="column-6">
-    <div class="docs__box--fill">
+  <div className="column-6">
+    <div className="docs__box--fill">
       .column-6
     </div>
   </div>
@@ -70,24 +70,24 @@ const GridSpacingExample = `
 `.trim();
 
 const GridSizingExample = `
-<div class="row">
-  <div class="column-6@medium">
-    <div class="docs__box--fill">
+<div className="row">
+  <div className="column-6@medium">
+    <div className="docs__box--fill">
       .column-6@medium
     </div>
   </div>
-  <div class="column-6@medium">
-    <div class="docs__box--fill">
+  <div className="column-6@medium">
+    <div className="docs__box--fill">
       .column-6@medium
     </div>
   </div>
-  <div class="column-6 column-5@large">
-    <div class="docs__box--fill">
+  <div className="column-6 column-5@large">
+    <div className="docs__box--fill">
       .column-6.column-5@large
     </div>
   </div>
-  <div class="column-6 column-6@large">
-    <div class="docs__box--fill">
+  <div className="column-6 column-6@large">
+    <div className="docs__box--fill">
       .column-6.column-6@large
     </div>
   </div>
@@ -95,14 +95,14 @@ const GridSizingExample = `
 `.trim();
 
 const GridAlignmentExample = `
-<div class="row u-flexMiddle u-flexEnd">
-  <div class="column-4">
-    <div class="docs__box--fill">
+<div className="row u-flexMiddle u-flexEnd">
+  <div className="column-4">
+    <div className="docs__box--fill">
       <p>Guards! Bring me the forms I need to fill out to have her taken away! Why would a robot need to drink? Soothe us with sweet lies. THE BIG BRAIN AM WINNING AGAIN! I AM THE GREETEST! NOW I AM LEAVING EARTH, FOR NO RAISEN!</p>
     </div>
   </div>
-  <div class="column-5">
-    <div class="docs__box--fill">
+  <div className="column-5">
+    <div className="docs__box--fill">
       <p>Now Fry, it's been a few years since medical school, so remind me. Disemboweling in your species: fatal or non-fatal? Why would I want to know that? Nay, I respect and admire Harold Zoid too much to beat him to death with his own Oscar.</p>
       <p>Bender, quit destroying the universe! Switzerland is small and neutral! We are more like Germany, ambitious and misunderstood! I'm just glad my fat, ugly mama isn't alive to see this day. I usually try to keep my sadness pent up inside where it can fester quietly as a mental illness.</p>
     </div>
@@ -111,12 +111,12 @@ const GridAlignmentExample = `
 `.trim();
 
 const GridSourceOrderExample = `
-<div class="row">
-  <div class="column-6@medium column--last@medium">
-    <div class="docs__box--fill">This column will appear last on tablet screen sizes and up.</div>
+<div className="row">
+  <div className="column-6@medium column--last@medium">
+    <div className="docs__box--fill">This column will appear last on tablet screen sizes and up.</div>
   </div>
-  <div class="column-6@medium">
-    <div class="docs__box--fill">This column will appear first on tablet sizes and up.</div>
+  <div className="column-6@medium">
+    <div className="docs__box--fill">This column will appear first on tablet sizes and up.</div>
   </div>
 </div>
 `.trim();
