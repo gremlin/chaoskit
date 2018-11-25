@@ -160,7 +160,7 @@ class Modal extends React.Component {
 Modal.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  size: PropTypes.string,
+  size: PropTypes.oneOf(['small', 'large']),
   open: PropTypes.bool,
   handleOutsideModalClick: PropTypes.func,
   onComplete: PropTypes.func,

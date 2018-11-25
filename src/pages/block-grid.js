@@ -137,7 +137,7 @@ const BlockGridDocs = () => (
       showDocs={false}
     />
 
-    <h3>Size Modifiers</h3>
+    <h3>Size modifiers</h3>
 
     <p>Just like columns from the <a href="/grid/">Grid component</a>, Block Grids are constructed with the following naming pattern: <code>.blockGrid-{'{1-12}'}</code>. If you&apos;d like to present different block widths on certain breakpoints, you can use the following: <code>.blockGrid-{'{1-12}'}@{'{small,medium,large}'}</code>.</p>
 
@@ -153,7 +153,7 @@ const BlockGridDocs = () => (
       showDocs={false}
     />
 
-    <h3>Alignment Modifiers</h3>
+    <h3>Alignment modifiers</h3>
 
     <p>You can use alignment properties attached to <code>.blockGrid</code> from the <a href="/flex/">Flex</a> utility.</p>
 

@@ -47,6 +47,7 @@ const ModalScope = {
 
 const ModalPropDescriptions = {
   handleOutsideModalClick: 'Leave blank to keep modal open on background-click',
+  size: "<code>oneOf(['small', 'large',])</code>", // eslint-disable-line single-quotes
 };
 
 const ModalDocs = () => (

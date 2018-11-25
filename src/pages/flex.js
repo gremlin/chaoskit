@@ -38,7 +38,7 @@ const FlexDocs = () => {
     <FoundationLayout pageTitle="Flex">
       <p>We take advantage of Flexbox for many of our components; so it made sense for us to expose a number of utilities as well.</p>
 
-      <h3>Deep Match</h3>
+      <h3>Deep match</h3>
 
       <p>While flex children automatically recieve the same height, children&apos;s children (where you may actually have your styling) does not. Use the <code>.u-flexDeepmatch</code> modifier attached to <code>.row</code> to resolve this.</p>
 

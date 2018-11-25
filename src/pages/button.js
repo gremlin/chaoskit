@@ -68,7 +68,7 @@ const ButtonDocs = () => {
   };
 
   const ButtonPropDescriptions = {
-    type: "<code>oneOf(['reset', 'default', 'primary', 'secondary', 'danger', 'chaosMonkey', 'outlinePrimary'])</code>", // eslint-disable-line single-quotes
+    type: "<code>oneOf(['reset', 'default', 'primary', 'secondary', 'danger', 'outlinePrimary'])</code>", // eslint-disable-line single-quotes
     size: "<code>oneOf(['xsmall', 'small'])</code>", // eslint-disable-line single-quotes
   };
 

@@ -183,7 +183,7 @@ const GridDocs = () => (
       showDocs={false}
     />
 
-    <h3>Size Modifiers</h3>
+    <h3>Size modifiers</h3>
 
     <p>Columns are constructed with the following naming pattern: <code>.column-{'{1-12}'}</code>. If you&apos;d like to present different block widths on certain breakpoints, you can use the following: <code>.column-{'{1-12}'}@{'{small,medium,large}'}</code>.</p>
 
@@ -199,7 +199,7 @@ const GridDocs = () => (
       showDocs={false}
     />
 
-    <h3>Alignment Modifiers</h3>
+    <h3>Alignment modifiers</h3>
 
     <p>You can use alignment properties attached to <code>.row</code> from the <a href="/flex/">Flex</a> utility.</p>
 
@@ -209,7 +209,7 @@ const GridDocs = () => (
       showDocs={false}
     />
 
-    <h3>Source Order Modifiers</h3>
+    <h3>Source order modifiers</h3>
 
     <p>Depending on the screen-size, you may need to adjust the order of illustrations and/or text. You may use the <code>.column--first</code> or <code>.column--last</code> modifier attached directly to a specific <code>.column</code>.</p>
 
