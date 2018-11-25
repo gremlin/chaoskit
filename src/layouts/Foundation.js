@@ -111,6 +111,9 @@ const Foundation = props => (
                     <Link to="/button/" activeClassName={config.classes.active}>Button</Link>
                   </ListItem>
                   <ListItem>
+                    <Link to="/grid/" activeClassName={config.classes.active}>Grid</Link>
+                  </ListItem>
+                  <ListItem>
                     <Link to="/icon/" activeClassName={config.classes.active}>Icon</Link>
                   </ListItem>
                   <ListItem>
