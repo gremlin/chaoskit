@@ -33,7 +33,7 @@ const AvatarDocs = () => (
     <p>Avatars provide flexible ways of adding personality to our applications.</p>
 
     <Alert type="warning" title="Note">
-      <p>Without the <code>image</code> prop, Avatars will first attempt to create a monogram version based on the <code>name</code> props; ultimately falling back to a generic user icon.</p>
+      <p>Without the <code>image</code> prop, Avatars will first attempt to create a monogram version based on the <code>name</code> prop; ultimately falling back to a generic user icon.</p>
     </Alert>
 
     <Live
