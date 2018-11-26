@@ -40,7 +40,7 @@ const FlexDocs = () => {
 
       <h3>Deep match</h3>
 
-      <p>While flex children automatically recieve the same height, children&apos;s children (where you may actually have your styling) does not. Use the <code>.u-flexDeepmatch</code> modifier attached to <code>.row</code> to resolve this.</p>
+      <p>While flex children automatically recieve the same height, children&apos;s children (where you may actually have your styling) does not. Use the <code>.u-flexDeepMatch</code> modifier attached to <code>.row</code> to resolve this.</p>
 
       <Live
         code={FlexDeeptMatchExample}
