@@ -19,6 +19,10 @@ We write our styles in an object oriented CSS methodology called [BEM](https://e
 * **Elements**; children of the block elements, are named like so: `.offCanvas-panel`
 * **Modifier** classes are then applied to change the default block styles. For instance `.button--primary`
 
+#### Page-specific styles
+
+No-one likes one-offs, but depending on your project; like a marketing site - you may have the need to create styles that are meant to be used on a very specific page. We get around this by prefixing page-specific styles with the page name. If you're on a product page; prefix styles with `.product__`; like `.product__specialBox`. This; just like namespacing JavaScript classes/methods allows us to maintain a consistent class structure. Then, if you notice that you've re-used those same styles elsewhere; you can pull them out into a global file that has names that fit more within a global-scope; like `.specialBox`.
+
 #### Breakpoints
 
 To help us decipher components that are being impacted by a specific breakpoint, we use the `@` symbol attached to our classnames, like so: `.column-6@medium`. This translates to a six-column element that only inherits those styles on the medium breakpoint. We did this to avoid cases where: `.button--large` could be confused for a breakpoint instead of a size modifier.
