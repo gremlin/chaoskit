@@ -157,18 +157,3 @@ $components-to-remove: ('badge', 'toggle', 'tooltip');
   $components: remove($components, $component);
 }
 ```
-
-#### Adding components
-
-ChaosKit also ships with some optional components that are not bundled by default. If you'd like to add them to your build, you can do so by using this function:
-
-```scss
-$components-to-add: ('prism');
-
-// Run through above array of components to add to list
-@each $component in $components-to-add {
-  $components: append($components, $component);
-}
-```
-
-Build customizations such as this are done within the `site/framework/config` file as mentioned in the aforementioned structure.
