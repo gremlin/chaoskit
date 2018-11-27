@@ -7,6 +7,9 @@
     "not op_mini all"
   ],
   "version": "1.0.0",
+  "engines": {
+    "node": ">=8.12.0"
+  },
   "author": "Zach Schnackel <zach@gremlin.com>",
   "dependencies": {
     "@mdx-js/mdx": "0.16.0",

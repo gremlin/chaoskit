@@ -7,7 +7,8 @@ import 'what-input';
 
 import { styles } from '../helpers/styles';
 import { config } from '../helpers/config';
-import { Button, List, ListItem } from '../components';
+import { Button, Icon, Inline, List, ListItem } from '../components';
+import { version } from '../../package.json';
 
 import mascot from '../assets/media/logo-mascot.svg';
 import GiraLight from '../assets/fonts/gira-sans-light.woff';
@@ -246,6 +247,18 @@ class Foundation extends React.Component {
                     {children}
                   </main>
                 </div>
+                <footer className="u-bgPanel u-mt--large u-pv--regular">
+                  <div className="container">
+                    <Inline>
+                      <div className="u-textMuted u-textSmall">
+                        Current Version: <strong className="u-textDefault">{version}</strong>
+                      </div>
+                      <a className="u-inlineBlock" target="_blank" rel="noopener noreferrer" title="View ChaosKit on GitHub" href="https://www.github.com/gremlin/chaoskit">
+                        <Icon icon="github" />
+                      </a>
+                    </Inline>
+                  </div>
+                </footer>
               </div>
             </Fragment>
           );
