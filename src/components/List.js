@@ -8,6 +8,7 @@ const List = (props) => {
     'u-list--space': type && type.includes('space'),
     'u-list--border': type && type.includes('border'),
     'u-list--number': type && type.includes('number'),
+    'u-list--circles': type && type.includes('circles'),
   });
 
   return (

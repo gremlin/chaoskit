@@ -3,20 +3,19 @@
 //
 
 @mixin list_circles($fill: $global-primary, $hover-fill: false) {
-  $list-inner-offset: ($global-font-size / 2); // Using font-size here so we can accurately position element next to it vertically
+  $list-circle-size: 8px;
 
   display: block;
   position: relative;
-  padding-left: (($global-whitespace-small + $global-whitespace-xsmall) + $list-inner-offset);
+  padding-left: (($global-whitespace-small + $global-whitespace-xsmall) + $list-circle-size);
 
   &::before {
     content: '';
     position: absolute;
-    top: 0;
-    transform: translateY(100%);
+    top: (($global-line-height-computed - $list-circle-size) / 2);
     left: 0;
     display: inline-block;
-    size: $list-inner-offset;
+    size: $list-circle-size;
     border-radius: 50%;
     border: 1px solid $fill;
   }
@@ -53,6 +52,12 @@
         + * {
           border-top: 1px solid $global-border;
         }
+      }
+    }
+
+    &--circles {
+      > li {
+        @include list_circles();
       }
     }
 

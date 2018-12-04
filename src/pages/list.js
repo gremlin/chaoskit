@@ -26,6 +26,11 @@ const ListExample = `
     <ListItem>Child</ListItem>
     <ListItem>Another!</ListItem>
   </List>
+  <h4>Space + circles</h4>
+  <List type={['space', 'circles']}>
+    <ListItem>Child</ListItem>
+    <ListItem>Another!</ListItem>
+  </List>
 </Fragment>
 `.trim();
 
@@ -35,7 +40,7 @@ const ListScope = {
 };
 
 const ListPropDescriptions = {
-  type: "<code>oneOf(['space', 'border', 'number'])</code>", // eslint-disable-line single-quotes
+  type: "<code>oneOf(['space', 'border', 'number', 'circles'])</code>", // eslint-disable-line single-quotes
 };
 
 const ListDocs = () => (
