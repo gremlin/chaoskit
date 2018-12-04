@@ -34,7 +34,7 @@ class Example extends React.Component {
 `.trim();
 
 const AlertPropDescriptions = {
-  type: "<code>oneOf(['primary', 'success', 'warning', 'danger',])</code>", // eslint-disable-line single-quotes
+  type: "<code>oneOf(['primary', 'warning', 'danger',])</code>", // eslint-disable-line single-quotes
 };
 
 const AlertScope = {
@@ -44,6 +44,8 @@ const AlertScope = {
 
 const AlertDocs = () => (
   <FoundationLayout pageTitle="Alert">
+    <p>Alerts can be used to draw attention to and provide context to key page actions.</p>
+
     <Live
       code={AlertExample}
       scope={AlertScope}
