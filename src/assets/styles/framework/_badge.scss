@@ -8,7 +8,6 @@ $badge-font-family: $base-heading-font-family !default;
 
 $badge-primary-enable: true !default;
 $badge-danger-enable: true !default;
-$badge-chaosMonkey-enable: true !default;
 $badge-rounded-enable: true !default;
 
 //
@@ -46,14 +45,6 @@ $badge-rounded-enable: true !default;
       &--danger {
         border-color: $global-danger;
         background: $global-danger;
-        color: $global-contrast;
-      }
-    }
-
-    @if $badge-chaosMonkey-enable {
-      &--chaosMonkey {
-        border-color: $GREMLIN_chaosMonkey;
-        background: $GREMLIN_chaosMonkey;
         color: $global-contrast;
       }
     }

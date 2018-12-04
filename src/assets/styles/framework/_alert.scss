@@ -19,10 +19,6 @@ $alert-danger-enable: true !default;
 $alert-danger-background: $global-danger-light !default;
 $alert-danger-color: $global-danger !default;
 
-$alert-chaosMonkey-enable: true !default;
-$alert-chaosMonkey-background: $GREMLIN_chaosMonkey-light !default;
-$alert-chaosMonkey-color: $GREMLIN_chaosMonkey !default;
-
 //
 // Component
 //
@@ -85,20 +81,6 @@ $alert-chaosMonkey-color: $GREMLIN_chaosMonkey !default;
         }
 
         @if (mixin-exists(hook-alert-danger)) { @include hook-alert-danger(); }
-      }
-    }
-
-    @if $alert-chaosMonkey-enable {
-      &--chaosMonkey {
-        background: $alert-chaosMonkey-background;
-        border-color: $alert-chaosMonkey-color;
-
-        .alert-title,
-        .custom-block-heading {
-          color: $alert-chaosMonkey-color;
-        }
-
-        @if (mixin-exists(hook-alert-chaosMonkey)) { @include hook-alert-chaosMonkey(); }
       }
     }
 

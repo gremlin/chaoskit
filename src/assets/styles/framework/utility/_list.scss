@@ -2,12 +2,12 @@
 // Component
 //
 
-@mixin list_choasMonkey_inner() {
-  $list-chaosMonkey-inner-offset: ($global-font-size / 2); // Using font-size here so we can accurately position element next to it vertically
+@mixin list_circles($fill: $global-primary, $hover-fill: false) {
+  $list-inner-offset: ($global-font-size / 2); // Using font-size here so we can accurately position element next to it vertically
 
   display: block;
   position: relative;
-  padding-left: ($global-whitespace-regular + $list-chaosMonkey-inner-offset);
+  padding-left: (($global-whitespace-small + $global-whitespace-xsmall) + $list-inner-offset);
 
   &::before {
     content: '';
@@ -16,15 +16,17 @@
     transform: translateY(100%);
     left: 0;
     display: inline-block;
-    size: $list-chaosMonkey-inner-offset;
+    size: $list-inner-offset;
     border-radius: 50%;
-    border: 1px solid $GREMLIN_chaosMonkey;
+    border: 1px solid $fill;
   }
 
-  &:hover,
-  &:focus {
-    &::before {
-      background: $GREMLIN_chaosMonkey-light;
+  @if $hover-fill == true {
+    &:hover,
+    &:focus {
+      &::before {
+        background: tint($fill, 92.5%);
+      }
     }
   }
 }

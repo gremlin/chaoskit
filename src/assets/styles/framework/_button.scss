@@ -49,11 +49,6 @@ $button-outline-primary-color: $button-primary-background !default;
 $button-outline-primary-color-hover: $global-primary !default;
 $button-outline-primary-border: $button-primary-background !default;
 
-$button-chaosMonkey-enable: true !default;
-$button-chaosMonkey-color: $global-contrast !default;
-$button-chaosMonkey-background: $GREMLIN_chaosMonkey !default;
-$button-chaosMonkey-border: $button-chaosMonkey-background !default;
-
 $button-contrast-enable: true !default;
 $button-contrast-color: $global-contrast !default;
 $button-contrast-background: transparent !default;
@@ -63,9 +58,6 @@ $button-contrast-primary-background: $global-background !default;
 
 $button-contrast-secondary-color: $global-font-color !default;
 $button-contrast-secondary-background: $global-background !default;
-
-$button-contrast-chaosMonkey-color: $button-chaosMonkey-background !default;
-$button-contrast-chaosMonkey-background: $global-background !default;
 
 $button-loader-enable: true !default;
 $button-loader-size: 1.5em !default;
@@ -319,40 +311,6 @@ $button-icon-enable: true !default;
         }
 
         @if (mixin-exists(hook-button-danger)) { @include hook-button-danger(); }
-      }
-    }
-
-    @if $button-chaosMonkey-enable {
-      &--chaosMonkey {
-        background: $button-chaosMonkey-background;
-        border-color: $button-chaosMonkey-border;
-        color: $global-contrast;
-
-        &:hover,
-        &:focus,
-        &:active,
-        &.is-active {
-          color: $global-contrast;
-        }
-
-        @if $global-contrast-enable and $button-contrast-enable {
-          .u-contrast & {
-            &:not(.button--noContrast) {
-              background: $button-contrast-chaosMonkey-background;
-              border-color: $button-contrast-chaosMonkey-background;
-              color: $button-contrast-chaosMonkey-color;
-
-              &:hover,
-              &:focus,
-              &:active,
-              &.is-active {
-                color: $button-contrast-chaosMonkey-color;
-              }
-            }
-          }
-        }
-
-        @if (mixin-exists(hook-button-chaosMonkey)) { @include hook-button-chaosMonkey(); }
       }
     }
 

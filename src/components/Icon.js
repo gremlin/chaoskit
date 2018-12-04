@@ -6,15 +6,17 @@ import Icons from '../assets/icons/icons.json';
 
 class Icon extends React.Component {
   getIcon = () => {
-    const { icon, className, size, ...opts } = this.props;
+    const { icon, fallback, className, size, ...opts } = this.props;
     const classes = cx('icon', className, {
       'icon--small': size === 'small',
       'icon--large': size === 'large',
       'icon--xlarge': size === 'xlarge',
     });
 
+    const matchedIcon = Icons[icon] || Icons[fallback];
+
     // If we find an icon
-    if (Icons[icon]) {
+    if (matchedIcon) {
       return (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -26,7 +28,7 @@ class Icon extends React.Component {
           strokeLinejoin="round"
           className={classes}
           {...opts}
-          dangerouslySetInnerHTML={{ __html: [Icons[icon]] }} // eslint-disable-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: matchedIcon }} // eslint-disable-line react/no-danger
         />
       );
     }
@@ -42,6 +44,7 @@ class Icon extends React.Component {
 
 Icon.propTypes = {
   className: PropTypes.string,
+  fallback: PropTypes.string,
   icon: PropTypes.string.isRequired,
   size: PropTypes.oneOf(['small', 'large', 'xlarge']),
 };

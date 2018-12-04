@@ -8,7 +8,6 @@ const Badge = (props) => {
     'badge--rounded': rounded,
     'badge--primary': type === 'primary',
     'badge--danger': type === 'danger',
-    'badge--chaosMonkey': type === 'chaosMonkey',
   });
 
   return (
@@ -22,7 +21,7 @@ Badge.propTypes = {
   className: PropTypes.string,
   label: PropTypes.string.isRequired,
   rounded: PropTypes.bool,
-  type: PropTypes.oneOf(['primary', 'danger', 'chaosMonkey']),
+  type: PropTypes.oneOf(['primary', 'danger']),
 };
 
 export default Badge;

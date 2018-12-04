@@ -10,7 +10,6 @@ class Alert extends React.Component {
       'alert--primary': type === 'primary',
       'alert--warning': type === 'warning',
       'alert--danger': type === 'danger',
-      'alert--chaosMonkey': type === 'chaosMonkey',
     }, className);
 
     return (
@@ -28,7 +27,7 @@ Alert.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  type: PropTypes.oneOf(['primary', 'warning', 'danger', 'chaosMonkey']),
+  type: PropTypes.oneOf(['primary', 'warning', 'danger']),
 };
 
 export default Alert;

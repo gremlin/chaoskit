@@ -22,18 +22,6 @@
       @if (mixin-exists(hook-utility-background-danger)) { @include hook-utility-background-danger(); }
     }
 
-    &ChaosMonkey {
-      background: $GREMLIN_chaosMonkey;
-
-      @if (mixin-exists(hook-utility-background-chaosMonkey)) { @include hook-utility-background-chaosMonkey(); }
-    }
-
-    &ChaosMonkeyLight {
-      background: $GREMLIN_chaosMonkey-light;
-
-      @if (mixin-exists(hook-utility-background-chaosMonkey-light)) { @include hook-utility-background-chaosMonkey-light(); }
-    }
-
     &Panel {
       background: $global-panel-background;
 

@@ -101,10 +101,6 @@
       color: $global-danger !important;
     }
 
-    &ChaosMonkey {
-      color: $GREMLIN_chaosMonkey !important;
-    }
-
     &Contrast {
       color: $global-contrast !important;
     }
@@ -250,17 +246,6 @@
       &:active {
         text-decoration: underline !important;
         text-decoration-skip: ink;
-      }
-    }
-
-    &ChaosMonkey {
-      color: $GREMLIN_chaosMonkey !important;
-
-      &:hover,
-      &:focus {
-        @include text__underline-styles();
-
-        color: $GREMLIN_chaosMonkey !important;
       }
     }
 

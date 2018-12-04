@@ -77,6 +77,7 @@ class Input extends React.Component {
       <input
         autoComplete={autoComplete}
         id={this.id}
+        className="form-input"
         disabled={disabled}
         focus={focus}
         name={name}
