@@ -31,7 +31,7 @@ $alert-danger-color: $global-danger !default;
     padding: $global-whitespace-regular;
 
     @media (min-width: $global-viewport-medium) {
-      padding: $global-whitespace-large;
+      padding: $global-whitespace-medium;
     }
 
     // For `gatsby-remark-custom-blocks` integration

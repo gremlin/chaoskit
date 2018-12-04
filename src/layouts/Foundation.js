@@ -263,7 +263,7 @@ class Foundation extends React.Component {
                     <a className="u-inlineBlock" target="_blank" rel="noopener noreferrer" title="View ChaosKit on GitHub" href="https://www.github.com/gremlin/chaoskit">
                       <Icon icon="github" />
                     </a>
-                    <div>
+                    <div className="u-textSmall">
                       Ipsum provided by <a target="_blank" rel="noopener noreferrer" href="http://fillerama.io/">Fillerama</a>
                     </div>
                   </Inline>
