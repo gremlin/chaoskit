@@ -1,5 +1,5 @@
 {
-  "name": "ChaosKit",
+  "name": "@gremlin/chaoskit",
   "private": true,
   "description": "A lightweight and modular front-end framework for developing fast and powerful web interfaces within Gremlin",
   "browserslist": [
