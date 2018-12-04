@@ -165,6 +165,9 @@ class Foundation extends React.Component {
                       <h5>Components</h5>
                       <List>
                         <ListItem>
+                          <Link to="/alert/" activeClassName={config.classes.active}>Alert</Link>
+                        </ListItem>
+                        <ListItem>
                           <Link to="/avatar/" activeClassName={config.classes.active}>Avatar</Link>
                         </ListItem>
                         <ListItem>
@@ -175,6 +178,9 @@ class Foundation extends React.Component {
                         </ListItem>
                         <ListItem>
                           <Link to="/button/" activeClassName={config.classes.active}>Button</Link>
+                        </ListItem>
+                        <ListItem>
+                          <Link to="/close/" activeClassName={config.classes.active}>Close</Link>
                         </ListItem>
                         <ListItem>
                           <Link to="/grid/" activeClassName={config.classes.active}>Grid</Link>
@@ -257,6 +263,9 @@ class Foundation extends React.Component {
                     <a className="u-inlineBlock" target="_blank" rel="noopener noreferrer" title="View ChaosKit on GitHub" href="https://www.github.com/gremlin/chaoskit">
                       <Icon icon="github" />
                     </a>
+                    <div>
+                      Ipsum provided by <a target="_blank" rel="noopener noreferrer" href="http://fillerama.io/">Fillerama</a>
+                    </div>
                   </Inline>
                 </div>
               </footer>

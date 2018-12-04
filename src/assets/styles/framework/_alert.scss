@@ -2,6 +2,7 @@
 // Variables
 //
 
+$alert-close-transition: transform 0.25s easeInOutCubic !default;
 $alert-border-width: 8px !default;
 
 $alert-default-color: tint($global-border, 75%) !default;
@@ -25,8 +26,7 @@ $alert-danger-color: $global-danger !default;
 
 @mixin alert() {
   .alert {
-    @include trimChildren();
-
+    display: flex;
     background: $alert-default-color;
     border-left: $alert-border-width solid $alert-default-border;
     padding: $global-whitespace-regular;
@@ -76,12 +76,24 @@ $alert-danger-color: $global-danger !default;
         border-color: $alert-danger-color;
 
         .alert-title,
-        .custom-block-heading {
+        .custom-block-heading,
+        .alert-close {
           color: $alert-danger-color;
         }
 
         @if (mixin-exists(hook-alert-danger)) { @include hook-alert-danger(); }
       }
+    }
+
+    &-content {
+      @include trimChildren();
+
+      flex: 1;
+    }
+
+    &-right {
+      flex: 0;
+      padding-left: $global-whitespace-small;
     }
 
     @if (mixin-exists(hook-alert)) { @include hook-alert(); }
