@@ -30,7 +30,6 @@ class Button extends React.Component { // eslint-disable-line react/prefer-state
       'button--primary': type === 'primary',
       'button--secondary': type === 'secondary',
       'button--danger': type === 'danger',
-      'button--chaosMonkey': type === 'chaosMonkey',
       'button--outlinePrimary': type === 'outlinePrimary',
       'button--small': size === 'small',
       'button--xsmall': size === 'xsmall',
@@ -81,7 +80,7 @@ Button.propTypes = {
   noContrast: PropTypes.bool,
   noRadius: PropTypes.bool,
   size: PropTypes.oneOf(['xsmall', 'small']),
-  type: PropTypes.oneOf(['reset', 'default', 'primary', 'secondary', 'danger', 'chaosMonkey', 'outlinePrimary']),
+  type: PropTypes.oneOf(['reset', 'default', 'primary', 'secondary', 'danger', 'outlinePrimary']),
   url: PropTypes.string,
 };
 
