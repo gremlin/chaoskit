@@ -12,3 +12,6 @@ src/docs/**/*
 src/layouts/**/*
 src/pages/**/*
 src/assets/media/**/*
+
+# Build
+public/**/*
