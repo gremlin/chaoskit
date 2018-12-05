@@ -6,8 +6,6 @@ A lightweight and modular front-end framework for developing fast and powerful w
 
 [https://chaoskit.netlify.com](https://chaoskit.netlify.com)
 
-**Currently private:** Use the password `chaos4me` to gain access.
-
 ## Setup
 
 * Make sure you have the following installed:
