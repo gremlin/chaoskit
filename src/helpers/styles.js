@@ -12,6 +12,9 @@ export const styles = {
     },
   },
   viewport: {
+    small: '480px',
     medium: '768px',
+    large: '960px',
+    xlarge: '1200px',
   },
 };
