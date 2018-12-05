@@ -134,10 +134,3 @@ $breakpoint-large: 'large' !default;
 $global-breakpoint-sizes: $breakpoint-small $breakpoint-medium $breakpoint-large !default;
 $global-queries: (#{$breakpoint-small}: #{$global-viewport-small}, #{$breakpoint-medium}: #{$global-viewport-medium}, #{$breakpoint-large}: #{$global-viewport-large}) !default;
 $global-queries-max: (#{$breakpoint-xsmall}: $global-viewport-xsmall-max, #{$breakpoint-small}: #{$global-viewport-small-max}, #{$breakpoint-medium}: #{$global-viewport-medium-max}) !default;
-
-//
-// UI
-//
-
-$header-height: 70px;
-$author-avatar-size: $global-height;
