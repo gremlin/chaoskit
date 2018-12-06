@@ -141,13 +141,19 @@ $header-mobile-nav-width: 30px;
 
 // Override for blockquote styles
 blockquote {
+  @include trimChildren();
+
   @extend .alert;
   @extend .alert--warning;
 
   font-style: normal;
+  flex-direction: column;
 
-  p:first-child {
-    @extend h4;
+  > p:first-of-type:not(:only-child) {
+    @extend .u-textHeading;
+    @extend .u-textFluid--xlarge;
+
+    margin-bottom: 0;
   }
 }
 
