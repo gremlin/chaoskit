@@ -1,10 +1,7 @@
 {
   "name": "chaoskit",
   "description": "A lightweight and modular front-end framework for developing fast and powerful web interfaces within Gremlin",
-  "browserslist": [
-    ">0.25%",
-    "not op_mini all"
-  ],
+  "browserslist": [">0.25%", "not op_mini all"],
   "version": "1.0.7",
   "engines": {
     "node": ">=8.12.0"
@@ -74,7 +71,9 @@
     "build": "yarn && yarn run icons && gatsby build",
     "build-serve": "yarn build && gatsby serve",
     "develop": "yarn && yarn run icons && gatsby develop",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prettier-fix-code": "prettier-eslint --write 'src/**/*.{js,jsx}'",
+    "prettier-fix-styles": "prettier-eslint --write 'src/**/*.{css,scss}'"
   },
   "repository": {
     "type": "git",
