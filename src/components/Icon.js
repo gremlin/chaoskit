@@ -6,14 +6,17 @@ import Icons from '../assets/icons/icons.json';
 
 class Icon extends React.Component {
   getIcon = () => {
-    const { icon, fallback, className, size, ...opts } = this.props;
+    const { icon, additionalIcons, fallback, className, size, ...opts } = this.props;
     const classes = cx('icon', className, {
       'icon--small': size === 'small',
       'icon--large': size === 'large',
       'icon--xlarge': size === 'xlarge',
     });
+    // Merge in base icons with anything additional
+    const iconSource = Object.assign(Icons, additionalIcons);
 
-    const matchedIcon = Icons[icon] || Icons[fallback];
+    // Match on fallback prop if supplied
+    const matchedIcon = iconSource[icon] || iconSource[fallback];
 
     // If we find an icon
     if (matchedIcon) {
@@ -46,6 +49,7 @@ Icon.propTypes = {
   className: PropTypes.string,
   fallback: PropTypes.string,
   icon: PropTypes.string.isRequired,
+  additionalIcons: PropTypes.object,
   size: PropTypes.oneOf(['small', 'large', 'xlarge']),
 };
 

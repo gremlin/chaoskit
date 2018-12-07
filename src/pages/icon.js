@@ -41,6 +41,7 @@ const IconScope = {
 };
 
 const IconPropDescriptions = {
+  additionalIcons: 'Pass in (and override) additional icon data to search through',
   size: "<code>oneOf(['small', 'large', 'xlarge'])</code>", // eslint-disable-line quotes
 };
 
