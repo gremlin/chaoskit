@@ -6,9 +6,7 @@ const ModalBody = (props) => {
   const { children, className } = props;
   const classes = cx('modal-body', className);
 
-  return (
-    <div className={classes}>{children}</div>
-  );
+  return <div className={classes}>{children}</div>;
 };
 
 ModalBody.propTypes = {

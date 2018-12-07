@@ -1,12 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import scriptjs from 'scriptjs';
-import {
-  LiveProvider,
-  LiveEditor,
-  LiveError,
-  LivePreview,
-} from 'react-live';
+import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 
 import { Loader } from '../components';
 import Docs from './Docs';
@@ -25,7 +20,14 @@ class Live extends React.Component {
   }
 
   render() {
-    const { component, propDescriptions, code, showDocs, showEditor, scope } = this.props;
+    const {
+      component,
+      propDescriptions,
+      code,
+      showDocs,
+      showEditor,
+      scope,
+    } = this.props;
     const { loading } = this.state;
 
     // Add `Fragment` to every scope by default
@@ -34,7 +36,9 @@ class Live extends React.Component {
 
     return (
       <Fragment>
-        {showDocs && <Docs component={component} propDescriptions={propDescriptions} />}
+        {showDocs && (
+          <Docs component={component} propDescriptions={propDescriptions} />
+        )}
         {loading ? (
           <div className="u-textCenter">
             <Loader className="u-textXlarge u-textPrimary" />
@@ -44,7 +48,9 @@ class Live extends React.Component {
             scope={scopeProps}
             code={code}
             mountStylesheet={false}
-            transformCode={input => window.Babel.transform(input, { presets: ['stage-0', 'react'] }).code}
+            transformCode={input => window.Babel.transform(input, { presets: ['stage-0', 'react'] })
+              .code
+            }
           >
             {showEditor && <LiveEditor />}
             <LivePreview />

@@ -55,6 +55,8 @@ $badge-rounded-enable: true !default;
       }
     }
 
-    @if (mixin-exists(hook-badge)) { @include hook-badge(); }
+    @if (mixin-exists(hook-badge)) {
+      @include hook-badge();
+    }
   }
 }

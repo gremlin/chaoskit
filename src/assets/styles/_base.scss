@@ -3,7 +3,7 @@
 //
 
 $base-body-background: $global-background !default;
-$base-body-font-family: Gira, "Helvetica Neue", Arial, sans-serif !default;
+$base-body-font-family: Gira, 'Helvetica Neue', Arial, sans-serif !default;
 $base-body-font-weight: $global-font-weight !default;
 $base-body-font-size: $global-font-size !default;
 $base-font-antialiasing: true !default;
@@ -24,7 +24,7 @@ $base-mark-color: $global-font-color !default;
 $base-quote-font-style: italic !default;
 $base-margin-vertical: $global-whitespace-regular !default;
 $base-heading-line-height: $global-line-height-small !default;
-$base-heading-font-family: Circular, "Helvetica Neue", Arial, sans-serif !default !default;
+$base-heading-font-family: Circular, 'Helvetica Neue', Arial, sans-serif !default !default;
 $base-heading-font-weight: $global-font-weight-bold !default;
 $base-heading-color: $global-heading-color !default;
 $base-heading-text-transform: none !default;
@@ -74,7 +74,6 @@ $base-selection-color: $global-background !default;
 //
 
 @mixin base() {
-
   // 1. Normalize default `font-family` and set `font-size` to support `rem` units
   // 2. Prevents iOS text size adjust after orientation change, without disabling user zoom
   // 3. Setting @viewport causes scrollbars to overlap content in IE11 and Edge, so we force a non-overlapping, non-auto-hiding scrollbar to counteract.
@@ -114,7 +113,9 @@ $base-selection-color: $global-background !default;
       scroll-behavior: smooth;
     }
 
-    @if (mixin-exists(hook-base-html)) { @include hook-base-html(); }
+    @if (mixin-exists(hook-base-html)) {
+      @include hook-base-html();
+    }
   }
 
   // Inherit 'border-box' down to sub-components
@@ -131,7 +132,9 @@ $base-selection-color: $global-background !default;
   body {
     margin: 0; // 1
 
-    @if (mixin-exists(hook-base-body)) { @include hook-base-body(); }
+    @if (mixin-exists(hook-base-body)) {
+      @include hook-base-body();
+    }
   }
 
   // Suppress the focus outline on elements that cannot be accessed via keyboard.
@@ -139,13 +142,13 @@ $base-selection-color: $global-background !default;
   // might still respond to pointer events.
   //
   // Credit: https://github.com/suitcss/base
-  [tabindex="-1"]:focus {
+  [tabindex='-1']:focus {
     outline: none !important;
   }
 
   // Suppress focus outline on elements that are triggered via a mouse
   // Possible by bundling `what-input` library
-  html:not([data-whatinput="keyboard"]) :focus {
+  html:not([data-whatinput='keyboard']) :focus {
     outline: none;
   }
 
@@ -160,14 +163,18 @@ $base-selection-color: $global-background !default;
     text-decoration: $base-link-text-decoration;
     cursor: pointer;
 
-    @if (mixin-exists(hook-base-link)) { @include hook-base-link(); }
+    @if (mixin-exists(hook-base-link)) {
+      @include hook-base-link();
+    }
 
     &:hover,
     &:focus {
       color: $base-link-hover-color;
       text-decoration: $base-link-hover-text-decoration;
 
-      @if (mixin-exists(hook-base-link-hover)) { @include hook-base-link-hover(); }
+      @if (mixin-exists(hook-base-link-hover)) {
+        @include hook-base-link-hover();
+      }
     }
   }
 
@@ -213,7 +220,9 @@ $base-selection-color: $global-background !default;
     padding: ($global-whitespace-xsmall / 2) $global-whitespace-xsmall;
     background: $base-code-background;
 
-    @if (mixin-exists(hook-base-code)) { @include hook-base-code(); }
+    @if (mixin-exists(hook-base-code)) {
+      @include hook-base-code();
+    }
   }
 
   // Emphasize
@@ -303,7 +312,9 @@ $base-selection-color: $global-background !default;
 
   // Hide `alt` text for lazy load images
   // Selector for background while loading img[data-src*='.jpg'][src*='data:image'] { background: grey; }
-  img:not([src]) { visibility: hidden; }
+  img:not([src]) {
+    visibility: hidden;
+  }
 
   //
   // Block elements
@@ -355,7 +366,9 @@ $base-selection-color: $global-background !default;
     text-transform: $base-heading-text-transform;
     letter-spacing: $base-heading-letter-spacing;
 
-    @if (mixin-exists(hook-base-h)) { @include hook-base-h(); }
+    @if (mixin-exists(hook-base-h)) {
+      @include hook-base-h();
+    }
   }
 
   // Margins
@@ -374,7 +387,9 @@ $base-selection-color: $global-background !default;
     font-weight: $base-h1-font-weight;
     line-height: $base-h1-line-height;
 
-    @if (mixin-exists(hook-base-h1)) { @include hook-base-h1(); }
+    @if (mixin-exists(hook-base-h1)) {
+      @include hook-base-h1();
+    }
   }
 
   h2 {
@@ -383,7 +398,9 @@ $base-selection-color: $global-background !default;
     font-weight: $base-h2-font-weight;
     line-height: $base-h2-line-height;
 
-    @if (mixin-exists(hook-base-h2)) { @include hook-base-h2(); }
+    @if (mixin-exists(hook-base-h2)) {
+      @include hook-base-h2();
+    }
   }
 
   h3 {
@@ -392,7 +409,9 @@ $base-selection-color: $global-background !default;
     font-weight: $base-h3-font-weight;
     line-height: $base-h3-line-height;
 
-    @if (mixin-exists(hook-base-h3)) { @include hook-base-h3(); }
+    @if (mixin-exists(hook-base-h3)) {
+      @include hook-base-h3();
+    }
   }
 
   h4 {
@@ -400,7 +419,9 @@ $base-selection-color: $global-background !default;
     font-weight: $base-h4-font-weight;
     line-height: $base-h4-line-height;
 
-    @if (mixin-exists(hook-base-h4)) { @include hook-base-h4(); }
+    @if (mixin-exists(hook-base-h4)) {
+      @include hook-base-h4();
+    }
   }
 
   h5 {
@@ -410,7 +431,9 @@ $base-selection-color: $global-background !default;
     letter-spacing: $base-h5-letter-spacing;
     text-transform: $base-h5-text-transform;
 
-    @if (mixin-exists(hook-base-h4)) { @include hook-base-h4(); }
+    @if (mixin-exists(hook-base-h4)) {
+      @include hook-base-h4();
+    }
   }
 
   //
@@ -463,7 +486,9 @@ $base-selection-color: $global-background !default;
     border: 0;
     border-top: $base-hr-border-width solid $base-hr-border;
 
-    @if (mixin-exists(hook-base-hr)) { @include hook-base-hr(); }
+    @if (mixin-exists(hook-base-hr)) {
+      @include hook-base-hr();
+    }
 
     * + & {
       margin-top: $base-hr-margin-vertical;
@@ -483,7 +508,9 @@ $base-selection-color: $global-background !default;
     line-height: $base-blockquote-line-height;
     font-style: $base-blockquote-font-style;
 
-    @if (mixin-exists(hook-base-blockquote)) { @include hook-base-blockquote(); }
+    @if (mixin-exists(hook-base-blockquote)) {
+      @include hook-base-blockquote();
+    }
   }
 
   //
@@ -494,7 +521,8 @@ $base-selection-color: $global-background !default;
   pre {
     padding: $base-pre-padding;
     background: $base-pre-background;
-    font: $base-pre-font-size unquote('/') $base-pre-line-height $base-pre-font-family;
+    font: $base-pre-font-size unquote('/') $base-pre-line-height
+      $base-pre-font-family;
     color: $base-pre-color;
     tab-size: 4;
     border: 1px solid $base-pre-border;
@@ -502,7 +530,9 @@ $base-selection-color: $global-background !default;
     // 1
     overflow: auto;
 
-    @if (mixin-exists(hook-base-pre)) { @include hook-base-pre(); }
+    @if (mixin-exists(hook-base-pre)) {
+      @include hook-base-pre();
+    }
   }
 
   //
@@ -522,12 +552,15 @@ $base-selection-color: $global-background !default;
   // Add the correct display in Edge, IE, and Firefox.
   // Add the correct display in IE.
   details, // 1
-  main { // 2
+  main {
+    // 2
     display: block;
   }
 
   // Add the correct display in all browsers.
-  summary { display: list-item; }
+  summary {
+    display: list-item;
+  }
 
   // Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
   progress {
@@ -619,5 +652,7 @@ $base-selection-color: $global-background !default;
     }
   }
 
-  @if (mixin-exists(hook-base-misc)) { @include hook-base-misc(); }
+  @if (mixin-exists(hook-base-misc)) {
+    @include hook-base-misc();
+  }
 }

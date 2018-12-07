@@ -8,9 +8,7 @@ const ModalFooter = (props) => {
     'modal-footer--center': center,
   });
 
-  return (
-    <div className={classes}>{children}</div>
-  );
+  return <div className={classes}>{children}</div>;
 };
 
 ModalFooter.propTypes = {

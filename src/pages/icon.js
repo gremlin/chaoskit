@@ -41,13 +41,21 @@ const IconScope = {
 };
 
 const IconPropDescriptions = {
-  additionalIcons: 'Pass in (and override) additional icon data to search through',
+  additionalIcons:
+    'Pass in (and override) additional icon data to search through',
   size: "<code>oneOf(['small', 'large', 'xlarge'])</code>", // eslint-disable-line quotes
 };
 
 const IconDocs = () => (
   <FoundationLayout pageTitle="Icon">
-    <p>All UI-orientated icons follow the same <code>viewBox</code>, <code>width/height</code>, and <code>stroke</code> attributes for ease and re-usability. Icons are located within the <code>src/assets/icons/</code> directory and are optimized, mangled, and sent along via a JSON file that allows us to import and validate references more easily and only bundle what we actually use in our applications.</p>
+    <p>
+      All UI-orientated icons follow the same <code>viewBox</code>,{' '}
+      <code>width/height</code>, and <code>stroke</code> attributes for ease and
+      re-usability. Icons are located within the <code>src/assets/icons/</code>{' '}
+      directory and are optimized, mangled, and sent along via a JSON file that
+      allows us to import and validate references more easily and only bundle
+      what we actually use in our applications.
+    </p>
     <Live
       code={IconExample}
       scope={IconScope}
@@ -65,7 +73,10 @@ const IconDocs = () => (
     />
 
     <h3>Manipulating icons</h3>
-    <p>Icons are just as maluable as any piece of text; with both their size and color inheritting from its own, or parent selectors.</p>
+    <p>
+      Icons are just as maluable as any piece of text; with both their size and
+      color inheritting from its own, or parent selectors.
+    </p>
     <Live
       code={IconExampleManipulate}
       scope={IconScope}

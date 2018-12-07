@@ -24,7 +24,15 @@ const SocialIcon = (props) => {
 SocialIcon.propTypes = {
   className: PropTypes.string,
   url: PropTypes.string.isRequired,
-  service: PropTypes.oneOf(['twitter', 'facebook', 'instagram', 'youtube', 'linkedin', 'hacker-news', 'rss']),
+  service: PropTypes.oneOf([
+    'twitter',
+    'facebook',
+    'instagram',
+    'youtube',
+    'linkedin',
+    'hacker-news',
+    'rss',
+  ]),
   title: PropTypes.string,
 };
 

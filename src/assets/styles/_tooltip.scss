@@ -42,7 +42,9 @@ $tooltip-transition: 0.175s easeInOutBack !default; // Brought over from JS comp
         border-top: 0;
       }
 
-      @if (mixin-exists(hook-tooltip-inner)) { @include hook-tooltip-inner(); }
+      @if (mixin-exists(hook-tooltip-inner)) {
+        @include hook-tooltip-inner();
+      }
     }
 
     &--top {
@@ -90,6 +92,8 @@ $tooltip-transition: 0.175s easeInOutBack !default; // Brought over from JS comp
       }
     }
 
-    @if (mixin-exists(hook-tooltip)) { @include hook-tooltip(); }
+    @if (mixin-exists(hook-tooltip)) {
+      @include hook-tooltip();
+    }
   }
 }

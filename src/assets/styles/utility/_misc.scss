@@ -34,5 +34,7 @@
     }
   }
 
-  @if (mixin-exists(hook-utility-misc)) { @include hook-utility-misc(); }
+  @if (mixin-exists(hook-utility-misc)) {
+    @include hook-utility-misc();
+  }
 }

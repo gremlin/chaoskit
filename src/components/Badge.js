@@ -10,11 +10,7 @@ const Badge = (props) => {
     'badge--danger': type === 'danger',
   });
 
-  return (
-    <div className={classes}>
-      {label}
-    </div>
-  );
+  return <div className={classes}>{label}</div>;
 };
 
 Badge.propTypes = {

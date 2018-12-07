@@ -7,7 +7,8 @@ $form-placeholder-color: $global-muted !default;
 $form-box-shadow: $global-box-shadow !default;
 $form-focus-box-shadow-color: rgba($global-primary, 0.75) !default;
 $form-focus-box-shadow: $global-box-shadow-offset $form-focus-box-shadow-color !default;
-$form-focus-error-box-shadow: $global-box-shadow-offset rgba($global-danger, 0.75) !default;
+$form-focus-error-box-shadow: $global-box-shadow-offset
+  rgba($global-danger, 0.75) !default;
 $form-focus-border-color: $global-primary !default;
 $form-padding-horizontal: $global-ui-offset !default;
 
@@ -40,8 +41,12 @@ $form-checkbox-icon-size: 12px !default;
 
 $form-select-arrow-color: $form-placeholder-color !default;
 $form-select-arrow-icon-size: 12px !default;
-$forms-select-arrow-right-padding: ($form-select-arrow-icon-size + $form-padding-horizontal + $global-whitespace-small) !default;
-$form-select-arrow-surround-padding: 0 $forms-select-arrow-right-padding 0 $form-padding-horizontal !default;
+$forms-select-arrow-right-padding: (
+  $form-select-arrow-icon-size + $form-padding-horizontal +
+    $global-whitespace-small
+) !default;
+$form-select-arrow-surround-padding: 0 $forms-select-arrow-right-padding 0
+  $form-padding-horizontal !default;
 $form-select-multiple-max-height: 150px !default;
 
 $form-label-icon-size: 9px !default;
@@ -127,7 +132,9 @@ $form-contrast-background-focus: transparent !default;
   position: relative;
   box-shadow: $form-box-shadow;
 
-  @if (mixin-exists(hook-form)) { @include hook-form(); }
+  @if (mixin-exists(hook-form)) {
+    @include hook-form();
+  }
 
   // Focus state
   &:focus {
@@ -138,7 +145,9 @@ $form-contrast-background-focus: transparent !default;
     color: $form-font-color;
     z-index: 1;
 
-    @if (mixin-exists(hook-form-focus)) { @include hook-form-focus(); }
+    @if (mixin-exists(hook-form-focus)) {
+      @include hook-form-focus();
+    }
   }
 
   // Disabled state
@@ -150,7 +159,9 @@ $form-contrast-background-focus: transparent !default;
     cursor: not-allowed;
     user-select: none;
 
-    @if (mixin-exists(hook-form-disabled)) { @include hook-form-disabled(); }
+    @if (mixin-exists(hook-form-disabled)) {
+      @include hook-form-disabled();
+    }
   }
 
   .is-notValid & {
@@ -158,7 +169,10 @@ $form-contrast-background-focus: transparent !default;
     box-shadow: $form-focus-error-box-shadow;
   }
 
-  @if $global-contrast-enable and $form-contrast-enable and $form-contrast-input-enable {
+  @if $global-contrast-enable and
+    $form-contrast-enable and
+    $form-contrast-input-enable
+  {
     .u-contrast & {
       background: $form-contrast-background;
       border: 1px solid $global-contrast;
@@ -325,8 +339,8 @@ $form-contrast-background-focus: transparent !default;
   }
 
   // Remove the inner padding and cancel buttons in Chrome and Safari on macOS.
-  [type="search"]::-webkit-search-cancel-button,
-  [type="search"]::-webkit-search-decoration {
+  [type='search']::-webkit-search-cancel-button,
+  [type='search']::-webkit-search-decoration {
     appearance: none;
   }
 
@@ -354,7 +368,9 @@ $form-contrast-background-focus: transparent !default;
   }
 
   // Removes `box-shadow` for invalid controls in Firefox.
-  :invalid { box-shadow: none; }
+  :invalid {
+    box-shadow: none;
+  }
 
   //
   // Controls
@@ -406,7 +422,10 @@ $form-contrast-background-focus: transparent !default;
     }
   }
 
-  @if $global-contrast-enable and $form-contrast-enable and $form-contrast-input-enable {
+  @if $global-contrast-enable and
+    $form-contrast-enable and
+    $form-contrast-input-enable
+  {
     .u-contrast {
       ::placeholder {
         color: $global-contrast-muted;
@@ -423,7 +442,9 @@ $form-contrast-background-focus: transparent !default;
     position: relative;
 
     input {
-      padding-left: ($form-padding-horizontal + $global-font-size + $global-whitespace-small);
+      padding-left: (
+        $form-padding-horizontal + $global-font-size + $global-whitespace-small
+      );
     }
   }
 
@@ -435,7 +456,10 @@ $form-contrast-background-focus: transparent !default;
     left: $form-padding-horizontal;
     z-index: 2;
 
-    @if $global-contrast-enable and $form-contrast-enable and $form-contrast-input-prefix-enable {
+    @if $global-contrast-enable and
+      $form-contrast-enable and
+      $form-contrast-input-prefix-enable
+    {
       .u-contrast & {
         color: $global-contrast-muted;
       }
@@ -461,13 +485,17 @@ $form-contrast-background-focus: transparent !default;
     color: $global-muted;
     position: relative;
 
-    @if (mixin-exists(hook-form-legend)) { @include hook-form-legend(); }
+    @if (mixin-exists(hook-form-legend)) {
+      @include hook-form-legend();
+    }
 
     &::after {
       content: '';
       position: absolute;
       top: 50%;
-      transform: translateY((($form-legend-spacing - $form-legend-line-thickness) / -2));
+      transform: translateY(
+        (($form-legend-spacing - $form-legend-line-thickness) / -2)
+      );
       width: 100%;
       background: $form-legend-line-background;
       height: $form-legend-line-thickness;
@@ -641,7 +669,10 @@ $form-contrast-background-focus: transparent !default;
       }
     }
 
-    @if $global-contrast-enable and $form-contrast-enable and $form-contrast-radio-enable {
+    @if $global-contrast-enable and
+      $form-contrast-enable and
+      $form-contrast-radio-enable
+    {
       .u-contrast & {
         input {
           + label {
@@ -666,7 +697,9 @@ $form-contrast-background-focus: transparent !default;
       }
     }
 
-    @if (mixin-exists(hook-form-radio)) { @include hook-form-radio(); }
+    @if (mixin-exists(hook-form-radio)) {
+      @include hook-form-radio();
+    }
   }
 
   //
@@ -759,7 +792,10 @@ $form-contrast-background-focus: transparent !default;
       }
     }
 
-    @if $global-contrast-enable and $form-contrast-enable and $form-contrast-checkbox-enable {
+    @if $global-contrast-enable and
+      $form-contrast-enable and
+      $form-contrast-checkbox-enable
+    {
       .u-contrast & {
         input {
           + label {
@@ -784,7 +820,9 @@ $form-contrast-background-focus: transparent !default;
       }
     }
 
-    @if (mixin-exists(hook-form-checkbox)) { @include hook-form-checkbox(); }
+    @if (mixin-exists(hook-form-checkbox)) {
+      @include hook-form-checkbox();
+    }
   }
 
   //
@@ -804,7 +842,10 @@ $form-contrast-background-focus: transparent !default;
       }
     }
 
-    @if $global-contrast-enable and $form-contrast-enable and $form-contrast-select-enable {
+    @if $global-contrast-enable and
+      $form-contrast-enable and
+      $form-contrast-select-enable
+    {
       .u-contrast & {
         select {
           option {
@@ -833,7 +874,9 @@ $form-contrast-background-focus: transparent !default;
       }
     }
 
-    @if (mixin-exists(hook-form-select)) { @include hook-form-select(); }
+    @if (mixin-exists(hook-form-select)) {
+      @include hook-form-select();
+    }
   }
 
   //
@@ -854,7 +897,10 @@ $form-contrast-background-focus: transparent !default;
     color: $global-muted;
     margin-top: $global-whitespace-xsmall;
 
-    @if $global-contrast-enable and $form-contrast-enable and $form-contrast-input-enable {
+    @if $global-contrast-enable and
+      $form-contrast-enable and
+      $form-contrast-input-enable
+    {
       .u-contrast & {
         color: $global-contrast-muted;
       }
@@ -874,5 +920,7 @@ $form-contrast-background-focus: transparent !default;
     }
   }
 
-  @if (mixin-exists(hook-form-misc)) { @include hook-form-misc(); }
+  @if (mixin-exists(hook-form-misc)) {
+    @include hook-form-misc();
+  }
 }

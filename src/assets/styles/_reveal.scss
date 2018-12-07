@@ -15,7 +15,9 @@ $reveal-transition: 0.5s easeInOutCubic; // Brought over from JS component so we
     overflow: hidden;
     display: none;
 
-    @if (mixin-exists(hook-reveal)) { @include hook-reveal(); }
+    @if (mixin-exists(hook-reveal)) {
+      @include hook-reveal();
+    }
   }
 
   .reveal-content {

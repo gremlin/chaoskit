@@ -2,7 +2,14 @@ import React from 'react';
 
 import FoundationLayout from '../layouts/Foundation';
 import Live from '../docs/Live';
-import { Alert, Modal, ModalHeader, ModalFooter, ModalBody, Button } from '../components';
+import {
+  Alert,
+  Modal,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  Button,
+} from '../components';
 
 const ModalExample = `
 class Example extends React.Component {
@@ -59,7 +66,11 @@ const ModalDocs = () => (
       propDescriptions={ModalPropDescriptions}
     />
     <Alert type="warning" title="Note">
-      <p>When resetting UI on-close (like form-values), use the <code>onReverseComplete</code> prop; which waits until the animation is complete to fire</p>
+      <p>
+        When resetting UI on-close (like form-values), use the{' '}
+        <code>onReverseComplete</code> prop; which waits until the animation is
+        complete to fire
+      </p>
     </Alert>
   </FoundationLayout>
 );

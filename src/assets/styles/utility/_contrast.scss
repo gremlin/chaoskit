@@ -20,7 +20,9 @@ $contrast-hr-color: rgba($global-contrast, 0.05) !default;
   color: $contrast-link-color !important;
   position: relative;
 
-  @if (mixin-exists(hook-contrast-link)) { @include hook-contrast-link(); }
+  @if (mixin-exists(hook-contrast-link)) {
+    @include hook-contrast-link();
+  }
 
   &:hover,
   &:focus,
@@ -29,7 +31,9 @@ $contrast-hr-color: rgba($global-contrast, 0.05) !default;
 
     color: $contrast-link-hover-color !important;
 
-    @if (mixin-exists(hook-contrast-link-hover)) { @include hook-contrast-link-hover(); }
+    @if (mixin-exists(hook-contrast-link-hover)) {
+      @include hook-contrast-link-hover();
+    }
   }
 }
 
@@ -52,7 +56,9 @@ $contrast-hr-color: rgba($global-contrast, 0.05) !default;
     em {
       color: $contrast-italic-color;
 
-      @if (mixin-exists(hook-contrast-italic)) { @include hook-contrast-italic(); }
+      @if (mixin-exists(hook-contrast-italic)) {
+        @include hook-contrast-italic();
+      }
     }
 
     .u-textMuted {
@@ -76,13 +82,17 @@ $contrast-hr-color: rgba($global-contrast, 0.05) !default;
     h5 {
       color: $contrast-heading-color;
 
-      @if (mixin-exists(hook-contrast-heading)) { @include hook-contrast-heading(); }
+      @if (mixin-exists(hook-contrast-heading)) {
+        @include hook-contrast-heading();
+      }
     }
 
     hr {
       border-top-color: $contrast-hr-color;
     }
 
-    @if (mixin-exists(hook-contrast)) { @include hook-contrast(); }
+    @if (mixin-exists(hook-contrast)) {
+      @include hook-contrast();
+    }
   }
 }

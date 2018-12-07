@@ -24,7 +24,9 @@ $loader-circle-animation-duration: 1.5s !default;
       padding-top: 100%;
     }
 
-    @if (mixin-exists(hook-loader)) { @include hook-loader(); }
+    @if (mixin-exists(hook-loader)) {
+      @include hook-loader();
+    }
   }
 
   .loader-svg {
@@ -39,19 +41,24 @@ $loader-circle-animation-duration: 1.5s !default;
     right: 0;
     margin: auto;
 
-    @if (mixin-exists(hook-loader-circle)) { @include hook-loader-circle(); }
+    @if (mixin-exists(hook-loader-circle)) {
+      @include hook-loader-circle();
+    }
   }
 
   .loader-circle {
     stroke-dasharray: 1, 200;
     stroke-dashoffset: 0;
-    animation: loader-dash $loader-circle-animation-duration ease-in-out infinite;
+    animation: loader-dash $loader-circle-animation-duration ease-in-out
+      infinite;
     stroke-linecap: round;
     stroke: currentColor;
     fill: none;
     stroke-width: 2;
 
-    @if (mixin-exists(hook-loader-path)) { @include hook-loader-path(); }
+    @if (mixin-exists(hook-loader-path)) {
+      @include hook-loader-path();
+    }
   }
 
   @keyframes loader-rotate {

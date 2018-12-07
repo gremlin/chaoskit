@@ -36,21 +36,27 @@ const FlexDocs = () => {
 
   return (
     <FoundationLayout pageTitle="Flex">
-      <p>We take advantage of Flexbox for many of our components; so it made sense for us to expose a number of utilities as well.</p>
+      <p>
+        We take advantage of Flexbox for many of our components; so it made
+        sense for us to expose a number of utilities as well.
+      </p>
 
       <h3>Deep match</h3>
 
-      <p>While flex children automatically recieve the same height, children&apos;s children (where you may actually have your styling) does not. Use the <code>.u-flexDeepMatch</code> modifier attached to <code>.row</code> to resolve this.</p>
+      <p>
+        While flex children automatically recieve the same height,
+        children&apos;s children (where you may actually have your styling) does
+        not. Use the <code>.u-flexDeepMatch</code> modifier attached to{' '}
+        <code>.row</code> to resolve this.
+      </p>
 
-      <Live
-        code={FlexDeeptMatchExample}
-        scope={{}}
-      />
+      <Live code={FlexDeeptMatchExample} scope={{}} />
 
       <h3>Aligment</h3>
 
       <Alert type="warning" title="Note">
-        <code>{'{small,medium,large}'}</code> indicate rule declarations at respective screen-sizes.
+        <code>{'{small,medium,large}'}</code> indicate rule declarations at
+        respective screen-sizes.
       </Alert>
 
       <table>
@@ -63,45 +69,60 @@ const FlexDocs = () => {
         <tbody>
           <tr>
             <td>
-              <code>.u-flexStart</code><br />
+              <code>.u-flexStart</code>
+              <br />
               <code>.u-flexStart@{'{small,medium,large}'}</code>
             </td>
-            <td>Cross-start margin edge of the items is placed on the cross-start line.</td>
+            <td>
+              Cross-start margin edge of the items is placed on the cross-start
+              line.
+            </td>
           </tr>
           <tr>
             <td>
-              <code>.u-flexCenter</code><br />
+              <code>.u-flexCenter</code>
+              <br />
               <code>.u-flexCenter@{'{small,medium,large}'}</code>
             </td>
             <td>Items are centered along the line.</td>
           </tr>
           <tr>
             <td>
-              <code>.u-flexEnd</code><br />
+              <code>.u-flexEnd</code>
+              <br />
               <code>.u-flexEnd@{'{small,medium,large}'}</code>
             </td>
             <td>Forces row to right.</td>
           </tr>
           <tr>
             <td>
-              <code>.u-flexTop</code><br />
+              <code>.u-flexTop</code>
+              <br />
               <code>.u-flexTop@{'{small,medium,large}'}</code>
             </td>
-            <td>Cross-start margin edge of the items is placed on the cross-start line.</td>
+            <td>
+              Cross-start margin edge of the items is placed on the cross-start
+              line.
+            </td>
           </tr>
           <tr>
             <td>
-              <code>.u-flexMiddle</code><br />
+              <code>.u-flexMiddle</code>
+              <br />
               <code>.u-flexMiddle@{'{small,medium,large}'}</code>
             </td>
             <td>Items are centered in the cross-axis.</td>
           </tr>
           <tr>
             <td>
-              <code>.u-flexBottom</code><br />
+              <code>.u-flexBottom</code>
+              <br />
               <code>.u-flexBottom@{'{small,medium,large}'}</code>
             </td>
-            <td>Cross-end margin edge of the items is placed on the cross-end line.</td>
+            <td>
+              Cross-end margin edge of the items is placed on the cross-end
+              line.
+            </td>
           </tr>
           <tr>
             <td>
@@ -113,7 +134,10 @@ const FlexDocs = () => {
             <td>
               <code>.u-flexAround</code>
             </td>
-            <td>Items are positioned with space before, between, and after the lines.</td>
+            <td>
+              Items are positioned with space before, between, and after the
+              lines.
+            </td>
           </tr>
         </tbody>
       </table>
@@ -129,15 +153,21 @@ const FlexDocs = () => {
         </thead>
         <tbody>
           <tr>
-            <td><code>.u-flexItemNone</code></td>
+            <td>
+              <code>.u-flexItemNone</code>
+            </td>
             <td>Content dimensions</td>
           </tr>
           <tr>
-            <td><code>.u-flexItemAuto</code></td>
+            <td>
+              <code>.u-flexItemAuto</code>
+            </td>
             <td>Space is allocated considering content</td>
           </tr>
           <tr>
-            <td><code>.u-flexItem1</code></td>
+            <td>
+              <code>.u-flexItem1</code>
+            </td>
             <td>Space is allocated solely based on flex.</td>
           </tr>
         </tbody>

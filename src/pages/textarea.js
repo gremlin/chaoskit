@@ -35,7 +35,13 @@ const TextareaPropDescriptions = {
 
 const TextareaDocs = () => (
   <FoundationLayout pageTitle="Textarea">
-    <p>Uses <a href="https://github.com/andreypopp/react-textarea-autosize">react-textarea-autosize</a> to control growth automatically.</p>
+    <p>
+      Uses{' '}
+      <a href="https://github.com/andreypopp/react-textarea-autosize">
+        react-textarea-autosize
+      </a>{' '}
+      to control growth automatically.
+    </p>
     <Live
       code={TextareaExample}
       scope={TextareaScope}

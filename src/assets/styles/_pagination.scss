@@ -14,7 +14,9 @@ $pagination-offset: $global-whitespace-xlarge !default;
     justify-content: space-between;
     margin-top: $pagination-offset;
 
-    @if (mixin-exists(hook-pagination)) { @include hook-pagination(); }
+    @if (mixin-exists(hook-pagination)) {
+      @include hook-pagination();
+    }
   }
 
   .pagination-next {

@@ -25,17 +25,22 @@ class Foundation extends React.Component {
   };
 
   componentDidMount() {
-    this.viewportMediumMin = window.matchMedia(`(min-width: ${styles.viewport.medium})`);
+    this.viewportMediumMin = window.matchMedia(
+      `(min-width: ${styles.viewport.medium})`,
+    );
     this.viewportMediumMin.addListener(this.checkSize);
 
     window.onpopstate = (event) => {
       if (event.srcElement.location.pathname === event.target.location.pathname) return;
 
-      this.setState({
-        isMobileNavOpen: false,
-      }, () => {
-        this.clearMobileNavClasses();
-      });
+      this.setState(
+        {
+          isMobileNavOpen: false,
+        },
+        () => {
+          this.clearMobileNavClasses();
+        },
+      );
     };
   }
 
@@ -50,7 +55,7 @@ class Foundation extends React.Component {
     if (isMobileNavOpen && event.matches) {
       this.handleMobileNavToggle();
     }
-  }
+  };
 
   handleMobileNavToggle = () => {
     const { isMobileNavOpen } = this.state;
@@ -58,27 +63,25 @@ class Foundation extends React.Component {
     this.setState({
       isMobileNavOpen: !isMobileNavOpen,
     });
-  }
+  };
 
   render() {
     return (
       <StaticQuery
         query={graphql`
-        query FoundationPageData {
-          site {
-            siteMetadata {
-              title
-              description
+          query FoundationPageData {
+            site {
+              siteMetadata {
+                title
+                description
+              }
             }
           }
-        }
-      `}
+        `}
         render={(data) => {
           const {
             site: {
-              siteMetadata: {
-                title, description,
-              },
+              siteMetadata: { title, description },
             },
           } = data;
           const { children, pageTitle } = this.props;
@@ -92,12 +95,11 @@ class Foundation extends React.Component {
             <Fragment>
               <Helmet
                 title={title}
-                meta={[
-                  { name: 'description', content: description },
-                ]}
+                meta={[{ name: 'description', content: description }]}
               >
                 {/* Adding in webfonts here to get around strange Gatsby issue https://github.com/gatsbyjs/gatsby/issues/9826 */}
-                <style type="text/css">{`
+                <style type="text/css">
+                  {`
                 @font-face {
                   font-family: Gira;
                   src: local(😜), url(${GiraLight}) format('woff');
@@ -159,91 +161,221 @@ class Foundation extends React.Component {
                       <h5>Concepts</h5>
                       <List>
                         <ListItem>
-                          <Link to="/sass/" activeClassName={config.classes.active}>Sass</Link>
+                          <Link
+                            to="/sass/"
+                            activeClassName={config.classes.active}
+                          >
+                            Sass
+                          </Link>
                         </ListItem>
                       </List>
                       <h5>Components</h5>
                       <List>
                         <ListItem>
-                          <Link to="/alert/" activeClassName={config.classes.active}>Alert</Link>
+                          <Link
+                            to="/alert/"
+                            activeClassName={config.classes.active}
+                          >
+                            Alert
+                          </Link>
                         </ListItem>
                         <ListItem>
-                          <Link to="/avatar/" activeClassName={config.classes.active}>Avatar</Link>
+                          <Link
+                            to="/avatar/"
+                            activeClassName={config.classes.active}
+                          >
+                            Avatar
+                          </Link>
                         </ListItem>
                         <ListItem>
-                          <Link to="/badge/" activeClassName={config.classes.active}>Badge</Link>
+                          <Link
+                            to="/badge/"
+                            activeClassName={config.classes.active}
+                          >
+                            Badge
+                          </Link>
                         </ListItem>
                         <ListItem>
-                          <Link to="/block-grid/" activeClassName={config.classes.active}>Block Grid</Link>
+                          <Link
+                            to="/block-grid/"
+                            activeClassName={config.classes.active}
+                          >
+                            Block Grid
+                          </Link>
                         </ListItem>
                         <ListItem>
-                          <Link to="/button/" activeClassName={config.classes.active}>Button</Link>
+                          <Link
+                            to="/button/"
+                            activeClassName={config.classes.active}
+                          >
+                            Button
+                          </Link>
                         </ListItem>
                         <ListItem>
-                          <Link to="/close/" activeClassName={config.classes.active}>Close</Link>
+                          <Link
+                            to="/close/"
+                            activeClassName={config.classes.active}
+                          >
+                            Close
+                          </Link>
                         </ListItem>
                         <ListItem>
-                          <Link to="/grid/" activeClassName={config.classes.active}>Grid</Link>
+                          <Link
+                            to="/grid/"
+                            activeClassName={config.classes.active}
+                          >
+                            Grid
+                          </Link>
                         </ListItem>
                         <ListItem>
-                          <Link to="/icon/" activeClassName={config.classes.active}>Icon</Link>
+                          <Link
+                            to="/icon/"
+                            activeClassName={config.classes.active}
+                          >
+                            Icon
+                          </Link>
                         </ListItem>
                         <ListItem>
-                          <Link to="/inline/" activeClassName={config.classes.active}>Inline</Link>
+                          <Link
+                            to="/inline/"
+                            activeClassName={config.classes.active}
+                          >
+                            Inline
+                          </Link>
                         </ListItem>
                         <ListItem>
-                          <Link to="/list/" activeClassName={config.classes.active}>List</Link>
+                          <Link
+                            to="/list/"
+                            activeClassName={config.classes.active}
+                          >
+                            List
+                          </Link>
                         </ListItem>
                         <ListItem>
-                          <Link to="/loader/" activeClassName={config.classes.active}>Loader</Link>
+                          <Link
+                            to="/loader/"
+                            activeClassName={config.classes.active}
+                          >
+                            Loader
+                          </Link>
                         </ListItem>
                         <ListItem>
-                          <Link to="/modal/" activeClassName={config.classes.active}>Modal</Link>
+                          <Link
+                            to="/modal/"
+                            activeClassName={config.classes.active}
+                          >
+                            Modal
+                          </Link>
                         </ListItem>
                         <ListItem>
-                          <Link to="/reveal/" activeClassName={config.classes.active}>Reveal</Link>
+                          <Link
+                            to="/reveal/"
+                            activeClassName={config.classes.active}
+                          >
+                            Reveal
+                          </Link>
                         </ListItem>
                         <ListItem>
-                          <Link to="/tooltip/" activeClassName={config.classes.active}>Tooltip</Link>
+                          <Link
+                            to="/tooltip/"
+                            activeClassName={config.classes.active}
+                          >
+                            Tooltip
+                          </Link>
                         </ListItem>
                       </List>
                       <h5>Forms</h5>
                       <List>
                         <ListItem>
-                          <Link to="/checkbox/" activeClassName={config.classes.active}>Checkbox</Link>
+                          <Link
+                            to="/checkbox/"
+                            activeClassName={config.classes.active}
+                          >
+                            Checkbox
+                          </Link>
                         </ListItem>
                         <ListItem>
-                          <Link to="/choices-single/" activeClassName={config.classes.active}>Choices Single</Link>
+                          <Link
+                            to="/choices-single/"
+                            activeClassName={config.classes.active}
+                          >
+                            Choices Single
+                          </Link>
                         </ListItem>
                         <ListItem>
-                          <Link to="/choices-multi/" activeClassName={config.classes.active}>Choices Multi</Link>
+                          <Link
+                            to="/choices-multi/"
+                            activeClassName={config.classes.active}
+                          >
+                            Choices Multi
+                          </Link>
                         </ListItem>
                         <ListItem>
-                          <Link to="/input/" activeClassName={config.classes.active}>Input</Link>
+                          <Link
+                            to="/input/"
+                            activeClassName={config.classes.active}
+                          >
+                            Input
+                          </Link>
                         </ListItem>
                         <ListItem>
-                          <Link to="/radio/" activeClassName={config.classes.active}>Radio</Link>
+                          <Link
+                            to="/radio/"
+                            activeClassName={config.classes.active}
+                          >
+                            Radio
+                          </Link>
                         </ListItem>
                         <ListItem>
-                          <Link to="/select/" activeClassName={config.classes.active}>Select</Link>
+                          <Link
+                            to="/select/"
+                            activeClassName={config.classes.active}
+                          >
+                            Select
+                          </Link>
                         </ListItem>
                         <ListItem>
-                          <Link to="/textarea/" activeClassName={config.classes.active}>Textarea</Link>
+                          <Link
+                            to="/textarea/"
+                            activeClassName={config.classes.active}
+                          >
+                            Textarea
+                          </Link>
                         </ListItem>
                         <ListItem>
-                          <Link to="/toggle/" activeClassName={config.classes.active}>Toggle</Link>
+                          <Link
+                            to="/toggle/"
+                            activeClassName={config.classes.active}
+                          >
+                            Toggle
+                          </Link>
                         </ListItem>
                       </List>
                       <h5>Utilities</h5>
                       <List>
                         <ListItem>
-                          <Link to="/flex/" activeClassName={config.classes.active}>Flex</Link>
+                          <Link
+                            to="/flex/"
+                            activeClassName={config.classes.active}
+                          >
+                            Flex
+                          </Link>
                         </ListItem>
                         <ListItem>
-                          <Link to="/typography/" activeClassName={config.classes.active}>Typography</Link>
+                          <Link
+                            to="/typography/"
+                            activeClassName={config.classes.active}
+                          >
+                            Typography
+                          </Link>
                         </ListItem>
                         <ListItem>
-                          <Link to="/whitespace/" activeClassName={config.classes.active}>Whitespace</Link>
+                          <Link
+                            to="/whitespace/"
+                            activeClassName={config.classes.active}
+                          >
+                            Whitespace
+                          </Link>
                         </ListItem>
                       </List>
                     </div>
@@ -258,13 +390,27 @@ class Foundation extends React.Component {
                 <div className="container">
                   <Inline>
                     <div className="u-textMuted u-textSmall">
-                      Current Version: <strong className="u-textDefault">{version}</strong>
+                      Current Version:{' '}
+                      <strong className="u-textDefault">{version}</strong>
                     </div>
-                    <a className="u-inlineBlock" target="_blank" rel="noopener noreferrer" title="View ChaosKit on GitHub" href="https://www.github.com/gremlin/chaoskit">
+                    <a
+                      className="u-inlineBlock"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="View ChaosKit on GitHub"
+                      href="https://www.github.com/gremlin/chaoskit"
+                    >
                       <Icon icon="github" />
                     </a>
                     <div className="u-textSmall">
-                      Ipsum provided by <a target="_blank" rel="noopener noreferrer" href="http://fillerama.io/">Fillerama</a>
+                      Ipsum provided by{' '}
+                      <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href="http://fillerama.io/"
+                      >
+                        Fillerama
+                      </a>
                     </div>
                   </Inline>
                 </div>

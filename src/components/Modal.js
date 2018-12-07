@@ -40,12 +40,15 @@ class Modal extends React.Component {
   onReverseComplete = () => {
     const { onReverseComplete } = this.props;
 
-    this.setState({
-      renderModal: false,
-    }, () => {
-      onReverseComplete();
-    });
-  }
+    this.setState(
+      {
+        renderModal: false,
+      },
+      () => {
+        onReverseComplete();
+      },
+    );
+  };
 
   attachTimeline = () => {
     const { onStart, onReverseStart, onComplete, open } = this.props;
@@ -67,7 +70,10 @@ class Modal extends React.Component {
       },
       onUpdate: () => {
         const newTime = $modal.timeline.time();
-        if ((forward && newTime < lastTime) || (!forward && newTime > lastTime)) {
+        if (
+          (forward && newTime < lastTime) ||
+          (!forward && newTime > lastTime)
+        ) {
           forward = !forward;
           if (!forward) {
             onReverseStart();
@@ -105,19 +111,19 @@ class Modal extends React.Component {
         },
         ease: config.easingBounce,
       });
-  }
+  };
 
   openModal = () => {
     const $modal = this.modal;
 
     $modal.timeline.play();
-  }
+  };
 
   closeModal = () => {
     const $modal = this.modal;
 
     $modal.timeline.reverse();
-  }
+  };
 
   handleOutsideModalClick = (e) => {
     const { handleOutsideModalClick } = this.props;
@@ -128,31 +134,35 @@ class Modal extends React.Component {
     }
 
     return false;
-  }
+  };
 
   render() {
     const { children, className, size } = this.props;
-    const modalClasses = cx('modal', {
-      'modal--small': size === 'small',
-      'modal--large': size === 'large',
-    }, className);
+    const modalClasses = cx(
+      'modal',
+      {
+        'modal--small': size === 'small',
+        'modal--large': size === 'large',
+      },
+      className,
+    );
     const { renderModal } = this.state;
 
     return (
       renderModal &&
-        ReactDOM.createPortal(
-          <div /* eslint-disable-line max-len, jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
-            className={modalClasses}
-            onClick={this.handleOutsideModalClick}
-            ref={(ref) => { this.modal = ref; }}
-            data-modalroot
-          >
-            <div className="modal-dialog">
-              {children}
-            </div>
-          </div>,
-          document.body,
-        )
+      ReactDOM.createPortal(
+        <div /* eslint-disable-line max-len, jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
+          className={modalClasses}
+          onClick={this.handleOutsideModalClick}
+          ref={(ref) => {
+            this.modal = ref;
+          }}
+          data-modalroot
+        >
+          <div className="modal-dialog">{children}</div>
+        </div>,
+        document.body,
+      )
     );
   }
 }

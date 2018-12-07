@@ -68,7 +68,8 @@ const ButtonDocs = () => {
   };
 
   const ButtonPropDescriptions = {
-    type: "<code>oneOf(['reset', 'default', 'primary', 'secondary', 'danger', 'outlinePrimary'])</code>", // eslint-disable-line single-quotes
+    type:
+      "<code>oneOf(['reset', 'default', 'primary', 'secondary', 'danger', 'outlinePrimary'])</code>", // eslint-disable-line single-quotes
     size: "<code>oneOf(['xsmall', 'small'])</code>", // eslint-disable-line single-quotes
   };
 
@@ -83,10 +84,14 @@ const ButtonDocs = () => {
       <Alert type="warning" title="Notes">
         <List type={['number', 'space']}>
           <ListItem>
-            <code>type=&quot;reset&quot;</code> is used for elements that have no direct path attached to them; to ensure we keep our markup semantic and accessible.
+            <code>type=&quot;reset&quot;</code> is used for elements that have
+            no direct path attached to them; to ensure we keep our markup
+            semantic and accessible.
           </ListItem>
           <ListItem>
-            When aligning buttons next to each other, consider using the <a href="/inline/">Inline</a> component for proper horizontal and vertical spacing.
+            When aligning buttons next to each other, consider using the{' '}
+            <a href="/inline/">Inline</a> component for proper horizontal and
+            vertical spacing.
           </ListItem>
         </List>
       </Alert>
@@ -100,7 +105,11 @@ const ButtonDocs = () => {
       />
 
       <h3>Icon only</h3>
-      <p>Icon buttons only contain a single icon and can be used to indicate shortcuts. Icons are automatically sized based on the button size modifier provided.</p>
+      <p>
+        Icon buttons only contain a single icon and can be used to indicate
+        shortcuts. Icons are automatically sized based on the button size
+        modifier provided.
+      </p>
       <Live
         code={ButtonIconExample}
         scope={ButtonScope}
@@ -109,7 +118,10 @@ const ButtonDocs = () => {
       />
 
       <h3>Loading state</h3>
-      <p>Bundling the <a href="/loader/">Loader</a> component; we can provide more tactile feedback to users while fetching remote data.</p>
+      <p>
+        Bundling the <a href="/loader/">Loader</a> component; we can provide
+        more tactile feedback to users while fetching remote data.
+      </p>
       <Live
         code={ButtonLoadingExample}
         scope={ButtonScope}
@@ -118,7 +130,10 @@ const ButtonDocs = () => {
       />
 
       <h3>Contrast</h3>
-      <p>The Button component automatically adapts to parent containers containing <code>.u-contrast</code>.</p>
+      <p>
+        The Button component automatically adapts to parent containers
+        containing <code>.u-contrast</code>.
+      </p>
       <Live
         code={ButtonContrastExample}
         scope={ButtonScope}
@@ -126,9 +141,11 @@ const ButtonDocs = () => {
         showDocs={false}
       />
       <Alert type="warning" title="Note">
-        <p>If you&apos;d like to override the contrast styles for a given button, you can apply the <code>noContrast</code> prop.</p>
+        <p>
+          If you&apos;d like to override the contrast styles for a given button,
+          you can apply the <code>noContrast</code> prop.
+        </p>
       </Alert>
-
     </FoundationLayout>
   );
 };

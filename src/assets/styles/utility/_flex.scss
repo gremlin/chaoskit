@@ -160,6 +160,8 @@
       }
     }
 
-    @if (mixin-exists(hook-utility-flex)) { @include hook-utility-flex(); }
+    @if (mixin-exists(hook-utility-flex)) {
+      @include hook-utility-flex();
+    }
   }
 }

@@ -27,7 +27,13 @@ const InlineScope = {
 
 const InlineDocs = () => (
   <FoundationLayout pageTitle="Inline">
-    <p>Sometimes your content doesn&apos;t belong in a grid system. So, for when you have more &quot;free-form&quot; content that you&apos;d like proper spacing horizontally and vertically when they stack, we created the Inline component. You can modify alignment by using our <a href="/flex/">Flex</a> utilities.</p>
+    <p>
+      Sometimes your content doesn&apos;t belong in a grid system. So, for when
+      you have more &quot;free-form&quot; content that you&apos;d like proper
+      spacing horizontally and vertically when they stack, we created the Inline
+      component. You can modify alignment by using our <a href="/flex/">Flex</a>{' '}
+      utilities.
+    </p>
 
     <Live
       code={InlineExample}
@@ -37,7 +43,11 @@ const InlineDocs = () => (
     />
 
     <Alert type="warning" title="Note‍">
-      <p>There should be no whitespace modifiers attached to the Inline component or its direct children. You can attach them on adjacent DOM or by wrapping the component in a <code>&lt;div&gt;</code></p>
+      <p>
+        There should be no whitespace modifiers attached to the Inline component
+        or its direct children. You can attach them on adjacent DOM or by
+        wrapping the component in a <code>&lt;div&gt;</code>
+      </p>
     </Alert>
   </FoundationLayout>
 );

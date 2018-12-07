@@ -7,7 +7,9 @@
 
   display: block;
   position: relative;
-  padding-left: (($global-whitespace-small + $global-whitespace-xsmall) + $list-circle-size);
+  padding-left: (
+    ($global-whitespace-small + $global-whitespace-xsmall) + $list-circle-size
+  );
 
   &::before {
     content: '';
@@ -77,6 +79,8 @@
       }
     }
 
-    @if (mixin-exists(hook-utility-list)) { @include hook-utility-list(); }
+    @if (mixin-exists(hook-utility-list)) {
+      @include hook-utility-list();
+    }
   }
 }

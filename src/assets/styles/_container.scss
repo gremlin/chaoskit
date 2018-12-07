@@ -25,6 +25,8 @@ $container-gutter: $global-whitespace-regular !default;
       padding: 0;
     }
 
-    @if (mixin-exists(hook-container)) { @include hook-container(); }
+    @if (mixin-exists(hook-container)) {
+      @include hook-container();
+    }
   }
 }

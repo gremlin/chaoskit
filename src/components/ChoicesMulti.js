@@ -19,18 +19,18 @@ class ChoicesMulti extends React.Component {
     if (selected.length && !input.length && e.keyCode === 8) {
       onChange(selected.slice(0, selected.length - 1));
     }
-  }
+  };
 
   handleInputChange = (e) => {
     this.setState({ input: e.target.value });
-  }
+  };
 
   handleChange = (item) => {
     const { name, onChange, selected } = this.props;
 
     onChange(name, [...selected, item]);
     this.setState({ input: '' });
-  }
+  };
 
   itemToString = item => (item ? item.label : '');
 
@@ -47,10 +47,20 @@ class ChoicesMulti extends React.Component {
       default:
         return changes;
     }
-  }
+  };
 
   render() {
-    const { className, explanationMessage, label, options, placeholder, selected, removeItem, required, validationMessage } = this.props;
+    const {
+      className,
+      explanationMessage,
+      label,
+      options,
+      placeholder,
+      selected,
+      removeItem,
+      required,
+      validationMessage,
+    } = this.props;
     const { input } = this.state;
 
     const optionsList = input.length
@@ -64,7 +74,9 @@ class ChoicesMulti extends React.Component {
     });
     const selectedOptions = [];
     // Based on current selection to remove from dropdown
-    const filteredOptions = optionsList.filter(item => selected.indexOf(item) === -1);
+    const filteredOptions = optionsList.filter(
+      item => selected.indexOf(item) === -1,
+    );
 
     selected.forEach((item) => {
       if (typeof item !== 'object') {
@@ -100,20 +112,31 @@ class ChoicesMulti extends React.Component {
               <div className="form-choicesSelect">
                 <div className={choicesClasses} data-type="select-multiple">
                   {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events */}
-                  <div className="choices__inner" onClick={handleContainerClick}>
+                  <div
+                    className="choices__inner"
+                    onClick={handleContainerClick}
+                  >
                     {downshift.selectedItem.length > 0 && (
-                    <div className="choices__list choices__list--multiple">
-                      {downshift.selectedItem.map((value, i) => (
-                        <div
-                          className="choices__item choices__item--selectable"
+                      <div className="choices__list choices__list--multiple">
+                        {downshift.selectedItem.map((value, i) => (
+                          <div
+                            className="choices__item choices__item--selectable"
                             // eslint-disable-next-line
                             key={i}
-                        >
-                          {value.label}
-                          {removeItem && <button type="button" className="choices__button" onClick={() => removeItem(value)}>Remove item</button>}
-                        </div>
-                      ))}
-                    </div>
+                          >
+                            {value.label}
+                            {removeItem && (
+                              <button
+                                type="button"
+                                className="choices__button"
+                                onClick={() => removeItem(value)}
+                              >
+                                Remove item
+                              </button>
+                            )}
+                          </div>
+                        ))}
+                      </div>
                     )}
                     <input
                       className="choices__input"
@@ -127,30 +150,45 @@ class ChoicesMulti extends React.Component {
                   </div>
                   {downshift.isOpen && (
                     <div className="choices__list choices__list--dropdown is-active">
-                      <div className="choices__list" {...downshift.getMenuProps()}>
-                        {filteredOptions.length > 0 ?
+                      <div
+                        className="choices__list"
+                        {...downshift.getMenuProps()}
+                      >
+                        {filteredOptions.length > 0 ? (
                           filteredOptions.map((item, index) => {
                             // eslint-disable-next-line
-                            const itemClasses = cx('choices__item choices__item--choice', {
-                              'is-highlighted': downshift.highlightedIndex === index,
-                            });
+                            const itemClasses = cx(
+                              'choices__item choices__item--choice',
+                              {
+                                'is-highlighted':
+                                  downshift.highlightedIndex === index,
+                              },
+                            );
 
                             return (
-                              <div className={itemClasses} {...downshift.getItemProps({ item })} key={item.value}>
+                              <div
+                                className={itemClasses}
+                                {...downshift.getItemProps({ item })}
+                                key={item.value}
+                              >
                                 {item.label}
                               </div>
                             );
-                          }) : (
-                            <div className="choices__item choices__item--choice has-no-choices">
+                          })
+                        ) : (
+                          <div className="choices__item choices__item--choice has-no-choices">
                             No choices to choose from
-                            </div>
-                          )}
+                          </div>
+                        )}
                       </div>
                     </div>
                   )}
                 </div>
               </div>
-              <FormFooter explanationMessage={explanationMessage} validationMessage={validationMessage} />
+              <FormFooter
+                explanationMessage={explanationMessage}
+                validationMessage={validationMessage}
+              />
             </div>
           );
         }}

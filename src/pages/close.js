@@ -24,7 +24,9 @@ const CloseScope = {
 
 const CloseDocs = () => (
   <FoundationLayout pageTitle="Close">
-    <p>Plain and simple - a reusable and ready-to-interact-with close button.</p>
+    <p>
+      Plain and simple - a reusable and ready-to-interact-with close button.
+    </p>
 
     <Live
       code={CloseExample}

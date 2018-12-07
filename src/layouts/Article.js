@@ -6,11 +6,7 @@ import FoundationLayout from './Foundation';
 const Article = (props) => {
   const { children } = props;
 
-  return (
-    <FoundationLayout>
-      {children}
-    </FoundationLayout>
-  );
+  return <FoundationLayout>{children}</FoundationLayout>;
 };
 
 Article.propTypes = {

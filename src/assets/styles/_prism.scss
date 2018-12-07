@@ -10,7 +10,7 @@ $prism-light: (
   operator: #a67f59,
   atrule: #07a,
   function: #dd4a68,
-  regex: #e90
+  regex: #e90,
 ) !default;
 $prism-theme: light !default;
 
@@ -20,8 +20,8 @@ $prism-theme: light !default;
 
 // Light theme
 @mixin prism-light() {
-  code[class*="language-"],
-  pre[class*="language-"] {
+  code[class*='language-'],
+  pre[class*='language-'] {
     color: $base-body-color;
     font-family: $base-code-font-family;
     text-align: left;
@@ -35,13 +35,13 @@ $prism-theme: light !default;
   }
 
   /* Code blocks */
-  pre[class*="language-"] {
+  pre[class*='language-'] {
     padding: $base-pre-padding;
     overflow: auto;
   }
 
   /* Inline code */
-  :not(pre) > code[class*="language-"] {
+  :not(pre) > code[class*='language-'] {
     white-space: normal;
   }
 
@@ -155,8 +155,8 @@ $prism-theme: light !default;
 
 // Dark theme
 @mixin prism-dark() {
-  code[class*="language-"],
-  pre[class*="language-"] {
+  code[class*='language-'],
+  pre[class*='language-'] {
     color: #abb2bf;
     background: none;
     font-family: $base-code-font-family;
@@ -171,44 +171,44 @@ $prism-theme: light !default;
     border: 0;
   }
 
-  pre[class*="language-"]::-moz-selection,
-  pre[class*="language-"] ::-moz-selection,
-  code[class*="language-"]::-moz-selection,
-  code[class*="language-"] ::-moz-selection {
+  pre[class*='language-']::-moz-selection,
+  pre[class*='language-'] ::-moz-selection,
+  code[class*='language-']::-moz-selection,
+  code[class*='language-'] ::-moz-selection {
     text-shadow: none;
     background: #383e49;
     color: inherit;
   }
 
-  pre[class*="language-"]::selection,
-  pre[class*="language-"] ::selection,
-  code[class*="language-"]::selection,
-  code[class*="language-"] ::selection {
+  pre[class*='language-']::selection,
+  pre[class*='language-'] ::selection,
+  code[class*='language-']::selection,
+  code[class*='language-'] ::selection {
     text-shadow: none;
     background: #9aa2b1;
     color: inherit;
   }
 
   @media print {
-    code[class*="language-"],
-    pre[class*="language-"] {
+    code[class*='language-'],
+    pre[class*='language-'] {
       text-shadow: none;
     }
   }
 
   /* Code blocks */
-  pre[class*="language-"] {
+  pre[class*='language-'] {
     padding: $base-pre-padding;
     overflow: auto;
   }
 
-  :not(pre) > code[class*="language-"],
-  pre[class*="language-"] {
+  :not(pre) > code[class*='language-'],
+  pre[class*='language-'] {
     background: #282c34;
   }
 
   /* Inline code */
-  :not(pre) > code[class*="language-"] {
+  :not(pre) > code[class*='language-'] {
     padding: 0.1em;
     border-radius: ($global-border-radius / 2);
     white-space: normal;
@@ -328,9 +328,7 @@ $prism-theme: light !default;
 @mixin prism() {
   @if $prism-theme == 'light' {
     @include prism-light();
-  }
-
-  @else {
+  } @else {
     @include prism-dark();
   }
 }
