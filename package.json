@@ -14,7 +14,7 @@
     "babel-cli": "6.26.0",
     "classnames": "2.2.6",
     "cssnano": "4.1.7",
-    "downshift": "3.1.5",
+    "downshift": "3.1.6",
     "eslint": "5.10.0",
     "eslint-config-airbnb": "17.1.0",
     "eslint-loader": "2.1.1",
@@ -51,7 +51,7 @@
   "devDependencies": {
     "@mdx-js/mdx": "0.16.6",
     "@mdx-js/tag": "0.16.6",
-    "gatsby": "2.0.64",
+    "gatsby": "2.0.65",
     "gatsby-mdx": "0.2.0",
     "gatsby-plugin-catch-links": "2.0.9",
     "gatsby-plugin-manifest": "2.0.11",
@@ -59,7 +59,7 @@
     "gatsby-plugin-sass": "2.0.7",
     "gatsby-remark-autolink-headers": "2.0.12",
     "gatsby-remark-prismjs": "3.1.4",
-    "gatsby-source-filesystem": "2.0.11",
+    "gatsby-source-filesystem": "2.0.12",
     "node-sass": "4.11.0",
     "scriptjs": "2.5.9"
   },
