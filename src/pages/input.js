@@ -4,18 +4,37 @@ import FoundationLayout from '../layouts/Foundation';
 import Live from '../docs/Live';
 import { Input } from '../components';
 
+const phoneMask = ['+', '1', ' ', '(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+
 const InputExample = `
 class Example extends React.Component {
   state = {
-    initialValue: 'I have an initial value!',
+    normalInitialValue: 'John Doe',
   };
+
+  handleChange = (name, value) => {
+    console.log({name}, {value});
+  }
 
   render() {
     return (
-      <Input
-        label="Test label"
-        name="test" initialValue={this.state.initialValue}
-      />
+      <Fragment>
+        <Input
+          label="Normal input"
+          name="name"
+          initialValue={this.state.normalInitialValue}
+          onChange={this.handleChange}
+          required
+          validationMessage="I'm an error!"
+        />
+        <Input
+          label="Mask Input (phone number)"
+          name="phone"
+          placeholder="+1 (555) 867-5309"
+          mask={phoneMask}
+          onChange={this.handleChange}
+        />
+      </Fragment>
     );
   }
 }
@@ -24,15 +43,20 @@ class Example extends React.Component {
 const InputScope = {
   React,
   Input,
+  phoneMask,
 };
 
 const InputPropDescriptions = {
   explanationMessage: 'Field descriptions',
   validationMessage: 'Error messages with field',
+  guide: 'Show guide while typing; used in conjunction with <code>mask</code>',
+  mask: 'Mask to apply to input; by <a target="_blank" rel="noopener noreferrer" href="https://github.com/text-mask/text-mask/">text-mask</a>',
 };
 
 const InputDocs = () => (
   <FoundationLayout pageTitle="Input">
+    <p>Uses <a target="_blank" rel="noopener noreferrer" href="https://github.com/text-mask/text-mask/">text-mask</a> to provide masking capabilities for better UX.</p>
+
     <Live
       code={InputExample}
       scope={InputScope}

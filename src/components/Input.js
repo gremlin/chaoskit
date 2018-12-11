@@ -1,6 +1,7 @@
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
+import MaskedInput from 'react-text-mask';
 
 import { FormFooter, FormLabel, Icon } from '.';
 import { generateUUID } from '../helpers/utility';
@@ -65,7 +66,7 @@ class Input extends React.Component {
   }
 
   render() {
-    const { autoComplete, className, disabled, focus, label, name, type, placeholder, validationMessage, explanationMessage, prefixIcon, required } = this.props;
+    const { autoComplete, className, disabled, focus, label, guide, mask, name, type, placeholder, validationMessage, explanationMessage, prefixIcon, required } = this.props;
     const { value } = this.state;
 
     const classes = cx('form-group', className, {
@@ -73,22 +74,37 @@ class Input extends React.Component {
       [config.classes.required]: required,
     });
 
-    const inputRender = () => (
-      <input
-        autoComplete={autoComplete}
-        id={this.id}
-        className="form-input"
-        disabled={disabled}
-        focus={focus}
-        name={name}
-        type={type}
-        value={value}
-        onChange={this.handleChange}
-        onKeyPress={this.handleKeyPress}
-        placeholder={placeholder}
-        ref={(ref) => { this.input = ref; }}
-      />
-    );
+    const inputRender = () => {
+      const defaultProps = {
+        autoComplete,
+        id: this.id,
+        className: 'form-input',
+        disabled,
+        focus,
+        name,
+        type,
+        value,
+        onChange: this.handleChange,
+        onKeyPress: this.handleKeyPress,
+        placeholder,
+        ref: (ref) => { this.input = ref; },
+      };
+
+      // `react-text-mask` does not support 'email' or 'number' input types
+      if (mask && !['email', 'number'].includes(type)) {
+        return (
+          <MaskedInput
+            {... defaultProps}
+            mask={mask}
+            guide={guide}
+          />
+        );
+      }
+
+      return (
+        <input {... defaultProps} />
+      );
+    };
 
     return (
       <div className={classes}>
@@ -116,6 +132,7 @@ Input.propTypes = {
   validationMessage: PropTypes.string,
   disabled: PropTypes.bool,
   focus: PropTypes.bool,
+  guide: PropTypes.bool,
   initialValue: PropTypes.string,
   onChange: PropTypes.func,
   onKeyPress: PropTypes.func,
@@ -123,12 +140,14 @@ Input.propTypes = {
   prefixIcon: PropTypes.string,
   required: PropTypes.bool,
   label: PropTypes.string,
+  mask: PropTypes.oneOfType([PropTypes.array, PropTypes.func]),
   name: PropTypes.string.isRequired,
   type: PropTypes.string,
 };
 
 Input.defaultProps = {
   type: 'text',
+  guide: false,
 };
 
 export default Input;
