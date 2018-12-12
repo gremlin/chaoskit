@@ -6,6 +6,17 @@ import { Input } from '../components';
 
 const phoneMask = ['+', '1', ' ', '(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
 
+const onlyNumbers = (rawValue) => {
+  const mask = [];
+
+  for (let i = 0; i < rawValue.length; i += 1) {
+    // eslint-disable-next-line no-useless-escape
+    mask.push(/\d/);
+  }
+
+  return mask;
+};
+
 const InputExample = `
 class Example extends React.Component {
   state = {
@@ -34,6 +45,13 @@ class Example extends React.Component {
           mask={phoneMask}
           onChange={this.handleChange}
         />
+        <Input
+          label="Mask Input (only numbers)"
+          name="phone"
+          placeholder="12345"
+          mask={onlyNumbers}
+          onChange={this.handleChange}
+        />
       </Fragment>
     );
   }
@@ -44,6 +62,7 @@ const InputScope = {
   React,
   Input,
   phoneMask,
+  onlyNumbers,
 };
 
 const InputPropDescriptions = {
