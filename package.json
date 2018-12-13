@@ -14,7 +14,7 @@
     "babel-cli": "6.26.0",
     "classnames": "2.2.6",
     "cssnano": "4.1.7",
-    "downshift": "3.1.6",
+    "downshift": "3.1.7",
     "eslint": "5.10.0",
     "eslint-config-airbnb": "17.1.0",
     "eslint-loader": "2.1.1",
@@ -52,7 +52,7 @@
   "devDependencies": {
     "@mdx-js/mdx": "0.16.6",
     "@mdx-js/tag": "0.16.6",
-    "gatsby": "2.0.66",
+    "gatsby": "2.0.67",
     "gatsby-mdx": "0.2.0",
     "gatsby-plugin-catch-links": "2.0.9",
     "gatsby-plugin-manifest": "2.0.12",

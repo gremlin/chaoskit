@@ -241,7 +241,7 @@ $form-choices-max-height: 200px !default;
         border-width: 0 0 1px;
         border-radius: 0;
         border-color: $global-border;
-        padding-left: ($form-choices-icon-size + $form-padding-horizontal + $global-whitespace-xsmall);
+        padding-left: ($form-choices-icon-size + $form-padding-horizontal + $global-whitespace-small);
 
         &:focus {
           box-shadow: none;
