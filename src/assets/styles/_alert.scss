@@ -24,7 +24,7 @@ $alert-danger-color: $global-danger !default;
 //
 
 @mixin alert() {
-  .alert {
+  @include selector-placeholder(alert) {
     display: flex;
     background: $alert-default-color;
     border-left: $alert-border-width solid $alert-default-border;
@@ -36,7 +36,7 @@ $alert-danger-color: $global-danger !default;
 
     // For `gatsby-remark-custom-blocks` integration
     .custom-block-heading {
-      @extend h4;
+      @extend %h4;
     }
 
     // Reset emphasis and link colors
@@ -51,55 +51,55 @@ $alert-danger-color: $global-danger !default;
       @extend .u-textUnderline;
     }
 
-    @if $alert-primary-enable {
-      &--primary {
-        background: $alert-primary-background;
-        border-color: $alert-primary-color;
-
-        @if (mixin-exists(hook-alert-primary)) { @include hook-alert-primary(); }
-      }
-    }
-
-    @if $alert-warning-enable {
-      &--warning {
-        background: $alert-warning-background;
-        border-color: $alert-warning-color;
-
-        @if (mixin-exists(hook-alert-warning)) { @include hook-alert-warning(); }
-      }
-    }
-
-    @if $alert-danger-enable {
-      &--danger {
-        background: $alert-danger-background;
-        border-color: $alert-danger-color;
-
-        .alert-title,
-        .custom-block-heading,
-        .alert-close {
-          color: $alert-danger-color;
-        }
-
-        @if (mixin-exists(hook-alert-danger)) { @include hook-alert-danger(); }
-      }
-    }
-
-    &-content {
-      @include trimChildren();
-
-      flex: 1;
-    }
-
-    &-right {
-      flex: 0;
-      padding-left: $global-whitespace-small;
+    // Add margin if adjacent element
+    * + .alert {
+      margin-top: $global-whitespace-regular;
     }
 
     @if (mixin-exists(hook-alert)) { @include hook-alert(); }
   }
 
-  // Add margin if adjacent element
-  * + .alert {
-    margin-top: $global-whitespace-regular;
+  @if $alert-primary-enable {
+    @include selector-placeholder(alert--primary) {
+      background: $alert-primary-background;
+      border-color: $alert-primary-color;
+
+      @if (mixin-exists(hook-alert-primary)) { @include hook-alert-primary(); }
+    }
+  }
+
+  @if $alert-warning-enable {
+    @include selector-placeholder(alert--warning) {
+      background: $alert-warning-background;
+      border-color: $alert-warning-color;
+
+      @if (mixin-exists(hook-alert-warning)) { @include hook-alert-warning(); }
+    }
+  }
+
+  @if $alert-danger-enable {
+    @include selector-placeholder(alert--danger) {
+      background: $alert-danger-background;
+      border-color: $alert-danger-color;
+
+      .alert-title,
+      .custom-block-heading,
+      .alert-close {
+        color: $alert-danger-color;
+      }
+
+      @if (mixin-exists(hook-alert-danger)) { @include hook-alert-danger(); }
+    }
+  }
+
+  @include selector-placeholder(alert-content) {
+    @include trimChildren();
+
+    flex: 1;
+  }
+
+  @include selector-placeholder(alert-right) {
+    flex: 0;
+    padding-left: $global-whitespace-small;
   }
 }

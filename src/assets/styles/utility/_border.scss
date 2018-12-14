@@ -3,73 +3,71 @@
 //
 
 @mixin border() {
-  .u-border {
-    &Top {
-      border-top: 1px solid $global-border !important;
+  @include selector-placeholder(u-borderTop) {
+    border-top: 1px solid $global-border !important;
 
-      &--remove {
-        border-top: 0 !important;
-      }
+    &--remove {
+      border-top: 0 !important;
     }
+  }
 
-    &Right {
-      border-right: 1px solid $global-border !important;
+  @include selector-placeholder(u-borderRight) {
+    border-right: 1px solid $global-border !important;
 
-      &--remove {
-        border-right: 0 !important;
-      }
+    &--remove {
+      border-right: 0 !important;
     }
+  }
 
-    &Bottom {
-      border-bottom: 1px solid $global-border !important;
+  @include selector-placeholder(u-borderBottom) {
+    border-bottom: 1px solid $global-border !important;
 
-      &--remove {
-        border-bottom: 0 !important;
-      }
+    &--remove {
+      border-bottom: 0 !important;
     }
+  }
 
-    &Left {
-      border-left: 1px solid $global-border !important;
+  @include selector-placeholder(u-borderLeft) {
+    border-left: 1px solid $global-border !important;
 
-      &--remove {
-        border-left: 0 !important;
-      }
+    &--remove {
+      border-left: 0 !important;
     }
+  }
 
-    &Surround {
-      border: 1px solid $global-border !important;
+  @include selector-placeholder(u-borderSurround) {
+    border: 1px solid $global-border !important;
 
-      &--remove {
-        border: 0 !important;
-      }
+    &--remove {
+      border: 0 !important;
     }
+  }
 
-    &Vertical {
-      border-top: 1px solid $global-border !important;
-      border-bottom: 1px solid $global-border !important;
+  @include selector-placeholder(u-borderVertical) {
+    border-top: 1px solid $global-border !important;
+    border-bottom: 1px solid $global-border !important;
 
-      &--remove {
-        border-top: 0 !important;
-        border-bottom: 0 !important;
-      }
+    &--remove {
+      border-top: 0 !important;
+      border-bottom: 0 !important;
     }
+  }
 
-    &Horizontal {
-      border-left: 1px solid $global-border !important;
-      border-right: 1px solid $global-border !important;
+  @include selector-placeholder(u-borderHorizontal) {
+    border-left: 1px solid $global-border !important;
+    border-right: 1px solid $global-border !important;
 
-      &--remove {
-        border-left: 0 !important;
-        border-right: 0 !important;
-      }
+    &--remove {
+      border-left: 0 !important;
+      border-right: 0 !important;
     }
+  }
 
-    &Radius {
-      border-radius: $global-border-radius !important;
+  @include selector-placeholder(u-borderRadius) {
+    border-radius: $global-border-radius !important;
 
-      &--remove {
-        border-radius: 0 !important;
-      }
+    &--remove {
+      border-radius: 0 !important;
     }
   }
 

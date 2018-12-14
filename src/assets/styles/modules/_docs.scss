@@ -33,7 +33,7 @@ $header-mobile-nav-width: 30px;
     }
 
     &.is-active {
-      @include text__underline-styles();
+      @extend %u-textUnderline;
 
       color: $global-font-color;
     }
@@ -143,15 +143,15 @@ $header-mobile-nav-width: 30px;
 blockquote {
   @include trimChildren();
 
-  @extend .alert;
-  @extend .alert--warning;
+  @extend %alert;
+  @extend %alert--warning;
 
   font-style: normal;
   flex-direction: column;
 
   > p:first-of-type:not(:only-child) {
-    @extend .u-textHeading;
-    @extend .u-textFluid--xlarge;
+    @extend %u-textHeading;
+    @extend %u-textFluid--xlarge;
 
     margin-bottom: 0;
   }
@@ -185,8 +185,8 @@ blockquote {
 }
 
 .react-live-error {
-  @extend .alert;
-  @extend .alert--danger;
+  @extend %alert;
+  @extend %alert--danger;
 
   font-family: $base-code-font-family;
 }

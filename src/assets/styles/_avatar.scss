@@ -14,7 +14,8 @@ $avatar-font-color: $global-font-color;
 
 @mixin avatar() {
   // 1. Fix issue with alignment of inlined avatars
-  .avatar {
+  .avatar,
+  %avatar {
     background-color: $avatar-background;
     background-position: center center;
     background-size: cover;
@@ -55,7 +56,8 @@ $avatar-font-color: $global-font-color;
     }
   }
 
-  .avatar--large {
+  .avatar--large,
+  %avatar--large {
     size: $avatar-size-large;
   }
 }

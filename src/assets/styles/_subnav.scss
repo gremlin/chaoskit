@@ -11,7 +11,8 @@ $subnav-border: 1px solid $global-border !default;
 //
 
 @mixin subnav() {
-  .subnav-wrapper {
+  .subnav-wrapper,
+  %subnav-wrapper {
     background: $subnav-background;
     border: $subnav-border;
   }
@@ -31,6 +32,8 @@ $subnav-border: 1px solid $global-border !default;
     > * + * {
       margin-left: $global-whitespace-large;
     }
+
+    @if (mixin-exists(hook-subnav)) { @include subnav(); }
   }
 
   .subnav-nav {
