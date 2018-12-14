@@ -83,7 +83,6 @@ $button-icon-enable: true !default;
   // 12. Do not wrap buttons
   // 13. Disable `user-select`
   // 14. Removes inner padding and border in Firefox 4+.
-
   @include selector-placeholder('.button') {
     // 1
     appearance: none;

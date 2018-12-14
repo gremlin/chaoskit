@@ -135,15 +135,15 @@
     line-height: $global-line-height-small !important;
   }
 
-  @include breakpoint-selector(u-textLeft) {
+  @include breakpoint-selector('.u-textLeft') {
     text-align: left !important;
   }
 
-  @include breakpoint-selector(u-textCenter) {
+  @include breakpoint-selector('.u-textCenter') {
     text-align: center !important;
   }
 
-  @include breakpoint-selector(u-textRight) {
+  @include breakpoint-selector('.u-textRight') {
     text-align: right !important;
   }
 
