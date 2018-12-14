@@ -153,6 +153,38 @@ $button-icon-enable: true !default;
       }
     }
 
+    @if $button-loader-enable {
+      > .loader {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        size: $button-loader-size;
+
+        svg {
+          size: $button-loader-size;
+        }
+      }
+
+      &.is-loading {
+        span:not(.loader) {
+          color: transparent;
+        }
+
+        > .loader {
+          opacity: 1;
+        }
+      }
+    }
+
+    &.is-disabled,
+    &[disabled] {
+      opacity: $global-disabled-opacity;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
     @if (mixin-exists(hook-button)) { @include hook-button(); }
   }
 
@@ -350,37 +382,5 @@ $button-icon-enable: true !default;
         }
       }
     }
-  }
-
-  @if $button-loader-enable {
-    > .loader {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      opacity: 0;
-      size: $button-loader-size;
-
-      svg {
-        size: $button-loader-size;
-      }
-    }
-
-    &.is-loading {
-      span:not(.loader) {
-        color: transparent;
-      }
-
-      > .loader {
-        opacity: 1;
-      }
-    }
-  }
-
-  &.is-disabled,
-  &[disabled] {
-    opacity: $global-disabled-opacity;
-    cursor: not-allowed;
-    pointer-events: none;
   }
 }
