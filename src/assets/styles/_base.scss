@@ -361,7 +361,7 @@ $base-selection-color: $global-background !default;
   //
 
   // Sizes
-  @include selector-placeholder(h1) {
+  @include selector-placeholder('h1') {
     @include base-heading-styles();
 
     @extend %u-textFluid--h1-h2;
@@ -372,7 +372,7 @@ $base-selection-color: $global-background !default;
     @if (mixin-exists(hook-base-h1)) { @include hook-base-h1(); }
   }
 
-  @include selector-placeholder(h2) {
+  @include selector-placeholder('h2') {
     @include base-heading-styles();
 
     @extend %u-textFluid--h2-h3;
@@ -383,7 +383,7 @@ $base-selection-color: $global-background !default;
     @if (mixin-exists(hook-base-h2)) { @include hook-base-h2(); }
   }
 
-  @include selector-placeholder(h3) {
+  @include selector-placeholder('h3') {
     @include base-heading-styles();
 
     @extend %u-textFluid--h3-h4;
@@ -394,7 +394,7 @@ $base-selection-color: $global-background !default;
     @if (mixin-exists(hook-base-h3)) { @include hook-base-h3(); }
   }
 
-  @include selector-placeholder(h4) {
+  @include selector-placeholder('h4') {
     @include base-heading-styles();
 
     font-size: $base-h4-font-size;
@@ -404,7 +404,7 @@ $base-selection-color: $global-background !default;
     @if (mixin-exists(hook-base-h4)) { @include hook-base-h4(); }
   }
 
-  @include selector-placeholder(h5) {
+  @include selector-placeholder('h5') {
     @include base-heading-styles();
 
     font-size: $base-h5-font-size;

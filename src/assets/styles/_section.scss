@@ -75,8 +75,8 @@ $section-slant-offset: 2.5vw !default;
   }
 
   .section-titleSub {
-    @extend .u-textMuted;
-    @extend .u-textMedium;
+    @extend %u-textMuted;
+    @extend %u-textMedium;
 
     max-width: 625px;
     margin: 0 auto;

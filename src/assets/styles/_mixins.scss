@@ -24,8 +24,8 @@
 // @param  {string} $class
 //
 @mixin selector-placeholder($class) {
-  .#{$class},
-  %#{$class} {
+  #{$class},
+  %#{str-replace($class, '.')} {
     @content;
   }
 }

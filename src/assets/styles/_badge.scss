@@ -15,8 +15,7 @@ $badge-rounded-enable: true !default;
 //
 
 @mixin badge() {
-  .badge,
-  %badge {
+  .badge {
     background: $global-background;
     border: 1px solid $global-border;
     border-radius: $global-border-radius;
@@ -38,8 +37,7 @@ $badge-rounded-enable: true !default;
   }
 
   @if $badge-primary-enable {
-    .badge--primary,
-    %badge--primary {
+    .badge--primary {
       border-color: $global-primary;
       background: $global-primary;
       color: $global-contrast;
@@ -47,8 +45,7 @@ $badge-rounded-enable: true !default;
   }
 
   @if $badge-danger-enable {
-    .badge--danger,
-    %badge--danger {
+    .badge--danger {
       border-color: $global-danger;
       background: $global-danger;
       color: $global-contrast;
@@ -56,8 +53,7 @@ $badge-rounded-enable: true !default;
   }
 
   @if $badge-rounded-enable {
-    .badge--rounded,
-    %badge--rounded {
+    .badge--rounded {
       border-radius: ($badge-height / 2);
     }
   }

@@ -13,7 +13,7 @@ $social-icon-color: $global-font-color;
 
 @mixin social-icon() {
   // 1. Fix issue with alignment of inlined avatars
-  @include selector-placeholder(socialIcon) {
+  .socialIcon {
     background-color: $social-icon-background;
     border-radius: 50%;
     color: $social-icon-color;

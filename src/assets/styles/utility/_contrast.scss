@@ -25,7 +25,7 @@ $contrast-hr-color: rgba($global-contrast, 0.05) !default;
   &:hover,
   &:focus,
   &.is-active {
-    @extend .u-textUnderline;
+    @extend %u-textUnderline;
 
     color: $contrast-link-hover-color !important;
 
