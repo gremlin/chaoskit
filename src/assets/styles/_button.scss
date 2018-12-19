@@ -382,4 +382,6 @@ $button-icon-enable: true !default;
       }
     }
   }
+
+  @if (mixin-exists(hook-button-misc)) { @include hook-button-misc(); }
 }

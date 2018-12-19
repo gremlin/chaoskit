@@ -96,4 +96,6 @@ $alert-danger-color: $global-danger !default;
     flex: 0;
     padding-left: $global-whitespace-small;
   }
+
+  @if (mixin-exists(hook-alert-misc)) { @include hook-alert-misc(); }
 }

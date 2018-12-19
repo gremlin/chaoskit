@@ -62,5 +62,5 @@
     flex-wrap: nowrap;
   }
 
-  @if (mixin-exists(hook-inline)) { @include hook-inline(); }
+  @if (mixin-exists(hook-inline-misc)) { @include hook-inline-misc(); }
 }
