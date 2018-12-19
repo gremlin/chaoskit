@@ -1,6 +1,6 @@
 import React from 'react';
 
-import FoundationLayout from '../layouts/Foundation';
+import BaseLayout from '../layouts/BaseLayout';
 import { Alert, Button, Icon, Inline, List, ListItem } from '../components';
 import Live from '../docs/Live';
 
@@ -73,7 +73,7 @@ const ButtonDocs = () => {
   };
 
   return (
-    <FoundationLayout pageTitle="Button">
+    <BaseLayout pageTitle="Button">
       <Live
         code={ButtonExample}
         scope={ButtonScope}
@@ -129,7 +129,7 @@ const ButtonDocs = () => {
         <p>If you&apos;d like to override the contrast styles for a given button, you can apply the <code>noContrast</code> prop.</p>
       </Alert>
 
-    </FoundationLayout>
+    </BaseLayout>
   );
 };
 

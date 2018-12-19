@@ -1,6 +1,6 @@
 import React from 'react';
 
-import FoundationLayout from '../layouts/Foundation';
+import BaseLayout from '../layouts/BaseLayout';
 import { Alert, Avatar, Inline } from '../components';
 import Live from '../docs/Live';
 
@@ -29,7 +29,7 @@ const AvatarScope = {
 };
 
 const AvatarDocs = () => (
-  <FoundationLayout pageTitle="Avatar">
+  <BaseLayout pageTitle="Avatar">
     <p>Avatars provide flexible ways of adding personality to our applications.</p>
 
     <Alert type="warning" title="Note">
@@ -51,7 +51,7 @@ const AvatarDocs = () => (
       component={Avatar}
       showDocs={false}
     />
-  </FoundationLayout>
+  </BaseLayout>
 );
 
 export default AvatarDocs;

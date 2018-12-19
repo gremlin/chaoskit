@@ -1,6 +1,6 @@
 import React from 'react';
 
-import FoundationLayout from '../layouts/Foundation';
+import BaseLayout from '../layouts/BaseLayout';
 import { Alert, Loader, Inline } from '../components';
 import Live from '../docs/Live';
 
@@ -21,7 +21,7 @@ const LoaderScope = {
 };
 
 const LoaderDocs = () => (
-  <FoundationLayout pageTitle="Loader">
+  <BaseLayout pageTitle="Loader">
     <p>While no one likes to wait; great things come to those that do. For those times, a loader is available to notify users some magic is happening behind the scenes.</p>
 
     <Live
@@ -43,7 +43,7 @@ const LoaderDocs = () => (
     <Alert type="warning" title="🕵️ Did you know?‍">
       <p>The Loader component is re-used within the <a href="/button/">Button</a> component via its <code>loading</code> prop.</p>
     </Alert>
-  </FoundationLayout>
+  </BaseLayout>
 );
 
 export default LoaderDocs;

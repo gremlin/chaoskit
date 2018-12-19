@@ -1,6 +1,6 @@
 import React from 'react';
 
-import FoundationLayout from '../layouts/Foundation';
+import BaseLayout from '../layouts/BaseLayout';
 import Live from '../docs/Live';
 import { ChoicesMulti } from '../components';
 
@@ -70,7 +70,7 @@ const ChoicesMultiScope = {
 const ChoicesMultiPropDescriptions = {};
 
 const ChoicesMultiDocs = () => (
-  <FoundationLayout pageTitle="Choices Multi">
+  <BaseLayout pageTitle="Choices Multi">
     <p>Uses <a href="https://github.com/paypal/downshift">downshift</a> to provide ULTIMATE-POWER and flexibility to more complex <code>&lt;select&gt;</code> UIs.</p>
     <Live
       code={ChoicesMultiExample}
@@ -78,7 +78,7 @@ const ChoicesMultiDocs = () => (
       component={ChoicesMulti}
       propDescriptions={ChoicesMultiPropDescriptions}
     />
-  </FoundationLayout>
+  </BaseLayout>
 );
 
 export default ChoicesMultiDocs;

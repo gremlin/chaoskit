@@ -1,6 +1,6 @@
 import React from 'react';
 
-import FoundationLayout from '../layouts/Foundation';
+import BaseLayout from '../layouts/BaseLayout';
 import { Alert, Button } from '../components';
 import Live from '../docs/Live';
 
@@ -43,7 +43,7 @@ const AlertScope = {
 };
 
 const AlertDocs = () => (
-  <FoundationLayout pageTitle="Alert">
+  <BaseLayout pageTitle="Alert">
     <p>Alerts can be used to draw attention to and provide context to key page actions.</p>
 
     <Live
@@ -52,7 +52,7 @@ const AlertDocs = () => (
       component={Alert}
       propDescriptions={AlertPropDescriptions}
     />
-  </FoundationLayout>
+  </BaseLayout>
 );
 
 export default AlertDocs;

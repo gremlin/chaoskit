@@ -1,6 +1,6 @@
 import React from 'react';
 
-import FoundationLayout from '../layouts/Foundation';
+import BaseLayout from '../layouts/BaseLayout';
 import { Alert } from '../components';
 import Live from '../docs/Live';
 
@@ -35,7 +35,7 @@ const FlexDocs = () => {
 `.trim();
 
   return (
-    <FoundationLayout pageTitle="Flex">
+    <BaseLayout pageTitle="Flex">
       <p>We take advantage of Flexbox for many of our components; so it made sense for us to expose a number of utilities as well.</p>
 
       <h3>Deep match</h3>
@@ -142,7 +142,7 @@ const FlexDocs = () => {
           </tr>
         </tbody>
       </table>
-    </FoundationLayout>
+    </BaseLayout>
   );
 };
 

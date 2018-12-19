@@ -1,6 +1,6 @@
 import React from 'react';
 
-import FoundationLayout from '../layouts/Foundation';
+import BaseLayout from '../layouts/BaseLayout';
 import { Badge, Inline } from '../components';
 import Live from '../docs/Live';
 
@@ -30,7 +30,7 @@ const BadgeScope = {
 };
 
 const BadgeDocs = () => (
-  <FoundationLayout pageTitle="Badge">
+  <BaseLayout pageTitle="Badge">
     <p>Badges are indicators and have no interactivity. They are used to indicate an item&apos;s current state.</p>
 
     <Live
@@ -48,7 +48,7 @@ const BadgeDocs = () => (
       component={Badge}
       showDocs={false}
     />
-  </FoundationLayout>
+  </BaseLayout>
 );
 
 export default BadgeDocs;

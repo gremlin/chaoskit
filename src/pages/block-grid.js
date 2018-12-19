@@ -1,6 +1,6 @@
 import React from 'react';
 
-import FoundationLayout from '../layouts/Foundation';
+import BaseLayout from '../layouts/BaseLayout';
 import { Alert } from '../components';
 import Live from '../docs/Live';
 
@@ -78,7 +78,7 @@ const BlockGridAlignmentExample = `
 const BlockGridScope = {};
 
 const BlockGridDocs = () => (
-  <FoundationLayout pageTitle="BlockGrid">
+  <BaseLayout pageTitle="BlockGrid">
     <p>Block Grids allow us to evenly split list items within a grid by specifying the number of items per row. Block Grids inherently add a negative left and right offset so it is flush with the edge of the column it is in.</p>
 
     <Alert type="warning" title="Note‍" className="u-mb--regular">
@@ -162,7 +162,7 @@ const BlockGridDocs = () => (
       scope={BlockGridScope}
       showDocs={false}
     />
-  </FoundationLayout>
+  </BaseLayout>
 );
 
 export default BlockGridDocs;

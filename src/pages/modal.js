@@ -1,6 +1,6 @@
 import React from 'react';
 
-import FoundationLayout from '../layouts/Foundation';
+import BaseLayout from '../layouts/BaseLayout';
 import Live from '../docs/Live';
 import { Alert, Modal, ModalHeader, ModalFooter, ModalBody, Button } from '../components';
 
@@ -51,7 +51,7 @@ const ModalPropDescriptions = {
 };
 
 const ModalDocs = () => (
-  <FoundationLayout pageTitle="Modal">
+  <BaseLayout pageTitle="Modal">
     <Live
       code={ModalExample}
       scope={ModalScope}
@@ -61,7 +61,7 @@ const ModalDocs = () => (
     <Alert type="warning" title="Note">
       <p>When resetting UI on-close (like form-values), use the <code>onReverseComplete</code> prop; which waits until the animation is complete to fire</p>
     </Alert>
-  </FoundationLayout>
+  </BaseLayout>
 );
 
 export default ModalDocs;

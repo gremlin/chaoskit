@@ -1,6 +1,6 @@
 import React from 'react';
 
-import FoundationLayout from '../layouts/Foundation';
+import BaseLayout from '../layouts/BaseLayout';
 import Live from '../docs/Live';
 import { CheckboxGroup, Checkbox } from '../components';
 
@@ -29,14 +29,14 @@ const CheckboxScope = {
 const CheckboxPropDescriptions = {};
 
 const CheckboxDocs = () => (
-  <FoundationLayout pageTitle="Checkbox">
+  <BaseLayout pageTitle="Checkbox">
     <Live
       code={CheckboxExample}
       scope={CheckboxScope}
       component={Checkbox}
       propDescriptions={CheckboxPropDescriptions}
     />
-  </FoundationLayout>
+  </BaseLayout>
 );
 
 export default CheckboxDocs;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import FoundationLayout from '../layouts/Foundation';
+import BaseLayout from '../layouts/BaseLayout';
 import Live from '../docs/Live';
 import { Reveal } from '../components';
 
@@ -36,14 +36,14 @@ const RevealPropDescriptions = {
 };
 
 const RevealDocs = () => (
-  <FoundationLayout pageTitle="Reveal">
+  <BaseLayout pageTitle="Reveal">
     <Live
       code={RevealExample}
       scope={RevealScope}
       component={Reveal}
       propDescriptions={RevealPropDescriptions}
     />
-  </FoundationLayout>
+  </BaseLayout>
 );
 
 export default RevealDocs;
