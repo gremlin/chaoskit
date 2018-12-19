@@ -24,25 +24,25 @@
   }
 
   // Content dimensions
-  @include breakpoint-selector('u-flexItemNone') {
+  @include breakpoint-selector('.u-flexItemNone') {
     flex: none;
   }
 
   // Space is allocated considering content
-  @include breakpoint-selector('u-flexItemAuto') {
+  @include breakpoint-selector('.u-flexItemAuto') {
     flex: auto;
   }
 
   // Space is allocated solely based on flex
-  @include breakpoint-selector('u-flexItem1') {
+  @include breakpoint-selector('.u-flexItem1') {
     flex: 1 !important;
   }
 
-  @include breakpoint-selector('u-flexBetween') {
+  @include breakpoint-selector('.u-flexBetween') {
     justify-content: space-between !important;
   }
 
-  @include breakpoint-selector('u-flexAround') {
+  @include breakpoint-selector('.u-flexAround') {
     justify-content: space-around !important;
   }
 
@@ -51,32 +51,32 @@
   //
 
   // Cross-start margin edge of the items is placed on the cross-start line
-  @include breakpoint-selector('u-flexStart') {
+  @include breakpoint-selector('.u-flexStart') {
     justify-content: flex-start !important;
   }
 
   // Items are centered along the line
-  @include breakpoint-selector('u-flexCenter') {
+  @include breakpoint-selector('.u-flexCenter') {
     justify-content: center !important;
   }
 
   // Forces row to right
-  @include breakpoint-selector('u-flexEnd') {
+  @include breakpoint-selector('.u-flexEnd') {
     justify-content: flex-end !important;
   }
 
   // Cross-start margin edge of the items is placed on the cross-start line
-  @include breakpoint-selector('u-flexTop') {
+  @include breakpoint-selector('.u-flexTop') {
     align-items: flex-start !important;
   }
 
   // Items are centered in the cross-axis
-  @include breakpoint-selector('u-flexMiddle') {
+  @include breakpoint-selector('.u-flexMiddle') {
     align-items: center !important;
   }
 
   // Cross-end margin edge of the items is placed on the cross-end line
-  @include breakpoint-selector('u-flexBottom') {
+  @include breakpoint-selector('.u-flexBottom') {
     align-items: flex-end !important;
   }
 }
