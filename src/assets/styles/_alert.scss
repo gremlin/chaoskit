@@ -46,12 +46,12 @@ $alert-danger-color: $global-danger !default;
       @extend %u-textUnderline;
     }
 
-    // Add margin if adjacent element
-    * + .alert {
-      margin-top: $global-whitespace-regular;
-    }
-
     @if (mixin-exists(hook-alert)) { @include hook-alert(); }
+  }
+
+  // Add margin if adjacent element
+  * + .alert {
+    margin-top: $global-whitespace-regular;
   }
 
   @if $alert-primary-enable {
