@@ -24,7 +24,7 @@ $alert-danger-color: $global-danger !default;
 //
 
 @mixin alert() {
-  @include selector-placeholder('.alert') {
+  @include selector-placeholder('alert') {
     display: flex;
     background: $alert-default-color;
     border-left: $alert-border-width solid $alert-default-border;
@@ -55,7 +55,7 @@ $alert-danger-color: $global-danger !default;
   }
 
   @if $alert-primary-enable {
-    @include selector-placeholder('.alert--primary') {
+    @include selector-placeholder('alert--primary') {
       background: $alert-primary-background;
       border-color: $alert-primary-color;
 
@@ -64,7 +64,7 @@ $alert-danger-color: $global-danger !default;
   }
 
   @if $alert-warning-enable {
-    @include selector-placeholder('.alert--warning') {
+    @include selector-placeholder('alert--warning') {
       background: $alert-warning-background;
       border-color: $alert-warning-color;
 
@@ -73,7 +73,7 @@ $alert-danger-color: $global-danger !default;
   }
 
   @if $alert-danger-enable {
-    @include selector-placeholder('.alert--danger') {
+    @include selector-placeholder('alert--danger') {
       background: $alert-danger-background;
       border-color: $alert-danger-color;
 
@@ -86,13 +86,13 @@ $alert-danger-color: $global-danger !default;
     }
   }
 
-  @include selector-placeholder('.alert-content') {
+  @include selector-placeholder('alert-content') {
     @include trimChildren();
 
     flex: 1;
   }
 
-  @include selector-placeholder('.alert-right') {
+  @include selector-placeholder('alert-right') {
     flex: 0;
     padding-left: $global-whitespace-small;
   }

@@ -21,11 +21,11 @@
 
 //
 // Generates both selector and placeholder equivalent
-// @param  {string} $class
+// @param  {string} $selector
 //
-@mixin selector-placeholder($class) {
-  #{$class},
-  %#{str-replace($class, '.')} {
+@mixin selector-placeholder($selector) {
+  .#{$selector},
+  %#{$selector} {
     @content;
   }
 }
@@ -35,8 +35,8 @@
 // @param  {string} $class
 // @param  {string} $queries: $global-queries
 //
-@mixin breakpoint-selector($class, $sizes: $global-queries) {
-  @include selector-placeholder($class) {
+@mixin breakpoint-selector($selector, $sizes: $global-queries) {
+  @include selector-placeholder($selector) {
     @content;
   }
 
@@ -44,7 +44,7 @@
     $size-index: index($sizes, $size);
 
     @media (min-width: #{$value}) {
-      @include selector-placeholder(#{$class}\@#{$size}) {
+      @include selector-placeholder(#{$selector}\@#{$size}) {
         @content;
       }
     }

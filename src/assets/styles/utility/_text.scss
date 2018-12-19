@@ -3,31 +3,31 @@
 //
 
 @mixin text() {
-  @include selector-placeholder('.u-textXsmall') {
+  @include selector-placeholder('u-textXsmall') {
     font-size: $global-font-size-xsmall !important;
   }
 
-  @include selector-placeholder('.u-textSmall') {
+  @include selector-placeholder('u-textSmall') {
     font-size: $global-font-size-small !important;
   }
 
-  @include selector-placeholder('.u-textRegular') {
+  @include selector-placeholder('u-textRegular') {
     font-size: $global-font-size !important;
   }
 
-  @include selector-placeholder('.u-textMedium') {
+  @include selector-placeholder('u-textMedium') {
     font-size: $global-font-size-medium !important;
   }
 
-  @include selector-placeholder('.u-textLarge') {
+  @include selector-placeholder('u-textLarge') {
     font-size: $global-font-size-large !important;
   }
 
-  @include selector-placeholder('.u-textXlarge') {
+  @include selector-placeholder('u-textXlarge') {
     font-size: $global-font-size-xlarge !important;
   }
 
-  @include selector-placeholder('.u-textHeading') {
+  @include selector-placeholder('u-textHeading') {
     font-family: $base-heading-font-family !important;
     font-weight: $global-font-weight-bold !important;
     text-transform: $base-heading-text-transform !important;
@@ -35,121 +35,121 @@
     line-height: $base-heading-line-height !important;
   }
 
-  @include selector-placeholder('.u-textFluid--h1-h2') {
+  @include selector-placeholder('u-textFluid--h1-h2') {
     @include fluid-type($base-h2-font-size, $base-h1-font-size);
   }
 
-  @include selector-placeholder('.u-textFluid--h2-h3') {
+  @include selector-placeholder('u-textFluid--h2-h3') {
     @include fluid-type($base-h3-font-size, $base-h2-font-size);
   }
 
-  @include selector-placeholder('.u-textFluid--h3-h4') {
+  @include selector-placeholder('u-textFluid--h3-h4') {
     @include fluid-type($base-h4-font-size, $base-h3-font-size);
   }
 
-  @include selector-placeholder('.u-textFluid--medium') {
+  @include selector-placeholder('u-textFluid--medium') {
     @include fluid-type($global-font-size, $global-font-size-medium);
   }
 
-  @include selector-placeholder('.u-textFluid--large') {
+  @include selector-placeholder('u-textFluid--large') {
     @include fluid-type($global-font-size, $global-font-size-large);
   }
 
-  @include selector-placeholder('.u-textFluid--xlarge') {
+  @include selector-placeholder('u-textFluid--xlarge') {
     @include fluid-type($global-font-size-large, $global-font-size-xlarge);
   }
 
-  @include selector-placeholder('.u-textNormal') {
+  @include selector-placeholder('u-textNormal') {
     font-weight: $global-font-weight !important;
   }
 
-  @include selector-placeholder('.u-textMediumWeight') {
+  @include selector-placeholder('u-textMediumWeight') {
     font-weight: $global-font-weight-medium !important;
   }
 
-  @include selector-placeholder('.u-textItalic') {
+  @include selector-placeholder('u-textItalic') {
     font-style: italic !important;
   }
 
-  @include selector-placeholder('.u-textBold') {
+  @include selector-placeholder('u-textBold') {
     font-weight: $global-font-weight-bold !important;
   }
 
-  @include selector-placeholder('.u-textDefault') {
+  @include selector-placeholder('u-textDefault') {
     color: $global-font-color !important;
   }
 
-  @include selector-placeholder('.u-textHDefault') {
+  @include selector-placeholder('u-textHDefault') {
     color: $global-heading-color !important;
   }
 
-  @include selector-placeholder('.u-textPrimary') {
+  @include selector-placeholder('u-textPrimary') {
     color: $global-primary !important;
   }
 
-  @include selector-placeholder('.u-textTeal') {
+  @include selector-placeholder('u-textTeal') {
     color: $GREMLIN_teal;
   }
 
-  @include selector-placeholder('.u-textDanger') {
+  @include selector-placeholder('u-textDanger') {
     color: $global-danger !important;
   }
 
-  @include selector-placeholder('.u-textContrast') {
+  @include selector-placeholder('u-textContrast') {
     color: $global-contrast !important;
   }
 
-  @include selector-placeholder('.u-textMuted') {
+  @include selector-placeholder('u-textMuted') {
     color: $global-muted !important;
   }
 
-  @include selector-placeholder('.u-textUnderline') {
+  @include selector-placeholder('u-textUnderline') {
     text-decoration: underline !important;
     text-decoration-skip: ink;
   }
 
   // Prevent text from wrapping onto multiple lines, and truncate with an ellipsis
-  @include selector-placeholder('.u-textTruncate') {
+  @include selector-placeholder('u-textTruncate') {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
 
   // Break strings if their length exceeds the width of their container
-  @include selector-placeholder('.u-textBreak') {
+  @include selector-placeholder('u-textBreak') {
     hyphens: auto;
     word-wrap: break-word;
   }
 
   // Prevents text from wrapping into multiple lines
-  @include selector-placeholder('.u-textNoBreak') {
+  @include selector-placeholder('u-textNoBreak') {
     white-space: nowrap !important;
   }
 
-  @include selector-placeholder('.u-textUppercase') {
+  @include selector-placeholder('u-textUppercase') {
     text-transform: uppercase !important;
   }
 
   // Overrides line-height for sub-text on wrapping lines
-  @include selector-placeholder('.u-textSub') {
+  @include selector-placeholder('u-textSub') {
     line-height: $global-line-height-small !important;
   }
 
-  @include breakpoint-selector('.u-textLeft') {
+  @include breakpoint-selector('u-textLeft') {
     text-align: left !important;
   }
 
-  @include breakpoint-selector('.u-textCenter') {
+  @include breakpoint-selector('u-textCenter') {
     text-align: center !important;
   }
 
-  @include breakpoint-selector('.u-textRight') {
+  @include breakpoint-selector('u-textRight') {
     text-align: right !important;
   }
 
   @if (mixin-exists(hook-utility-text)) { @include hook-utility-text(); }
 
-  @include selector-placeholder('.u-link') {
+  @include selector-placeholder('u-link') {
     color: $global-primary !important;
 
     &:hover,
@@ -159,7 +159,7 @@
     }
   }
 
-  @include selector-placeholder('.u-linkDefault') {
+  @include selector-placeholder('u-linkDefault') {
     color: $global-font-color !important;
 
     &:hover,
@@ -169,11 +169,11 @@
     }
   }
 
-  @include selector-placeholder('.u-linkContrast') {
+  @include selector-placeholder('u-linkContrast') {
     @include contrast-link-styles();
   }
 
-  @include selector-placeholder('.u-linkMuted') {
+  @include selector-placeholder('u-linkMuted') {
     color: $global-muted !important;
 
     &:hover,
@@ -183,7 +183,7 @@
     }
   }
 
-  @include selector-placeholder('.u-linkHeading') {
+  @include selector-placeholder('u-linkHeading') {
     color: $global-heading-color !important;
 
     &:hover,
@@ -193,7 +193,7 @@
     }
   }
 
-  @include selector-placeholder('.u-linkUnderline') {
+  @include selector-placeholder('u-linkUnderline') {
     &:hover,
     &:focus,
     &:active {

@@ -3,7 +3,7 @@
 //
 
 @mixin border() {
-  @include selector-placeholder('.u-borderTop') {
+  @include selector-placeholder('u-borderTop') {
     border-top: 1px solid $global-border !important;
 
     &--remove {
@@ -11,7 +11,7 @@
     }
   }
 
-  @include selector-placeholder('.u-borderRight') {
+  @include selector-placeholder('u-borderRight') {
     border-right: 1px solid $global-border !important;
 
     &--remove {
@@ -19,7 +19,7 @@
     }
   }
 
-  @include selector-placeholder('.u-borderBottom') {
+  @include selector-placeholder('u-borderBottom') {
     border-bottom: 1px solid $global-border !important;
 
     &--remove {
@@ -27,7 +27,7 @@
     }
   }
 
-  @include selector-placeholder('.u-borderLeft') {
+  @include selector-placeholder('u-borderLeft') {
     border-left: 1px solid $global-border !important;
 
     &--remove {
@@ -35,7 +35,7 @@
     }
   }
 
-  @include selector-placeholder('.u-borderSurround') {
+  @include selector-placeholder('u-borderSurround') {
     border: 1px solid $global-border !important;
 
     &--remove {
@@ -43,7 +43,7 @@
     }
   }
 
-  @include selector-placeholder('.u-borderVertical') {
+  @include selector-placeholder('u-borderVertical') {
     border-top: 1px solid $global-border !important;
     border-bottom: 1px solid $global-border !important;
 
@@ -53,7 +53,7 @@
     }
   }
 
-  @include selector-placeholder('.u-borderHorizontal') {
+  @include selector-placeholder('u-borderHorizontal') {
     border-left: 1px solid $global-border !important;
     border-right: 1px solid $global-border !important;
 
@@ -63,7 +63,7 @@
     }
   }
 
-  @include selector-placeholder('.u-borderRadius') {
+  @include selector-placeholder('u-borderRadius') {
     border-radius: $global-border-radius !important;
 
     &--remove {
