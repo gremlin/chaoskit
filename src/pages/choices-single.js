@@ -1,6 +1,6 @@
 import React from 'react';
 
-import FoundationLayout from '../layouts/Foundation';
+import BaseLayout from '../layouts/BaseLayout';
 import Live from '../docs/Live';
 import { ChoicesSingle } from '../components';
 
@@ -51,7 +51,7 @@ const ChoicesSingleScope = {
 const ChoicesSinglePropDescriptions = {};
 
 const ChoicesSingleDocs = () => (
-  <FoundationLayout pageTitle="Choices Single">
+  <BaseLayout pageTitle="Choices Single">
     <p>Uses <a href="https://github.com/paypal/downshift">downshift</a> to provide ULTIMATE-POWER and flexibility to more complex <code>&lt;select&gt;</code> UIs.</p>
     <Live
       code={ChoicesSingleExample}
@@ -59,7 +59,7 @@ const ChoicesSingleDocs = () => (
       component={ChoicesSingle}
       propDescriptions={ChoicesSinglePropDescriptions}
     />
-  </FoundationLayout>
+  </BaseLayout>
 );
 
 export default ChoicesSingleDocs;

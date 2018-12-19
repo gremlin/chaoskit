@@ -1,6 +1,6 @@
 import React from 'react';
 
-import FoundationLayout from '../layouts/Foundation';
+import BaseLayout from '../layouts/BaseLayout';
 import Live from '../docs/Live';
 import { Alert, Toggle } from '../components';
 
@@ -42,7 +42,7 @@ const ToggleScope = {
 const TogglePropDescriptions = {};
 
 const ToggleDocs = () => (
-  <FoundationLayout pageTitle="Toggle">
+  <BaseLayout pageTitle="Toggle">
     <Live
       code={ToggleExample}
       scope={ToggleScope}
@@ -52,7 +52,7 @@ const ToggleDocs = () => (
     <Alert type="warning" title="Note">
       <p>Toggles automatically inherit contrast styles when placed within a wrapper that contains the global <code>.u-contrast</code> class.</p>
     </Alert>
-  </FoundationLayout>
+  </BaseLayout>
 );
 
 export default ToggleDocs;

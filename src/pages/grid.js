@@ -1,6 +1,6 @@
 import React from 'react';
 
-import FoundationLayout from '../layouts/Foundation';
+import BaseLayout from '../layouts/BaseLayout';
 import { Alert } from '../components';
 import Live from '../docs/Live';
 
@@ -124,7 +124,7 @@ const GridSourceOrderExample = `
 const GridScope = {};
 
 const GridDocs = () => (
-  <FoundationLayout pageTitle="Grid">
+  <BaseLayout pageTitle="Grid">
     <p>We use a 12-column grid with a default grid-gutter of <code>16px</code>. Columns that add-up to more than 12 automatically get some space in-between. So you can use grids for dayz &apos;yo.</p>
 
     <Alert type="warning" title="Note‍" className="u-mb--regular">
@@ -247,7 +247,7 @@ const GridDocs = () => (
       scope={GridScope}
       showDocs={false}
     />
-  </FoundationLayout>
+  </BaseLayout>
 );
 
 export default GridDocs;

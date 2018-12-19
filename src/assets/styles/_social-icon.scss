@@ -38,5 +38,7 @@ $social-icon-color: $global-font-color;
       size: $icon-size-large;
       top: auto;
     }
+
+    @if (mixin-exists(hook-social-icon)) { @include hook-social-icon(); }
   }
 }

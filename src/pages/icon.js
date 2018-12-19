@@ -1,6 +1,6 @@
 import React from 'react';
 
-import FoundationLayout from '../layouts/Foundation';
+import BaseLayout from '../layouts/BaseLayout';
 import { Icon, Inline } from '../components';
 import Live from '../docs/Live';
 import icons from '../assets/icons/icons.json';
@@ -46,7 +46,7 @@ const IconPropDescriptions = {
 };
 
 const IconDocs = () => (
-  <FoundationLayout pageTitle="Icon">
+  <BaseLayout pageTitle="Icon">
     <p>All UI-orientated icons follow the same <code>viewBox</code>, <code>width/height</code>, and <code>stroke</code> attributes for ease and re-usability. Icons are located within the <code>src/assets/icons/</code> directory and are optimized, mangled, and sent along via a JSON file that allows us to import and validate references more easily and only bundle what we actually use in our applications.</p>
     <Live
       code={IconExample}
@@ -72,7 +72,7 @@ const IconDocs = () => (
       component={Icon}
       showDocs={false}
     />
-  </FoundationLayout>
+  </BaseLayout>
 );
 
 export default IconDocs;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import FoundationLayout from '../layouts/Foundation';
+import BaseLayout from '../layouts/BaseLayout';
 import Live from '../docs/Live';
 import { List, ListItem } from '../components';
 
@@ -44,14 +44,14 @@ const ListPropDescriptions = {
 };
 
 const ListDocs = () => (
-  <FoundationLayout pageTitle="List">
+  <BaseLayout pageTitle="List">
     <Live
       code={ListExample}
       scope={ListScope}
       component={List}
       propDescriptions={ListPropDescriptions}
     />
-  </FoundationLayout>
+  </BaseLayout>
 );
 
 export default ListDocs;

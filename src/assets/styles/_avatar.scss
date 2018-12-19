@@ -28,6 +28,8 @@ $avatar-font-color: $global-font-color;
     vertical-align: bottom; // 1
     size: $avatar-size;
 
+    @if (mixin-exists(hook-avatar)) { @include hook-avatar(); }
+
     // Placed inside of `.avatar` to override default `icon` styles
     .avatar-icon {
       position: absolute;
@@ -58,4 +60,6 @@ $avatar-font-color: $global-font-color;
   .avatar--large {
     size: $avatar-size-large;
   }
+
+  @if (mixin-exists(hook-avatar-misc)) { @include hook-avatar-misc(); }
 }

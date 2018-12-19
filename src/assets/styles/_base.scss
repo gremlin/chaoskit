@@ -70,6 +70,22 @@ $base-selection-background: $global-primary !default;
 $base-selection-color: $global-background !default;
 
 //
+// Mixins
+//
+
+@mixin base-heading-styles() {
+  margin: 0 0 $base-margin-vertical;
+  font-family: $base-heading-font-family;
+  color: $base-heading-color;
+  text-transform: $base-heading-text-transform;
+  letter-spacing: $base-heading-letter-spacing;
+
+  * + & {
+    margin-top: $base-heading-margin-top;
+  }
+}
+
+//
 // Component
 //
 
@@ -344,32 +360,11 @@ $base-selection-color: $global-background !default;
   // Headings
   //
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5 {
-    margin: 0 0 $base-margin-vertical;
-    font-family: $base-heading-font-family;
-    color: $base-heading-color;
-    text-transform: $base-heading-text-transform;
-    letter-spacing: $base-heading-letter-spacing;
-
-    @if (mixin-exists(hook-base-h)) { @include hook-base-h(); }
-  }
-
-  // Margins
-  * + h1,
-  * + h2,
-  * + h3,
-  * + h4,
-  * + h5 {
-    margin-top: $base-heading-margin-top;
-  }
-
   // Sizes
-  h1 {
-    @extend .u-textFluid--h1-h2;
+  @include selector-placeholder('h1') {
+    @include base-heading-styles();
+
+    @extend %u-textFluid--h1-h2;
 
     font-weight: $base-h1-font-weight;
     line-height: $base-h1-line-height;
@@ -377,8 +372,10 @@ $base-selection-color: $global-background !default;
     @if (mixin-exists(hook-base-h1)) { @include hook-base-h1(); }
   }
 
-  h2 {
-    @extend .u-textFluid--h2-h3;
+  @include selector-placeholder('h2') {
+    @include base-heading-styles();
+
+    @extend %u-textFluid--h2-h3;
 
     font-weight: $base-h2-font-weight;
     line-height: $base-h2-line-height;
@@ -386,8 +383,10 @@ $base-selection-color: $global-background !default;
     @if (mixin-exists(hook-base-h2)) { @include hook-base-h2(); }
   }
 
-  h3 {
-    @extend .u-textFluid--h3-h4;
+  @include selector-placeholder('h3') {
+    @include base-heading-styles();
+
+    @extend %u-textFluid--h3-h4;
 
     font-weight: $base-h3-font-weight;
     line-height: $base-h3-line-height;
@@ -395,7 +394,9 @@ $base-selection-color: $global-background !default;
     @if (mixin-exists(hook-base-h3)) { @include hook-base-h3(); }
   }
 
-  h4 {
+  @include selector-placeholder('h4') {
+    @include base-heading-styles();
+
     font-size: $base-h4-font-size;
     font-weight: $base-h4-font-weight;
     line-height: $base-h4-line-height;
@@ -403,7 +404,9 @@ $base-selection-color: $global-background !default;
     @if (mixin-exists(hook-base-h4)) { @include hook-base-h4(); }
   }
 
-  h5 {
+  @include selector-placeholder('h5') {
+    @include base-heading-styles();
+
     font-size: $base-h5-font-size;
     font-weight: $base-h5-font-weight;
     line-height: $base-h5-line-height;

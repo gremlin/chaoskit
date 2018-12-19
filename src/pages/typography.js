@@ -1,10 +1,10 @@
 import React from 'react';
 
-import FoundationLayout from '../layouts/Foundation';
+import BaseLayout from '../layouts/BaseLayout';
 import { Alert } from '../components';
 
 const TypographyDocs = () => (
-  <FoundationLayout pageTitle="Typography">
+  <BaseLayout pageTitle="Typography">
     <p>We provide a variety of utility classes that can be used on their own; chained together with components, and/or chained together with other utility classes to create various UI needs. Apply classes to the parent to avoid repeating the utility unnecessarily whenever possible.</p>
 
     <Alert type="warning" title="Note">
@@ -220,7 +220,7 @@ const TypographyDocs = () => (
       </tbody>
     </table>
 
-  </FoundationLayout>
+  </BaseLayout>
 );
 
 export default TypographyDocs;

@@ -133,6 +133,20 @@ Hooks allow us to inject additional styles alongside components to reduce select
 }
 ```
 
+#### Extending
+
+In a perfect-world, controlling DOM and utilizing utility classes is the bees-knees. In real-world applications; that's easier said than done. Thankfully, Sass has built-in support for extending portions of your codebase with their `@extend` directive. Extending classes however, can be a crap-shoot; as it duplicates every instance of that selector. That's why we've implemented `%placeholders` for some of our components; namely our utilities. You can use them like so:
+
+```scss
+.module-title {
+  @extend %u-textFluid--h3-h4;
+}
+```
+
+> Note
+>
+> Once Sass supports [dynamic mixin names](https://github.com/sass/sass/issues/626) we'll most likely move things over to them; since they can perform minutely better during GZIP compression.
+
 #### Removing components
 
 While we may be partial, you might not need all the magic our framework provides. In the interest of size, we provide a configurable `$components` array that you can interact with in two ways:

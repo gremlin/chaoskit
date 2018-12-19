@@ -1,6 +1,6 @@
 import React from 'react';
 
-import FoundationLayout from '../layouts/Foundation';
+import BaseLayout from '../layouts/BaseLayout';
 import Live from '../docs/Live';
 import { Textarea } from '../components';
 
@@ -34,7 +34,7 @@ const TextareaPropDescriptions = {
 };
 
 const TextareaDocs = () => (
-  <FoundationLayout pageTitle="Textarea">
+  <BaseLayout pageTitle="Textarea">
     <p>Uses <a href="https://github.com/andreypopp/react-textarea-autosize">react-textarea-autosize</a> to control growth automatically.</p>
     <Live
       code={TextareaExample}
@@ -42,7 +42,7 @@ const TextareaDocs = () => (
       component={Textarea}
       propDescriptions={TextareaPropDescriptions}
     />
-  </FoundationLayout>
+  </BaseLayout>
 );
 
 export default TextareaDocs;

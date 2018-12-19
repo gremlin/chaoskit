@@ -33,28 +33,30 @@ $badge-rounded-enable: true !default;
     text-transform: uppercase;
     user-select: none;
 
-    @if $badge-primary-enable {
-      &--primary {
-        border-color: $global-primary;
-        background: $global-primary;
-        color: $global-contrast;
-      }
-    }
-
-    @if $badge-danger-enable {
-      &--danger {
-        border-color: $global-danger;
-        background: $global-danger;
-        color: $global-contrast;
-      }
-    }
-
-    @if $badge-rounded-enable {
-      &--rounded {
-        border-radius: ($badge-height / 2);
-      }
-    }
-
     @if (mixin-exists(hook-badge)) { @include hook-badge(); }
   }
+
+  @if $badge-primary-enable {
+    .badge--primary {
+      border-color: $global-primary;
+      background: $global-primary;
+      color: $global-contrast;
+    }
+  }
+
+  @if $badge-danger-enable {
+    .badge--danger {
+      border-color: $global-danger;
+      background: $global-danger;
+      color: $global-contrast;
+    }
+  }
+
+  @if $badge-rounded-enable {
+    .badge--rounded {
+      border-radius: ($badge-height / 2);
+    }
+  }
+
+  @if (mixin-exists(hook-badge-misc)) { @include hook-badge-misc(); }
 }

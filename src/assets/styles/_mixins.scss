@@ -1,6 +1,6 @@
 //
 // Iterate through breakpoints to allow for viewport specific styles
-// @param  {string} $selector =
+// @param  {string} $selector
 // @param  {string} $queries: $global-queries
 // @return {mixed}
 //
@@ -13,6 +13,38 @@
   @each $size in $global-breakpoint-sizes {
     #{$selector}#{$breakpoint-delimiter}#{$size} {
       @include queries($size, $global-queries) {
+        @content;
+      }
+    }
+  }
+}
+
+//
+// Generates both selector and placeholder equivalent
+// @param  {string} $selector
+//
+@mixin selector-placeholder($selector) {
+  .#{$selector},
+  %#{$selector} {
+    @content;
+  }
+}
+
+//
+// Generates both base selector, breakpoint variants, and placeholder equivalent
+// @param  {string} $class
+// @param  {string} $queries: $global-queries
+//
+@mixin breakpoint-selector($selector, $sizes: $global-queries) {
+  @include selector-placeholder($selector) {
+    @content;
+  }
+
+  @each $size, $value in $sizes {
+    $size-index: index($sizes, $size);
+
+    @media (min-width: #{$value}) {
+      @include selector-placeholder(#{$selector}\@#{$size}) {
         @content;
       }
     }

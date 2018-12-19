@@ -1,6 +1,6 @@
 import React from 'react';
 
-import FoundationLayout from '../layouts/Foundation';
+import BaseLayout from '../layouts/BaseLayout';
 import Live from '../docs/Live';
 import { Select } from '../components';
 
@@ -48,14 +48,14 @@ const SelectPropDescriptions = {
 };
 
 const SelectDocs = () => (
-  <FoundationLayout pageTitle="Select">
+  <BaseLayout pageTitle="Select">
     <Live
       code={SelectExample}
       scope={SelectScope}
       component={Select}
       propDescriptions={SelectPropDescriptions}
     />
-  </FoundationLayout>
+  </BaseLayout>
 );
 
 export default SelectDocs;

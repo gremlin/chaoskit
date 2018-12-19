@@ -83,8 +83,7 @@ $button-icon-enable: true !default;
   // 12. Do not wrap buttons
   // 13. Disable `user-select`
   // 14. Removes inner padding and border in Firefox 4+.
-  //
-  .button {
+  @include selector-placeholder('button') {
     // 1
     appearance: none;
     // 2
@@ -153,202 +152,6 @@ $button-icon-enable: true !default;
       }
     }
 
-    @if $button-small-enable {
-      &--small {
-        padding: 0 $global-whitespace-regular;
-        font-size: $button-font-size-small;
-        line-height: ($global-height-small - ($button-border-width * 2));
-        height: $global-height-small;
-
-        @if (mixin-exists(hook-button-small)) { @include hook-button-small(); }
-      }
-    }
-
-    @if $button-xsmall-enable {
-      &--xsmall {
-        padding: 0 $global-whitespace-regular;
-        font-size: $button-font-size-xsmall;
-        line-height: ($global-height-xsmall - ($button-border-width * 2));
-        height: $global-height-xsmall;
-
-        @if (mixin-exists(hook-button-xsmall)) { @include hook-button-small(); }
-      }
-    }
-
-    @if $button-default-enable {
-      &--default {
-        background: $button-default-background;
-        border-color: $button-default-border;
-        color: $button-default-color;
-
-        &:hover,
-        &:focus,
-        &:active,
-        &.is-active {
-          color: $button-default-color;
-        }
-
-        @if $global-contrast-enable and $button-contrast-enable {
-          .u-contrast & {
-            &:not(.button--noContrast) {
-              background: $button-contrast-background;
-              color: $button-contrast-color;
-              border-color: currentColor;
-
-              &:hover,
-              &:focus,
-              &:active,
-              &.is-active {
-                color: $button-contrast-color;
-              }
-            }
-          }
-        }
-
-        @if (mixin-exists(hook-button-default)) { @include hook-button-default(); }
-      }
-    }
-
-    @if $button-outline-primary-enable {
-      &--outlinePrimary {
-        background: $button-outline-primary-background;
-        border-color: $button-outline-primary-border;
-        color: $button-outline-primary-color;
-        position: relative;
-        z-index: 2;
-
-        &:hover,
-        &:focus,
-        &:active,
-        &.is-active {
-          background: $button-outline-primary-background-hover;
-          color: $button-outline-primary-color-hover;
-        }
-
-        @if (mixin-exists(hook-button-outline-primary)) { @include hook-button-outline-primary(); }
-      }
-    }
-
-    @if $button-primary-enable {
-      &--primary {
-        background: $button-primary-background;
-        border-color: $button-primary-border;
-        color: $button-primary-color;
-
-        &:hover,
-        &:focus,
-        &:active,
-        &.is-active {
-          color: $button-primary-color;
-        }
-
-        @if $global-contrast-enable and $button-contrast-enable {
-          .u-contrast & {
-            &:not(.button--noContrast) {
-              background: $button-contrast-primary-background;
-              border-color: $button-contrast-primary-background;
-              color: $button-contrast-primary-color;
-
-              &:hover,
-              &:focus,
-              &:active,
-              &.is-active {
-                color: $button-contrast-primary-color;
-              }
-            }
-          }
-        }
-
-        @if (mixin-exists(hook-button-primary)) { @include hook-button-primary(); }
-      }
-    }
-
-    @if $button-secondary-enable {
-      &--secondary {
-        background: $button-secondary-background;
-        border-color: $button-secondary-border;
-        color: $button-secondary-color;
-
-        &:hover,
-        &:focus,
-        &:active,
-        &.is-active {
-          color: $button-secondary-color;
-        }
-
-        @if $global-contrast-enable and $button-contrast-enable {
-          .u-contrast & {
-            &:not(.button--noContrast) {
-              background: $button-contrast-secondary-background;
-              border-color: $button-contrast-secondary-background;
-              color: $button-contrast-secondary-color;
-
-              &:hover,
-              &:focus,
-              &:active,
-              &.is-active {
-                color: $button-contrast-secondary-color;
-              }
-            }
-          }
-        }
-
-        @if (mixin-exists(hook-button-secondary)) { @include hook-button-secondary(); }
-      }
-    }
-
-    @if $button-danger-enable {
-      &--danger {
-        background: $button-danger-background;
-        border-color: $button-danger-border;
-        color: $global-contrast;
-
-        &:hover,
-        &:focus,
-        &:active,
-        &.is-active {
-          color: $global-contrast;
-        }
-
-        @if (mixin-exists(hook-button-danger)) { @include hook-button-danger(); }
-      }
-    }
-
-    &--fullWidth {
-      width: 100%;
-    }
-
-    @if $button-icon-enable {
-      &--icon {
-        padding: 0;
-        width: $global-height;
-
-        svg {
-          size: $icon-size-large;
-        }
-
-        @if $button-small-enable {
-          &.button--small {
-            width: $global-height-small;
-
-            svg {
-              size: $icon-size-large;
-            }
-          }
-        }
-
-        @if $button-xsmall-enable {
-          &.button--xsmall {
-            width: $global-height-xsmall;
-
-            svg {
-              size: $icon-size;
-            }
-          }
-        }
-      }
-    }
-
     @if $button-loader-enable {
       > .loader {
         position: absolute;
@@ -383,4 +186,202 @@ $button-icon-enable: true !default;
 
     @if (mixin-exists(hook-button)) { @include hook-button(); }
   }
+
+  @if $button-small-enable {
+    @include selector-placeholder('button--small') {
+      padding: 0 $global-whitespace-regular;
+      font-size: $button-font-size-small;
+      line-height: ($global-height-small - ($button-border-width * 2));
+      height: $global-height-small;
+
+      @if (mixin-exists(hook-button-small)) { @include hook-button-small(); }
+    }
+  }
+
+  @if $button-xsmall-enable {
+    @include selector-placeholder('button--xsmall') {
+      padding: 0 $global-whitespace-regular;
+      font-size: $button-font-size-xsmall;
+      line-height: ($global-height-xsmall - ($button-border-width * 2));
+      height: $global-height-xsmall;
+
+      @if (mixin-exists(hook-button-xsmall)) { @include hook-button-small(); }
+    }
+  }
+
+  @if $button-default-enable {
+    @include selector-placeholder('button--default') {
+      background: $button-default-background;
+      border-color: $button-default-border;
+      color: $button-default-color;
+
+      &:hover,
+      &:focus,
+      &:active,
+      &.is-active {
+        color: $button-default-color;
+      }
+
+      @if $global-contrast-enable and $button-contrast-enable {
+        .u-contrast & {
+          &:not(.button--noContrast) {
+            background: $button-contrast-background;
+            color: $button-contrast-color;
+            border-color: currentColor;
+
+            &:hover,
+            &:focus,
+            &:active,
+            &.is-active {
+              color: $button-contrast-color;
+            }
+          }
+        }
+      }
+
+      @if (mixin-exists(hook-button-default)) { @include hook-button-default(); }
+    }
+  }
+
+  @if $button-outline-primary-enable {
+    @include selector-placeholder('button--outlinePrimary') {
+      background: $button-outline-primary-background;
+      border-color: $button-outline-primary-border;
+      color: $button-outline-primary-color;
+      position: relative;
+      z-index: 2;
+
+      &:hover,
+      &:focus,
+      &:active,
+      &.is-active {
+        background: $button-outline-primary-background-hover;
+        color: $button-outline-primary-color-hover;
+      }
+
+      @if (mixin-exists(hook-button-outline-primary)) { @include hook-button-outline-primary(); }
+    }
+  }
+
+  @if $button-primary-enable {
+    @include selector-placeholder('button--primary') {
+      background: $button-primary-background;
+      border-color: $button-primary-border;
+      color: $button-primary-color;
+
+      &:hover,
+      &:focus,
+      &:active,
+      &.is-active {
+        color: $button-primary-color;
+      }
+
+      @if $global-contrast-enable and $button-contrast-enable {
+        .u-contrast & {
+          &:not(.button--noContrast) {
+            background: $button-contrast-primary-background;
+            border-color: $button-contrast-primary-background;
+            color: $button-contrast-primary-color;
+
+            &:hover,
+            &:focus,
+            &:active,
+            &.is-active {
+              color: $button-contrast-primary-color;
+            }
+          }
+        }
+      }
+
+      @if (mixin-exists(hook-button-primary)) { @include hook-button-primary(); }
+    }
+  }
+
+  @if $button-secondary-enable {
+    @include selector-placeholder('button--secondary') {
+      background: $button-secondary-background;
+      border-color: $button-secondary-border;
+      color: $button-secondary-color;
+
+      &:hover,
+      &:focus,
+      &:active,
+      &.is-active {
+        color: $button-secondary-color;
+      }
+
+      @if $global-contrast-enable and $button-contrast-enable {
+        .u-contrast & {
+          &:not(.button--noContrast) {
+            background: $button-contrast-secondary-background;
+            border-color: $button-contrast-secondary-background;
+            color: $button-contrast-secondary-color;
+
+            &:hover,
+            &:focus,
+            &:active,
+            &.is-active {
+              color: $button-contrast-secondary-color;
+            }
+          }
+        }
+      }
+
+      @if (mixin-exists(hook-button-secondary)) { @include hook-button-secondary(); }
+    }
+  }
+
+  @if $button-danger-enable {
+    @include selector-placeholder('button--danger') {
+      background: $button-danger-background;
+      border-color: $button-danger-border;
+      color: $global-contrast;
+
+      &:hover,
+      &:focus,
+      &:active,
+      &.is-active {
+        color: $global-contrast;
+      }
+
+      @if (mixin-exists(hook-button-danger)) { @include hook-button-danger(); }
+    }
+  }
+
+  @include selector-placeholder('button--fullWidth') {
+    width: 100%;
+  }
+
+  @if $button-icon-enable {
+    @include selector-placeholder('button--icon') {
+      padding: 0;
+      width: $global-height;
+
+      svg {
+        size: $icon-size-large;
+      }
+
+      @if $button-small-enable {
+        &.button--small {
+          width: $global-height-small;
+
+          svg {
+            size: $icon-size-large;
+          }
+        }
+      }
+
+      @if $button-xsmall-enable {
+        &.button--xsmall {
+          width: $global-height-xsmall;
+
+          svg {
+            size: $icon-size;
+          }
+        }
+      }
+    }
+  }
+
+  @if (mixin-exists(hook-button-misc)) { @include hook-button-misc(); }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import FoundationLayout from '../layouts/Foundation';
+import BaseLayout from '../layouts/BaseLayout';
 import Live from '../docs/Live';
 import { RadioGroup, Radio } from '../components';
 
@@ -30,14 +30,14 @@ const RadioScope = {
 const RadioPropDescriptions = {};
 
 const RadioDocs = () => (
-  <FoundationLayout pageTitle="Radio">
+  <BaseLayout pageTitle="Radio">
     <Live
       code={RadioExample}
       scope={RadioScope}
       component={Radio}
       propDescriptions={RadioPropDescriptions}
     />
-  </FoundationLayout>
+  </BaseLayout>
 );
 
 export default RadioDocs;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import FoundationLayout from '../layouts/Foundation';
+import BaseLayout from '../layouts/BaseLayout';
 import Live from '../docs/Live';
 import { Input } from '../components';
 
@@ -73,7 +73,7 @@ const InputPropDescriptions = {
 };
 
 const InputDocs = () => (
-  <FoundationLayout pageTitle="Input">
+  <BaseLayout pageTitle="Input">
     <p>Uses <a target="_blank" rel="noopener noreferrer" href="https://github.com/text-mask/text-mask/">text-mask</a> to provide masking capabilities for better UX.</p>
 
     <Live
@@ -82,7 +82,7 @@ const InputDocs = () => (
       component={Input}
       propDescriptions={InputPropDescriptions}
     />
-  </FoundationLayout>
+  </BaseLayout>
 );
 
 export default InputDocs;

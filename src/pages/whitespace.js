@@ -1,6 +1,6 @@
 import React from 'react';
 
-import FoundationLayout from '../layouts/Foundation';
+import BaseLayout from '../layouts/BaseLayout';
 import { Alert, Inline } from '../components';
 import Live from '../docs/Live';
 
@@ -13,7 +13,7 @@ const WhitespaceDocs = () => {
 `.trim();
 
   return (
-    <FoundationLayout pageTitle="Whitespce">
+    <BaseLayout pageTitle="Whitespce">
       <p>We often need to apply margins or padding to individual elements. These utilities should be exclusively used for this type of spacing.</p>
       <p>To add space to any element we add a class of <code>.u-{'{type}'}{'{direction}'}--{'{amount}'}</code>. For example, if we wanted to add 32px of margin below an element, we would add a class of <code>.u-mb--large</code>.</p>
 
@@ -62,7 +62,7 @@ const WhitespaceDocs = () => {
         code={WhitespaceExample}
         scope={{}}
       />
-    </FoundationLayout>
+    </BaseLayout>
   );
 };
 

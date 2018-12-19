@@ -1,6 +1,6 @@
 import React from 'react';
 
-import FoundationLayout from '../layouts/Foundation';
+import BaseLayout from '../layouts/BaseLayout';
 import { Close } from '../components';
 import Live from '../docs/Live';
 
@@ -23,7 +23,7 @@ const CloseScope = {
 };
 
 const CloseDocs = () => (
-  <FoundationLayout pageTitle="Close">
+  <BaseLayout pageTitle="Close">
     <p>Plain and simple - a reusable and ready-to-interact-with close button.</p>
 
     <Live
@@ -32,7 +32,7 @@ const CloseDocs = () => (
       component={Close}
       propDescriptions={ClosePropDescriptions}
     />
-  </FoundationLayout>
+  </BaseLayout>
 );
 
 export default CloseDocs;

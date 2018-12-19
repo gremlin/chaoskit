@@ -3,163 +3,80 @@
 //
 
 @mixin flex() {
-  .u-flex {
+  @include selector-placeholder('u-flex') {
     display: flex;
     list-style: none;
     padding: 0;
     margin: 0;
+  }
 
-    // Child elements automatically match height; this extends that ability to first child element
-    &DeepMatch {
+  // Child elements automatically match height; this extends that ability to first child element
+  @include selector-placeholder('u-flexDeepMatch') {
+    > * {
+      display: flex;
+      flex-wrap: wrap;
+
       > * {
-        display: flex;
-        flex-wrap: wrap;
-
-        > * {
-          flex: none;
-          width: 100%;
-        }
+        flex: none;
+        width: 100%;
       }
     }
+  }
 
-    // No Flex: 0 0 auto
-    // Content dimensions
-    &ItemNone {
-      flex: none;
-    }
+  // Content dimensions
+  @include breakpoint-selector('u-flexItemNone') {
+    flex: none;
+  }
 
-    // Relative Flex: 1 1 auto
-    // Space is allocated considering content
-    &ItemAuto {
-      flex: auto;
-    }
+  // Space is allocated considering content
+  @include breakpoint-selector('u-flexItemAuto') {
+    flex: auto;
+  }
 
-    // Absolute Flex: 1 1 0%
-    // Space is allocated solely based on flex
-    &Item1 {
-      flex: 1 !important;
-    }
+  // Space is allocated solely based on flex
+  @include breakpoint-selector('u-flexItem1') {
+    flex: 1 !important;
+  }
 
-    &Between {
-      justify-content: space-between !important;
-    }
+  @include breakpoint-selector('u-flexBetween') {
+    justify-content: space-between !important;
+  }
 
-    &Around {
-      justify-content: space-around !important;
-    }
+  @include breakpoint-selector('u-flexAround') {
+    justify-content: space-around !important;
+  }
 
-    //
-    // Alignment modifiers
-    //
+  //
+  // Alignment modifiers
+  //
 
-    // Cross-start margin edge of the items is placed on the cross-start line
-    &Start {
-      justify-content: flex-start !important;
-    }
+  // Cross-start margin edge of the items is placed on the cross-start line
+  @include breakpoint-selector('u-flexStart') {
+    justify-content: flex-start !important;
+  }
 
-    // Items are centered along the line
-    &Center {
-      justify-content: center !important;
-    }
+  // Items are centered along the line
+  @include breakpoint-selector('u-flexCenter') {
+    justify-content: center !important;
+  }
 
-    // Forces row to right
-    &End {
-      justify-content: flex-end !important;
-    }
+  // Forces row to right
+  @include breakpoint-selector('u-flexEnd') {
+    justify-content: flex-end !important;
+  }
 
-    // Cross-start margin edge of the items is placed on the cross-start line
-    &Top {
-      align-items: flex-start !important;
-    }
+  // Cross-start margin edge of the items is placed on the cross-start line
+  @include breakpoint-selector('u-flexTop') {
+    align-items: flex-start !important;
+  }
 
-    // Items are centered in the cross-axis
-    &Middle {
-      align-items: center !important;
-    }
+  // Items are centered in the cross-axis
+  @include breakpoint-selector('u-flexMiddle') {
+    align-items: center !important;
+  }
 
-    // Cross-end margin edge of the items is placed on the cross-end line
-    &Bottom {
-      align-items: flex-end !important;
-    }
-
-    @media (min-width: $global-viewport-small) {
-      &Start\@small {
-        justify-content: flex-start !important;
-      }
-
-      &Center\@small {
-        justify-content: center !important;
-      }
-
-      &End\@small {
-        justify-content: flex-end !important;
-      }
-
-      &Top\@small {
-        align-items: flex-start !important;
-      }
-
-      &Middle\@small {
-        align-items: center !important;
-      }
-
-      &Bottom\@small {
-        align-items: flex-end !important;
-      }
-    }
-
-    @media (min-width: $global-viewport-medium) {
-      &Start\@medium {
-        justify-content: flex-start !important;
-      }
-
-      &Center\@medium {
-        justify-content: center !important;
-      }
-
-      &End\@medium {
-        justify-content: flex-end !important;
-      }
-
-      &Top\@medium {
-        align-items: flex-start !important;
-      }
-
-      &Middle\@medium {
-        align-items: center !important;
-      }
-
-      &Bottom\@medium {
-        align-items: flex-end !important;
-      }
-    }
-
-    @media (min-width: $global-viewport-large) {
-      &Start\@large {
-        justify-content: flex-start !important;
-      }
-
-      &Center\@large {
-        justify-content: center !important;
-      }
-
-      &End\@large {
-        justify-content: flex-end !important;
-      }
-
-      &Top\@large {
-        align-items: flex-start !important;
-      }
-
-      &Middle\@large {
-        align-items: center !important;
-      }
-
-      &Bottom\@large {
-        align-items: flex-end !important;
-      }
-    }
-
-    @if (mixin-exists(hook-utility-flex)) { @include hook-utility-flex(); }
+  // Cross-end margin edge of the items is placed on the cross-end line
+  @include breakpoint-selector('u-flexBottom') {
+    align-items: flex-end !important;
   }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import FoundationLayout from '../layouts/Foundation';
+import BaseLayout from '../layouts/BaseLayout';
 import Live from '../docs/Live';
 import { Alert, Button, Tooltip, Icon, Inline, List, ListItem } from '../components';
 
@@ -42,7 +42,7 @@ const TooltipPropDescriptions = {
 };
 
 const TooltipDocs = () => (
-  <FoundationLayout pageTitle="Tooltip">
+  <BaseLayout pageTitle="Tooltip">
     <Live
       code={TooltipExample}
       scope={TooltipScope}
@@ -55,7 +55,7 @@ const TooltipDocs = () => (
         <ListItem>Tooltip content can contain normal strings or other components. Go crazy!</ListItem>
       </List>
     </Alert>
-  </FoundationLayout>
+  </BaseLayout>
 );
 
 export default TooltipDocs;

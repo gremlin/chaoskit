@@ -60,4 +60,6 @@ $icon-vector-effect: non-scaling-stroke !default; // Can turn off with `default`
       stroke-width: $icon-stroke-width-thin;
     }
   }
+
+  @if (mixin-exists(hook-icon-misc)) { @include hook-icon-misc(); }
 }
