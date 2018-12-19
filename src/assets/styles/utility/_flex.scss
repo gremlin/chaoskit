@@ -3,7 +3,7 @@
 //
 
 @mixin flex() {
-  @include selector-placeholder('u-flex') {
+  @include selector-placeholder('.u-flex') {
     display: flex;
     list-style: none;
     padding: 0;
@@ -11,7 +11,7 @@
   }
 
   // Child elements automatically match height; this extends that ability to first child element
-  @include selector-placeholder('u-flexDeepMatch') {
+  @include selector-placeholder('.u-flexDeepMatch') {
     > * {
       display: flex;
       flex-wrap: wrap;

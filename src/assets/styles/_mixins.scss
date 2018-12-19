@@ -24,8 +24,8 @@
 // @param  {string} $selector
 //
 @mixin selector-placeholder($selector) {
-  .#{$selector},
-  %#{$selector} {
+  #{$selector},
+  %#{str-replace($selector, '.')} {
     @content;
   }
 }

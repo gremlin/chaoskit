@@ -482,7 +482,7 @@ $form-contrast-background-focus: transparent !default;
 
   // 1.Behave like block-level element
   // 2. Style
-  @include selector-placeholder('form-label') {
+  @include selector-placeholder('.form-label') {
     // 1
     display: block;
     // 2
@@ -791,7 +791,7 @@ $form-contrast-background-focus: transparent !default;
   // Select
   //
 
-  @include selector-placeholder('form-select') {
+  @include selector-placeholder('.form-select') {
     position: relative;
 
     select {

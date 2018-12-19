@@ -3,7 +3,7 @@
 //
 
 @mixin inline() {
-  @include selector-placeholder('inline') {
+  @include selector-placeholder('.inline') {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -17,7 +17,7 @@
     }
   }
 
-  @include selector-placeholder('inline--small') {
+  @include selector-placeholder('.inline--small') {
     margin-top: (-$global-whitespace-small);
     margin-left: (-$global-whitespace-small);
 
@@ -27,7 +27,7 @@
     }
   }
 
-  @include selector-placeholder('inline--medium') {
+  @include selector-placeholder('.inline--medium') {
     margin-top: (-$global-whitespace-medium);
     margin-left: (-$global-whitespace-medium);
 
@@ -37,7 +37,7 @@
     }
   }
 
-  @include selector-placeholder('inline--large') {
+  @include selector-placeholder('.inline--large') {
     margin-top: (-$global-whitespace-large);
     margin-left: (-$global-whitespace-large);
 
@@ -47,7 +47,7 @@
     }
   }
 
-  @include selector-placeholder('inline--xlarge') {
+  @include selector-placeholder('.inline--xlarge') {
     margin-top: (-$global-whitespace-xlarge);
     margin-left: (-$global-whitespace-xlarge);
 
@@ -57,7 +57,7 @@
     }
   }
 
-  @include selector-placeholder('inline--noWrap') {
+  @include selector-placeholder('.inline--noWrap') {
     white-space: nowrap;
     flex-wrap: nowrap;
   }
