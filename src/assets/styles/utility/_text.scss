@@ -135,16 +135,58 @@
     line-height: $global-line-height-small !important;
   }
 
-  @include breakpoint-selector('.u-textLeft') {
+  @include selector-placeholder('.u-textLeft') {
     text-align: left !important;
   }
 
-  @include breakpoint-selector('.u-textCenter') {
+  @include selector-placeholder('.u-textCenter') {
     text-align: center !important;
   }
 
-  @include breakpoint-selector('.u-textRight') {
+  @include selector-placeholder('.u-textRight') {
     text-align: right !important;
+  }
+
+  @media (min-width: $global-viewport-small) {
+    .u-textLeft\@small {
+      text-align: left !important;
+    }
+
+    .u-textCenter\@small {
+      text-align: center !important;
+    }
+
+    .u-textRight\@small {
+      text-align: right !important;
+    }
+  }
+
+  @media (min-width: $global-viewport-medium) {
+    .u-textLeft\@medium {
+      text-align: left !important;
+    }
+
+    .u-textCenter\@medium {
+      text-align: center !important;
+    }
+
+    .u-textRight\@medium {
+      text-align: right !important;
+    }
+  }
+
+  @media (min-width: $global-viewport-large) {
+    .u-textLeft\@large {
+      text-align: left !important;
+    }
+
+    .u-textCenter\@large {
+      text-align: center !important;
+    }
+
+    .u-textRight\@large {
+      text-align: right !important;
+    }
   }
 
   @if (mixin-exists(hook-utility-text)) { @include hook-utility-text(); }
