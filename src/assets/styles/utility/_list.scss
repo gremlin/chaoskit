@@ -50,6 +50,7 @@
       padding-bottom: $global-whitespace-large;
 
       + * {
+        margin-top: 0;
         border-top: 1px solid $global-border;
       }
     }
