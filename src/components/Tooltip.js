@@ -20,8 +20,14 @@ class Tooltip extends React.Component {
     // Tooltips are not triggered on touch-devices to not interfere with actionable items
     // This can be overidden with the `mobileTap` prop
     if (!isTouchDevice() || mobileTap) {
-      $tooltipTrigger.addEventListener('mouseenter', this.renderTooltip.bind(this));
-      $tooltipTrigger.addEventListener('mouseleave', this.closeTooltip.bind(this));
+      $tooltipTrigger.addEventListener(
+        'mouseenter',
+        this.renderTooltip.bind(this),
+      );
+      $tooltipTrigger.addEventListener(
+        'mouseleave',
+        this.closeTooltip.bind(this),
+      );
     }
   }
 
@@ -31,8 +37,14 @@ class Tooltip extends React.Component {
 
     // Remove event listeners from non-touch devices
     if (!isTouchDevice() || mobileTap) {
-      $tooltipTrigger.removeEventListener('mouseenter', this.renderTooltip.bind(this));
-      $tooltipTrigger.removeEventListener('mouseleave', this.closeTooltip.bind(this));
+      $tooltipTrigger.removeEventListener(
+        'mouseenter',
+        this.renderTooltip.bind(this),
+      );
+      $tooltipTrigger.removeEventListener(
+        'mouseleave',
+        this.closeTooltip.bind(this),
+      );
     }
   }
 
@@ -49,7 +61,7 @@ class Tooltip extends React.Component {
     }
 
     return tooltipTrigger;
-  }
+  };
 
   /**
    * Figure out direciton and position
@@ -71,49 +83,68 @@ class Tooltip extends React.Component {
     // Tooltip dimensions
     const tooltipDim = { w: $tooltip.offsetWidth, h: $tooltip.offsetHeight };
 
-    const scrollYOffset = window.pageYOffset || document.documentElement.scrollTop;
-    const scrollXOffset = window.pageXOffset || document.documentElement.scrollLeft;
+    const scrollYOffset =
+      window.pageYOffset || document.documentElement.scrollTop;
+    const scrollXOffset =
+      window.pageXOffset || document.documentElement.scrollLeft;
 
     // Apply styling
-    switch (placement) { // eslint-disable-line default-case
+    switch (
+      placement // eslint-disable-line default-case
+    ) {
       case 'top':
-        $tooltip.style.top = `${(rect.top + scrollYOffset) - tooltipDim.h}px`;
-        $tooltip.style.left = `${(rect.left + scrollXOffset + (linkDim.w / 2)) - (tooltipDim.w / 2)}px`;
+        $tooltip.style.top = `${rect.top + scrollYOffset - tooltipDim.h}px`;
+        $tooltip.style.left = `${rect.left +
+          scrollXOffset +
+          linkDim.w / 2 -
+          tooltipDim.w / 2}px`;
         break;
       case 'bottom':
-        $tooltip.style.top = `${(rect.top + scrollYOffset) + linkDim.h}px`;
-        $tooltip.style.left = `${(rect.left + scrollXOffset + (linkDim.w / 2)) - (tooltipDim.w / 2)}px`;
+        $tooltip.style.top = `${rect.top + scrollYOffset + linkDim.h}px`;
+        $tooltip.style.left = `${rect.left +
+          scrollXOffset +
+          linkDim.w / 2 -
+          tooltipDim.w / 2}px`;
         break;
       case 'left':
-        $tooltip.style.top = `${(rect.top + scrollYOffset + (linkDim.h / 2)) - (tooltipDim.h / 2)}px`;
-        $tooltip.style.left = `${(rect.left + scrollXOffset) - tooltipDim.w}px`;
+        $tooltip.style.top = `${rect.top +
+          scrollYOffset +
+          linkDim.h / 2 -
+          tooltipDim.h / 2}px`;
+        $tooltip.style.left = `${rect.left + scrollXOffset - tooltipDim.w}px`;
         break;
       case 'right':
-        $tooltip.style.top = `${(rect.top + scrollYOffset + (linkDim.h / 2)) - (tooltipDim.h / 2)}px`;
+        $tooltip.style.top = `${rect.top +
+          scrollYOffset +
+          linkDim.h / 2 -
+          tooltipDim.h / 2}px`;
         $tooltip.style.left = `${rect.left + scrollXOffset + linkDim.w}px`;
         break;
     }
 
     this.openTooltip();
-  }
+  };
 
   openTooltip = () => {
     const $tooltip = this.tooltip;
 
     $tooltip.timeline.play();
-  }
+  };
 
   closeTooltip = () => {
     const $tooltip = this.tooltip;
 
     if ($tooltip) $tooltip.timeline.reverse();
-  }
+  };
 
   renderTooltip = () => {
-    this.setState({
-      renderTooltip: true,
-    }, () => this.attachTimeline());
-  }
+    this.setState(
+      {
+        renderTooltip: true,
+      },
+      () => this.attachTimeline(),
+    );
+  };
 
   attachTimeline() {
     const $tooltip = this.tooltip;
@@ -131,7 +162,9 @@ class Tooltip extends React.Component {
 
     let transformOrigin;
 
-    switch (placement) { // eslint-disable-line default-case
+    switch (
+      placement // eslint-disable-line default-case
+    ) {
       case 'top':
         transformOrigin = 'center bottom';
         break;
@@ -146,10 +179,11 @@ class Tooltip extends React.Component {
         break;
     }
 
-    $tooltip.timeline.set($tooltip, {
-      transformOrigin,
-      scale: 0.75,
-    })
+    $tooltip.timeline
+      .set($tooltip, {
+        transformOrigin,
+        scale: 0.75,
+      })
       .to($tooltip, 0.175, {
         css: {
           y: 0,
@@ -182,20 +216,19 @@ class Tooltip extends React.Component {
     return (
       <Fragment>
         {React.Children.only(this.renderChildren())}
-        {renderTooltip && (
+        {renderTooltip &&
           ReactDOM.createPortal(
             <div
               className="tooltip"
-              ref={(ref) => { this.tooltip = ref; }}
+              ref={(ref) => {
+                this.tooltip = ref;
+              }}
               role="tooltip"
             >
-              <div className="tooltip-inner">
-                {content}
-              </div>
+              <div className="tooltip-inner">{content}</div>
             </div>,
             document.body,
-          )
-        )}
+          )}
       </Fragment>
     );
   }

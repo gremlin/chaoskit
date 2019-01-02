@@ -20,7 +20,9 @@ $section-slant-offset: 2.5vw !default;
       padding: $section-vertical-padding 0;
     }
 
-    @if (mixin-exists(hook-section)) { @include hook-section(); }
+    @if (mixin-exists(hook-section)) {
+      @include hook-section();
+    }
   }
 
   .section--large {
@@ -30,11 +32,19 @@ $section-slant-offset: 2.5vw !default;
       padding: $section-large-vertical-padding 0;
     }
 
-    @if (mixin-exists(hook-section)) { @include hook-section-large(); }
+    @if (mixin-exists(hook-section)) {
+      @include hook-section-large();
+    }
   }
 
   .section--slant {
-    clip-path: polygon(0 0, 100% #{$section-slant-offset}, 100% 100%, 0 calc(100% - #{$section-slant-offset}));
+    clip-path:
+      polygon(
+        0 0,
+        100% #{$section-slant-offset},
+        100% 100%,
+        0 calc(100% - #{$section-slant-offset})
+      );
     margin-top: -$section-slant-offset;
   }
 
@@ -42,13 +52,15 @@ $section-slant-offset: 2.5vw !default;
     position: relative;
 
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       right: 0;
       left: 0;
       bottom: -$section-slant-offset;
       z-index: -1;
-      border-bottom: ($section-slant-offset * 2.25) solid rgba($global-dark, 0.03);
+      border-bottom:
+        ($section-slant-offset * 2.25) solid
+        rgba($global-dark, 0.03);
       filter: blur(5px);
     }
   }

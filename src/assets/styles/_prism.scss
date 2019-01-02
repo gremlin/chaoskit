@@ -326,7 +326,7 @@ $prism-theme: light !default;
 //
 
 @mixin prism() {
-  @if $prism-theme == 'light' {
+  @if $prism-theme == "light" {
     @include prism-light();
   }
 

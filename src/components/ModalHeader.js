@@ -9,7 +9,7 @@ class ModalHeader extends React.Component {
     const { onCloseClick } = this.props;
 
     onCloseClick();
-  }
+  };
 
   render() {
     const { center, className, title } = this.props;

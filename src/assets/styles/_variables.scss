@@ -40,8 +40,10 @@ $global-box-shadow-color-light: rgba($global-dark, 0.14) !default;
 $global-box-shadow: $global-box-shadow-offset $global-box-shadow-color !default;
 $global-box-shadow-inset: inset 0 1px 4px $global-box-shadow-color-light !default;
 
-$global-big-media-shadow: 0 15px 35px rgba($global-dark, 0.1), 0 5px 15px rgba($global-dark, 0.07) !default;
-$global-small-media-shadow: 0 7.5px 17.5px rgba($global-dark, 0.1), 0 2.5px 7.5px rgba($global-dark, 0.07) !default;
+$global-big-media-shadow: 0 15px 35px rgba($global-dark, 0.1),
+  0 5px 15px rgba($global-dark, 0.07) !default;
+$global-small-media-shadow: 0 7.5px 17.5px rgba($global-dark, 0.1),
+  0 2.5px 7.5px rgba($global-dark, 0.07) !default;
 
 $global-panel-background: #fafbfc !default;
 $global-panel-background-hover: darken($global-panel-background, 5) !default;
@@ -126,11 +128,19 @@ $global-viewport-medium-max: ($global-width-large - 1px) !default;
 $global-viewport-large: #{$global-width-large}px !default;
 $global-viewport-xlarge: #{$global-width-xlarge}px !default;
 
-$breakpoint-xsmall: 'xsmall' !default;
-$breakpoint-small: 'small' !default;
-$breakpoint-medium: 'medium' !default;
-$breakpoint-large: 'large' !default;
+$breakpoint-xsmall: "xsmall" !default;
+$breakpoint-small: "small" !default;
+$breakpoint-medium: "medium" !default;
+$breakpoint-large: "large" !default;
 
 $global-breakpoint-sizes: $breakpoint-small $breakpoint-medium $breakpoint-large !default;
-$global-queries: (#{$breakpoint-small}: #{$global-viewport-small}, #{$breakpoint-medium}: #{$global-viewport-medium}, #{$breakpoint-large}: #{$global-viewport-large}) !default;
-$global-queries-max: (#{$breakpoint-xsmall}: $global-viewport-xsmall-max, #{$breakpoint-small}: #{$global-viewport-small-max}, #{$breakpoint-medium}: #{$global-viewport-medium-max}) !default;
+$global-queries: (
+  #{$breakpoint-small}: #{$global-viewport-small},
+  #{$breakpoint-medium}: #{$global-viewport-medium},
+  #{$breakpoint-large}: #{$global-viewport-large}
+) !default;
+$global-queries-max: (
+  #{$breakpoint-xsmall}: $global-viewport-xsmall-max,
+  #{$breakpoint-small}: #{$global-viewport-small-max},
+  #{$breakpoint-medium}: #{$global-viewport-medium-max}
+) !default;

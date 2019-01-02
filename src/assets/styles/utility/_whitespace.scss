@@ -14,7 +14,7 @@ $whitespace-sizes: (
 
 @mixin whitespace() {
   @each $name, $size in $whitespace-sizes {
-    $selector: '--#{$name}';
+    $selector: "--#{$name}";
 
     @if $name != remove {
       .u-ma#{$selector} {

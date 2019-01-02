@@ -71,7 +71,11 @@ const ChoicesMultiPropDescriptions = {};
 
 const ChoicesMultiDocs = () => (
   <BaseLayout pageTitle="Choices Multi">
-    <p>Uses <a href="https://github.com/paypal/downshift">downshift</a> to provide ULTIMATE-POWER and flexibility to more complex <code>&lt;select&gt;</code> UIs.</p>
+    <p>
+      Uses <a href="https://github.com/paypal/downshift">downshift</a> to
+      provide ULTIMATE-POWER and flexibility to more complex{' '}
+      <code>&lt;select&gt;</code> UIs.
+    </p>
     <Live
       code={ChoicesMultiExample}
       scope={ChoicesMultiScope}

@@ -1,25 +1,35 @@
 @mixin gradient() {
-  @include selector-placeholder('.u-gradient--blue-green') {
+  @include selector-placeholder(".u-gradient--blue-green") {
     background: linear-gradient(to right, $GREMLIN_blue, $GREMLIN_green);
   }
 
-  @include selector-placeholder('.u-gradient--teal-darkBlue') {
+  @include selector-placeholder(".u-gradient--teal-darkBlue") {
     background: linear-gradient(to right, $GREMLIN_teal, $GREMLIN_darkblue);
   }
 
-  @include selector-placeholder('.u-gradient--teal-brightTeal') {
-    background: linear-gradient(to right, $GREMLIN_teal, lighten($GREMLIN_teal, 12.5%));
+  @include selector-placeholder(".u-gradient--teal-brightTeal") {
+    background:
+      linear-gradient(
+        to right,
+        $GREMLIN_teal,
+        lighten($GREMLIN_teal, 12.5%)
+      );
   }
 
-  @include selector-placeholder('.u-gradient--green-teal') {
+  @include selector-placeholder(".u-gradient--green-teal") {
     background: linear-gradient(to right, $GREMLIN_teal, $GREMLIN_green);
   }
 
-  @include selector-placeholder('.u-gradient--darkerBlue-darkestBlue') {
-    background: linear-gradient(to right, $GREMLIN_darkerblue, $GREMLIN_darkestblue);
+  @include selector-placeholder(".u-gradient--darkerBlue-darkestBlue") {
+    background:
+      linear-gradient(
+        to right,
+        $GREMLIN_darkerblue,
+        $GREMLIN_darkestblue
+      );
   }
 
-  @include selector-placeholder('.u-gradient--darkBlue-purple') {
+  @include selector-placeholder(".u-gradient--darkBlue-purple") {
     background: linear-gradient(to right, $GREMLIN_darkblue, $GREMLIN_purple);
   }
 }

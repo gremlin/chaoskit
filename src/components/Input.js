@@ -43,7 +43,7 @@ class Input extends React.Component {
   componentDidUpdate(prevProps) {
     const { focus } = this.props;
 
-    if ((prevProps.focus !== focus) && focus) {
+    if (prevProps.focus !== focus && focus) {
       this.input.focus();
     }
   }
@@ -55,7 +55,7 @@ class Input extends React.Component {
     if (onChange) {
       onChange(e.target.name, e.target.value);
     }
-  }
+  };
 
   handleKeyPress = (e) => {
     const { onKeyPress } = this.props;
@@ -63,10 +63,25 @@ class Input extends React.Component {
     if (onKeyPress) {
       onKeyPress(e);
     }
-  }
+  };
 
   render() {
-    const { autoComplete, className, disabled, focus, label, guide, mask, name, type, placeholder, validationMessage, explanationMessage, prefixIcon, required } = this.props;
+    const {
+      autoComplete,
+      className,
+      disabled,
+      focus,
+      label,
+      guide,
+      mask,
+      name,
+      type,
+      placeholder,
+      validationMessage,
+      explanationMessage,
+      prefixIcon,
+      required,
+    } = this.props;
     const { value } = this.state;
 
     const classes = cx('form-group', className, {
@@ -87,23 +102,17 @@ class Input extends React.Component {
         onChange: this.handleChange,
         onKeyPress: this.handleKeyPress,
         placeholder,
-        ref: (ref) => { this.input = ref; },
+        ref: (ref) => {
+          this.input = ref;
+        },
       };
 
       // `react-text-mask` does not support 'email' or 'number' input types
       if (mask && !['email', 'number'].includes(type)) {
-        return (
-          <MaskedInput
-            {... defaultProps}
-            mask={mask}
-            guide={guide}
-          />
-        );
+        return <MaskedInput {...defaultProps} mask={mask} guide={guide} />;
       }
 
-      return (
-        <input {... defaultProps} />
-      );
+      return <input {...defaultProps} />;
     };
 
     return (
@@ -116,10 +125,13 @@ class Input extends React.Component {
             </div>
             {inputRender()}
           </div>
-        ) :
+        ) : (
           inputRender()
-        }
-        <FormFooter explanationMessage={explanationMessage} validationMessage={validationMessage} />
+        )}
+        <FormFooter
+          explanationMessage={explanationMessage}
+          validationMessage={validationMessage}
+        />
       </div>
     );
   }

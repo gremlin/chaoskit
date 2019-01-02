@@ -3,7 +3,7 @@
 //
 
 @mixin flex() {
-  @include selector-placeholder('.u-flex') {
+  @include selector-placeholder(".u-flex") {
     display: flex;
     list-style: none;
     padding: 0;
@@ -11,7 +11,7 @@
   }
 
   // Child elements automatically match height; this extends that ability to first child element
-  @include selector-placeholder('.u-flexDeepMatch') {
+  @include selector-placeholder(".u-flexDeepMatch") {
     > * {
       display: flex;
       flex-wrap: wrap;
@@ -23,23 +23,23 @@
     }
   }
 
-  @include selector-placeholder('.u-flexItemNone') {
+  @include selector-placeholder(".u-flexItemNone") {
     flex: none;
   }
 
-  @include selector-placeholder('.u-flexItemAuto') {
+  @include selector-placeholder(".u-flexItemAuto") {
     flex: auto;
   }
 
-  @include selector-placeholder('.u-flexItem1') {
+  @include selector-placeholder(".u-flexItem1") {
     flex: 1 !important;
   }
 
-  @include selector-placeholder('.u-flexBetween') {
+  @include selector-placeholder(".u-flexBetween") {
     justify-content: space-between !important;
   }
 
-  @include selector-placeholder('.u-flexAround') {
+  @include selector-placeholder(".u-flexAround") {
     justify-content: space-around !important;
   }
 
@@ -47,27 +47,27 @@
   // Alignment modifiers
   //
 
-  @include selector-placeholder('.u-flexStart') {
+  @include selector-placeholder(".u-flexStart") {
     justify-content: flex-start !important;
   }
 
-  @include selector-placeholder('.u-flexCenter') {
+  @include selector-placeholder(".u-flexCenter") {
     justify-content: center !important;
   }
 
-  @include selector-placeholder('.u-flexEnd') {
+  @include selector-placeholder(".u-flexEnd") {
     justify-content: flex-end !important;
   }
 
-  @include selector-placeholder('.u-flexTop') {
+  @include selector-placeholder(".u-flexTop") {
     align-items: flex-start !important;
   }
 
-  @include selector-placeholder('.u-flexMiddle') {
+  @include selector-placeholder(".u-flexMiddle") {
     align-items: center !important;
   }
 
-  @include selector-placeholder('.u-flexBottom') {
+  @include selector-placeholder(".u-flexBottom") {
     align-items: flex-end !important;
   }
 
@@ -221,5 +221,7 @@
     }
   }
 
-  @if (mixin-exists(hook-utility-flex-misc)) { @include hook-utility-flex-misc(); }
+  @if (mixin-exists(hook-utility-flex-misc)) {
+    @include hook-utility-flex-misc();
+  }
 }

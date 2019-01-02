@@ -38,7 +38,10 @@ export function throttleScroll(action) {
  * @return {string}
  */
 export function generateUUID(a) {
-  return a ? (a ^ Math.random() * 16 >> a / 4).toString(16) : ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, generateUUID); // eslint-disable-line
+  return a
+    ? /* eslint-disable-next-line no-bitwise */
+    (a ^ ((Math.random() * 16) >> (a / 4))).toString(16)
+    : ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, generateUUID); // eslint-disable-line
 }
 
 /**
@@ -49,7 +52,9 @@ export function generateUUID(a) {
  * @return {array}
  */
 export function unique(array, propertyName) {
-  return array.filter((e, i) => array.findIndex(a => a[propertyName] === e[propertyName]) === i);
+  return array.filter(
+    (e, i) => array.findIndex(a => a[propertyName] === e[propertyName]) === i,
+  );
 }
 
 /**
@@ -108,7 +113,10 @@ export function isTouchDevice() {
  * @return {string}
  */
 export function formatNumber(number) {
-  const parts = number.toFixed(2).toString().split('.');
+  const parts = number
+    .toFixed(2)
+    .toString()
+    .split('.');
 
   parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
@@ -122,8 +130,8 @@ export function formatNumberShorthand(number, min = 1e3) {
 
     const order = Math.floor(Math.log(number) / Math.log(1000));
 
-    const unitname = units[(order - 1)];
-    const num = (number / (1000 ** order)).toFixed(2);
+    const unitname = units[order - 1];
+    const num = (number / 1000 ** order).toFixed(2);
 
     // Output number remainder + unitname
     return num + unitname;

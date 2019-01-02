@@ -19,23 +19,34 @@ class ChoicesSingle extends React.Component {
     if (selected.length && !input.length && e.keyCode === 8) {
       onChange(selected.slice(0, selected.length - 1));
     }
-  }
+  };
 
   handleInputChange = (e) => {
     this.setState({ input: e.target.value });
-  }
+  };
 
   handleChange = (item) => {
     const { onChange, name } = this.props;
 
     onChange(name, item);
     this.setState({ input: '' });
-  }
+  };
 
   itemToString = item => (item ? item.label : '');
 
   render() {
-    const { className, explanationMessage, label, options, placeholder, removeItem, searchPlaceholder, selected, required, validationMessage } = this.props;
+    const {
+      className,
+      explanationMessage,
+      label,
+      options,
+      placeholder,
+      removeItem,
+      searchPlaceholder,
+      selected,
+      required,
+      validationMessage,
+    } = this.props;
     const { input } = this.state;
     const optionsList = input.length
       ? matchSorter(options, input, {
@@ -46,7 +57,8 @@ class ChoicesSingle extends React.Component {
       [config.classes.notValid]: validationMessage,
       [config.classes.required]: required,
     });
-    const selectedOption = selected !== -1 ? optionsList.find(x => x.value === selected) : -1;
+    const selectedOption =
+      selected !== -1 ? optionsList.find(x => x.value === selected) : -1;
 
     return (
       <Downshift
@@ -68,16 +80,25 @@ class ChoicesSingle extends React.Component {
                   {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events */}
                   <div className="choices__inner" onClick={downshift.openMenu}>
                     <div className="choices__list choices__list--single">
-                      {downshift.selectedItem && downshift.selectedItem !== -1 ? (
+                      {downshift.selectedItem &&
+                      downshift.selectedItem !== -1 ? (
                         <div className="choices__item choices__item--selectable">
                           {downshift.selectedItem.label}
-                          {removeItem && <button type="button" className="choices__button" onClick={removeItem}>Remove item</button>}
+                          {removeItem && (
+                            <button
+                              type="button"
+                              className="choices__button"
+                              onClick={removeItem}
+                            >
+                              Remove item
+                            </button>
+                          )}
                         </div>
-                      ) : (
-                        <div className="choices__item choices__item--selectable choices__placeholder">
-                          {placeholder}
-                        </div>
-                      )}
+                        ) : (
+                          <div className="choices__item choices__item--selectable choices__placeholder">
+                            {placeholder}
+                          </div>
+                        )}
                     </div>
                   </div>
                   {downshift.isOpen && (
@@ -91,30 +112,46 @@ class ChoicesSingle extends React.Component {
                           onKeyDown: this.handleKeyDown,
                         })}
                       />
-                      <div className="choices__list" {...downshift.getMenuProps()}>
-                        {optionsList.length > 0 ?
+                      <div
+                        className="choices__list"
+                        {...downshift.getMenuProps()}
+                      >
+                        {optionsList.length > 0 ? (
                           optionsList.map((item, index) => {
                             // eslint-disable-next-line
-                            const itemClasses = cx('choices__item choices__item--choice', {
-                              'is-highlighted': downshift.highlightedIndex === index || downshift.selectedItem === item,
-                            });
+                            const itemClasses = cx(
+                              'choices__item choices__item--choice',
+                              {
+                                'is-highlighted':
+                                  downshift.highlightedIndex === index ||
+                                  downshift.selectedItem === item,
+                              },
+                            );
 
                             return (
-                              <div className={itemClasses} {...downshift.getItemProps({ item })} key={item.value}>
+                              <div
+                                className={itemClasses}
+                                {...downshift.getItemProps({ item })}
+                                key={item.value}
+                              >
                                 {item.label}
                               </div>
                             );
-                          }) : (
-                            <div className="choices__item choices__item--choice has-no-results">
+                          })
+                        ) : (
+                          <div className="choices__item choices__item--choice has-no-results">
                             No results found
-                            </div>
-                          )}
+                          </div>
+                        )}
                       </div>
                     </div>
                   )}
                 </div>
               </div>
-              <FormFooter explanationMessage={explanationMessage} validationMessage={validationMessage} />
+              <FormFooter
+                explanationMessage={explanationMessage}
+                validationMessage={validationMessage}
+              />
             </div>
           );
         }}

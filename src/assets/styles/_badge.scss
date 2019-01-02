@@ -33,7 +33,9 @@ $badge-rounded-enable: true !default;
     text-transform: uppercase;
     user-select: none;
 
-    @if (mixin-exists(hook-badge)) { @include hook-badge(); }
+    @if (mixin-exists(hook-badge)) {
+      @include hook-badge();
+    }
   }
 
   @if $badge-primary-enable {
@@ -58,5 +60,7 @@ $badge-rounded-enable: true !default;
     }
   }
 
-  @if (mixin-exists(hook-badge-misc)) { @include hook-badge-misc(); }
+  @if (mixin-exists(hook-badge-misc)) {
+    @include hook-badge-misc();
+  }
 }

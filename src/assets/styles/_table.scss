@@ -111,7 +111,9 @@ $table-contrast-emphasis-background: rgba($global-contrast, 0.15) !default;
       }
     }
 
-    @if (mixin-exists(hook-table)) { @include hook-table(); }
+    @if (mixin-exists(hook-table)) {
+      @include hook-table();
+    }
   }
 
   // Add margin if adjacent element
@@ -144,7 +146,7 @@ $table-contrast-emphasis-background: rgba($global-contrast, 0.15) !default;
         border-right: 0;
 
         &::before {
-          content: attr(data-th) ': ';
+          content: attr(data-th) ": ";
           flex: none;
           width: $table-responsive-label-width;
           margin-right: $global-whitespace-small;

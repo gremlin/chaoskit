@@ -22,7 +22,11 @@ const LoaderScope = {
 
 const LoaderDocs = () => (
   <BaseLayout pageTitle="Loader">
-    <p>While no one likes to wait; great things come to those that do. For those times, a loader is available to notify users some magic is happening behind the scenes.</p>
+    <p>
+      While no one likes to wait; great things come to those that do. For those
+      times, a loader is available to notify users some magic is happening
+      behind the scenes.
+    </p>
 
     <Live
       code={LoaderExample}
@@ -32,7 +36,10 @@ const LoaderDocs = () => (
     />
 
     <h3>Manipulating Loaders</h3>
-    <p>Loaders are just as maluable as any piece of text; with both their size and color inheritting from its own, or parent selectors.</p>
+    <p>
+      Loaders are just as maluable as any piece of text; with both their size
+      and color inheritting from its own, or parent selectors.
+    </p>
     <Live
       code={LoaderExampleManipulate}
       scope={LoaderScope}
@@ -41,7 +48,10 @@ const LoaderDocs = () => (
     />
 
     <Alert type="warning" title="🕵️ Did you know?‍">
-      <p>The Loader component is re-used within the <a href="/button/">Button</a> component via its <code>loading</code> prop.</p>
+      <p>
+        The Loader component is re-used within the <a href="/button/">Button</a>{' '}
+        component via its <code>loading</code> prop.
+      </p>
     </Alert>
   </BaseLayout>
 );

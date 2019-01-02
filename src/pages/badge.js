@@ -31,7 +31,10 @@ const BadgeScope = {
 
 const BadgeDocs = () => (
   <BaseLayout pageTitle="Badge">
-    <p>Badges are indicators and have no interactivity. They are used to indicate an item&apos;s current state.</p>
+    <p>
+      Badges are indicators and have no interactivity. They are used to indicate
+      an item&apos;s current state.
+    </p>
 
     <Live
       code={BadgeExample}

@@ -4,7 +4,25 @@ import BaseLayout from '../layouts/BaseLayout';
 import Live from '../docs/Live';
 import { Input } from '../components';
 
-const phoneMask = ['+', '1', ' ', '(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+const phoneMask = [
+  '+',
+  '1',
+  ' ',
+  '(',
+  /[1-9]/,
+  /\d/,
+  /\d/,
+  ')',
+  ' ',
+  /\d/,
+  /\d/,
+  /\d/,
+  '-',
+  /\d/,
+  /\d/,
+  /\d/,
+  /\d/,
+];
 
 const onlyNumbers = (rawValue) => {
   const mask = [];
@@ -69,12 +87,23 @@ const InputPropDescriptions = {
   explanationMessage: 'Field descriptions',
   validationMessage: 'Error messages with field',
   guide: 'Show guide while typing; used in conjunction with <code>mask</code>',
-  mask: 'Mask to apply to input; by <a target="_blank" rel="noopener noreferrer" href="https://github.com/text-mask/text-mask/">text-mask</a>',
+  mask:
+    'Mask to apply to input; by <a target="_blank" rel="noopener noreferrer" href="https://github.com/text-mask/text-mask/">text-mask</a>',
 };
 
 const InputDocs = () => (
   <BaseLayout pageTitle="Input">
-    <p>Uses <a target="_blank" rel="noopener noreferrer" href="https://github.com/text-mask/text-mask/">text-mask</a> to provide masking capabilities for better UX.</p>
+    <p>
+      Uses{' '}
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://github.com/text-mask/text-mask/"
+      >
+        text-mask
+      </a>{' '}
+      to provide masking capabilities for better UX.
+    </p>
 
     <Live
       code={InputExample}

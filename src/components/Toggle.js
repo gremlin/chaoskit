@@ -33,13 +33,13 @@ class Toggle extends React.Component {
     this.setState({
       checked: !checked,
     });
-  }
+  };
 
   handleKeyUp = (e) => {
     if (e.keyCode === 13) {
       this.toggleLabel.click();
     }
-  }
+  };
 
   render() {
     const { className, disabled, name, label, value } = this.props;
@@ -62,10 +62,14 @@ class Toggle extends React.Component {
           />
           <label // eslint-disable-line jsx-a11y/label-has-for, jsx-a11y/label-has-associated-control
             htmlFor={this.id}
-            ref={(toggleLabel) => { this.toggleLabel = toggleLabel; }}
+            ref={(toggleLabel) => {
+              this.toggleLabel = toggleLabel;
+            }}
           />
         </div>
-        <FormLabel className="toggle-labelText" id={this.id}>{label}</FormLabel>
+        <FormLabel className="toggle-labelText" id={this.id}>
+          {label}
+        </FormLabel>
       </div>
     );
   }

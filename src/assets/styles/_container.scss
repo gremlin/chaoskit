@@ -21,12 +21,16 @@ $container-gutter: $global-whitespace-regular !default;
       max-width: $container-small-max-width;
     }
 
-    [class^='container'] {
+    [class^="container"] {
       padding: 0;
     }
 
-    @if (mixin-exists(hook-container)) { @include hook-container(); }
+    @if (mixin-exists(hook-container)) {
+      @include hook-container();
+    }
   }
 
-  @if (mixin-exists(hook-container-misc)) { @include hook-container-misc(); }
+  @if (mixin-exists(hook-container-misc)) {
+    @include hook-container-misc();
+  }
 }

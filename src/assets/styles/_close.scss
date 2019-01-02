@@ -20,13 +20,17 @@ $close-offset: $global-whitespace-small !default;
     opacity: $global-disabled-opacity;
     transition: opacity $close-transition;
 
-    @if (mixin-exists(hook-close)) { @include hook-close(); }
+    @if (mixin-exists(hook-close)) {
+      @include hook-close();
+    }
 
     > .icon {
       transition: transform $close-transition;
       transform-origin: center center;
 
-      @if (mixin-exists(hook-close-icon)) { @include hook-close-icon(); }
+      @if (mixin-exists(hook-close-icon)) {
+        @include hook-close-icon();
+      }
     }
 
     &:hover,
