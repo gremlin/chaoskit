@@ -131,6 +131,7 @@ export function formatNumberShorthand(number, min = 1e3) {
     const order = Math.floor(Math.log(number) / Math.log(1000));
 
     const unitname = units[order - 1];
+    // eslint-disable-next-line no-mixed-operators
     const num = (number / 1000 ** order).toFixed(2);
 
     // Output number remainder + unitname

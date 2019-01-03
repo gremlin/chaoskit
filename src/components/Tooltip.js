@@ -89,6 +89,7 @@ class Tooltip extends React.Component {
       window.pageXOffset || document.documentElement.scrollLeft;
 
     // Apply styling
+    // eslint-disable-next-line default-case
     switch (
       placement // eslint-disable-line default-case
     ) {
@@ -162,6 +163,7 @@ class Tooltip extends React.Component {
 
     let transformOrigin;
 
+    // eslint-disable-next-line default-case
     switch (
       placement // eslint-disable-line default-case
     ) {
