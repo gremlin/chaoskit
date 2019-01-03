@@ -1,4 +1,4 @@
-@import "base";
+@import 'base';
 
 //
 // Components
@@ -34,171 +34,163 @@
 // Utilities
 //
 
-@import "utility/background";
-@import "utility/border";
-@import "utility/contrast";
-@import "utility/flex";
-@import "utility/gradient";
-@import "utility/list";
-@import "utility/text";
-@import "utility/visibility";
-@import "utility/whitespace";
-@import "utility/misc";
+@import 'utility/background';
+@import 'utility/border';
+@import 'utility/contrast';
+@import 'utility/flex';
+@import 'utility/gradient';
+@import 'utility/list';
+@import 'utility/text';
+@import 'utility/visibility';
+@import 'utility/whitespace';
+@import 'utility/misc';
 
 // Output base component by default
 @include base();
 
 // Output remaining components
 @each $component in $components {
-  @if $component == "alert" {
+  @if $component == 'alert' {
     @include alert();
   }
 
-  @else if $component == "avatar" {
+  @else if $component == 'avatar' {
     @include avatar();
   }
 
-  @else if $component == "background" {
+  @else if $component == 'background' {
     @include background();
   }
 
-  @else if $component == "badge" {
+  @else if $component == 'badge' {
     @include badge();
   }
 
-  @else if $component == "border" {
+  @else if $component == 'border' {
     @include border();
   }
 
-  @else if $component == "button" {
+  @else if $component == 'button' {
     @include button();
   }
 
-  @else if $component == "choices" {
+  @else if $component == 'choices' {
     @include choices();
   }
 
-  @else if $component == "container" {
+  @else if $component == 'container' {
     @include container();
   }
 
-  @else if $component == "close" {
+  @else if $component == 'close' {
     @include close();
   }
 
-  @else if $component == "contrast" {
+  @else if $component == 'contrast' {
     @include contrast();
   }
 
-<<<<<<< HEAD
-  @else if $component == "flex" {
-=======
   @else if $component == 'dropdown' {
     @include dropdown();
   }
 
   @else if $component == 'flex' {
->>>>>>> master
     @include flex();
   }
 
-  @else if $component == "form" {
+  @else if $component == 'form' {
     @include form();
   }
 
-  @else if $component == "gradient" {
+  @else if $component == 'gradient' {
     @include gradient();
   }
 
-  @else if $component == "grid" {
+  @else if $component == 'grid' {
     @include grid();
   }
 
-  @else if $component == "block-grid" {
+  @else if $component == 'block-grid' {
     @include blockGrid();
   }
 
-  @else if $component == "icon" {
+  @else if $component == 'icon' {
     @include icon();
   }
 
-  @else if $component == "iframe" {
+  @else if $component == 'iframe' {
     @include iframe();
   }
 
-  @else if $component == "inline" {
+  @else if $component == 'inline' {
     @include inline();
   }
 
-  @else if $component == "list" {
+  @else if $component == 'list' {
     @include list();
   }
 
-  @else if $component == "loader" {
+  @else if $component == 'loader' {
     @include loader();
   }
 
-<<<<<<< HEAD
-  @else if $component == "prism" {
-=======
   @else if $component == 'offCanvas' {
     @include offCanvas();
   }
 
   @else if $component == 'prism' {
->>>>>>> master
     @include prism();
   }
 
-  @else if $component == "reveal" {
+  @else if $component == 'reveal' {
     @include reveal();
   }
 
-  @else if $component == "table" {
+  @else if $component == 'table' {
     @include table();
   }
 
-  @else if $component == "text" {
+  @else if $component == 'text' {
     @include text();
   }
 
-  @else if $component == "tooltip" {
+  @else if $component == 'tooltip' {
     @include tooltip();
   }
 
-  @else if $component == "misc-utility" {
+  @else if $component == 'misc-utility' {
     @include miscUtility();
   }
 
-  @else if $component == "modal" {
+  @else if $component == 'modal' {
     @include modal();
   }
 
-  @else if $component == "pagination" {
+  @else if $component == 'pagination' {
     @include pagination();
   }
 
-  @else if $component == "section" {
+  @else if $component == 'section' {
     @include section();
   }
 
-  @else if $component == "social-icon" {
+  @else if $component == 'social-icon' {
     @include social-icon();
   }
 
-  @else if $component == "subnav" {
+  @else if $component == 'subnav' {
     @include subnav();
   }
 
-  @else if $component == "toggle" {
+  @else if $component == 'toggle' {
     @include toggle();
   }
 
-  @else if $component == "visibility" {
+  @else if $component == 'visibility' {
     @include visibility();
   }
 
-  @else if $component == "whitespace" {
+  @else if $component == 'whitespace' {
     @include whitespace();
   }
 }
