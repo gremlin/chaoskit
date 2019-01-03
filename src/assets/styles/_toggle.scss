@@ -41,7 +41,7 @@ $toggle-contrast-enable: true !default;
       transition: $toggle-transition;
 
       &::after {
-        content: "";
+        content: '';
         position: absolute;
         left: $toggle-button-offset;
         background: $toggle-button-background;

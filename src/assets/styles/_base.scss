@@ -3,7 +3,7 @@
 //
 
 $base-body-background: $global-background !default;
-$base-body-font-family: Gira, "Helvetica Neue", Arial, sans-serif !default;
+$base-body-font-family: Gira, 'Helvetica Neue', Arial, sans-serif !default;
 $base-body-font-weight: $global-font-weight !default;
 $base-body-font-size: $global-font-size !default;
 $base-font-antialiasing: true !default;
@@ -15,7 +15,7 @@ $base-link-hover-color: $global-primary-hover !default;
 $base-link-hover-text-decoration: none !default;
 $base-code-color: $global-danger !default;
 $base-code-font-size: $global-font-size-small !default;
-$base-code-font-family: "Operator Mono", Consolas, monospace, serif !default;
+$base-code-font-family: 'Operator Mono', Consolas, monospace, serif !default;
 $base-em-color: $global-font-color !default;
 $base-ins-background: #ffa !default;
 $base-ins-color: $global-font-color !default;
@@ -24,7 +24,7 @@ $base-mark-color: $global-font-color !default;
 $base-quote-font-style: italic !default;
 $base-margin-vertical: $global-whitespace-regular !default;
 $base-heading-line-height: $global-line-height-small !default;
-$base-heading-font-family: Circular, "Helvetica Neue", Arial, sans-serif !default !default;
+$base-heading-font-family: Circular, 'Helvetica Neue', Arial, sans-serif !default !default;
 $base-heading-font-weight: $global-font-weight-bold !default;
 $base-heading-color: $global-heading-color !default;
 $base-heading-text-transform: none !default;
@@ -158,13 +158,13 @@ $base-selection-color: $global-background !default;
   // might still respond to pointer events.
   //
   // Credit: https://github.com/suitcss/base
-  [tabindex="-1"]:focus {
+  [tabindex='-1']:focus {
     outline: none !important;
   }
 
   // Suppress focus outline on elements that are triggered via a mouse
   // Possible by bundling `what-input` library
-  html:not([data-whatinput="keyboard"]) :focus {
+  html:not([data-whatinput='keyboard']) :focus {
     outline: none;
   }
 
@@ -372,7 +372,7 @@ $base-selection-color: $global-background !default;
   //
 
   // Sizes
-  @include selector-placeholder("h1") {
+  @include selector-placeholder('h1') {
     @include base-heading-styles();
 
     @extend %u-textFluid--h1-h2;
@@ -385,7 +385,7 @@ $base-selection-color: $global-background !default;
     }
   }
 
-  @include selector-placeholder("h2") {
+  @include selector-placeholder('h2') {
     @include base-heading-styles();
 
     @extend %u-textFluid--h2-h3;
@@ -398,7 +398,7 @@ $base-selection-color: $global-background !default;
     }
   }
 
-  @include selector-placeholder("h3") {
+  @include selector-placeholder('h3') {
     @include base-heading-styles();
 
     @extend %u-textFluid--h3-h4;
@@ -411,7 +411,7 @@ $base-selection-color: $global-background !default;
     }
   }
 
-  @include selector-placeholder("h4") {
+  @include selector-placeholder('h4') {
     @include base-heading-styles();
 
     font-size: $base-h4-font-size;
@@ -423,7 +423,7 @@ $base-selection-color: $global-background !default;
     }
   }
 
-  @include selector-placeholder("h5") {
+  @include selector-placeholder('h5') {
     @include base-heading-styles();
 
     font-size: $base-h5-font-size;
@@ -523,7 +523,7 @@ $base-selection-color: $global-background !default;
     padding: $base-pre-padding;
     background: $base-pre-background;
     font:
-      $base-pre-font-size unquote("/") $base-pre-line-height
+      $base-pre-font-size unquote('/') $base-pre-line-height
       $base-pre-font-family;
     color: $base-pre-color;
     tab-size: 4;

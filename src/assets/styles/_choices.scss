@@ -63,7 +63,7 @@ $form-choices-max-height: 200px !default;
       outline: none;
     }
 
-    &[data-type="select-one"] {
+    &[data-type='select-one'] {
       &::after {
         @include form-select-arrow();
       }
@@ -112,7 +112,7 @@ $form-choices-max-height: 200px !default;
       }
 
       // For inline input
-      input[type="text"] {
+      input[type='text'] {
         border: 0;
         border-radius: 0;
         width: 100% !important;
@@ -220,9 +220,9 @@ $form-choices-max-height: 200px !default;
         display: block;
       }
 
-      [data-type="select-one"] & {
+      [data-type='select-one'] & {
         &::before {
-          content: "";
+          content: '';
           position: absolute;
           top: 0;
           transform:
@@ -238,12 +238,12 @@ $form-choices-max-height: 200px !default;
         }
       }
 
-      [data-type="select-multiple"] & {
+      [data-type='select-multiple'] & {
         max-height: $form-choices-max-height;
         overflow-y: auto;
       }
 
-      input[type="text"] {
+      input[type='text'] {
         background: $global-panel-background;
         border-width: 0 0 1px;
         border-radius: 0;

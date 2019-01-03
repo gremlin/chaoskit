@@ -3,18 +3,18 @@
 //
 
 $column-count: 12 !default;
-$row-selector: ".row" !default;
-$column-selector: ".column" !default;
-$blockgrid-selector: ".blockGrid" !default;
-$offset-modifier: "offset" !default;
-$block-delimiter: "-" !default;
-$element-delimiter: "-" !default;
+$row-selector: '.row' !default;
+$column-selector: '.column' !default;
+$blockgrid-selector: '.blockGrid' !default;
+$offset-modifier: 'offset' !default;
+$block-delimiter: '-' !default;
+$element-delimiter: '-' !default;
 $breakpoint-delimiter: \@ !default;
 
 $gutter-spacing: $global-whitespace-regular !default;
 
-$column-properties: "flex-basis", "max-width" !default;
-$offset-properties: "margin-left" !default;
+$column-properties: 'flex-basis', 'max-width' !default;
+$offset-properties: 'margin-left' !default;
 
 @mixin percent-width($property, $columns, $count) {
   #{$property}: ((100% / $columns) * $count);
@@ -185,7 +185,7 @@ $offset-properties: "margin-left" !default;
   }
 
   // Removes margin/padding around columns
-  @include grid-breakpoints("#{$row-selector}--collapse") {
+  @include grid-breakpoints('#{$row-selector}--collapse') {
     margin-top: 0;
     margin-left: 0;
 
@@ -200,7 +200,7 @@ $offset-properties: "margin-left" !default;
   //
 
   // Large gutters
-  @include grid-breakpoints("#{$row-selector}--largeGutter") {
+  @include grid-breakpoints('#{$row-selector}--largeGutter') {
     margin-top: (-$global-whitespace-large);
     margin-left: (-$global-whitespace-large);
 
@@ -211,7 +211,7 @@ $offset-properties: "margin-left" !default;
   }
 
   // XL Gutters
-  @include grid-breakpoints("#{$row-selector}--xlargeGutter") {
+  @include grid-breakpoints('#{$row-selector}--xlargeGutter') {
     margin-top: (-$global-whitespace-xlarge);
     margin-left: (-$global-whitespace-xlarge);
 
@@ -226,12 +226,12 @@ $offset-properties: "margin-left" !default;
   //
 
   // First
-  @include grid-breakpoints("#{$column-selector}--first") {
+  @include grid-breakpoints('#{$column-selector}--first') {
     order: -1;
   }
 
   // Last
-  @include grid-breakpoints("#{$column-selector}--last") {
+  @include grid-breakpoints('#{$column-selector}--last') {
     order: 1;
   }
 
@@ -290,7 +290,7 @@ $offset-properties: "margin-left" !default;
   }
 
   // Removes margin/padding around columns
-  @include grid-breakpoints("#{$blockgrid-selector}--collapse") {
+  @include grid-breakpoints('#{$blockgrid-selector}--collapse') {
     margin-top: 0;
     margin-left: 0;
 
@@ -301,7 +301,7 @@ $offset-properties: "margin-left" !default;
   }
 
   // Large gutters
-  @include grid-breakpoints("#{$blockgrid-selector}--largeGutter") {
+  @include grid-breakpoints('#{$blockgrid-selector}--largeGutter') {
     margin-top: (-$global-whitespace-large);
     margin-left: (-$global-whitespace-large);
 
@@ -312,7 +312,7 @@ $offset-properties: "margin-left" !default;
   }
 
   // XL gutters
-  @include grid-breakpoints("#{$blockgrid-selector}--xlargeGutter") {
+  @include grid-breakpoints('#{$blockgrid-selector}--xlargeGutter') {
     margin-top: (-$global-whitespace-xlarge);
     margin-left: (-$global-whitespace-xlarge);
 

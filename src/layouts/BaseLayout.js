@@ -127,9 +127,10 @@ class BaseLayout extends React.Component {
                     </Link>
                   </ListItem>
                   <ListItem>
-                    <Link to="/grid/" activeClassName={config.classes.active}>
-                      Grid
-                    </Link>
+                    <Link to="/dropdown/" activeClassName={config.classes.active}>Dropdown</Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link to="/grid/" activeClassName={config.classes.active}>Grid</Link>
                   </ListItem>
                   <ListItem>
                     <Link to="/icon/" activeClassName={config.classes.active}>
@@ -157,9 +158,16 @@ class BaseLayout extends React.Component {
                     </Link>
                   </ListItem>
                   <ListItem>
+<<<<<<< HEAD
                     <Link to="/reveal/" activeClassName={config.classes.active}>
                       Reveal
                     </Link>
+=======
+                    <Link to="/offCanvas/" activeClassName={config.classes.active}>OffCanvas</Link>
+                  </ListItem>
+                  <ListItem>
+                    <Link to="/reveal/" activeClassName={config.classes.active}>Reveal</Link>
+>>>>>>> master
                   </ListItem>
                   <ListItem>
                     <Link

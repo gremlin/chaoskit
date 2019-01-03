@@ -194,7 +194,7 @@ $form-contrast-background-focus: transparent !default;
 }
 
 @mixin form-select-arrow() {
-  content: "";
+  content: '';
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -264,40 +264,40 @@ $form-contrast-background-focus: transparent !default;
   input {
     // 1
     &:not([type]),
-    &[type="text"],
-    &[type="password"],
-    &[type="email"],
-    &[type="url"],
-    &[type="search"],
-    &[type="tel"],
-    &[type="number"],
-    &[type="datetime"],
-    &[type="range"] {
+    &[type='text'],
+    &[type='password'],
+    &[type='email'],
+    &[type='url'],
+    &[type='search'],
+    &[type='tel'],
+    &[type='number'],
+    &[type='datetime'],
+    &[type='range'] {
       appearance: none;
     }
 
     // 2
     &:not([type]),
-    &[type="text"],
-    &[type="text"],
-    &[type="password"],
-    &[type="datetime"],
-    &[type="datetime-local"],
-    &[type="date"],
-    &[type="month"],
-    &[type="time"],
-    &[type="week"],
-    &[type="number"],
-    &[type="email"],
-    &[type="url"],
-    &[type="search"],
-    &[type="tel"],
-    &[type="color"] {
+    &[type='text'],
+    &[type='text'],
+    &[type='password'],
+    &[type='datetime'],
+    &[type='datetime-local'],
+    &[type='date'],
+    &[type='month'],
+    &[type='time'],
+    &[type='week'],
+    &[type='number'],
+    &[type='email'],
+    &[type='url'],
+    &[type='search'],
+    &[type='tel'],
+    &[type='color'] {
       @include form-input-styles();
     }
 
-    &[type="checkbox"],
-    &[type="radio"] {
+    &[type='checkbox'],
+    &[type='radio'] {
       // 3
       padding: 0;
 
@@ -314,7 +314,7 @@ $form-contrast-background-focus: transparent !default;
     }
 
     // 6
-    &[type="number"] {
+    &[type='number'] {
       &::-webkit-inner-spin-button,
       &::-webkit-outer-spin-button {
         height: auto;
@@ -322,7 +322,7 @@ $form-contrast-background-focus: transparent !default;
     }
 
     // 7
-    &[type="search"] {
+    &[type='search'] {
       &::-webkit-search-cancel-button,
       &::-webkit-search-decoration {
         appearance: none;
@@ -330,7 +330,7 @@ $form-contrast-background-focus: transparent !default;
     }
 
     // 8
-    &:not([type="radio"], [type="checkbox"]) {
+    &:not([type='radio'], [type='checkbox']) {
       select {
         vertical-align: middle;
       }
@@ -338,8 +338,8 @@ $form-contrast-background-focus: transparent !default;
   }
 
   // Remove the inner padding and cancel buttons in Chrome and Safari on macOS.
-  [type="search"]::-webkit-search-cancel-button,
-  [type="search"]::-webkit-search-decoration {
+  [type='search']::-webkit-search-cancel-button,
+  [type='search']::-webkit-search-decoration {
     appearance: none;
   }
 
@@ -488,7 +488,7 @@ $form-contrast-background-focus: transparent !default;
     }
 
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       top: 50%;
       transform:
@@ -509,7 +509,7 @@ $form-contrast-background-focus: transparent !default;
 
   // 1.Behave like block-level element
   // 2. Style
-  @include selector-placeholder(".form-label") {
+  @include selector-placeholder('.form-label') {
     // 1
     display: block;
     // 2
@@ -525,7 +525,7 @@ $form-contrast-background-focus: transparent !default;
     &.is-valid,
     &.is-notValid {
       .form-label::after {
-        content: "";
+        content: '';
         display: inline-block;
         background-repeat: no-repeat;
         width: $form-label-icon-size;
@@ -619,7 +619,7 @@ $form-contrast-background-focus: transparent !default;
           }
 
           &::after {
-            content: "";
+            content: '';
             background: $global-primary;
             width: $form-radio-icon-size;
             height: $form-radio-icon-size;
@@ -655,7 +655,7 @@ $form-contrast-background-focus: transparent !default;
       line-height: 1;
 
       &::before {
-        content: "";
+        content: '';
         position: absolute;
         left: 0;
         top: 50%;
@@ -719,7 +719,7 @@ $form-contrast-background-focus: transparent !default;
           }
 
           &::after {
-            content: "";
+            content: '';
             background-image: svg-inline(form-check);
             width: $form-checkbox-icon-size;
             height: $form-checkbox-icon-size;
@@ -755,7 +755,7 @@ $form-contrast-background-focus: transparent !default;
       line-height: 1;
 
       &::before {
-        content: "";
+        content: '';
         position: absolute;
         left: 0;
         top: 50%;
@@ -826,7 +826,7 @@ $form-contrast-background-focus: transparent !default;
   // Select
   //
 
-  @include selector-placeholder(".form-select") {
+  @include selector-placeholder('.form-select') {
     position: relative;
 
     select {

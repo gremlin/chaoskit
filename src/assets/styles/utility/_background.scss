@@ -3,7 +3,7 @@
 //
 
 @mixin background() {
-  @include selector-placeholder(".u-bgPrimary") {
+  @include selector-placeholder('.u-bgPrimary') {
     background: $global-primary;
 
     @if (mixin-exists(hook-utility-background-primary)) {
@@ -11,7 +11,7 @@
     }
   }
 
-  @include selector-placeholder(".u-bgPrimaryLight") {
+  @include selector-placeholder('.u-bgPrimaryLight') {
     background: $global-primary-light;
 
     @if (mixin-exists(hook-utility-background-primary-light)) {
@@ -19,7 +19,7 @@
     }
   }
 
-  @include selector-placeholder(".u-bgDanger") {
+  @include selector-placeholder('.u-bgDanger') {
     background: $global-danger;
 
     @if (mixin-exists(hook-utility-background-danger)) {
@@ -27,7 +27,7 @@
     }
   }
 
-  @include selector-placeholder(".u-bgPanel") {
+  @include selector-placeholder('.u-bgPanel') {
     background: $global-panel-background;
 
     @if (mixin-exists(hook-utility-background-panel)) {

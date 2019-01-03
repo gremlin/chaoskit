@@ -29,5 +29,6 @@ module.exports = {
       ignore: ['blockless-at-rules'],
     }],
     'no-descending-specificity': null,
+    'string-quotes': 'single',
   },
 };

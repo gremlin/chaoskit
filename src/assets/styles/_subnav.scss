@@ -58,7 +58,7 @@ $subnav-border: 1px solid $global-border !default;
         position: relative;
 
         &::after {
-          content: "";
+          content: '';
           position: absolute;
           left: 0;
           width: 100%;

@@ -128,10 +128,10 @@ $global-viewport-medium-max: ($global-width-large - 1px) !default;
 $global-viewport-large: #{$global-width-large}px !default;
 $global-viewport-xlarge: #{$global-width-xlarge}px !default;
 
-$breakpoint-xsmall: "xsmall" !default;
-$breakpoint-small: "small" !default;
-$breakpoint-medium: "medium" !default;
-$breakpoint-large: "large" !default;
+$breakpoint-xsmall: 'xsmall' !default;
+$breakpoint-small: 'small' !default;
+$breakpoint-medium: 'medium' !default;
+$breakpoint-large: 'large' !default;
 
 $global-breakpoint-sizes: $breakpoint-small $breakpoint-medium $breakpoint-large !default;
 $global-queries: (

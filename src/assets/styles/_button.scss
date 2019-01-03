@@ -83,7 +83,7 @@ $button-icon-enable: true !default;
   // 12. Do not wrap buttons
   // 13. Disable `user-select`
   // 14. Removes inner padding and border in Firefox 4+.
-  @include selector-placeholder(".button") {
+  @include selector-placeholder('.button') {
     // 1
     appearance: none;
     // 2
@@ -190,7 +190,7 @@ $button-icon-enable: true !default;
   }
 
   @if $button-small-enable {
-    @include selector-placeholder(".button--small") {
+    @include selector-placeholder('.button--small') {
       padding: 0 $global-whitespace-regular;
       font-size: $button-font-size-small;
       line-height: ($global-height-small - ($button-border-width * 2));
@@ -203,7 +203,7 @@ $button-icon-enable: true !default;
   }
 
   @if $button-xsmall-enable {
-    @include selector-placeholder(".button--xsmall") {
+    @include selector-placeholder('.button--xsmall') {
       padding: 0 $global-whitespace-regular;
       font-size: $button-font-size-xsmall;
       line-height: ($global-height-xsmall - ($button-border-width * 2));
@@ -216,7 +216,7 @@ $button-icon-enable: true !default;
   }
 
   @if $button-default-enable {
-    @include selector-placeholder(".button--default") {
+    @include selector-placeholder('.button--default') {
       background: $button-default-background;
       border-color: $button-default-border;
       color: $button-default-color;
@@ -252,7 +252,7 @@ $button-icon-enable: true !default;
   }
 
   @if $button-outline-primary-enable {
-    @include selector-placeholder(".button--outlinePrimary") {
+    @include selector-placeholder('.button--outlinePrimary') {
       background: $button-outline-primary-background;
       border-color: $button-outline-primary-border;
       color: $button-outline-primary-color;
@@ -274,7 +274,7 @@ $button-icon-enable: true !default;
   }
 
   @if $button-primary-enable {
-    @include selector-placeholder(".button--primary") {
+    @include selector-placeholder('.button--primary') {
       background: $button-primary-background;
       border-color: $button-primary-border;
       color: $button-primary-color;
@@ -310,7 +310,7 @@ $button-icon-enable: true !default;
   }
 
   @if $button-secondary-enable {
-    @include selector-placeholder(".button--secondary") {
+    @include selector-placeholder('.button--secondary') {
       background: $button-secondary-background;
       border-color: $button-secondary-border;
       color: $button-secondary-color;
@@ -346,7 +346,7 @@ $button-icon-enable: true !default;
   }
 
   @if $button-danger-enable {
-    @include selector-placeholder(".button--danger") {
+    @include selector-placeholder('.button--danger') {
       background: $button-danger-background;
       border-color: $button-danger-border;
       color: $global-contrast;
@@ -364,12 +364,12 @@ $button-icon-enable: true !default;
     }
   }
 
-  @include selector-placeholder(".button--fullWidth") {
+  @include selector-placeholder('.button--fullWidth') {
     width: 100%;
   }
 
   @if $button-icon-enable {
-    @include selector-placeholder(".button--icon") {
+    @include selector-placeholder('.button--icon') {
       padding: 0;
       width: $global-height;
 

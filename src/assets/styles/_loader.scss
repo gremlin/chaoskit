@@ -19,7 +19,7 @@ $loader-circle-animation-duration: 1.5s !default;
     vertical-align: bottom;
 
     &::before {
-      content: "";
+      content: '';
       display: block;
       padding-top: 100%;
     }

@@ -4,29 +4,31 @@
 // Components
 //
 
-@import "alert";
-@import "avatar";
-@import "badge";
-@import "button";
-@import "choices";
-@import "close";
-@import "container";
-@import "form";
-@import "icons";
-@import "iframe";
-@import "inline";
-@import "loader";
-@import "grid";
-@import "modal";
-@import "pagination";
-@import "prism";
-@import "reveal";
-@import "section";
-@import "social-icon";
-@import "subnav";
-@import "table";
-@import "toggle";
-@import "tooltip";
+@import 'alert';
+@import 'avatar';
+@import 'badge';
+@import 'button';
+@import 'choices';
+@import 'close';
+@import 'container';
+@import 'dropdown';
+@import 'form';
+@import 'icons';
+@import 'iframe';
+@import 'inline';
+@import 'loader';
+@import 'grid';
+@import 'modal';
+@import 'pagination';
+@import 'offCanvas';
+@import 'prism';
+@import 'reveal';
+@import 'section';
+@import 'social-icon';
+@import 'subnav';
+@import 'table';
+@import 'toggle';
+@import 'tooltip';
 
 //
 // Utilities
@@ -88,7 +90,15 @@
     @include contrast();
   }
 
+<<<<<<< HEAD
   @else if $component == "flex" {
+=======
+  @else if $component == 'dropdown' {
+    @include dropdown();
+  }
+
+  @else if $component == 'flex' {
+>>>>>>> master
     @include flex();
   }
 
@@ -128,7 +138,15 @@
     @include loader();
   }
 
+<<<<<<< HEAD
   @else if $component == "prism" {
+=======
+  @else if $component == 'offCanvas' {
+    @include offCanvas();
+  }
+
+  @else if $component == 'prism' {
+>>>>>>> master
     @include prism();
   }
 

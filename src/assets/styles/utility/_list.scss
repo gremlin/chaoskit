@@ -13,7 +13,7 @@
     );
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     top: (($global-line-height-computed - $list-circle-size) / 2);
     left: 0;
@@ -34,12 +34,12 @@
 }
 
 @mixin list() {
-  @include selector-placeholder(".u-list") {
+  @include selector-placeholder('.u-list') {
     list-style: none;
     padding-left: 0;
   }
 
-  @include selector-placeholder(".u-list--space") {
+  @include selector-placeholder('.u-list--space') {
     > * {
       + * {
         margin-top: $global-whitespace-regular;
@@ -47,7 +47,7 @@
     }
   }
 
-  @include selector-placeholder(".u-list--border") {
+  @include selector-placeholder('.u-list--border') {
     > * {
       padding-top: $global-whitespace-large;
       padding-bottom: $global-whitespace-large;
@@ -59,13 +59,13 @@
     }
   }
 
-  @include selector-placeholder(".u-list--circles") {
+  @include selector-placeholder('.u-list--circles') {
     > li {
       @include list_circles();
     }
   }
 
-  @include selector-placeholder(".u-list--number") {
+  @include selector-placeholder('.u-list--number') {
     counter-reset: list-counter;
 
     > li {
