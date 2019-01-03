@@ -7,6 +7,7 @@ import CheckboxGroup from './CheckboxGroup';
 import ChoicesMulti from './ChoicesMulti';
 import ChoicesSingle from './ChoicesSingle';
 import Close from './Close';
+import Dropdown from './Dropdown';
 import FormFooter from './FormFooter';
 import FormLabel from './FormLabel';
 import Icon from './Icon';
@@ -19,6 +20,7 @@ import Modal from './Modal';
 import ModalHeader from './ModalHeader';
 import ModalBody from './ModalBody';
 import ModalFooter from './ModalFooter';
+import OffCanvas from './OffCanvas';
 import Pagination from './Pagination';
 import Radio from './Radio';
 import RadioGroup from './RadioGroup';
@@ -40,6 +42,7 @@ export {
   ChoicesMulti,
   ChoicesSingle,
   Close,
+  Dropdown,
   FormFooter,
   FormLabel,
   Icon,
@@ -52,6 +55,7 @@ export {
   ModalHeader,
   ModalBody,
   ModalFooter,
+  OffCanvas,
   Pagination,
   Radio,
   RadioGroup,

@@ -11,6 +11,7 @@
 @import 'choices';
 @import 'close';
 @import 'container';
+@import 'dropdown';
 @import 'form';
 @import 'icons';
 @import 'iframe';
@@ -19,6 +20,7 @@
 @import 'grid';
 @import 'modal';
 @import 'pagination';
+@import 'offCanvas';
 @import 'prism';
 @import 'reveal';
 @import 'section';
@@ -88,6 +90,10 @@
     @include contrast();
   }
 
+  @else if $component == 'dropdown' {
+    @include dropdown();
+  }
+
   @else if $component == 'flex' {
     @include flex();
   }
@@ -126,6 +132,10 @@
 
   @else if $component == 'loader' {
     @include loader();
+  }
+
+  @else if $component == 'offCanvas' {
+    @include offCanvas();
   }
 
   @else if $component == 'prism' {
