@@ -5,8 +5,8 @@ import React from 'react';
 import { config } from '../helpers/config';
 import { Loader } from '.';
 
+// eslint-disable-next-line react/prefer-stateless-function
 class Button extends React.Component {
-  // eslint-disable-line react/prefer-stateless-function
   render() {
     const {
       active,

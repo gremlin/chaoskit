@@ -158,16 +158,10 @@ class BaseLayout extends React.Component {
                     </Link>
                   </ListItem>
                   <ListItem>
-<<<<<<< HEAD
-                    <Link to="/reveal/" activeClassName={config.classes.active}>
-                      Reveal
-                    </Link>
-=======
                     <Link to="/offCanvas/" activeClassName={config.classes.active}>OffCanvas</Link>
                   </ListItem>
                   <ListItem>
                     <Link to="/reveal/" activeClassName={config.classes.active}>Reveal</Link>
->>>>>>> master
                   </ListItem>
                   <ListItem>
                     <Link
