@@ -76,8 +76,7 @@
     "build-serve": "yarn build && gatsby serve",
     "develop": "yarn && yarn run icons && gatsby develop",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prettier": "prettier-eslint --write '{,!(node_modules)/**/}*.{js,jsx}' && prettier-stylelint --write '{,!(node_modules)/**/}*.{css,scss}'",
-    "lint": "eslint '{,!(node_modules)/**/}*.{js,jsx}' && stylelint '{,!(node_modules)/**/}*.{css,scss}'"
+    "prettier": "prettier-eslint --write '**/*.{js,jsx}' && prettier-stylelint --write '**/*.{css,scss}'"
   },
   "prettier": {
     "print-width": 80
