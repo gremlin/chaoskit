@@ -44,7 +44,10 @@ const AlertScope = {
 
 const AlertDocs = () => (
   <BaseLayout pageTitle="Alert">
-    <p>Alerts can be used to draw attention to and provide context to key page actions.</p>
+    <p>
+      Alerts can be used to draw attention to and provide context to key page
+      actions.
+    </p>
 
     <Live
       code={AlertExample}

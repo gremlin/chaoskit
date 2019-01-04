@@ -9,7 +9,13 @@ const Loader = (props) => {
   return (
     <span className={classes} {...opts}>
       <svg className="loader-svg" viewBox="25 25 50 50">
-        <circle className="loader-circle" cx="50" cy="50" r="20" strokeMiterlimit="10" />
+        <circle
+          className="loader-circle"
+          cx="50"
+          cy="50"
+          r="20"
+          strokeMiterlimit="10"
+        />
       </svg>
     </span>
   );

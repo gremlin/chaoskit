@@ -51,7 +51,9 @@ $icon-vector-effect: non-scaling-stroke !default; // Can turn off with `default`
       size: $icon-size-xlarge;
     }
 
-    @if (mixin-exists(hook-icon)) { @include hook-icon(); }
+    @if (mixin-exists(hook-icon)) {
+      @include hook-icon();
+    }
   }
 
   // Workaround for browsers not supporting `vector-effect: non-scaling-stroke`
@@ -61,5 +63,7 @@ $icon-vector-effect: non-scaling-stroke !default; // Can turn off with `default`
     }
   }
 
-  @if (mixin-exists(hook-icon-misc)) { @include hook-icon-misc(); }
+  @if (mixin-exists(hook-icon-misc)) {
+    @include hook-icon-misc();
+  }
 }

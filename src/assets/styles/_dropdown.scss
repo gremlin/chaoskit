@@ -23,7 +23,9 @@ $dropdown-transition: 0.175 easeOutBack !default; // Brought over from JS compon
     display: inline-block;
     position: relative;
 
-    @if (mixin-exists(hook-dropdown)) { @include hook-dropdown(); }
+    @if (mixin-exists(hook-dropdown)) {
+      @include hook-dropdown();
+    }
   }
 
   .dropdown-panel {
@@ -46,7 +48,9 @@ $dropdown-transition: 0.175 easeOutBack !default; // Brought over from JS compon
     box-shadow: $global-small-media-shadow;
     display: none;
 
-    @if (mixin-exists(hook-dropdown-panel)) { @include hook-dropdown-panel(); }
+    @if (mixin-exists(hook-dropdown-panel)) {
+      @include hook-dropdown-panel();
+    }
 
     // 1. Quirky calculation bug when `rotate()` is used
     &::before {
@@ -148,5 +152,7 @@ $dropdown-transition: 0.175 easeOutBack !default; // Brought over from JS compon
     }
   }
 
-  @if (mixin-exists(hook-dropdown-misc)) { @include hook-dropdown-misc(); }
+  @if (mixin-exists(hook-dropdown-misc)) {
+    @include hook-dropdown-misc();
+  }
 }

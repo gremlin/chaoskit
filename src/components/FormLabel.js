@@ -6,16 +6,14 @@ const FormLabel = (props) => {
   const { children, className, id } = props;
   const classes = cx('form-label', className);
 
-  return (
-    children ? (
-      <label // eslint-disable-line jsx-a11y/label-has-for
-        htmlFor={id}
-        className={classes}
-      >
-        {children}
-      </label>
-    ) : null
-  );
+  return children ? (
+    <label // eslint-disable-line jsx-a11y/label-has-for
+      htmlFor={id}
+      className={classes}
+    >
+      {children}
+    </label>
+  ) : null;
 };
 
 FormLabel.propTypes = {

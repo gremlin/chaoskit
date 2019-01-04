@@ -46,7 +46,9 @@ $alert-danger-color: $global-danger !default;
       @extend %u-textUnderline;
     }
 
-    @if (mixin-exists(hook-alert)) { @include hook-alert(); }
+    @if (mixin-exists(hook-alert)) {
+      @include hook-alert();
+    }
   }
 
   // Add margin if adjacent element
@@ -59,7 +61,9 @@ $alert-danger-color: $global-danger !default;
       background: $alert-primary-background;
       border-color: $alert-primary-color;
 
-      @if (mixin-exists(hook-alert-primary)) { @include hook-alert-primary(); }
+      @if (mixin-exists(hook-alert-primary)) {
+        @include hook-alert-primary();
+      }
     }
   }
 
@@ -68,7 +72,9 @@ $alert-danger-color: $global-danger !default;
       background: $alert-warning-background;
       border-color: $alert-warning-color;
 
-      @if (mixin-exists(hook-alert-warning)) { @include hook-alert-warning(); }
+      @if (mixin-exists(hook-alert-warning)) {
+        @include hook-alert-warning();
+      }
     }
   }
 
@@ -82,7 +88,9 @@ $alert-danger-color: $global-danger !default;
         color: $alert-danger-color;
       }
 
-      @if (mixin-exists(hook-alert-danger)) { @include hook-alert-danger(); }
+      @if (mixin-exists(hook-alert-danger)) {
+        @include hook-alert-danger();
+      }
     }
   }
 
@@ -97,5 +105,7 @@ $alert-danger-color: $global-danger !default;
     padding-left: $global-whitespace-small;
   }
 
-  @if (mixin-exists(hook-alert-misc)) { @include hook-alert-misc(); }
+  @if (mixin-exists(hook-alert-misc)) {
+    @include hook-alert-misc();
+  }
 }

@@ -6,9 +6,7 @@ const Subnav = (props) => {
 
   return (
     <div className="subnav-wrapper">
-      <div className="subnav">
-        {children}
-      </div>
+      <div className="subnav">{children}</div>
     </div>
   );
 };

@@ -6,7 +6,14 @@ import Icons from '../assets/icons/icons.json';
 
 class Icon extends React.Component {
   getIcon = () => {
-    const { icon, additionalIcons, fallback, className, size, ...opts } = this.props;
+    const {
+      icon,
+      additionalIcons,
+      fallback,
+      className,
+      size,
+      ...opts
+    } = this.props;
     const classes = cx('icon', className, {
       'icon--small': size === 'small',
       'icon--large': size === 'large',
@@ -38,7 +45,7 @@ class Icon extends React.Component {
 
     console.error('Icon not found'); // eslint-disable-line no-console
     return false;
-  }
+  };
 
   render() {
     return this.getIcon();

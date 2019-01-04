@@ -17,7 +17,12 @@ class Dropdown extends React.Component {
     const $trigger = ReactDOM.findDOMNode(this.trigger);
     const $panel = this.panel;
 
-    const { onStart, onReverseStart, onComplete, onReverseComplete } = this.props;
+    const {
+      onStart,
+      onReverseStart,
+      onComplete,
+      onReverseComplete,
+    } = this.props;
     const checkInsideBound = this._checkInside.bind(this);
 
     let forward = true;
@@ -43,7 +48,10 @@ class Dropdown extends React.Component {
       onUpdate: () => {
         const newTime = $dropdown.timeline.time();
 
-        if ((forward && newTime < lastTime) || (!forward && newTime > lastTime)) {
+        if (
+          (forward && newTime < lastTime) ||
+          (!forward && newTime > lastTime)
+        ) {
           forward = !forward;
           if (!forward) {
             onReverseStart();
@@ -76,7 +84,7 @@ class Dropdown extends React.Component {
         },
         ease: config.easingBounce,
       });
-  }
+  };
 
   handleDropdownToggle = () => {
     if (this.dropdown.timeline.progress() === 1) {
@@ -84,15 +92,15 @@ class Dropdown extends React.Component {
     } else {
       this.dropdownOpen();
     }
-  }
+  };
 
   dropdownOpen = () => {
     this.dropdown.timeline.play();
-  }
+  };
 
   dropdownClose = () => {
     this.dropdown.timeline.reverse();
-  }
+  };
 
   /**
    * Determine if click originates from outside `.dropdown-panel`
@@ -109,37 +117,57 @@ class Dropdown extends React.Component {
     return false;
   }
 
-
   render() {
-    const { children, className, panelClassName, position, size, trigger } = this.props;
-    const classes = cx('dropdown', {
-      'dropdown--center': position === 'center',
-      'dropdown--right': position === 'right',
-      'dropdown--up': position === 'up-left',
-      'dropdown--up dropdown--center': position === 'up-center',
-      'dropdown--up dropdown--right': position === 'up-right',
-    }, className);
-    const panelClasses = cx('dropdown-panel', {
-      'dropdown-panel--small': size === 'small',
-    }, panelClassName);
+    const {
+      children,
+      className,
+      panelClassName,
+      position,
+      size,
+      trigger,
+    } = this.props;
+    const classes = cx(
+      'dropdown',
+      {
+        'dropdown--center': position === 'center',
+        'dropdown--right': position === 'right',
+        'dropdown--up': position === 'up-left',
+        'dropdown--up dropdown--center': position === 'up-center',
+        'dropdown--up dropdown--right': position === 'up-right',
+      },
+      className,
+    );
+    const panelClasses = cx(
+      'dropdown-panel',
+      {
+        'dropdown-panel--small': size === 'small',
+      },
+      panelClassName,
+    );
 
     return (
       <div
         className={classes}
         aria-haspopup="true"
         aria-expanded="false"
-        ref={(ref) => { this.dropdown = ref; }}
+        ref={(ref) => {
+          this.dropdown = ref;
+        }}
       >
         <Button
           onClick={this.handleDropdownToggle}
-          {... trigger.props}
-          ref={(ref) => { this.trigger = ref; }}
+          {...trigger.props}
+          ref={(ref) => {
+            this.trigger = ref;
+          }}
         >
           {trigger.label}
         </Button>
         <div
           className={panelClasses}
-          ref={(ref) => { this.panel = ref; }}
+          ref={(ref) => {
+            this.panel = ref;
+          }}
         >
           {children}
         </div>
@@ -156,7 +184,14 @@ Dropdown.propTypes = {
   onReverseComplete: PropTypes.func,
   onReverseStart: PropTypes.func,
   onStart: PropTypes.func,
-  position: PropTypes.oneOf(['left', 'center', 'right', 'up-left', 'up-center', 'up-right']),
+  position: PropTypes.oneOf([
+    'left',
+    'center',
+    'right',
+    'up-left',
+    'up-center',
+    'up-right',
+  ]),
   size: PropTypes.oneOf(['default', 'small']),
   trigger: PropTypes.shape({
     props: PropTypes.object,

@@ -33,6 +33,9 @@
     "postcss-inline-svg-multipath": "3.1.2",
     "postcss-size": "3.0.0",
     "postcss-sorting": "4.0.1",
+    "prettier-eslint": "^8.8.2",
+    "prettier-eslint-cli": "^4.7.1",
+    "prettier-stylelint": "^0.4.2",
     "prismjs": "1.15.0",
     "react": "16.7.0",
     "react-dom": "16.7.0",
@@ -72,7 +75,12 @@
     "build": "yarn && yarn run icons && gatsby build",
     "build-serve": "yarn build && gatsby serve",
     "develop": "yarn && yarn run icons && gatsby develop",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prettier": "prettier-eslint --write '{,!(node_modules)/**/}*.{js,jsx}' && prettier-stylelint --write '{,!(node_modules)/**/}*.{css,scss}'",
+    "lint": "eslint '{,!(node_modules)/**/}*.{js,jsx}' && stylelint '{,!(node_modules)/**/}*.{css,scss}'"
+  },
+  "prettier": {
+    "print-width": 80
   },
   "repository": {
     "type": "git",

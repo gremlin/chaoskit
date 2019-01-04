@@ -38,7 +38,12 @@ $offset-properties: 'margin-left' !default;
   }
 }
 
-@mixin columns($selector: $column-selector, $properties: $column-properties, $columns: $column-count, $queries: $global-queries) {
+@mixin columns(
+  $selector: $column-selector,
+  $properties: $column-properties,
+  $columns: $column-count,
+  $queries: $global-queries
+) {
   // Default prop
   @for $i from 1 through $columns {
     #{$selector}#{$block-delimiter}#{$i} {
@@ -65,7 +70,13 @@ $offset-properties: 'margin-left' !default;
   }
 }
 
-@mixin grid-offsets($selector: $column-selector, $modifier-selector: $offset-modifier, $properties: $offset-properties, $columns: $column-count, $queries: $global-queries) {
+@mixin grid-offsets(
+  $selector: $column-selector,
+  $modifier-selector: $offset-modifier,
+  $properties: $offset-properties,
+  $columns: $column-count,
+  $queries: $global-queries
+) {
   // Default prop
   @for $i from 1 through $columns {
     #{$selector}#{$block-delimiter}#{$modifier-selector}#{$block-delimiter}#{$i} {
@@ -92,7 +103,12 @@ $offset-properties: 'margin-left' !default;
   }
 }
 
-@mixin blockgrid($selector: $blockgrid-selector, $properties: $column-properties, $columns: $column-count, $queries: $global-queries) {
+@mixin blockgrid(
+  $selector: $blockgrid-selector,
+  $properties: $column-properties,
+  $columns: $column-count,
+  $queries: $global-queries
+) {
   // Default prop
   @for $i from 1 through $columns {
     #{$selector}#{$block-delimiter}#{$i} > * {
@@ -163,7 +179,9 @@ $offset-properties: 'margin-left' !default;
       }
     }
 
-    @if (mixin-exists(hook-grid-row)) { @include hook-grid-row(); }
+    @if (mixin-exists(hook-grid-row)) {
+      @include hook-grid-row();
+    }
   }
 
   // Removes margin/padding around columns
@@ -266,7 +284,9 @@ $offset-properties: 'margin-left' !default;
       }
     }
 
-    @if (mixin-exists(hook-block-grid)) { @include hook-block-grid(); }
+    @if (mixin-exists(hook-block-grid)) {
+      @include hook-block-grid();
+    }
   }
 
   // Removes margin/padding around columns

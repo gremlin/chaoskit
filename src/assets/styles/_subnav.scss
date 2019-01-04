@@ -32,7 +32,9 @@ $subnav-border: 1px solid $global-border !default;
       margin-left: $global-whitespace-large;
     }
 
-    @if (mixin-exists(hook-subnav)) { @include hook-subnav(); }
+    @if (mixin-exists(hook-subnav)) {
+      @include hook-subnav();
+    }
   }
 
   .subnav-nav {

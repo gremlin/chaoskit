@@ -10,7 +10,7 @@ class Checkbox extends React.Component {
 
   state = {
     checked: this.props.isChecked, // eslint-disable-line react/destructuring-assignment
-  }
+  };
 
   componentWillReceiveProps(newProps) {
     const { isChecked } = this.props;
@@ -33,13 +33,13 @@ class Checkbox extends React.Component {
     this.setState({
       checked: !checked,
     });
-  }
+  };
 
   handleKeyUp = (e) => {
     if (e.keyCode === 13) {
       this.checkboxLabel.click();
     }
-  }
+  };
 
   render() {
     const { className, label, disabled, name, value } = this.props;
@@ -62,12 +62,14 @@ class Checkbox extends React.Component {
           onKeyUp={this.handleKeyUp}
         />
         {label && (
-        <label // eslint-disable-line jsx-a11y/label-has-for
-          htmlFor={this.id}
-          ref={(checkboxLabel) => { this.checkboxLabel = checkboxLabel; }}
-        >
-          {label}
-        </label>
+          <label // eslint-disable-line jsx-a11y/label-has-for
+            htmlFor={this.id}
+            ref={(checkboxLabel) => {
+              this.checkboxLabel = checkboxLabel;
+            }}
+          >
+            {label}
+          </label>
         )}
       </div>
     );

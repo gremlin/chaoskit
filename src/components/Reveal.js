@@ -29,7 +29,12 @@ class Reveal extends React.Component {
     const $reveal = this.reveal;
     const $trigger = ReactDOM.findDOMNode(this.trigger);
 
-    const { onStart, onReverseStart, onComplete, onReverseComplete } = this.props;
+    const {
+      onStart,
+      onReverseStart,
+      onComplete,
+      onReverseComplete,
+    } = this.props;
 
     let forward = true;
     let lastTime = 0;
@@ -52,7 +57,10 @@ class Reveal extends React.Component {
       onUpdate: () => {
         const newTime = $reveal.timeline.time();
 
-        if ((forward && newTime < lastTime) || (!forward && newTime > lastTime)) {
+        if (
+          (forward && newTime < lastTime) ||
+          (!forward && newTime > lastTime)
+        ) {
           forward = !forward;
           if (!forward) {
             onReverseStart();
@@ -100,15 +108,15 @@ class Reveal extends React.Component {
     if (reveal) {
       $reveal.timeline.progress(1);
     }
-  }
+  };
 
   revealOpen = () => {
     this.reveal.timeline.play();
-  }
+  };
 
   revealClose = () => {
     this.reveal.timeline.reverse();
-  }
+  };
 
   handleRevealToggle = () => {
     if (this.reveal.timeline.progress() === 1) {
@@ -116,7 +124,7 @@ class Reveal extends React.Component {
     } else {
       this.revealOpen();
     }
-  }
+  };
 
   render() {
     const { children, className, trigger } = this.props;
@@ -126,19 +134,21 @@ class Reveal extends React.Component {
       <Fragment>
         <Button
           onClick={this.handleRevealToggle}
-          {... trigger.props}
-          ref={(ref) => { this.trigger = ref; }}
+          {...trigger.props}
+          ref={(ref) => {
+            this.trigger = ref;
+          }}
         >
           {trigger.label}
         </Button>
         <div
           className="reveal"
-          ref={(ref) => { this.reveal = ref; }}
+          ref={(ref) => {
+            this.reveal = ref;
+          }}
           aria-hidden="true"
         >
-          <div className={classes}>
-            {children}
-          </div>
+          <div className={classes}>{children}</div>
         </div>
       </Fragment>
     );

@@ -189,7 +189,9 @@
     }
   }
 
-  @if (mixin-exists(hook-utility-text)) { @include hook-utility-text(); }
+  @if (mixin-exists(hook-utility-text)) {
+    @include hook-utility-text();
+  }
 
   @include selector-placeholder('.u-link') {
     color: $global-primary !important;
@@ -244,5 +246,7 @@
     }
   }
 
-  @if (mixin-exists(hook-utility-link)) { @include hook-utility-link(); }
+  @if (mixin-exists(hook-utility-link)) {
+    @include hook-utility-link();
+  }
 }

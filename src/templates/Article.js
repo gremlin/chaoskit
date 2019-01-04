@@ -6,11 +6,7 @@ import BaseLayout from '../layouts/BaseLayout';
 const Article = (props) => {
   const { children } = props;
 
-  return (
-    <BaseLayout>
-      {children}
-    </BaseLayout>
-  );
+  return <BaseLayout>{children}</BaseLayout>;
 };
 
 Article.propTypes = {

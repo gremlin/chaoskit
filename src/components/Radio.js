@@ -6,7 +6,15 @@ import { generateUUID } from '../helpers/utility';
 import { config } from '../helpers/config';
 
 const Radio = (props) => {
-  const { className, disabled, label, name, onChange, selectedValue, value } = props;
+  const {
+    className,
+    disabled,
+    label,
+    name,
+    onChange,
+    selectedValue,
+    value,
+  } = props;
 
   const id = `${name}-${generateUUID()}`;
   const classes = cx('form-radio', className, {

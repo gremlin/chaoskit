@@ -2,7 +2,15 @@ import React from 'react';
 
 import BaseLayout from '../layouts/BaseLayout';
 import Live from '../docs/Live';
-import { Alert, Button, Tooltip, Icon, Inline, List, ListItem } from '../components';
+import {
+  Alert,
+  Button,
+  Tooltip,
+  Icon,
+  Inline,
+  List,
+  ListItem,
+} from '../components';
 
 const TooltipExample = `
 <Fragment>
@@ -38,7 +46,8 @@ const TooltipScope = {
 };
 
 const TooltipPropDescriptions = {
-  mobileTap: 'Disables tooltips on touch devices to not interfere with interactive elements',
+  mobileTap:
+    'Disables tooltips on touch devices to not interfere with interactive elements',
 };
 
 const TooltipDocs = () => (
@@ -51,8 +60,14 @@ const TooltipDocs = () => (
     />
     <Alert type="warning" title="Note">
       <List type={['number', 'space']}>
-        <ListItem>The Tooltip component can be wrapped around any fellow component or standard HTML; just make sure it&apos;s only one child!</ListItem>
-        <ListItem>Tooltip content can contain normal strings or other components. Go crazy!</ListItem>
+        <ListItem>
+          The Tooltip component can be wrapped around any fellow component or
+          standard HTML; just make sure it&apos;s only one child!
+        </ListItem>
+        <ListItem>
+          Tooltip content can contain normal strings or other components. Go
+          crazy!
+        </ListItem>
       </List>
     </Alert>
   </BaseLayout>

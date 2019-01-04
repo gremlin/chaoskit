@@ -50,7 +50,10 @@ const ToggleDocs = () => (
       propDescriptions={TogglePropDescriptions}
     />
     <Alert type="warning" title="Note">
-      <p>Toggles automatically inherit contrast styles when placed within a wrapper that contains the global <code>.u-contrast</code> class.</p>
+      <p>
+        Toggles automatically inherit contrast styles when placed within a
+        wrapper that contains the global <code>.u-contrast</code> class.
+      </p>
     </Alert>
   </BaseLayout>
 );

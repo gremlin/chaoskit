@@ -43,7 +43,7 @@ class Textarea extends React.Component {
   componentDidUpdate(prevProps) {
     const { focus } = this.props;
 
-    if ((prevProps.focus !== focus) && focus) {
+    if (prevProps.focus !== focus && focus) {
       this.textarea.focus();
     }
   }
@@ -56,7 +56,7 @@ class Textarea extends React.Component {
     if (onChange) {
       onChange(e.target.name, e.target.value);
     }
-  }
+  };
 
   handleKeyPress = (e) => {
     const { onKeyPress } = this.props;
@@ -64,10 +64,20 @@ class Textarea extends React.Component {
     if (onKeyPress) {
       onKeyPress(e);
     }
-  }
+  };
 
   render() {
-    const { className, disabled, focus, label, name, placeholder, validationMessage, explanationMessage, required } = this.props;
+    const {
+      className,
+      disabled,
+      focus,
+      label,
+      name,
+      placeholder,
+      validationMessage,
+      explanationMessage,
+      required,
+    } = this.props;
     const { value } = this.state;
 
     const classes = cx('form-group', className, {
@@ -87,9 +97,14 @@ class Textarea extends React.Component {
           onChange={this.handleChange}
           onKeyPress={this.handleKeyPress}
           placeholder={placeholder}
-          inputRef={(ref) => { this.textarea = ref; }}
+          inputRef={(ref) => {
+            this.textarea = ref;
+          }}
         />
-        <FormFooter explanationMessage={explanationMessage} validationMessage={validationMessage} />
+        <FormFooter
+          explanationMessage={explanationMessage}
+          validationMessage={validationMessage}
+        />
       </div>
     );
   }

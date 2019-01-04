@@ -184,7 +184,9 @@ $button-icon-enable: true !default;
       pointer-events: none;
     }
 
-    @if (mixin-exists(hook-button)) { @include hook-button(); }
+    @if (mixin-exists(hook-button)) {
+      @include hook-button();
+    }
   }
 
   @if $button-small-enable {
@@ -194,7 +196,9 @@ $button-icon-enable: true !default;
       line-height: ($global-height-small - ($button-border-width * 2));
       height: $global-height-small;
 
-      @if (mixin-exists(hook-button-small)) { @include hook-button-small(); }
+      @if (mixin-exists(hook-button-small)) {
+        @include hook-button-small();
+      }
     }
   }
 
@@ -205,7 +209,9 @@ $button-icon-enable: true !default;
       line-height: ($global-height-xsmall - ($button-border-width * 2));
       height: $global-height-xsmall;
 
-      @if (mixin-exists(hook-button-xsmall)) { @include hook-button-small(); }
+      @if (mixin-exists(hook-button-xsmall)) {
+        @include hook-button-small();
+      }
     }
   }
 
@@ -239,7 +245,9 @@ $button-icon-enable: true !default;
         }
       }
 
-      @if (mixin-exists(hook-button-default)) { @include hook-button-default(); }
+      @if (mixin-exists(hook-button-default)) {
+        @include hook-button-default();
+      }
     }
   }
 
@@ -259,7 +267,9 @@ $button-icon-enable: true !default;
         color: $button-outline-primary-color-hover;
       }
 
-      @if (mixin-exists(hook-button-outline-primary)) { @include hook-button-outline-primary(); }
+      @if (mixin-exists(hook-button-outline-primary)) {
+        @include hook-button-outline-primary();
+      }
     }
   }
 
@@ -293,7 +303,9 @@ $button-icon-enable: true !default;
         }
       }
 
-      @if (mixin-exists(hook-button-primary)) { @include hook-button-primary(); }
+      @if (mixin-exists(hook-button-primary)) {
+        @include hook-button-primary();
+      }
     }
   }
 
@@ -327,7 +339,9 @@ $button-icon-enable: true !default;
         }
       }
 
-      @if (mixin-exists(hook-button-secondary)) { @include hook-button-secondary(); }
+      @if (mixin-exists(hook-button-secondary)) {
+        @include hook-button-secondary();
+      }
     }
   }
 
@@ -344,7 +358,9 @@ $button-icon-enable: true !default;
         color: $global-contrast;
       }
 
-      @if (mixin-exists(hook-button-danger)) { @include hook-button-danger(); }
+      @if (mixin-exists(hook-button-danger)) {
+        @include hook-button-danger();
+      }
     }
   }
 
@@ -383,5 +399,7 @@ $button-icon-enable: true !default;
     }
   }
 
-  @if (mixin-exists(hook-button-misc)) { @include hook-button-misc(); }
+  @if (mixin-exists(hook-button-misc)) {
+    @include hook-button-misc();
+  }
 }

@@ -4,39 +4,48 @@ import ReactHtmlParser from 'react-html-parser';
 
 import { Badge } from '../components';
 
-const propTypesArray = [{
-  key: 'array',
-  test: PropTypes.array,
-  isRequired: PropTypes.array.isRequired,
-}, {
-  key: 'boolean',
-  test: PropTypes.bool,
-  isRequired: PropTypes.bool.isRequired,
-}, {
-  key: 'function',
-  test: PropTypes.func,
-  isRequired: PropTypes.func.isRequired,
-}, {
-  key: 'number',
-  test: PropTypes.number,
-  isRequired: PropTypes.number.isRequired,
-}, {
-  key: 'object',
-  test: PropTypes.object,
-  isRequired: PropTypes.array.isRequired,
-}, {
-  key: 'string',
-  test: PropTypes.string,
-  isRequired: PropTypes.string.isRequired,
-}, {
-  key: 'node',
-  test: PropTypes.node,
-  isRequired: PropTypes.node.isRequired,
-}, {
-  key: 'element',
-  test: PropTypes.element,
-  isRequired: PropTypes.element.isRequired,
-}];
+const propTypesArray = [
+  {
+    key: 'array',
+    test: PropTypes.array,
+    isRequired: PropTypes.array.isRequired,
+  },
+  {
+    key: 'boolean',
+    test: PropTypes.bool,
+    isRequired: PropTypes.bool.isRequired,
+  },
+  {
+    key: 'function',
+    test: PropTypes.func,
+    isRequired: PropTypes.func.isRequired,
+  },
+  {
+    key: 'number',
+    test: PropTypes.number,
+    isRequired: PropTypes.number.isRequired,
+  },
+  {
+    key: 'object',
+    test: PropTypes.object,
+    isRequired: PropTypes.array.isRequired,
+  },
+  {
+    key: 'string',
+    test: PropTypes.string,
+    isRequired: PropTypes.string.isRequired,
+  },
+  {
+    key: 'node',
+    test: PropTypes.node,
+    isRequired: PropTypes.node.isRequired,
+  },
+  {
+    key: 'element',
+    test: PropTypes.element,
+    isRequired: PropTypes.element.isRequired,
+  },
+];
 
 const getReactPropType = (propTypeFunc) => {
   let name = 'custom';
@@ -71,7 +80,12 @@ const Docs = (props) => {
     propName,
     type: getReactPropType(component.propTypes[propName]),
     description: ReactHtmlParser(propDescriptions[propName]) || '',
-    default: (component.defaultProps && component.defaultProps[propName]) && (typeof component.defaultProps[propName] !== 'function' ? component.defaultProps[propName].toString() : null),
+    default:
+        component.defaultProps &&
+        component.defaultProps[propName] &&
+        (typeof component.defaultProps[propName] !== 'function'
+          ? component.defaultProps[propName].toString()
+          : null),
   }));
 
   return (
@@ -88,7 +102,10 @@ const Docs = (props) => {
         {propTypes.map(propObj => (
           <tr key={propObj.propName}>
             <td className="u-textNoBreak">
-              <code>{propObj.propName}</code> {propObj.type.isRequired && <Badge rounded type="danger" label="Required" />}
+              <code>{propObj.propName}</code>{' '}
+              {propObj.type.isRequired && (
+                <Badge rounded type="danger" label="Required" />
+              )}
             </td>
             <td className="u-textNoBreak">
               <code>{propObj.type.name}</code>

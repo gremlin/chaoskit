@@ -2,7 +2,10 @@
 // Variables
 //
 
-$offCanvas-background: rgba($global-dark-overlay, $global-disabled-opacity) !default;
+$offCanvas-background: rgba(
+  $global-dark-overlay,
+  $global-disabled-opacity
+) !default;
 $offCanvas-panel-background: $global-background !default;
 $offCanvas-box-shadow-left: 7.5px 0 17.5px rgba($global-dark, 0.1);
 $offCanvas-box-shadow-right: -7.5px 0 17.5px rgba($global-dark, 0.1);
@@ -66,7 +69,9 @@ $offCanvas-panel-width: 300px !default;
       width: $offCanvas-panel-width;
     }
 
-    @if (mixin-exists(hook-offCanvas-panel)) { @include hook-offCanvas-panel(); }
+    @if (mixin-exists(hook-offCanvas-panel)) {
+      @include hook-offCanvas-panel();
+    }
   }
 
   .offCanvas-close {
@@ -75,5 +80,7 @@ $offCanvas-panel-width: 300px !default;
     right: $global-whitespace-large;
   }
 
-  @if (mixin-exists(hook-offCanvas-misc)) { @include hook-offCanvas-misc(); }
+  @if (mixin-exists(hook-offCanvas-misc)) {
+    @include hook-offCanvas-misc();
+  }
 }

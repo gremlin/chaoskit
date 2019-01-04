@@ -26,7 +26,12 @@ class Alert extends React.Component {
 
   attachTimeline = () => {
     const $alert = this.alert;
-    const { onStart, onReverseStart, onComplete, onReverseComplete } = this.props;
+    const {
+      onStart,
+      onReverseStart,
+      onComplete,
+      onReverseComplete,
+    } = this.props;
 
     let forward = true;
     let lastTime = 0;
@@ -41,7 +46,10 @@ class Alert extends React.Component {
       },
       onUpdate: () => {
         const newTime = $alert.timeline.time();
-        if ((forward && newTime < lastTime) || (!forward && newTime > lastTime)) {
+        if (
+          (forward && newTime < lastTime) ||
+          (!forward && newTime > lastTime)
+        ) {
           forward = !forward;
           if (!forward) {
             onReverseStart();
@@ -73,32 +81,46 @@ class Alert extends React.Component {
       },
       ease: config.easing,
     });
-  }
+  };
 
   handleAlertCloseClick = () => {
     this.collapseAlert();
-  }
+  };
 
   collapseAlert = () => {
     this.alert.timeline.play();
-  }
+  };
 
   openAlert = () => {
     this.alert.timeline.reverse();
-  }
+  };
 
   render() {
     const { children, className, close, title, type } = this.props;
-    const classes = cx('alert', {
-      'alert--primary': type === 'primary',
-      'alert--warning': type === 'warning',
-      'alert--danger': type === 'danger',
-    }, className);
+    const classes = cx(
+      'alert',
+      {
+        'alert--primary': type === 'primary',
+        'alert--warning': type === 'warning',
+        'alert--danger': type === 'danger',
+      },
+      className,
+    );
 
     return (
-      <div className={classes} role="alert" ref={(ref) => { this.alert = ref; }}>
+      <div
+        className={classes}
+        role="alert"
+        ref={(ref) => {
+          this.alert = ref;
+        }}
+      >
         <div className="alert-content">
-          {title && <h4 id={kebabCase(toLower(title))} className="alert-title">{title}</h4>}
+          {title && (
+            <h4 id={kebabCase(toLower(title))} className="alert-title">
+              {title}
+            </h4>
+          )}
           {children}
         </div>
         {close && (

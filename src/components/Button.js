@@ -5,7 +5,8 @@ import React from 'react';
 import { config } from '../helpers/config';
 import { Loader } from '.';
 
-class Button extends React.Component { // eslint-disable-line react/prefer-stateless-function
+// eslint-disable-next-line react/prefer-stateless-function
+class Button extends React.Component {
   render() {
     const {
       active,
@@ -80,7 +81,14 @@ Button.propTypes = {
   noContrast: PropTypes.bool,
   noRadius: PropTypes.bool,
   size: PropTypes.oneOf(['xsmall', 'small']),
-  type: PropTypes.oneOf(['reset', 'default', 'primary', 'secondary', 'danger', 'outlinePrimary']),
+  type: PropTypes.oneOf([
+    'reset',
+    'default',
+    'primary',
+    'secondary',
+    'danger',
+    'outlinePrimary',
+  ]),
   url: PropTypes.string,
 };
 

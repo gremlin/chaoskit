@@ -8,7 +8,11 @@ $toggle-transition: all 0.25s easeInOutCubic !default;
 $toggle-background: lighten($global-dark, 60) !default;
 $toggle-background-active: $global-primary !default;
 $toggle-button-size: ($toggle-height - 6) !default;
-$toggle-button-background: linear-gradient(to bottom right, $global-background, darken($global-background, 7.5));
+$toggle-button-background: linear-gradient(
+  to bottom right,
+  $global-background,
+  darken($global-background, 7.5)
+);
 $toggle-button-offset: $global-whitespace-xsmall !default;
 $toggle-text-offset: $global-whitespace-small !default;
 $toggle-font-size: $global-font-size-small !default;
@@ -69,7 +73,11 @@ $toggle-contrast-enable: true !default;
 
             // Offset for contrast border
             .u-contrast & {
-              left: ($toggle-width - $toggle-button-size - $toggle-button-offset - 2px);
+              left:
+                (
+                  $toggle-width - $toggle-button-size - $toggle-button-offset -
+                  2px
+                );
             }
           }
         }

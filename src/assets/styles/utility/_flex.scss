@@ -221,5 +221,7 @@
     }
   }
 
-  @if (mixin-exists(hook-utility-flex-misc)) { @include hook-utility-flex-misc(); }
+  @if (mixin-exists(hook-utility-flex-misc)) {
+    @include hook-utility-flex-misc();
+  }
 }

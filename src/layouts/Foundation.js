@@ -16,21 +16,19 @@ import '../assets/styles/site.scss';
 const Foundation = props => (
   <StaticQuery
     query={graphql`
-        query FoundationPageData {
-          site {
-            siteMetadata {
-              title
-              description
-            }
+      query FoundationPageData {
+        site {
+          siteMetadata {
+            title
+            description
           }
         }
-      `}
+      }
+    `}
     render={(data) => {
       const {
         site: {
-          siteMetadata: {
-            title, description,
-          },
+          siteMetadata: { title, description },
         },
       } = data;
       const { children } = props;
@@ -39,12 +37,11 @@ const Foundation = props => (
         <Fragment>
           <Helmet
             title={title}
-            meta={[
-              { name: 'description', content: description },
-            ]}
+            meta={[{ name: 'description', content: description }]}
           >
             {/* Adding in webfonts here to get around strange Gatsby issue https://github.com/gatsbyjs/gatsby/issues/9826 */}
-            <style type="text/css">{`
+            <style type="text/css">
+              {`
                 @font-face {
                   font-family: Gira;
                   src: local(😜), url(${GiraLight}) format('woff');

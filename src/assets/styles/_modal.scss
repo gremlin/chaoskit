@@ -54,7 +54,9 @@ $modal-large-enable: true !default;
           .modal-dialog {
             max-width: $modal-size-small;
 
-            @if (mixin-exists(hook-modal-dialog-small)) { @include hook-modal-dialog-small(); }
+            @if (mixin-exists(hook-modal-dialog-small)) {
+              @include hook-modal-dialog-small();
+            }
           }
         }
       }
@@ -66,7 +68,9 @@ $modal-large-enable: true !default;
           .modal-dialog {
             max-width: $modal-size-large;
 
-            @if (mixin-exists(hook-modal-dialog-large)) { @include hook-modal-dialog-large(); }
+            @if (mixin-exists(hook-modal-dialog-large)) {
+              @include hook-modal-dialog-large();
+            }
           }
         }
       }
@@ -82,7 +86,9 @@ $modal-large-enable: true !default;
       opacity: 0;
       box-shadow: $global-big-media-shadow;
 
-      @if (mixin-exists(hook-modal-dialog)) { @include hook-modal-dialog(); }
+      @if (mixin-exists(hook-modal-dialog)) {
+        @include hook-modal-dialog();
+      }
     }
 
     &-header {
@@ -109,7 +115,9 @@ $modal-large-enable: true !default;
         margin-bottom: 0;
       }
 
-      @if (mixin-exists(hook-modal-header)) { @include hook-modal-header(); }
+      @if (mixin-exists(hook-modal-header)) {
+        @include hook-modal-header();
+      }
     }
 
     &-body {
@@ -117,7 +125,9 @@ $modal-large-enable: true !default;
 
       padding: $global-whitespace-large;
 
-      @if (mixin-exists(hook-modal-body)) { @include hook-modal-body(); }
+      @if (mixin-exists(hook-modal-body)) {
+        @include hook-modal-body();
+      }
     }
 
     &-footer {
@@ -137,15 +147,21 @@ $modal-large-enable: true !default;
         justify-content: center;
       }
 
-      @if (mixin-exists(hook-modal-footer)) { @include hook-modal-footer(); }
+      @if (mixin-exists(hook-modal-footer)) {
+        @include hook-modal-footer();
+      }
     }
 
     &-close {
       margin-left: $close-offset;
 
-      @if (mixin-exists(hook-modal-close)) { @include hook-modal-close(); }
+      @if (mixin-exists(hook-modal-close)) {
+        @include hook-modal-close();
+      }
     }
 
-    @if (mixin-exists(hook-modal)) { @include hook-modal(); }
+    @if (mixin-exists(hook-modal)) {
+      @include hook-modal();
+    }
   }
 }

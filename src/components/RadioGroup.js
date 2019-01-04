@@ -74,22 +74,20 @@ class RadioGroup extends React.Component {
     const { inline } = this.props;
 
     if (inline) {
-      return (
-        <Inline>
-          {this.renderChildren()}
-        </Inline>
-      );
+      return <Inline>{this.renderChildren()}</Inline>;
     }
 
-    return (
-      <List type={['space']}>
-        {this.renderChildren()}
-      </List>
-    );
-  }
+    return <List type={['space']}>{this.renderChildren()}</List>;
+  };
 
   render() {
-    const { className, explanationMessage, label, required, validationMessage } = this.props;
+    const {
+      className,
+      explanationMessage,
+      label,
+      required,
+      validationMessage,
+    } = this.props;
     const classes = cx('form-group', className, {
       [config.classes.notValid]: validationMessage,
       [config.classes.required]: required,
@@ -97,9 +95,14 @@ class RadioGroup extends React.Component {
 
     return (
       <div className={classes}>
-        <FormLabel required={required} id="">{label}</FormLabel>
+        <FormLabel required={required} id="">
+          {label}
+        </FormLabel>
         {this.renderItems()}
-        <FormFooter explanationMessage={explanationMessage} validationMessage={validationMessage} />
+        <FormFooter
+          explanationMessage={explanationMessage}
+          validationMessage={validationMessage}
+        />
       </div>
     );
   }

@@ -8,7 +8,12 @@
   }
 
   @include selector-placeholder('.u-gradient--teal-brightTeal') {
-    background: linear-gradient(to right, $GREMLIN_teal, lighten($GREMLIN_teal, 12.5%));
+    background:
+      linear-gradient(
+        to right,
+        $GREMLIN_teal,
+        lighten($GREMLIN_teal, 12.5%)
+      );
   }
 
   @include selector-placeholder('.u-gradient--green-teal') {
@@ -16,7 +21,12 @@
   }
 
   @include selector-placeholder('.u-gradient--darkerBlue-darkestBlue') {
-    background: linear-gradient(to right, $GREMLIN_darkerblue, $GREMLIN_darkestblue);
+    background:
+      linear-gradient(
+        to right,
+        $GREMLIN_darkerblue,
+        $GREMLIN_darkestblue
+      );
   }
 
   @include selector-placeholder('.u-gradient--darkBlue-purple') {

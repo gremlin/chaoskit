@@ -6,26 +6,36 @@
   @include selector-placeholder('.u-bgPrimary') {
     background: $global-primary;
 
-    @if (mixin-exists(hook-utility-background-primary)) { @include hook-utility-background-primary(); }
+    @if (mixin-exists(hook-utility-background-primary)) {
+      @include hook-utility-background-primary();
+    }
   }
 
   @include selector-placeholder('.u-bgPrimaryLight') {
     background: $global-primary-light;
 
-    @if (mixin-exists(hook-utility-background-primary-light)) { @include hook-utility-background-primary-light(); }
+    @if (mixin-exists(hook-utility-background-primary-light)) {
+      @include hook-utility-background-primary-light();
+    }
   }
 
   @include selector-placeholder('.u-bgDanger') {
     background: $global-danger;
 
-    @if (mixin-exists(hook-utility-background-danger)) { @include hook-utility-background-danger(); }
+    @if (mixin-exists(hook-utility-background-danger)) {
+      @include hook-utility-background-danger();
+    }
   }
 
   @include selector-placeholder('.u-bgPanel') {
     background: $global-panel-background;
 
-    @if (mixin-exists(hook-utility-background-panel)) { @include hook-utility-background-panel(); }
+    @if (mixin-exists(hook-utility-background-panel)) {
+      @include hook-utility-background-panel();
+    }
   }
 
-  @if (mixin-exists(hook-utility-background)) { @include hook-utility-background(); }
+  @if (mixin-exists(hook-utility-background)) {
+    @include hook-utility-background();
+  }
 }
