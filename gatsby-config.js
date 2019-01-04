@@ -15,9 +15,7 @@ const postCssPlugins = [
   pImport(),
   flexboxFixes(),
   inlineSVG({
-    paths: [
-      './src/assets/icons/',
-    ],
+    paths: ['./src/assets/icons/'],
   }),
   autoprefixer(),
   size(),
@@ -36,7 +34,8 @@ const postCssPlugins = [
 module.exports = {
   siteMetadata: {
     title: 'ChaosKit',
-    description: 'A lightweight and modular front-end framework for developing fast and powerful web interfaces within Gremlin',
+    description:
+      'A lightweight and modular front-end framework for developing fast and powerful web interfaces within Gremlin',
   },
   plugins: [
     {

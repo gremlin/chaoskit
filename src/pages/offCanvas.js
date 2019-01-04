@@ -45,7 +45,11 @@ const OffCanvasScope = {
 
 const OffCanvasDocs = () => (
   <BaseLayout pageTitle="OffCanvas">
-    <p>Frequently used for mobile navigations and shopping carts, the OffCanvas component provides ample space to accomodate accessory information for the current page.</p>
+    <p>
+      Frequently used for mobile navigations and shopping carts, the OffCanvas
+      component provides ample space to accomodate accessory information for the
+      current page.
+    </p>
     <Live
       code={OffCanvasExample}
       scope={OffCanvasScope}

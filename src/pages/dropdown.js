@@ -26,7 +26,8 @@ class Example extends React.Component {
 `.trim();
 
 const DropdownPropDescriptions = {
-  position: "<code>oneOf(['left', 'center', 'right', 'up-left', 'up-center', 'up-right'])</code>", // eslint-disable-line single-quotes
+  position:
+    "<code>oneOf(['left', 'center', 'right', 'up-left', 'up-center', 'up-right'])</code>", // eslint-disable-line single-quotes
   size: "<code>oneOf(['default', 'small'])</code>", // eslint-disable-line single-quotes
 };
 
@@ -39,7 +40,12 @@ const DropdownScope = {
 
 const DropdownDocs = () => (
   <BaseLayout pageTitle="Dropdown">
-    <p>Common use-cases for the Dropdown component include navigation sub-items and quick-actions. On small devices, dropdowns may not be a good option to avoid unecessary scrolling where on-page options may serve your users better.</p>
+    <p>
+      Common use-cases for the Dropdown component include navigation sub-items
+      and quick-actions. On small devices, dropdowns may not be a good option to
+      avoid unecessary scrolling where on-page options may serve your users
+      better.
+    </p>
     <Live
       code={DropdownExample}
       scope={DropdownScope}

@@ -41,12 +41,15 @@ class OffCanvas extends React.Component {
   onReverseComplete = () => {
     const { onReverseComplete } = this.props;
 
-    this.setState({
-      renderOffCanvas: false,
-    }, () => {
-      onReverseComplete();
-    });
-  }
+    this.setState(
+      {
+        renderOffCanvas: false,
+      },
+      () => {
+        onReverseComplete();
+      },
+    );
+  };
 
   attachTimeline = () => {
     const { onStart, onReverseStart, onComplete, open } = this.props;
@@ -68,7 +71,10 @@ class OffCanvas extends React.Component {
       },
       onUpdate: () => {
         const newTime = $offCanvas.timeline.time();
-        if ((forward && newTime < lastTime) || (!forward && newTime > lastTime)) {
+        if (
+          (forward && newTime < lastTime) ||
+          (!forward && newTime > lastTime)
+        ) {
           forward = !forward;
           if (!forward) {
             onReverseStart();
@@ -94,30 +100,40 @@ class OffCanvas extends React.Component {
       .set($offCanvas, {
         display: 'block',
       })
-      .to($offCanvas, 0.5, {
-        css: {
-          opacity: 1,
+      .to(
+        $offCanvas,
+        0.5,
+        {
+          css: {
+            opacity: 1,
+          },
         },
-      }, 'offCanvas')
-      .to(this.offCanvasPanel, 0.5, {
-        css: {
-          x: 0,
+        'offCanvas',
+      )
+      .to(
+        this.offCanvasPanel,
+        0.5,
+        {
+          css: {
+            x: 0,
+          },
+          ease: config.easing,
         },
-        ease: config.easing,
-      }, 'offCanvas');
-  }
+        'offCanvas',
+      );
+  };
 
   openOffCanvas = () => {
     const $offCanvas = this.offCanvas;
 
     $offCanvas.timeline.play();
-  }
+  };
 
   closeOffCanvas = () => {
     const $offCanvas = this.offCanvas;
 
     $offCanvas.timeline.reverse();
-  }
+  };
 
   handleOutsideOffCanvasClick = (e) => {
     const { onOffCanvasToggle } = this.props;
@@ -128,37 +144,51 @@ class OffCanvas extends React.Component {
     }
 
     return false;
-  }
+  };
 
   handleOffCanvasToggle = () => {
     const { onOffCanvasToggle } = this.props;
 
     onOffCanvasToggle();
-  }
+  };
 
   render() {
     const { children, className, align } = this.props;
-    const classes = cx('offCanvas', {
-      'offCanvas--right': align === 'right',
-    }, className);
+    const classes = cx(
+      'offCanvas',
+      {
+        'offCanvas--right': align === 'right',
+      },
+      className,
+    );
     const { renderOffCanvas } = this.state;
 
     return (
       renderOffCanvas &&
-        ReactDOM.createPortal(
-          <div /* eslint-disable-line max-len, jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
-            className={classes}
-            onClick={this.handleOutsideOffCanvasClick}
-            ref={(ref) => { this.offCanvas = ref; }}
-            data-offCanvasroot
+      ReactDOM.createPortal(
+        <div /* eslint-disable-line max-len, jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
+          className={classes}
+          onClick={this.handleOutsideOffCanvasClick}
+          ref={(ref) => {
+            this.offCanvas = ref;
+          }}
+          data-offCanvasroot
+        >
+          <div
+            className="offCanvas-panel"
+            ref={(ref) => {
+              this.offCanvasPanel = ref;
+            }}
           >
-            <div className="offCanvas-panel" ref={(ref) => { this.offCanvasPanel = ref; }}>
-              <Close onClick={this.handleOffCanvasToggle} className="offCanvas-close" />
-              {children}
-            </div>
-          </div>,
-          document.body,
-        )
+            <Close
+              onClick={this.handleOffCanvasToggle}
+              className="offCanvas-close"
+            />
+            {children}
+          </div>
+        </div>,
+        document.body,
+      )
     );
   }
 }
