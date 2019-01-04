@@ -147,7 +147,7 @@ class Tooltip extends React.Component {
     );
   };
 
-  attachTimeline() {
+  attachTimeline = () => {
     const $tooltip = this.tooltip;
     const { placement } = this.props;
 
@@ -197,7 +197,7 @@ class Tooltip extends React.Component {
       });
 
     this.styleTooltip();
-  }
+  };
 
   renderChildren = () => {
     const { children } = this.props;
