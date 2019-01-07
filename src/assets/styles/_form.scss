@@ -650,7 +650,7 @@ $form-contrast-background-focus: transparent !default;
     label {
       cursor: pointer;
       user-select: none;
-      padding-left: ($form-checkbox-size + $form-checkbox-label-spacing);
+      padding-left: ($form-checkbox-size + $form-radio-label-spacing);
       position: relative;
       line-height: 1;
 

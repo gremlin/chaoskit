@@ -16,7 +16,7 @@ $toggle-button-background: linear-gradient(
 $toggle-button-offset: $global-whitespace-xsmall !default;
 $toggle-text-offset: $global-whitespace-small !default;
 $toggle-font-size: $global-font-size-small !default;
-$toggle-font-weight: $global-font-weight !default;
+$toggle-font-weight: $global-font-weight-bold !default;
 
 $toggle-contrast-enable: true !default;
 
@@ -100,7 +100,7 @@ $toggle-contrast-enable: true !default;
   }
 
   .toggle-labelText {
-    margin: 0 0 0 $global-whitespace-regular;
+    margin: 0 0 0 $toggle-text-offset;
     font-size: $toggle-font-size;
     font-weight: $toggle-font-weight;
   }

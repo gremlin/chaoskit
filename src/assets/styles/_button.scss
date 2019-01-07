@@ -349,13 +349,13 @@ $button-icon-enable: true !default;
     @include selector-placeholder('.button--danger') {
       background: $button-danger-background;
       border-color: $button-danger-border;
-      color: $global-contrast;
+      color: $button-danger-color;
 
       &:hover,
       &:focus,
       &:active,
       &.is-active {
-        color: $global-contrast;
+        color: $button-danger-color;
       }
 
       @if (mixin-exists(hook-button-danger)) {
