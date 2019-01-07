@@ -2,7 +2,9 @@ import cx from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { FormLabel, FormFooter, Inline, List, ListItem, Radio } from '.';
+import {
+  FormLabel, FormFooter, Inline, List, ListItem, Radio,
+} from '.';
 import { config } from '../helpers/config';
 
 class RadioGroup extends React.Component {
@@ -35,7 +37,9 @@ class RadioGroup extends React.Component {
   };
 
   renderChildren = () => {
-    const { children, name, inline, onChange } = this.props;
+    const {
+      children, name, inline, onChange,
+    } = this.props;
     const { selectedValue } = this.state;
 
     let returnChild = null;

@@ -1,7 +1,9 @@
 import React from 'react';
 
 import BaseLayout from '../layouts/BaseLayout';
-import { Dropdown, Inline, List, ListItem } from '../components';
+import {
+  Dropdown, Inline, List, ListItem,
+} from '../components';
 import Live from '../docs/Live';
 
 const DropdownExample = `

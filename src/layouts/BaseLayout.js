@@ -7,7 +7,9 @@ import 'what-input';
 import Foundation from './Foundation';
 import { styles } from '../helpers/styles';
 import { config } from '../helpers/config';
-import { Button, Icon, Inline, List, ListItem } from '../components';
+import {
+  Button, Icon, Inline, List, ListItem,
+} from '../components';
 import { version } from '../../package.json';
 
 import mascot from '../assets/media/logo-mascot.svg';

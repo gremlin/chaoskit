@@ -47,8 +47,8 @@ class Alert extends React.Component {
       onUpdate: () => {
         const newTime = $alert.timeline.time();
         if (
-          (forward && newTime < lastTime) ||
-          (!forward && newTime > lastTime)
+          (forward && newTime < lastTime)
+          || (!forward && newTime > lastTime)
         ) {
           forward = !forward;
           if (!forward) {
@@ -96,7 +96,9 @@ class Alert extends React.Component {
   };
 
   render() {
-    const { children, className, close, title, type } = this.props;
+    const {
+      children, className, close, title, type,
+    } = this.props;
     const classes = cx(
       'alert',
       {

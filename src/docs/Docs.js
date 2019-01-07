@@ -81,9 +81,9 @@ const Docs = (props) => {
     type: getReactPropType(component.propTypes[propName]),
     description: ReactHtmlParser(propDescriptions[propName]) || '',
     default:
-        component.defaultProps &&
-        component.defaultProps[propName] &&
-        (typeof component.defaultProps[propName] !== 'function'
+        component.defaultProps
+        && component.defaultProps[propName]
+        && (typeof component.defaultProps[propName] !== 'function'
           ? component.defaultProps[propName].toString()
           : null),
   }));

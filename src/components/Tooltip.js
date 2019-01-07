@@ -83,10 +83,8 @@ class Tooltip extends React.Component {
     // Tooltip dimensions
     const tooltipDim = { w: $tooltip.offsetWidth, h: $tooltip.offsetHeight };
 
-    const scrollYOffset =
-      window.pageYOffset || document.documentElement.scrollTop;
-    const scrollXOffset =
-      window.pageXOffset || document.documentElement.scrollLeft;
+    const scrollYOffset = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollXOffset = window.pageXOffset || document.documentElement.scrollLeft;
 
     // Apply styling
     // eslint-disable-next-line default-case
@@ -95,30 +93,30 @@ class Tooltip extends React.Component {
     ) {
       case 'top':
         $tooltip.style.top = `${rect.top + scrollYOffset - tooltipDim.h}px`;
-        $tooltip.style.left = `${rect.left +
-          scrollXOffset +
-          linkDim.w / 2 -
-          tooltipDim.w / 2}px`;
+        $tooltip.style.left = `${rect.left
+          + scrollXOffset
+          + linkDim.w / 2
+          - tooltipDim.w / 2}px`;
         break;
       case 'bottom':
         $tooltip.style.top = `${rect.top + scrollYOffset + linkDim.h}px`;
-        $tooltip.style.left = `${rect.left +
-          scrollXOffset +
-          linkDim.w / 2 -
-          tooltipDim.w / 2}px`;
+        $tooltip.style.left = `${rect.left
+          + scrollXOffset
+          + linkDim.w / 2
+          - tooltipDim.w / 2}px`;
         break;
       case 'left':
-        $tooltip.style.top = `${rect.top +
-          scrollYOffset +
-          linkDim.h / 2 -
-          tooltipDim.h / 2}px`;
+        $tooltip.style.top = `${rect.top
+          + scrollYOffset
+          + linkDim.h / 2
+          - tooltipDim.h / 2}px`;
         $tooltip.style.left = `${rect.left + scrollXOffset - tooltipDim.w}px`;
         break;
       case 'right':
-        $tooltip.style.top = `${rect.top +
-          scrollYOffset +
-          linkDim.h / 2 -
-          tooltipDim.h / 2}px`;
+        $tooltip.style.top = `${rect.top
+          + scrollYOffset
+          + linkDim.h / 2
+          - tooltipDim.h / 2}px`;
         $tooltip.style.left = `${rect.left + scrollXOffset + linkDim.w}px`;
         break;
     }
@@ -218,8 +216,8 @@ class Tooltip extends React.Component {
     return (
       <Fragment>
         {React.Children.only(this.renderChildren())}
-        {renderTooltip &&
-          ReactDOM.createPortal(
+        {renderTooltip
+          && ReactDOM.createPortal(
             <div
               className="tooltip"
               ref={(ref) => {

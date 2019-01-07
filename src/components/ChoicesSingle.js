@@ -57,8 +57,7 @@ class ChoicesSingle extends React.Component {
       [config.classes.notValid]: validationMessage,
       [config.classes.required]: required,
     });
-    const selectedOption =
-      selected !== -1 ? optionsList.find(x => x.value === selected) : -1;
+    const selectedOption = selected !== -1 ? optionsList.find(x => x.value === selected) : -1;
 
     return (
       <Downshift
@@ -80,8 +79,8 @@ class ChoicesSingle extends React.Component {
                   {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events */}
                   <div className="choices__inner" onClick={downshift.openMenu}>
                     <div className="choices__list choices__list--single">
-                      {downshift.selectedItem &&
-                      downshift.selectedItem !== -1 ? (
+                      {downshift.selectedItem
+                      && downshift.selectedItem !== -1 ? (
                         <div className="choices__item choices__item--selectable">
                           {downshift.selectedItem.label}
                           {removeItem && (
@@ -123,8 +122,8 @@ class ChoicesSingle extends React.Component {
                               'choices__item choices__item--choice',
                               {
                                 'is-highlighted':
-                                  downshift.highlightedIndex === index ||
-                                  downshift.selectedItem === item,
+                                  downshift.highlightedIndex === index
+                                  || downshift.selectedItem === item,
                               },
                             );
 

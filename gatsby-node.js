@@ -9,9 +9,9 @@ const StylelintPlugin = require('stylelint-webpack-plugin');
 // Custom Webpack configuration
 exports.onCreateWebpackConfig = ({
   stage,
-  //rules,
+  // rules,
   loaders,
-  //plugins,
+  // plugins,
   actions,
 }) => {
   if (['develop'].includes(stage)) {

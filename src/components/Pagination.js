@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 import { Button } from '.';
 
 const Pagination = (props) => {
-  const { hasPrevPage, hasNextPage, prevPageLink, nextPageLink } = props;
+  const {
+    hasPrevPage, hasNextPage, prevPageLink, nextPageLink,
+  } = props;
 
   return (
     (hasPrevPage || hasNextPage) && (

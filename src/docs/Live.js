@@ -1,7 +1,9 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import scriptjs from 'scriptjs';
-import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
+import {
+  LiveProvider, LiveEditor, LiveError, LivePreview,
+} from 'react-live';
 
 import { Loader } from '../components';
 import Docs from './Docs';

@@ -58,8 +58,8 @@ class Reveal extends React.Component {
         const newTime = $reveal.timeline.time();
 
         if (
-          (forward && newTime < lastTime) ||
-          (!forward && newTime > lastTime)
+          (forward && newTime < lastTime)
+          || (!forward && newTime > lastTime)
         ) {
           forward = !forward;
           if (!forward) {

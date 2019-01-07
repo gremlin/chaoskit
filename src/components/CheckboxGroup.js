@@ -2,7 +2,9 @@ import cx from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { FormLabel, FormFooter, Inline, List, ListItem } from '.';
+import {
+  FormLabel, FormFooter, Inline, List, ListItem,
+} from '.';
 import { config } from '../helpers/config';
 
 class CheckboxGroup extends React.Component {

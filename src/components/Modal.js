@@ -51,7 +51,9 @@ class Modal extends React.Component {
   };
 
   attachTimeline = () => {
-    const { onStart, onReverseStart, onComplete, open } = this.props;
+    const {
+      onStart, onReverseStart, onComplete, open,
+    } = this.props;
 
     const $body = document.body;
     const $modal = this.modal;
@@ -71,8 +73,8 @@ class Modal extends React.Component {
       onUpdate: () => {
         const newTime = $modal.timeline.time();
         if (
-          (forward && newTime < lastTime) ||
-          (!forward && newTime > lastTime)
+          (forward && newTime < lastTime)
+          || (!forward && newTime > lastTime)
         ) {
           forward = !forward;
           if (!forward) {
@@ -149,8 +151,8 @@ class Modal extends React.Component {
     const { renderModal } = this.state;
 
     return (
-      renderModal &&
-      ReactDOM.createPortal(
+      renderModal
+      && ReactDOM.createPortal(
         <div /* eslint-disable-line max-len, jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
           className={modalClasses}
           onClick={this.handleOutsideModalClick}

@@ -42,7 +42,9 @@ class Checkbox extends React.Component {
   };
 
   render() {
-    const { className, label, disabled, name, value } = this.props;
+    const {
+      className, label, disabled, name, value,
+    } = this.props;
     const { checked } = this.state;
 
     const classes = cx('form-checkbox', className, {

@@ -49,8 +49,8 @@ class Dropdown extends React.Component {
         const newTime = $dropdown.timeline.time();
 
         if (
-          (forward && newTime < lastTime) ||
-          (!forward && newTime > lastTime)
+          (forward && newTime < lastTime)
+          || (!forward && newTime > lastTime)
         ) {
           forward = !forward;
           if (!forward) {

@@ -42,7 +42,9 @@ class Toggle extends React.Component {
   };
 
   render() {
-    const { className, disabled, name, label, value } = this.props;
+    const {
+      className, disabled, name, label, value,
+    } = this.props;
     const { checked } = this.state;
 
     const classes = cx('form-group toggle-group', className);

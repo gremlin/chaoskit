@@ -11,8 +11,6 @@
     "import/no-unresolved": 0,
     "import/extensions": 0,
     "max-len": [0],
-    "object-curly-newline": 0,
-    "operator-linebreak": 0,
     "react/forbid-prop-types": 0,
     "react/jsx-indent": 1,
     "react/jsx-filename-extension": 0,
@@ -24,8 +22,6 @@
     "react/jsx-one-expression-per-line": 0,
     "react/forbid-foreign-prop-types": 0,
     "react/no-access-state-in-setstate": 0,
-    "space-before-function-paren": ["error", "never"],
-    "spaced-comment": 0,
     "jsx-a11y/anchor-is-valid": [
       "error",
       {

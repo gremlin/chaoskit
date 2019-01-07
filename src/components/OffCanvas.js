@@ -52,7 +52,9 @@ class OffCanvas extends React.Component {
   };
 
   attachTimeline = () => {
-    const { onStart, onReverseStart, onComplete, open } = this.props;
+    const {
+      onStart, onReverseStart, onComplete, open,
+    } = this.props;
 
     const $body = document.body;
     const $offCanvas = this.offCanvas;
@@ -72,8 +74,8 @@ class OffCanvas extends React.Component {
       onUpdate: () => {
         const newTime = $offCanvas.timeline.time();
         if (
-          (forward && newTime < lastTime) ||
-          (!forward && newTime > lastTime)
+          (forward && newTime < lastTime)
+          || (!forward && newTime > lastTime)
         ) {
           forward = !forward;
           if (!forward) {
@@ -164,8 +166,8 @@ class OffCanvas extends React.Component {
     const { renderOffCanvas } = this.state;
 
     return (
-      renderOffCanvas &&
-      ReactDOM.createPortal(
+      renderOffCanvas
+      && ReactDOM.createPortal(
         <div /* eslint-disable-line max-len, jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
           className={classes}
           onClick={this.handleOutsideOffCanvasClick}

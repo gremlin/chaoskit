@@ -24,7 +24,9 @@ class Avatar extends React.Component {
   };
 
   render() {
-    const { className, image, name, size } = this.props;
+    const {
+      className, image, name, size,
+    } = this.props;
     const { imageError } = this.state;
 
     const nameProp = name ? name.trim() : '';

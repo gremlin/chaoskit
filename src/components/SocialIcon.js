@@ -5,7 +5,9 @@ import React from 'react';
 import { Icon } from '.';
 
 const SocialIcon = (props) => {
-  const { className, service, title, url } = props;
+  const {
+    className, service, title, url,
+  } = props;
   const classes = cx('socialIcon', className);
 
   return (
