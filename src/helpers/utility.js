@@ -39,8 +39,7 @@ export function throttleScroll(action) {
  */
 export function generateUUID(a) {
   return a
-    ? /* eslint-disable-next-line no-bitwise */
-    (a ^ ((Math.random() * 16) >> (a / 4))).toString(16)
+    ? (a ^ ((Math.random() * 16) >> (a / 4))).toString(16) // eslint-disable-line no-bitwise
     : ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, generateUUID); // eslint-disable-line
 }
 
