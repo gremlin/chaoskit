@@ -48,120 +48,127 @@ $modal-large-enable: true !default;
       }
     }
 
-    @if $modal-small-enable {
-      @media (min-width: $global-viewport-medium) {
-        &--small {
-          .modal-dialog {
-            max-width: $modal-size-small;
-
-            @if (mixin-exists(hook-modal-dialog-small)) {
-              @include hook-modal-dialog-small();
-            }
-          }
-        }
-      }
-    }
-
-    @if $modal-large-enable {
-      @media (min-width: $global-viewport-large) {
-        &--large {
-          .modal-dialog {
-            max-width: $modal-size-large;
-
-            @if (mixin-exists(hook-modal-dialog-large)) {
-              @include hook-modal-dialog-large();
-            }
-          }
-        }
-      }
-    }
-
-    &-dialog {
-      background: $modal-dialog-background;
-      border-radius: $modal-border-radius;
-      margin: $global-whitespace-regular;
-      z-index: 5;
-      transform: translateY(25%);
-      transform-origin: center bottom;
-      opacity: 0;
-      box-shadow: $global-big-media-shadow;
-
-      @if (mixin-exists(hook-modal-dialog)) {
-        @include hook-modal-dialog();
-      }
-    }
-
-    &-header {
-      display: flex;
-      padding: $global-whitespace-large;
-      justify-content: space-between;
-
-      @if ($modal-header-footer-styles-enable) {
-        background: $global-panel-background;
-        border-bottom: 1px solid $global-border;
-        border-top-left-radius: $modal-border-radius;
-        border-top-right-radius: $modal-border-radius;
-      }
-
-      &--center {
-        h4 {
-          margin-left: ($close-size + $close-offset);
-          flex: 1;
-          text-align: center;
-        }
-      }
-
-      > * {
-        margin-bottom: 0;
-      }
-
-      @if (mixin-exists(hook-modal-header)) {
-        @include hook-modal-header();
-      }
-    }
-
-    &-body {
-      @include trimChildren();
-
-      padding: $global-whitespace-large;
-
-      @if (mixin-exists(hook-modal-body)) {
-        @include hook-modal-body();
-      }
-    }
-
-    &-footer {
-      display: flex;
-      padding: $global-whitespace-large;
-      align-items: center;
-      justify-content: flex-end;
-
-      @if ($modal-header-footer-styles-enable) {
-        background: $global-panel-background;
-        border-top: 1px solid $global-border;
-        border-bottom-left-radius: $modal-border-radius;
-        border-bottom-right-radius: $modal-border-radius;
-      }
-
-      &--center {
-        justify-content: center;
-      }
-
-      @if (mixin-exists(hook-modal-footer)) {
-        @include hook-modal-footer();
-      }
-    }
-
-    &-close {
-      margin-left: $close-offset;
-
-      @if (mixin-exists(hook-modal-close)) {
-        @include hook-modal-close();
-      }
-    }
-
     @if (mixin-exists(hook-modal)) {
       @include hook-modal();
     }
+  }
+
+  @if $modal-small-enable {
+    @media (min-width: $global-viewport-medium) {
+      .modal--small {
+        .modal-dialog {
+          max-width: $modal-size-small;
+
+          @if (mixin-exists(hook-modal-dialog-small)) {
+            @include hook-modal-dialog-small();
+          }
+        }
+      }
+    }
+  }
+
+  @if $modal-large-enable {
+    @media (min-width: $global-viewport-large) {
+      .modal--large {
+        .modal-dialog {
+          max-width: $modal-size-large;
+
+          @if (mixin-exists(hook-modal-dialog-large)) {
+            @include hook-modal-dialog-large();
+          }
+        }
+      }
+    }
+  }
+
+  .modal-dialog {
+    background: $modal-dialog-background;
+    border-radius: $modal-border-radius;
+    margin: $global-whitespace-regular;
+    z-index: 5;
+    transform: translateY(25%);
+    transform-origin: center bottom;
+    opacity: 0;
+    box-shadow: $global-big-media-shadow;
+
+    @if (mixin-exists(hook-modal-dialog)) {
+      @include hook-modal-dialog();
+    }
+  }
+
+  .modal-header {
+    display: flex;
+    padding: $global-whitespace-large;
+    justify-content: space-between;
+
+    @if ($modal-header-footer-styles-enable) {
+      background: $global-panel-background;
+      border-bottom: 1px solid $global-border;
+      border-top-left-radius: $modal-border-radius;
+      border-top-right-radius: $modal-border-radius;
+    }
+
+    &--center {
+      &:not(.modal-header--hasNoClose) h4 {
+        margin-left: ($close-size + $close-offset);
+      }
+
+      h4 {
+        flex: 1;
+        text-align: center;
+      }
+    }
+
+    > * {
+      margin-bottom: 0;
+    }
+
+    @if (mixin-exists(hook-modal-header)) {
+      @include hook-modal-header();
+    }
+  }
+
+  .modal-body {
+    @include trimChildren();
+
+    padding: $global-whitespace-large;
+
+    @if (mixin-exists(hook-modal-body)) {
+      @include hook-modal-body();
+    }
+  }
+
+  .modal-footer {
+    display: flex;
+    padding: $global-whitespace-large;
+    align-items: center;
+    justify-content: flex-end;
+
+    @if ($modal-header-footer-styles-enable) {
+      background: $global-panel-background;
+      border-top: 1px solid $global-border;
+      border-bottom-left-radius: $modal-border-radius;
+      border-bottom-right-radius: $modal-border-radius;
+    }
+
+    &--center {
+      justify-content: center;
+    }
+
+    @if (mixin-exists(hook-modal-footer)) {
+      @include hook-modal-footer();
+    }
+  }
+
+  .modal-close {
+    margin-left: $close-offset;
+
+    @if (mixin-exists(hook-modal-close)) {
+      @include hook-modal-close();
+    }
+  }
+
+  @if (mixin-exists(hook-modal-misc)) {
+    @include hook-modal-misc();
   }
 }
