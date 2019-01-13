@@ -141,7 +141,7 @@ class OffCanvas extends React.Component {
     const { onOffCanvasToggle } = this.props;
 
     // If click originates outside of offCanvas panel
-    if (e.target.hasAttribute('data-offCanvasroot')) {
+    if (e.target.hasAttribute('data-offcanvasroot')) {
       onOffCanvasToggle();
     }
 
@@ -174,7 +174,7 @@ class OffCanvas extends React.Component {
           ref={(ref) => {
             this.offCanvas = ref;
           }}
-          data-offCanvasroot
+          data-offcanvasroot
         >
           <div
             className="offCanvas-panel"
