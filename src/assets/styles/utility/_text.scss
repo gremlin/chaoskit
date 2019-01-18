@@ -105,7 +105,7 @@
 
   @include selector-placeholder('.u-textUnderline') {
     text-decoration: underline !important;
-    text-decoration-skip: ink;
+    text-decoration-skip-ink: auto;
   }
 
   // Prevent text from wrapping onto multiple lines, and truncate with an ellipsis
@@ -242,7 +242,7 @@
     &:focus,
     &:active {
       text-decoration: underline !important;
-      text-decoration-skip: ink;
+      text-decoration-skip-ink: auto;
     }
   }
 
