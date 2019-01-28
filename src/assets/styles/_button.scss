@@ -37,6 +37,11 @@ $button-secondary-color: $global-contrast !default;
 $button-secondary-background: $global-font-color !default;
 $button-secondary-border: $global-font-color !default;
 
+$button-teal-enable: true !default;
+$button-teal-color: $global-contrast !default;
+$button-teal-background: $GREMLIN_teal !default;
+$button-teal-border: $GREMLIN_teal !default;
+
 $button-danger-enable: true !default;
 $button-danger-color: $global-contrast !default;
 $button-danger-background: $global-danger !default;
@@ -341,6 +346,25 @@ $button-icon-enable: true !default;
 
       @if (mixin-exists(hook-button-secondary)) {
         @include hook-button-secondary();
+      }
+    }
+  }
+
+  @if $button-teal-enable {
+    @include selector-placeholder('.button--teal') {
+      background: $button-teal-background;
+      border-color: $button-teal-border;
+      color: $button-teal-color;
+
+      &:hover,
+      &:focus,
+      &:active,
+      &.is-active {
+        color: $button-teal-color;
+      }
+
+      @if (mixin-exists(hook-button-teal)) {
+        @include hook-button-teal();
       }
     }
   }
