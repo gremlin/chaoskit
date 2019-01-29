@@ -2,9 +2,10 @@
 // Variables
 //
 
-$badge-height: $global-height-xsmall !default;
+$badge-height: $global-height-micro !default;
 
 $badge-font-family: $base-heading-font-family !default;
+$badge-letter-spacing: 1px !default;
 
 $badge-primary-enable: true !default;
 $badge-danger-enable: true !default;
@@ -24,10 +25,11 @@ $badge-rounded-enable: true !default;
     display: inline-flex;
     align-items: center;
     padding: 0 $global-whitespace-small;
-    line-height: $global-line-height;
+    line-height: 1;
     font-size: $global-font-size-xsmall;
     font-family: $badge-font-family;
     font-weight: $global-font-weight-bold;
+    letter-spacing: $badge-letter-spacing;
     height: $badge-height;
     text-align: center;
     text-transform: uppercase;
