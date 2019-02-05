@@ -2,7 +2,11 @@
 // Component
 //
 
-@mixin list_circles($fill: $global-primary, $hover-fill: false) {
+@mixin list_circles(
+  $fill: $global-primary,
+  $hover-fill: false,
+  $line-height: $global-line-height-computed
+) {
   $list-circle-size: 8px;
 
   display: block;
@@ -15,7 +19,7 @@
   &::before {
     content: '';
     position: absolute;
-    top: (($global-line-height-computed - $list-circle-size) / 2);
+    top: (($line-height - $list-circle-size) / 2);
     left: 0;
     display: inline-block;
     size: $list-circle-size;
