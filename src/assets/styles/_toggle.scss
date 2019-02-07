@@ -11,6 +11,7 @@ $toggle-button-size: ($toggle-height - 6) !default;
 $toggle-button-background: linear-gradient(
   to bottom right,
   $global-background,
+  ease-in-out,
   darken($global-background, 7.5)
 );
 $toggle-button-offset: $global-whitespace-xsmall !default;

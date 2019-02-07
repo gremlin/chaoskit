@@ -8,6 +8,7 @@ import ChoicesMulti from './ChoicesMulti';
 import ChoicesSingle from './ChoicesSingle';
 import Close from './Close';
 import Dropdown from './Dropdown';
+import DropdownHeader from './DropdownHeader';
 import FormFooter from './FormFooter';
 import FormLabel from './FormLabel';
 import Icon from './Icon';
@@ -43,6 +44,7 @@ export {
   ChoicesSingle,
   Close,
   Dropdown,
+  DropdownHeader,
   FormFooter,
   FormLabel,
   Icon,

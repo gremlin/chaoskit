@@ -63,13 +63,13 @@
     "gatsby-remark-prismjs": "3.2.4",
     "gatsby-source-filesystem": "2.0.20",
     "node-sass": "4.11.0",
-    "react": "16.7.0",
-    "react-dom": "16.7.0",
+    "react": "16.8.1",
+    "react-dom": "16.8.1",
     "scriptjs": "2.5.9"
   },
   "peerDependencies": {
-    "react": ">=16.7.0",
-    "react-dom": ">=16.7.0"
+    "react": ">=16.8.1",
+    "react-dom": ">=16.8.1"
   },
   "license": "MIT",
   "scripts": {

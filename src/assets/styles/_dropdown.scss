@@ -2,17 +2,29 @@
 // Variables
 //
 
-$dropdown-arrow-size: 10px !default;
-$dropdown-width: 200px !default;
-$dropdown-width-small: 150px !default;
+$dropdown-width: 240px !default;
 
-$dropdown-panel-padding: $global-whitespace-regular !default;
+$dropdown-panel-offset: $global-whitespace-regular !default;
+$dropdown-panel-background: $global-panel-background;
+$dropdown-panel-padding: $global-whitespace-large !default;
 
-$dropdown-menu-link: $global-muted !default;
-$dropdown-menu-link-hover: $global-font-color !default;
-$dropdown-menu-link-active: $global-primary !default;
+$dropdown-arrow-offset: $global-whitespace-small !default;
 
-$dropdown-transition: 0.175 easeOutBack !default; // Brought over from JS component so we can match CSS transitions when needed
+$dropdown-header-color: $global-muted !default;
+$dropdown-header-font-size: $global-font-size-xsmall !default;
+
+$dropdown-menu-link-font-size: $global-font-size-medium !default;
+$dropdown-menu-link-font-family: $base-heading-font-family !default;
+$dropdown-menu-link-font-weight: $global-font-weight-bold !default;
+$dropdown-menu-link-padding: (
+  $global-whitespace-small + $global-whitespace-xsmall
+) !default;
+$dropdown-menu-link-color: $global-font-color !default;
+$dropdown-menu-link-color-hover: $global-font-color !default;
+$dropdown-menu-link-hover-active-background: $global-panel-background-hover !default;
+
+$dropdown-transition-time: 0.175s !default;
+$dropdown-transition: $dropdown-transition-time easeOutBack !default; // Brought over from JS component so we can match CSS transitions when needed
 
 //
 // Component
@@ -31,11 +43,11 @@ $dropdown-transition: 0.175 easeOutBack !default; // Brought over from JS compon
   .dropdown-panel {
     @include trimChildren();
 
-    background: $global-background;
+    background: $dropdown-panel-background;
     padding: $dropdown-panel-padding;
     position: absolute;
     color: $global-font-color; // Contrast override
-    top: calc(100% + #{$global-whitespace-small});
+    top: calc(100% + #{$dropdown-panel-offset});
     width: $dropdown-width;
     max-height: 400px;
     border: 1px solid $global-border;
@@ -43,45 +55,21 @@ $dropdown-transition: 0.175 easeOutBack !default; // Brought over from JS compon
     text-align: left;
     z-index: 10;
     opacity: 0;
-    transform: translateY(-$global-whitespace-small) scale(0.75);
+    transform: translateY(-$dropdown-panel-offset) scale(0.75);
     transform-origin: left top;
-    box-shadow: $global-small-media-shadow;
+    box-shadow: $global-neutral-box-shadow;
     display: none;
 
     @if (mixin-exists(hook-dropdown-panel)) {
       @include hook-dropdown-panel();
     }
-
-    // 1. Quirky calculation bug when `rotate()` is used
-    &::before {
-      content: '';
-      size: $dropdown-arrow-size;
-      position: absolute;
-      top: ((-$dropdown-arrow-size / 2) - 1); // 1
-      left: $dropdown-arrow-size;
-      background: $global-background;
-      transform: rotate(135deg);
-      border-bottom-left-radius: $global-border-radius;
-      border: 1px solid $global-border;
-      border-right: 0;
-      border-top: 0;
-    }
-  }
-
-  .dropdown-panel--small {
-    width: $dropdown-width-small;
   }
 
   .dropdown--center {
     .dropdown-panel {
       left: 50%;
-      transform: translate(-50%, -$global-whitespace-small) scale(0.75);
+      transform: translate(-50%, -$dropdown-panel-offset) scale(0.75);
       transform-origin: center top;
-
-      &::before {
-        left: 50%;
-        margin-left: -5px;
-      }
     }
   }
 
@@ -90,32 +78,20 @@ $dropdown-transition: 0.175 easeOutBack !default; // Brought over from JS compon
       left: auto;
       right: 0;
       transform-origin: right top;
-
-      &::before {
-        left: auto;
-        right: 10px;
-      }
     }
   }
 
   .dropdown--up {
     .dropdown-panel {
-      transform: translateY($global-whitespace-small) scale(0.75);
+      transform: translateY($dropdown-panel-offset) scale(0.75);
       transform-origin: left bottom;
       top: auto;
-      bottom: calc(100% + #{$global-whitespace-small});
-
-      // 1. Quirky calculation bug when `rotate()` is used
-      &::before {
-        top: auto;
-        bottom: ((-$dropdown-arrow-size / 2) - 1); // 1
-        transform: rotate(-45deg);
-      }
+      bottom: calc(100% + #{$dropdown-panel-offset});
     }
 
     &.dropdown--center {
       .dropdown-panel {
-        transform: translate(-50%, $global-whitespace-small) scale(0.75);
+        transform: translate(-50%, $dropdown-panel-offset) scale(0.75);
         transform-origin: center bottom;
       }
     }
@@ -127,27 +103,47 @@ $dropdown-transition: 0.175 easeOutBack !default; // Brought over from JS compon
     }
   }
 
+  .dropdown-arrow {
+    margin-left: $dropdown-arrow-offset;
+    transition: transform ($dropdown-transition-time * 1.5) easeOutBack;
+
+    .is-active & {
+      transform: rotate(180deg);
+    }
+  }
+
+  .dropdown-header {
+    color: $dropdown-header-color;
+    font-size: $dropdown-header-font-size;
+  }
+
   .dropdown-menu {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    width: 100%;
+    li + li {
+      margin-top: $global-whitespace-xsmall;
+    }
 
     a {
-      color: $dropdown-menu-link;
+      color: $dropdown-menu-link-color;
+      font-size: $dropdown-menu-link-font-size;
+      font-family: $dropdown-menu-link-font-family;
+      font-weight: $dropdown-menu-link-font-weight;
       display: block;
-      padding: $global-whitespace-xsmall $global-whitespace-regular;
-      margin: 0 (-$dropdown-panel-padding);
+      line-height: 1;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      padding: $dropdown-menu-link-padding;
+      border-radius: $global-border-radius;
+      margin: 0 (-$dropdown-menu-link-padding);
 
       &:hover,
       &:active {
-        color: $dropdown-menu-link-hover;
-        background: $global-panel-background;
+        color: $dropdown-menu-link-color-hover;
+        background: $dropdown-menu-link-hover-active-background;
       }
 
       &.is-active {
-        color: $dropdown-menu-link-active;
-        background: $global-panel-background;
+        background: $dropdown-menu-link-hover-active-background;
       }
     }
   }

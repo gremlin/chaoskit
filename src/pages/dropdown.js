@@ -2,7 +2,11 @@ import React from 'react';
 
 import BaseLayout from '../layouts/BaseLayout';
 import {
-  Dropdown, Inline, List, ListItem,
+  Dropdown,
+  DropdownHeader,
+  Inline,
+  List,
+  ListItem,
 } from '../components';
 import Live from '../docs/Live';
 
@@ -11,14 +15,14 @@ class Example extends React.Component {
   render() {
     return (
       <Inline>
-        <Dropdown trigger={{ label: 'Dropdown Content', props: { type: 'primary' }}}>
+        <Dropdown trigger={{ label: 'Content', props: { type: 'primary' }}}>
           <p>👋 from the dropdown!</p>
         </Dropdown>
-        <Dropdown position="up-center" trigger={{ label: 'Dropdown Menu', props: { type: 'secondary' }}}>
-          <h5 className="u-mb--small">Menu</h5>
+        <Dropdown showArrow position="up-center" trigger={{ label: 'Menu', props: { type: 'secondary' }}}>
+          <DropdownHeader>Menu Header</DropdownHeader>
           <List className="dropdown-menu">
             <ListItem><a href="#">Menu link</a></ListItem>
-            <ListItem><a href="#">Menu link</a></ListItem>
+            <ListItem><a className="is-active" href="#">Active Menu link</a></ListItem>
           </List>
         </Dropdown>
       </Inline>
@@ -35,6 +39,7 @@ const DropdownPropDescriptions = {
 
 const DropdownScope = {
   Dropdown,
+  DropdownHeader,
   Inline,
   List,
   ListItem,

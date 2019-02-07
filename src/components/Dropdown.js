@@ -5,7 +5,7 @@ import cx from 'classnames';
 import { TimelineMax } from 'gsap/TweenMax';
 
 import { config } from '../helpers/config';
-import { Button } from '.';
+import { Button, Icon } from '.';
 
 class Dropdown extends React.Component {
   componentDidMount() {
@@ -123,8 +123,8 @@ class Dropdown extends React.Component {
       className,
       panelClassName,
       position,
-      size,
       trigger,
+      showArrow,
     } = this.props;
     const classes = cx(
       'dropdown',
@@ -137,13 +137,7 @@ class Dropdown extends React.Component {
       },
       className,
     );
-    const panelClasses = cx(
-      'dropdown-panel',
-      {
-        'dropdown-panel--small': size === 'small',
-      },
-      panelClassName,
-    );
+    const panelClasses = cx('dropdown-panel', panelClassName);
 
     return (
       <div
@@ -162,6 +156,9 @@ class Dropdown extends React.Component {
           }}
         >
           {trigger.label}
+          {showArrow && (
+            <Icon size="small" icon="caret-down" className="dropdown-arrow" />
+          )}
         </Button>
         <div
           className={panelClasses}
@@ -192,11 +189,11 @@ Dropdown.propTypes = {
     'up-center',
     'up-right',
   ]),
-  size: PropTypes.oneOf(['default', 'small']),
   trigger: PropTypes.shape({
     props: PropTypes.object,
     label: PropTypes.any.isRequired,
   }),
+  showArrow: PropTypes.bool,
 };
 
 Dropdown.defaultProps = {
@@ -205,7 +202,6 @@ Dropdown.defaultProps = {
   onReverseStart: () => {},
   onStart: () => {},
   position: 'left',
-  size: 'default',
 };
 
 export default Dropdown;
