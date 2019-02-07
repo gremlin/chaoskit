@@ -107,13 +107,14 @@ $dropdown-transition: $dropdown-transition-time easeOutBack !default; // Brought
     margin-left: $dropdown-arrow-offset;
     transition: transform ($dropdown-transition-time * 1.5) easeOutBack;
 
-    .is-active & {
+    .is-open & {
       transform: rotate(180deg);
     }
   }
 
+  // 1. To override `.u-contrast` wrappers
   .dropdown-header {
-    color: $dropdown-header-color;
+    color: $dropdown-header-color !important;
     font-size: $dropdown-header-font-size;
   }
 
