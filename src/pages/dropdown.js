@@ -34,7 +34,6 @@ class Example extends React.Component {
 const DropdownPropDescriptions = {
   position:
     "<code>oneOf(['left', 'center', 'right', 'up-left', 'up-center', 'up-right'])</code>", // eslint-disable-line single-quotes
-  size: "<code>oneOf(['default', 'small'])</code>", // eslint-disable-line single-quotes
 };
 
 const DropdownScope = {
