@@ -105,7 +105,7 @@ $dropdown-transition: $dropdown-transition-time easeOutBack !default; // Brought
 
   .dropdown-arrow {
     margin-left: $dropdown-arrow-offset;
-    transition: transform ($dropdown-transition-time * 1.5) easeOutBack;
+    transition: transform $dropdown-transition-time easeInOutCubic;
 
     .is-open & {
       transform: rotate(180deg);
