@@ -48,6 +48,16 @@ $section-slant-offset: 2.5vw !default;
     margin-top: -$section-slant-offset;
   }
 
+  .section--slant-top {
+    clip-path:
+      polygon(
+        0 0,
+        100% 0,
+        100% 100%,
+        0 calc(100% - #{$section-slant-offset})
+      );
+  }
+
   .section--shadow {
     position: relative;
 
