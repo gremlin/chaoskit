@@ -7,6 +7,10 @@ import { TimelineMax } from 'gsap/TweenMax';
 import { config } from '../helpers/config';
 
 class Modal extends React.Component {
+  modalRef = React.createRef();
+
+  modalDialogRef = React.createRef();
+
   state = {
     renderModal: false,
   };
@@ -56,7 +60,8 @@ class Modal extends React.Component {
     } = this.props;
 
     const $body = document.body;
-    const $modal = this.modal;
+    const $modal = this.modalRef.current;
+    const $modalDialog = this.modalDialogRef.current;
 
     let forward = true;
     let lastTime = 0;
@@ -106,7 +111,7 @@ class Modal extends React.Component {
           opacity: 1,
         },
       })
-      .to($modal.querySelector('.modal-dialog'), 0.25, {
+      .to($modalDialog, 0.25, {
         css: {
           opacity: 1,
           y: 0,
@@ -116,13 +121,13 @@ class Modal extends React.Component {
   };
 
   openModal = () => {
-    const $modal = this.modal;
+    const $modal = this.modalRef.current;
 
     $modal.timeline.play();
   };
 
   closeModal = () => {
-    const $modal = this.modal;
+    const $modal = this.modalRef.current;
 
     $modal.timeline.reverse();
   };
@@ -153,15 +158,15 @@ class Modal extends React.Component {
     return (
       renderModal
       && ReactDOM.createPortal(
-        <div /* eslint-disable-line max-len, jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
+        <div /* eslint-disable-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
           className={modalClasses}
           onClick={this.handleOutsideModalClick}
-          ref={(ref) => {
-            this.modal = ref;
-          }}
+          ref={this.modalRef}
           data-modalroot
         >
-          <div className="modal-dialog">{children}</div>
+          <div className="modal-dialog" ref={this.modalDialogRef}>
+            {children}
+          </div>
         </div>,
         document.body,
       )

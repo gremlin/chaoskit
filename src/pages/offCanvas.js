@@ -16,13 +16,17 @@ class Example extends React.Component {
     });
   };
 
+  handleOffCanvasReverseComplete = () => {
+    console.log('Fires when offCanvas is closed');
+  }
+
   render() {
     return (
       <Fragment>
         <OffCanvas
           open={this.state.open}
           onOffCanvasToggle={this.handleOffCanvasToggle}
-          onReverseComplete={() => alert('Fires when offCanvas is closed')}
+          onReverseComplete={this.handleOffCanvasReverseComplete}
         >
           Test
         </OffCanvas>

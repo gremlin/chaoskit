@@ -8,6 +8,8 @@ import { config } from '../helpers/config';
 import { Close } from '.';
 
 class Alert extends React.Component {
+  alertRef = React.createRef();
+
   componentDidMount() {
     this.attachTimeline();
   }
@@ -25,7 +27,8 @@ class Alert extends React.Component {
   }
 
   attachTimeline = () => {
-    const $alert = this.alert;
+    const $alert = this.alertRef.current;
+
     const {
       onStart,
       onReverseStart,
@@ -88,11 +91,15 @@ class Alert extends React.Component {
   };
 
   collapseAlert = () => {
-    this.alert.timeline.play();
+    const $alert = this.alertRef.current;
+
+    $alert.timeline.play();
   };
 
   openAlert = () => {
-    this.alert.timeline.reverse();
+    const $alert = this.alertRef.current;
+
+    $alert.timeline.reverse();
   };
 
   render() {
@@ -110,13 +117,7 @@ class Alert extends React.Component {
     );
 
     return (
-      <div
-        className={classes}
-        role="alert"
-        ref={(ref) => {
-          this.alert = ref;
-        }}
-      >
+      <div className={classes} role="alert" ref={this.alertRef}>
         <div className="alert-content">
           {title && (
             <h4 id={kebabCase(toLower(title))} className="alert-title">

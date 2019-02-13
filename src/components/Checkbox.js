@@ -6,6 +6,8 @@ import { generateUUID } from '../helpers/utility';
 import { config } from '../helpers/config';
 
 class Checkbox extends React.Component {
+  checkboxLabelRef = React.createRef();
+
   id = `${this.props.name}-${generateUUID()}`; // eslint-disable-line react/destructuring-assignment
 
   state = {
@@ -36,8 +38,10 @@ class Checkbox extends React.Component {
   };
 
   handleKeyUp = (e) => {
+    const $checkboxLabel = this.checkboxLabelRef.current;
+
     if (e.keyCode === 13) {
-      this.checkboxLabel.click();
+      $checkboxLabel.click();
     }
   };
 
@@ -66,9 +70,7 @@ class Checkbox extends React.Component {
         {label && (
           <label // eslint-disable-line jsx-a11y/label-has-for
             htmlFor={this.id}
-            ref={(checkboxLabel) => {
-              this.checkboxLabel = checkboxLabel;
-            }}
+            ref={this.checkboxLabelRef}
           >
             {label}
           </label>

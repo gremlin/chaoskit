@@ -7,6 +7,8 @@ import { isTouchDevice } from '../helpers/utility';
 import { config } from '../helpers/config';
 
 class Tooltip extends React.Component {
+  tooltipRef = React.createRef();
+
   state = {
     renderTooltip: false,
   };
@@ -70,7 +72,7 @@ class Tooltip extends React.Component {
   styleTooltip = () => {
     const { placement } = this.props;
 
-    const $tooltip = this.tooltip;
+    const $tooltip = this.tooltipRef.current;
     const $tooltipTrigger = this.getTooltipTrigger();
 
     const rect = $tooltipTrigger.getBoundingClientRect();
@@ -125,13 +127,13 @@ class Tooltip extends React.Component {
   };
 
   openTooltip = () => {
-    const $tooltip = this.tooltip;
+    const $tooltip = this.tooltipRef.current;
 
     $tooltip.timeline.play();
   };
 
   closeTooltip = () => {
-    const $tooltip = this.tooltip;
+    const $tooltip = this.tooltipRef.current;
 
     if ($tooltip) $tooltip.timeline.reverse();
   };
@@ -146,7 +148,7 @@ class Tooltip extends React.Component {
   };
 
   attachTimeline = () => {
-    const $tooltip = this.tooltip;
+    const $tooltip = this.tooltipRef.current;
     const { placement } = this.props;
 
     // Attach GSAP
@@ -218,13 +220,7 @@ class Tooltip extends React.Component {
         {React.Children.only(this.renderChildren())}
         {renderTooltip
           && ReactDOM.createPortal(
-            <div
-              className="tooltip"
-              ref={(ref) => {
-                this.tooltip = ref;
-              }}
-              role="tooltip"
-            >
+            <div className="tooltip" ref={this.tooltipRef} role="tooltip">
               <div className="tooltip-inner">{content}</div>
             </div>,
             document.body,

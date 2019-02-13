@@ -65,7 +65,7 @@ class Live extends React.Component {
 }
 
 Live.propTypes = {
-  component: PropTypes.func,
+  component: PropTypes.any,
   code: PropTypes.string.isRequired,
   scope: PropTypes.object.isRequired,
   propDescriptions: PropTypes.object,

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom';
 import cx from 'classnames';
 import { TimelineMax } from 'gsap/TweenMax';
 
@@ -8,14 +7,20 @@ import { config } from '../helpers/config';
 import { Button, Icon } from '.';
 
 class Dropdown extends React.Component {
+  dropdownRef = React.createRef();
+
+  dropdownPanelRef = React.createRef();
+
+  dropdownTriggerRef = React.createRef();
+
   componentDidMount() {
     this.attachTimeline();
   }
 
   attachTimeline = () => {
-    const $dropdown = this.dropdown;
-    const $trigger = ReactDOM.findDOMNode(this.trigger);
-    const $panel = this.panel;
+    const $dropdown = this.dropdownRef.current;
+    const $trigger = this.dropdownTriggerRef.current;
+    const $panel = this.dropdownPanelRef.current;
 
     const {
       onStart,
@@ -87,7 +92,9 @@ class Dropdown extends React.Component {
   };
 
   handleDropdownToggle = () => {
-    if (this.dropdown.timeline.progress() === 1) {
+    const $dropdown = this.dropdownRef.current;
+
+    if ($dropdown.timeline.progress() === 1) {
       this.dropdownClose();
     } else {
       this.dropdownOpen();
@@ -95,11 +102,15 @@ class Dropdown extends React.Component {
   };
 
   dropdownOpen = () => {
-    this.dropdown.timeline.play();
+    const $dropdown = this.dropdownRef.current;
+
+    $dropdown.timeline.play();
   };
 
   dropdownClose = () => {
-    this.dropdown.timeline.reverse();
+    const $dropdown = this.dropdownRef.current;
+
+    $dropdown.timeline.reverse();
   };
 
   /**
@@ -144,28 +155,19 @@ class Dropdown extends React.Component {
         className={classes}
         aria-haspopup="true"
         aria-expanded="false"
-        ref={(ref) => {
-          this.dropdown = ref;
-        }}
+        ref={this.dropdownRef}
       >
         <Button
           onClick={this.handleDropdownToggle}
           {...trigger.props}
-          ref={(ref) => {
-            this.trigger = ref;
-          }}
+          ref={this.dropdownTriggerRef}
         >
           {trigger.label}
           {showArrow && (
             <Icon size="small" icon="caret-down" className="dropdown-arrow" />
           )}
         </Button>
-        <div
-          className={panelClasses}
-          ref={(ref) => {
-            this.panel = ref;
-          }}
-        >
+        <div className={panelClasses} ref={this.dropdownPanelRef}>
           {children}
         </div>
       </div>

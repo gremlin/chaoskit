@@ -6,6 +6,8 @@ import { FormLabel } from '.';
 import { generateUUID } from '../helpers/utility';
 
 class Toggle extends React.Component {
+  toggleLabelRef = React.createRef();
+
   id = `${this.props.name}-${generateUUID()}`; // eslint-disable-line react/destructuring-assignment
 
   state = {
@@ -36,8 +38,10 @@ class Toggle extends React.Component {
   };
 
   handleKeyUp = (e) => {
+    const $toggleLabel = this.toggleLabelRef.current;
+
     if (e.keyCode === 13) {
-      this.toggleLabel.click();
+      $toggleLabel.click();
     }
   };
 
@@ -64,9 +68,7 @@ class Toggle extends React.Component {
           />
           <label // eslint-disable-line jsx-a11y/label-has-for, jsx-a11y/label-has-associated-control
             htmlFor={this.id}
-            ref={(toggleLabel) => {
-              this.toggleLabel = toggleLabel;
-            }}
+            ref={this.toggleLabelRef}
           />
         </div>
         <FormLabel className="toggle-labelText" id={this.id}>

@@ -120,7 +120,7 @@ const Docs = (props) => {
 };
 
 Docs.propTypes = {
-  component: PropTypes.func,
+  component: PropTypes.any,
   propDescriptions: PropTypes.object,
 };
 

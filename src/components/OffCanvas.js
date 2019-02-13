@@ -8,6 +8,10 @@ import { config } from '../helpers/config';
 import { Close } from '.';
 
 class OffCanvas extends React.Component {
+  offCanvasRef = React.createRef();
+
+  offCanvasPanelRef = React.createRef();
+
   state = {
     renderOffCanvas: false,
   };
@@ -57,7 +61,8 @@ class OffCanvas extends React.Component {
     } = this.props;
 
     const $body = document.body;
-    const $offCanvas = this.offCanvas;
+    const $offCanvas = this.offCanvasRef.current;
+    const $panel = this.offCanvasPanelRef.current;
 
     let forward = true;
     let lastTime = 0;
@@ -113,7 +118,7 @@ class OffCanvas extends React.Component {
         'offCanvas',
       )
       .to(
-        this.offCanvasPanel,
+        $panel,
         0.5,
         {
           css: {
@@ -126,13 +131,13 @@ class OffCanvas extends React.Component {
   };
 
   openOffCanvas = () => {
-    const $offCanvas = this.offCanvas;
+    const $offCanvas = this.offCanvasRef.current;
 
     $offCanvas.timeline.play();
   };
 
   closeOffCanvas = () => {
-    const $offCanvas = this.offCanvas;
+    const $offCanvas = this.offCanvasRef.current;
 
     $offCanvas.timeline.reverse();
   };
@@ -168,20 +173,13 @@ class OffCanvas extends React.Component {
     return (
       renderOffCanvas
       && ReactDOM.createPortal(
-        <div /* eslint-disable-line max-len, jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
+        <div /* eslint-disable-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
           className={classes}
           onClick={this.handleOutsideOffCanvasClick}
-          ref={(ref) => {
-            this.offCanvas = ref;
-          }}
+          ref={this.offCanvasRef}
           data-offcanvasroot
         >
-          <div
-            className="offCanvas-panel"
-            ref={(ref) => {
-              this.offCanvasPanel = ref;
-            }}
-          >
+          <div className="offCanvas-panel" ref={this.offCanvasPanelRef}>
             <Close
               onClick={this.handleOffCanvasToggle}
               className="offCanvas-close"

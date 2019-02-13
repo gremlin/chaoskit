@@ -8,6 +8,8 @@ import { generateUUID } from '../helpers/utility';
 import { config } from '../helpers/config';
 
 class Textarea extends React.Component {
+  textareaRef = React.createRef();
+
   id = `${this.props.name}-${generateUUID()}`; // eslint-disable-line react/destructuring-assignment
 
   state = {
@@ -24,9 +26,10 @@ class Textarea extends React.Component {
 
   componentDidMount() {
     const { focus } = this.props;
+    const $textarea = this.textareaRef.current;
 
-    if (focus && this.textarea) {
-      this.textarea.focus();
+    if (focus) {
+      $textarea.focus();
     }
   }
 
@@ -42,9 +45,10 @@ class Textarea extends React.Component {
 
   componentDidUpdate(prevProps) {
     const { focus } = this.props;
+    const $textarea = this.textareaRef.current;
 
     if (prevProps.focus !== focus && focus) {
-      this.textarea.focus();
+      $textarea.focus();
     }
   }
 
@@ -91,15 +95,13 @@ class Textarea extends React.Component {
         <TextareaAutoSize
           id={this.id}
           disabled={disabled}
-          focus={focus}
+          focus={focus ? 'true' : null}
           name={name}
           value={value}
           onChange={this.handleChange}
           onKeyPress={this.handleKeyPress}
           placeholder={placeholder}
-          inputRef={(ref) => {
-            this.textarea = ref;
-          }}
+          inputRef={this.textareaRef}
         />
         <FormFooter
           explanationMessage={explanationMessage}

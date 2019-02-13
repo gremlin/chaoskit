@@ -5,71 +5,65 @@ import React from 'react';
 import { config } from '../helpers/config';
 import { Loader } from '.';
 
-// eslint-disable-next-line react/prefer-stateless-function
-class Button extends React.Component {
-  render() {
-    const {
-      active,
-      children,
-      className,
-      disabled,
-      fullWidth,
-      iconOnly,
-      loading,
-      noContrast,
-      noRadius,
-      size,
-      type,
-      url,
-      ...opts
-    } = this.props;
+const Button = React.forwardRef((props, ref) => {
+  const {
+    active,
+    children,
+    className,
+    disabled,
+    fullWidth,
+    iconOnly,
+    loading,
+    noContrast,
+    noRadius,
+    size,
+    type,
+    url,
+    ...opts
+  } = props;
 
-    const classes = cx(className, {
-      button: type !== 'reset',
-      'button--reset': type === 'reset',
-      'button--default': type === 'default',
-      'button--primary': type === 'primary',
-      'button--secondary': type === 'secondary',
-      'button--teal': type === 'teal',
-      'button--danger': type === 'danger',
-      'button--outlinePrimary': type === 'outlinePrimary',
-      'button--small': size === 'small',
-      'button--xsmall': size === 'xsmall',
-      'button--fullWidth': fullWidth,
-      'button--icon': iconOnly,
-      'button--noContrast': noContrast,
-      [config.classes.active]: active,
-      [config.classes.loading]: loading,
-      'u-borderRadius--remove': noRadius,
-    });
+  const classes = cx(className, {
+    button: type !== 'reset',
+    'button--reset': type === 'reset',
+    'button--default': type === 'default',
+    'button--primary': type === 'primary',
+    'button--secondary': type === 'secondary',
+    'button--teal': type === 'teal',
+    'button--danger': type === 'danger',
+    'button--outlinePrimary': type === 'outlinePrimary',
+    'button--small': size === 'small',
+    'button--xsmall': size === 'xsmall',
+    'button--fullWidth': fullWidth,
+    'button--icon': iconOnly,
+    'button--noContrast': noContrast,
+    [config.classes.active]: active,
+    [config.classes.loading]: loading,
+    'u-borderRadius--remove': noRadius,
+  });
 
-    if (url) {
-      return (
-        <a
-          href={url}
-          className={classes}
-          disabled={disabled || loading}
-          {...opts}
-        >
-          <span>{children}</span>
-          {loading && <Loader />}
-        </a>
-      );
-    }
+  const defaultButtonProps = {
+    className: classes,
+    disabled: disabled || loading,
+    ref,
+    ...opts,
+  };
 
+  if (url) {
     return (
-      <button
-        type="button"
-        className={classes}
-        disabled={disabled || loading}
-        {...opts}
-      >
-        {type === 'reset' ? children : <span>{children}</span>}
+      <a href={url} {...defaultButtonProps}>
+        <span>{children}</span>
         {loading && <Loader />}
-      </button>
+      </a>
     );
   }
-}
+
+  return (
+    <button type="button" {...defaultButtonProps}>
+      {type === 'reset' ? children : <span>{children}</span>}
+      {loading && <Loader />}
+    </button>
+  );
+});
 
 Button.propTypes = {
   active: PropTypes.bool,

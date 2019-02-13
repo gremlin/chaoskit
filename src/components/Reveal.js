@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import ReactDOM from 'react-dom';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 import { TimelineMax } from 'gsap/TweenMax';
@@ -8,6 +7,10 @@ import { config } from '../helpers/config';
 import { Button } from '.';
 
 class Reveal extends React.Component {
+  triggerRef = React.createRef();
+
+  revealRef = React.createRef();
+
   componentDidMount() {
     this.attachTimeline();
   }
@@ -26,8 +29,8 @@ class Reveal extends React.Component {
 
   attachTimeline = () => {
     const { reveal } = this.props;
-    const $reveal = this.reveal;
-    const $trigger = ReactDOM.findDOMNode(this.trigger);
+    const $reveal = this.revealRef.current;
+    const $trigger = this.triggerRef.current;
 
     const {
       onStart,
@@ -111,15 +114,21 @@ class Reveal extends React.Component {
   };
 
   revealOpen = () => {
-    this.reveal.timeline.play();
+    const $reveal = this.revealRef.current;
+
+    $reveal.timeline.play();
   };
 
   revealClose = () => {
-    this.reveal.timeline.reverse();
+    const $reveal = this.revealRef.current;
+
+    $reveal.timeline.reverse();
   };
 
   handleRevealToggle = () => {
-    if (this.reveal.timeline.progress() === 1) {
+    const $reveal = this.revealRef.current;
+
+    if ($reveal.timeline.progress() === 1) {
       this.revealClose();
     } else {
       this.revealOpen();
@@ -135,19 +144,11 @@ class Reveal extends React.Component {
         <Button
           onClick={this.handleRevealToggle}
           {...trigger.props}
-          ref={(ref) => {
-            this.trigger = ref;
-          }}
+          ref={this.triggerRef}
         >
           {trigger.label}
         </Button>
-        <div
-          className="reveal"
-          ref={(ref) => {
-            this.reveal = ref;
-          }}
-          aria-hidden="true"
-        >
+        <div className="reveal" ref={this.revealRef} aria-hidden="true">
           <div className={classes}>{children}</div>
         </div>
       </Fragment>

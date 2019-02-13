@@ -50,8 +50,8 @@ $button-danger-border: $global-danger !default;
 $button-outline-primary-enable: true !default;
 $button-outline-primary-background: $global-background !default;
 $button-outline-primary-background-hover: $global-background !default;
-$button-outline-primary-color: $button-primary-background !default;
-$button-outline-primary-color-hover: $global-primary !default;
+$button-outline-primary-color: $global-font-color !default;
+$button-outline-primary-color-hover: $global-font-color !default;
 $button-outline-primary-border: $button-primary-background !default;
 
 $button-contrast-enable: true !default;
