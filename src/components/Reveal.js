@@ -116,13 +116,13 @@ class Reveal extends React.Component {
   revealOpen = () => {
     const $reveal = this.revealRef.current;
 
-    $reveal.timeline.play();
+    if ($reveal) $reveal.timeline.play();
   };
 
   revealClose = () => {
     const $reveal = this.revealRef.current;
 
-    $reveal.timeline.reverse();
+    if ($reveal) $reveal.timeline.reverse();
   };
 
   handleRevealToggle = () => {

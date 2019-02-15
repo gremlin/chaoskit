@@ -104,13 +104,13 @@ class Dropdown extends React.Component {
   dropdownOpen = () => {
     const $dropdown = this.dropdownRef.current;
 
-    $dropdown.timeline.play();
+    if ($dropdown) $dropdown.timeline.play();
   };
 
   dropdownClose = () => {
     const $dropdown = this.dropdownRef.current;
 
-    $dropdown.timeline.reverse();
+    if ($dropdown) $dropdown.timeline.reverse();
   };
 
   /**
