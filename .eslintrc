@@ -22,6 +22,7 @@
     "react/jsx-one-expression-per-line": 0,
     "react/forbid-foreign-prop-types": 0,
     "react/no-access-state-in-setstate": 0,
+    "react-hooks/rules-of-hooks": "error",
     "jsx-a11y/anchor-is-valid": [
       "error",
       {
@@ -65,5 +66,5 @@
       "jsx": true
     }
   },
-  "plugins": ["react", "jsx-a11y"]
+  "plugins": ["react", "jsx-a11y", "react-hooks"]
 }
