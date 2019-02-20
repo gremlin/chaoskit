@@ -6,18 +6,18 @@ ChaosKit uses both [Sass](http://sass-lang.com/) (the [Node](https://github.com/
 
 While nobody likes 'em, these rules are in-place to ensure the ongoing quality of the codebase:
 
-* We have 4 distinct breakpoints: small `480px` medium `768px` large `960px` and xlarge `1200px`. Please do not introduce a new one.
-* Never use IDs as styling hooks. Those are for JS and links.
-* Optimize for less specificity. Instead of `div.box`, do `.box`
-* Avoid nesting. Instead of `.box .button` do `.button`
+- We have 4 distinct breakpoints: small `480px` medium `768px` large `960px` and xlarge `1200px`. Please do not introduce a new one.
+- Never use IDs as styling hooks. Those are for JS and links.
+- Optimize for less specificity. Instead of `div.box`, do `.box`
+- Avoid nesting. Instead of `.box .button` do `.button`
 
 ### Naming conventions
 
 We write our styles in an object oriented CSS methodology called [BEM](https://en.bem.info/); which stands for Block, Element, Modifier. We have adopted Nicolas Gallagher's naming scheme, [SUIT](https://github.com/suitcss/suit/blob/master/doc/naming-conventions.md), which is as follows:
 
-* **Blocks**; the top level components, are camel case. For instance, `.offCanvas`
-* **Elements**; children of the block elements, are named like so: `.offCanvas-panel`
-* **Modifier** classes are then applied to change the default block styles. For instance `.button--primary`
+- **Blocks**; the top level components, are camel case. For instance, `.offCanvas`
+- **Elements**; children of the block elements, are named like so: `.offCanvas-panel`
+- **Modifier** classes are then applied to change the default block styles. For instance `.button--primary`
 
 #### Page-specific styles
 
@@ -80,7 +80,6 @@ Every imported file within `framework.scss` is constructed via a mixin with the 
 //
 
 @import 'site/global';
-
 ```
 
 **Note:** As a personal preference, we like to keep our framework overrides in a `/framework` directory within our projects, with each component in its own file — just as the framework does.
@@ -110,7 +109,9 @@ Hooks allow us to inject additional styles alongside components to reduce select
   border: 1px solid $global-border;
   border-radius: $global-border-radius;
 
-  @if (mixin-exists(hook-box)) { @include hook-box(); }
+  @if (mixin-exists(hook-box)) {
+    @include hook-box();
+  }
 }
 
 // Use of hook in project styles

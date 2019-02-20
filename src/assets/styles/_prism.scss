@@ -43,6 +43,7 @@ $prism-theme: light !default;
   /* Inline code */
   :not(pre) > code[class*='language-'] {
     white-space: normal;
+    color: $base-code-color;
   }
 
   .token.comment,
@@ -171,24 +172,6 @@ $prism-theme: light !default;
     border: 0;
   }
 
-  pre[class*='language-']::-moz-selection,
-  pre[class*='language-'] ::-moz-selection,
-  code[class*='language-']::-moz-selection,
-  code[class*='language-'] ::-moz-selection {
-    text-shadow: none;
-    background: #383e49;
-    color: inherit;
-  }
-
-  pre[class*='language-']::selection,
-  pre[class*='language-'] ::selection,
-  code[class*='language-']::selection,
-  code[class*='language-'] ::selection {
-    text-shadow: none;
-    background: #9aa2b1;
-    color: inherit;
-  }
-
   @media print {
     code[class*='language-'],
     pre[class*='language-'] {
@@ -198,20 +181,16 @@ $prism-theme: light !default;
 
   /* Code blocks */
   pre[class*='language-'] {
+    background: #282c34;
     padding: $base-pre-padding;
     overflow: auto;
   }
 
-  :not(pre) > code[class*='language-'],
-  pre[class*='language-'] {
-    background: #282c34;
-  }
-
   /* Inline code */
   :not(pre) > code[class*='language-'] {
-    padding: 0.1em;
-    border-radius: ($global-border-radius / 2);
     white-space: normal;
+    background: $base-code-background;
+    color: $base-code-color;
   }
 
   .token.comment,
