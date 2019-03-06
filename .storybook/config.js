@@ -1,5 +1,5 @@
 import React from 'react';
-import { addDecorator, configure } from '@storybook/react';
+import { addDecorator, addParameters, configure } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import { withKnobs } from '@storybook/addon-knobs';
 import centered from '@storybook/addon-centered/react';
@@ -9,6 +9,16 @@ import centered from '@storybook/addon-centered/react';
 //
 
 import '../src/assets/styles/site.scss';
+
+//
+// Parameters
+//
+
+addParameters({
+  options: {
+    name: 'ChaosKit',
+  },
+});
 
 //
 // Decorators
