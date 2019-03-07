@@ -272,6 +272,21 @@ $button-icon-enable: true !default;
         color: $button-outline-primary-color-hover;
       }
 
+      @if $global-contrast-enable and $button-contrast-enable {
+        .u-contrast & {
+          &:not(.button--noContrast) {
+            color: $button-outline-primary-color;
+
+            &:hover,
+            &:focus,
+            &:active,
+            &.is-active {
+              color: $button-outline-primary-color-hover;
+            }
+          }
+        }
+      }
+
       @if (mixin-exists(hook-button-outline-primary)) {
         @include hook-button-outline-primary();
       }
