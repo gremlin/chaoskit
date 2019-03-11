@@ -47,7 +47,8 @@ $dropdown-transition: $dropdown-transition-time easeOutBack !default; // Brought
     color: $global-font-color; // Contrast override
     top: calc(100% + #{$dropdown-panel-offset});
     width: $dropdown-width;
-    max-height: 400px;
+    max-height: 500px;
+    overflow-y: auto;
     border: 1px solid $global-border;
     border-radius: $global-border-radius;
     text-align: left;
