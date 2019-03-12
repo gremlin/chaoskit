@@ -2,7 +2,7 @@
 // Variables
 //
 
-$dropdown-width: 240px !default;
+$dropdown-width: 250px !default;
 
 $dropdown-panel-offset: $global-whitespace-regular !default;
 $dropdown-panel-background: $global-panel-background;
@@ -16,9 +16,7 @@ $dropdown-header-font-size: $global-font-size-xsmall !default;
 $dropdown-menu-link-font-size: $global-font-size-medium !default;
 $dropdown-menu-link-font-family: $base-heading-font-family !default;
 $dropdown-menu-link-font-weight: $global-font-weight-bold !default;
-$dropdown-menu-link-padding: (
-  $global-whitespace-small + $global-whitespace-xsmall
-) !default;
+$dropdown-menu-link-spacing: $global-whitespace-small !default;
 $dropdown-menu-link-color: $global-font-color !default;
 $dropdown-menu-link-color-hover: $global-font-color !default;
 $dropdown-menu-link-hover-active-background: $global-panel-background-hover !default;
@@ -49,7 +47,8 @@ $dropdown-transition: $dropdown-transition-time easeOutBack !default; // Brought
     color: $global-font-color; // Contrast override
     top: calc(100% + #{$dropdown-panel-offset});
     width: $dropdown-width;
-    max-height: 400px;
+    max-height: 500px;
+    overflow-y: auto;
     border: 1px solid $global-border;
     border-radius: $global-border-radius;
     text-align: left;
@@ -116,6 +115,10 @@ $dropdown-transition: $dropdown-transition-time easeOutBack !default; // Brought
   .dropdown-header {
     color: $dropdown-header-color !important;
     font-size: $dropdown-header-font-size;
+
+    &:not(:first-of-type) {
+      margin-top: 0;
+    }
   }
 
   .dropdown-menu {
@@ -129,13 +132,9 @@ $dropdown-transition: $dropdown-transition-time easeOutBack !default; // Brought
       font-family: $dropdown-menu-link-font-family;
       font-weight: $dropdown-menu-link-font-weight;
       display: block;
-      line-height: 1;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      padding: $dropdown-menu-link-padding;
+      padding: $dropdown-menu-link-spacing;
       border-radius: $global-border-radius;
-      margin: 0 (-$dropdown-menu-link-padding);
+      margin: 0 (-$dropdown-menu-link-spacing);
 
       &:hover,
       &:active {
