@@ -5,10 +5,12 @@ import { boolean, select, text } from '@storybook/addon-knobs';
 import { Button, Icon } from '.';
 
 const params = {
+  className: () => text('Class', ''),
   disabled: () => boolean('Disabled', false),
   noRadius: () => boolean('No Radius', false),
   noContrast: () => boolean('No Contrast', false),
   label: () => text('Label', 'Button'),
+  loading: () => boolean('Loading', false),
   type: () => select(
     'Type',
     [
@@ -37,7 +39,9 @@ storiesOf('Button', module)
     'Variations',
     () => (
       <Button
+        className={params.className()}
         disabled={params.disabled()}
+        loading={params.loading()}
         type={params.type()}
         size={params.size()}
         noRadius={params.noRadius()}
@@ -51,8 +55,10 @@ storiesOf('Button', module)
   )
   .add('Icon only', () => (
     <Button
+      className={params.className()}
       iconOnly
       disabled={params.disabled()}
+      loading={params.loading()}
       type={params.type()}
       size={params.size()}
     >
@@ -62,7 +68,9 @@ storiesOf('Button', module)
   .add('Contrast', () => (
     <div className="u-gradient--blue-green u-pa--large u-contrast">
       <Button
+        className={params.className()}
         disabled={params.disabled()}
+        loading={params.loading()}
         type={params.type()}
         size={params.size()}
         noRadius={params.noRadius()}

@@ -16,7 +16,7 @@ import '../src/assets/styles/site.scss';
 
 addParameters({
   options: {
-    name: 'ChaosKit',
+    brandName: 'ChaosKit',
   },
 });
 

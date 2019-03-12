@@ -19,7 +19,7 @@ Badge.propTypes = {
   className: PropTypes.string,
   label: PropTypes.string.isRequired,
   rounded: PropTypes.bool,
-  type: PropTypes.oneOf(['primary', 'danger']),
+  type: PropTypes.oneOf(['default', 'primary', 'danger']),
 };
 
 export default Badge;
