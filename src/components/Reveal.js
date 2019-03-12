@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { TimelineMax } from 'gsap/TweenMax';
 
 import { config } from '../helpers/config';
-import { Button } from '.';
+import Button from './Button';
 
 class Reveal extends React.Component {
   triggerRef = React.createRef();

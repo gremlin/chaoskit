@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import { TimelineMax } from 'gsap/TweenMax';
 
 import { config } from '../helpers/config';
-import { Close } from '.';
+import Close from './Close';
 
 class OffCanvas extends React.Component {
   offCanvasRef = React.createRef();

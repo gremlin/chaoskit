@@ -2,9 +2,12 @@ import cx from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import {
-  FormLabel, FormFooter, Inline, List, ListItem, Radio,
-} from '.';
+import FormLabel from './FormLabel';
+import FormFooter from './FormFooter';
+import Inline from './Inline';
+import List from './List';
+import ListItem from './ListItem';
+import Radio from './Radio';
 import { config } from '../helpers/config';
 
 class RadioGroup extends React.Component {

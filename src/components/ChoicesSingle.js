@@ -4,7 +4,8 @@ import React from 'react';
 import Downshift from 'downshift';
 import matchSorter from 'match-sorter';
 
-import { FormFooter, FormLabel } from '.';
+import FormFooter from './FormFooter';
+import FormLabel from './FormLabel';
 import { config } from '../helpers/config';
 
 class ChoicesSingle extends React.Component {

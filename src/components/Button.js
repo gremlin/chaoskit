@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import { config } from '../helpers/config';
-import { Loader } from '.';
+import Loader from './Loader';
 
 const Button = React.forwardRef((props, ref) => {
   const {

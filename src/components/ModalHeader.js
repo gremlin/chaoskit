@@ -2,7 +2,7 @@ import cx from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { Close } from '.';
+import Close from './Close';
 
 class ModalHeader extends React.Component {
   handleCloseClick = () => {

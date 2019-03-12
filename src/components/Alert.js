@@ -5,7 +5,7 @@ import { TimelineMax } from 'gsap/TweenMax';
 import { kebabCase, toLower } from 'lodash-es';
 
 import { config } from '../helpers/config';
-import { Close } from '.';
+import Close from './Close';
 
 class Alert extends React.Component {
   alertRef = React.createRef();

@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-import { Button, Icon } from '.';
+import Button from './Button';
+import Icon from './Icon';
 
 const Close = (props) => {
   const { className, onClick } = props;

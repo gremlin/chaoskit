@@ -4,7 +4,8 @@ import cx from 'classnames';
 import { TimelineMax } from 'gsap/TweenMax';
 
 import { config } from '../helpers/config';
-import { Button, Icon } from '.';
+import Button from './Button';
+import Icon from './Icon';
 
 class Dropdown extends React.Component {
   dropdownRef = React.createRef();
