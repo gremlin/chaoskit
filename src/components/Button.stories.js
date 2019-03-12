@@ -31,7 +31,10 @@ storiesOf('Button', module)
   .addParameters({
     info: {
       text: `
-        Yep a description
+        1. \`type="reset"\` is used for elements that have
+        no direct path attached to them; to ensure we keep our markup
+        semantic and accessible.
+        1. When aligning buttons next to each other, consider using the Inline component for proper horizontal and vertical spacing.
       `,
     },
   })
@@ -53,30 +56,49 @@ storiesOf('Button', module)
       notes: 'I am a note',
     },
   )
-  .add('Icon only', () => (
-    <Button
-      className={params.className()}
-      iconOnly
-      disabled={params.disabled()}
-      loading={params.loading()}
-      type={params.type()}
-      size={params.size()}
-    >
-      <Icon icon="check" />
-    </Button>
-  ))
-  .add('Contrast', () => (
-    <div className="u-gradient--blue-green u-pa--large u-contrast">
+  .add(
+    'Icon only',
+    () => (
       <Button
         className={params.className()}
+        iconOnly
         disabled={params.disabled()}
         loading={params.loading()}
         type={params.type()}
         size={params.size()}
-        noRadius={params.noRadius()}
-        noContrast={params.noContrast()}
       >
-        {params.label()}
+        <Icon icon="check" />
       </Button>
-    </div>
-  ));
+    ),
+    {
+      notes:
+        'Icon buttons only contain a single icon and can be used to indicate shortcuts. Icons are automatically sized based on the button size modifier provided.',
+    },
+  )
+  .add(
+    'Contrast',
+    () => (
+      <div className="u-gradient--blue-green u-pa--large u-contrast">
+        <Button
+          className={params.className()}
+          disabled={params.disabled()}
+          loading={params.loading()}
+          type={params.type()}
+          size={params.size()}
+          noRadius={params.noRadius()}
+          noContrast={params.noContrast()}
+        >
+          {params.label()}
+        </Button>
+      </div>
+    ),
+    {
+      notes: `
+        The Button component automatically adapts to parent containers
+    containing \`.u-contrast\`.
+
+    If you'd like to override the contrast styles for a given button,
+    you can apply the \`noContrast\` prop.
+    `,
+    },
+  );

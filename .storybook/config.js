@@ -24,7 +24,11 @@ addParameters({
 // Decorators
 //
 
-addDecorator(withInfo);
+addDecorator(
+  withInfo({
+    header: false,
+  }),
+);
 addDecorator(withKnobs);
 addDecorator(centered);
 
