@@ -24,6 +24,7 @@ const params = {
     ],
     'default',
   ),
+  url: () => text('URL', ''),
   size: () => select('Size', ['default', 'xsmall', 'small'], 'default'),
 };
 
@@ -48,6 +49,7 @@ storiesOf('Button', module)
         type={params.type()}
         size={params.size()}
         noRadius={params.noRadius()}
+        url={params.url()}
       >
         {params.label()}
       </Button>
@@ -66,6 +68,7 @@ storiesOf('Button', module)
         loading={params.loading()}
         type={params.type()}
         size={params.size()}
+        url={params.url()}
       >
         <Icon icon="check" />
       </Button>
@@ -87,6 +90,7 @@ storiesOf('Button', module)
           size={params.size()}
           noRadius={params.noRadius()}
           noContrast={params.noContrast()}
+          url={params.url()}
         >
           {params.label()}
         </Button>

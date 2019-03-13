@@ -5,9 +5,10 @@ import { withKnobs } from '@storybook/addon-knobs';
 import centered from '@storybook/addon-centered/react';
 
 //
-// Import styles
+// Import styles/fonts
 //
 
+import '../src/assets/styles/_webfonts.scss';
 import '../src/assets/styles/site.scss';
 
 //
