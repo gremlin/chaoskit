@@ -180,9 +180,13 @@ Dropdown.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   panelClassName: PropTypes.string,
+  /** GSAP callback */
   onComplete: PropTypes.func,
+  /** GSAP callback */
   onReverseComplete: PropTypes.func,
+  /** GSAP callback */
   onReverseStart: PropTypes.func,
+  /** GSAP callback */
   onStart: PropTypes.func,
   position: PropTypes.oneOf([
     'left',
@@ -192,6 +196,7 @@ Dropdown.propTypes = {
     'up-center',
     'up-right',
   ]),
+  /** All available Button props can be passed-in */
   trigger: PropTypes.shape({
     props: PropTypes.object,
     label: PropTypes.any.isRequired,

@@ -9,6 +9,7 @@ const params = {
   disabled: () => boolean('Disabled', false),
   noRadius: () => boolean('No Radius', false),
   noContrast: () => boolean('No Contrast', false),
+  icon: () => text('Icon', 'check'),
   label: () => text('Label', 'Button'),
   loading: () => boolean('Loading', false),
   type: () => select(
@@ -32,32 +33,23 @@ storiesOf('Button', module)
   .addParameters({
     info: {
       text: `
-        1. \`type="reset"\` is used for elements that have
-        no direct path attached to them; to ensure we keep our markup
-        semantic and accessible.
-        1. When aligning buttons next to each other, consider using the Inline component for proper horizontal and vertical spacing.
+        > When aligning buttons next to each other, consider using the Inline component for proper horizontal and vertical spacing.
       `,
     },
   })
-  .add(
-    'Variations',
-    () => (
-      <Button
-        className={params.className()}
-        disabled={params.disabled()}
-        loading={params.loading()}
-        type={params.type()}
-        size={params.size()}
-        noRadius={params.noRadius()}
-        url={params.url()}
-      >
-        {params.label()}
-      </Button>
-    ),
-    {
-      notes: 'I am a note',
-    },
-  )
+  .add('Variations', () => (
+    <Button
+      className={params.className()}
+      disabled={params.disabled()}
+      loading={params.loading()}
+      type={params.type()}
+      size={params.size()}
+      noRadius={params.noRadius()}
+      url={params.url()}
+    >
+      {params.label()}
+    </Button>
+  ))
   .add(
     'Icon only',
     () => (
@@ -70,7 +62,7 @@ storiesOf('Button', module)
         size={params.size()}
         url={params.url()}
       >
-        <Icon icon="check" />
+        <Icon icon={params.icon()} />
       </Button>
     ),
     {
@@ -99,10 +91,10 @@ storiesOf('Button', module)
     {
       notes: `
         The Button component automatically adapts to parent containers
-    containing \`.u-contrast\`.
+        containing \`.u-contrast\`.
 
-    If you'd like to override the contrast styles for a given button,
-    you can apply the \`noContrast\` prop.
-    `,
+        If you'd like to override the contrast styles for a given button,
+        you can apply the \`noContrast\` prop.
+      `,
     },
   );

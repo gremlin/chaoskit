@@ -143,9 +143,13 @@ Alert.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   collapse: PropTypes.bool,
+  /** GSAP callback */
   onComplete: PropTypes.func,
+  /** GSAP callback */
   onReverseComplete: PropTypes.func,
+  /** GSAP callback */
   onReverseStart: PropTypes.func,
+  /** GSAP callback */
   onStart: PropTypes.func,
   close: PropTypes.bool,
   title: PropTypes.string,

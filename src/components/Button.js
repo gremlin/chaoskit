@@ -72,10 +72,12 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   fullWidth: PropTypes.bool,
   iconOnly: PropTypes.bool,
+  /** Re-uses the Loader component */
   loading: PropTypes.bool,
   noContrast: PropTypes.bool,
   noRadius: PropTypes.bool,
   size: PropTypes.oneOf(['default', 'xsmall', 'small']),
+  /** reset is used for elements that have no direct path attached to them; to ensure we keep our markup semantic and accessible. */
   type: PropTypes.oneOf([
     'reset',
     'default',
