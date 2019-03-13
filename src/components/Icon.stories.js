@@ -1,5 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { text } from '@storybook/addon-knobs';
 
 import { Icon, Inline } from '.';
 import icons from '../assets/icons/icons.json';
@@ -35,8 +36,14 @@ storiesOf('Icon', module)
     'Manipulating Size/Color',
     () => (
       <Inline>
-        <Icon icon="arrow-up" className="u-textFluid--h1-h2 u-textPrimary" />
-        <Icon icon="user" className="u-textLarge u-textDanger" />
+        <Icon
+          icon={text('Icon 1', 'arrow-up')}
+          className={text('Icon 1 Classes', 'u-textFluid--h1-h2 u-textPrimary')}
+        />
+        <Icon
+          icon={text('Icon 2', 'user')}
+          className={text('Icon 2 Classes', 'u-textLarge u-textDanger')}
+        />
       </Inline>
     ),
     {
