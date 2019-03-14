@@ -16,7 +16,7 @@ storiesOf('Forms|Toggle', module).add('Overview', () => (
     label={params.label()}
     disabled={params.disabled()}
     value="field-value"
-    onChange={(name, value, checked) => action('Toggled')({ name }, { value }, { checked })
+    onChange={(name, value, checked) => action('onChange')({ name }, { value }, { checked })
     }
   />
 ));
