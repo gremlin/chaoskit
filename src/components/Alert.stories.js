@@ -13,7 +13,7 @@ const params = {
   type: () => select('Type', ['default', 'primary', 'warning', 'danger'], 'default'),
 };
 
-storiesOf('Alert', module).add('Variations', () => (
+storiesOf('Components|Alert', module).add('Variations', () => (
   <Alert
     className={params.className()}
     collapse={params.collapse()}

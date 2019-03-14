@@ -29,7 +29,7 @@ const params = {
   size: () => select('Size', ['default', 'xsmall', 'small'], 'default'),
 };
 
-storiesOf('Button', module)
+storiesOf('Components|Button', module)
   .addParameters({
     info: {
       text: `

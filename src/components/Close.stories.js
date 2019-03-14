@@ -8,6 +8,6 @@ const params = {
   className: () => text('Class', ''),
 };
 
-storiesOf('Close', module).add('Variations', () => (
+storiesOf('Components|Close', module).add('Variations', () => (
   <Close className={params.className()} />
 ));

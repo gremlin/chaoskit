@@ -20,6 +20,8 @@ addParameters({
   options: {
     brandName: 'ChaosKit',
     brandUrl: 'https://www.github.com/gremlin/chaoskit',
+    hierarchySeparator: /\/|\./,
+    hierarchyRootSeparator: /\|/,
   },
 });
 

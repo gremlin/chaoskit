@@ -11,7 +11,7 @@ const params = {
   type: () => select('Type', ['default', 'primary', 'danger'], 'default'),
 };
 
-storiesOf('Badge', module).add('Variations', () => (
+storiesOf('Components|Badge', module).add('Variations', () => (
   <Badge
     className={params.className()}
     rounded={params.rounded()}

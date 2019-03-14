@@ -5,7 +5,7 @@ import { text } from '@storybook/addon-knobs';
 import { Icon, Inline } from '.';
 import icons from '../assets/icons/icons.json';
 
-storiesOf('Icon', module)
+storiesOf('Components|Icon', module)
   .addParameters({
     info: {
       text: `

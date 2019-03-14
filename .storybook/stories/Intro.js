@@ -1,9 +1,14 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import Overview from '../components/Overview';
-import docs from './Intro.docs.md';
+import Markdown from '../components/Markdown';
+import overviewDocs from './Overview.docs.md';
+import sassDocs from './Sass.docs.md';
 
-storiesOf('Intro', module).add('Overview', () => <Overview content={docs} />, {
-  info: { disable: true },
-});
+storiesOf('Concepts|👋', module)
+  .add('Overview', () => <Markdown content={overviewDocs} />, {
+    info: { disable: true },
+  })
+  .add('Sass', () => <Markdown content={sassDocs} />, {
+    info: { disable: true },
+  });

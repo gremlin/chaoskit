@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import remark from 'remark';
 import html from 'remark-html';
 
-const Overview = props => {
+const Markdown = props => {
   const { content } = props;
 
   return (
@@ -18,8 +18,8 @@ const Overview = props => {
   );
 };
 
-Overview.propTypes = {
+Markdown.propTypes = {
   content: PropTypes.string.isRequired,
 };
 
-export default Overview;
+export default Markdown;

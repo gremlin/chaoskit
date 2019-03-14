@@ -33,7 +33,7 @@ const params = {
   },
 };
 
-storiesOf('Dropdown', module)
+storiesOf('Components|Dropdown', module)
   .addParameters({
     info: {
       text: `
