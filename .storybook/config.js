@@ -4,6 +4,8 @@ import { withInfo } from '@storybook/addon-info';
 import { withKnobs } from '@storybook/addon-knobs';
 import centered from '@storybook/addon-centered/react';
 
+import './stories/Intro';
+
 //
 // Import styles
 //
@@ -17,6 +19,7 @@ import '../src/assets/styles/site.scss';
 addParameters({
   options: {
     brandName: 'ChaosKit',
+    brandUrl: 'https://www.github.com/gremlin/chaoskit',
   },
 });
 
@@ -27,9 +30,11 @@ addParameters({
 addDecorator(
   withInfo({
     header: false,
+    inline: true,
   }),
 );
 addDecorator(withKnobs);
+addDecorator(story => <div className="u-pa--regular">{story()}</div>);
 addDecorator(centered);
 
 //

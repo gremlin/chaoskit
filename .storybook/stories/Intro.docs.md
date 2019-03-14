@@ -1,0 +1,25 @@
+# Overview
+
+ChaosKit is a lightweight and modular front-end framework for developing fast and powerful web interfaces within Gremlin.
+
+Emphasis is placed on base-styles that follow our Sass guidelines with the flexibility of overriding portions to your needs with hooks, class modifiers, and variable overrides that make this framework extensible to fit both marketing and application initiatives.
+
+## Installation (WIP)
+
+```bash
+yarn add chaoskit
+```
+
+> Note
+>
+> ChaosKit does not bundle an es5-version; so remember to include ChaosKit along with any [Babel](https://babeljs.io/) transformations as needed.
+
+### Components
+
+Components can be referenced like so:
+
+```js
+import { Button } from 'chaoskit/src/components';
+```
+
+You can also create a [Webpack alias](https://webpack.js.org/configuration/resolve/#resolve-alias).
