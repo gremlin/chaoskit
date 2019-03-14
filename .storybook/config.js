@@ -32,11 +32,10 @@ addParameters({
 addDecorator(
   withInfo({
     header: false,
-    inline: true,
   }),
 );
 addDecorator(withKnobs);
-addDecorator(story => <div className="u-pa--regular">{story()}</div>);
+addDecorator(story => <div className="docs__root">{story()}</div>);
 addDecorator(centered);
 
 //

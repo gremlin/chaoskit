@@ -18,7 +18,7 @@ storiesOf('Components|Icon', module)
       `,
     },
   })
-  .add('Variations', () => (
+  .add('Overview', () => (
     <div className="u-pa--regular">
       <ul className="blockGrid blockGrid-2@small blockGrid-4@medium">
         {Object.entries(icons).map(icon => (

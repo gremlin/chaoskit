@@ -14,7 +14,7 @@ const params = {
   name: () => text('Name', 'Zach Schnackel'),
 };
 
-storiesOf('Components|Avatar', module).add('Variations', () => (
+storiesOf('Components|Avatar', module).add('Overview', () => (
   <Avatar
     className={params.className()}
     image={params.image()}

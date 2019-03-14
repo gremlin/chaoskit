@@ -37,7 +37,7 @@ storiesOf('Components|Button', module)
       `,
     },
   })
-  .add('Variations', () => (
+  .add('Overview', () => (
     <Button
       className={params.className()}
       disabled={params.disabled()}

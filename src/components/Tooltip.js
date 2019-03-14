@@ -234,6 +234,7 @@ Tooltip.propTypes = {
   children: PropTypes.node.isRequired,
   content: PropTypes.any.isRequired,
   placement: PropTypes.oneOf(['top', 'bottom', 'left', 'right']),
+  /** Disables tooltips on touch devices to not interfere with interactive elements */
   mobileTap: PropTypes.bool,
 };
 

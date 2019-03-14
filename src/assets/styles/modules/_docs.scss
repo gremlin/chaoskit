@@ -2,6 +2,10 @@
 // Component
 //
 
+.docs__root {
+  padding: $global-whitespace-regular;
+}
+
 .docs__box {
   border: 1px solid $global-border;
   border-radius: $global-border-radius;

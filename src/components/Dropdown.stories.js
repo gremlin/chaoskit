@@ -44,7 +44,7 @@ storiesOf('Components|Dropdown', module)
       `,
     },
   })
-  .add('Variations', () => (
+  .add('Overview', () => (
     <Dropdown
       showArrow={params.showArrow()}
       position={params.position()}
