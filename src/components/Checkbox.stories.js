@@ -7,13 +7,11 @@ import { CheckboxGroup, Checkbox } from '.';
 
 const params = {
   firstCheckbox: {
-    className: () => text('(First Checkbox) Classes', ''),
     label: () => text('(First Checkbox) Label', 'Label 1'),
     disabled: () => boolean('(First Checkbox) Disabled', false),
     isChecked: () => boolean('(First Checkbox) Checked', false),
   },
   secondCheckbox: {
-    className: () => text('(Second Checkbox) Classes', ''),
     label: () => text('(Second Checkbox) Label', 'Label 2'),
     disabled: () => boolean('(Second Checkbox) Disabled', false),
     isChecked: () => boolean('(Second Checkbox) Checked', false),
@@ -26,28 +24,36 @@ const params = {
   },
 };
 
-storiesOf('Forms|Checkbox', module).add('Overview', () => (
-  <CheckboxGroup
-    label={params.group.label()}
-    explanationMessage={params.group.explanationMessage()}
-    validationMessage={params.group.validationMessage()}
-    inline={params.group.inline()}
-  >
-    <Checkbox
-      disabled={params.firstCheckbox.disabled()}
-      isChecked={params.firstCheckbox.isChecked()}
-      name="field-name1"
-      label={params.firstCheckbox.label()}
-      value="field-value1"
-      onChange={(name, value) => action('onChange 1')({ name }, { value })}
-    />
-    <Checkbox
-      disabled={params.secondCheckbox.disabled()}
-      isChecked={params.secondCheckbox.isChecked()}
-      name="field-name2"
-      label={params.secondCheckbox.label()}
-      value="field-value2"
-      onChange={(name, value) => action('onChange 2')({ name }, { value })}
-    />
-  </CheckboxGroup>
-));
+storiesOf('Forms|Checkbox', module)
+  .addParameters({
+    info: {
+      text: `
+        > Always surround the Checkbox component with CheckboxGroup; as it provides not only event handlers, but additional display options.
+      `,
+    },
+  })
+  .add('Overview', () => (
+    <CheckboxGroup
+      label={params.group.label()}
+      explanationMessage={params.group.explanationMessage()}
+      validationMessage={params.group.validationMessage()}
+      inline={params.group.inline()}
+    >
+      <Checkbox
+        disabled={params.firstCheckbox.disabled()}
+        isChecked={params.firstCheckbox.isChecked()}
+        name="field-name1"
+        label={params.firstCheckbox.label()}
+        value="field-value1"
+        onChange={(name, value) => action('onChange 1')({ name }, { value })}
+      />
+      <Checkbox
+        disabled={params.secondCheckbox.disabled()}
+        isChecked={params.secondCheckbox.isChecked()}
+        name="field-name2"
+        label={params.secondCheckbox.label()}
+        value="field-value2"
+        onChange={(name, value) => action('onChange 2')({ name }, { value })}
+      />
+    </CheckboxGroup>
+  ));
