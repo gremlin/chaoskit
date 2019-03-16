@@ -2,6 +2,7 @@ import React from 'react';
 import { addDecorator, addParameters, configure } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import { withKnobs } from '@storybook/addon-knobs';
+import { withA11y } from '@storybook/addon-a11y';
 import centered from '@storybook/addon-centered/react';
 
 import './stories/Intro';
@@ -35,6 +36,7 @@ addDecorator(
   }),
 );
 addDecorator(withKnobs);
+addDecorator(withA11y);
 addDecorator(story => <div className="docs__root">{story()}</div>);
 addDecorator(centered);
 

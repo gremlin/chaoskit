@@ -822,6 +822,12 @@ $form-contrast-background-focus: transparent !default;
     }
   }
 
+  .form-inlineCombo {
+    + .form-footer {
+      margin-top: $global-whitespace-xsmall;
+    }
+  }
+
   //
   // Select
   //

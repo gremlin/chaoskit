@@ -20,7 +20,7 @@ const params = {
     inline: () => boolean('(Group) Inline', false),
     label: () => text('(Group) label', 'Group'),
     explanationMessage: () => text('(Group) explanation message', 'Explanation message'),
-    validationMessage: () => text('(Group) validation message', 'Validation message'),
+    validationMessage: () => text('(Group) validation message', ''),
   },
 };
 

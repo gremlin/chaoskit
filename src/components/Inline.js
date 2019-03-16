@@ -24,7 +24,7 @@ const Inline = (props) => {
 Inline.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
-  size: PropTypes.oneOf(['small', 'medium', 'large', 'xlarge']),
+  size: PropTypes.oneOf(['small', 'default', 'medium', 'large', 'xlarge']),
   wrap: PropTypes.bool,
 };
 

@@ -81,7 +81,9 @@ class RadioGroup extends React.Component {
     const { inline } = this.props;
 
     if (inline) {
-      return <Inline>{this.renderChildren()}</Inline>;
+      return (
+        <Inline className="form-inlineCombo">{this.renderChildren()}</Inline>
+      );
     }
 
     return <List type={['space']}>{this.renderChildren()}</List>;
