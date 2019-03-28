@@ -54,9 +54,6 @@ module.exports = {
         },
         gatsbyRemarkPlugins: [
           {
-            resolve: 'gatsby-remark-autolink-headers',
-          },
-          {
             resolve: 'gatsby-remark-prismjs',
           },
         ],

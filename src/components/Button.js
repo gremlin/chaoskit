@@ -1,3 +1,5 @@
+/* eslint-disable react/button-has-type */
+
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -18,6 +20,7 @@ const Button = React.forwardRef((props, ref) => {
     noRadius,
     size,
     type,
+    actionType,
     url,
     ...opts
   } = props;
@@ -58,7 +61,7 @@ const Button = React.forwardRef((props, ref) => {
   }
 
   return (
-    <button type="button" {...defaultButtonProps}>
+    <button type={actionType} {...defaultButtonProps}>
       {type === 'reset' ? children : <span>{children}</span>}
       {loading && <Loader />}
     </button>
@@ -67,6 +70,7 @@ const Button = React.forwardRef((props, ref) => {
 
 Button.propTypes = {
   active: PropTypes.bool,
+  actionType: PropTypes.oneOf(['button', 'submit', 'reset']),
   children: PropTypes.node,
   className: PropTypes.string,
   disabled: PropTypes.bool,
@@ -86,6 +90,10 @@ Button.propTypes = {
     'outlinePrimary',
   ]),
   url: PropTypes.string,
+};
+
+Button.defaultProps = {
+  actionType: 'button',
 };
 
 export default Button;
