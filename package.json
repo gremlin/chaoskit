@@ -5,7 +5,7 @@
     ">0.25%",
     "not op_mini all"
   ],
-  "version": "1.1.25",
+  "version": "1.1.26",
   "engines": {
     "node": ">=8.12.0"
   },
