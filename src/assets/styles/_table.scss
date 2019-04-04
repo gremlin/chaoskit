@@ -29,6 +29,9 @@ $table-contrast-emphasis-background: rgba($global-contrast, 0.15) !default;
     border: 1px solid $global-border;
     box-shadow: $global-box-shadow;
     table-layout: fixed;
+    max-width: max-content;
+    display: block;
+    overflow-x: auto;
 
     @if $global-contrast-enable and $table-contrast-enable {
       .u-contrast & {
@@ -42,6 +45,7 @@ $table-contrast-emphasis-background: rgba($global-contrast, 0.15) !default;
         vertical-align: bottom;
         font-weight: $global-font-weight-bold;
         background: $table-emphasis-background;
+        line-height: $global-line-height-small;
 
         @if $global-contrast-enable and $table-contrast-enable {
           .u-contrast & {
