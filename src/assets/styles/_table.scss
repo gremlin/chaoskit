@@ -28,6 +28,7 @@ $table-contrast-emphasis-background: rgba($global-contrast, 0.15) !default;
     caption-side: bottom;
     border: 1px solid $global-border;
     box-shadow: $global-box-shadow;
+    table-layout: fixed;
 
     @if $global-contrast-enable and $table-contrast-enable {
       .u-contrast & {
