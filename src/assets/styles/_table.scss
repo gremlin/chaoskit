@@ -46,6 +46,7 @@ $table-contrast-emphasis-background: rgba($global-contrast, 0.15) !default;
         font-weight: $global-font-weight-bold;
         background: $table-emphasis-background;
         line-height: $global-line-height-small;
+        font-size: $global-font-size-small;
 
         @if $global-contrast-enable and $table-contrast-enable {
           .u-contrast & {
@@ -81,7 +82,7 @@ $table-contrast-emphasis-background: rgba($global-contrast, 0.15) !default;
 
     th,
     td {
-      padding: $global-whitespace-regular;
+      padding: ($global-whitespace-small + $global-whitespace-xsmall);
 
       @if $global-contrast-enable and $table-contrast-enable {
         .u-contrast & {
