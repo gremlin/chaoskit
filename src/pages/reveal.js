@@ -21,7 +21,7 @@ class Example extends React.Component {
 
     return (
       <Fragment>
-        <div className="u-mb--regular"><Button onClick={this.handleToggleReveal} type="secondary">Externally toggle Reveal</Button></div>
+        <div className="u-mb--regular"><Button className="u-link" onClick={this.handleToggleReveal} type="reset">Externally toggle Reveal</Button></div>
         <Reveal
           trigger={{
             label: 'Toggle content',

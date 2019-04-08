@@ -21,7 +21,7 @@ class Example extends React.Component {
 
     return (
       <Fragment>
-        <div><Button onClick={this.handleToggleAlert} type="primary">Toggle Alert</Button></div>
+        <div><Button className="u-link" onClick={this.handleToggleAlert} type="reset">Toggle Alert</Button></div>
         <Alert
           collapse={toggleAlert}
           type="primary"

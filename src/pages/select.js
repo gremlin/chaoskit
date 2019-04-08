@@ -2,7 +2,7 @@ import React from 'react';
 
 import BaseLayout from '../layouts/BaseLayout';
 import Live from '../docs/Live';
-import { Select } from '../components';
+import { Button, Select } from '../components';
 
 const SelectExample = `
 class Example extends React.Component {
@@ -25,19 +25,23 @@ class Example extends React.Component {
     ];
 
     return (
-      <Select
-        onChange={this.handleChange}
-        selected={this.state.selected}
-        name="select"
-        label="Choose One"
-        options={selectOpts}
-      />
+      <Fragment>
+        <Button className="u-link" onClick={() => this.setState({ selected: 'test-string' })} type="reset">Set to Option 2</Button>
+        <Select
+          onChange={this.handleChange}
+          selected={this.state.selected}
+          name="select"
+          label="Choose One"
+          options={selectOpts}
+        />
+      </Fragment>
     );
   }
 }
 `.trim();
 
 const SelectScope = {
+  Button,
   React,
   Select,
 };
