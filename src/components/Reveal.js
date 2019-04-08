@@ -1,4 +1,6 @@
-import React, { Fragment, useEffect, useRef } from 'react';
+import React, {
+  Fragment, useEffect, useCallback, useRef,
+} from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 import { TimelineMax } from 'gsap/TweenMax';
@@ -90,6 +92,10 @@ const Reveal = ({
         },
         ease: config.easing,
       });
+
+    if (reveal) {
+      $reveal.timeline.play();
+    }
   };
 
   const revealOpen = () => {
@@ -118,12 +124,12 @@ const Reveal = ({
     attachTimeline();
   }, []);
 
-  useEffect(
+  useCallback(
     () => {
-      const $reveal = revealRef.current;
-      if (reveal && $reveal.timeline.progress() === 0) {
+      console.log('fired');
+      if (reveal) {
         revealOpen();
-      } else if ($reveal.timeline.progress() === 1) {
+      } else {
         revealClose();
       }
     },
