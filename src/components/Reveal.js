@@ -92,10 +92,6 @@ const Reveal = ({
         },
         ease: config.easing,
       });
-
-    if (reveal) {
-      $reveal.timeline.play();
-    }
   };
 
   const revealOpen = () => {
@@ -122,11 +118,16 @@ const Reveal = ({
 
   useEffect(() => {
     attachTimeline();
+
+    if (reveal) {
+      const $reveal = revealRef.current;
+
+      $reveal.timeline.progress(1);
+    }
   }, []);
 
   useCallback(
     () => {
-      console.log('fired');
       if (reveal) {
         revealOpen();
       } else {
