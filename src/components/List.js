@@ -2,10 +2,9 @@ import cx from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const List = (props) => {
-  const {
-    children, className, type, ...opts
-  } = props;
+const List = ({
+  children, className, type, ...opts
+}) => {
   const classes = cx('u-list', className, {
     'u-list--space': type && type.includes('space'),
     'u-list--border': type && type.includes('border'),

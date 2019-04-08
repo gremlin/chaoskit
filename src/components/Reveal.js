@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useRef } from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 import { TimelineMax } from 'gsap/TweenMax';
@@ -6,38 +6,22 @@ import { TimelineMax } from 'gsap/TweenMax';
 import { config } from '../helpers/config';
 import { Button } from '.';
 
-class Reveal extends React.Component {
-  triggerRef = React.createRef();
+const Reveal = ({
+  onStart,
+  onReverseStart,
+  onComplete,
+  onReverseComplete,
+  reveal,
+  children,
+  className,
+  trigger,
+}) => {
+  const triggerRef = useRef();
+  const revealRef = useRef();
 
-  revealRef = React.createRef();
-
-  componentDidMount() {
-    this.attachTimeline();
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const { reveal } = this.props;
-
-    if (reveal !== nextProps.reveal) {
-      if (nextProps.reveal) {
-        this.revealOpen();
-      } else {
-        this.revealClose();
-      }
-    }
-  }
-
-  attachTimeline = () => {
-    const { reveal } = this.props;
-    const $reveal = this.revealRef.current;
-    const $trigger = this.triggerRef.current;
-
-    const {
-      onStart,
-      onReverseStart,
-      onComplete,
-      onReverseComplete,
-    } = this.props;
+  const attachTimeline = () => {
+    const $reveal = revealRef.current;
+    const $trigger = triggerRef.current;
 
     let forward = true;
     let lastTime = 0;
@@ -106,55 +90,59 @@ class Reveal extends React.Component {
         },
         ease: config.easing,
       });
-
-    // If reveal has open class onload, open by default
-    if (reveal) {
-      $reveal.timeline.progress(1);
-    }
   };
 
-  revealOpen = () => {
-    const $reveal = this.revealRef.current;
+  const revealOpen = () => {
+    const $reveal = revealRef.current;
 
     if ($reveal) $reveal.timeline.play();
   };
 
-  revealClose = () => {
-    const $reveal = this.revealRef.current;
+  const revealClose = () => {
+    const $reveal = revealRef.current;
 
     if ($reveal) $reveal.timeline.reverse();
   };
 
-  handleRevealToggle = () => {
-    const $reveal = this.revealRef.current;
+  const handleRevealToggle = () => {
+    const $reveal = revealRef.current;
 
     if ($reveal.timeline.progress() === 1) {
-      this.revealClose();
+      revealClose();
     } else {
-      this.revealOpen();
+      revealOpen();
     }
   };
 
-  render() {
-    const { children, className, trigger } = this.props;
-    const classes = cx('reveal-content', className);
+  useEffect(() => {
+    attachTimeline();
+  }, []);
 
-    return (
-      <Fragment>
-        <Button
-          onClick={this.handleRevealToggle}
-          {...trigger.props}
-          ref={this.triggerRef}
-        >
-          {trigger.label}
-        </Button>
-        <div className="reveal" ref={this.revealRef} aria-hidden="true">
-          <div className={classes}>{children}</div>
-        </div>
-      </Fragment>
-    );
-  }
-}
+  useEffect(
+    () => {
+      const $reveal = revealRef.current;
+      if (reveal && $reveal.timeline.progress() === 0) {
+        revealOpen();
+      } else if ($reveal.timeline.progress() === 1) {
+        revealClose();
+      }
+    },
+    [reveal],
+  );
+
+  const classes = cx('reveal-content', className);
+
+  return (
+    <Fragment>
+      <Button onClick={handleRevealToggle} {...trigger.props} ref={triggerRef}>
+        {trigger.label}
+      </Button>
+      <div className="reveal" ref={revealRef} aria-hidden="true">
+        <div className={classes}>{children}</div>
+      </div>
+    </Fragment>
+  );
+};
 
 Reveal.propTypes = {
   children: PropTypes.node.isRequired,
@@ -175,6 +163,7 @@ Reveal.defaultProps = {
   onReverseComplete: () => {},
   onReverseStart: () => {},
   onStart: () => {},
+  reveal: false,
 };
 
 export default Reveal;

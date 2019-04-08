@@ -7,24 +7,22 @@ import { FormFooter, FormLabel } from '.';
 import { generateUUID } from '../helpers/utility';
 import { config } from '../helpers/config';
 
-const Textarea = (props) => {
-  const textareaRef = useRef(null);
+const Textarea = ({
+  className,
+  disabled,
+  focus,
+  initialValue,
+  label,
+  name,
+  onChange,
+  onKeyPress,
+  placeholder,
+  validationMessage,
+  explanationMessage,
+  required,
+}) => {
+  const textareaRef = useRef();
   const [value, setValue] = useState('');
-
-  const {
-    className,
-    disabled,
-    focus,
-    initialValue,
-    label,
-    name,
-    onChange,
-    onKeyPress,
-    placeholder,
-    validationMessage,
-    explanationMessage,
-    required,
-  } = props;
 
   useEffect(() => {
     if (initialValue) setValue(initialValue);

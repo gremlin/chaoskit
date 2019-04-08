@@ -4,9 +4,7 @@ import cx from 'classnames';
 
 import { Button, Icon } from '.';
 
-const Close = (props) => {
-  const { className, onClick } = props;
-
+const Close = ({ className, onClick }) => {
   const classes = cx('close', className);
 
   return (

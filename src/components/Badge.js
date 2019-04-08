@@ -2,10 +2,9 @@ import cx from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const Badge = (props) => {
-  const {
-    className, label, rounded, type,
-  } = props;
+const Badge = ({
+  className, label, rounded, type,
+}) => {
   const classes = cx('badge', className, {
     'badge--rounded': rounded,
     'badge--primary': type === 'primary',

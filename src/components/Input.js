@@ -7,29 +7,27 @@ import { FormFooter, FormLabel, Icon } from '.';
 import { generateUUID } from '../helpers/utility';
 import { config } from '../helpers/config';
 
-const Input = (props) => {
-  const inputRef = useRef(null);
+const Input = ({
+  autoComplete,
+  className,
+  disabled,
+  focus,
+  initialValue,
+  label,
+  guide,
+  mask,
+  name,
+  onChange,
+  onKeyPress,
+  type,
+  placeholder,
+  validationMessage,
+  explanationMessage,
+  prefixIcon,
+  required,
+}) => {
+  const inputRef = useRef();
   const [value, setValue] = useState('');
-
-  const {
-    autoComplete,
-    className,
-    disabled,
-    focus,
-    initialValue,
-    label,
-    guide,
-    mask,
-    name,
-    onChange,
-    onKeyPress,
-    type,
-    placeholder,
-    validationMessage,
-    explanationMessage,
-    prefixIcon,
-    required,
-  } = props;
 
   useEffect(() => {
     if (initialValue) setValue(initialValue);
@@ -42,7 +40,7 @@ const Input = (props) => {
     [focus],
   );
 
-  const id = `${props.name}-${generateUUID()}`; // eslint-disable-line react/destructuring-assignment
+  const id = `${name}-${generateUUID()}`; // eslint-disable-line react/destructuring-assignment
 
   const handleChange = (e) => {
     setValue(e.target.value);
