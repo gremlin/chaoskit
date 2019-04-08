@@ -20,14 +20,17 @@ class Example extends React.Component {
     const { toggleAlert } = this.state;
 
     return (
-      <Alert
-        collapse={toggleAlert}
-        type="primary"
-        title="Who am I making this out to?"
-        close
-      >
-        <p>And then the battle's not so bad? What are you hacking off? Is it my torso?! 'It is!' My precious torso! I decline the title of Iron Cook and accept the lesser title of Zinc Saucier, which I just made up. Uhh… also, comes with double prize money.</p>
-      </Alert>
+      <Fragment>
+        <div><Button onClick={this.handleToggleAlert} type="primary">Toggle Alert</Button></div>
+        <Alert
+          collapse={toggleAlert}
+          type="primary"
+          title="Who am I making this out to?"
+          close
+        >
+          <p>And then the battle's not so bad? What are you hacking off? Is it my torso?! 'It is!' My precious torso! I decline the title of Iron Cook and accept the lesser title of Zinc Saucier, which I just made up. Uhh… also, comes with double prize money.</p>
+        </Alert>
+      </Fragment>
     );
   }
 }

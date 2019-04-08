@@ -1,8 +1,8 @@
-import React, {
-  Fragment, useEffect, useCallback, useRef,
-} from 'react';
+import React, { Fragment, useRef } from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
+import useMount from 'react-use/lib/useMount';
+import useUpdateEffect from 'react-use/lib/useUpdateEffect';
 import { TimelineMax } from 'gsap/TweenMax';
 
 import { config } from '../helpers/config';
@@ -116,7 +116,7 @@ const Reveal = ({
     }
   };
 
-  useEffect(() => {
+  useMount(() => {
     attachTimeline();
 
     if (reveal) {
@@ -124,9 +124,9 @@ const Reveal = ({
 
       $reveal.timeline.progress(1);
     }
-  }, []);
+  });
 
-  useCallback(
+  useUpdateEffect(
     () => {
       if (reveal) {
         revealOpen();
