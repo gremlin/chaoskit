@@ -1,116 +1,84 @@
-import cx from 'classnames';
+import React, { useRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import React from 'react';
+import cx from 'classnames';
 import TextareaAutoSize from 'react-textarea-autosize';
 
 import { FormFooter, FormLabel } from '.';
 import { generateUUID } from '../helpers/utility';
 import { config } from '../helpers/config';
 
-class Textarea extends React.Component {
-  textareaRef = React.createRef();
+const Textarea = (props) => {
+  const textareaRef = useRef(null);
+  const [value, setValue] = useState('');
 
-  id = `${this.props.name}-${generateUUID()}`; // eslint-disable-line react/destructuring-assignment
+  const {
+    className,
+    disabled,
+    focus,
+    initialValue,
+    label,
+    name,
+    onChange,
+    onKeyPress,
+    placeholder,
+    validationMessage,
+    explanationMessage,
+    required,
+  } = props;
 
-  state = {
-    value: '',
-  };
+  useEffect(() => {
+    if (initialValue) setValue(initialValue);
+  }, []);
 
-  componentWillMount() {
-    const { initialValue } = this.props;
+  useEffect(
+    () => {
+      if (focus) textareaRef.current.focus();
+    },
+    [focus],
+  );
 
-    if (initialValue) {
-      this.setState({ value: initialValue });
-    }
-  }
+  const id = `${name}-${generateUUID()}`;
 
-  componentDidMount() {
-    const { focus } = this.props;
-    const $textarea = this.textareaRef.current;
-
-    if (focus) {
-      $textarea.focus();
-    }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const { initialValue } = this.props;
-
-    if (nextProps.initialValue !== initialValue) {
-      this.setState({
-        value: nextProps.initialValue,
-      });
-    }
-  }
-
-  componentDidUpdate(prevProps) {
-    const { focus } = this.props;
-    const $textarea = this.textareaRef.current;
-
-    if (prevProps.focus !== focus && focus) {
-      $textarea.focus();
-    }
-  }
-
-  handleChange = (e) => {
-    const { onChange } = this.props;
-
-    this.setState({ value: e.target.value });
+  const handleChange = (e) => {
+    setValue(e.target.value);
 
     if (onChange) {
       onChange(e.target.name, e.target.value);
     }
   };
 
-  handleKeyPress = (e) => {
-    const { onKeyPress } = this.props;
-
+  const handleKeyPress = (e) => {
     if (onKeyPress) {
       onKeyPress(e);
     }
   };
 
-  render() {
-    const {
-      className,
-      disabled,
-      focus,
-      label,
-      name,
-      placeholder,
-      validationMessage,
-      explanationMessage,
-      required,
-    } = this.props;
-    const { value } = this.state;
+  const classes = cx('form-group', className, {
+    [config.classes.notValid]: validationMessage,
+    [config.classes.required]: required,
+  });
 
-    const classes = cx('form-group', className, {
-      [config.classes.notValid]: validationMessage,
-      [config.classes.required]: required,
-    });
-
-    return (
-      <div className={classes}>
-        <FormLabel id={this.id}>{label}</FormLabel>
-        <TextareaAutoSize
-          id={this.id}
-          disabled={disabled}
-          focus={focus ? 'true' : null}
-          name={name}
-          value={value}
-          onChange={this.handleChange}
-          onKeyPress={this.handleKeyPress}
-          placeholder={placeholder}
-          inputRef={this.textareaRef}
-        />
-        <FormFooter
-          explanationMessage={explanationMessage}
-          validationMessage={validationMessage}
-        />
-      </div>
-    );
-  }
-}
+  return (
+    <div className={classes}>
+      <FormLabel id={id}>{label}</FormLabel>
+      <TextareaAutoSize
+        id={id}
+        disabled={disabled}
+        focus={focus ? 'true' : null}
+        name={name}
+        value={value}
+        onChange={handleChange}
+        onKeyPress={handleKeyPress}
+        placeholder={placeholder}
+        inputRef={textareaRef}
+      />
+      <FormFooter
+        explanationMessage={explanationMessage}
+        validationMessage={validationMessage}
+      />
+    </div>
+  );
+};
 
 Textarea.propTypes = {
   className: PropTypes.string,

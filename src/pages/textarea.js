@@ -10,11 +10,16 @@ class Example extends React.Component {
     initialValue: 'I have an initial value!',
   };
 
+  handleChange = (name, value) => {
+    console.log({name}, {value});
+  }
+
   render() {
     return (
       <Textarea
         label="Test label"
         name="test"
+        onChange={this.handleChange}
         initialValue={this.state.initialValue}
         validationMessage="This field has an error"
       />

@@ -1,141 +1,112 @@
-import cx from 'classnames';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import React from 'react';
+import cx from 'classnames';
 import MaskedInput from 'react-text-mask';
 
 import { FormFooter, FormLabel, Icon } from '.';
 import { generateUUID } from '../helpers/utility';
 import { config } from '../helpers/config';
 
-class Input extends React.Component {
-  id = `${this.props.name}-${generateUUID()}`; // eslint-disable-line react/destructuring-assignment
+const Input = (props) => {
+  const inputRef = useRef(null);
+  const [value, setValue] = useState('');
 
-  state = {
-    value: '',
-  };
+  const {
+    autoComplete,
+    className,
+    disabled,
+    focus,
+    initialValue,
+    label,
+    guide,
+    mask,
+    name,
+    onChange,
+    onKeyPress,
+    type,
+    placeholder,
+    validationMessage,
+    explanationMessage,
+    prefixIcon,
+    required,
+  } = props;
 
-  componentWillMount() {
-    const { initialValue } = this.props;
+  useEffect(() => {
+    if (initialValue) setValue(initialValue);
+  }, []);
 
-    if (initialValue) {
-      this.setState({ value: initialValue });
-    }
-  }
+  useEffect(
+    () => {
+      if (focus && !mask) inputRef.current.focus();
+    },
+    [focus],
+  );
 
-  componentDidMount() {
-    const { focus } = this.props;
+  const id = `${props.name}-${generateUUID()}`; // eslint-disable-line react/destructuring-assignment
 
-    if (focus && this.input) {
-      this.input.focus();
-    }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const { initialValue } = this.props;
-
-    if (nextProps.initialValue !== initialValue) {
-      this.setState({
-        value: nextProps.initialValue,
-      });
-    }
-  }
-
-  componentDidUpdate(prevProps) {
-    const { focus } = this.props;
-
-    if (prevProps.focus !== focus && focus) {
-      this.input.focus();
-    }
-  }
-
-  handleChange = (e) => {
-    const { onChange } = this.props;
-    this.setState({ value: e.target.value });
+  const handleChange = (e) => {
+    setValue(e.target.value);
 
     if (onChange) {
       onChange(e.target.name, e.target.value);
     }
   };
 
-  handleKeyPress = (e) => {
-    const { onKeyPress } = this.props;
-
+  const handleKeyPress = (e) => {
     if (onKeyPress) {
       onKeyPress(e);
     }
   };
 
-  render() {
-    const {
+  const inputRender = () => {
+    const defaultProps = {
       autoComplete,
-      className,
+      id,
+      className: 'form-input',
       disabled,
-      focus,
-      label,
-      guide,
-      mask,
+      focus: focus ? 'focus' : null,
       name,
       type,
+      value,
+      onChange: handleChange,
+      onKeyPress: handleKeyPress,
       placeholder,
-      validationMessage,
-      explanationMessage,
-      prefixIcon,
-      required,
-    } = this.props;
-    const { value } = this.state;
-
-    const classes = cx('form-group', className, {
-      [config.classes.notValid]: validationMessage,
-      [config.classes.required]: required,
-    });
-
-    const inputRender = () => {
-      const defaultProps = {
-        autoComplete,
-        id: this.id,
-        className: 'form-input',
-        disabled,
-        focus,
-        name,
-        type,
-        value,
-        onChange: this.handleChange,
-        onKeyPress: this.handleKeyPress,
-        placeholder,
-        ref: (ref) => {
-          this.input = ref;
-        },
-      };
-
-      // `react-text-mask` does not support 'email' or 'number' input types
-      if (mask && !['email', 'number'].includes(type)) {
-        return <MaskedInput {...defaultProps} mask={mask} guide={guide} />;
-      }
-
-      return <input {...defaultProps} />;
+      ref: inputRef,
     };
 
-    return (
-      <div className={classes}>
-        <FormLabel id={this.id}>{label}</FormLabel>
-        {prefixIcon ? (
-          <div className="form-prefix-wrapper">
-            <div className="form-prefix-content">
-              <Icon icon={prefixIcon} />
-            </div>
-            {inputRender()}
+    // `react-text-mask` does not support 'email' or 'number' input types
+    if (mask && !['email', 'number'].includes(type)) {
+      return <MaskedInput {...defaultProps} mask={mask} guide={guide} />;
+    }
+
+    return <input {...defaultProps} />;
+  };
+
+  const classes = cx('form-group', className, {
+    [config.classes.notValid]: validationMessage,
+    [config.classes.required]: required,
+  });
+
+  return (
+    <div className={classes}>
+      <FormLabel id={id}>{label}</FormLabel>
+      {prefixIcon ? (
+        <div className="form-prefix-wrapper">
+          <div className="form-prefix-content">
+            <Icon icon={prefixIcon} />
           </div>
-        ) : (
-          inputRender()
-        )}
-        <FormFooter
-          explanationMessage={explanationMessage}
-          validationMessage={validationMessage}
-        />
-      </div>
-    );
-  }
-}
+          {inputRender()}
+        </div>
+      ) : (
+        inputRender()
+      )}
+      <FormFooter
+        explanationMessage={explanationMessage}
+        validationMessage={validationMessage}
+      />
+    </div>
+  );
+};
 
 Input.propTypes = {
   autoComplete: PropTypes.string,
