@@ -2,9 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-const DropdownHeader = (props) => {
-  const { children, className } = props;
-
+const DropdownHeader = ({ children, className }) => {
   const classes = cx('dropdown-header', className);
 
   return <h5 className={classes}>{children}</h5>;
