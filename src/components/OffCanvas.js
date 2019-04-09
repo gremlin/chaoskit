@@ -1,68 +1,62 @@
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
+import useUpdateEffect from 'react-use/lib/useUpdateEffect';
 import ReactDOM from 'react-dom';
 import { TimelineMax } from 'gsap/TweenMax';
 
 import { config } from '../helpers/config';
 import { Close } from '.';
 
-class OffCanvas extends React.Component {
-  offCanvasRef = React.createRef();
+const OffCanvas = ({
+  children,
+  className,
+  align,
+  open,
+  onOffCanvasToggle,
+  onComplete,
+  onReverseComplete,
+  onReverseStart,
+  onStart,
+}) => {
+  const offCanvasRef = useRef();
+  const offCanvasPanelRef = useRef();
 
-  offCanvasPanelRef = React.createRef();
+  const [renderOffCanvas, setRenderOffCanvas] = useState(open);
 
-  state = {
-    renderOffCanvas: false,
+  const openOffCanvas = () => {
+    const $offCanvas = offCanvasRef.current;
+
+    $offCanvas.timeline.play();
   };
 
-  componentWillReceiveProps(nextProps) {
-    const { open } = this.props;
+  const closeOffCanvas = () => {
+    const $offCanvas = offCanvasRef.current;
 
-    if (!open && nextProps.open) {
-      this.setState({
-        renderOffCanvas: true,
-      });
-    }
-  }
-
-  componentDidUpdate(prevProps) {
-    const { open } = this.props;
-
-    if (!prevProps.open && open) {
-      this.attachTimeline();
-    }
-
-    if (prevProps.open !== open) {
-      if (open) {
-        this.openOffCanvas();
-      } else {
-        this.closeOffCanvas();
-      }
-    }
-  }
-
-  onReverseComplete = () => {
-    const { onReverseComplete } = this.props;
-
-    this.setState(
-      {
-        renderOffCanvas: false,
-      },
-      () => {
-        onReverseComplete();
-      },
-    );
+    $offCanvas.timeline.reverse();
   };
 
-  attachTimeline = () => {
-    const {
-      onStart, onReverseStart, onComplete, open,
-    } = this.props;
+  const handleOutsideOffCanvasClick = (e) => {
+    // If click originates outside of offCanvas panel
+    if (e.target.hasAttribute('data-offcanvasroot')) {
+      onOffCanvasToggle();
+    }
 
+    return false;
+  };
+
+  const handleOffCanvasToggle = () => {
+    onOffCanvasToggle();
+  };
+
+  const handleOnReverseComplete = () => {
+    setRenderOffCanvas(false);
+  };
+
+  const attachTimeline = () => {
     const $body = document.body;
-    const $offCanvas = this.offCanvasRef.current;
-    const $panel = this.offCanvasPanelRef.current;
+    const $offCanvas = offCanvasRef.current;
+    const $panel = offCanvasPanelRef.current;
 
     let forward = true;
     let lastTime = 0;
@@ -99,7 +93,7 @@ class OffCanvas extends React.Component {
         onComplete();
       },
       onReverseComplete: () => {
-        this.onReverseComplete();
+        handleOnReverseComplete();
       },
     });
 
@@ -130,68 +124,63 @@ class OffCanvas extends React.Component {
       );
   };
 
-  openOffCanvas = () => {
-    const $offCanvas = this.offCanvasRef.current;
+  useEffect(
+    () => {
+      if (open) {
+        setRenderOffCanvas(true);
+      }
+    },
+    [open],
+  );
 
-    $offCanvas.timeline.play();
-  };
+  useUpdateEffect(
+    () => {
+      if (renderOffCanvas) {
+        attachTimeline();
 
-  closeOffCanvas = () => {
-    const $offCanvas = this.offCanvasRef.current;
+        openOffCanvas();
+      } else {
+        onReverseComplete();
+      }
+    },
+    [renderOffCanvas],
+  );
 
-    $offCanvas.timeline.reverse();
-  };
+  useUpdateEffect(
+    () => {
+      if (!open) {
+        closeOffCanvas();
+      }
+    },
+    [open],
+  );
 
-  handleOutsideOffCanvasClick = (e) => {
-    const { onOffCanvasToggle } = this.props;
+  const classes = cx(
+    'offCanvas',
+    {
+      'offCanvas--right': align === 'right',
+    },
+    className,
+  );
 
-    // If click originates outside of offCanvas panel
-    if (e.target.hasAttribute('data-offcanvasroot')) {
-      onOffCanvasToggle();
-    }
-
-    return false;
-  };
-
-  handleOffCanvasToggle = () => {
-    const { onOffCanvasToggle } = this.props;
-
-    onOffCanvasToggle();
-  };
-
-  render() {
-    const { children, className, align } = this.props;
-    const classes = cx(
-      'offCanvas',
-      {
-        'offCanvas--right': align === 'right',
-      },
-      className,
-    );
-    const { renderOffCanvas } = this.state;
-
-    return (
-      renderOffCanvas
-      && ReactDOM.createPortal(
-        <div /* eslint-disable-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
-          className={classes}
-          onClick={this.handleOutsideOffCanvasClick}
-          ref={this.offCanvasRef}
-          data-offcanvasroot
-        >
-          <div className="offCanvas-panel" ref={this.offCanvasPanelRef}>
-            <Close
-              onClick={this.handleOffCanvasToggle}
-              className="offCanvas-close"
-            />
-            {children}
-          </div>
-        </div>,
-        document.body,
-      )
-    );
-  }
-}
+  return (
+    renderOffCanvas
+    && ReactDOM.createPortal(
+      <div /* eslint-disable-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
+        className={classes}
+        onClick={handleOutsideOffCanvasClick}
+        ref={offCanvasRef}
+        data-offcanvasroot
+      >
+        <div className="offCanvas-panel" ref={offCanvasPanelRef}>
+          <Close onClick={handleOffCanvasToggle} className="offCanvas-close" />
+          {children}
+        </div>
+      </div>,
+      document.body,
+    )
+  );
+};
 
 OffCanvas.propTypes = {
   children: PropTypes.node,

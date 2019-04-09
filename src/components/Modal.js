@@ -121,7 +121,6 @@ const Modal = ({
 
   useEffect(
     () => {
-      console.log('check');
       if (open) {
         setRenderModal(true);
       }
