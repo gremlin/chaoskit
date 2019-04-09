@@ -1,7 +1,6 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import useMount from 'react-use/lib/useMount';
 import TextareaAutoSize from 'react-textarea-autosize';
 
 import { FormFooter, FormLabel } from '.';
@@ -10,24 +9,16 @@ import { config } from '../helpers/config';
 
 const Textarea = ({
   className,
-  disabled,
   focus,
-  initialValue,
   label,
   name,
   onChange,
-  onKeyPress,
-  placeholder,
   validationMessage,
   explanationMessage,
   required,
+  ...opts
 }) => {
   const textareaRef = useRef();
-  const [value, setValue] = useState('');
-
-  useMount(() => {
-    if (initialValue) setValue(initialValue);
-  });
 
   useEffect(
     () => {
@@ -38,18 +29,8 @@ const Textarea = ({
 
   const id = `${name}-${generateUUID()}`;
 
-  const handleChange = (e) => {
-    setValue(e.target.value);
-
-    if (onChange) {
-      onChange(e.target.name, e.target.value);
-    }
-  };
-
-  const handleKeyPress = (e) => {
-    if (onKeyPress) {
-      onKeyPress(e);
-    }
+  const handleChange = ({ target: { name: fieldName, value: fieldValue } }) => {
+    onChange(fieldName, fieldValue);
   };
 
   const classes = cx('form-group', className, {
@@ -62,14 +43,11 @@ const Textarea = ({
       <FormLabel id={id}>{label}</FormLabel>
       <TextareaAutoSize
         id={id}
-        disabled={disabled}
         focus={focus ? 'true' : null}
         name={name}
-        value={value}
         onChange={handleChange}
-        onKeyPress={handleKeyPress}
-        placeholder={placeholder}
         inputRef={textareaRef}
+        {...opts}
       />
       <FormFooter
         explanationMessage={explanationMessage}
@@ -83,12 +61,8 @@ Textarea.propTypes = {
   className: PropTypes.string,
   explanationMessage: PropTypes.string,
   validationMessage: PropTypes.string,
-  disabled: PropTypes.bool,
   focus: PropTypes.bool,
-  initialValue: PropTypes.string,
   onChange: PropTypes.func,
-  onKeyPress: PropTypes.func,
-  placeholder: PropTypes.string,
   required: PropTypes.bool,
   label: PropTypes.string,
   name: PropTypes.string.isRequired,
