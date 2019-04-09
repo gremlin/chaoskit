@@ -40,7 +40,7 @@ const Input = ({
     [focus],
   );
 
-  const id = `${name}-${generateUUID()}`; // eslint-disable-line react/destructuring-assignment
+  const id = `${name}-${generateUUID()}`;
 
   const handleChange = (e) => {
     setValue(e.target.value);

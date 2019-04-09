@@ -17,7 +17,7 @@ const Toggle = ({
   const [checked, setChecked] = useState(isChecked);
   const toggleLabelRef = useRef();
 
-  const id = `${name}-${generateUUID()}`; // eslint-disable-line react/destructuring-assignment
+  const id = `${name}-${generateUUID()}`;
 
   useEffect(
     () => {

@@ -1,70 +1,53 @@
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
+import useUpdateEffect from 'react-use/lib/useUpdateEffect';
 
 import {
-  FormLabel, FormFooter, Inline, List, ListItem, Radio,
+  FormLabel, FormFooter, Inline, List, ListItem,
 } from '.';
+
 import { config } from '../helpers/config';
 
-class RadioGroup extends React.Component {
-  state = {
-    selectedValue: '',
+const RadioGroup = ({
+  children,
+  className,
+  explanationMessage,
+  inline,
+  label,
+  name,
+  onChange,
+  selectedValue,
+  validationMessage,
+  required,
+}) => {
+  const [selected, setSelected] = useState(selectedValue);
+
+  useUpdateEffect(
+    () => {
+      setSelected(selectedValue);
+    },
+    [selectedValue],
+  );
+
+  const handleChange = (fieldName, fieldValue) => {
+    setSelected(fieldValue);
   };
 
-  componentWillMount() {
-    const { selectedValue } = this.props;
-
-    this.setState({
-      selectedValue,
-    });
-  }
-
-  componentWillReceiveProps(newProps) {
-    const { selectedValue } = this.props;
-
-    if (newProps.selectedValue !== selectedValue) {
-      this.setState({
-        selectedValue: newProps.selectedValue,
-      });
-    }
-  }
-
-  handleChange = (name, value) => {
-    this.setState({
-      selectedValue: value,
-    });
-  };
-
-  renderChildren = () => {
-    const {
-      children, name, inline, onChange,
-    } = this.props;
-    const { selectedValue } = this.state;
-
+  const renderChildren = () => {
     let returnChild = null;
 
     return React.Children.map(children, (child) => {
-      if (child.type === Radio) {
-        const onChangeFunc = () => {
-          if (child.props.value) {
-            if (onChange) {
-              this.handleChange(name, child.props.value);
-              onChange(name, child.props.value);
-            } else {
-              this.handleChange(name, child.props.value);
-            }
-          }
-        };
+      const onChangeFunc = () => {
+        handleChange(name, child.props.value);
+        onChange(name, child.props.value);
+      };
 
-        returnChild = React.cloneElement(child, {
-          onChange: onChangeFunc,
-          selectedValue,
-          name,
-        });
-      } else {
-        returnChild = child;
-      }
+      returnChild = React.cloneElement(child, {
+        onChange: onChangeFunc,
+        selectedValue: selected,
+        name,
+      });
 
       if (inline) {
         return returnChild;
@@ -74,43 +57,32 @@ class RadioGroup extends React.Component {
     });
   };
 
-  renderItems = () => {
-    const { inline } = this.props;
-
+  const renderItems = () => {
     if (inline) {
-      return <Inline>{this.renderChildren()}</Inline>;
+      return <Inline>{renderChildren()}</Inline>;
     }
 
-    return <List type={['space']}>{this.renderChildren()}</List>;
+    return <List type={['space']}>{renderChildren()}</List>;
   };
 
-  render() {
-    const {
-      className,
-      explanationMessage,
-      label,
-      required,
-      validationMessage,
-    } = this.props;
-    const classes = cx('form-group', className, {
-      [config.classes.notValid]: validationMessage,
-      [config.classes.required]: required,
-    });
+  const classes = cx('form-group', className, {
+    [config.classes.notValid]: validationMessage,
+    [config.classes.required]: required,
+  });
 
-    return (
-      <div className={classes}>
-        <FormLabel required={required} id="">
-          {label}
-        </FormLabel>
-        {this.renderItems()}
-        <FormFooter
-          explanationMessage={explanationMessage}
-          validationMessage={validationMessage}
-        />
-      </div>
-    );
-  }
-}
+  return (
+    <div className={classes}>
+      <FormLabel required={required} id="">
+        {label}
+      </FormLabel>
+      {renderItems()}
+      <FormFooter
+        explanationMessage={explanationMessage}
+        validationMessage={validationMessage}
+      />
+    </div>
+  );
+};
 
 RadioGroup.propTypes = {
   children: PropTypes.node,

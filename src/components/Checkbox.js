@@ -1,84 +1,75 @@
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useRef, useState } from 'react';
+import useUpdateEffect from 'react-use/lib/useUpdateEffect';
 
 import { generateUUID } from '../helpers/utility';
 import { config } from '../helpers/config';
 
-class Checkbox extends React.Component {
-  checkboxLabelRef = React.createRef();
+const Checkbox = ({
+  className,
+  disabled,
+  isChecked,
+  label,
+  name,
+  onChange,
+  value,
+}) => {
+  const checkboxLabelRef = useRef();
+  const [checked, setChecked] = useState(isChecked);
 
-  id = `${this.props.name}-${generateUUID()}`; // eslint-disable-line react/destructuring-assignment
+  const id = `${name}-${generateUUID()}`;
 
-  state = {
-    checked: this.props.isChecked, // eslint-disable-line react/destructuring-assignment
-  };
+  useUpdateEffect(
+    () => {
+      setChecked(isChecked);
+    },
+    [isChecked],
+  );
 
-  componentWillReceiveProps(newProps) {
-    const { isChecked } = this.props;
-
-    if (newProps.isChecked !== isChecked) {
-      this.setState({
-        checked: newProps.isChecked,
-      });
-    }
-  }
-
-  toggleChecked = () => {
-    const { onChange, name, value } = this.props;
-    const { checked } = this.state;
-
+  const toggleChecked = () => {
     if (onChange) {
       onChange(name, value, !checked);
     }
 
-    this.setState({
-      checked: !checked,
-    });
+    setChecked(!checked);
   };
 
-  handleKeyUp = (e) => {
-    const $checkboxLabel = this.checkboxLabelRef.current;
+  const handleKeyUp = (e) => {
+    const $checkboxLabel = checkboxLabelRef.current;
 
     if (e.keyCode === 13) {
       $checkboxLabel.click();
     }
   };
 
-  render() {
-    const {
-      className, label, disabled, name, value,
-    } = this.props;
-    const { checked } = this.state;
+  const classes = cx('form-checkbox', className, {
+    [config.classes.disabled]: disabled,
+  });
 
-    const classes = cx('form-checkbox', className, {
-      [config.classes.disabled]: disabled,
-    });
-
-    return (
-      <div className={classes}>
-        <input
-          value={value}
-          type="checkbox"
-          disabled={disabled}
-          name={name}
-          id={this.id}
-          checked={checked}
-          onChange={this.toggleChecked}
-          onKeyUp={this.handleKeyUp}
-        />
-        {label && (
-          <label // eslint-disable-line jsx-a11y/label-has-for
-            htmlFor={this.id}
-            ref={this.checkboxLabelRef}
-          >
-            {label}
-          </label>
-        )}
-      </div>
-    );
-  }
-}
+  return (
+    <div className={classes}>
+      <input
+        value={value}
+        type="checkbox"
+        disabled={disabled}
+        name={name}
+        id={id}
+        checked={checked}
+        onChange={toggleChecked}
+        onKeyUp={handleKeyUp}
+      />
+      {label && (
+        <label // eslint-disable-line jsx-a11y/label-has-for
+          htmlFor={id}
+          ref={checkboxLabelRef}
+        >
+          {label}
+        </label>
+      )}
+    </div>
+  );
+};
 
 Checkbox.propTypes = {
   className: PropTypes.string,
