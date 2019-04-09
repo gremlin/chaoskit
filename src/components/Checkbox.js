@@ -8,29 +8,29 @@ import { config } from '../helpers/config';
 const Checkbox = ({
   className,
   disabled,
-  isChecked,
+  checked,
   label,
   name,
   onChange,
   value,
 }) => {
   const checkboxLabelRef = useRef();
-  const [checked, setChecked] = useState(isChecked);
+  const [isChecked, setChecked] = useState(checked);
 
   const id = `${name}-${generateUUID()}`;
 
   useEffect(
     () => {
-      setChecked(isChecked);
+      setChecked(checked);
     },
-    [isChecked],
+    [checked],
   );
 
   const toggleChecked = () => {
-    setChecked(!checked);
+    setChecked(!isChecked);
 
     if (onChange) {
-      onChange(name, value, !checked);
+      onChange(name, value, !isChecked);
     }
   };
 
@@ -54,7 +54,7 @@ const Checkbox = ({
         disabled={disabled}
         name={name}
         id={id}
-        checked={checked}
+        checked={isChecked}
         onChange={toggleChecked}
         onKeyUp={handleKeyUp}
       />
@@ -73,7 +73,7 @@ const Checkbox = ({
 Checkbox.propTypes = {
   className: PropTypes.string,
   disabled: PropTypes.bool,
-  isChecked: PropTypes.bool,
+  checked: PropTypes.bool,
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
@@ -81,7 +81,7 @@ Checkbox.propTypes = {
 };
 
 Checkbox.defaultProps = {
-  isChecked: false,
+  checked: false,
 };
 
 export default Checkbox;

@@ -9,29 +9,29 @@ const Toggle = ({
   name,
   className,
   disabled,
-  isChecked,
+  checked,
   label,
   onChange,
   value,
 }) => {
-  const [checked, setChecked] = useState(isChecked);
+  const [isChecked, setChecked] = useState(checked);
   const toggleLabelRef = useRef();
 
   const id = `${name}-${generateUUID()}`;
 
   useEffect(
     () => {
-      setChecked(isChecked);
+      setChecked(checked);
     },
-    [isChecked],
+    [checked],
   );
 
   const toggleChecked = () => {
     if (onChange) {
-      onChange(name, value, !checked);
+      onChange(name, value, !isChecked);
     }
 
-    setChecked(!checked);
+    setChecked(!isChecked);
   };
 
   const handleKeyUp = (e) => {
@@ -53,7 +53,7 @@ const Toggle = ({
           disabled={disabled}
           name={name}
           id={id}
-          checked={checked}
+          checked={isChecked}
           onChange={toggleChecked}
           onKeyUp={handleKeyUp}
         />
@@ -72,7 +72,7 @@ const Toggle = ({
 Toggle.propTypes = {
   className: PropTypes.string,
   disabled: PropTypes.bool,
-  isChecked: PropTypes.bool,
+  checked: PropTypes.bool,
   name: PropTypes.string.isRequired,
   label: PropTypes.string,
   onChange: PropTypes.func,
@@ -80,7 +80,7 @@ Toggle.propTypes = {
 };
 
 Toggle.defaultProps = {
-  isChecked: false,
+  checked: false,
 };
 
 export default Toggle;
