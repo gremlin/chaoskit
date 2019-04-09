@@ -163,7 +163,7 @@ const Tooltip = ({
         if (!isTouchDevice() || mobileTap) {
           $tooltipTrigger.removeEventListener(
             'mouseenter',
-            renderTooltip,
+            handleMouseEnter,
             false,
           );
           $tooltipTrigger.removeEventListener(
