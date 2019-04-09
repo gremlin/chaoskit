@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import useMount from 'react-use/lib/useMount';
 import MaskedInput from 'react-text-mask';
 
 import { FormFooter, FormLabel, Icon } from '.';
@@ -13,26 +12,19 @@ const Input = ({
   className,
   disabled,
   focus,
-  initialValue,
   label,
   guide,
   mask,
   name,
   onChange,
-  onKeyPress,
   type,
-  placeholder,
   validationMessage,
   explanationMessage,
   prefixIcon,
   required,
+  ...opts
 }) => {
   const inputRef = useRef();
-  const [value, setValue] = useState('');
-
-  useMount(() => {
-    if (initialValue) setValue(initialValue);
-  });
 
   useEffect(
     () => {
@@ -43,18 +35,8 @@ const Input = ({
 
   const id = `${name}-${generateUUID()}`;
 
-  const handleChange = (e) => {
-    setValue(e.target.value);
-
-    if (onChange) {
-      onChange(e.target.name, e.target.value);
-    }
-  };
-
-  const handleKeyPress = (e) => {
-    if (onKeyPress) {
-      onKeyPress(e);
-    }
+  const handleChange = ({ target: { name: fieldName, value } }) => {
+    onChange(fieldName, value);
   };
 
   const inputRender = () => {
@@ -62,15 +44,13 @@ const Input = ({
       autoComplete,
       id,
       className: 'form-input',
-      disabled,
+      disabled: disabled ? 'disabled' : null,
       focus: focus ? 'focus' : null,
       name,
       type,
-      value,
       onChange: handleChange,
-      onKeyPress: handleKeyPress,
-      placeholder,
       ref: inputRef,
+      ...opts,
     };
 
     // `react-text-mask` does not support 'email' or 'number' input types
@@ -115,10 +95,7 @@ Input.propTypes = {
   disabled: PropTypes.bool,
   focus: PropTypes.bool,
   guide: PropTypes.bool,
-  initialValue: PropTypes.string,
   onChange: PropTypes.func,
-  onKeyPress: PropTypes.func,
-  placeholder: PropTypes.string,
   prefixIcon: PropTypes.string,
   required: PropTypes.bool,
   label: PropTypes.string,
