@@ -1,34 +1,59 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+import useMount from 'react-use/lib/useMount';
 import { TimelineMax } from 'gsap/TweenMax';
 
 import { config } from '../helpers/config';
 import { Button, Icon } from '.';
 
-class Dropdown extends React.Component {
-  dropdownRef = React.createRef();
+const Dropdown = ({
+  children,
+  className,
+  panelClassName,
+  onComplete,
+  onReverseComplete,
+  onReverseStart,
+  onStart,
+  position,
+  trigger,
+  showArrow,
+}) => {
+  const dropdownRef = useRef();
+  const dropdownPanelRef = useRef();
+  const dropdownTriggerRef = useRef();
 
-  dropdownPanelRef = React.createRef();
+  const dropdownOpen = () => {
+    const $dropdown = dropdownRef.current;
 
-  dropdownTriggerRef = React.createRef();
+    if ($dropdown) $dropdown.timeline.play();
+  };
 
-  componentDidMount() {
-    this.attachTimeline();
-  }
+  const dropdownClose = () => {
+    const $dropdown = dropdownRef.current;
 
-  attachTimeline = () => {
-    const $dropdown = this.dropdownRef.current;
-    const $trigger = this.dropdownTriggerRef.current;
-    const $panel = this.dropdownPanelRef.current;
+    if ($dropdown) $dropdown.timeline.reverse();
+  };
 
-    const {
-      onStart,
-      onReverseStart,
-      onComplete,
-      onReverseComplete,
-    } = this.props;
-    const checkInsideBound = this._checkInside.bind(this);
+  /**
+   * Determine if click originates from outside `.dropdown-panel`
+   * @param  {event} e
+   * @return {false}
+   */
+  const checkInside = (e) => {
+    if (e.target.closest('.dropdown-panel') === null) {
+      dropdownClose();
+
+      return;
+    }
+
+    return false;
+  };
+
+  const attachTimeline = () => {
+    const $dropdown = dropdownRef.current;
+    const $trigger = dropdownTriggerRef.current;
+    const $panel = dropdownPanelRef.current;
 
     let forward = true;
     let lastTime = 0;
@@ -48,7 +73,7 @@ class Dropdown extends React.Component {
       onComplete() {
         onComplete();
 
-        document.addEventListener('click', checkInsideBound, false);
+        document.addEventListener('click', checkInside, false);
       },
       onUpdate: () => {
         const newTime = $dropdown.timeline.time();
@@ -73,7 +98,7 @@ class Dropdown extends React.Component {
       onReverseComplete() {
         onReverseComplete();
 
-        document.removeEventListener('click', checkInsideBound, false);
+        document.removeEventListener('click', checkInside, false);
       },
     });
 
@@ -91,89 +116,56 @@ class Dropdown extends React.Component {
       });
   };
 
-  handleDropdownToggle = () => {
-    const $dropdown = this.dropdownRef.current;
+  useMount(() => {
+    attachTimeline();
+  });
+
+  const handleDropdownToggle = () => {
+    const $dropdown = dropdownRef.current;
 
     if ($dropdown.timeline.progress() === 1) {
-      this.dropdownClose();
+      dropdownClose();
     } else {
-      this.dropdownOpen();
+      dropdownOpen();
     }
   };
 
-  dropdownOpen = () => {
-    const $dropdown = this.dropdownRef.current;
+  const classes = cx(
+    'dropdown',
+    {
+      'dropdown--center': position === 'center',
+      'dropdown--right': position === 'right',
+      'dropdown--up': position === 'up-left',
+      'dropdown--up dropdown--center': position === 'up-center',
+      'dropdown--up dropdown--right': position === 'up-right',
+    },
+    className,
+  );
+  const panelClasses = cx('dropdown-panel', panelClassName);
 
-    if ($dropdown) $dropdown.timeline.play();
-  };
-
-  dropdownClose = () => {
-    const $dropdown = this.dropdownRef.current;
-
-    if ($dropdown) $dropdown.timeline.reverse();
-  };
-
-  /**
-   * Determine if click originates from outside `.dropdown-panel`
-   * @param  {event} e
-   * @return {false}
-   */
-  _checkInside(e) {
-    if (e.target.closest('.dropdown-panel') === null) {
-      this.dropdownClose();
-
-      return;
-    }
-
-    return false;
-  }
-
-  render() {
-    const {
-      children,
-      className,
-      panelClassName,
-      position,
-      trigger,
-      showArrow,
-    } = this.props;
-    const classes = cx(
-      'dropdown',
-      {
-        'dropdown--center': position === 'center',
-        'dropdown--right': position === 'right',
-        'dropdown--up': position === 'up-left',
-        'dropdown--up dropdown--center': position === 'up-center',
-        'dropdown--up dropdown--right': position === 'up-right',
-      },
-      className,
-    );
-    const panelClasses = cx('dropdown-panel', panelClassName);
-
-    return (
-      <div
-        className={classes}
-        aria-haspopup="true"
-        aria-expanded="false"
-        ref={this.dropdownRef}
+  return (
+    <div
+      className={classes}
+      aria-haspopup="true"
+      aria-expanded="false"
+      ref={dropdownRef}
+    >
+      <Button
+        onClick={handleDropdownToggle}
+        {...trigger.props}
+        ref={dropdownTriggerRef}
       >
-        <Button
-          onClick={this.handleDropdownToggle}
-          {...trigger.props}
-          ref={this.dropdownTriggerRef}
-        >
-          {trigger.label}
-          {showArrow && (
-            <Icon size="small" icon="caret-down" className="dropdown-arrow" />
-          )}
-        </Button>
-        <div className={panelClasses} ref={this.dropdownPanelRef}>
-          {children}
-        </div>
+        {trigger.label}
+        {showArrow && (
+          <Icon size="small" icon="caret-down" className="dropdown-arrow" />
+        )}
+      </Button>
+      <div className={panelClasses} ref={dropdownPanelRef}>
+        {children}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 Dropdown.propTypes = {
   children: PropTypes.node.isRequired,

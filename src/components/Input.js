@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+import useMount from 'react-use/lib/useMount';
 import MaskedInput from 'react-text-mask';
 
 import { FormFooter, FormLabel, Icon } from '.';
@@ -29,9 +30,9 @@ const Input = ({
   const inputRef = useRef();
   const [value, setValue] = useState('');
 
-  useEffect(() => {
+  useMount(() => {
     if (initialValue) setValue(initialValue);
-  }, []);
+  });
 
   useEffect(
     () => {

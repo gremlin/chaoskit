@@ -1,67 +1,57 @@
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
+import useUpdateEffect from 'react-use/lib/useUpdateEffect';
 import ReactDOM from 'react-dom';
 import { TimelineMax } from 'gsap/TweenMax';
 
 import { config } from '../helpers/config';
 
-class Modal extends React.Component {
-  modalRef = React.createRef();
+const Modal = ({
+  children,
+  className,
+  size,
+  open,
+  onOutsideModalClick,
+  onComplete,
+  onReverseComplete,
+  onReverseStart,
+  onStart,
+}) => {
+  const modalRef = useRef();
+  const modalDialogRef = useRef();
 
-  modalDialogRef = React.createRef();
+  const [renderModal, setRenderModal] = useState(open);
 
-  state = {
-    renderModal: false,
+  const openModal = () => {
+    const $modal = modalRef.current;
+
+    $modal.timeline.play();
   };
 
-  componentWillReceiveProps(nextProps) {
-    const { open } = this.props;
+  const closeModal = () => {
+    const $modal = modalRef.current;
 
-    if (!open && nextProps.open) {
-      this.setState({
-        renderModal: true,
-      });
-    }
-  }
-
-  componentDidUpdate(prevProps) {
-    const { open } = this.props;
-
-    if (!prevProps.open && open) {
-      this.attachTimeline();
-    }
-
-    if (prevProps.open !== open) {
-      if (open) {
-        this.openModal();
-      } else {
-        this.closeModal();
-      }
-    }
-  }
-
-  onReverseComplete = () => {
-    const { onReverseComplete } = this.props;
-
-    this.setState(
-      {
-        renderModal: false,
-      },
-      () => {
-        onReverseComplete();
-      },
-    );
+    $modal.timeline.reverse();
   };
 
-  attachTimeline = () => {
-    const {
-      onStart, onReverseStart, onComplete, open,
-    } = this.props;
+  const handleOutsideModalClick = (e) => {
+    // If click originates outside of modal dialog
+    if (e.target.hasAttribute('data-modalroot')) {
+      onOutsideModalClick();
+    }
 
+    return false;
+  };
+
+  const handleOnReverseComplete = () => {
+    setRenderModal(false);
+  };
+
+  const attachTimeline = () => {
     const $body = document.body;
-    const $modal = this.modalRef.current;
-    const $modalDialog = this.modalDialogRef.current;
+    const $modal = modalRef.current;
+    const $modalDialog = modalDialogRef.current;
 
     let forward = true;
     let lastTime = 0;
@@ -98,7 +88,7 @@ class Modal extends React.Component {
         onComplete();
       },
       onReverseComplete: () => {
-        this.onReverseComplete();
+        handleOnReverseComplete();
       },
     });
 
@@ -120,66 +110,71 @@ class Modal extends React.Component {
       });
   };
 
-  openModal = () => {
-    const $modal = this.modalRef.current;
+  const modalClasses = cx(
+    'modal',
+    {
+      'modal--small': size === 'small',
+      'modal--large': size === 'large',
+    },
+    className,
+  );
 
-    $modal.timeline.play();
-  };
+  useEffect(
+    () => {
+      console.log('check');
+      if (open) {
+        setRenderModal(true);
+      }
+    },
+    [open],
+  );
 
-  closeModal = () => {
-    const $modal = this.modalRef.current;
+  useUpdateEffect(
+    () => {
+      if (renderModal) {
+        attachTimeline();
 
-    $modal.timeline.reverse();
-  };
+        openModal();
+      } else {
+        onReverseComplete();
+      }
+    },
+    [renderModal],
+  );
 
-  handleOutsideModalClick = (e) => {
-    const { handleOutsideModalClick } = this.props;
+  useUpdateEffect(
+    () => {
+      if (!open) {
+        closeModal();
+      }
+    },
+    [open],
+  );
 
-    // If click originates outside of modal dialog
-    if (e.target.hasAttribute('data-modalroot')) {
-      handleOutsideModalClick();
-    }
-
-    return false;
-  };
-
-  render() {
-    const { children, className, size } = this.props;
-    const modalClasses = cx(
-      'modal',
-      {
-        'modal--small': size === 'small',
-        'modal--large': size === 'large',
-      },
-      className,
-    );
-    const { renderModal } = this.state;
-
-    return (
-      renderModal
-      && ReactDOM.createPortal(
-        <div /* eslint-disable-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
-          className={modalClasses}
-          onClick={this.handleOutsideModalClick}
-          ref={this.modalRef}
-          data-modalroot
-        >
-          <div className="modal-dialog" ref={this.modalDialogRef}>
-            {children}
-          </div>
-        </div>,
-        document.body,
-      )
-    );
-  }
-}
+  return (
+    renderModal
+    && ReactDOM.createPortal(
+      <div /* eslint-disable-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
+        className={modalClasses}
+        onClick={handleOutsideModalClick}
+        ref={modalRef}
+        data-modalroot
+      >
+        <div className="modal-dialog" ref={modalDialogRef}>
+          {children}
+        </div>
+      </div>,
+      document.body,
+    )
+  );
+};
 
 Modal.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   size: PropTypes.oneOf(['small', 'large']),
   open: PropTypes.bool,
-  handleOutsideModalClick: PropTypes.func,
+  onOutsideModalClick: PropTypes.func,
   onComplete: PropTypes.func,
   onReverseComplete: PropTypes.func,
   onReverseStart: PropTypes.func,
@@ -187,9 +182,8 @@ Modal.propTypes = {
 };
 
 Modal.defaultProps = {
-  children: null,
   open: false,
-  handleOutsideModalClick: () => {},
+  onOutsideModalClick: () => {},
   onComplete: () => {},
   onReverseComplete: () => {},
   onReverseStart: () => {},

@@ -26,7 +26,7 @@ class Example extends React.Component {
   render() {
     return (
       <Fragment>
-        <Modal open={this.state.open} handleOutsideModalClick={this.handleModalToggle}>
+        <Modal onStart={() => console.log('opening')} onComplete={() => console.log('opened')} onReverseStart={() => console.log('closing')} onReverseComplete={() => console.log('closed')} open={this.state.open} onOutsideModalClick={this.handleModalToggle}>
           <ModalHeader title="Hello" onCloseClick={this.handleModalToggle} />
           <ModalBody>
             test
@@ -53,7 +53,7 @@ const ModalScope = {
 };
 
 const ModalPropDescriptions = {
-  handleOutsideModalClick: 'Leave blank to keep modal open on background-click',
+  onOutsideModalClick: 'Leave blank to keep modal open on background-click',
   size: "<code>oneOf(['small', 'large',])</code>", // eslint-disable-line single-quotes
 };
 

@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+import useMount from 'react-use/lib/useMount';
 import TextareaAutoSize from 'react-textarea-autosize';
 
 import { FormFooter, FormLabel } from '.';
@@ -24,9 +25,9 @@ const Textarea = ({
   const textareaRef = useRef();
   const [value, setValue] = useState('');
 
-  useEffect(() => {
+  useMount(() => {
     if (initialValue) setValue(initialValue);
-  }, []);
+  });
 
   useEffect(
     () => {
