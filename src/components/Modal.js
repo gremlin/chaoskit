@@ -110,15 +110,6 @@ const Modal = ({
       });
   };
 
-  const modalClasses = cx(
-    'modal',
-    {
-      'modal--small': size === 'small',
-      'modal--large': size === 'large',
-    },
-    className,
-  );
-
   useEffect(
     () => {
       if (open) {
@@ -148,6 +139,15 @@ const Modal = ({
       }
     },
     [open],
+  );
+
+  const modalClasses = cx(
+    'modal',
+    {
+      'modal--small': size === 'small',
+      'modal--large': size === 'large',
+    },
+    className,
   );
 
   return (
