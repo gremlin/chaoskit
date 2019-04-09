@@ -65,7 +65,7 @@ $offCanvas-panel-width: 300px !default;
     // GSAP
     transform: translateX(-100%);
 
-    @media (min-width: $global-viewport-medium) {
+    @media (min-width: $global-viewport-small) {
       width: $offCanvas-panel-width;
     }
 
