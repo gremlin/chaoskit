@@ -1,6 +1,6 @@
+import React from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import React, { useState, useEffect } from 'react';
 
 import { FormFooter, FormLabel } from '.';
 import { generateUUID } from '../helpers/utility';
@@ -8,7 +8,6 @@ import { config } from '../helpers/config';
 
 const Select = ({
   className,
-  disabled,
   explanationMessage,
   label,
   name,
@@ -17,23 +16,14 @@ const Select = ({
   required,
   selected,
   validationMessage,
+  ...opts
 }) => {
   const id = `${name}-${generateUUID()}`;
-  const [currentSelection, setSelected] = useState(selected || -1);
 
-  useEffect(
-    () => {
-      setSelected(selected);
-    },
-    [selected],
-  );
-
-  const handleOnChange = (event) => {
-    setSelected(event.target.value);
-
-    if (onChange) {
-      onChange(event.target.name, event.target.value);
-    }
+  const handleOnChange = ({
+    target: { name: fieldName, value: fieldValue },
+  }) => {
+    onChange(fieldName, fieldValue);
   };
 
   const classes = cx('form-group', className, {
@@ -68,11 +58,11 @@ const Select = ({
       <FormLabel id={id}>{label}</FormLabel>
       <div className="form-select">
         <select
-          disabled={disabled}
           id={id}
           name={name}
-          value={currentSelection}
           onChange={handleOnChange}
+          value={selected}
+          {...opts}
         >
           {options.map(renderOpts)}
         </select>
@@ -87,7 +77,6 @@ const Select = ({
 
 Select.propTypes = {
   className: PropTypes.string,
-  disabled: PropTypes.bool,
   explanationMessage: PropTypes.string,
   label: PropTypes.string,
   name: PropTypes.string.isRequired,

@@ -8,9 +8,7 @@ import { generateUUID } from '../helpers/utility';
 import { config } from '../helpers/config';
 
 const Input = ({
-  autoComplete,
   className,
-  disabled,
   focus,
   label,
   guide,
@@ -41,10 +39,8 @@ const Input = ({
 
   const inputRender = () => {
     const defaultProps = {
-      autoComplete,
       id,
       className: 'form-input',
-      disabled: disabled ? 'disabled' : null,
       focus: focus ? 'focus' : null,
       name,
       type,
@@ -88,11 +84,9 @@ const Input = ({
 };
 
 Input.propTypes = {
-  autoComplete: PropTypes.string,
   className: PropTypes.string,
   explanationMessage: PropTypes.string,
   validationMessage: PropTypes.string,
-  disabled: PropTypes.bool,
   focus: PropTypes.bool,
   guide: PropTypes.bool,
   onChange: PropTypes.func,
