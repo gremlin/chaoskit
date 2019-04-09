@@ -4,11 +4,11 @@ import cx from 'classnames';
 
 import { Button, Icon } from '.';
 
-const Close = ({ className, onClick }) => {
+const Close = ({ className, ...opts }) => {
   const classes = cx('close', className);
 
   return (
-    <Button type="reset" onClick={onClick} className={classes}>
+    <Button type="reset" className={classes} {...opts}>
       <Icon icon="close" />
     </Button>
   );

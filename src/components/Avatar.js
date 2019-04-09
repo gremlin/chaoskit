@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import { Icon } from '.';
 
 const Avatar = ({
-  className, image, name, size,
+  className, image, name, size, ...opts
 }) => {
   const [error, setError] = useState(false);
 
@@ -21,11 +21,11 @@ const Avatar = ({
   // If image exists, use image for background
   if (image && !error) {
     return (
-      <figure className={classes} style={styles}>
+      <figure className={classes} style={styles} {...opts}>
         <img
           alt={nameProp}
           onError={() => setError(true)}
-          style={{ display: 'none' }}
+          className="u-hidden"
           src={image}
         />
       </figure>
@@ -35,7 +35,7 @@ const Avatar = ({
   // If no image and no name, use icon
   if (!image && !nameProp) {
     return (
-      <figure className={classes}>
+      <figure className={classes} {...opts}>
         <Icon className="avatar-icon" icon="user" />
       </figure>
     );
@@ -57,6 +57,7 @@ const Avatar = ({
       xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="none"
       className={classes}
+      {...opts}
     >
       <circle cx="50" cy="50" r="50" />
       <text x="50" y="50" textAnchor="middle" dy="0.35em" fontSize="40">

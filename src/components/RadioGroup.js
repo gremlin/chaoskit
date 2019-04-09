@@ -1,7 +1,6 @@
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
-import useUpdateEffect from 'react-use/lib/useUpdateEffect';
+import React, { useState, useEffect } from 'react';
 
 import {
   FormLabel, FormFooter, Inline, List, ListItem,
@@ -23,7 +22,7 @@ const RadioGroup = ({
 }) => {
   const [selected, setSelected] = useState(selectedValue);
 
-  useUpdateEffect(
+  useEffect(
     () => {
       setSelected(selectedValue);
     },

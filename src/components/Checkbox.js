@@ -1,7 +1,6 @@
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import React, { useRef, useState } from 'react';
-import useUpdateEffect from 'react-use/lib/useUpdateEffect';
+import React, { useRef, useEffect, useState } from 'react';
 
 import { generateUUID } from '../helpers/utility';
 import { config } from '../helpers/config';
@@ -20,7 +19,7 @@ const Checkbox = ({
 
   const id = `${name}-${generateUUID()}`;
 
-  useUpdateEffect(
+  useEffect(
     () => {
       setChecked(isChecked);
     },
@@ -28,11 +27,11 @@ const Checkbox = ({
   );
 
   const toggleChecked = () => {
+    setChecked(!checked);
+
     if (onChange) {
       onChange(name, value, !checked);
     }
-
-    setChecked(!checked);
   };
 
   const handleKeyUp = (e) => {

@@ -1,5 +1,3 @@
-/* eslint-disable react/button-has-type */
-
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -11,6 +9,8 @@ const Button = React.forwardRef(
   (
     {
       active,
+      actionType,
+      as,
       children,
       className,
       disabled,
@@ -21,7 +21,6 @@ const Button = React.forwardRef(
       noRadius,
       size,
       type,
-      actionType,
       url,
       ...opts
     },
@@ -46,7 +45,9 @@ const Button = React.forwardRef(
       'u-borderRadius--remove': noRadius,
     });
 
-    const defaultButtonProps = {
+    let Component = as;
+
+    const buttonProps = {
       className: classes,
       disabled: disabled || loading,
       ref,
@@ -54,19 +55,19 @@ const Button = React.forwardRef(
     };
 
     if (url) {
-      return (
-        <a href={url} {...defaultButtonProps}>
-          <span>{children}</span>
-          {loading && <Loader />}
-        </a>
-      );
+      buttonProps.href = url;
+      Component = 'a';
+    }
+
+    if (Component !== 'a') {
+      buttonProps.type = actionType;
     }
 
     return (
-      <button type={actionType} {...defaultButtonProps}>
+      <Component {...buttonProps}>
         {type === 'reset' ? children : <span>{children}</span>}
         {loading && <Loader />}
-      </button>
+      </Component>
     );
   },
 );
@@ -74,6 +75,8 @@ const Button = React.forwardRef(
 Button.propTypes = {
   active: PropTypes.bool,
   actionType: PropTypes.oneOf(['button', 'submit', 'reset']),
+  /* Useful for frameworks like NextJs */
+  as: PropTypes.oneOf(['button', 'a']),
   children: PropTypes.node,
   className: PropTypes.string,
   disabled: PropTypes.bool,
@@ -96,6 +99,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
+  as: 'button',
   actionType: 'button',
 };
 

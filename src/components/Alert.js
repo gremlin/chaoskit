@@ -20,6 +20,7 @@ const Alert = ({
   close,
   title,
   type,
+  ...opts
 }) => {
   const alertRef = useRef();
 
@@ -120,7 +121,7 @@ const Alert = ({
   );
 
   return (
-    <div className={classes} role="alert" ref={alertRef}>
+    <div className={classes} role="alert" ref={alertRef} {...opts}>
       <div className="alert-content">
         {title && (
           <h4 id={kebabCase(toLower(title))} className="alert-title">

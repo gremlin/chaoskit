@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 const Badge = ({
-  className, label, rounded, type,
+  className, label, rounded, type, ...opts
 }) => {
   const classes = cx('badge', className, {
     'badge--rounded': rounded,
@@ -11,7 +11,11 @@ const Badge = ({
     'badge--danger': type === 'danger',
   });
 
-  return <div className={classes}>{label}</div>;
+  return (
+    <div className={classes} {...opts}>
+      {label}
+    </div>
+  );
 };
 
 Badge.propTypes = {
