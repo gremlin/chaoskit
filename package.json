@@ -79,7 +79,7 @@
     "icons": "./node_modules/.bin/babel-node utils/build-icons.js",
     "build": "yarn && yarn run icons && gatsby build",
     "build-serve": "yarn build && gatsby serve",
-    "develop": "yarn && yarn run icons && gatsby develop",
+    "develop": "yarn && yarn run icons && gatsby develop --open",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prettier": "prettier-eslint --write '**/*.{js,jsx}' && prettier-stylelint-temp --write --quiet '**/*.{css,scss}'"
   },
