@@ -8,6 +8,7 @@ import {
   List,
   ListItem,
 } from '../components';
+import Docs from '../docs/Docs';
 import Live from '../docs/Live';
 
 const DropdownExample = `
@@ -52,6 +53,9 @@ const DropdownDocs = () => (
       avoid unecessary scrolling where on-page options may serve your users
       better.
     </p>
+    <h3>DropdownHeader</h3>
+    <Docs component={DropdownHeader} />
+    <h3>Dropdown</h3>
     <Live
       code={DropdownExample}
       scope={DropdownScope}

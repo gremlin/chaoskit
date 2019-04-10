@@ -1,6 +1,7 @@
 import React from 'react';
 
 import BaseLayout from '../layouts/BaseLayout';
+import Docs from '../docs/Docs';
 import Live from '../docs/Live';
 import {
   Alert,
@@ -59,6 +60,13 @@ const ModalPropDescriptions = {
 
 const ModalDocs = () => (
   <BaseLayout pageTitle="Modal">
+    <h3>ModalHeader</h3>
+    <Docs component={ModalHeader} />
+    <h3>ModalBody</h3>
+    <Docs component={ModalBody} />
+    <h3>ModalFooter</h3>
+    <Docs component={ModalFooter} />
+    <h3>Modal</h3>
     <Live
       code={ModalExample}
       scope={ModalScope}

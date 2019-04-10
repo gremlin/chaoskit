@@ -2,6 +2,7 @@ import React from 'react';
 
 import BaseLayout from '../layouts/BaseLayout';
 import Live from '../docs/Live';
+import Docs from '../docs/Docs';
 import { RadioGroup, Radio } from '../components';
 
 const RadioExample = `
@@ -41,6 +42,9 @@ const RadioPropDescriptions = {};
 
 const RadioDocs = () => (
   <BaseLayout pageTitle="Radio">
+    <h3>RadioGroup</h3>
+    <Docs component={RadioGroup} />
+    <h3>Radio</h3>
     <Live
       code={RadioExample}
       scope={RadioScope}
