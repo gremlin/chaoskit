@@ -1,96 +1,54 @@
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useRef } from 'react';
 
 import { FormLabel } from '.';
 import { generateUUID } from '../helpers/utility';
 
-class Toggle extends React.Component {
-  toggleLabelRef = React.createRef();
+const Toggle = ({
+  name, className, label, onChange, value, ...opts
+}) => {
+  const toggleLabelRef = useRef();
 
-  id = `${this.props.name}-${generateUUID()}`; // eslint-disable-line react/destructuring-assignment
+  const id = `${name}-${generateUUID()}`;
 
-  state = {
-    checked: this.props.isChecked, // eslint-disable-line react/destructuring-assignment
+  const toggleChecked = ({
+    target: { name: fieldName, value: fieldValue, checked },
+  }) => {
+    onChange(fieldName, fieldValue, checked);
   };
 
-  componentWillReceiveProps(newProps) {
-    const { isChecked } = this.props;
+  const classes = cx('form-group toggle-group', className);
 
-    if (newProps.isChecked !== isChecked) {
-      this.setState({
-        checked: newProps.isChecked,
-      });
-    }
-  }
-
-  toggleChecked = () => {
-    const { name, onChange, value } = this.props;
-    const { checked } = this.state;
-
-    if (onChange) {
-      onChange(name, value, !checked);
-    }
-
-    this.setState({
-      checked: !checked,
-    });
-  };
-
-  handleKeyUp = (e) => {
-    const $toggleLabel = this.toggleLabelRef.current;
-
-    if (e.keyCode === 13) {
-      $toggleLabel.click();
-    }
-  };
-
-  render() {
-    const {
-      className, disabled, name, label, value,
-    } = this.props;
-    const { checked } = this.state;
-
-    const classes = cx('form-group toggle-group', className);
-
-    return (
-      <div className={classes}>
-        <div className="toggle">
-          <input
-            value={value}
-            type="checkbox"
-            disabled={disabled}
-            name={name}
-            id={this.id}
-            checked={checked}
-            onChange={this.toggleChecked}
-            onKeyUp={this.handleKeyUp}
-          />
-          <label // eslint-disable-line jsx-a11y/label-has-for, jsx-a11y/label-has-associated-control
-            htmlFor={this.id}
-            ref={this.toggleLabelRef}
-          />
-        </div>
-        <FormLabel className="toggle-labelText" id={this.id}>
-          {label}
-        </FormLabel>
+  return (
+    <div className={classes}>
+      <div className="toggle">
+        <input
+          value={value}
+          type="checkbox"
+          name={name}
+          id={id}
+          onChange={toggleChecked}
+          {...opts}
+        />
+        <label // eslint-disable-line jsx-a11y/label-has-for, jsx-a11y/label-has-associated-control
+          htmlFor={id}
+          ref={toggleLabelRef}
+        />
       </div>
-    );
-  }
-}
+      <FormLabel className="toggle-labelText" id={id}>
+        {label}
+      </FormLabel>
+    </div>
+  );
+};
 
 Toggle.propTypes = {
   className: PropTypes.string,
-  disabled: PropTypes.bool,
-  isChecked: PropTypes.bool,
   name: PropTypes.string.isRequired,
-  label: PropTypes.string,
   onChange: PropTypes.func,
+  label: PropTypes.string,
   value: PropTypes.string,
-};
-
-Toggle.defaultProps = {
-  isChecked: false,
 };
 
 export default Toggle;

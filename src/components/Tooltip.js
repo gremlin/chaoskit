@@ -1,79 +1,45 @@
-import React, { Fragment } from 'react';
+import React, {
+  Fragment, useRef, useState, useEffect,
+} from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
+import useUpdateEffect from 'react-use/lib/useUpdateEffect';
 import { TimelineMax } from 'gsap/TweenMax';
 
 import { isTouchDevice } from '../helpers/utility';
 import { config } from '../helpers/config';
 
-class Tooltip extends React.Component {
-  tooltipRef = React.createRef();
+const Tooltip = ({
+  children, content, placement, mobileTap,
+}) => {
+  const tooltipRef = useRef();
+  const tooltipTriggerRef = useRef();
 
-  state = {
-    renderTooltip: false,
+  const [renderTooltip, setRenderTooltip] = useState(false);
+
+  const handleMouseEnter = () => {
+    setRenderTooltip(true);
   };
 
-  // @NOTE Attaching event listeners here is not ideal, but `onMouseEnter` (and `onMouseOver`) is not reliably fired; as well as the context of the currentTarget being incorrect.
-  componentDidMount() {
-    const { mobileTap } = this.props;
-    const $tooltipTrigger = this.getTooltipTrigger();
+  const openTooltip = () => {
+    const $tooltip = tooltipRef.current;
 
-    // Add event listeners
-    // Tooltips are not triggered on touch-devices to not interfere with actionable items
-    // This can be overidden with the `mobileTap` prop
-    if (!isTouchDevice() || mobileTap) {
-      $tooltipTrigger.addEventListener(
-        'mouseenter',
-        this.renderTooltip.bind(this),
-      );
-      $tooltipTrigger.addEventListener(
-        'mouseleave',
-        this.closeTooltip.bind(this),
-      );
-    }
-  }
+    $tooltip.timeline.play();
+  };
 
-  componentWillUnmount() {
-    const { mobileTap } = this.props;
-    const $tooltipTrigger = this.getTooltipTrigger();
+  const closeTooltip = () => {
+    const $tooltip = tooltipRef.current;
 
-    // Remove event listeners from non-touch devices
-    if (!isTouchDevice() || mobileTap) {
-      $tooltipTrigger.removeEventListener(
-        'mouseenter',
-        this.renderTooltip.bind(this),
-      );
-      $tooltipTrigger.removeEventListener(
-        'mouseleave',
-        this.closeTooltip.bind(this),
-      );
-    }
-  }
-
-  /**
-   * Get tooltip trigger
-   * @return {void} [description]
-   */
-  getTooltipTrigger = () => {
-    const { tooltipTrigger } = this;
-
-    // If this a React component; get DOM reference
-    if (typeof this.tooltipTrigger === 'object') {
-      return ReactDOM.findDOMNode(this.tooltipTrigger);
-    }
-
-    return tooltipTrigger;
+    if ($tooltip) $tooltip.timeline.reverse();
   };
 
   /**
    * Figure out direciton and position
    * @return {void}
    */
-  styleTooltip = () => {
-    const { placement } = this.props;
-
-    const $tooltip = this.tooltipRef.current;
-    const $tooltipTrigger = this.getTooltipTrigger();
+  const styleTooltip = () => {
+    const $tooltip = tooltipRef.current;
+    const $tooltipTrigger = tooltipTriggerRef.current;
 
     const rect = $tooltipTrigger.getBoundingClientRect();
 
@@ -123,41 +89,17 @@ class Tooltip extends React.Component {
         break;
     }
 
-    this.openTooltip();
+    openTooltip();
   };
 
-  openTooltip = () => {
-    const $tooltip = this.tooltipRef.current;
-
-    $tooltip.timeline.play();
-  };
-
-  closeTooltip = () => {
-    const $tooltip = this.tooltipRef.current;
-
-    if ($tooltip) $tooltip.timeline.reverse();
-  };
-
-  renderTooltip = () => {
-    this.setState(
-      {
-        renderTooltip: true,
-      },
-      () => this.attachTimeline(),
-    );
-  };
-
-  attachTimeline = () => {
-    const $tooltip = this.tooltipRef.current;
-    const { placement } = this.props;
+  const attachTimeline = () => {
+    const $tooltip = tooltipRef.current;
 
     // Attach GSAP
     $tooltip.timeline = new TimelineMax({
       paused: true,
       onReverseComplete: () => {
-        this.setState({
-          renderTooltip: false,
-        });
+        setRenderTooltip(false);
       },
     });
 
@@ -196,39 +138,67 @@ class Tooltip extends React.Component {
         ease: config.easingBounce,
       });
 
-    this.styleTooltip();
+    styleTooltip();
   };
 
-  renderChildren = () => {
-    const { children } = this.props;
+  const renderChildren = React.Children.map(children, child => React.cloneElement(child, {
+    ref: tooltipTriggerRef,
+  }));
 
-    const returnChild = React.cloneElement(React.Children.only(children), {
-      ref: (node) => {
-        this.tooltipTrigger = node;
-      },
-    });
+  // @NOTE Attaching event listeners here is not ideal, but `onMouseEnter` (and `onMouseOver`) is not reliably fired; as well as the context of the currentTarget being incorrect.
+  useEffect(
+    () => {
+      const $tooltipTrigger = tooltipTriggerRef.current;
 
-    return returnChild;
-  };
+      // Add event listeners
+      // Tooltips are not triggered on touch-devices to not interfere with actionable items
+      // This can be overidden with the `mobileTap` prop
+      if (!isTouchDevice() || mobileTap) {
+        $tooltipTrigger.addEventListener('mouseenter', handleMouseEnter, false);
+        $tooltipTrigger.addEventListener('mouseleave', closeTooltip, false);
+      }
 
-  render() {
-    const { renderTooltip } = this.state;
-    const { content } = this.props;
+      return () => {
+        // Remove event listeners from non-touch devices
+        if (!isTouchDevice() || mobileTap) {
+          $tooltipTrigger.removeEventListener(
+            'mouseenter',
+            handleMouseEnter,
+            false,
+          );
+          $tooltipTrigger.removeEventListener(
+            'mouseleave',
+            closeTooltip,
+            false,
+          );
+        }
+      };
+    },
+    [tooltipTriggerRef],
+  );
 
-    return (
-      <Fragment>
-        {React.Children.only(this.renderChildren())}
-        {renderTooltip
-          && ReactDOM.createPortal(
-            <div className="tooltip" ref={this.tooltipRef} role="tooltip">
-              <div className="tooltip-inner">{content}</div>
-            </div>,
-            document.body,
-          )}
-      </Fragment>
-    );
-  }
-}
+  useUpdateEffect(
+    () => {
+      if (renderTooltip) {
+        attachTimeline();
+      }
+    },
+    [renderTooltip],
+  );
+
+  return (
+    <Fragment>
+      {renderChildren}
+      {renderTooltip
+        && ReactDOM.createPortal(
+          <div className="tooltip" ref={tooltipRef} role="tooltip">
+            <div className="tooltip-inner">{content}</div>
+          </div>,
+          document.body,
+        )}
+    </Fragment>
+  );
+};
 
 Tooltip.propTypes = {
   children: PropTypes.node.isRequired,

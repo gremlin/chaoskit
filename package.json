@@ -15,7 +15,7 @@
     "classnames": "2.2.6",
     "cssnano": "4.1.10",
     "downshift": "3.2.7",
-    "eslint": "5.15.3",
+    "eslint": "5.16.0",
     "eslint-config-airbnb": "17.1.0",
     "eslint-loader": "2.1.2",
     "eslint-plugin-import": "2.16.0",
@@ -43,12 +43,13 @@
     "react-live": "1.12.0",
     "react-text-mask": "5.4.3",
     "react-textarea-autosize": "7.1.0",
+    "react-use": "8.1.1",
     "recursive-readdir-sync": "1.0.6",
     "rsvp": "4.8.4",
     "stylelint": "9.10.1",
     "stylelint-config-standard": "18.2.0",
     "stylelint-webpack-plugin": "0.10.5",
-    "svgo": "1.2.0",
+    "svgo": "1.2.1",
     "what-input": "5.2.1"
   },
   "devDependencies": {

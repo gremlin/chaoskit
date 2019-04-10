@@ -14,6 +14,7 @@ const Radio = (props) => {
     onChange,
     selectedValue,
     value,
+    ...opts
   } = props;
 
   const id = `${name}-${generateUUID()}`;
@@ -31,6 +32,7 @@ const Radio = (props) => {
         id={id}
         checked={value === selectedValue}
         onChange={onChange}
+        {...opts}
       />
       {label && (
         <label // eslint-disable-line jsx-a11y/label-has-for

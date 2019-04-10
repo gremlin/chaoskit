@@ -7,15 +7,20 @@ import { Textarea } from '../components';
 const TextareaExample = `
 class Example extends React.Component {
   state = {
-    initialValue: 'I have an initial value!',
+    defaultValue: 'I have an initial value!',
   };
+
+  handleChange = (name, value) => {
+    console.log({name}, {value});
+  }
 
   render() {
     return (
       <Textarea
         label="Test label"
         name="test"
-        initialValue={this.state.initialValue}
+        onChange={this.handleChange}
+        defaultValue={this.state.defaultValue}
         validationMessage="This field has an error"
       />
     );

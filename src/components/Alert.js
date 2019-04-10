@@ -1,40 +1,31 @@
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useRef } from 'react';
+import useMount from 'react-use/lib/useMount';
+import useUpdateEffect from 'react-use/lib/useUpdateEffect';
 import { TimelineMax } from 'gsap/TweenMax';
 import { kebabCase, toLower } from 'lodash-es';
 
 import { config } from '../helpers/config';
 import { Close } from '.';
 
-class Alert extends React.Component {
-  alertRef = React.createRef();
+const Alert = ({
+  children,
+  className,
+  collapse,
+  onComplete,
+  onReverseComplete,
+  onReverseStart,
+  onStart,
+  close,
+  title,
+  type,
+  ...opts
+}) => {
+  const alertRef = useRef();
 
-  componentDidMount() {
-    this.attachTimeline();
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const { collapse } = this.props;
-
-    if (collapse !== nextProps.collapse) {
-      if (nextProps.collapse) {
-        this.collapseAlert();
-      } else {
-        this.openAlert();
-      }
-    }
-  }
-
-  attachTimeline = () => {
-    const $alert = this.alertRef.current;
-
-    const {
-      onStart,
-      onReverseStart,
-      onComplete,
-      onReverseComplete,
-    } = this.props;
+  const attachTimeline = () => {
+    const $alert = alertRef.current;
 
     let forward = true;
     let lastTime = 0;
@@ -86,58 +77,67 @@ class Alert extends React.Component {
     });
   };
 
-  handleAlertCloseClick = () => {
-    this.collapseAlert();
-  };
-
-  collapseAlert = () => {
-    const $alert = this.alertRef.current;
+  const collapseAlert = () => {
+    const $alert = alertRef.current;
 
     $alert.timeline.play();
   };
 
-  openAlert = () => {
-    const $alert = this.alertRef.current;
+  const openAlert = () => {
+    const $alert = alertRef.current;
 
     $alert.timeline.reverse();
   };
 
-  render() {
-    const {
-      children, className, close, title, type,
-    } = this.props;
-    const classes = cx(
-      'alert',
-      {
-        'alert--primary': type === 'primary',
-        'alert--warning': type === 'warning',
-        'alert--danger': type === 'danger',
-      },
-      className,
-    );
+  useMount(() => {
+    attachTimeline();
 
-    return (
-      <div className={classes} role="alert" ref={this.alertRef}>
-        <div className="alert-content">
-          {title && (
-            <h4 id={kebabCase(toLower(title))} className="alert-title">
-              {title}
-            </h4>
-          )}
-          {children}
-        </div>
-        {close && (
-          <div className="alert-right">
-            <Close
-              className="alert-close"
-              onClick={this.handleAlertCloseClick}
-            />
-          </div>
+    if (collapse) {
+      const $alert = alertRef.current;
+
+      $alert.timeline.progress(1);
+    }
+  });
+
+  useUpdateEffect(
+    () => {
+      if (collapse) {
+        collapseAlert();
+      } else {
+        openAlert();
+      }
+    },
+    [collapse],
+  );
+
+  const classes = cx(
+    'alert',
+    {
+      'alert--primary': type === 'primary',
+      'alert--warning': type === 'warning',
+      'alert--danger': type === 'danger',
+    },
+    className,
+  );
+
+  return (
+    <div className={classes} role="alert" ref={alertRef} {...opts}>
+      <div className="alert-content">
+        {title && (
+          <h4 id={kebabCase(toLower(title))} className="alert-title">
+            {title}
+          </h4>
         )}
+        {children}
       </div>
-    );
-  }
-}
+      {close && (
+        <div className="alert-right">
+          <Close className="alert-close" onClick={collapseAlert} />
+        </div>
+      )}
+    </div>
+  );
+};
 
 Alert.propTypes = {
   children: PropTypes.node.isRequired,
@@ -157,6 +157,7 @@ Alert.defaultProps = {
   onReverseComplete: () => {},
   onReverseStart: () => {},
   onStart: () => {},
+  collapse: false,
 };
 
 export default Alert;

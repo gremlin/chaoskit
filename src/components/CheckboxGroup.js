@@ -7,54 +7,47 @@ import {
 } from '.';
 import { config } from '../helpers/config';
 
-class CheckboxGroup extends React.Component {
-  renderChildren = () => {
-    const { children, inline } = this.props;
-
-    return React.Children.map(children, (child) => {
-      if (inline) {
-        return child;
-      }
-
-      return <ListItem>{child}</ListItem>;
-    });
-  };
-
-  renderItems = () => {
-    const { inline } = this.props;
-
+const CheckboxGroup = ({
+  children,
+  className,
+  explanationMessage,
+  inline,
+  label,
+  required,
+  validationMessage,
+}) => {
+  const renderChildren = () => React.Children.map(children, (child) => {
     if (inline) {
-      return <Inline>{this.renderChildren()}</Inline>;
+      return child;
     }
 
-    return <List type={['space']}>{this.renderChildren()}</List>;
+    return <ListItem>{child}</ListItem>;
+  });
+
+  const renderItems = () => {
+    if (inline) {
+      return <Inline>{renderChildren()}</Inline>;
+    }
+
+    return <List type={['space']}>{renderChildren()}</List>;
   };
 
-  render() {
-    const {
-      className,
-      explanationMessage,
-      label,
-      required,
-      validationMessage,
-    } = this.props;
-    const classes = cx('form-group', className, {
-      [config.classes.notValid]: validationMessage,
-      [config.classes.required]: required,
-    });
+  const classes = cx('form-group', className, {
+    [config.classes.notValid]: validationMessage,
+    [config.classes.required]: required,
+  });
 
-    return (
-      <div className={classes}>
-        <FormLabel id="">{label}</FormLabel>
-        {this.renderItems()}
-        <FormFooter
-          explanationMessage={explanationMessage}
-          validationMessage={validationMessage}
-        />
-      </div>
-    );
-  }
-}
+  return (
+    <div className={classes}>
+      <FormLabel id="">{label}</FormLabel>
+      {renderItems()}
+      <FormFooter
+        explanationMessage={explanationMessage}
+        validationMessage={validationMessage}
+      />
+    </div>
+  );
+};
 
 CheckboxGroup.propTypes = {
   children: PropTypes.node,

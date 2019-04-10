@@ -1,6 +1,7 @@
 import React from 'react';
 
 import BaseLayout from '../layouts/BaseLayout';
+import Docs from '../docs/Docs';
 import Live from '../docs/Live';
 import { CheckboxGroup, Checkbox } from '../components';
 
@@ -30,6 +31,9 @@ const CheckboxPropDescriptions = {};
 
 const CheckboxDocs = () => (
   <BaseLayout pageTitle="Checkbox">
+    <h3>CheckboxGroup</h3>
+    <Docs component={CheckboxGroup} />
+    <h3>Checkbox</h3>
     <Live
       code={CheckboxExample}
       scope={CheckboxScope}

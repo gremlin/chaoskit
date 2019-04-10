@@ -1,6 +1,7 @@
 import React from 'react';
 
 import BaseLayout from '../layouts/BaseLayout';
+import Docs from '../docs/Docs';
 import Live from '../docs/Live';
 import {
   Alert,
@@ -26,7 +27,7 @@ class Example extends React.Component {
   render() {
     return (
       <Fragment>
-        <Modal open={this.state.open} handleOutsideModalClick={this.handleModalToggle}>
+        <Modal onStart={() => console.log('opening')} onComplete={() => console.log('opened')} onReverseStart={() => console.log('closing')} onReverseComplete={() => console.log('closed')} open={this.state.open} onOutsideModalClick={this.handleModalToggle}>
           <ModalHeader title="Hello" onCloseClick={this.handleModalToggle} />
           <ModalBody>
             test
@@ -53,12 +54,19 @@ const ModalScope = {
 };
 
 const ModalPropDescriptions = {
-  handleOutsideModalClick: 'Leave blank to keep modal open on background-click',
+  onOutsideModalClick: 'Leave blank to keep modal open on background-click',
   size: "<code>oneOf(['small', 'large',])</code>", // eslint-disable-line single-quotes
 };
 
 const ModalDocs = () => (
   <BaseLayout pageTitle="Modal">
+    <h3>ModalHeader</h3>
+    <Docs component={ModalHeader} />
+    <h3>ModalBody</h3>
+    <Docs component={ModalBody} />
+    <h3>ModalFooter</h3>
+    <Docs component={ModalFooter} />
+    <h3>Modal</h3>
     <Live
       code={ModalExample}
       scope={ModalScope}

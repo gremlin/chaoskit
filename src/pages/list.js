@@ -2,6 +2,7 @@ import React from 'react';
 
 import BaseLayout from '../layouts/BaseLayout';
 import Live from '../docs/Live';
+import Docs from '../docs/Docs';
 import { List, ListItem } from '../components';
 
 const ListExample = `
@@ -45,6 +46,9 @@ const ListPropDescriptions = {
 
 const ListDocs = () => (
   <BaseLayout pageTitle="List">
+    <h3>ListItem</h3>
+    <Docs component={ListItem} />
+    <h3>List</h3>
     <Live
       code={ListExample}
       scope={ListScope}

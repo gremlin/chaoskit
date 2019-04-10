@@ -2,8 +2,7 @@ import cx from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const Loader = (props) => {
-  const { className, ...opts } = props;
+const Loader = ({ className, ...opts }) => {
   const classes = cx('loader', className);
 
   return (

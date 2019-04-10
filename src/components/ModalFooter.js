@@ -2,8 +2,7 @@ import cx from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const ModalFooter = (props) => {
-  const { center, children, className } = props;
+const ModalFooter = ({ center, children, className }) => {
   const classes = cx('modal-footer', className, {
     'modal-footer--center': center,
   });

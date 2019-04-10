@@ -41,6 +41,12 @@ $form-choices-max-height: 200px !default;
     font-size: $form-font-size;
     // 1
     text-align: left;
+
+    &[disabled] {
+      opacity: $global-disabled-opacity;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
   }
 
   .choices__button {
