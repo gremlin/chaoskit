@@ -7,69 +7,75 @@ import { FormFooter, FormLabel, Icon } from '.';
 import { generateUUID } from '../helpers/utility';
 import { config } from '../helpers/config';
 
-const Input = ({
-  className,
-  label,
-  guide,
-  mask,
-  name,
-  onChange,
-  type,
-  validationMessage,
-  explanationMessage,
-  prefixIcon,
-  required,
-  ...opts
-}) => {
-  const id = `${name}-${generateUUID()}`;
-
-  const handleChange = ({ target: { name: fieldName, value } }) => {
-    onChange(fieldName, value);
-  };
-
-  const inputRender = () => {
-    const defaultProps = {
-      id,
-      className: 'form-input',
+const Input = React.forwardRef(
+  (
+    {
+      className,
+      label,
+      guide,
+      mask,
       name,
+      onChange,
       type,
-      onChange: handleChange,
-      ...opts,
+      validationMessage,
+      explanationMessage,
+      prefixIcon,
+      required,
+      ...opts
+    },
+    ref,
+  ) => {
+    const id = `${name}-${generateUUID()}`;
+
+    const handleChange = ({ target: { name: fieldName, value } }) => {
+      onChange(fieldName, value);
     };
 
-    // `react-text-mask` does not support 'email' or 'number' input types
-    if (mask && !['email', 'number'].includes(type)) {
-      return <MaskedInput {...defaultProps} mask={mask} guide={guide} />;
-    }
+    const inputRender = () => {
+      const defaultProps = {
+        id,
+        className: 'form-input',
+        name,
+        type,
+        onChange: handleChange,
+        ref,
+        ...opts,
+      };
 
-    return <input {...defaultProps} />;
-  };
+      // `react-text-mask` does not support 'email' or 'number' input types
+      if (mask && !['email', 'number'].includes(type)) {
+        return <MaskedInput {...defaultProps} mask={mask} guide={guide} />;
+      }
 
-  const classes = cx('form-group', className, {
-    [config.classes.notValid]: validationMessage,
-    [config.classes.required]: required,
-  });
+      return <input {...defaultProps} />;
+    };
 
-  return (
-    <div className={classes}>
-      <FormLabel id={id}>{label}</FormLabel>
-      {prefixIcon ? (
-        <div className="form-prefix-wrapper">
-          <div className="form-prefix-content">
-            <Icon icon={prefixIcon} />
+    const classes = cx('form-group', className, {
+      [config.classes.notValid]: validationMessage,
+      [config.classes.required]: required,
+    });
+
+    return (
+      <div className={classes}>
+        <FormLabel id={id}>{label}</FormLabel>
+        {prefixIcon ? (
+          <div className="form-prefix-wrapper">
+            <div className="form-prefix-content">
+              <Icon icon={prefixIcon} />
+            </div>
+            {inputRender()}
           </div>
-          {inputRender()}
-        </div>
-      ) : (
-        inputRender()
-      )}
-      <FormFooter
-        explanationMessage={explanationMessage}
-        validationMessage={validationMessage}
-      />
-    </div>
-  );
-};
+        ) : (
+          inputRender()
+        )}
+        <FormFooter
+          explanationMessage={explanationMessage}
+          validationMessage={validationMessage}
+        />
+      </div>
+    );
+  },
+);
 
 Input.propTypes = {
   className: PropTypes.string,
