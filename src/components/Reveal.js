@@ -92,6 +92,10 @@ const Reveal = ({
         },
         ease: config.easing,
       });
+
+    if (reveal) {
+      $reveal.timeline.progress(1);
+    }
   };
 
   const revealOpen = () => {
@@ -118,12 +122,6 @@ const Reveal = ({
 
   useMount(() => {
     attachTimeline();
-
-    if (reveal) {
-      const $reveal = revealRef.current;
-
-      $reveal.timeline.progress(1);
-    }
   });
 
   useUpdateEffect(

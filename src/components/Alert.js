@@ -75,6 +75,10 @@ const Alert = ({
       },
       ease: config.easing,
     });
+
+    if (collapse) {
+      $alert.timeline.progress(1);
+    }
   };
 
   const collapseAlert = () => {
@@ -91,12 +95,6 @@ const Alert = ({
 
   useMount(() => {
     attachTimeline();
-
-    if (collapse) {
-      const $alert = alertRef.current;
-
-      $alert.timeline.progress(1);
-    }
   });
 
   useUpdateEffect(
