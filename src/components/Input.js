@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import MaskedInput from 'react-text-mask';
@@ -9,7 +9,6 @@ import { config } from '../helpers/config';
 
 const Input = ({
   className,
-  focus,
   label,
   guide,
   mask,
@@ -22,15 +21,6 @@ const Input = ({
   required,
   ...opts
 }) => {
-  const inputRef = useRef();
-
-  useEffect(
-    () => {
-      if (focus && !mask) inputRef.current.focus();
-    },
-    [focus],
-  );
-
   const id = `${name}-${generateUUID()}`;
 
   const handleChange = ({ target: { name: fieldName, value } }) => {
@@ -41,11 +31,9 @@ const Input = ({
     const defaultProps = {
       id,
       className: 'form-input',
-      focus: focus ? 'focus' : null,
       name,
       type,
       onChange: handleChange,
-      ref: inputRef,
       ...opts,
     };
 
@@ -87,7 +75,6 @@ Input.propTypes = {
   className: PropTypes.string,
   explanationMessage: PropTypes.string,
   validationMessage: PropTypes.string,
-  focus: PropTypes.bool,
   guide: PropTypes.bool,
   onChange: PropTypes.func,
   prefixIcon: PropTypes.string,
