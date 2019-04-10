@@ -1,6 +1,6 @@
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import {
   FormLabel, FormFooter, Inline, List, ListItem,
@@ -20,31 +20,17 @@ const RadioGroup = ({
   validationMessage,
   required,
 }) => {
-  const [selected, setSelected] = useState(selectedValue);
-
-  useEffect(
-    () => {
-      setSelected(selectedValue);
-    },
-    [selectedValue],
-  );
-
-  const handleChange = (fieldName, fieldValue) => {
-    setSelected(fieldValue);
-  };
-
   const renderChildren = () => {
     let returnChild = null;
 
     return React.Children.map(children, (child) => {
       const onChangeFunc = () => {
-        handleChange(name, child.props.value);
         onChange(name, child.props.value);
       };
 
       returnChild = React.cloneElement(child, {
         onChange: onChangeFunc,
-        selectedValue: selected,
+        selectedValue,
         name,
       });
 
