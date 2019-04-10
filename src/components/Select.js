@@ -23,7 +23,11 @@ const Select = ({
   const handleOnChange = ({
     target: { name: fieldName, value: fieldValue },
   }) => {
-    onChange(fieldName, fieldValue);
+    const selectedValue = parseInt(fieldValue, 10)
+      ? parseInt(fieldValue, 10)
+      : fieldValue;
+
+    onChange(fieldName, selectedValue);
   };
 
   const classes = cx('form-group', className, {
