@@ -20,15 +20,13 @@ const RadioGroup = ({
   validationMessage,
   required,
 }) => {
-  const renderChildren = () => {
-    let returnChild = null;
-
-    return React.Children.map(children, (child) => {
+  const renderChildren = () => React.Children.map(children, (child) => {
+    if (child) {
       const onChangeFunc = () => {
         onChange(name, child.props.value);
       };
 
-      returnChild = React.cloneElement(child, {
+      const returnChild = React.cloneElement(child, {
         onChange: onChangeFunc,
         selectedValue,
         name,
@@ -39,8 +37,10 @@ const RadioGroup = ({
       }
 
       return <ListItem>{returnChild}</ListItem>;
-    });
-  };
+    }
+
+    return null;
+  });
 
   const renderItems = () => {
     if (inline) {
