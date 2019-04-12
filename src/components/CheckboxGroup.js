@@ -17,15 +17,11 @@ const CheckboxGroup = ({
   validationMessage,
 }) => {
   const renderChildren = () => React.Children.map(children, (child) => {
-    if (child) {
-      if (inline) {
-        return child;
-      }
-
-      return <ListItem>{child}</ListItem>;
+    if (inline) {
+      return child;
     }
 
-    return null;
+    return <ListItem>{child}</ListItem>;
   });
 
   const renderItems = () => {
