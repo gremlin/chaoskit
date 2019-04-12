@@ -5,27 +5,13 @@ import Live from '../docs/Live';
 import { Textarea } from '../components';
 
 const TextareaExample = `
-class Example extends React.Component {
-  state = {
-    defaultValue: 'I have an initial value!',
-  };
-
-  handleChange = (name, value) => {
-    console.log({name}, {value});
-  }
-
-  render() {
-    return (
-      <Textarea
-        label="Test label"
-        name="test"
-        onChange={this.handleChange}
-        defaultValue={this.state.defaultValue}
-        validationMessage="This field has an error"
-      />
-    );
-  }
-}
+<Textarea
+  label="Test label"
+  name="test"
+  onChange={(name, value) => console.log({ name, value })}
+  defaultValue="Default value!"
+  validationMessage="This field has an error"
+/>
 `.trim();
 
 const TextareaScope = {

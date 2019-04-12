@@ -13,34 +13,35 @@ import {
 } from '../components';
 
 const ModalExample = `
-class Example extends React.Component {
-  state = {
-    open: false,
+() => {
+  const [isOpen, toggleOpen] = useState(false);
+
+  const handleToggle = () => {
+    toggleOpen(!isOpen);
   };
 
-  handleModalToggle = () => {
-    this.setState({
-      open: !this.state.open,
-    });
-  };
+  return (
+    <Fragment>
+      <Modal
+        onStart={() => console.log('opening')}
+        onComplete={() => console.log('opened')}
+        onReverseStart={() => console.log('closing')}
+        onReverseComplete={() => console.log('closed')}
+        open={isOpen}
+        onOutsideModalClick={handleToggle}
+      >
+        <ModalHeader title="Hello" onCloseClick={handleToggle} />
+        <ModalBody>
+          test
+        </ModalBody>
+        <ModalFooter>
+          hello
+        </ModalFooter>
+      </Modal>
 
-  render() {
-    return (
-      <Fragment>
-        <Modal onStart={() => console.log('opening')} onComplete={() => console.log('opened')} onReverseStart={() => console.log('closing')} onReverseComplete={() => console.log('closed')} open={this.state.open} onOutsideModalClick={this.handleModalToggle}>
-          <ModalHeader title="Hello" onCloseClick={this.handleModalToggle} />
-          <ModalBody>
-            test
-          </ModalBody>
-          <ModalFooter>
-            hello
-          </ModalFooter>
-        </Modal>
-
-        <Button onClick={this.handleModalToggle} type="primary">Open Modal</Button>
-      </Fragment>
-    );
-  }
+      <Button onClick={handleToggle} type="primary">Open Modal</Button>
+    </Fragment>
+  );
 }
 `.trim();
 

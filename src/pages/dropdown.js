@@ -12,24 +12,18 @@ import Docs from '../docs/Docs';
 import Live from '../docs/Live';
 
 const DropdownExample = `
-class Example extends React.Component {
-  render() {
-    return (
-      <Inline>
-        <Dropdown trigger={{ label: 'Content', props: { type: 'primary' }}}>
-          <p>👋 from the dropdown!</p>
-        </Dropdown>
-        <Dropdown showArrow position="up-center" trigger={{ label: 'Menu', props: { type: 'secondary' }}}>
-          <DropdownHeader>Menu Header</DropdownHeader>
-          <List className="dropdown-menu">
-            <ListItem><a href="#">Menu link</a></ListItem>
-            <ListItem><a className="is-active" href="#">Active Menu link</a></ListItem>
-          </List>
-        </Dropdown>
-      </Inline>
-    )
-  }
-}
+<Inline>
+  <Dropdown trigger={{ label: 'Content', props: { type: 'primary' }}}>
+    <p>👋 from the dropdown!</p>
+  </Dropdown>
+  <Dropdown showArrow position="up-center" trigger={{ label: 'Menu', props: { type: 'secondary' }}}>
+    <DropdownHeader>Menu Header</DropdownHeader>
+    <List className="dropdown-menu">
+      <ListItem><a href="#">Menu link</a></ListItem>
+      <ListItem><a className="is-active" href="#">Active Menu link</a></ListItem>
+    </List>
+  </Dropdown>
+</Inline>
 `.trim();
 
 const DropdownPropDescriptions = {

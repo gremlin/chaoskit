@@ -5,32 +5,30 @@ import Live from '../docs/Live';
 import { Alert, Toggle } from '../components';
 
 const ToggleExample = `
-class Example extends React.Component {
-  handleChange = (name, value, checked) => {
+() => {
+  const handleChange = (name, value, checked) => {
     console.log(name, value, checked);
-  }
+  };
 
-  render() {
-    return (
-      <Fragment>
+  return (
+    <Fragment>
+      <Toggle
+        name="example"
+        label="Optional label"
+        onChange={handleChange}
+        value="example_value"
+      />
+      <div className="u-mt--regular u-pa--large u-bgPrimary u-contrast">
+        <h4>Contrast example</h4>
         <Toggle
-          name="example"
-          label="Optional label"
-          onChange={this.handleChange}
-          value="example_value"
+          name="example2"
+          label="Optional label2"
+          onChange={handleChange}
+          value="example_value2"
         />
-        <div className="u-mt--regular u-pa--large u-bgPrimary u-contrast">
-          <h4>Contrast example</h4>
-          <Toggle
-            name="example2"
-            label="Optional label2"
-            onChange={this.handleChange}
-            value="example_value2"
-          />
-        </div>
-      </Fragment>
-    );
-  }
+      </div>
+    </Fragment>
+  );
 }
 `.trim();
 

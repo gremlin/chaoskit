@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import scriptjs from 'scriptjs';
 import {
@@ -32,9 +32,11 @@ class Live extends React.Component {
     } = this.props;
     const { loading } = this.state;
 
-    // Add `Fragment` to every scope by default
+    // Add methods to every scope by default
     const scopeProps = scope;
     scopeProps.Fragment = Fragment;
+    scopeProps.useState = useState;
+    scopeProps.useEffect = useEffect;
 
     return (
       <Fragment>

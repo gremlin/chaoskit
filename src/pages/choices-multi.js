@@ -1,70 +1,68 @@
 import React from 'react';
+import useUpdateEffect from 'react-use/lib/useUpdateEffect';
 
 import BaseLayout from '../layouts/BaseLayout';
 import Live from '../docs/Live';
 import { ChoicesMulti } from '../components';
 
 const ChoicesMultiExample = `
-class Example extends React.Component {
-  state = {
-    selectedColors: [],
-  };
+() => {
+  const [selected, setSelected] = useState([]);
 
-  componentDidMount() {
-    const newSelectedColors = [];
-
-    this.state.selectedColors.forEach((value) => {
-      const validatedOption = this.selectOpts.find(x => x.value === value);
-
-      newSelectedColors.push(validatedOption);
-    });
-
-    this.setState({
-      selectedColors: newSelectedColors,
-    });
-  }
-
-  handleChange = (name, selectedColors) => {
-    this.setState({ selectedColors }, () => console.log(name, selectedColors));
-  }
-
-  handleRemoveItem = (item) => {
-    const selectedColors = this.state.selectedColors;
-    const index = selectedColors.indexOf(item);
-
-    if (index !== -1) selectedColors.splice(index, 1);
-
-    this.setState({
-      selectedColors,
-    }, () => console.log(this.state.selectedColors));
-  }
-
-  selectOpts = [
+  const selectOpts = [
     { value: 1, label: 'Option One' },
     { value: 'test-string', label: 'Option Two' },
     { value: 3, label: 'Option Three' },
     { value: 4, label: 'Option Four' },
   ];
 
-  render() {
-    return (
-      <ChoicesMulti
-        selected={this.state.selectedColors}
-        options={this.selectOpts}
-        name="colors"
-        label="Favorite colors"
-        placeholder="Choose your favorite colors"
-        onChange={this.handleChange}
-        removeItem={this.handleRemoveItem}
-      />
-    );
-  }
+  const handleChange = (name, selectedColors) => {
+    setSelected(selectedColors);
+  };
+
+  const handleRemoveItem = (item) => {
+    const newSelected = [...selected];
+    const index = newSelected.indexOf(item);
+
+    if (index !== -1) newSelected.splice(index, 1);
+
+    setSelected(newSelected);
+  };
+
+  useEffect(() => {
+    const newSelected = [];
+
+    selected.forEach((value) => {
+      const validatedOption = selectOpts.find(x => x.value === value);
+
+      newSelected.push(validatedOption);
+    });
+
+    setSelected(newSelected);
+  }, []);
+
+  useUpdateEffect(() => {
+    console.log({ selected });
+  }, [selected]);
+
+  return (
+    <ChoicesMulti
+      selected={selected}
+      options={selectOpts}
+      name="colors"
+      label="Favorite colors"
+      placeholder="Choose your favorite colors"
+      onChange={handleChange}
+      removeItem={handleRemoveItem}
+    />
+  );
 }
 `.trim();
 
 const ChoicesMultiScope = {
   React,
   ChoicesMulti,
+  useUpdateEffect,
 };
 
 const ChoicesMultiPropDescriptions = {};

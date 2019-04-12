@@ -5,41 +5,39 @@ import Live from '../docs/Live';
 import { ChoicesSingle } from '../components';
 
 const ChoicesSingleExample = `
-class Example extends React.Component {
-  state = {
-    selectedColor: -1,
+() => {
+  const [selected, setSelected] = useState(-1);
+
+  const handleChange = (name, selectedColor) => {
+    setSelected(selectedColor.value);
   };
 
-  handleChange = (name, selectedColor) => {
-    this.setState({ selectedColor: selectedColor.value }, () => console.log(name, selectedColor));
+  const handleRemoveItem = () => {
+    setSelected(-1);
   }
 
-  handleRemoveItem = () => {
-    this.setState({
-      selectedColor: -1,
-    }, () => console.log(this.state.selectedColor));
-  }
+  useEffect(() => {
+    console.log({ selected });
+  }, [selected]);
 
-  selectOpts = [
+  const selectOpts = [
     { value: 1, label: 'Option One' },
     { value: 'test-string', label: 'Option Two' },
     { value: 3, label: 'Option Three' },
     { value: 4, label: 'Option Four' },
   ];
 
-  render() {
-    return (
-      <ChoicesSingle
-        selected={this.state.selectedColor}
-        options={this.selectOpts}
-        label="Favorite color"
-        placeholder="Choose a color"
-        name="color"
-        onChange={this.handleChange}
-        removeItem={this.handleRemoveItem}
-      />
-    );
-  }
+  return (
+    <ChoicesSingle
+      selected={selected}
+      options={selectOpts}
+      label="Favorite color"
+      placeholder="Choose a color"
+      name="color"
+      onChange={handleChange}
+      removeItem={handleRemoveItem}
+    />
+  );
 }
 `.trim();
 

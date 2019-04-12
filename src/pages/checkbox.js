@@ -6,20 +6,17 @@ import Live from '../docs/Live';
 import { CheckboxGroup, Checkbox } from '../components';
 
 const CheckboxExample = `
-class Example extends React.Component {
-  handleChange = (name, value, checked) => {
+() => {
+  const handleChange = (name, value, checked) => {
     console.log(name, value, checked);
-  }
+  };
 
-  render() {
-    return (
-      <CheckboxGroup label="Checkboxes">
-        <Checkbox name="example" onChange={this.handleChange} label="Test" value="test_value" />
-      </CheckboxGroup>
-    );
-  }
-}
-`.trim();
+  return (
+    <CheckboxGroup label="Checkboxes">
+      <Checkbox name="example" onChange={handleChange} label="Test" value="test_value" />
+    </CheckboxGroup>
+  )
+}`.trim();
 
 const CheckboxScope = {
   React,

@@ -5,14 +5,12 @@ import { Close } from '../components';
 import Live from '../docs/Live';
 
 const CloseExample = `
-class Example extends React.Component {
-  handleClick = () => {
+() => {
+  const handleClick = () => {
     alert('You clicked me!');
-  }
+  };
 
-  render() {
-    return <Close onClick={this.handleClick} />
-  }
+  return <Close onClick={handleClick} />
 }
 `.trim();
 

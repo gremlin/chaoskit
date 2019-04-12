@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import BaseLayout from '../layouts/BaseLayout';
 import { Alert, Button } from '../components';
@@ -30,7 +30,6 @@ const AlertPropDescriptions = {
 const AlertScope = {
   Alert,
   Button,
-  useState,
 };
 
 const AlertDocs = () => (

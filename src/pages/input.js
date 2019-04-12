@@ -36,39 +36,37 @@ const onlyNumbers = (rawValue) => {
 };
 
 const InputExample = `
-class Example extends React.Component {
-  handleChange = (name, value) => {
+() => {
+  const handleChange = (name, value) => {
     console.log({name}, {value});
-  }
+  };
 
-  render() {
-    return (
-      <Fragment>
-        <Input
-          label="Normal input"
-          name="name"
-          onChange={this.handleChange}
-          required
-          validationMessage="I'm an error!"
-        />
-        <Input
-          label="Mask Input (phone number)"
-          name="phone"
-          placeholder="+1 (555) 867-5309"
-          mask={phoneMask}
-          defaultValue="5558675309"
-          onChange={this.handleChange}
-        />
-        <Input
-          label="Mask Input (only numbers)"
-          name="numbers"
-          placeholder="12345"
-          mask={onlyNumbers}
-          onChange={this.handleChange}
-        />
-      </Fragment>
-    );
-  }
+  return (
+    <Fragment>
+      <Input
+        label="Normal input"
+        name="name"
+        onChange={handleChange}
+        required
+        validationMessage="I'm an error!"
+      />
+      <Input
+        label="Mask Input (phone number)"
+        name="phone"
+        placeholder="+1 (555) 867-5309"
+        mask={phoneMask}
+        defaultValue="5558675309"
+        onChange={handleChange}
+      />
+      <Input
+        label="Mask Input (only numbers)"
+        name="numbers"
+        placeholder="12345"
+        mask={onlyNumbers}
+        onChange={handleChange}
+      />
+    </Fragment>
+  )
 }
 `.trim();
 

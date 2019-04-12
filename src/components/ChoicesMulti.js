@@ -69,7 +69,7 @@ const ChoicesMulti = ({
   const selectedOptions = [];
   // Based on current selection to remove from dropdown
   const filteredOptions = optionsList.filter(
-    item => selected.indexOf(item) === -1,
+    item => JSON.stringify(selected).indexOf(JSON.stringify(item)) === -1,
   );
 
   selected.forEach((item) => {

@@ -6,29 +6,21 @@ import Docs from '../docs/Docs';
 import { RadioGroup, Radio } from '../components';
 
 const RadioExample = `
-class Example extends React.Component {
-  state = {
-    selectedValue: null
-  };
+() => {
+  const [selectedValue, setSelectedValue] = useState();
 
-  handleChange = (name, value) => {
+  const handleChange = (name, value) => {
     console.log(name, value);
 
-    this.setState({
-      selectedValue: value,
-    });
-  }
+    setSelectedValue(value);
+  };
 
-  render() {
-    const { selectedValue } = this.state;
-
-    return (
-      <RadioGroup selectedValue={selectedValue} onChange={this.handleChange} name="example" label="Radio">
-        <Radio label="Test" value="test_value" />
-        <Radio label="Test 2" value="test_value2" />
-      </RadioGroup>
-    );
-  }
+  return (
+    <RadioGroup selectedValue={selectedValue} onChange={handleChange} name="example" label="Radio">
+      <Radio label="Test" value="test_value" />
+      <Radio label="Test 2" value="test_value2" />
+    </RadioGroup>
+  );
 }
 `.trim();
 

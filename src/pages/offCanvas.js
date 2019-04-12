@@ -5,36 +5,29 @@ import { Button, OffCanvas } from '../components';
 import Live from '../docs/Live';
 
 const OffCanvasExample = `
-class Example extends React.Component {
-  state = {
-    open: false,
+() => {
+  const [isOpen, toggleOpen] = useState(false);
+
+  const handleToggle = () => {
+    toggleOpen(!isOpen);
   };
 
-  handleOffCanvasToggle = () => {
-    this.setState({
-      open: !this.state.open,
-    });
-  };
+  return (
+    <Fragment>
+      <OffCanvas
+        onStart={() => console.log('opening')}
+        onComplete={() => console.log('opened')}
+        onReverseStart={() => console.log('closing')}
+        onReverseComplete={() => console.log('closed')}
+        open={isOpen}
+        onOffCanvasToggle={handleToggle}
+      >
+        Test
+      </OffCanvas>
 
-  handleOffCanvasReverseComplete = () => {
-    console.log('Fires when offCanvas is closed');
-  }
-
-  render() {
-    return (
-      <Fragment>
-        <OffCanvas
-          open={this.state.open}
-          onOffCanvasToggle={this.handleOffCanvasToggle}
-          onReverseComplete={this.handleOffCanvasReverseComplete}
-        >
-          Test
-        </OffCanvas>
-
-        <Button onClick={this.handleOffCanvasToggle} type="primary">Open OffCanvas</Button>
-      </Fragment>
-    );
-  }
+      <Button onClick={handleToggle} type="primary">Open OffCanvas</Button>
+    </Fragment>
+  );
 }
 `.trim();
 
