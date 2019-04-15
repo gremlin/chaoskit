@@ -17,6 +17,7 @@ const Reveal = ({
   children,
   className,
   trigger,
+  ...opts
 }) => {
   const triggerRef = useRef();
   const revealRef = useRef();
@@ -142,7 +143,7 @@ const Reveal = ({
       <Button onClick={handleRevealToggle} {...trigger.props} ref={triggerRef}>
         {trigger.label}
       </Button>
-      <div className="reveal" ref={revealRef} aria-hidden="true">
+      <div className="reveal" ref={revealRef} aria-hidden="true" {...opts}>
         <div className={classes}>{children}</div>
       </div>
     </Fragment>

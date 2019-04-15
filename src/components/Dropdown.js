@@ -18,6 +18,7 @@ const Dropdown = ({
   position,
   trigger,
   showArrow,
+  ...opts
 }) => {
   const dropdownRef = useRef();
   const dropdownPanelRef = useRef();
@@ -149,6 +150,7 @@ const Dropdown = ({
       aria-haspopup="true"
       aria-expanded="false"
       ref={dropdownRef}
+      {...opts}
     >
       <Button
         onClick={handleDropdownToggle}

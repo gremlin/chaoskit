@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const FormFooter = ({ explanationMessage, validationMessage }) => (explanationMessage || validationMessage ? (
-  <div className="form-footer">
+const FormFooter = ({ explanationMessage, validationMessage, ...opts }) => (explanationMessage || validationMessage ? (
+  <div className="form-footer" {...opts}>
     {explanationMessage && (
     <div className="form-footerExplanation">{explanationMessage}</div>
     )}

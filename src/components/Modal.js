@@ -17,6 +17,7 @@ const Modal = ({
   onReverseComplete,
   onReverseStart,
   onStart,
+  ...opts
 }) => {
   const modalRef = useRef();
   const modalDialogRef = useRef();
@@ -158,6 +159,7 @@ const Modal = ({
         onClick={handleOutsideModalClick}
         ref={modalRef}
         data-modalroot
+        {...opts}
       >
         <div className="modal-dialog" ref={modalDialogRef}>
           {children}

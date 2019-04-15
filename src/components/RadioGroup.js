@@ -19,6 +19,7 @@ const RadioGroup = ({
   selectedValue,
   validationMessage,
   required,
+  ...opts
 }) => {
   const renderChildren = () => {
     let returnChild = null;
@@ -56,7 +57,7 @@ const RadioGroup = ({
   });
 
   return (
-    <div className={classes}>
+    <div className={classes} {...opts}>
       <FormLabel required={required} id="">
         {label}
       </FormLabel>

@@ -18,6 +18,7 @@ const OffCanvas = ({
   onReverseComplete,
   onReverseStart,
   onStart,
+  ...opts
 }) => {
   const offCanvasRef = useRef();
   const offCanvasPanelRef = useRef();
@@ -171,6 +172,7 @@ const OffCanvas = ({
         onClick={handleOutsideOffCanvasClick}
         ref={offCanvasRef}
         data-offcanvasroot
+        {...opts}
       >
         <div className="offCanvas-panel" ref={offCanvasPanelRef}>
           <Close onClick={handleOffCanvasToggle} className="offCanvas-close" />

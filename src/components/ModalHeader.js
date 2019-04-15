@@ -5,7 +5,7 @@ import React from 'react';
 import { Close } from '.';
 
 const ModalHeader = ({
-  center, className, onCloseClick, title,
+  center, className, onCloseClick, title, ...opts
 }) => {
   const handleCloseClick = () => {
     if (onCloseClick) onCloseClick();
@@ -17,7 +17,7 @@ const ModalHeader = ({
   });
 
   return (
-    <div className={classes}>
+    <div className={classes} {...opts}>
       <h4>{title}</h4>
       {onCloseClick && (
         <Close onClick={handleCloseClick} className="modal-close" />

@@ -15,6 +15,7 @@ const CheckboxGroup = ({
   label,
   required,
   validationMessage,
+  ...opts
 }) => {
   const renderChildren = () => React.Children.map(children, (child) => {
     if (inline) {
@@ -38,7 +39,7 @@ const CheckboxGroup = ({
   });
 
   return (
-    <div className={classes}>
+    <div className={classes} {...opts}>
       <FormLabel id="">{label}</FormLabel>
       {renderItems()}
       <FormFooter
