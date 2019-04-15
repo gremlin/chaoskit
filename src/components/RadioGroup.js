@@ -1,12 +1,15 @@
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { createContext } from 'react';
 
 import {
   FormLabel, FormFooter, Inline, List, ListItem,
 } from '.';
 
 import { config } from '../helpers/config';
+
+export const RadioGroupContext = createContext();
+export const RadioGroupProvider = RadioGroupContext.Provider;
 
 const RadioGroup = ({
   children,
@@ -21,27 +24,19 @@ const RadioGroup = ({
   required,
   ...opts
 }) => {
-  const renderChildren = () => {
-    let returnChild = null;
+  const renderChildren = () => React.Children.map(children, (child) => {
+    const onChangeFunc = () => {
+      onChange(name, child.props.value);
+    };
 
-    return React.Children.map(children, (child) => {
-      const onChangeFunc = () => {
-        onChange(name, child.props.value);
-      };
-
-      returnChild = React.cloneElement(child, {
-        onChange: onChangeFunc,
-        selectedValue,
-        name,
-      });
-
-      if (inline) {
-        return returnChild;
-      }
-
-      return <ListItem>{returnChild}</ListItem>;
-    });
-  };
+    return (
+      <RadioGroupProvider
+        value={{ selectedValue, name, onChange: onChangeFunc }}
+      >
+        {inline ? child : <ListItem>{child}</ListItem>}
+      </RadioGroupProvider>
+    );
+  });
 
   const renderItems = () => {
     if (inline) {

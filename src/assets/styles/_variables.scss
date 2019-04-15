@@ -3,19 +3,48 @@
 //
 
 $GREMLIN_green: #23c386;
+$GREMLIN_green__filter: brightness(0) saturate(100%) invert(60%) sepia(71%)
+  saturate(494%) hue-rotate(105deg) brightness(92%) contrast(80%);
 $GREMLIN_teal: #009580;
+$GREMLIN_teal__filter: brightness(0) saturate(100%) brightness(0) saturate(100%)
+  invert(35%) sepia(90%) saturate(1053%) hue-rotate(140deg) brightness(94%)
+  contrast(104%);
 $GREMLIN_blue: #2265c0;
+$GREMLIN_blue__filter: brightness(0) saturate(100%) invert(33%) sepia(28%)
+  saturate(2523%) hue-rotate(188deg) brightness(97%) contrast(97%);
 $GREMLIN_darkblue: #00458a;
+$GREMLIN_darkblue__filter: brightness(0) saturate(100%) invert(19%) sepia(93%)
+  saturate(1468%) hue-rotate(190deg) brightness(90%) contrast(108%);
 $GREMLIN_darkerblue: #0e0d22;
+$GREMLIN_darkerblue__filter: brightness(0) saturate(100%) invert(6%) sepia(35%)
+  saturate(1127%) hue-rotate(204deg) brightness(95%) contrast(102%);
 $GREMLIN_darkestblue: #050d16;
+$GREMLIN_darkestblue__filter: brightness(0) saturate(100%) invert(5%) sepia(22%)
+  saturate(1415%) hue-rotate(172deg) brightness(93%) contrast(101%);
 $GREMLIN_purple: #6544ae;
+$GREMLIN_purple__filter: brightness(0) saturate(100%) invert(32%) sepia(16%)
+  saturate(3361%) hue-rotate(225deg) brightness(94%) contrast(96%);
 $GREMLIN_gray: #606672;
+$GREMLIN_gray__filter: brightness(0) saturate(100%) invert(40%) sepia(10%)
+  saturate(514%) hue-rotate(182deg) brightness(94%) contrast(88%);
 $GREMLIN_bluegray: #8899ae;
+$GREMLIN_bluegray__filter: brightness(0) saturate(100%) invert(71%) sepia(8%)
+  saturate(846%) hue-rotate(173deg) brightness(85%) contrast(82%);
 $GREMLIN_lighterBlack: #4d525b;
+$GREMLIN_lighterBlack__filter: brightness(0) saturate(100%) invert(30%)
+  sepia(10%) saturate(521%) hue-rotate(180deg) brightness(98%) contrast(90%);
 $GREMLIN_lightBlack: #35383f;
+$GREMLIN_lightBlack__filter: brightness(0) saturate(100%) invert(18%) sepia(17%)
+  saturate(378%) hue-rotate(184deg) brightness(96%) contrast(88%);
 $GREMLIN_black: #131313;
+$GREMLIN_black__filter: brightness(0) saturate(100%) invert(0%) sepia(8%)
+  saturate(7414%) hue-rotate(107deg) brightness(89%) contrast(85%);
 $GREMLIN_red: #d00252;
+$GREMLIN_red__filter: brightness(0) saturate(100%) invert(13%) sepia(99%)
+  saturate(4118%) hue-rotate(327deg) brightness(85%) contrast(106%);
 $GREMLIN_yellow: #ffcf23;
+$GREMLIN_yellow__filter: brightness(0) saturate(100%) invert(79%) sepia(82%)
+  saturate(599%) hue-rotate(335deg) brightness(103%) contrast(102%);
 
 //
 // Colors
