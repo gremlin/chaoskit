@@ -23,9 +23,9 @@ A lightweight and modular front-end framework for developing fast and powerful w
 
 **Pushes to `master` will automatically deploy changes to the Netlify backend and generate a new version of the documentation site. This should typically be reserved for new releases or quick grammatical fixes to avoid confusion on the latest features available.**
 
-## Releases (WIP)
+## Versioning
 
-Not published to NPM just yet, but will provide instructions here.
+Maintained using the [Semantic Versioning Specification (SemVer)](http://semver.org) naming schema.
 
 ## Browser Support
 
