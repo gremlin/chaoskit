@@ -69,9 +69,8 @@ const getReactPropType = (propTypeFunc) => {
   return { name, isRequired };
 };
 
-const Docs = (props) => {
+const Docs = ({ component, propDescriptions }) => {
   const propTypes = [];
-  const { component, propDescriptions } = props;
 
   // If no component was specified; ignore
   if (!component) return null;

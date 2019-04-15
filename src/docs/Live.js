@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import scriptjs from 'scriptjs';
+import useMount from 'react-use/lib/useMount';
 import {
   LiveProvider, LiveEditor, LiveError, LivePreview,
 } from 'react-live';
@@ -8,63 +9,54 @@ import {
 import { Loader } from '../components';
 import Docs from './Docs';
 
-class Live extends React.Component {
-  state = {
-    loading: true,
-  };
+const Live = ({
+  component,
+  code,
+  scope,
+  propDescriptions,
+  showDocs,
+  showEditor,
+}) => {
+  const [isLoading, setLoading] = useState(true);
 
-  componentDidMount() {
+  useMount(() => {
     scriptjs('https://unpkg.com/babel-standalone@6/babel.min.js', () => {
-      this.setState({
-        loading: false,
-      });
+      setLoading(false);
     });
-  }
+  });
 
-  render() {
-    const {
-      component,
-      propDescriptions,
-      code,
-      showDocs,
-      showEditor,
-      scope,
-    } = this.props;
-    const { loading } = this.state;
+  // Add methods to every scope by default
+  const scopeProps = scope;
+  scopeProps.Fragment = Fragment;
+  scopeProps.useState = useState;
+  scopeProps.useEffect = useEffect;
 
-    // Add methods to every scope by default
-    const scopeProps = scope;
-    scopeProps.Fragment = Fragment;
-    scopeProps.useState = useState;
-    scopeProps.useEffect = useEffect;
-
-    return (
-      <Fragment>
-        {showDocs && (
-          <Docs component={component} propDescriptions={propDescriptions} />
-        )}
-        {loading ? (
-          <div className="u-textCenter">
-            <Loader className="u-textXlarge u-textPrimary" />
-          </div>
-        ) : (
-          <LiveProvider
-            scope={scopeProps}
-            code={code}
-            mountStylesheet={false}
-            transformCode={input => window.Babel.transform(input, { presets: ['stage-0', 'react'] })
-              .code
-            }
-          >
-            {showEditor && <LiveEditor />}
-            <LivePreview />
-            <LiveError />
-          </LiveProvider>
-        )}
-      </Fragment>
-    );
-  }
-}
+  return (
+    <Fragment>
+      {showDocs && (
+        <Docs component={component} propDescriptions={propDescriptions} />
+      )}
+      {isLoading ? (
+        <div className="u-textCenter">
+          <Loader className="u-textXlarge u-textPrimary" />
+        </div>
+      ) : (
+        <LiveProvider
+          scope={scopeProps}
+          code={code}
+          mountStylesheet={false}
+          transformCode={input => window.Babel.transform(input, { presets: ['stage-0', 'react'] })
+            .code
+          }
+        >
+          {showEditor && <LiveEditor />}
+          <LivePreview />
+          <LiveError />
+        </LiveProvider>
+      )}
+    </Fragment>
+  );
+};
 
 Live.propTypes = {
   component: PropTypes.any,
