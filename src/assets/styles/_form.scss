@@ -866,7 +866,9 @@ $form-contrast-background-focus: transparent !default;
       }
 
       option {
-        padding: $form-padding-horizontal;
+        padding:
+          $form-padding-horizontal
+          ($form-padding-horizontal - $global-whitespace-xsmall);
       }
     }
 

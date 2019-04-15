@@ -6,11 +6,8 @@ import { Button, Select } from '../components';
 
 const SelectExample = `
 () => {
-  const [selected, setSelected] = useState(-1);
-
   const handleChange = (name, value) => {
     console.log({name, value});
-    setSelected(value);
   };
 
   const selectOpts = [
@@ -21,22 +18,13 @@ const SelectExample = `
   ];
 
   return (
-    <Fragment>
-      <Button
-        className="u-link"
-        onClick={() => setSelected('test-string')}
-        type="reset"
-      >
-        Set to Option 2
-      </Button>
-      <Select
-        onChange={handleChange}
-        selected={selected}
-        name="select"
-        label="Choose One"
-        options={selectOpts}
-      />
-    </Fragment>
+    <Select
+      onChange={handleChange}
+      defaultValue="3"
+      name="select"
+      label="Choose One"
+      options={selectOpts}
+    />
   );
 }
 `.trim();

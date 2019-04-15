@@ -10,11 +10,11 @@ const Select = ({
   className,
   explanationMessage,
   label,
+  multiple,
   name,
   options,
   onChange,
   required,
-  selected,
   validationMessage,
   ...opts
 }) => {
@@ -33,6 +33,10 @@ const Select = ({
   const classes = cx('form-group', className, {
     [config.classes.notValid]: validationMessage,
     [config.classes.required]: required,
+  });
+
+  const selectClasses = cx('form-select', {
+    'form-select--multiple': multiple,
   });
 
   const renderOpts = (option) => {
@@ -60,12 +64,12 @@ const Select = ({
   return (
     <div className={classes}>
       <FormLabel id={id}>{label}</FormLabel>
-      <div className="form-select">
+      <div className={selectClasses}>
         <select
           id={id}
           name={name}
           onChange={handleOnChange}
-          value={selected}
+          multiple={multiple}
           {...opts}
         >
           {options.map(renderOpts)}
@@ -83,6 +87,7 @@ Select.propTypes = {
   className: PropTypes.string,
   explanationMessage: PropTypes.string,
   label: PropTypes.string,
+  multiple: PropTypes.bool,
   name: PropTypes.string.isRequired,
   options: PropTypes.array.isRequired,
   onChange: PropTypes.func,
