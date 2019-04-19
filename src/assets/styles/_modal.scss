@@ -19,12 +19,6 @@ $modal-large-enable: true !default;
 //
 
 @mixin modal() {
-  // Body styles to prevent scrolling
-  .has-openModal {
-    height: 100%;
-    overflow: hidden;
-  }
-
   // 1. JS styles
   .modal {
     position: fixed;
