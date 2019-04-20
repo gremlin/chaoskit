@@ -18,12 +18,6 @@ $offCanvas-panel-width: 300px !default;
 //
 
 @mixin offCanvas() {
-  // Body styles to prevent scrolling
-  .has-openOffCanvas {
-    height: 100%;
-    overflow: hidden;
-  }
-
   // 1. JS styles
   .offCanvas {
     position: fixed;
