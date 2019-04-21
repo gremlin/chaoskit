@@ -58,7 +58,6 @@ const OffCanvas = ({
   };
 
   const attachTimeline = () => {
-    const $body = document.body;
     const $offCanvas = offCanvasRef.current;
     const $panel = offCanvasPanelRef.current;
 
@@ -69,7 +68,6 @@ const OffCanvas = ({
     $offCanvas.timeline = new TimelineMax({
       paused: !open,
       onStart: () => {
-        $body.classList.add('has-openOffCanvas');
         $offCanvas.classList.add(config.classes.open);
 
         onStart();
@@ -84,7 +82,6 @@ const OffCanvas = ({
           if (!forward) {
             onReverseStart();
 
-            $body.classList.remove('has-openOffCanvas');
             $offCanvas.classList.remove(config.classes.open);
           }
         }

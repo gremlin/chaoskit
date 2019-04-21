@@ -53,7 +53,6 @@ const Modal = ({
   };
 
   const attachTimeline = () => {
-    const $body = document.body;
     const $modal = modalRef.current;
     const $modalDialog = modalDialogRef.current;
 
@@ -64,7 +63,6 @@ const Modal = ({
     $modal.timeline = new TimelineMax({
       paused: !open,
       onStart: () => {
-        $body.classList.add('has-openModal');
         $modal.classList.add(config.classes.open);
 
         onStart();
@@ -79,7 +77,6 @@ const Modal = ({
           if (!forward) {
             onReverseStart();
 
-            $body.classList.remove('has-openModal');
             $modal.classList.remove(config.classes.open);
           }
         }
