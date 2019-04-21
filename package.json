@@ -24,7 +24,7 @@
     "eslint-plugin-react-hooks": "1.6.0",
     "gsap": "2.1.2",
     "lodash-es": "4.17.11",
-    "match-sorter": "2.3.0",
+    "match-sorter": "3.0.0",
     "parse5": "5.1.0",
     "postcss-assets": "5.0.0",
     "postcss-easing-gradients": "3.0.1",
