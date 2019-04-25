@@ -180,6 +180,11 @@ class BaseLayout extends React.Component {
                     </Link>
                   </ListItem>
                   <ListItem>
+                    <Link to="/tabs/" activeClassName={config.classes.active}>
+                      Tabs
+                    </Link>
+                  </ListItem>
+                  <ListItem>
                     <Link
                       to="/tooltip/"
                       activeClassName={config.classes.active}

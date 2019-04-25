@@ -73,7 +73,7 @@ const Docs = ({ component, propDescriptions }) => {
   const propTypes = [];
 
   // If no component was specified; ignore
-  if (!component) return null;
+  if (!component || !component.propTypes) return null;
 
   Object.keys(component.propTypes).map(propName => propTypes.push({
     propName,

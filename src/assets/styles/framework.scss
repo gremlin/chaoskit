@@ -27,6 +27,7 @@
 @import 'social-icon';
 @import 'subnav';
 @import 'table';
+@import 'tabs';
 @import 'toggle';
 @import 'tooltip';
 
@@ -148,6 +149,10 @@
 
   @else if $component == 'table' {
     @include table();
+  }
+
+  @else if $component == 'tabs' {
+    @include tabs();
   }
 
   @else if $component == 'text' {
