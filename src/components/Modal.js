@@ -1,10 +1,9 @@
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import React, {
-  Fragment, useRef, useState, useEffect,
-} from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import useUpdateEffect from 'react-use/lib/useUpdateEffect';
 import useLockBodyScroll from 'react-use/lib/useLockBodyScroll';
+import useClickAway from 'react-use/lib/useClickAway';
 import ReactDOM from 'react-dom';
 import { TimelineMax } from 'gsap/TweenMax';
 
@@ -37,15 +36,6 @@ const Modal = ({
     const $modal = modalRef.current;
 
     $modal.timeline.reverse();
-  };
-
-  const handleOutsideModalClick = (e) => {
-    // If click originates outside of modal dialog
-    if (e.target.hasAttribute('data-modalroot')) {
-      onOutsideModalClick();
-    }
-
-    return false;
   };
 
   const handleOnReverseComplete = () => {
@@ -151,25 +141,19 @@ const Modal = ({
     className,
   );
 
+  useClickAway(modalDialogRef, () => onOutsideModalClick());
+  useLockBodyScroll(renderModal);
+
   return (
-    <Fragment>
-      {useLockBodyScroll(renderModal)}
-      {renderModal
-        && ReactDOM.createPortal(
-          <div /* eslint-disable-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
-            className={modalClasses}
-            onClick={handleOutsideModalClick}
-            ref={modalRef}
-            data-modalroot
-            {...opts}
-          >
-            <div className="modal-dialog" ref={modalDialogRef}>
-              {children}
-            </div>
-          </div>,
-          document.body,
-        )}
-    </Fragment>
+    renderModal
+    && ReactDOM.createPortal(
+      <div className={modalClasses} ref={modalRef} {...opts}>
+        <div className="modal-dialog" ref={modalDialogRef}>
+          {children}
+        </div>
+      </div>,
+      document.body,
+    )
   );
 };
 
