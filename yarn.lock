@@ -5830,10 +5830,10 @@ gray-matter@^4.0.1:
     section-matter "^1.0.0"
     strip-bom-string "^1.0.0"
 
-gsap@2.1.2:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/gsap/-/gsap-2.1.2.tgz#2ad017608f883379e546d8bcc3046182083d4da2"
-  integrity sha512-7saMzK2HQ3OD4/hbygtkh0uAK8LUqcom6abL4YqGttyxAQdEvywQOw5VK3obKQ7GaLU8KhszArKJPxIKe8mbvg==
+gsap@2.1.3:
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/gsap/-/gsap-2.1.3.tgz#c63ee3a50f0b7dc3b46ed0845bb0f09049feb944"
+  integrity sha512-8RFASCqi2FOCBuv7X4o7M6bLdy+1hbR0azg+MG7zz+EVsI+OmJblYsTk0GEepQd2Jg/ItMPiVTibF7r3EVxjZQ==
 
 gud@^1.0.0:
   version "1.0.0"
@@ -9930,10 +9930,10 @@ react-textarea-autosize@7.1.0:
     "@babel/runtime" "^7.1.2"
     prop-types "^15.6.0"
 
-react-use@8.3.1:
-  version "8.3.1"
-  resolved "https://registry.yarnpkg.com/react-use/-/react-use-8.3.1.tgz#31b98df0acb312c19e14ebb025121e4f98ad292b"
-  integrity sha512-qN3tqhm7Izntj3zfZgL/Y/Ba0gkVr0BUTaFskxd6zDHB2rAuqXR7RXSTy7Fk0WO3vAPZCvBLk8DyqNGnb5AvZQ==
+react-use@9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/react-use/-/react-use-9.0.0.tgz#142bec53fa465db2a6e43c68a8c9ef2acc000592"
+  integrity sha512-jlXJneB96yl4VvAXDKyE6cmdIeWk0cO7Gomh870Qu0vXZ9YM2JjjR09E9vIPPPI2M27RWo2dZKXspv44Wxtoog==
   dependencies:
     copy-to-clipboard "^3.1.0"
     nano-css "^5.1.0"
