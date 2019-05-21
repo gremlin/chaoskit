@@ -85,7 +85,7 @@ Button.propTypes = {
   loading: PropTypes.bool,
   noContrast: PropTypes.bool,
   noRadius: PropTypes.bool,
-  size: PropTypes.oneOf(['xsmall', 'small']),
+  size: PropTypes.oneOf(['default', 'xsmall', 'small']),
   type: PropTypes.oneOf([
     'reset',
     'default',

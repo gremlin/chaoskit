@@ -147,7 +147,7 @@ Alert.propTypes = {
   onStart: PropTypes.func,
   close: PropTypes.bool,
   title: PropTypes.string,
-  type: PropTypes.oneOf(['primary', 'warning', 'danger']),
+  type: PropTypes.oneOf(['default', 'primary', 'warning', 'danger']),
 };
 
 Alert.defaultProps = {

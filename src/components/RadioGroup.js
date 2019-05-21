@@ -40,7 +40,7 @@ const RadioGroup = ({
 
   const renderItems = () => {
     if (inline) {
-      return <Inline>{renderChildren()}</Inline>;
+      return <Inline className="form-inlineCombo">{renderChildren()}</Inline>;
     }
 
     return <List type={['space']}>{renderChildren()}</List>;

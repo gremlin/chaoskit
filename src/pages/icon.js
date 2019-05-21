@@ -15,7 +15,7 @@ const IconExample = `
 `.trim();
 
 const IconExampleAll = `
-<ul className="blockGrid blockGrid-2@small blockGrid-4@medium">
+<ul className="blockGrid blockGrid-2@small blockGrid-4@medium blockGrid--deepMatch">
   {Object.entries(icons).map(icon => (
     <li key={icon[0]}>
       <div className="docs__box u-textCenter">
