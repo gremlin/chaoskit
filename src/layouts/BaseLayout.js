@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import 'what-input';
+import useUpdateEffect from 'react-use/lib/useUpdateEffect';
 
 import Foundation from './Foundation';
 import { styles } from '../helpers/styles';
@@ -18,9 +19,8 @@ import '../assets/styles/site.scss';
 const BaseLayout = ({ children, pageTitle }) => {
   const [isMobileNavOpen, setMobileNavOpen] = useState(false);
 
-  const viewportMediumMin = window.matchMedia(
-    `(min-width: ${styles.viewport.medium})`,
-  );
+  const viewportMediumMin = typeof window !== 'undefined'
+    && window.matchMedia(`(min-width: ${styles.viewport.medium})`);
 
   const handleMobileNavToggle = () => {
     setMobileNavOpen(!isMobileNavOpen);
@@ -29,23 +29,28 @@ const BaseLayout = ({ children, pageTitle }) => {
   // Make sure we close mobile nav if resizing from mobile to desktop
   const checkSize = (event) => {
     if (isMobileNavOpen && event.matches) {
-      handleMobileNavToggle();
+      setMobileNavOpen(false);
     }
   };
 
-  useEffect(() => {
-    viewportMediumMin.addListener(checkSize);
+  useUpdateEffect(
+    () => {
+      viewportMediumMin.addListener(checkSize);
 
-    window.onpopstate = (event) => {
-      if (event.srcElement.location.pathname === event.target.location.pathname) return;
+      window.onpopstate = (event) => {
+        if (
+          event.srcElement.location.pathname === event.target.location.pathname
+        ) return;
 
-      setMobileNavOpen(false);
-    };
+        setMobileNavOpen(false);
+      };
 
-    return () => {
-      viewportMediumMin.removeListener(checkSize);
-    };
-  });
+      return () => {
+        viewportMediumMin.removeListener(checkSize);
+      };
+    },
+    [isMobileNavOpen],
+  );
 
   const navClasses = cx('docs__sidebar', {
     [config.classes.open]: isMobileNavOpen,
