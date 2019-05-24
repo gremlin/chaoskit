@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import MaskedInput from 'react-text-mask';
 
-import { FormFooter, FormLabel, Icon } from '.';
+import FormFooter from './FormFooter';
+import FormLabel from './FormLabel';
+import Icon from './Icon';
 import { generateUUID } from '../helpers/utility';
 import { config } from '../helpers/config';
 

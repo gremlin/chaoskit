@@ -2,7 +2,7 @@ import cx from 'classnames';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 
-import { Icon } from '.';
+import Icon from './Icon';
 
 const Avatar = ({
   className, image, name, size, ...opts

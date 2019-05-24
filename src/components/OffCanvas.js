@@ -7,8 +7,8 @@ import useClickAway from 'react-use/lib/useClickAway';
 import ReactDOM from 'react-dom';
 import { TimelineMax } from 'gsap/TweenMax';
 
+import Close from './Close';
 import { config } from '../helpers/config';
-import { Close } from '.';
 
 const OffCanvas = ({
   children,

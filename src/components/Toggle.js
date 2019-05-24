@@ -2,7 +2,7 @@ import cx from 'classnames';
 import PropTypes from 'prop-types';
 import React, { useRef } from 'react';
 
-import { FormLabel } from '.';
+import FormLabel from './FormLabel';
 import { generateUUID } from '../helpers/utility';
 
 const Toggle = ({

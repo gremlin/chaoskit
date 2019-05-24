@@ -1,0 +1,174 @@
+# Styles
+
+ChaosKit uses both [Sass](http://sass-lang.com/) (the [Node](https://github.com/sass/node-sass) flavor) and [PostCSS](http://postcss.org/) to build styles.
+
+### Rules
+
+While nobody likes 'em, these rules are in-place to ensure the ongoing quality of the codebase:
+
+- We have 4 distinct breakpoints: small `480px` medium `768px` large `960px` and xlarge `1200px`. Please do not introduce a new one.
+- Never use IDs as styling hooks. Those are for JS and links.
+- Optimize for less specificity. Instead of `div.box`, do `.box`
+- Avoid nesting. Instead of `.box .button` do `.button`
+
+### Naming conventions
+
+We write our styles in an object oriented CSS methodology called [BEM](https://en.bem.info/); which stands for Block, Element, Modifier. We have adopted Nicolas Gallagher's naming scheme, [SUIT](https://github.com/suitcss/suit/blob/master/doc/naming-conventions.md), which is as follows:
+
+- **Blocks**; the top level components, are camel case. For instance, `.offCanvas`
+- **Elements**; children of the block elements, are named like so: `.offCanvas-panel`
+- **Modifier** classes are then applied to change the default block styles. For instance `.button--primary`
+
+#### Page-specific styles
+
+No-one likes one-offs, but depending on your project; like a marketing site - you may have the need to create styles that are meant to be used on a very specific page. We get around this by prefixing page-specific styles with the page name. If you're on a product page; prefix styles with `.product__`; like `.product__specialBox`. This; just like namespacing JavaScript classes/methods allows us to maintain a consistent class structure. Then, if you notice that you've re-used those same styles elsewhere; you can pull them out into a global file that has names that fit more within a global-scope; like `.specialBox`.
+
+#### Breakpoints
+
+To help us decipher components that are being impacted by a specific breakpoint, we use the `@` symbol attached to our classnames, like so: `.column-6@medium`. This translates to a six-column element that only inherits those styles on the medium breakpoint. We did this to avoid cases where: `.button--large` could be confused for a breakpoint instead of a size modifier.
+
+**Note:** When writing your own breakpoint modifiers, remember to escape the `@` symbol. You can reference these classes without escaping within your HTML.
+
+```scss
+.myComponent {
+  width: 200px;
+
+  &\@medium {
+    width: 400px;
+  }
+}
+
+// Compiles to
+.myComponent {
+  width: 200px;
+}
+
+.myComponent\@medium {
+  width: 400px;
+}
+```
+
+### Structure
+
+Every imported file within `framework.scss` is constructed via a mixin with the same name. The mixin is then called via a loop of components that can be modified as needed. This allows for a smarter inheritance system, variables scoped to the component file and easier overrides.
+
+### Typical project structure
+
+```scss
+//
+// Framework core
+//
+
+@import 'framework/core';
+
+//
+// Project overrides
+//
+
+@import 'site/framework/config';
+@import 'site/framework/variables';
+@import 'site/framework/button';
+
+//
+// Framework
+//
+
+@import 'framework/framework';
+
+//
+// Project
+//
+
+@import 'site/global';
+```
+
+**Note:** As a personal preference, we like to keep our framework overrides in a `/framework` directory within our projects, with each component in its own file — just as the framework does.
+
+### Modify components
+
+You can modify components three different ways:
+
+#### Variables
+
+Each component has a slew of variables that you can easily override in your project to fit your design needs.
+
+```scss
+// Overrides default `border-radius` set by the framework
+$global-border-radius: 0;
+```
+
+#### Hooks
+
+Hooks allow us to inject additional styles alongside components to reduce selectors.
+
+```scss
+// Example provided by framework
+.box {
+  position: relative;
+  padding: $global-whitespace-large;
+  border: 1px solid $global-border;
+  border-radius: $global-border-radius;
+
+  @if (mixin-exists(hook-box)) {
+    @include hook-box();
+  }
+}
+
+// Use of hook in project styles
+@mixin hook-box() {
+  &--small {
+    padding: $global-whitespace-small;
+  }
+}
+
+// Compiles to
+.box {
+  position: relative;
+  padding: 32px;
+  border: 1px solid #e0e0e0;
+  border-radius: 3px;
+}
+
+.box--small {
+  padding: 8px;
+}
+```
+
+#### Extending
+
+In a perfect-world, controlling DOM and utilizing utility classes is the bees-knees. In real-world applications; that's easier said than done. Thankfully, Sass has built-in support for extending portions of your codebase with their `@extend` directive. Extending classes however, can be a crap-shoot; as it duplicates every instance of that selector. That's why we've implemented `%placeholders` for some of our components; namely our utilities. You can use them like so:
+
+```scss
+.module-title {
+  @extend %u-textFluid--h3-h4;
+}
+```
+
+> Note
+>
+> Once Sass supports [dynamic mixin names](https://github.com/sass/sass/issues/626) we'll most likely move things over to them; since they can perform minutely better during GZIP compression.
+
+#### Removing components
+
+While we may be partial, you might not need all the magic our framework provides. In the interest of size, we provide a configurable `$components` array that you can interact with in two ways:
+
+#### List components
+
+This is a great option when you know the components that you want to use in your project.
+
+```scss
+$components: ('base', 'button');
+```
+
+#### Remove specific components
+
+What if you want all components except just a few? We have a handy function that abstracts away funky file paths or duplication.
+
+```scss
+$components-to-remove: ('badge', 'toggle', 'tooltip');
+
+// Run through above array of components to remove from list
+@each $component in $components-to-remove {
+  $components: remove($components, $component);
+}
+```
