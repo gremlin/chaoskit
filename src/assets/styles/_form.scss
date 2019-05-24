@@ -518,6 +518,12 @@ $form-contrast-background-focus: transparent !default;
     line-height: $global-line-height-small;
     margin-bottom: $global-whitespace-small;
     position: relative;
+
+    @if $global-contrast-enable and $form-contrast-enable {
+      .u-contrast & {
+        color: $global-contrast;
+      }
+    }
   }
 
   .form-group {
@@ -901,9 +907,7 @@ $form-contrast-background-focus: transparent !default;
     color: $global-muted;
     margin-top: $global-whitespace-xsmall;
 
-    @if $global-contrast-enable and
-      $form-contrast-enable and
-      $form-contrast-input-enable {
+    @if $global-contrast-enable and $form-contrast-enable {
       .u-contrast & {
         color: $global-contrast-muted;
       }
@@ -917,6 +921,12 @@ $form-contrast-background-focus: transparent !default;
   .form-footerError {
     color: $global-danger;
     margin-top: $global-whitespace-xsmall;
+
+    @if $global-contrast-enable and $form-contrast-enable {
+      .u-contrast & {
+        color: $global-contrast-muted;
+      }
+    }
 
     @media (min-width: $global-viewport-medium) {
       margin-left: auto;
