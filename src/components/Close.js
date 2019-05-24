@@ -5,11 +5,17 @@ import cx from 'classnames';
 import Button from './Button';
 import Icon from './Icon';
 
-const Close = ({ className, ...opts }) => {
+const Close = ({ className, onClick, ...opts }) => {
   const classes = cx('close', className);
 
   return (
-    <Button type="reset" className={classes} {...opts}>
+    <Button
+      type="reset"
+      title="Close"
+      onClick={onClick}
+      className={classes}
+      {...opts}
+    >
       <Icon icon="close" />
     </Button>
   );
