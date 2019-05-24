@@ -2,7 +2,7 @@
 // Variables
 //
 
-$toggle-height: $global-height-xsmall !default;
+$toggle-height: $global-height-micro !default;
 $toggle-width: ($toggle-height * 1.75) !default;
 $toggle-transition: all 0.25s easeInOutCubic !default;
 $toggle-background: lighten($global-dark, 60) !default;
