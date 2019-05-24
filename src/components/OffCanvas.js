@@ -180,7 +180,6 @@ OffCanvas.propTypes = {
 };
 
 OffCanvas.defaultProps = {
-  children: null,
   open: false,
   onComplete: () => {},
   onReverseComplete: () => {},

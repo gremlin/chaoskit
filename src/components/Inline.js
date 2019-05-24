@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 const Inline = ({
-  children, className, size, wrap, ...opts
+  className, size, wrap, ...opts
 }) => {
   const classes = cx('inline', className, {
     'inline--small': size === 'small',
@@ -13,16 +13,11 @@ const Inline = ({
     'inline--noWrap': !wrap,
   });
 
-  return (
-    <div className={classes} {...opts}>
-      {children}
-    </div>
-  );
+  return <div className={classes} {...opts} />;
 };
 
 Inline.propTypes = {
   className: PropTypes.string,
-  children: PropTypes.node,
   size: PropTypes.oneOf(['small', 'default', 'medium', 'large', 'xlarge']),
   wrap: PropTypes.bool,
 };
