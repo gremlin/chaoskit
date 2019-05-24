@@ -6,20 +6,10 @@ const { postCssPlugins } = require('../utils/postcss-config');
 module.exports = ({ config, mode }) => {
   const isEnvProduction = mode === 'PRODUCTION';
 
-  /*  config.module.rules.push({
-    test: /\.js$|\.jsx$/,
-    exclude: /(node_modules|cache|public)/,
-    use: [
-      {
-        loader: 'eslint-loader',
-      },
-    ],
-  });*/
-
   config.module.rules.push({
-    test: /\.stories\.jsx?$/,
-    loaders: [require.resolve('@storybook/addon-storysource/loader')],
-    enforce: 'pre',
+    test: /\.js$/,
+    exclude: /(node_modules)/,
+    loaders: ['eslint-loader'],
   });
 
   config.module.rules.push({
