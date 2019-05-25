@@ -43,7 +43,30 @@ const gremlin = {
     'brightness(0) saturate(100%) invert(79%) sepia(82%) saturate(599%) hue-rotate(335deg) brightness(103%) contrast(102%)',
 };
 
+const breakpoint = {
+  small: 480,
+  get small__max() {
+    return this.small - 1;
+  },
+  medium: 768,
+  get medium__max() {
+    return this.medium - 1;
+  },
+  large: 960,
+  get large__max() {
+    return this.large - 1;
+  },
+  xlarge: 1200,
+  get xlarge__max() {
+    return this.xlarge - 1;
+  },
+};
+
 const color = {
+  light: {
+    base: '#fff',
+    dark: '#fafbfc',
+  },
   dark: {
     base: gremlin.black,
     light: gremlin.lightBlack,
@@ -89,6 +112,12 @@ const borderRadius = {
   large: 8,
 };
 
+const font = {
+  base: "Gira, 'Helvetica Neue', Arial, sans-serif",
+  code: "'Operator Mono', Consolas, monospace, serif",
+  heading: "Circular, 'Helvetica Neue', Arial, sans-serif",
+};
+
 const fontColor = {
   base: color.dark.light,
   get muted() {
@@ -112,6 +141,14 @@ const fontWeight = {
   bold: 600,
 };
 
+const height = {
+  large: 64,
+  base: 48,
+  small: 40,
+  xsmall: 32,
+  micro: 28,
+};
+
 const lineHeight = {
   base: 1.65,
   get base__computed() {
@@ -123,12 +160,30 @@ const lineHeight = {
   },
 };
 
+const opacity = {
+  base: 0.5,
+};
+
+const space = {
+  xsmall: 4,
+  small: 8,
+  regular: 16,
+  medium: 24,
+  large: 32,
+  xlarge: 64,
+};
+
 export const theme = {
   border,
   borderRadius,
+  breakpoint,
   color,
+  font,
   fontColor,
   fontSize,
   fontWeight,
+  height,
   lineHeight,
+  opacity,
+  space,
 };
