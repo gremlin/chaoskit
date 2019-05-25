@@ -167,7 +167,7 @@ const opacity = {
 const space = {
   xsmall: 4,
   small: 8,
-  regular: 16,
+  base: 16,
   medium: 24,
   large: 32,
   xlarge: 64,

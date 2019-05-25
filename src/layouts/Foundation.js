@@ -50,9 +50,12 @@ const Foundation = props => (
                   '&:hover': {
                     background: theme.color.danger.dark,
                   },
+                  color: theme.fontColor.heading,
                   lineHeight: theme.lineHeight.base__computed,
                 }}
-              />
+              >
+                test
+              </div>
               {children}
             </ThemeProvider>
           </CacheProvider>
