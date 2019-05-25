@@ -11,6 +11,7 @@
   },
   "author": "Zach Schnackel <zach@gremlin.com>",
   "dependencies": {
+    "@emotion/cache": "^10.0.9",
     "@emotion/core": "10.0.10",
     "babel-cli": "6.26.0",
     "classnames": "2.2.6",
@@ -29,6 +30,7 @@
     "lodash-es": "4.17.11",
     "match-sorter": "3.0.0",
     "parse5": "5.1.0",
+    "polished": "3.3.2",
     "postcss-assets": "5.0.0",
     "postcss-easing-gradients": "3.0.1",
     "postcss-easings": "2.0.0",
