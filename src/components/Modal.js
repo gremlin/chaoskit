@@ -160,7 +160,7 @@ const Modal = ({
 Modal.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  size: PropTypes.oneOf(['small', 'large']),
+  size: PropTypes.oneOf(['default', 'small', 'large']),
   open: PropTypes.bool,
   onOutsideModalClick: PropTypes.func,
   onComplete: PropTypes.func,
@@ -170,7 +170,6 @@ Modal.propTypes = {
 };
 
 Modal.defaultProps = {
-  open: false,
   onOutsideModalClick: () => {},
   onComplete: () => {},
   onReverseComplete: () => {},

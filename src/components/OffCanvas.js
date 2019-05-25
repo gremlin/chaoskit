@@ -90,7 +90,7 @@ const OffCanvas = ({
       })
       .to(
         $offCanvas,
-        0.5,
+        0.25,
         {
           css: {
             opacity: 1,
