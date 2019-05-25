@@ -15,7 +15,6 @@ import {
 import { version } from '../../package.json';
 
 import mascot from '../assets/media/logo-mascot.svg';
-import '../assets/styles/site.scss';
 
 const BaseLayout = ({ children, pageTitle }) => {
   const [isMobileNavOpen, setMobileNavOpen] = useState(false);

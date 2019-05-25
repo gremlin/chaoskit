@@ -2,9 +2,12 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
+import { ThemeProvider } from 'emotion-theming';
+import { Global } from '@emotion/core';
 import 'what-input';
 
-import '../assets/styles/site.scss';
+import { theme } from '../assets/styles/theme';
+import { globalStyles } from '../assets/styles/global';
 
 const Foundation = props => (
   <StaticQuery
@@ -32,7 +35,10 @@ const Foundation = props => (
             title={title}
             meta={[{ name: 'description', content: description }]}
           />
-          {children}
+          <ThemeProvider theme={theme}>
+            <Global styles={{ ...globalStyles(theme) }} />
+            {children}
+          </ThemeProvider>
         </Fragment>
       );
     }}

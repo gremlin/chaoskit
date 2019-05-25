@@ -45,5 +45,5 @@
     ]
   },
 
-  "plugins": ["react", "jsx-a11y", "react-hooks"]
+  "plugins": ["react", "jsx-a11y", "emotion", "react-hooks"]
 }

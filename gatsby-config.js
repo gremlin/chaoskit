@@ -1,5 +1,3 @@
-const { postCssPlugins } = require('./utils/postcss-config');
-
 module.exports = {
   siteMetadata: {
     title: 'ChaosKit',
@@ -7,12 +5,7 @@ module.exports = {
       'A lightweight and modular front-end framework for developing fast and powerful web interfaces within Gremlin',
   },
   plugins: [
-    {
-      resolve: 'gatsby-plugin-sass',
-      options: {
-        postCssPlugins: postCssPlugins(),
-      },
-    },
+    'gatsby-plugin-emotion',
     'gatsby-plugin-catch-links',
     'gatsby-plugin-react-helmet',
     {
