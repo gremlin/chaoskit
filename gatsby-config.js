@@ -19,7 +19,7 @@ module.exports = {
       resolve: 'gatsby-mdx',
       options: {
         defaultLayouts: {
-          default: require.resolve('./src/templates/Article.js'),
+          default: require.resolve('./src/layouts/BaseLayout.js'),
         },
         gatsbyRemarkPlugins: [
           {
