@@ -1,27 +1,24 @@
 # ChaosKit <img src="./src/assets/media/logo-mascot.svg" height="30px;">
 
-A lightweight and modular front-end framework for developing fast and powerful web interfaces within Gremlin
+ChaosKit is a lightweight and modular front-end framework for developing fast and powerful web interfaces within Gremlin.
 
-## Documentation
+Emphasis is placed on base-styles that follow our Sass guidelines with the flexibility of overriding portions to your needs with hooks, class modifiers, and variable overrides that make this framework extensible to fit both marketing and application initiatives.
 
-[https://chaoskit.netlify.com](https://chaoskit.netlify.com)
+## Installation
+
+```bash
+yarn add chaoskit
+```
 
 ## Setup
 
-* Make sure you have the following installed:
-  * [NodeJS](http://nodejs.org) `>= 8.12.0`
-  * [yarn](https://www.npmjs.com/) `>= 1.12.1`
+- Make sure you have the following installed:
+  - [NodeJS](http://nodejs.org) `>= 10.15.3`
+  - [yarn](https://www.npmjs.com/) `>= 1.16.0`
 
 ## Development Workflow
 
-* `yarn develop` Installs all dependencies, starts Gatsby instance, watches for file changes, and automatically reloads your browser.
-
-## Production Builds
-
-* `gatsby build` Builds a production-version of the framework + documentation site.
-* `gatsby serve` Runs the latest production-version of the framework + documentation site. This can be beneficial before pushing your changes to find any regressions in final output.
-
-**Pushes to `master` will automatically deploy changes to the Netlify backend and generate a new version of the documentation site. This should typically be reserved for new releases or quick grammatical fixes to avoid confusion on the latest features available.**
+- `yarn develop` Installs all dependencies, starts a Storybook instance, watches for file changes, and automatically reloads your browser.
 
 ## Versioning
 

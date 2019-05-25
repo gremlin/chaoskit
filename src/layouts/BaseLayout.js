@@ -3,6 +3,7 @@ import cx from 'classnames';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import 'what-input';
+import { Helmet } from 'react-helmet';
 import useUpdateEffect from 'react-use/lib/useUpdateEffect';
 
 import Foundation from './Foundation';
@@ -58,6 +59,7 @@ const BaseLayout = ({ children, pageTitle }) => {
 
   return (
     <Foundation>
+      <Helmet title={pageTitle} />
       <div className="container">
         <div className="docs__wrapper">
           <aside className={navClasses}>
@@ -250,7 +252,7 @@ const BaseLayout = ({ children, pageTitle }) => {
             </div>
           </aside>
           <main className="docs__content">
-            {pageTitle && <h1>{pageTitle}</h1>}
+            <h1>{pageTitle}</h1>
             {children}
           </main>
         </div>
@@ -290,7 +292,7 @@ const BaseLayout = ({ children, pageTitle }) => {
 
 BaseLayout.propTypes = {
   children: PropTypes.node,
-  pageTitle: PropTypes.string,
+  pageTitle: PropTypes.string.isRequired,
 };
 
 export default BaseLayout;

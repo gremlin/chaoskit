@@ -5,8 +5,8 @@ import useMount from 'react-use/lib/useMount';
 import useUpdateEffect from 'react-use/lib/useUpdateEffect';
 import { TimelineMax } from 'gsap/TweenMax';
 
+import Button from './Button';
 import { config } from '../helpers/config';
-import { Button } from '.';
 
 const Reveal = ({
   onStart,
@@ -154,9 +154,13 @@ Reveal.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   reveal: PropTypes.bool,
+  /** GSAP callback */
   onComplete: PropTypes.func,
+  /** GSAP callback */
   onReverseComplete: PropTypes.func,
+  /** GSAP callback */
   onReverseStart: PropTypes.func,
+  /** GSAP callback */
   onStart: PropTypes.func,
   trigger: PropTypes.shape({
     props: PropTypes.object,
@@ -169,7 +173,6 @@ Reveal.defaultProps = {
   onReverseComplete: () => {},
   onReverseStart: () => {},
   onStart: () => {},
-  reveal: false,
 };
 
 export default Reveal;
