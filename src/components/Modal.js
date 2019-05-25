@@ -160,17 +160,20 @@ const Modal = ({
 Modal.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  size: PropTypes.oneOf(['small', 'large']),
+  size: PropTypes.oneOf(['default', 'small', 'large']),
   open: PropTypes.bool,
   onOutsideModalClick: PropTypes.func,
+  /** GSAP callback */
   onComplete: PropTypes.func,
+  /** GSAP callback */
   onReverseComplete: PropTypes.func,
+  /** GSAP callback */
   onReverseStart: PropTypes.func,
+  /** GSAP callback */
   onStart: PropTypes.func,
 };
 
 Modal.defaultProps = {
-  open: false,
   onOutsideModalClick: () => {},
   onComplete: () => {},
   onReverseComplete: () => {},

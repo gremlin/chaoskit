@@ -8,7 +8,7 @@ import ReactDOM from 'react-dom';
 import { TimelineMax } from 'gsap/TweenMax';
 
 import { config } from '../helpers/config';
-import { Close } from '.';
+import Close from './Close';
 
 const OffCanvas = ({
   children,
@@ -173,15 +173,17 @@ OffCanvas.propTypes = {
   align: PropTypes.oneOf(['left', 'right']),
   open: PropTypes.bool,
   onOffCanvasToggle: PropTypes.func.isRequired,
+  /** GSAP callback */
   onComplete: PropTypes.func,
+  /** GSAP callback */
   onReverseComplete: PropTypes.func,
+  /** GSAP callback */
   onReverseStart: PropTypes.func,
+  /** GSAP callback */
   onStart: PropTypes.func,
 };
 
 OffCanvas.defaultProps = {
-  children: null,
-  open: false,
   onComplete: () => {},
   onReverseComplete: () => {},
   onReverseStart: () => {},

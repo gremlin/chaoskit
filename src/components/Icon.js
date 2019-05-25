@@ -49,8 +49,10 @@ const Icon = React.forwardRef(
 
 Icon.propTypes = {
   className: PropTypes.string,
+  /** When icon is not found. Useful in generated content */
   fallback: PropTypes.string,
   icon: PropTypes.string.isRequired,
+  /** Pass in (and override) additional icon data to search through */
   additionalIcons: PropTypes.object,
   size: PropTypes.oneOf(['small', 'large', 'xlarge']),
 };

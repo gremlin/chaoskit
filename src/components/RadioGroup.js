@@ -2,10 +2,11 @@ import cx from 'classnames';
 import PropTypes from 'prop-types';
 import React, { createContext } from 'react';
 
-import {
-  FormLabel, FormFooter, Inline, List, ListItem,
-} from '.';
-
+import FormLabel from './FormLabel';
+import FormFooter from './FormFooter';
+import Inline from './Inline';
+import List from './List';
+import ListItem from './ListItem';
 import { config } from '../helpers/config';
 
 export const RadioGroupContext = createContext();

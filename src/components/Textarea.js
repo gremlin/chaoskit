@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import TextareaAutoSize from 'react-textarea-autosize';
 
-import { FormFooter, FormLabel } from '.';
+import FormLabel from './FormLabel';
+import FormFooter from './FormFooter';
 import { generateUUID } from '../helpers/utility';
 import { config } from '../helpers/config';
 
