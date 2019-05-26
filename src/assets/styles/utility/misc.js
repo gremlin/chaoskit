@@ -16,3 +16,8 @@ export const overflow = {
   overflow: 'auto',
   WebkitOverflowScrolling: 'touch',
 };
+
+export const hide = {
+  display: 'none !important',
+  visibility: 'hidden !important',
+};

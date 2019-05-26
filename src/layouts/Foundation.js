@@ -8,6 +8,7 @@ import createCache from '@emotion/cache';
 import 'what-input';
 
 import { theme } from '../assets/styles/theme';
+import { contrast } from '../assets/styles/utility';
 import { globalStyles } from '../assets/styles/global';
 
 const ckCache = createCache({
@@ -42,9 +43,12 @@ const Foundation = props => (
           />
           <CacheProvider value={ckCache}>
             <ThemeProvider theme={theme}>
-              <Global styles={{ ...globalStyles(theme) }} />
+              <Global
+                styles={{ ...globalStyles(theme), ...contrast.styles(theme) }}
+              />
               {console.log({ theme })}
               <div
+                className="u-contrast"
                 css={{
                   padding: 100,
                   background: theme.color.primary.base,

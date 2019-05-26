@@ -291,6 +291,9 @@ const contrast = {
   get border() {
     return rgba(this.base, 0.7);
   },
+  get hr() {
+    return rgba(this.base, 0.05);
+  },
 };
 
 export const theme = {

@@ -21,8 +21,3 @@ export const truncate = {
   textOverflow: 'ellipsis',
   whiteSpace: 'nowrap',
 };
-
-export const breakWord = {
-  hyphens: 'auto',
-  wordWrap: 'breakWord',
-};

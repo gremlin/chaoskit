@@ -1,8 +1,10 @@
+import * as contrast from './contrast';
 import * as flex from './flex';
 import * as text from './text';
 import * as link from './link';
+import * as gradient from './gradient';
 import * as misc from './misc';
 
 export {
-  flex, text, link, misc,
+  contrast, flex, text, link, gradient, misc,
 };
