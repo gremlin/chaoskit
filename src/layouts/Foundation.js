@@ -15,6 +15,17 @@ import { globalStyles } from '../assets/styles/global';
 
 const ckCache = createCache({
   key: 'ck',
+  // Only prefix the following style properties
+  prefix: (key) => {
+    switch (key) {
+      case 'appearance':
+      case 'user-select':
+      case ':placeholder':
+        return true;
+      default:
+        return false;
+    }
+  },
 });
 
 const Foundation = props => (
