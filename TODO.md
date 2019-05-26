@@ -1,0 +1,1 @@
+- `base.scss`: `is-loaded` needs to be applied in Gatsby sites

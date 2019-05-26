@@ -101,6 +101,9 @@ const color = {
       return shade(0.05, this.base);
     },
   },
+  highlight: {
+    base: '#ffa',
+  },
 };
 
 const border = {
@@ -112,7 +115,7 @@ const borderRadius = {
   large: 8,
 };
 
-const font = {
+const fontFamily = {
   base: "Gira, 'Helvetica Neue', Arial, sans-serif",
   code: "'Operator Mono', Consolas, monospace, serif",
   heading: "Circular, 'Helvetica Neue', Arial, sans-serif",
@@ -178,7 +181,7 @@ export const theme = {
   borderRadius,
   breakpoint,
   color,
-  font,
+  fontFamily,
   fontColor,
   fontSize,
   fontWeight,
