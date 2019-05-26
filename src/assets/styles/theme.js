@@ -82,7 +82,7 @@ const color = {
   panel: {
     base: '#fafbfc',
     get dark() {
-      return shade(0.025, this.base);
+      return shade(0.1, this.base);
     },
   },
   dark: {
@@ -98,7 +98,7 @@ const color = {
       return mix(0.9, '#fff', this.base);
     },
     get dark() {
-      return shade(0.05, this.base);
+      return shade(0.1, this.base);
     },
   },
   warning: {
@@ -107,7 +107,7 @@ const color = {
       return mix(0.9, '#fff', this.base);
     },
     get dark() {
-      return shade(0.05, this.base);
+      return shade(0.1, this.base);
     },
   },
   danger: {
@@ -116,7 +116,7 @@ const color = {
       return mix(0.925, '#fff', this.base);
     },
     get dark() {
-      return shade(0.05, this.base);
+      return shade(0.1, this.base);
     },
   },
   highlight: {
