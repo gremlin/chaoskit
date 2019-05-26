@@ -106,7 +106,7 @@ export const globalStyles = theme => ({
 
   // 1. Address odd `em`-unit font size rendering in all browsers.
   ':not(pre) > code, :not(pre) > kbd, :not(pre) > samp': {
-    fontSize: theme.fontSize.base, // 1
+    fontSize: '1em', // 1
     fontFamily: theme.fontFamily.code, // 2
     // 3
     color: theme.color.danger,

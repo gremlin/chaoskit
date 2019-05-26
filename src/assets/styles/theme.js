@@ -66,6 +66,9 @@ const color = {
   light: {
     base: '#fff',
     dark: '#fafbfc',
+    get darker() {
+      return shade(2.5, this.dark);
+    },
   },
   dark: {
     base: gremlin.black,
@@ -113,6 +116,17 @@ const border = {
 const borderRadius = {
   base: 4,
   large: 8,
+};
+
+const boxShadowColors = {
+  base: rgba(color.dark.base, 0.18),
+  light: rgba(color.dark.base, 0.14),
+  xlight: rgba(color.dark.base, 0.07),
+  xxlight: rgba(color.dark.base, 0.01),
+};
+
+const boxShadow = {
+  base: `0 0 6px -2px ${boxShadowColors.base}`,
 };
 
 const fontFamily = {
@@ -177,10 +191,12 @@ const space = {
 };
 
 export const theme = {
+  color,
   border,
   borderRadius,
   breakpoint,
-  color,
+  boxShadowColors,
+  boxShadow,
   fontFamily,
   fontColor,
   fontSize,
