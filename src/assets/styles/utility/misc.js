@@ -11,3 +11,8 @@ export const trimChildren = {
     },
   },
 };
+
+export const overflow = {
+  overflow: 'auto',
+  WebkitOverflowScrolling: 'touch',
+};

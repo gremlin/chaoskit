@@ -71,7 +71,7 @@ const color = {
   panel: {
     base: '#fafbfc',
     get dark() {
-      return shade(2.5, this.base);
+      return shade(0.025, this.base);
     },
   },
   dark: {
@@ -144,7 +144,13 @@ const fontColor = {
   get muted() {
     return rgba(this.base, 0.6);
   },
+  get mutedDark() {
+    return rgba(shade(0.1, this.muted), 0.6);
+  },
   heading: color.dark.base,
+  get headingDark() {
+    return shade(0.1, this.heading);
+  },
 };
 
 const fontSize = {
@@ -273,6 +279,10 @@ const space = {
   xlarge: 64,
 };
 
+const settings = {
+  contrast: true,
+};
+
 const contrast = {
   base: color.light.base,
   get muted() {
@@ -280,19 +290,6 @@ const contrast = {
   },
   get border() {
     return rgba(this.base, 0.7);
-  },
-};
-
-const headingStyles = {
-  margin: `0 0 ${space.base}px`,
-  fontFamily: fontFamily.heading,
-  fontWeight: fontWeight.bold,
-  color: fontColor.heading,
-  textTransform: 'none',
-  letterSpacing: letterSpacing.small,
-
-  '* + &': {
-    marginTop: space.large,
   },
 };
 
@@ -311,7 +308,7 @@ export const theme = {
   lineHeight,
   opacity,
   space,
-  headingStyles,
   letterSpacing,
   contrast,
+  settings,
 };

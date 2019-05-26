@@ -1,3 +1,5 @@
+import { text, link, misc } from './utility';
+
 export const globalStyles = theme => ({
   // 1. Normalize default `font-family` and set `font-size` to support `rem` units
   // 2. Prevents iOS text size adjust after orientation change, without disabling user zoom
@@ -63,13 +65,12 @@ export const globalStyles = theme => ({
 
   // 1. Remove gaps in links underline in iOS 8+ and Safari 8+.
   a: {
+    ...link.base(theme),
     WebkitTextDecorationSkip: 'objects', // 1
-    color: theme.color.primary.base,
     textDecoration: 'none',
     cursor: 'pointer',
 
     '&:hover, &:focus': {
-      color: theme.color.primary.dark,
       textDecoration: 'none',
     },
   },
@@ -206,27 +207,27 @@ export const globalStyles = theme => ({
   },
 
   h1: {
-    ...theme.headingStyles,
+    ...text.heading(theme),
     ...theme.fontSize.h1__fluid,
   },
 
   h2: {
-    ...theme.headingStyles,
+    ...text.heading(theme),
     ...theme.fontSize.h2__fluid,
   },
 
   h3: {
-    ...theme.headingStyles,
+    ...text.heading(theme),
     ...theme.fontSize.h3__fluid,
   },
 
   h4: {
-    ...theme.headingStyles,
+    ...text.heading(theme),
     fontSize: theme.fontSize.h4,
   },
 
   h5: {
-    ...theme.headingStyles,
+    ...text.heading(theme),
     fontSize: theme.fontSize.h5,
     letterSpacing: theme.letterSpacing.medium,
     textTransform: 'uppercase',
@@ -296,6 +297,8 @@ export const globalStyles = theme => ({
   // Preformatted text
   // 1. Contain overflow in all browsers.
   pre: {
+    ...misc.overflow,
+
     padding: theme.space.base,
     background: theme.color.panel.base,
     font: `1em/${theme.lineHeight.base} ${theme.fontFamily.code}`,
@@ -303,7 +306,6 @@ export const globalStyles = theme => ({
     tabSize: '4',
     border: `1px solid ${theme.border.base}`,
     borderRadius: theme.borderRadius.base,
-    overflow: 'auto',
   },
 
   // Selection pseudo-element

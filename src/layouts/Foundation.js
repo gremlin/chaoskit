@@ -47,9 +47,9 @@ const Foundation = props => (
               <div
                 css={{
                   padding: 100,
-                  background: theme.color.danger.base,
+                  background: theme.color.primary.base,
                   '&:hover': {
-                    background: theme.color.danger.dark,
+                    background: theme.color.primary.dark,
                   },
                   color: theme.fontColor.heading,
                   ...theme.fontSize.h1__fluid,
