@@ -65,7 +65,7 @@ export const globalStyles = theme => ({
 
   // 1. Remove gaps in links underline in iOS 8+ and Safari 8+.
   a: {
-    ...link.base(theme),
+    ...link.baseDefault(theme),
     WebkitTextDecorationSkip: 'objects', // 1
     textDecoration: 'none',
     cursor: 'pointer',

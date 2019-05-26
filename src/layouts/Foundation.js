@@ -8,7 +8,8 @@ import createCache from '@emotion/cache';
 import 'what-input';
 
 import { theme } from '../assets/styles/theme';
-import { contrast } from '../assets/styles/utility';
+import { misc, contrast } from '../assets/styles/utility';
+
 import { globalStyles } from '../assets/styles/global';
 
 const ckCache = createCache({
@@ -56,10 +57,17 @@ const Foundation = props => (
                     background: theme.color.primary.dark,
                   },
                   color: theme.fontColor.heading,
-                  ...theme.fontSize.h1__fluid,
                 }}
               >
                 <h1>Test</h1>
+                <div
+                  css={{
+                    ...misc.spaceChildren({ theme, property: 'marginTop' }),
+                  }}
+                >
+                  <div>test1</div>
+                  <div>test1</div>
+                </div>
               </div>
               {children}
             </ThemeProvider>

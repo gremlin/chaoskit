@@ -12,7 +12,7 @@ export const heading = theme => ({
 });
 
 export const underline = {
-  textDecoration: 'underline',
+  textDecoration: 'underline !important',
   textDecorationSkipInk: 'auto',
 };
 

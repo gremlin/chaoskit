@@ -12,6 +12,16 @@ export const trimChildren = {
   },
 };
 
+export const spaceChildren = ({
+  theme = {},
+  property = 'marginLeft',
+  size = theme.space.base,
+}) => ({
+  '> * + *': {
+    [property]: size,
+  },
+});
+
 export const overflow = {
   overflow: 'auto',
   WebkitOverflowScrolling: 'touch',

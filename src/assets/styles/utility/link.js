@@ -1,6 +1,6 @@
 import { underline } from './text';
 
-export const base = theme => ({
+export const baseDefault = theme => ({
   color: theme.color.primary.base,
 
   '&:hover, &:focus': {
@@ -8,27 +8,35 @@ export const base = theme => ({
   },
 });
 
-export const reset = theme => ({
-  color: theme.fontColor.base,
+export const base = theme => ({
+  color: `${theme.color.primary.base} !important`,
 
   '&:hover, &:focus': {
-    color: theme.fontColor.dark,
+    color: `${theme.color.primary.dark} !important`,
+  },
+});
+
+export const reset = theme => ({
+  color: `${theme.fontColor.base} !important`,
+
+  '&:hover, &:focus': {
+    color: `${theme.fontColor.dark} !important`,
   },
 });
 
 export const muted = theme => ({
-  color: theme.fontColor.muted,
+  color: `${theme.fontColor.muted} !important`,
 
   '&:hover, &:focus': {
-    color: theme.fontColor.mutedDark,
+    color: `${theme.fontColor.mutedDark} !important`,
   },
 });
 
 export const heading = theme => ({
-  color: theme.fontColor.heading,
+  color: `${theme.fontColor.heading} !important`,
 
   '&:hover, &:focus': {
-    color: theme.fontColor.headingDark,
+    color: `${theme.fontColor.headingDark} !important`,
   },
 });
 
