@@ -28,11 +28,13 @@ export const globalStyles = theme => ({
     boxSizing: 'border-box',
     // 7
     WebkitTapHighlightColor: 'rgba(0, 0, 0, 0)',
+
     // 8
     '&:not([data-whatinput="keyboard"]) :focus': {
       outline: 'none',
     },
   },
+
   // Inherit 'border-box' down to sub-components
   '*': {
     boxSizing: 'inherit',
@@ -41,16 +43,18 @@ export const globalStyles = theme => ({
       boxSizing: 'inherit',
     },
   },
+
   // Remove default margin
   body: {
     margin: 0,
   },
+
   // Suppress the focus outline on elements that cannot be accessed via keyboard.
   // This prevents an unwanted focus outline from appearing around elements that might still respond to pointer events.
   //
   // Credit: https://github.com/suitcss/base
   '[tabindex="-1"]:focus': {
-    outline: 'none important',
+    outline: 'none !important',
   },
 
   //
