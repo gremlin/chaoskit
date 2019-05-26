@@ -52,16 +52,21 @@ const Foundation = props => (
                 }}
               />
               <Global styles={fonts(theme)} />
-
               <div
                 className="u-contrast"
                 css={{
                   padding: 100,
-                  background: theme.color.primary.base,
-                  '&:hover': {
+                  background: `linear-gradient(to right, ${
+                    theme.color.primary.base
+                  }, ${theme.color.primary.dark})`,
+
+                  '&:hover, &:focus': {
                     background: theme.color.primary.dark,
                   },
-                  color: theme.fontColor.heading,
+
+                  [theme.mq.large]: {
+                    background: theme.color.danger.base,
+                  },
                 }}
               >
                 <h1>Test</h1>

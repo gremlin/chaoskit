@@ -1,11 +1,11 @@
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import React from 'react';
+import { forwardRef } from 'react';
 
 import { config } from '../helpers/config';
 import Loader from './Loader';
 
-const Button = React.forwardRef(
+const Button = forwardRef(
   (
     {
       active,

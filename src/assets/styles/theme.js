@@ -64,6 +64,17 @@ const breakpoint = {
   },
 };
 
+const mq = {
+  small: `@media (min-width: ${breakpoint.small}px)`,
+  small__max: `@media (max-width: ${breakpoint.small__max}px)`,
+  medium: `@media (min-width: ${breakpoint.medium}px)`,
+  medium__max: `@media (max-width: ${breakpoint.medium__max}px)`,
+  large: `@media (min-width: ${breakpoint.large}px)`,
+  large__max: `@media (max-width: ${breakpoint.large__max}px)`,
+  xlarge: `@media (min-width: ${breakpoint.xlarge}px)`,
+  xlarge__max: `@media (max-width: ${breakpoint.xlarge__max}px)`,
+};
+
 const color = {
   light: {
     base: '#fff',
@@ -301,6 +312,7 @@ export const theme = {
   border,
   borderRadius,
   breakpoint,
+  mq,
   boxShadowColors,
   boxShadow,
   fontFamily,
