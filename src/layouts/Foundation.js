@@ -9,6 +9,7 @@ import 'what-input';
 
 import { theme } from '../assets/styles/theme';
 import { misc, contrast } from '../assets/styles/utility';
+import { fonts } from '../assets/styles/fonts';
 
 import { globalStyles } from '../assets/styles/global';
 
@@ -45,9 +46,13 @@ const Foundation = props => (
           <CacheProvider value={ckCache}>
             <ThemeProvider theme={theme}>
               <Global
-                styles={{ ...globalStyles(theme), ...contrast.styles(theme) }}
+                styles={{
+                  ...globalStyles(theme),
+                  ...contrast.styles(theme),
+                }}
               />
-              {console.log({ theme })}
+              <Global styles={fonts(theme)} />
+
               <div
                 className="u-contrast"
                 css={{
@@ -67,6 +72,7 @@ const Foundation = props => (
                 >
                   <div>test1</div>
                   <div>test1</div>
+                  <a href="http://www.google.com">Google</a>
                 </div>
               </div>
               {children}

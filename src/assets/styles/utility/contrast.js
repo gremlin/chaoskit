@@ -1,3 +1,5 @@
+import { merge } from 'lodash-es';
+
 import { text } from '.';
 
 export const styles = theme => ({
@@ -10,9 +12,9 @@ export const styles = theme => ({
       color: theme.contrast.base,
 
       '&:hover, &:focus': {
-        ...text.underline,
-
-        color: theme.contrast.base,
+        ...merge(text.underline, {
+          color: theme.contrast.base,
+        }),
       },
     },
 
