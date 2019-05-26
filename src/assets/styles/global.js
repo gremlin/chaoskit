@@ -1,15 +1,3 @@
-export const headingStyles = theme => ({
-  margin: `0 0 ${theme.space.regular}px`,
-  fontFamily: theme.fontFamily.heading,
-  color: theme.fontColor.heading,
-  textTransform: 'none',
-  letterSpacing: '-0.025em',
-
-  '* + &': {
-    marginTop: theme.space.large,
-  },
-});
-
 export const globalStyles = theme => ({
   // 1. Normalize default `font-family` and set `font-size` to support `rem` units
   // 2. Prevents iOS text size adjust after orientation change, without disabling user zoom
@@ -28,18 +16,18 @@ export const globalStyles = theme => ({
     // 2
     textSizeAdjust: '100%',
     // 3
-    '-ms-overflow-style': 'scrollbar',
+    msOverflowStyle: 'scrollbar',
     // 4
     background: theme.color.light.base,
     color: theme.fontColor.base,
     // 5
-    '-webkit-font-smoothing': 'antialiased',
-    '-moz-osx-font-smoothing': 'grayscale',
+    WebkitFontSmoothing: 'antialiased',
+    MozOsxFontSmoothing: 'grayscale',
     textRendering: 'optimizeLegibility',
     // 6
     boxSizing: 'border-box',
     // 7
-    '-webkit-tap-highlight-color': 'rgba(0, 0, 0, 0)',
+    WebkitTapHighlightColor: 'rgba(0, 0, 0, 0)',
     // 8
     '&:not([data-whatinput="keyboard"]) :focus': {
       outline: 'none',
@@ -71,7 +59,7 @@ export const globalStyles = theme => ({
 
   // 1. Remove gaps in links underline in iOS 8+ and Safari 8+.
   a: {
-    '-webkit-text-decoration-skip': 'objects', // 1
+    WebkitTextDecorationSkip: 'objects', // 1
     color: theme.color.primary.base,
     textDecoration: 'none',
     cursor: 'pointer',
@@ -112,7 +100,7 @@ export const globalStyles = theme => ({
     color: theme.color.danger,
     whiteSpace: 'pre-wrap',
     padding: `(${theme.space.xsmall}px / 2) ${theme.space.xsmall}px`,
-    background: theme.color.light.dark,
+    background: theme.color.panel.base,
   },
 
   // Emphasize
@@ -206,10 +194,154 @@ export const globalStyles = theme => ({
 
   // Margins
   'p, ul, ol, dl, blockquote, pre, address, fieldset, figure': {
-    margin: `0 0 ${theme.space.base}`,
+    margin: `0 0 ${theme.space.base}px`,
   },
 
   '* + p, * + ul, * + ol, * + dl, * + blockquote, * + pre, * + address, * + fieldset, * + figure': {
     marginTop: theme.space.base,
+  },
+
+  h1: {
+    ...theme.headingStyles,
+    ...theme.fontSize.h1__fluid,
+  },
+
+  h2: {
+    ...theme.headingStyles,
+    ...theme.fontSize.h2__fluid,
+  },
+
+  h3: {
+    ...theme.headingStyles,
+    ...theme.fontSize.h3__fluid,
+  },
+
+  h4: {
+    ...theme.headingStyles,
+    fontSize: theme.fontSize.h4,
+  },
+
+  h5: {
+    ...theme.headingStyles,
+    fontSize: theme.fontSize.h5,
+    letterSpacing: theme.letterSpacing.medium,
+    textTransform: 'uppercase',
+  },
+
+  //
+  // Lists
+  //
+
+  'ul, ol': {
+    paddingLeft: theme.space.base,
+  },
+
+  // Reset margin for nested lists
+  'ul > li > ul, ul > li > ol, ol > li > ol, ol > li > ul': {
+    margin: 0,
+  },
+
+  //
+  // Description lists
+  //
+
+  dt: {
+    fontWeight: theme.fontWeight.base,
+  },
+
+  dd: {
+    marginLeft: 0,
+  },
+
+  // 1. Add correct box sizing and heigh tin Firefox
+  // 2. Show the overflow in Edge and IE.
+  // 3. Add the correct text-align in Edge and IE.
+  // 4. Style
+  hr: {
+    // 1
+    boxSizing: 'content-box',
+    height: 0,
+    // 2
+    overflow: 'visible',
+    // 3
+    textAlign: 'inherit',
+    // 4
+    margin: `${theme.space.base}px 0`,
+    border: 0,
+    borderTop: `2px solid ${theme.border.base}`,
+
+    '* + &': {
+      marginTop: theme.space.base,
+    },
+  },
+
+  // Address
+  address: {
+    fontStyle: theme.fontWeight.base,
+  },
+
+  // Blockquote
+  blockquote: {
+    paddingLeft: theme.space.base,
+    borderLeft: `5px solid ${theme.border.base}`,
+    fontSize: theme.fontSize.base,
+    lineHeight: theme.lineHeight.base,
+    fontStyle: 'normal',
+  },
+
+  // Preformatted text
+  // 1. Contain overflow in all browsers.
+  pre: {
+    padding: theme.space.base,
+    background: theme.color.panel.base,
+    font: `1em/${theme.lineHeight.base} ${theme.fontFamily.code}`,
+    color: theme.fontColor.base,
+    tabSize: '4',
+    border: `1px solid ${theme.border.base}`,
+    borderRadius: theme.borderRadius.base,
+    overflow: 'auto',
+  },
+
+  // Selection pseudo-element
+  '::selection': {
+    background: theme.color.primary.base,
+    color: theme.contrast.base,
+    textShadow: 'none',
+  },
+
+  //
+  // HTML5 elements
+  //
+
+  // Add the correct display in Edge, IE, and Firefox.
+  // Add the correct display in IE.
+  'details, main': {
+    display: 'block',
+  },
+
+  // Add the correct display in all browsers.
+  summary: {
+    display: 'list-item',
+  },
+
+  // Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+  progress: {
+    verticalAlign: 'baseline',
+  },
+
+  // Prevent displaying `audio` without controls in Chrome, Safari and Opera
+  'audio:not([controls])': {
+    display: 'none',
+    height: 0,
+  },
+
+  // Add the correct display in IE.
+  template: {
+    display: 'none',
+  },
+
+  // Remove border in all browsers
+  iframe: {
+    border: 0,
   },
 });

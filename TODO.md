@@ -1,1 +1,2 @@
-- `base.scss`: `is-loaded` needs to be applied in Gatsby sites
+- `base.scss`: `is-loaded` needs to be applied in Gatsby sites (possibly)
+- `base.scss`: `.button--rest` needs to be applied to `<Button />` component

@@ -32,6 +32,7 @@
     "react/prefer-stateless-function": 1,
     "react/require-default-props": 0,
     "react/jsx-one-expression-per-line": 0,
+    "react/react-in-jsx-scope": "off",
     "react/forbid-foreign-prop-types": 0,
     "react/no-access-state-in-setstate": 0,
     "react-hooks/rules-of-hooks": "error",

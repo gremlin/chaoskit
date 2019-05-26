@@ -1,4 +1,6 @@
-import { mix, rgba, shade } from 'polished';
+import {
+  fluidRange, mix, rgba, shade,
+} from 'polished';
 
 // @NOTE Filter generator https://codepen.io/zslabs/pen/xePEVN
 const gremlin = {
@@ -65,9 +67,11 @@ const breakpoint = {
 const color = {
   light: {
     base: '#fff',
-    dark: '#fafbfc',
-    get darker() {
-      return shade(2.5, this.dark);
+  },
+  panel: {
+    base: '#fafbfc',
+    get dark() {
+      return shade(2.5, this.base);
     },
   },
   dark: {
@@ -150,6 +154,79 @@ const fontSize = {
   medium: 18,
   large: 20,
   xlarge: 26,
+  h1: 50,
+  h2: 44,
+  h3: 34,
+  h4: 28,
+  get h5() {
+    return this.small;
+  },
+  get medium__fluid() {
+    return fluidRange(
+      {
+        prop: 'fontSize',
+        fromSize: `${this.base}px`,
+        toSize: `${this.medium}px`,
+      },
+      `${breakpoint.small}px`,
+      `${breakpoint.large}px`,
+    );
+  },
+  get large__fluid() {
+    return fluidRange(
+      {
+        prop: 'fontSize',
+        fromSize: `${this.medium}px`,
+        toSize: `${this.large}px`,
+      },
+      `${breakpoint.small}px`,
+      `${breakpoint.large}px`,
+    );
+  },
+  get xlarge__fluid() {
+    return fluidRange(
+      {
+        prop: 'fontSize',
+        fromSize: `${this.large}px`,
+        toSize: `${this.xlarge}px`,
+      },
+      `${breakpoint.small}px`,
+      `${breakpoint.large}px`,
+    );
+  },
+  get h1__fluid() {
+    return fluidRange(
+      {
+        prop: 'fontSize',
+        fromSize: `${this.h2}px`,
+        toSize: `${this.h1}px`,
+      },
+      `${breakpoint.small}px`,
+      `${breakpoint.large}px`,
+    );
+  },
+  get h2__fluid() {
+    return fluidRange(
+      {
+        prop: 'fontSize',
+        fromSize: `${this.h3}px`,
+        toSize: `${this.h2}px`,
+      },
+      `${breakpoint.small}px`,
+      `${breakpoint.large}px`,
+    );
+  },
+  get h3__fluid() {
+    return fluidRange(
+      {
+        prop: 'fontSize',
+        fromSize: `${this.h4}px`,
+        toSize: `${this.h3}px`,
+      },
+      `${breakpoint.small}px`,
+      `${breakpoint.large}px`,
+    );
+  },
 };
 
 const fontWeight = {
@@ -177,6 +254,12 @@ const lineHeight = {
   },
 };
 
+const letterSpacing = {
+  base: 'normal',
+  small: '-0.025em',
+  medium: '0.2em',
+};
+
 const opacity = {
   base: 0.5,
 };
@@ -188,6 +271,29 @@ const space = {
   medium: 24,
   large: 32,
   xlarge: 64,
+};
+
+const contrast = {
+  base: color.light.base,
+  get muted() {
+    return rgba(this.base, 0.8);
+  },
+  get border() {
+    return rgba(this.base, 0.7);
+  },
+};
+
+const headingStyles = {
+  margin: `0 0 ${space.base}px`,
+  fontFamily: fontFamily.heading,
+  fontWeight: fontWeight.bold,
+  color: fontColor.heading,
+  textTransform: 'none',
+  letterSpacing: letterSpacing.small,
+
+  '* + &': {
+    marginTop: space.large,
+  },
 };
 
 export const theme = {
@@ -205,4 +311,7 @@ export const theme = {
   lineHeight,
   opacity,
   space,
+  headingStyles,
+  letterSpacing,
+  contrast,
 };

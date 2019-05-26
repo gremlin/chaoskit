@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
@@ -43,6 +43,7 @@ const Foundation = props => (
           <CacheProvider value={ckCache}>
             <ThemeProvider theme={theme}>
               <Global styles={{ ...globalStyles(theme) }} />
+              {console.log({ theme })}
               <div
                 css={{
                   padding: 100,
@@ -51,10 +52,10 @@ const Foundation = props => (
                     background: theme.color.danger.dark,
                   },
                   color: theme.fontColor.heading,
-                  lineHeight: theme.lineHeight.base__computed,
+                  ...theme.fontSize.h1__fluid,
                 }}
               >
-                test
+                <h1>Test</h1>
               </div>
               {children}
             </ThemeProvider>
