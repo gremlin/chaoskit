@@ -52,13 +52,13 @@ $GREMLIN_yellow__filter: brightness(0) saturate(100%) invert(79%) sepia(82%)
 
 $global-background: #fff !default;
 $global-primary: $GREMLIN_green !default;
-$global-primary-hover: darken($global-primary, 5) !default;
+$global-primary-hover: shade($global-primary, 10) !default;
 $global-primary-light: tint($global-primary, 90%) !default;
 $global-warning: $GREMLIN_yellow !default;
 $global-warning-light: tint($global-warning, 90%) !default;
 $global-danger: $GREMLIN_red !default;
 $global-danger-light: tint($global-danger, 92.5%) !default;
-$global-danger-hover: darken($global-danger, 5) !default;
+$global-danger-hover: shade($global-danger, 10) !default;
 
 $global-dark: $GREMLIN_black !default;
 $global-dark-overlay: rgba($global-dark, 0.85) !default;
@@ -130,7 +130,6 @@ $global-whitespace-large: 32px !default;
 $global-whitespace-xlarge: 64px !default;
 
 $global-ui-offset: $global-whitespace-regular !default;
-$global-ui-offset-small: $global-whitespace-small + 4 !default;
 
 //
 // Height

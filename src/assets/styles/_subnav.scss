@@ -17,6 +17,8 @@ $subnav-border: 1px solid $global-border !default;
   }
 
   .subnav {
+    @include spaceChildren('margin-left', $global-whitespace-large);
+
     height: $subnav-height;
     margin: 0 auto;
     width: 100%;
@@ -27,10 +29,6 @@ $subnav-border: 1px solid $global-border !default;
     overflow-y: hidden;
     overflow-x: scroll;
     justify-content: space-between;
-
-    > * + * {
-      margin-left: $global-whitespace-large;
-    }
 
     @if (mixin-exists(hook-subnav)) {
       @include hook-subnav();

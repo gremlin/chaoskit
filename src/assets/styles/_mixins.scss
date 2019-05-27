@@ -60,6 +60,15 @@
   }
 }
 
+//
+// Space children
+//
+@mixin spaceChildren($property, $size) {
+  > * + * {
+    #{$property}: #{$size};
+  }
+}
+
 // Slightly lighten a color
 // @access public
 // @param {Color} $color - color to tint
