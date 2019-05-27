@@ -17,7 +17,6 @@ $contrast-hr-color: rgba($global-contrast, 0.05) !default;
 // Placeholders
 @mixin contrast-link-styles() {
   color: $contrast-link-color !important;
-  position: relative;
 
   @if (mixin-exists(hook-contrast-link)) {
     @include hook-contrast-link();
