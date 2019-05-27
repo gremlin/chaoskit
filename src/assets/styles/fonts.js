@@ -14,30 +14,35 @@ export const fonts = theme => css`
     font-weight: ${theme.fontWeight.base};
     font-style: normal;
   }
+
   @font-face {
     font-family: Gira;
     src: local(😜), url(${GiraMedium}) format('woff');
     font-weight: ${theme.fontWeight.medium};
     font-style: normal;
   }
+
   @font-face {
     font-family: Gira;
     src: local(😜), url(${GiraBold}) format('woff');
     font-weight: ${theme.fontWeight.bold};
     font-style: normal;
   }
+
   @font-face {
     font-family: Circular;
     src: local(😜), url(${CircularBook}) format('woff');
     font-weight: ${theme.fontWeight.base};
     font-style: normal;
   }
+
   @font-face {
     font-family: Circular;
     src: local(😜), url(${CircularMedium}) format('woff');
     font-weight: ${theme.fontWeight.medium};
     font-style: normal;
   }
+
   @font-face {
     font-family: Circular;
     src: local(😜), url(${CircularBlack}) format('woff');

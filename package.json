@@ -56,7 +56,9 @@
     "rsvp": "4.8.4",
     "stylelint": "10.0.1",
     "stylelint-config-standard": "18.3.0",
-    "stylelint-webpack-plugin": "0.10.5",
+    "stylelint-config-styled-components": "0.1.1",
+    "stylelint-custom-processor-loader": "0.6.0",
+    "stylelint-processor-styled-components": "1.7.0",
     "svgo": "1.2.2",
     "what-input": "5.2.1"
   },

@@ -8,7 +8,7 @@ import createCache from '@emotion/cache';
 import 'what-input';
 
 import { theme } from '../assets/styles/theme';
-import { misc, contrast } from '../assets/styles/utility';
+import { contrast } from '../assets/styles/utility';
 import { fonts } from '../assets/styles/fonts';
 
 import { globalStyles } from '../assets/styles/global';
@@ -72,10 +72,6 @@ const Foundation = props => (
                   &:hover,
                   &:focus {
                     color: ${theme.color.danger.base};
-                  }
-
-                  &:hover,
-                  &:focus {
                     background: ${theme.color.warning.base};
                   }
 
@@ -88,45 +84,16 @@ const Foundation = props => (
               </div>
               <div
                 className="u-contrast"
-                css={{
-                  padding: 100,
-                  background: `linear-gradient(to right, ${
-                    theme.color.primary.base
-                  }, ${theme.color.primary.dark})`,
-
-                  '&:hover, &:focus': {
-                    background: theme.color.primary.dark,
-                  },
-
-                  [theme.mq.large]: {
-                    background: theme.color.danger.base,
-                  },
-                }}
+                css={css`
+                  padding: 100px;
+                `}
               >
                 <h1>Heading H1</h1>
                 <h2>Heading H2</h2>
                 <h3>Heading H3</h3>
                 <h4>Heading H4</h4>
                 <h5>Heading H5</h5>
-                <div
-                  css={{
-                    ...misc.spaceChildren({ theme, property: 'marginTop' }),
-                  }}
-                >
-                  <div>test1</div>
-                  <div>test1</div>
-                  <a href="http://www.google.com">Google</a>
-                </div>
               </div>
-              <a
-                href="http://www.google.com"
-                css={{
-                  display: 'block',
-                  '&:hover, :focus': { background: 'green' },
-                }}
-              >
-                Link
-              </a>
               {children}
             </ThemeProvider>
           </CacheProvider>
