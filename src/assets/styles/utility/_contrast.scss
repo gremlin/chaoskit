@@ -51,15 +51,6 @@ $contrast-hr-color: rgba($global-contrast, 0.05) !default;
       @include contrast-link-styles();
     }
 
-    i,
-    em {
-      color: $contrast-italic-color;
-
-      @if (mixin-exists(hook-contrast-italic)) {
-        @include hook-contrast-italic();
-      }
-    }
-
     .u-textMuted {
       color: $contrast-muted-color !important;
     }
