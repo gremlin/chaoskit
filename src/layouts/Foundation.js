@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
 import { ThemeProvider } from 'emotion-theming';
-import { CacheProvider, Global } from '@emotion/core';
+import { CacheProvider, Global, css } from '@emotion/core';
 import createCache from '@emotion/cache';
 import 'what-input';
 
@@ -63,6 +63,29 @@ const Foundation = props => (
                 }}
               />
               <Global styles={fonts(theme)} />
+              <div
+                className="u-contrast"
+                css={css`
+                  padding: ${theme.space.xlarge}px;
+                  background: ${theme.color.primary.base};
+
+                  &:hover,
+                  &:focus {
+                    color: ${theme.color.danger.base};
+                  }
+
+                  &:hover,
+                  &:focus {
+                    background: ${theme.color.warning.base};
+                  }
+
+                  ${theme.mq.large} {
+                    color: ${theme.color.dark.base};
+                  }
+                `}
+              >
+                Test
+              </div>
               <div
                 className="u-contrast"
                 css={{
