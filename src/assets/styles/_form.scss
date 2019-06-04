@@ -658,7 +658,7 @@ $form-contrast-background-focus: transparent !default;
       user-select: none;
       padding-left: ($form-checkbox-size + $form-radio-label-spacing);
       position: relative;
-      line-height: 1;
+      line-height: $global-line-height-small;
 
       &::before {
         content: '';
@@ -758,7 +758,7 @@ $form-contrast-background-focus: transparent !default;
       user-select: none;
       padding-left: ($form-checkbox-size + $form-checkbox-label-spacing);
       position: relative;
-      line-height: 1;
+      line-height: $global-line-height-small;
 
       &::before {
         content: '';
