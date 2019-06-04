@@ -914,7 +914,9 @@ $form-contrast-background-focus: transparent !default;
     }
 
     @media (min-width: $global-viewport-medium) {
-      margin-right: $global-whitespace-small;
+      &:not(:only-child) {
+        margin-right: $global-whitespace-small;
+      }
     }
   }
 
