@@ -84,9 +84,7 @@ const ButtonDocs = () => (
         padding: theme.space.large,
       })}
     >
-      <Button type="reset" css={{ boxShadow: '0 0 2px green' }}>
-        Reset
-      </Button>
+      <Button type="reset">Reset</Button>
       <Button type="default">Default</Button>
       <Button type="outlinePrimary">Outline Primary</Button>
       <Button type="primary">Primary</Button>

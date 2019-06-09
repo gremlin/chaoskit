@@ -333,7 +333,6 @@ const Button = forwardRef(
       actionType,
       as,
       children,
-      className,
       disabled,
       fullWidth,
       iconOnly,
@@ -415,7 +414,6 @@ Button.propTypes = {
   /* Useful for frameworks like NextJs */
   as: PropTypes.oneOf(['button', 'a']),
   children: PropTypes.node,
-  className: PropTypes.string,
   disabled: PropTypes.bool,
   fullWidth: PropTypes.bool,
   iconOnly: PropTypes.bool,
