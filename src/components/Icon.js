@@ -1,19 +1,13 @@
-import cx from 'classnames';
+import { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import React from 'react';
 
 import Icons from '../assets/icons/icons.json';
 
-const Icon = React.forwardRef(
+const Icon = forwardRef(
   ({
-    icon, additionalIcons, fallback, className, size, ...opts
+    icon, additionalIcons, fallback, size, ...opts
   }, ref) => {
     const getIcon = () => {
-      const classes = cx('icon', className, {
-        'icon--small': size === 'small',
-        'icon--large': size === 'large',
-        'icon--xlarge': size === 'xlarge',
-      });
       // Merge in base icons with anything additional
       const iconSource = Object.assign(Icons, additionalIcons);
 
@@ -31,10 +25,48 @@ const Icon = React.forwardRef(
             fill="none"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className={classes}
+            css={[
+              {
+                // 1. Help against rendering bug when scaling
+                width: '1em',
+                height: '1em',
+                lineHeight: '1',
+                position: 'relative',
+                top: '-0.1em',
+                maxWidth: '100%',
+                backfaceVisibility: 'hidden', // 1
+
+                '.icon-fill': {
+                  fill: 'currentColor',
+                },
+
+                '.icon-stroke': {
+                  stroke: 'currentColor',
+                  strokeWidth: 1.5,
+                  vectorEffect: 'non-scaling-stroke',
+
+                  '*': {
+                    vectorEffect: 'non-scaling-stroke',
+                  },
+                },
+              },
+              size === 'small' && {
+                width: '0.65em',
+                height: '0.65em',
+              },
+              size === 'large' && {
+                width: '1.5em',
+                height: '1.5em',
+              },
+              size === 'xlarge' && {
+                width: '3em',
+                height: '3em',
+              },
+            ]}
+            className="CK__Icon"
             ref={ref}
-            {...opts}
             dangerouslySetInnerHTML={{ __html: matchedIcon }}
+            {...opts}
           />
         );
       }
@@ -48,7 +80,6 @@ const Icon = React.forwardRef(
 );
 
 Icon.propTypes = {
-  className: PropTypes.string,
   /** When icon is not found. Useful in generated content */
   fallback: PropTypes.string,
   icon: PropTypes.string.isRequired,

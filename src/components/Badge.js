@@ -50,6 +50,7 @@ const Badge = ({
       type === 'danger' && StylesBadgeDanger(theme),
       rounded && StylesBadgeRounded(theme),
     ]}
+    className="CK__Badge"
     {...opts}
   >
     {label}
@@ -57,7 +58,6 @@ const Badge = ({
 );
 
 Badge.propTypes = {
-  className: PropTypes.string,
   label: PropTypes.string.isRequired,
   rounded: PropTypes.bool,
   type: PropTypes.oneOf(['default', 'primary', 'danger']),

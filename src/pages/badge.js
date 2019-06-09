@@ -34,12 +34,6 @@ const BadgeDocs = () => (
       an item&apos;s current state.
     </p>
 
-    <Badge
-      rounded
-      label="Default badge"
-      css={theme => ({ width: '300px', background: theme.color.warning.base })}
-    />
-
     <Live
       code={BadgeExample}
       scope={BadgeScope}
