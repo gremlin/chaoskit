@@ -34,7 +34,7 @@ const Icon = React.forwardRef(
             className={classes}
             ref={ref}
             {...opts}
-            dangerouslySetInnerHTML={{ __html: matchedIcon }} // eslint-disable-line react/no-danger
+            dangerouslySetInnerHTML={{ __html: matchedIcon }}
           />
         );
       }

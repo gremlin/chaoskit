@@ -1,7 +1,4 @@
-import cx from 'classnames';
 import PropTypes from 'prop-types';
-import React from 'react';
-import { withTheme } from 'emotion-theming';
 
 export const StylesBadgeBase = theme => ({
   background: theme.color.light.base,
@@ -35,34 +32,31 @@ export const StylesBadgeDanger = theme => ({
   color: theme.contrast.base,
 });
 
-const Badge = ({
-  className, label, rounded, type, theme, ...opts
-}) => {
-  const classes = cx(className, {
-    'badge--rounded': rounded,
-  });
+export const StylesBadgeRounded = theme => ({
+  borderRadius: theme.height.micro / 2,
+});
 
-  return (
-    <div
-      css={[
-        StylesBadgeBase(theme),
-        [type === 'primary' && StylesBadgePrimary(theme)],
-        [type === 'danger' && StylesBadgeDanger(theme)],
-      ]}
-      className={classes}
-      {...opts}
-    >
-      {label}
-    </div>
-  );
-};
+const Badge = ({
+  label, rounded, type, ...opts
+}) => (
+  <div
+    css={theme => [
+      StylesBadgeBase(theme),
+      type === 'primary' && StylesBadgePrimary(theme),
+      type === 'danger' && StylesBadgeDanger(theme),
+      rounded && StylesBadgeRounded(theme),
+    ]}
+    {...opts}
+  >
+    {label}
+  </div>
+);
 
 Badge.propTypes = {
   className: PropTypes.string,
   label: PropTypes.string.isRequired,
   rounded: PropTypes.bool,
-  theme: PropTypes.object.isRequired,
   type: PropTypes.oneOf(['default', 'primary', 'danger']),
 };
 
-export default withTheme(Badge);
+export default Badge;

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import BaseLayout from '../layouts/BaseLayout';
 import { Badge, Inline } from '../components';
 import Live from '../docs/Live';
@@ -35,6 +33,12 @@ const BadgeDocs = () => (
       Badges are indicators and have no interactivity. They are used to indicate
       an item&apos;s current state.
     </p>
+
+    <Badge
+      rounded
+      label="Default badge"
+      css={theme => ({ width: '300px', background: theme.color.warning.base })}
+    />
 
     <Live
       code={BadgeExample}

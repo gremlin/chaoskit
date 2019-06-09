@@ -1,7 +1,9 @@
 import { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { StaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
+// import stylisAtomic from 'stylis-atomic';
+import stylisCalc from 'stylis-calc';
 import { ThemeProvider } from 'emotion-theming';
 import { CacheProvider, Global } from '@emotion/core';
 import createCache from '@emotion/cache';
@@ -10,7 +12,6 @@ import 'what-input';
 import { theme } from '../assets/styles/theme';
 import { contrast } from '../assets/styles/utility';
 import { fonts } from '../assets/styles/fonts';
-
 import { globalStyles } from '../assets/styles/global';
 
 const ckCache = createCache({
@@ -43,80 +44,71 @@ const ckCache = createCache({
         return false;
     }
   },
+  stylisPlugins: [stylisCalc],
 });
 
-const Foundation = props => (
-  <StaticQuery
-    query={graphql`
-      query FoundationPageData {
-        site {
-          siteMetadata {
-            title
-            description
-          }
+const Foundation = ({ children }) => {
+  const {
+    site: {
+      siteMetadata: { title, description },
+    },
+  } = useStaticQuery(graphql`
+    query FoundationPageData {
+      site {
+        siteMetadata {
+          title
+          description
         }
       }
-    `}
-    render={(data) => {
-      const {
-        site: {
-          siteMetadata: { title, description },
-        },
-      } = data;
-      const { children } = props;
+    }
+  `);
 
-      return (
-        <Fragment>
-          <Helmet
-            title={title}
-            meta={[{ name: 'description', content: description }]}
+  return (
+    <Fragment>
+      <Helmet
+        title={title}
+        meta={[{ name: 'description', content: description }]}
+      />
+      <CacheProvider value={ckCache}>
+        <ThemeProvider theme={theme}>
+          <Global
+            styles={[globalStyles(theme), contrast.styles(theme), fonts(theme)]}
           />
-          <CacheProvider value={ckCache}>
-            <ThemeProvider theme={theme}>
-              <Global
-                styles={[
-                  globalStyles(theme),
-                  contrast.styles(theme),
-                  fonts(theme),
-                ]}
-              />
-              <div
-                className="u-contrast"
-                css={{
-                  padding: theme.space.xlarge,
-                  background: theme.color.primary.base,
+          <div
+            className="u-contrast"
+            css={{
+              padding: theme.space.xlarge,
+              background: theme.color.primary.base,
 
-                  '&:hover, &:focus': {
-                    color: theme.color.danger.base,
-                    background: theme.color.warning.base,
-                  },
+              '&:hover, &:focus': {
+                color: theme.color.danger.base,
+                background: theme.color.warning.base,
+              },
 
-                  [theme.mq.large]: {
-                    color: theme.color.dark.base,
-                  },
-                }}
-              >
-                Test
-              </div>
-              <div
-                className="u-contrast"
-                css={{ background: theme.color.primary.base }}
-              >
-                <a href="https://www.google.com">Link</a>
-                <h1>Heading H1</h1>
-                <h2>Heading H2</h2>
-                <h3>Heading H3</h3>
-                <h4>Heading H4</h4>
-                <h5>Heading H5</h5>
-              </div>
-              {children}
-            </ThemeProvider>
-          </CacheProvider>
-        </Fragment>
-      );
-    }}
-  />
-);
+              [theme.mq.large]: {
+                color: theme.color.dark.base,
+              },
+            }}
+          >
+            Test
+          </div>
+          <div
+            className="u-contrast"
+            css={{ background: theme.color.primary.base }}
+          >
+            <a href="https://www.google.com">Link</a>
+            <h1>Heading H1</h1>
+            <h2>Heading H2</h2>
+            <h3>Heading H3</h3>
+            <h4>Heading H4</h4>
+            <h5>Heading H5</h5>
+          </div>
+          {children}
+        </ThemeProvider>
+      </CacheProvider>
+    </Fragment>
+  );
+};
 
 Foundation.propTypes = {
   children: PropTypes.node,
