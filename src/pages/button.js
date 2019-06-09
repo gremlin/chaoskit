@@ -67,6 +67,30 @@ const ButtonPropDescriptions = {
 
 const ButtonDocs = () => (
   <BaseLayout pageTitle="Button">
+    <div
+      className="u-contrast"
+      css={theme => ({
+        background: theme.color.warning.base,
+        padding: theme.space.large,
+      })}
+    >
+      <Button>Hello there</Button>
+      <Button size="small">Hello there</Button>
+      <Button size="xsmall">Hello there</Button>
+    </div>
+
+    <div css={theme => ({ padding: theme.space.large })}>
+      <Button type="default">Default</Button>
+    </div>
+    <div
+      className="u-contrast"
+      css={theme => ({
+        background: theme.color.warning.base,
+        padding: theme.space.large,
+      })}
+    >
+      <Button type="default">Default</Button>
+    </div>
     <Live
       code={ButtonExample}
       scope={ButtonScope}

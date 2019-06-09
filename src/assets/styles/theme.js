@@ -1,5 +1,5 @@
 import {
-  fluidRange, mix, rgba, shade,
+  fluidRange, mix, rgba, shade, timingFunctions,
 } from 'polished';
 
 // @NOTE Filter generator https://codepen.io/zslabs/pen/xePEVN
@@ -296,6 +296,15 @@ const settings = {
   buttonContrast: true,
 };
 
+const transition = {
+  base: timingFunctions('easeInOutCubic'),
+  bounce: timingFunctions('easeInOutBack'),
+};
+
+const timing = {
+  base: '0.25s',
+};
+
 const contrast = {
   base: color.light.base,
   get muted() {
@@ -326,6 +335,8 @@ export const theme = {
   opacity,
   space,
   letterSpacing,
+  transition,
+  timing,
   contrast,
   settings,
 };
