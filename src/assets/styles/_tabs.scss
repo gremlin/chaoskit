@@ -10,6 +10,8 @@
   }
 
   .tabs-list {
+    @include spaceChildren('margin-left', $global-whitespace-medium);
+
     display: flex;
     margin: 0 0 $global-whitespace-regular 0;
     padding: 0;
@@ -58,10 +60,6 @@
         &:focus {
           color: $global-primary;
         }
-      }
-
-      + li {
-        margin-left: $global-whitespace-medium;
       }
     }
   }
