@@ -392,7 +392,7 @@ const Button = forwardRef(
         ) : (
           <span css={{ color: loading && 'transparent' }}>{children}</span>
         )}
-        {loading && (
+        {loading && type !== 'reset' && (
           <Loader
             css={[
               misc.absoluteCenter,
