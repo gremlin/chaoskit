@@ -1,5 +1,3 @@
-import React from 'react';
-
 import BaseLayout from '../layouts/BaseLayout';
 import {
   Alert, Button, Icon, Inline, List, ListItem,
@@ -67,25 +65,17 @@ const ButtonPropDescriptions = {
 
 const ButtonDocs = () => (
   <BaseLayout pageTitle="Button">
-    <div
-      className="u-contrast"
-      css={theme => ({
-        background: theme.color.warning.base,
-        padding: theme.space.large,
-      })}
-    >
-      <Button>Hello there</Button>
-      <Button size="small">Hello there</Button>
-      <Button size="xsmall">Hello there</Button>
-    </div>
-
     <div css={theme => ({ padding: theme.space.large })}>
+      <Button type="reset">Reset</Button>
       <Button type="default">Default</Button>
       <Button type="outlinePrimary">Outline Primary</Button>
       <Button type="primary">Primary</Button>
       <Button type="secondary">Secondary</Button>
       <Button type="danger">Danger</Button>
       <Button type="teal">Teal</Button>
+      <Button type="primary" iconOnly>
+        <Icon icon="arrow-up" />
+      </Button>
     </div>
     <div
       className="u-contrast"
@@ -94,12 +84,18 @@ const ButtonDocs = () => (
         padding: theme.space.large,
       })}
     >
+      <Button type="reset" css={{ boxShadow: '0 0 2px green' }}>
+        Reset
+      </Button>
       <Button type="default">Default</Button>
       <Button type="outlinePrimary">Outline Primary</Button>
       <Button type="primary">Primary</Button>
       <Button type="secondary">Secondary</Button>
       <Button type="danger">Danger</Button>
       <Button type="teal">Teal</Button>
+      <Button type="primary" iconOnly>
+        <Icon icon="arrow-up" />
+      </Button>
     </div>
     <Live
       code={ButtonExample}

@@ -3,6 +3,13 @@ import PropTypes from 'prop-types';
 
 import Icons from '../assets/icons/icons.json';
 
+export const StylesIconVariables = {
+  small: '0.65em',
+  base: '1em',
+  large: '1.65em',
+  xlarge: '3em',
+};
+
 const Icon = forwardRef(
   ({
     icon, additionalIcons, fallback, size, ...opts
@@ -28,8 +35,8 @@ const Icon = forwardRef(
             css={[
               {
                 // 1. Help against rendering bug when scaling
-                width: '1em',
-                height: '1em',
+                width: StylesIconVariables.base,
+                height: StylesIconVariables.base,
                 lineHeight: '1',
                 position: 'relative',
                 top: '-0.1em',
@@ -51,19 +58,18 @@ const Icon = forwardRef(
                 },
               },
               size === 'small' && {
-                width: '0.65em',
-                height: '0.65em',
+                width: StylesIconVariables.small,
+                height: StylesIconVariables.small,
               },
               size === 'large' && {
-                width: '1.5em',
-                height: '1.5em',
+                width: StylesIconVariables.large,
+                height: StylesIconVariables.large,
               },
               size === 'xlarge' && {
-                width: '3em',
-                height: '3em',
+                width: StylesIconVariables.xlarge,
+                height: StylesIconVariables.xlarge,
               },
             ]}
-            className="CK__Icon"
             ref={ref}
             dangerouslySetInnerHTML={{ __html: matchedIcon }}
             {...opts}

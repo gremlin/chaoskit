@@ -31,3 +31,10 @@ export const hide = {
   display: 'none !important',
   visibility: 'hidden !important',
 };
+
+export const absoluteCenter = {
+  position: 'absolute',
+  left: '50%',
+  top: '50%',
+  transform: 'translate(-50%, -50%)',
+};

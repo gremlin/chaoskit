@@ -1,8 +1,8 @@
-import cx from 'classnames';
 import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
 
-import { config } from '../helpers/config';
+import { misc } from '../assets/styles/utility';
+import { StylesIconVariables } from './Icon';
 import Loader from './Loader';
 
 const StylesButtonVariables = () => ({
@@ -261,6 +261,71 @@ export const StylesButtonTeal = (theme, props = {}) => [
   },
 ];
 
+export const StylesButtonIconOnly = (theme, props = {}) => [
+  {
+    padding: 0,
+    width: theme.height.base,
+
+    svg: {
+      width: StylesIconVariables.large,
+      height: StylesIconVariables.large,
+    },
+  },
+  props.size === 'small' && {
+    width: theme.height.small,
+  },
+  props.size === 'xsmall' && {
+    width: theme.height.xsmall,
+
+    svg: {
+      width: StylesIconVariables.base,
+      height: StylesIconVariables.base,
+    },
+  },
+];
+
+//
+// <button> reset
+//
+export const StylesButtonReset = {
+  // 1. Remove default browser appearance for buttons.
+  // 2. Remove margins.
+  // 3. Remove borders for IE.
+  // 4. Normalize font and color  not inherited by `button`.
+  // 5. Address `overflow` in IE
+  // 6. Normalize cursor style
+  // 7. Normalize line-height
+  // 8. Normalize text-align
+  // 9. Remove inner padding and border in Firefox 4+.
+
+  // 1
+  appearance: 'none',
+  background: 'none',
+  // 2
+  padding: '0',
+  margin: '0',
+  // 3
+  borderWidth: '0',
+  // 4
+  font: 'inherit',
+  textDecoration: 'none',
+  color: 'inherit',
+  // 5
+  overflow: 'visible',
+  // 6
+  cursor: 'pointer',
+  // 7
+  lineHeight: 'normal',
+  // 8
+  textAlign: 'inherit',
+
+  // 9
+  '&::-moz-focus-inner': {
+    border: 0,
+    padding: 0,
+  },
+};
+
 const Button = forwardRef(
   (
     {
@@ -282,26 +347,6 @@ const Button = forwardRef(
     },
     ref,
   ) => {
-    // eslint-disable-next-line
-    const classes = cx(className, {
-      button: type !== 'reset',
-      'button--reset': type === 'reset',
-      'button--default': type === 'default',
-      'button--primary': type === 'primary',
-      'button--secondary': type === 'secondary',
-      'button--teal': type === 'teal',
-      'button--danger': type === 'danger',
-      'button--outlinePrimary': type === 'outlinePrimary',
-      'button--small': size === 'small',
-      'button--xsmall': size === 'xsmall',
-      'button--fullWidth': fullWidth,
-      'button--icon': iconOnly,
-      'button--noContrast': noContrast,
-      [config.classes.active]: active,
-      [config.classes.loading]: loading,
-      'u-borderRadius--remove': noRadius,
-    });
-
     let Component = as;
 
     const buttonProps = {
@@ -322,7 +367,8 @@ const Button = forwardRef(
     return (
       <Component
         css={theme => [
-          StylesButtonBase(theme, { noContrast }),
+          type !== 'reset' && StylesButtonBase(theme, { noContrast }),
+          type === 'reset' && StylesButtonReset,
           size === 'small' && StylesButtonSmall(theme),
           size === 'xsmall' && StylesButtonXsmall(theme),
           type === 'default' && StylesButtonDefault(theme, { noContrast }),
@@ -332,8 +378,14 @@ const Button = forwardRef(
           type === 'secondary' && StylesButtonSecondary(theme, { noContrast }),
           type === 'danger' && StylesButtonDanger(theme, { noContrast }),
           type === 'teal' && StylesButtonTeal(theme, { noContrast }),
+          iconOnly && StylesButtonIconOnly(theme, { size }),
+          fullWidth && {
+            width: '100%',
+          },
+          noRadius && {
+            borderRadius: 0,
+          },
         ]}
-        className="CK__Button"
         {...buttonProps}
       >
         {type === 'reset' ? (
@@ -343,14 +395,13 @@ const Button = forwardRef(
         )}
         {loading && (
           <Loader
-            css={{
-              position: 'absolute',
-              left: '50%',
-              top: '50%',
-              transform: 'translate(-50%, -50%)',
-              width: '1.5em',
-              height: '1.5em',
-            }}
+            css={[
+              misc.absoluteCenter,
+              {
+                width: StylesIconVariables.large,
+                height: StylesIconVariables.large,
+              },
+            ]}
           />
         )}
       </Component>

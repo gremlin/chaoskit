@@ -50,7 +50,6 @@ const Badge = ({
       type === 'danger' && StylesBadgeDanger(theme),
       rounded && StylesBadgeRounded(theme),
     ]}
-    className="CK__Badge"
     {...opts}
   >
     {label}
