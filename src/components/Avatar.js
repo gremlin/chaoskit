@@ -1,31 +1,61 @@
-import cx from 'classnames';
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import Icon from './Icon';
+import { misc } from '../assets/styles/utility';
+
+const StylesAvatarVariables = theme => ({
+  background: theme.color.panel.base,
+  color: theme.fontColor.base,
+});
+
+const StylesAvatarBase = (theme, props = {}) => [
+  // 1. Fix issue with alignment of inlined avatars
+  {
+    backgroundColor: StylesAvatarVariables(theme).background,
+    backgroundPosition: 'center center',
+    backgroundSize: 'cover',
+    borderRadius: '50%',
+    color: StylesAvatarVariables(theme).color,
+    display: 'inline-flex',
+    marginBottom: '0',
+    overflow: 'hidden',
+    pointerEvents: 'none',
+    position: 'relative',
+    verticalAlign: 'bottom', // 1
+    width: 40,
+    height: 40,
+  },
+
+  props.size === 'large' && {
+    width: 80,
+    height: 80,
+  },
+];
 
 const Avatar = ({
-  className, image, name, size, ...opts
+  image, name, size, ...opts
 }) => {
   const [error, setError] = useState(false);
 
   const nameProp = name ? name.trim() : '';
 
-  const classes = cx('avatar', className, {
-    'avatar--large': size === 'large',
-  });
-  const styles = {
-    backgroundImage: `url(${image})`,
-  };
-
   // If image exists, use image for background
   if (image && !error) {
     return (
-      <figure className={classes} style={styles} {...opts}>
+      <figure
+        css={theme => [
+          StylesAvatarBase(theme, { size }),
+          {
+            backgroundImage: `url(${image})`,
+          },
+        ]}
+        {...opts}
+      >
         <img
           alt={nameProp}
           onError={() => setError(true)}
-          className="u-hidden"
+          css={misc.hide}
           src={image}
         />
       </figure>
@@ -35,8 +65,25 @@ const Avatar = ({
   // If no image and no name, use icon
   if (!image && !nameProp) {
     return (
-      <figure className={classes} {...opts}>
-        <Icon className="avatar-icon" icon="user" />
+      <figure css={theme => [StylesAvatarBase(theme, { size })]} {...opts}>
+        <Icon
+          icon="user"
+          css={{
+            position: 'absolute',
+            fill: 'currentColor',
+            height: '80%',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            opacity: '0.75',
+            bottom: '-2.5%',
+            width: '80%',
+            top: 'auto',
+
+            '.icon-stroke': {
+              strokeWidth: 0,
+            },
+          }}
+        />
       </figure>
     );
   }
@@ -56,11 +103,28 @@ const Avatar = ({
       viewBox="0 0 100 100"
       xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="none"
-      className={classes}
+      css={theme => [StylesAvatarBase(theme, { size })]}
       {...opts}
     >
-      <circle cx="50" cy="50" r="50" />
-      <text x="50" y="50" textAnchor="middle" dy="0.35em" fontSize="40">
+      <circle
+        cx="50"
+        cy="50"
+        r="50"
+        css={theme => [{ fill: StylesAvatarVariables(theme).background }]}
+      />
+      <text
+        x="50"
+        y="50"
+        textAnchor="middle"
+        dy="0.35em"
+        fontSize="40"
+        css={theme => [
+          {
+            fill: StylesAvatarVariables(theme).color,
+            textTransform: 'uppercase',
+          },
+        ]}
+      >
         {initials}
       </text>
     </svg>
@@ -68,7 +132,6 @@ const Avatar = ({
 };
 
 Avatar.propTypes = {
-  className: PropTypes.string,
   image: PropTypes.string,
   name: PropTypes.string,
   size: PropTypes.oneOf(['default', 'large']),
