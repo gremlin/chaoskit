@@ -81,6 +81,11 @@ const ButtonDocs = () => (
 
     <div css={theme => ({ padding: theme.space.large })}>
       <Button type="default">Default</Button>
+      <Button type="outlinePrimary">Outline Primary</Button>
+      <Button type="primary">Primary</Button>
+      <Button type="secondary">Secondary</Button>
+      <Button type="danger">Danger</Button>
+      <Button type="teal">Teal</Button>
     </div>
     <div
       className="u-contrast"
@@ -90,6 +95,11 @@ const ButtonDocs = () => (
       })}
     >
       <Button type="default">Default</Button>
+      <Button type="outlinePrimary">Outline Primary</Button>
+      <Button type="primary">Primary</Button>
+      <Button type="secondary">Secondary</Button>
+      <Button type="danger">Danger</Button>
+      <Button type="teal">Teal</Button>
     </div>
     <Live
       code={ButtonExample}

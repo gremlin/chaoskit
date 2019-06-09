@@ -3,7 +3,7 @@ import {
 } from 'polished';
 
 // @NOTE Filter generator https://codepen.io/zslabs/pen/xePEVN
-const gremlin = {
+const brand = {
   green: '#23c386',
   green__filter:
     'brightness(0) saturate(100%) invert(60%) sepia(71%) saturate(494%) hue-rotate(105deg) brightness(92%) contrast(80%)',
@@ -86,14 +86,14 @@ const color = {
     },
   },
   dark: {
-    base: gremlin.black,
-    light: gremlin.lightBlack,
+    base: brand.black,
+    light: brand.lightBlack,
     get overlay() {
       return rgba(this.base, 0.85);
     },
   },
   primary: {
-    base: gremlin.green,
+    base: brand.green,
     get light() {
       return mix(0.9, '#fff', this.base);
     },
@@ -102,7 +102,7 @@ const color = {
     },
   },
   warning: {
-    base: gremlin.yellow,
+    base: brand.yellow,
     get light() {
       return mix(0.9, '#fff', this.base);
     },
@@ -111,7 +111,7 @@ const color = {
     },
   },
   danger: {
-    base: gremlin.red,
+    base: brand.red,
     get light() {
       return mix(0.925, '#fff', this.base);
     },
@@ -319,6 +319,7 @@ const contrast = {
 };
 
 export const theme = {
+  brand,
   color,
   border,
   borderRadius,
