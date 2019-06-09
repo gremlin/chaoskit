@@ -1,5 +1,9 @@
 import PropTypes from 'prop-types';
 
+const StylesBadgeVariables = theme => ({
+  height: theme.height.micro,
+});
+
 export const StylesBadgeBase = theme => ({
   background: theme.color.light.base,
   border: `1px solid ${theme.border.base}`,
@@ -14,7 +18,7 @@ export const StylesBadgeBase = theme => ({
   fontFamily: theme.fontFamily.heading,
   fontWeight: theme.fontWeight.bold,
   letterSpacing: theme.letterSpacing.small,
-  height: theme.height.micro,
+  height: StylesBadgeVariables(theme).height,
   textAlign: 'center',
   textTransform: 'uppercase',
   userSelect: 'none',
@@ -33,7 +37,7 @@ export const StylesBadgeDanger = theme => ({
 });
 
 export const StylesBadgeRounded = theme => ({
-  borderRadius: theme.height.micro / 2,
+  borderRadius: StylesBadgeVariables(theme).height / 2,
 });
 
 const Badge = ({

@@ -293,6 +293,7 @@ const space = {
 
 const settings = {
   contrast: true,
+  buttonContrast: true,
 };
 
 const contrast = {
