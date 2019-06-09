@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
 import { ThemeProvider } from 'emotion-theming';
-import { CacheProvider, Global, css } from '@emotion/core';
+import { CacheProvider, Global } from '@emotion/core';
 import createCache from '@emotion/cache';
 import 'what-input';
 
@@ -19,8 +19,25 @@ const ckCache = createCache({
   prefix: (key) => {
     switch (key) {
       case 'appearance':
-      case 'user-select':
-      case ':placeholder':
+      case 'box-decoration-break':
+      case 'mask-border-outset':
+      case 'mask-border-repeat':
+      case 'mask-border-slice':
+      case 'mask-border-source':
+      case 'mask-border-width':
+      case 'mask-border':
+      case 'mask-clip':
+      case 'mask-composite':
+      case 'mask-image':
+      case 'mask-origin':
+      case 'mask-position':
+      case 'mask-repeat':
+      case 'mask-size':
+      case 'mask':
+      case 'text-emphasis-color':
+      case 'text-emphasis-position':
+      case 'text-emphasis-style':
+      case 'text-emphasis':
         return true;
       default:
         return false;
@@ -57,37 +74,35 @@ const Foundation = props => (
           <CacheProvider value={ckCache}>
             <ThemeProvider theme={theme}>
               <Global
-                styles={{
-                  ...globalStyles(theme),
-                  ...contrast.styles(theme),
-                }}
+                styles={[
+                  globalStyles(theme),
+                  contrast.styles(theme),
+                  fonts(theme),
+                ]}
               />
-              <Global styles={fonts(theme)} />
               <div
                 className="u-contrast"
-                css={css`
-                  padding: ${theme.space.xlarge}px;
-                  background: ${theme.color.primary.base};
+                css={{
+                  padding: theme.space.xlarge,
+                  background: theme.color.primary.base,
 
-                  &:hover,
-                  &:focus {
-                    color: ${theme.color.danger.base};
-                    background: ${theme.color.warning.base};
-                  }
+                  '&:hover, &:focus': {
+                    color: theme.color.danger.base,
+                    background: theme.color.warning.base,
+                  },
 
-                  ${theme.mq.large} {
-                    color: ${theme.color.dark.base};
-                  }
-                `}
+                  [theme.mq.large]: {
+                    color: theme.color.dark.base,
+                  },
+                }}
               >
                 Test
               </div>
               <div
                 className="u-contrast"
-                css={css`
-                  padding: 100px;
-                `}
+                css={{ background: theme.color.primary.base }}
               >
+                <a href="https://www.google.com">Link</a>
                 <h1>Heading H1</h1>
                 <h2>Heading H2</h2>
                 <h3>Heading H3</h3>

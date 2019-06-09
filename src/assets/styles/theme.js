@@ -273,7 +273,8 @@ const lineHeight = {
 
 const letterSpacing = {
   base: 'normal',
-  small: '-0.025em',
+  negative: '-0.025em',
+  small: '0.1em',
   medium: '0.2em',
 };
 

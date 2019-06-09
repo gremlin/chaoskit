@@ -1,5 +1,3 @@
-import { merge } from 'lodash-es';
-
 import { text, link, misc } from './utility';
 
 export const globalStyles = theme => ({
@@ -66,8 +64,9 @@ export const globalStyles = theme => ({
   //
 
   // 1. Remove gaps in links underline in iOS 8+ and Safari 8+.
-  a: {
-    ...merge(link.baseDefault(theme), {
+  a: [
+    link.baseDefault(theme),
+    {
       WebkitTextDecorationSkip: 'objects', // 1
       textDecoration: 'none',
       cursor: 'pointer',
@@ -75,8 +74,8 @@ export const globalStyles = theme => ({
       '&:hover, &:focus': {
         textDecoration: 'none',
       },
-    }),
-  },
+    },
+  ],
 
   //
   // Text-level semantics
@@ -107,7 +106,7 @@ export const globalStyles = theme => ({
     // 3
     color: theme.color.danger,
     whiteSpace: 'pre-wrap',
-    padding: `(${theme.space.xsmall}px / 2) ${theme.space.xsmall}px`,
+    padding: `${theme.space.xsmall / 2}px ${theme.space.xsmall}px`,
     background: theme.color.panel.base,
   },
 
@@ -209,29 +208,22 @@ export const globalStyles = theme => ({
     marginTop: theme.space.base,
   },
 
-  h1: {
-    ...merge(text.heading(theme), theme.fontSize.h1__fluid),
-  },
+  h1: [text.heading(theme), theme.fontSize.h1__fluid],
 
-  h2: {
-    ...merge(text.heading(theme), theme.fontSize.h2__fluid),
-  },
+  h2: [text.heading(theme), theme.fontSize.h2__fluid],
 
-  h3: {
-    ...merge(text.heading(theme), theme.fontSize.h3__fluid),
-  },
+  h3: [text.heading(theme), theme.fontSize.h3__fluid],
 
-  h4: {
-    ...merge(text.heading(theme), { fontSize: theme.fontSize.h4 }),
-  },
+  h4: [text.heading(theme), { fontSize: theme.fontSize.h4 }],
 
-  h5: {
-    ...merge(text.heading(theme), {
+  h5: [
+    text.heading(theme),
+    {
       fontSize: theme.fontSize.h5,
       letterSpacing: theme.letterSpacing.medium,
       textTransform: 'uppercase',
-    }),
-  },
+    },
+  ],
 
   //
   // Lists
@@ -296,8 +288,9 @@ export const globalStyles = theme => ({
 
   // Preformatted text
   // 1. Contain overflow in all browsers.
-  pre: {
-    ...merge(misc.overflow, {
+  pre: [
+    misc.overflow,
+    {
       padding: theme.space.base,
       background: theme.color.panel.base,
       font: `1em/${theme.lineHeight.base} ${theme.fontFamily.code}`,
@@ -305,8 +298,8 @@ export const globalStyles = theme => ({
       tabSize: '4',
       border: `1px solid ${theme.border.base}`,
       borderRadius: theme.borderRadius.base,
-    }),
-  },
+    },
+  ],
 
   // Selection pseudo-element
   '::selection': {

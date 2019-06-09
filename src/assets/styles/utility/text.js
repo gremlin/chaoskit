@@ -4,7 +4,7 @@ export const heading = theme => ({
   fontWeight: theme.fontWeight.bold,
   color: theme.fontColor.heading,
   textTransform: 'none',
-  letterSpacing: theme.letterSpacing.small,
+  letterSpacing: theme.letterSpacing.negative,
 
   '* + &': {
     marginTop: theme.space.large,
