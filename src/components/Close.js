@@ -39,7 +39,6 @@ const Close = ({ onClick, ...opts }) => (
 );
 
 Close.propTypes = {
-  className: PropTypes.string,
   onClick: PropTypes.func,
 };
 

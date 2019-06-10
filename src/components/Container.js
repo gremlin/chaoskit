@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 
-export const Container = ({ size, ...opts }) => (
+export const Container = ({ className, size, ...opts }) => (
   <div
-    className="CK__Container"
+    className={cx('CK__Container', className)}
     css={theme => [
       {
         width: '100%',
