@@ -10,7 +10,7 @@ import Foundation from './Foundation';
 import { styles } from '../helpers/styles';
 import { config } from '../helpers/config';
 import {
-  Button, Icon, Inline, List, ListItem,
+  Button, Container, Icon, Inline, List, ListItem,
 } from '../components';
 import { version } from '../../package.json';
 
@@ -256,8 +256,18 @@ const BaseLayout = ({ children, pageTitle }) => {
           </main>
         </div>
       </div>
-      <footer className="u-bgPanel u-mt--large u-pv--regular">
-        <div className="container">
+      <footer
+        css={theme => ({
+          background: theme.color.panel.base,
+          marginTop: theme.space.large,
+          paddingTop: theme.space.base,
+          paddingBottom: theme.space.base,
+        })}
+      >
+        <Container>
+          <Container className="u-contrast" css={{ background: 'blue' }}>
+            test
+          </Container>
           <Inline>
             <div className="u-textMuted u-textSmall">
               Current Version:{' '}
@@ -283,7 +293,7 @@ const BaseLayout = ({ children, pageTitle }) => {
               </a>
             </div>
           </Inline>
-        </div>
+        </Container>
       </footer>
     </Foundation>
   );

@@ -9,6 +9,7 @@ export { default as CheckboxGroup } from './CheckboxGroup.js';
 export { default as ChoicesMulti } from './ChoicesMulti.js';
 export { default as ChoicesSingle } from './ChoicesSingle.js';
 export { default as Close } from './Close.js';
+export { default as Container } from './Container.js';
 export { default as Dropdown } from './Dropdown.js';
 export { default as DropdownHeader } from './DropdownHeader.js';
 export { default as FormFooter } from './FormFooter.js';
