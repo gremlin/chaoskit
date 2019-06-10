@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 
 import Button from './Button';
@@ -10,7 +9,14 @@ const Pagination = ({
   nextPageLink,
   ...opts
 }) => (hasPrevPage || hasNextPage ? (
-  <div className="pagination" {...opts}>
+  <div
+    css={theme => ({
+      display: 'flex',
+      justifyContent: 'space-between',
+      marginTop: theme.space.xlarge,
+    })}
+    {...opts}
+  >
     <Button
       rel={hasPrevPage ? 'prev' : null}
       type="default"
