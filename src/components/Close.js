@@ -1,25 +1,42 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import cx from 'classnames';
 
 import Button from './Button';
 import Icon from './Icon';
 
-const Close = ({ className, onClick, ...opts }) => {
-  const classes = cx('close', className);
+const Close = ({ onClick, ...opts }) => (
+  <Button
+    type="reset"
+    title="Close"
+    onClick={onClick}
+    css={theme => ({
+      // 1. To align better with headers
+      color: theme.fontColor.base,
+      lineHeight: theme.lineHeight.small, // 1
+      width: theme.fontSize.base,
+      height: theme.fontSize.base,
+      opacity: theme.opacity.base,
+      transition: `opacity ${theme.timing.base} ${theme.transition.base}`,
 
-  return (
-    <Button
-      type="reset"
-      title="Close"
-      onClick={onClick}
-      className={classes}
-      {...opts}
-    >
-      <Icon icon="close" />
-    </Button>
-  );
-};
+      '&:hover, &:focus': {
+        opacity: 1,
+
+        '.CK__Close__Icon': {
+          transform: 'scale(1.15)',
+        },
+      },
+    })}
+    {...opts}
+  >
+    <Icon
+      icon="close"
+      className="CK__Close__Icon"
+      css={theme => ({
+        transition: `transform ${theme.timing.base} ${theme.transition.base}`,
+        transformOrigin: 'center center',
+      })}
+    />
+  </Button>
+);
 
 Close.propTypes = {
   className: PropTypes.string,
