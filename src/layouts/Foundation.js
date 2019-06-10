@@ -10,7 +10,7 @@ import createCache from '@emotion/cache';
 import 'what-input';
 
 import { theme } from '../assets/styles/theme';
-import { contrast } from '../assets/styles/utility';
+import { contrast, misc } from '../assets/styles/utility';
 import { fonts } from '../assets/styles/fonts';
 import { globalStyles } from '../assets/styles/global';
 
@@ -94,7 +94,7 @@ const Foundation = ({ children }) => {
           </div>
           <div
             className="u-contrast"
-            css={{ background: theme.color.primary.base }}
+            css={[misc.trimChildren, { background: theme.color.primary.base }]}
           >
             <a href="https://www.google.com">Link</a>
             <h1>Heading H1</h1>

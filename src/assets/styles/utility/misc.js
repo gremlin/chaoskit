@@ -1,12 +1,12 @@
 export const trimChildren = {
   '*': {
     '&:last-child': {
-      marginBottom: 0,
+      marginBottom: '0 !important',
     },
 
     '> *': {
       '&:last-child': {
-        marginBottom: 0,
+        marginBottom: '0 !important',
       },
     },
   },
@@ -18,7 +18,7 @@ export const spaceChildren = ({
   size = theme.space.base,
 }) => ({
   '> * + *': {
-    [property]: size,
+    [property]: `${size}px !important`,
   },
 });
 
