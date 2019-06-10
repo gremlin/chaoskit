@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import cx from 'classnames';
 
 import Icon from './Icon';
 import { misc } from '../assets/styles/utility';
@@ -34,7 +35,7 @@ const StylesAvatarBase = (theme, props = {}) => [
 ];
 
 const Avatar = ({
-  image, name, size, ...opts
+  className, image, name, size, ...opts
 }) => {
   const [error, setError] = useState(false);
 
@@ -50,6 +51,7 @@ const Avatar = ({
             backgroundImage: `url(${image})`,
           },
         ]}
+        className={cx('CK__Avatar', className)}
         {...opts}
       >
         <img
@@ -65,7 +67,11 @@ const Avatar = ({
   // If no image and no name, use icon
   if (!image && !nameProp) {
     return (
-      <figure css={theme => [StylesAvatarBase(theme, { size })]} {...opts}>
+      <figure
+        css={theme => [StylesAvatarBase(theme, { size })]}
+        className={cx('CK__Avatar', className)}
+        {...opts}
+      >
         <Icon
           icon="user"
           css={{
@@ -104,6 +110,7 @@ const Avatar = ({
       xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="none"
       css={theme => [StylesAvatarBase(theme, { size })]}
+      className={cx('CK__Avatar', className)}
       {...opts}
     >
       <circle
@@ -132,6 +139,7 @@ const Avatar = ({
 };
 
 Avatar.propTypes = {
+  className: PropTypes.string,
   image: PropTypes.string,
   name: PropTypes.string,
   size: PropTypes.oneOf(['default', 'large']),

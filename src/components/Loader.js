@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { keyframes } from '@emotion/core';
+import cx from 'classnames';
 
 const loaderRotateKeyframes = keyframes({
   '100%': {
@@ -24,7 +25,7 @@ const loaderCircleKeyframes = keyframes({
   },
 });
 
-const Loader = ({ ...opts }) => (
+const Loader = ({ className, ...opts }) => (
   <span
     css={{
       position: 'relative',
@@ -38,6 +39,7 @@ const Loader = ({ ...opts }) => (
         paddingTop: '100%',
       },
     }}
+    className={cx('CK__Loader', className)}
     {...opts}
   >
     <svg

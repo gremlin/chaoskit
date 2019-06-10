@@ -1,6 +1,9 @@
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 
-const Inline = ({ size, wrap, ...opts }) => (
+const Inline = ({
+  className, size, wrap, ...opts
+}) => (
   <div
     css={theme => [
       {
@@ -58,11 +61,13 @@ const Inline = ({ size, wrap, ...opts }) => (
         flexWrap: 'nowrap',
       },
     ]}
+    className={cx('CK__Inline', className)}
     {...opts}
   />
 );
 
 Inline.propTypes = {
+  className: PropTypes.string,
   size: PropTypes.oneOf(['small', 'default', 'medium', 'large', 'xlarge']),
   wrap: PropTypes.bool,
 };

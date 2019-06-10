@@ -1,5 +1,6 @@
 import { forwardRef } from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 
 import Icons from '../assets/icons/icons.json';
 
@@ -12,7 +13,7 @@ export const StylesIconVariables = {
 
 const Icon = forwardRef(
   ({
-    icon, additionalIcons, fallback, size, ...opts
+    className, icon, additionalIcons, fallback, size, ...opts
   }, ref) => {
     const getIcon = () => {
       // Merge in base icons with anything additional
@@ -70,6 +71,7 @@ const Icon = forwardRef(
                 height: StylesIconVariables.xlarge,
               },
             ]}
+            className={cx('CK__Icon', className)}
             ref={ref}
             dangerouslySetInnerHTML={{ __html: matchedIcon }}
             {...opts}
@@ -86,6 +88,7 @@ const Icon = forwardRef(
 );
 
 Icon.propTypes = {
+  className: PropTypes.string,
   /** When icon is not found. Useful in generated content */
   fallback: PropTypes.string,
   icon: PropTypes.string.isRequired,

@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
+import cx from 'classnames';
 
 import { misc } from '../assets/styles/utility';
 import { StylesIconVariables } from './Icon';
@@ -333,6 +334,7 @@ const Button = forwardRef(
       actionType,
       as,
       children,
+      className,
       disabled,
       fullWidth,
       iconOnly,
@@ -385,6 +387,7 @@ const Button = forwardRef(
             borderRadius: 0,
           },
         ]}
+        className={cx('CK__Button', className)}
         {...buttonProps}
       >
         {type === 'reset' ? (
@@ -414,6 +417,7 @@ Button.propTypes = {
   /* Useful for frameworks like NextJs */
   as: PropTypes.oneOf(['button', 'a']),
   children: PropTypes.node,
+  className: PropTypes.string,
   disabled: PropTypes.bool,
   fullWidth: PropTypes.bool,
   iconOnly: PropTypes.bool,

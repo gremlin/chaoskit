@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 
 const StylesBadgeVariables = theme => ({
   height: theme.height.micro,
@@ -41,7 +42,7 @@ export const StylesBadgeRounded = theme => ({
 });
 
 const Badge = ({
-  label, rounded, type, ...opts
+  className, label, rounded, type, ...opts
 }) => (
   <div
     css={theme => [
@@ -50,6 +51,7 @@ const Badge = ({
       type === 'danger' && StylesBadgeDanger(theme),
       rounded && StylesBadgeRounded(theme),
     ]}
+    className={cx('CK__Button', className)}
     {...opts}
   >
     {label}
@@ -57,6 +59,7 @@ const Badge = ({
 );
 
 Badge.propTypes = {
+  className: PropTypes.string,
   label: PropTypes.string.isRequired,
   rounded: PropTypes.bool,
   type: PropTypes.oneOf(['default', 'primary', 'danger']),

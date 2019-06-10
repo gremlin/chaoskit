@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 
 import Button from './Button';
 
 const Pagination = ({
+  className,
   hasPrevPage,
   hasNextPage,
   prevPageLink,
@@ -15,6 +17,7 @@ const Pagination = ({
       justifyContent: 'space-between',
       marginTop: theme.space.xlarge,
     })}
+    className={cx('CK__Pagination', className)}
     {...opts}
   >
     <Button
@@ -37,6 +40,7 @@ const Pagination = ({
 ) : null);
 
 Pagination.propTypes = {
+  className: PropTypes.string,
   hasPrevPage: PropTypes.bool.isRequired,
   hasNextPage: PropTypes.bool.isRequired,
   prevPageLink: PropTypes.string.isRequired,
