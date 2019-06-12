@@ -1,5 +1,5 @@
 import {
-  fluidRange, mix, rgba, shade, timingFunctions,
+  fluidRange, rgba, shade, tint, timingFunctions,
 } from 'polished';
 
 // @NOTE Filter generator https://codepen.io/zslabs/pen/xePEVN
@@ -95,7 +95,7 @@ const color = {
   primary: {
     base: brand.green,
     get light() {
-      return mix(0.9, '#fff', this.base);
+      return tint(0.9, this.base);
     },
     get dark() {
       return shade(0.1, this.base);
@@ -104,7 +104,7 @@ const color = {
   warning: {
     base: brand.yellow,
     get light() {
-      return mix(0.9, '#fff', this.base);
+      return tint(0.9, this.base);
     },
     get dark() {
       return shade(0.1, this.base);
@@ -113,7 +113,7 @@ const color = {
   danger: {
     base: brand.red,
     get light() {
-      return mix(0.925, '#fff', this.base);
+      return tint(0.925, this.base);
     },
     get dark() {
       return shade(0.1, this.base);

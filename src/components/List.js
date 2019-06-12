@@ -1,21 +1,43 @@
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import React from 'react';
 
-const List = ({ className, type, ...opts }) => {
-  const classes = cx('u-list', className, {
-    'u-list--space': type && type.includes('space'),
-    'u-list--border': type && type.includes('border'),
-    'u-list--number': type && type.includes('number'),
-    'u-list--circles': type && type.includes('circles'),
-  });
+import { list } from '../assets/styles/utility';
 
-  return <ul className={classes} {...opts} />;
-};
+const List = ({
+  className, space, type, border, ...opts
+}) => (
+  <ul
+    css={theme => [
+      {
+        listStyle: 'none',
+        paddingLeft: 0,
+        display: 'grid',
+        gridTemplateColumns: 'minmax(0, 1fr)',
+        gridGap: space && theme.space[space],
+      },
+
+      border && {
+        '> li:not(:first-of-type)': {
+          paddingTop: space && theme.space[space],
+          borderTop: `1px solid ${theme.border.base}`,
+        },
+      },
+
+      type === 'numbers' && list.numbers({ theme }),
+
+      type === 'circles'
+        && list.circles({ theme, space: space && theme.space[space] }),
+    ]}
+    className={cx('UK__List', className)}
+    {...opts}
+  />
+);
 
 List.propTypes = {
+  border: PropTypes.bool,
   className: PropTypes.string,
-  type: PropTypes.array,
+  space: PropTypes.oneOf(['small', 'base', 'medium', 'large', 'xlarge']),
+  type: PropTypes.oneOf(['numbers', 'circles']),
 };
 
 export default List;

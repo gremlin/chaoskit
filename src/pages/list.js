@@ -13,22 +13,22 @@ const ListExample = `
     <ListItem>Another!</ListItem>
   </List>
   <h4>Space</h4>
-  <List type={['space']}>
+  <List space="large">
     <ListItem>Child</ListItem>
     <ListItem>Another!</ListItem>
   </List>
   <h4>Space + border</h4>
-  <List type={['space', 'border']}>
+  <List space="medium" border>
     <ListItem>Child</ListItem>
     <ListItem>Another!</ListItem>
   </List>
   <h4>Space + border + number</h4>
-  <List type={['space', 'border', 'number']}>
+  <List space="medium" border type="numbers">
     <ListItem>Child</ListItem>
     <ListItem>Another!</ListItem>
   </List>
-  <h4>Space + circles</h4>
-  <List type={['space', 'circles']}>
+  <h4>Space + circles + border</h4>
+  <List space="large" border type="circles">
     <ListItem>Child</ListItem>
     <ListItem>Another!</ListItem>
   </List>

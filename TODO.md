@@ -1,3 +1,4 @@
 - `base.scss`: `is-loaded` needs to be applied in Gatsby sites (possibly)
-- `base.scss`: `.button--rest` needs to be applied to `<Button />` component
+- `list`: prop reorganization in component + style updates that allow more combinations
 - `gradient.scss`: Implement easing gradient mixin
+- `inline component` supports more space variations
