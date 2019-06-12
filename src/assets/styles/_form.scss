@@ -164,6 +164,17 @@ $form-contrast-background-focus: transparent !default;
     }
   }
 
+  // Delay webkit autocomplete UI without disrupting text colors or box shadows
+  &:-webkit-autofill {
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+      transition-delay: 5000s;
+      transition-property: background-color, color;
+    }
+  }
+
   .is-notValid & {
     border-color: $global-danger;
     box-shadow: $form-focus-error-box-shadow;
