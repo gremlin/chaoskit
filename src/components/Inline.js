@@ -11,7 +11,7 @@ const Inline = ({
         flexWrap: 'wrap',
         alignItems: 'center',
         listStyle: 'none',
-        padding: '0',
+        padding: 0,
         margin: `-${theme.space[size]}px 0 0 -${theme.space[size]}px`,
 
         '> *': {

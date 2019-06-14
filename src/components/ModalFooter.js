@@ -1,18 +1,32 @@
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import React from 'react';
 
-const ModalFooter = ({ center, className, ...opts }) => {
-  const classes = cx('modal-footer', className, {
-    'modal-footer--center': center,
-  });
+import { misc } from '../assets/styles/utility';
+import { StylesModalVariables } from './Modal';
 
-  return <div className={classes} {...opts} />;
-};
+const ModalFooter = ({ align, className, ...opts }) => (
+  <div
+    css={theme => [
+      misc.trimChildren,
+      {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: [align],
+        padding: StylesModalVariables(theme).padding,
+      },
+    ]}
+    className={cx('CK__ModalFooter', className)}
+    {...opts}
+  />
+);
 
 ModalFooter.propTypes = {
-  center: PropTypes.bool,
+  align: PropTypes.oneOf(['flex-start', 'center', 'flex-end']),
   className: PropTypes.string,
+};
+
+ModalFooter.defaultProps = {
+  align: 'flex-start',
 };
 
 export default ModalFooter;

@@ -3,3 +3,5 @@
 - button -- teal is no longer a prop type option
 - `gradient.scss`: Implement easing gradient mixin
 - `inline component` supports more space variations
+- modal footer -- removing center prop for new align prop, remove optional footer styles
+- modal header -- center to centered, onCloseClick is required, remove optional header styles

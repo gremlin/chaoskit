@@ -19,7 +19,7 @@ const StylesAvatarBase = (theme, props = {}) => [
     borderRadius: '50%',
     color: StylesAvatarVariables(theme).color,
     display: 'inline-flex',
-    marginBottom: '0',
+    marginBottom: 0,
     overflow: 'hidden',
     pointerEvents: 'none',
     position: 'relative',

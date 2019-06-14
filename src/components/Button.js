@@ -30,7 +30,7 @@ export const StylesButtonBase = (theme, props = {}) => [
     // 1
     appearance: 'none',
     // 2
-    margin: '0',
+    margin: 0,
     // 3
     border: `${StylesButtonVariables().borderWidth}px solid transparent`,
     // 4
@@ -278,10 +278,10 @@ export const StylesButtonReset = {
   appearance: 'none',
   background: 'none',
   // 2
-  padding: '0',
-  margin: '0',
+  padding: 0,
+  margin: 0,
   // 3
-  borderWidth: '0',
+  borderWidth: 0,
   // 4
   font: 'inherit',
   textDecoration: 'none',

@@ -28,9 +28,10 @@ const ModalExample = `
         onReverseStart={() => console.log('closing')}
         onReverseComplete={() => console.log('closed')}
         open={isOpen}
+        size="large"
         onOutsideModalClick={handleToggle}
       >
-        <ModalHeader title="Hello" onCloseClick={handleToggle} />
+        <ModalHeader centered title="Hello" onCloseClick={handleToggle} />
         <ModalBody>
           test
         </ModalBody>

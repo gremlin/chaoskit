@@ -1,6 +1,6 @@
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import React, { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import useUpdateEffect from 'react-use/lib/useUpdateEffect';
 import useLockBodyScroll from 'react-use/lib/useLockBodyScroll';
 import useClickAway from 'react-use/lib/useClickAway';
@@ -8,6 +8,16 @@ import ReactDOM from 'react-dom';
 import { TimelineMax } from 'gsap/TweenMax';
 
 import { config } from '../helpers/config';
+import { misc } from '../assets/styles/utility';
+
+export const StylesModalVariables = theme => ({
+  padding: theme.space.large,
+  size: {
+    base: 600,
+    small: 400,
+    large: 800,
+  },
+});
 
 const Modal = ({
   children,
@@ -132,35 +142,77 @@ const Modal = ({
     [open],
   );
 
-  const modalClasses = cx(
-    'modal',
-    {
-      'modal--small': size === 'small',
-      'modal--large': size === 'large',
-    },
-    className,
-  );
-
   useClickAway(modalDialogRef, () => onOutsideModalClick());
   useLockBodyScroll(renderModal);
 
-  return (
-    renderModal
-    && ReactDOM.createPortal(
-      <div className={modalClasses} ref={modalRef} {...opts}>
-        <div className="modal-dialog" ref={modalDialogRef}>
-          {children}
-        </div>
-      </div>,
-      document.body,
-    )
+  if (!renderModal) return null;
+
+  return ReactDOM.createPortal(
+    <div
+      css={theme => [
+        misc.overflow,
+        {
+          // 1. GSAP
+          position: 'fixed',
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0,
+          background: theme.color.dark.overlay,
+          zIndex: 10,
+
+          // 1
+          opacity: 0,
+          display: 'none',
+        },
+      ]}
+      className={cx('CK__Modal', className)}
+      ref={modalRef}
+      {...opts}
+    >
+      <div
+        css={theme => [
+          {
+            // 1. GSAP
+            background: theme.color.light.base,
+            borderRadius: theme.borderRadius.base,
+            margin: theme.space.base,
+            zIndex: 5,
+            boxShadow: theme.boxShadow.large,
+            // 1
+            transform: 'translateY(25%)',
+            transformOrigin: 'center bottom',
+            opacity: 0,
+          },
+
+          ['small', 'base'].includes(size) && {
+            [theme.mq.medium]: {
+              maxWidth: StylesModalVariables(theme).size[size],
+              margin: `${theme.space.xlarge}px auto`,
+            },
+          },
+
+          size === 'large' && {
+            [theme.mq.large]: {
+              maxWidth: StylesModalVariables(theme).size[size],
+              margin: `${theme.space.xlarge}px auto`,
+            },
+          },
+        ]}
+        className="UK__Modal__Dialog"
+        ref={modalDialogRef}
+      >
+        {children}
+      </div>
+    </div>,
+    document.body,
   );
 };
 
 Modal.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  size: PropTypes.oneOf(['default', 'small', 'large']),
+  size: PropTypes.oneOf(['base', 'small', 'large']),
   open: PropTypes.bool,
   onOutsideModalClick: PropTypes.func,
   /** GSAP callback */
@@ -179,6 +231,7 @@ Modal.defaultProps = {
   onReverseComplete: () => {},
   onReverseStart: () => {},
   onStart: () => {},
+  size: 'base',
 };
 
 export default Modal;

@@ -1,12 +1,21 @@
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import React from 'react';
 
-const ModalBody = ({ className, ...opts }) => {
-  const classes = cx('modal-body', className);
+import { misc } from '../assets/styles/utility';
+import { StylesModalVariables } from './Modal';
 
-  return <div className={classes} {...opts} />;
-};
+const ModalBody = ({ className, ...opts }) => (
+  <div
+    css={theme => [
+      misc.trimChildren,
+      {
+        padding: StylesModalVariables(theme).padding,
+      },
+    ]}
+    className={cx('CK__ModalBody', className)}
+    {...opts}
+  />
+);
 
 ModalBody.propTypes = {
   className: PropTypes.string,

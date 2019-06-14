@@ -147,6 +147,9 @@ const boxShadowColors = {
 
 const boxShadow = {
   base: `0 0 6px -2px ${boxShadowColors.base}`,
+  large: `0 15px 35px ${boxShadowColors.xxlight}, 0 5px 15px ${
+    boxShadowColors.xlight
+  }`,
 };
 
 const fontFamily = {
