@@ -237,31 +237,6 @@ export const StylesButtonDanger = (theme, props = {}) => [
   },
 ];
 
-export const StylesButtonTeal = (theme, props = {}) => [
-  {
-    background: theme.brand.teal,
-    borderColor: theme.brand.teal,
-    color: theme.contrast.base,
-
-    '&:hover, &:focus, &:active': {
-      color: theme.contrast.base,
-    },
-  },
-  theme.settings.contrast
-    && theme.settings.buttonContrast
-    && !props.noContrast && {
-    '.u-contrast &': {
-      background: theme.contrast.base,
-      borderColor: theme.contrast.base,
-      color: theme.brand.teal,
-
-      '&:hover, &:focus, &:active': {
-        color: theme.brand.teal,
-      },
-    },
-  },
-];
-
 export const StylesButtonIconOnly = (theme, props = {}) => [
   {
     padding: 0,
@@ -378,7 +353,6 @@ const Button = forwardRef(
           type === 'primary' && StylesButtonPrimary(theme, { noContrast }),
           type === 'secondary' && StylesButtonSecondary(theme, { noContrast }),
           type === 'danger' && StylesButtonDanger(theme, { noContrast }),
-          type === 'teal' && StylesButtonTeal(theme, { noContrast }),
           iconOnly && StylesButtonIconOnly(theme, { size }),
           fullWidth && {
             width: '100%',
@@ -432,7 +406,6 @@ Button.propTypes = {
     'default',
     'primary',
     'secondary',
-    'teal',
     'danger',
     'outlinePrimary',
   ]),
