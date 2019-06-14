@@ -1,6 +1,6 @@
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import React, { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import useUpdateEffect from 'react-use/lib/useUpdateEffect';
 import useLockBodyScroll from 'react-use/lib/useLockBodyScroll';
 import useClickAway from 'react-use/lib/useClickAway';
@@ -8,7 +8,12 @@ import ReactDOM from 'react-dom';
 import { TimelineMax } from 'gsap/TweenMax';
 
 import { config } from '../helpers/config';
+import { misc } from '../assets/styles/utility';
 import Close from './Close';
+
+const StylesOffCanvasVariables = theme => ({
+  size: theme.space.large,
+});
 
 const OffCanvas = ({
   children,
@@ -20,6 +25,7 @@ const OffCanvas = ({
   onReverseComplete,
   onReverseStart,
   onStart,
+  panelWidth,
   ...opts
 }) => {
   const offCanvasRef = useRef();
@@ -54,8 +60,6 @@ const OffCanvas = ({
     $offCanvas.timeline = new TimelineMax({
       paused: !open,
       onStart: () => {
-        $offCanvas.classList.add(config.classes.open);
-
         onStart();
       },
       onUpdate: () => {
@@ -67,8 +71,6 @@ const OffCanvas = ({
           forward = !forward;
           if (!forward) {
             onReverseStart();
-
-            $offCanvas.classList.remove(config.classes.open);
           }
         }
         lastTime = newTime;
@@ -142,28 +144,74 @@ const OffCanvas = ({
     [open],
   );
 
-  const classes = cx(
-    'offCanvas',
-    {
-      'offCanvas--right': align === 'right',
-    },
-    className,
-  );
-
   useClickAway(offCanvasPanelRef, () => onOffCanvasToggle());
   useLockBodyScroll(renderOffCanvas);
 
-  return (
-    renderOffCanvas
-    && ReactDOM.createPortal(
-      <div className={classes} ref={offCanvasRef} {...opts}>
-        <div className="offCanvas-panel" ref={offCanvasPanelRef}>
-          <Close onClick={onOffCanvasToggle} className="offCanvas-close" />
-          {children}
-        </div>
-      </div>,
-      document.body,
-    )
+  if (!renderOffCanvas) return null;
+
+  return ReactDOM.createPortal(
+    <div
+      css={theme => ({
+        // 1. GSAP
+        position: 'fixed',
+        top: '0',
+        right: '0',
+        bottom: '0',
+        left: '0',
+        background: theme.color.dark.overlay,
+        zIndex: 10,
+
+        // 1
+        opacity: 0,
+        display: 'none',
+      })}
+      className={cx('CK__OffCanvas', className)}
+      ref={offCanvasRef}
+      {...opts}
+    >
+      <div
+        css={theme => [
+          misc.overflow,
+          misc.trimChildren,
+          {
+            // 1. GSAP
+            position: 'absolute',
+            top: 0,
+            [align]: 0,
+            zIndex: 5,
+            height: '100%',
+            width: '100%',
+            background: theme.color.light.base,
+            padding: StylesOffCanvasVariables(theme).size,
+            boxShadow:
+              align === 'left'
+                ? `7.5px 0 17.5px ${theme.boxShadowColors.xxlight}`
+                : `-7.5px 0 17.5px ${theme.boxShadowColors.xxlight}`,
+            // 1
+            transform:
+              align === 'left' ? 'translateX(-100%)' : 'translateX(100%)',
+
+            [theme.mq.small]: {
+              width: panelWidth,
+            },
+          },
+        ]}
+        className="CK__OffCanvas__Panel"
+        ref={offCanvasPanelRef}
+      >
+        <Close
+          onClick={onOffCanvasToggle}
+          css={theme => ({
+            position: 'absolute',
+            top: StylesOffCanvasVariables(theme).size,
+            right: StylesOffCanvasVariables(theme).size,
+          })}
+          className="CK__OffCanvas__Close"
+        />
+        {children}
+      </div>
+    </div>,
+    document.body,
   );
 };
 
@@ -181,6 +229,7 @@ OffCanvas.propTypes = {
   onReverseStart: PropTypes.func,
   /** GSAP callback */
   onStart: PropTypes.func,
+  panelWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 OffCanvas.defaultProps = {
@@ -188,6 +237,8 @@ OffCanvas.defaultProps = {
   onReverseComplete: () => {},
   onReverseStart: () => {},
   onStart: () => {},
+  panelWidth: 300,
+  align: 'left',
 };
 
 export default OffCanvas;

@@ -75,6 +75,11 @@ const mq = {
   xlarge__max: `@media (max-width: ${breakpoint.xlarge__max}px)`,
 };
 
+const opacity = {
+  base: 0.5,
+  overlay: 0.75,
+};
+
 const color = {
   light: {
     base: '#fff',
@@ -89,7 +94,7 @@ const color = {
     base: brand.black,
     light: brand.lightBlack,
     get overlay() {
-      return rgba(this.base, 0.85);
+      return rgba(this.base, opacity.overlay);
     },
   },
   primary: {
@@ -276,10 +281,6 @@ const letterSpacing = {
   negative: '-0.025em',
   small: '0.1em',
   medium: '0.2em',
-};
-
-const opacity = {
-  base: 0.5,
 };
 
 const space = {
