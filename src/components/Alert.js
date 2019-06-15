@@ -7,7 +7,32 @@ import { TimelineMax } from 'gsap/TweenMax';
 import { kebabCase, toLower } from 'lodash-es';
 
 import { config } from '../helpers/config';
+import { misc, text } from '../assets/styles/utility';
 import Close from './Close';
+
+export const StylesAlertDefault = theme => ({
+  borderColor: theme.border.base,
+  background: theme.color.panel.base,
+});
+
+export const StylesAlertPrimary = theme => ({
+  borderColor: theme.color.primary.base,
+  background: theme.color.primary.light,
+});
+
+export const StylesAlertWarning = theme => ({
+  borderColor: theme.color.warning.base,
+  background: theme.color.warning.light,
+});
+
+export const StylesAlertDanger = theme => ({
+  borderColor: theme.color.danger.base,
+  background: theme.color.danger.light,
+
+  '.CK__Alert__Title, .CK__Alert__Close': {
+    color: theme.color.danger.base,
+  },
+});
 
 const Alert = ({
   children,
@@ -72,6 +97,7 @@ const Alert = ({
         transformOrigin: 'center center',
         y: '50%',
         opacity: 0,
+        pointerEvents: 'none',
       },
       ease: config.easing,
     });
@@ -108,29 +134,68 @@ const Alert = ({
     [collapse],
   );
 
-  const classes = cx(
-    'alert',
-    {
-      'alert--primary': type === 'primary',
-      'alert--warning': type === 'warning',
-      'alert--danger': type === 'danger',
-    },
-    className,
-  );
-
   return (
-    <div className={classes} role="alert" ref={alertRef} {...opts}>
-      <div className="alert-content">
+    <div
+      css={theme => [
+        {
+          display: 'flex',
+          padding: theme.space.base,
+          borderLeft: '8px solid transparent',
+
+          '&:not(:last-child)': {
+            marginBottom: theme.space.base,
+          },
+
+          [theme.mq.medium]: {
+            padding: theme.space.medium,
+          },
+
+          'a:not([class]), .u-link': [
+            text.underline,
+            {
+              color: 'currentColor',
+
+              '&:hover, &:focus': {
+                color: 'currentColor',
+              },
+            },
+          ],
+        },
+
+        type === 'default' && StylesAlertDefault(theme),
+        type === 'primary' && StylesAlertPrimary(theme),
+        type === 'warning' && StylesAlertWarning(theme),
+        type === 'danger' && StylesAlertDanger(theme),
+      ]}
+      className={cx('CK__Alert', className)}
+      role="alert"
+      ref={alertRef}
+      {...opts}
+    >
+      <div
+        css={[
+          misc.trimChildren,
+          {
+            flex: 1,
+          },
+        ]}
+        className="CK__Alert__Content"
+      >
         {title && (
-          <h4 id={kebabCase(toLower(title))} className="alert-title">
+          <h4 id={kebabCase(toLower(title))} className="CK__Alert__Title">
             {title}
           </h4>
         )}
         {children}
       </div>
       {close && (
-        <div className="alert-right">
-          <Close className="alert-close" onClick={collapseAlert} />
+        <div
+          css={theme => ({
+            flex: 0,
+            paddingLeft: theme.space.small,
+          })}
+        >
+          <Close className="CK__Alert__Close" onClick={collapseAlert} />
         </div>
       )}
     </div>
@@ -160,6 +225,7 @@ Alert.defaultProps = {
   onReverseStart: () => {},
   onStart: () => {},
   collapse: false,
+  type: 'default',
 };
 
 export default Alert;
