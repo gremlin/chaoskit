@@ -5,3 +5,4 @@
 - `inline component` supports more space variations
 - modal footer -- removing center prop for new align prop, remove optional footer styles
 - modal header -- center to centered, onCloseClick is required, remove optional header styles
+- alert -- remove pointer events none from js file and figure out how to add state-based styles via GSAP callbacks with Emotion
