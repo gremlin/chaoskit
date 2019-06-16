@@ -45,8 +45,9 @@ const Live = ({
           scope={scopeProps}
           code={code}
           mountStylesheet={false}
-          transformCode={input => window.Babel.transform(input, { presets: ['stage-0', 'react'] })
-            .code
+          transformCode={input => window.Babel.transform(input, {
+            presets: ['stage-0', 'react'],
+          }).code
           }
         >
           {showEditor && <LiveEditor />}

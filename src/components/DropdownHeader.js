@@ -2,15 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-const DropdownHeader = ({ children, className, ...opts }) => {
-  const classes = cx('dropdown-header', className);
+const DropdownHeader = ({ children, className, ...opts }) => (
+  <h5
+    css={theme => ({
+      color: `${theme.fontColor.muted} !important`,
+      fontSize: theme.fontSize.xsmall,
 
-  return (
-    <h5 className={classes} {...opts}>
-      {children}
-    </h5>
-  );
-};
+      '&:not(:first-of-type)': {
+        marginTop: 0,
+      },
+    })}
+    className={cx('CK__DropdownHeader', className)}
+    {...opts}
+  >
+    {children}
+  </h5>
+);
 
 DropdownHeader.propTypes = {
   children: PropTypes.node.isRequired,

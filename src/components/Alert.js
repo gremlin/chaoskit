@@ -175,7 +175,7 @@ const Alert = ({
       className={cx('CK__Alert', className)}
       role="alert"
       ref={alertRef}
-      aria-hidden={hidden ? 'hidden' : null}
+      aria-hidden={hidden ? 'true' : 'false'}
       {...opts}
     >
       <div

@@ -1,4 +1,4 @@
-import React, { Fragment, useRef } from 'react';
+import { Fragment, useRef, useState } from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 import useMount from 'react-use/lib/useMount';
@@ -7,6 +7,7 @@ import { TimelineMax } from 'gsap/TweenMax';
 
 import Button from './Button';
 import { config } from '../helpers/config';
+import { misc } from '../assets/styles/utility';
 
 const Reveal = ({
   onStart,
@@ -19,12 +20,23 @@ const Reveal = ({
   trigger,
   ...opts
 }) => {
-  const triggerRef = useRef();
   const revealRef = useRef();
+  const [hidden, setHidden] = useState(true);
+
+  const handleOnStart = () => {
+    setHidden(false);
+
+    onStart();
+  };
+
+  const handleOnReverseStart = () => {
+    setHidden(true);
+
+    onReverseStart();
+  };
 
   const attachTimeline = () => {
     const $reveal = revealRef.current;
-    const $trigger = triggerRef.current;
 
     let forward = true;
     let lastTime = 0;
@@ -33,16 +45,10 @@ const Reveal = ({
     $reveal.timeline = new TimelineMax({
       paused: true,
       onStart: () => {
-        onStart();
+        handleOnStart();
 
         // Set initial height to `auto`
         $reveal.style.height = 'auto';
-        // Add open class
-        $reveal.classList.add(config.classes.open);
-        // Toggle aria state
-        $reveal.setAttribute('aria-hidden', false);
-        // Add active class on trigger
-        $trigger.classList.add(config.classes.active);
       },
       onUpdate: () => {
         const newTime = $reveal.timeline.time();
@@ -53,14 +59,7 @@ const Reveal = ({
         ) {
           forward = !forward;
           if (!forward) {
-            onReverseStart();
-
-            // Remove active class
-            $reveal.classList.remove(config.classes.open);
-            // Toggle aria state
-            $reveal.setAttribute('aria-hidden', true);
-            // Remove active class on trigger
-            $trigger.classList.remove(config.classes.active);
+            handleOnReverseStart();
           }
         }
         lastTime = newTime;
@@ -136,15 +135,25 @@ const Reveal = ({
     [reveal],
   );
 
-  const classes = cx('reveal-content', className);
-
   return (
     <Fragment>
-      <Button onClick={handleRevealToggle} {...trigger.props} ref={triggerRef}>
+      <Button active={!hidden} onClick={handleRevealToggle} {...trigger.props}>
         {trigger.label}
       </Button>
-      <div className="reveal" ref={revealRef} aria-hidden="true" {...opts}>
-        <div className={classes}>{children}</div>
+      <div
+        css={{
+          // Take care of overflowing content
+          overflow: 'hidden',
+          display: 'none',
+        }}
+        className={cx('CK__Reveal', className)}
+        ref={revealRef}
+        aria-hidden={hidden ? 'true' : 'false'}
+        {...opts}
+      >
+        <div css={misc.trimChildren} className="CK__Reveal__Content">
+          {children}
+        </div>
       </div>
     </Fragment>
   );

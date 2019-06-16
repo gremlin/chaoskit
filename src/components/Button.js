@@ -68,7 +68,7 @@ export const StylesButtonBase = (theme, props = {}) => [
     // 13
     userSelect: 'none',
 
-    '&:hover, &:focus, &:active': {
+    '&:hover, &:focus': {
       color: theme.fontColor.base,
     },
 
@@ -91,7 +91,7 @@ export const StylesButtonBase = (theme, props = {}) => [
     '.u-contrast &': {
       color: theme.contrast.base,
 
-      '&:hover, &:focus, &:active': {
+      '&:hover, &:focus': {
         color: theme.contrast.base,
       },
     },
@@ -119,7 +119,7 @@ export const StylesButtonDefault = (theme, props = {}) => [
     borderColor: theme.fontColor.base,
     color: theme.fontColor.base,
 
-    '&:hover, &:focus, &:active': {
+    '&:hover, &:focus': {
       color: theme.fontColor.base,
     },
   },
@@ -132,7 +132,7 @@ export const StylesButtonDefault = (theme, props = {}) => [
       color: theme.contrast.base,
       borderColor: theme.contrast.base,
 
-      '&:hover, &:focus, &:active': {
+      '&:hover, &:focus': {
         color: theme.contrast.base,
       },
     },
@@ -145,7 +145,7 @@ export const StylesButtonOutlinePrimary = (theme, props = {}) => [
     borderColor: theme.color.primary.base,
     color: theme.fontColor.base,
 
-    '&:hover, &:focus, &:active': {
+    '&:hover, &:focus': {
       color: theme.fontColor.base,
     },
   },
@@ -155,7 +155,7 @@ export const StylesButtonOutlinePrimary = (theme, props = {}) => [
     '.u-contrast &': {
       color: theme.fontColor.base,
 
-      '&:hover, &:focus, &:active': {
+      '&:hover, &:focus': {
         color: theme.fontColor.base,
       },
     },
@@ -168,7 +168,7 @@ export const StylesButtonPrimary = (theme, props = {}) => [
     borderColor: theme.color.primary.base,
     color: theme.contrast.base,
 
-    '&:hover, &:focus, &:active': {
+    '&:hover, &:focus': {
       color: theme.contrast.base,
     },
   },
@@ -180,7 +180,7 @@ export const StylesButtonPrimary = (theme, props = {}) => [
       borderColor: theme.contrast.base,
       color: theme.color.primary.base,
 
-      '&:hover, &:focus, &:active': {
+      '&:hover, &:focus': {
         color: theme.color.primary.base,
       },
     },
@@ -193,7 +193,7 @@ export const StylesButtonSecondary = (theme, props = {}) => [
     borderColor: theme.fontColor.base,
     color: theme.contrast.base,
 
-    '&:hover, &:focus, &:active': {
+    '&:hover, &:focus': {
       color: theme.contrast.base,
     },
   },
@@ -205,7 +205,7 @@ export const StylesButtonSecondary = (theme, props = {}) => [
       borderColor: theme.contrast.base,
       color: theme.fontColor.base,
 
-      '&:hover, &:focus, &:active': {
+      '&:hover, &:focus': {
         color: theme.fontColor.base,
       },
     },
@@ -218,7 +218,7 @@ export const StylesButtonDanger = (theme, props = {}) => [
     borderColor: theme.color.danger.base,
     color: theme.contrast.base,
 
-    '&:hover, &:focus, &:active': {
+    '&:hover, &:focus': {
       color: theme.contrast.base,
     },
   },
@@ -230,7 +230,7 @@ export const StylesButtonDanger = (theme, props = {}) => [
       borderColor: theme.contrast.base,
       color: theme.color.danger.base,
 
-      '&:hover, &:focus, &:active': {
+      '&:hover, &:focus': {
         color: theme.color.danger.base,
       },
     },
