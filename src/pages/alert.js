@@ -11,7 +11,7 @@ const AlertExample = `
 
   return (
     <Fragment>
-      <Button onClick={() => setCollapse(!isCollapsed)} type="secondary">Toggle Alert</Button>
+      <div><Button onClick={() => setCollapse(!isCollapsed)} type="secondary">Toggle Alert</Button></div>
       <Alert
         collapse={isCollapsed}
         type="danger"
@@ -20,7 +20,7 @@ const AlertExample = `
       >
         <p>And then the battle's not so bad? What are you hacking off? Is it my torso?! 'It is!' My precious torso! I decline the title of Iron Cook and accept the lesser title of Zinc Saucier, which I just made up. Uhh… also, comes with double prize money. <a href="https://www.google.com">Link</a></p>
       </Alert>
-      <Button onClick={() => setCollapse2(!isCollapsed2)} type="secondary">Toggle Alert</Button>
+      <div><Button onClick={() => setCollapse2(!isCollapsed2)} type="secondary">Toggle Alert</Button></div>
       <Alert
         collapse={isCollapsed2}
         type="primary"

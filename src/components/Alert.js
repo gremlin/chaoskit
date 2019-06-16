@@ -1,6 +1,6 @@
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import useMount from 'react-use/lib/useMount';
 import useUpdateEffect from 'react-use/lib/useUpdateEffect';
 import { TimelineMax } from 'gsap/TweenMax';
@@ -48,6 +48,19 @@ const Alert = ({
   ...opts
 }) => {
   const alertRef = useRef();
+  const [hidden, setHidden] = useState(false);
+
+  const handleOnComplete = () => {
+    setHidden(true);
+
+    onComplete();
+  };
+
+  const handleOnReverseStart = () => {
+    setHidden(false);
+
+    onReverseStart();
+  };
 
   const attachTimeline = () => {
     const $alert = alertRef.current;
@@ -60,8 +73,6 @@ const Alert = ({
       paused: true,
       onStart: () => {
         onStart();
-
-        $alert.setAttribute('aria-hidden', true);
       },
       onUpdate: () => {
         const newTime = $alert.timeline.time();
@@ -71,20 +82,13 @@ const Alert = ({
         ) {
           forward = !forward;
           if (!forward) {
-            onReverseStart();
-
-            $alert.classList.remove(config.classes.hidden);
-            $alert.classList.remove(config.classes.uHidden);
-
-            $alert.setAttribute('aria-hidden', false);
+            handleOnReverseStart();
           }
         }
         lastTime = newTime;
       },
       onComplete: () => {
-        onComplete();
-
-        $alert.classList.add(config.classes.hidden);
+        handleOnComplete();
       },
       onReverseComplete: () => {
         onReverseComplete();
@@ -97,7 +101,6 @@ const Alert = ({
         transformOrigin: 'center center',
         y: '50%',
         opacity: 0,
-        pointerEvents: 'none',
       },
       ease: config.easing,
     });
@@ -162,6 +165,8 @@ const Alert = ({
           ],
         },
 
+        hidden && misc.hide,
+
         type === 'default' && StylesAlertDefault(theme),
         type === 'primary' && StylesAlertPrimary(theme),
         type === 'warning' && StylesAlertWarning(theme),
@@ -170,6 +175,7 @@ const Alert = ({
       className={cx('CK__Alert', className)}
       role="alert"
       ref={alertRef}
+      aria-hidden={hidden ? 'hidden' : null}
       {...opts}
     >
       <div
