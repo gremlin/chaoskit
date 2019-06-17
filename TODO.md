@@ -1,6 +1,6 @@
 - `base.scss`: `is-loaded` needs to be applied in Gatsby sites (possibly)
 - `list`: prop reorganization in component + style updates that allow more combinations
-- button -- teal is no longer a prop type option
+- button -- teal is no longer a prop type option, is-active gone (obviously) so use `active` prop elsewhere
 - `gradient.scss`: Implement easing gradient mixin
 - `inline component` supports more space variations
 - modal footer -- removing center prop for new align prop, remove optional footer styles
