@@ -1,13 +1,20 @@
 import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
 import cx from 'classnames';
+import { shade } from 'polished';
 
 import { misc } from '../assets/styles/utility';
 import { StylesIconVariables } from './Icon';
 import Loader from './Loader';
 
-const StylesButtonVariables = () => ({
+const StylesButtonVariables = theme => ({
   borderWidth: 2,
+  color: {
+    base: theme.fontColor.base,
+    get dark() {
+      return shade(0.1, this.base);
+    },
+  },
 });
 
 export const StylesButtonBase = (theme, props = {}) => [
@@ -32,14 +39,14 @@ export const StylesButtonBase = (theme, props = {}) => [
     // 2
     margin: 0,
     // 3
-    border: `${StylesButtonVariables().borderWidth}px solid transparent`,
+    border: `${StylesButtonVariables(theme).borderWidth}px solid transparent`,
     // 4
     overflow: 'visible',
     // 5
     font: 'inherit',
     fontWeight: theme.fontWeight.bold,
     fontFamily: theme.fontFamily.heading,
-    color: theme.fontColor.base,
+    color: StylesButtonVariables(theme).color.base,
     // 6
     textTransform: 'uppercase',
     // 7
@@ -55,7 +62,7 @@ export const StylesButtonBase = (theme, props = {}) => [
     letterSpacing: theme.letterSpacing.medium,
     // 8
     lineHeight: `${theme.height.base
-      - StylesButtonVariables().borderWidth * 2}px`,
+      - StylesButtonVariables(theme).borderWidth * 2}px`,
     // 9
     height: theme.height.base,
     // 10
@@ -69,7 +76,7 @@ export const StylesButtonBase = (theme, props = {}) => [
     userSelect: 'none',
 
     '&:hover, &:focus': {
-      color: theme.fontColor.base,
+      color: StylesButtonVariables(theme).color.base,
     },
 
     // 14
@@ -102,7 +109,7 @@ export const StylesButtonSmall = theme => ({
   padding: `0 ${theme.space.base}px`,
   height: theme.height.small,
   lineHeight: `${theme.height.small
-    - StylesButtonVariables().borderWidth * 2}px`,
+    - StylesButtonVariables(theme).borderWidth * 2}px`,
 });
 
 export const StylesButtonXsmall = theme => ({
@@ -110,17 +117,17 @@ export const StylesButtonXsmall = theme => ({
   fontSize: theme.fontSize.xsmall,
   height: theme.height.xsmall,
   lineHeight: `${theme.height.xsmall
-    - StylesButtonVariables().borderWidth * 2}px`,
+    - StylesButtonVariables(theme).borderWidth * 2}px`,
 });
 
 export const StylesButtonDefault = (theme, props = {}) => [
   {
     background: theme.color.light.base,
-    borderColor: theme.fontColor.base,
-    color: theme.fontColor.base,
+    borderColor: StylesButtonVariables(theme).color.base,
+    color: StylesButtonVariables(theme).color.base,
 
     '&:hover, &:focus': {
-      color: theme.fontColor.base,
+      color: StylesButtonVariables(theme).color.base,
     },
   },
 
@@ -139,58 +146,83 @@ export const StylesButtonDefault = (theme, props = {}) => [
   },
 ];
 
-export const StylesButtonOutlinePrimary = (theme, props = {}) => [
-  {
-    background: theme.color.light.base,
-    borderColor: theme.color.primary.base,
-    color: theme.fontColor.base,
+export const StylesButtonOutlinePrimary = (theme, props = {}) => {
+  const interactiveStyles = {
+    color: StylesButtonVariables(theme).color.base,
+    borderColor: theme.color.primary.dark,
+  };
 
-    '&:hover, &:focus': {
-      color: theme.fontColor.base,
+  return [
+    {
+      background: theme.color.light.base,
+      borderColor: theme.color.primary.base,
+      color: StylesButtonVariables(theme).color.base,
+
+      '&:hover, &:focus': interactiveStyles,
     },
-  },
-  theme.settings.contrast
-    && theme.settings.buttonContrast
-    && !props.noContrast && {
-    '.u-contrast &': {
-      color: theme.fontColor.base,
 
-      '&:hover, &:focus': {
-        color: theme.fontColor.base,
-      },
+    props.active && interactiveStyles,
+
+    theme.settings.contrast
+      && theme.settings.buttonContrast
+      && !props.noContrast && {
+      '.u-contrast &': [
+        {
+          color: StylesButtonVariables(theme).color.base,
+
+          '&:hover, &:focus': interactiveStyles,
+        },
+
+        props.active && interactiveStyles,
+      ],
     },
-  },
-];
+  ];
+};
 
-export const StylesButtonPrimary = (theme, props = {}) => [
-  {
-    background: theme.color.primary.base,
-    borderColor: theme.color.primary.base,
+export const StylesButtonPrimary = (theme, props = {}) => {
+  const interactiveStyles = {
     color: theme.contrast.base,
+    background: theme.color.primary.dark,
+    borderColor: theme.color.primary.dark,
+  };
 
-    '&:hover, &:focus': {
+  const interactiveStylesContrast = {
+    color: theme.color.primary.dark,
+  };
+
+  return [
+    {
+      background: theme.color.primary.base,
+      borderColor: theme.color.primary.base,
       color: theme.contrast.base,
-    },
-  },
-  theme.settings.contrast
-    && theme.settings.buttonContrast
-    && !props.noContrast && {
-    '.u-contrast &': {
-      background: theme.contrast.base,
-      borderColor: theme.contrast.base,
-      color: theme.color.primary.base,
 
-      '&:hover, &:focus': {
-        color: theme.color.primary.base,
-      },
+      '&:hover, &:focus': interactiveStyles,
     },
-  },
-];
+
+    props.active && interactiveStyles,
+
+    theme.settings.contrast
+      && theme.settings.buttonContrast
+      && !props.noContrast && {
+      '.u-contrast &': [
+        {
+          background: theme.contrast.base,
+          borderColor: theme.contrast.base,
+          color: theme.color.primary.base,
+
+          '&:hover, &:focus': interactiveStylesContrast,
+        },
+
+        props.active && interactiveStylesContrast,
+      ],
+    },
+  ];
+};
 
 export const StylesButtonSecondary = (theme, props = {}) => [
   {
-    background: theme.fontColor.base,
-    borderColor: theme.fontColor.base,
+    background: StylesButtonVariables(theme).color.base,
+    borderColor: StylesButtonVariables(theme).color.base,
     color: theme.contrast.base,
 
     '&:hover, &:focus': {
@@ -203,39 +235,54 @@ export const StylesButtonSecondary = (theme, props = {}) => [
     '.u-contrast &': {
       background: theme.contrast.base,
       borderColor: theme.contrast.base,
-      color: theme.fontColor.base,
+      color: StylesButtonVariables(theme).color.base,
 
       '&:hover, &:focus': {
-        color: theme.fontColor.base,
+        color: StylesButtonVariables(theme).color.base,
       },
     },
   },
 ];
 
-export const StylesButtonDanger = (theme, props = {}) => [
-  {
-    background: theme.color.danger.base,
-    borderColor: theme.color.danger.base,
+export const StylesButtonDanger = (theme, props = {}) => {
+  const interactiveStyles = {
     color: theme.contrast.base,
+    background: theme.color.danger.dark,
+    borderColor: theme.color.danger.dark,
+  };
 
-    '&:hover, &:focus': {
+  const interactiveStylesContrast = {
+    color: theme.color.danger.dark,
+  };
+
+  return [
+    {
+      background: theme.color.danger.base,
+      borderColor: theme.color.danger.base,
       color: theme.contrast.base,
-    },
-  },
-  theme.settings.contrast
-    && theme.settings.buttonContrast
-    && !props.noContrast && {
-    '.u-contrast &': {
-      background: theme.contrast.base,
-      borderColor: theme.contrast.base,
-      color: theme.color.danger.base,
 
-      '&:hover, &:focus': {
-        color: theme.color.danger.base,
-      },
+      '&:hover, &:focus': interactiveStyles,
     },
-  },
-];
+
+    props.active && interactiveStyles,
+
+    theme.settings.contrast
+      && theme.settings.buttonContrast
+      && !props.noContrast && {
+      '.u-contrast &': [
+        {
+          background: theme.contrast.base,
+          borderColor: theme.contrast.base,
+          color: theme.color.danger.base,
+
+          '&:hover, &:focus': interactiveStylesContrast,
+        },
+
+        props.active && interactiveStylesContrast,
+      ],
+    },
+  ];
+};
 
 export const StylesButtonIconOnly = (theme, props = {}) => [
   {
@@ -349,8 +396,9 @@ const Button = forwardRef(
           size === 'xsmall' && StylesButtonXsmall(theme),
           type === 'default' && StylesButtonDefault(theme, { noContrast }),
           type === 'outlinePrimary'
-            && StylesButtonOutlinePrimary(theme, { noContrast }),
-          type === 'primary' && StylesButtonPrimary(theme, { noContrast }),
+            && StylesButtonOutlinePrimary(theme, { active, noContrast }),
+          type === 'primary'
+            && StylesButtonPrimary(theme, { active, noContrast }),
           type === 'secondary' && StylesButtonSecondary(theme, { noContrast }),
           type === 'danger' && StylesButtonDanger(theme, { noContrast }),
           iconOnly && StylesButtonIconOnly(theme, { size }),

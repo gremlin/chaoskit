@@ -10,7 +10,6 @@ const ButtonExample = `
   <Button type="default">Default</Button>
   <Button type="primary">Primary</Button>
   <Button type="secondary">Secondary</Button>
-  <Button type="teal">Teal</Button>
   <Button type="danger">Danger</Button>
   <Button type="outlinePrimary">Primary Outline</Button>
   <Button type="reset" className="u-link">Reset</Button>
@@ -59,7 +58,7 @@ const ButtonScope = {
 
 const ButtonPropDescriptions = {
   type:
-    "<code>oneOf(['reset', 'default', 'primary', 'secondary', 'teal', 'danger', 'outlinePrimary'])</code>", // eslint-disable-line single-quotes
+    "<code>oneOf(['reset', 'default', 'primary', 'secondary', 'danger', 'outlinePrimary'])</code>", // eslint-disable-line single-quotes
   size: "<code>oneOf(['xsmall', 'small'])</code>", // eslint-disable-line single-quotes
 };
 
@@ -72,7 +71,6 @@ const ButtonDocs = () => (
       <Button type="primary">Primary</Button>
       <Button type="secondary">Secondary</Button>
       <Button type="danger">Danger</Button>
-      <Button type="teal">Teal</Button>
       <Button type="primary" iconOnly>
         <Icon icon="arrow-up" />
       </Button>
@@ -90,7 +88,6 @@ const ButtonDocs = () => (
       <Button type="primary">Primary</Button>
       <Button type="secondary">Secondary</Button>
       <Button type="danger">Danger</Button>
-      <Button type="teal">Teal</Button>
       <Button type="primary" iconOnly>
         <Icon icon="arrow-up" />
       </Button>
