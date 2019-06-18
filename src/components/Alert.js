@@ -5,8 +5,8 @@ import useMount from 'react-use/lib/useMount';
 import useUpdateEffect from 'react-use/lib/useUpdateEffect';
 import { TimelineMax } from 'gsap/TweenMax';
 import { kebabCase, toLower } from 'lodash-es';
+import { withTheme } from 'emotion-theming';
 
-import { config } from '../helpers/config';
 import { misc, text } from '../assets/styles/utility';
 import Close from './Close';
 
@@ -45,6 +45,7 @@ const Alert = ({
   close,
   title,
   type,
+  theme,
   ...opts
 }) => {
   const alertRef = useRef();
@@ -95,14 +96,14 @@ const Alert = ({
       },
     });
 
-    $alert.timeline.to($alert, 0.5, {
+    $alert.timeline.to($alert, theme.gsap.timing.long, {
       css: {
         marginTop: -$alert.offsetHeight,
         transformOrigin: 'center center',
         y: '50%',
         opacity: 0,
       },
-      ease: config.easing,
+      ease: theme.gsap.transition.base,
     });
 
     if (collapse) {
@@ -139,7 +140,7 @@ const Alert = ({
 
   return (
     <div
-      css={theme => [
+      css={[
         {
           display: 'flex',
           padding: theme.space.base,
@@ -196,10 +197,10 @@ const Alert = ({
       </div>
       {close && (
         <div
-          css={theme => ({
+          css={{
             flex: 0,
             paddingLeft: theme.space.small,
-          })}
+          }}
         >
           <Close className="CK__Alert__Close" onClick={collapseAlert} />
         </div>
@@ -223,6 +224,7 @@ Alert.propTypes = {
   close: PropTypes.bool,
   title: PropTypes.string,
   type: PropTypes.oneOf(['default', 'primary', 'warning', 'danger']),
+  theme: PropTypes.object.isRequired,
 };
 
 Alert.defaultProps = {
@@ -234,4 +236,4 @@ Alert.defaultProps = {
   type: 'default',
 };
 
-export default Alert;
+export default withTheme(Alert);

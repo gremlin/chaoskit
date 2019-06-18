@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import useMount from 'react-use/lib/useMount';
 import useUpdateEffect from 'react-use/lib/useUpdateEffect';
 import { TimelineMax } from 'gsap/TweenMax';
+import { withTheme } from 'emotion-theming';
 
 import Button from './Button';
-import { config } from '../helpers/config';
 import { misc } from '../assets/styles/utility';
 
 const Reveal = ({
@@ -18,6 +18,7 @@ const Reveal = ({
   children,
   className,
   trigger,
+  theme,
   ...opts
 }) => {
   const revealRef = useRef();
@@ -85,12 +86,12 @@ const Reveal = ({
           height: 'auto',
         },
       })
-      .from($reveal, 0.5, {
+      .from($reveal, theme.gsap.timing.long, {
         css: {
           height: 0,
           opacity: 0,
         },
-        ease: config.easing,
+        ease: theme.gsap.transition.base,
       });
 
     if (reveal) {
@@ -175,6 +176,7 @@ Reveal.propTypes = {
     props: PropTypes.object,
     label: PropTypes.any.isRequired,
   }),
+  theme: PropTypes.object.isRequired,
 };
 
 Reveal.defaultProps = {
@@ -184,4 +186,4 @@ Reveal.defaultProps = {
   onStart: () => {},
 };
 
-export default Reveal;
+export default withTheme(Reveal);

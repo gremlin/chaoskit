@@ -6,8 +6,8 @@ import useLockBodyScroll from 'react-use/lib/useLockBodyScroll';
 import useClickAway from 'react-use/lib/useClickAway';
 import ReactDOM from 'react-dom';
 import { TimelineMax } from 'gsap/TweenMax';
+import { withTheme } from 'emotion-theming';
 
-import { config } from '../helpers/config';
 import { misc } from '../assets/styles/utility';
 
 export const StylesModalVariables = theme => ({
@@ -29,6 +29,7 @@ const Modal = ({
   onReverseComplete,
   onReverseStart,
   onStart,
+  theme,
   ...opts
 }) => {
   const modalRef = useRef();
@@ -63,8 +64,6 @@ const Modal = ({
     $modal.timeline = new TimelineMax({
       paused: !open,
       onStart: () => {
-        $modal.classList.add(config.classes.open);
-
         onStart();
       },
       onUpdate: () => {
@@ -76,8 +75,6 @@ const Modal = ({
           forward = !forward;
           if (!forward) {
             onReverseStart();
-
-            $modal.classList.remove(config.classes.open);
           }
         }
         lastTime = newTime;
@@ -97,17 +94,17 @@ const Modal = ({
       .set($modal, {
         display: 'block',
       })
-      .to($modal, 0.25, {
+      .to($modal, theme.gsap.timing.base, {
         css: {
           opacity: 1,
         },
       })
-      .to($modalDialog, 0.25, {
+      .to($modalDialog, theme.gsap.timing.base, {
         css: {
           opacity: 1,
           y: 0,
         },
-        ease: config.easingBounce,
+        ease: theme.gsap.transition.bounce,
       });
   };
 
@@ -149,7 +146,7 @@ const Modal = ({
 
   return ReactDOM.createPortal(
     <div
-      css={theme => [
+      css={[
         misc.overflow,
         {
           // 1. GSAP
@@ -171,7 +168,7 @@ const Modal = ({
       {...opts}
     >
       <div
-        css={theme => [
+        css={[
           {
             // 1. GSAP
             background: theme.color.light.base,
@@ -223,6 +220,7 @@ Modal.propTypes = {
   onReverseStart: PropTypes.func,
   /** GSAP callback */
   onStart: PropTypes.func,
+  theme: PropTypes.object.isRequired,
 };
 
 Modal.defaultProps = {
@@ -234,4 +232,4 @@ Modal.defaultProps = {
   size: 'base',
 };
 
-export default Modal;
+export default withTheme(Modal);

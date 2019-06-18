@@ -6,8 +6,8 @@ import useLockBodyScroll from 'react-use/lib/useLockBodyScroll';
 import useClickAway from 'react-use/lib/useClickAway';
 import ReactDOM from 'react-dom';
 import { TimelineMax } from 'gsap/TweenMax';
+import { withTheme } from 'emotion-theming';
 
-import { config } from '../helpers/config';
 import { misc } from '../assets/styles/utility';
 import Close from './Close';
 
@@ -26,6 +26,7 @@ const OffCanvas = ({
   onReverseStart,
   onStart,
   panelWidth,
+  theme,
   ...opts
 }) => {
   const offCanvasRef = useRef();
@@ -92,7 +93,7 @@ const OffCanvas = ({
       })
       .to(
         $offCanvas,
-        0.5,
+        theme.gsap.timing.long,
         {
           css: {
             opacity: 1,
@@ -102,12 +103,12 @@ const OffCanvas = ({
       )
       .to(
         $panel,
-        0.5,
+        theme.gsap.timing.long,
         {
           css: {
             x: 0,
           },
-          ease: config.easing,
+          ease: theme.gsap.transition.base,
         },
         'offCanvas',
       );
@@ -151,7 +152,7 @@ const OffCanvas = ({
 
   return ReactDOM.createPortal(
     <div
-      css={theme => ({
+      css={{
         // 1. GSAP
         position: 'fixed',
         top: 0,
@@ -164,13 +165,13 @@ const OffCanvas = ({
         // 1
         opacity: 0,
         display: 'none',
-      })}
+      }}
       className={cx('CK__OffCanvas', className)}
       ref={offCanvasRef}
       {...opts}
     >
       <div
-        css={theme => [
+        css={[
           misc.overflow,
           misc.trimChildren,
           {
@@ -201,11 +202,11 @@ const OffCanvas = ({
       >
         <Close
           onClick={onOffCanvasToggle}
-          css={theme => ({
+          css={{
             position: 'absolute',
             top: StylesOffCanvasVariables(theme).size,
             right: StylesOffCanvasVariables(theme).size,
-          })}
+          }}
           className="CK__OffCanvas__Close"
         />
         {children}
@@ -230,6 +231,7 @@ OffCanvas.propTypes = {
   /** GSAP callback */
   onStart: PropTypes.func,
   panelWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  theme: PropTypes.object.isRequired,
 };
 
 OffCanvas.defaultProps = {
@@ -241,4 +243,4 @@ OffCanvas.defaultProps = {
   align: 'left',
 };
 
-export default OffCanvas;
+export default withTheme(OffCanvas);
