@@ -13,9 +13,25 @@ import Live from '../docs/Live';
 
 const DropdownExample = `
 <Inline>
-  <Dropdown trigger={{ label: 'Content', props: { type: 'primary' }}}>
+  <Dropdown trigger={{ label: 'Left', props: { type: 'primary' }}}>
     <p>👋 from the dropdown!</p>
   </Dropdown>
+  <Dropdown position="center" trigger={{ label: 'Center', props: { type: 'primary' }}}>
+    <p>👋 from the dropdown!</p>
+  </Dropdown>
+  <Dropdown position="right" trigger={{ label: 'Right', props: { type: 'primary' }}}>
+    <p>👋 from the dropdown!</p>
+  </Dropdown>
+  <Dropdown position="up-left" trigger={{ label: 'Up Left', props: { type: 'primary' }}}>
+    <p>👋 from the dropdown!</p>
+  </Dropdown>
+  <Dropdown position="up-center" trigger={{ label: 'Up Center', props: { type: 'primary' }}}>
+    <p>👋 from the dropdown!</p>
+  </Dropdown>
+  <Dropdown position="up-right" trigger={{ label: 'Up Right', props: { type: 'primary' }}}>
+    <p>👋 from the dropdown!</p>
+  </Dropdown>
+
   <Dropdown showArrow position="up-center" trigger={{ label: 'Menu', props: { type: 'secondary' }}}>
     <DropdownHeader>Menu Header</DropdownHeader>
     <List className="dropdown-menu">

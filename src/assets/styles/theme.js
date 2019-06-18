@@ -1,6 +1,7 @@
 import {
   fluidRange, rgba, shade, tint, timingFunctions,
 } from 'polished';
+import { Back, Expo } from 'gsap/TweenMax';
 
 // @NOTE Filter generator https://codepen.io/zslabs/pen/xePEVN
 const brand = {
@@ -87,6 +88,9 @@ const color = {
   panel: {
     base: '#fafbfc',
     get dark() {
+      return shade(0.05, this.base);
+    },
+    get xdark() {
       return shade(0.1, this.base);
     },
   },
@@ -150,6 +154,7 @@ const boxShadow = {
   large: `0 15px 35px ${boxShadowColors.xxlight}, 0 5px 15px ${
     boxShadowColors.xlight
   }`,
+  neutral: `0 5px 15px ${boxShadowColors.xxlight}`,
 };
 
 const fontFamily = {
@@ -301,12 +306,26 @@ const settings = {
 };
 
 const transition = {
-  base: timingFunctions('easeInOutCubic'),
-  bounce: timingFunctions('easeInOutBack'),
+  base: timingFunctions('easeInOutExpo'),
+  bounce: timingFunctions('easeOutBack'),
 };
 
 const timing = {
+  short: '0.175s',
   base: '0.25s',
+  long: '0.5s',
+};
+
+const gsap = {
+  transition: {
+    base: Expo.easeInOut,
+    bounce: Back.easeOut.config(1),
+  },
+  timing: {
+    short: 0.175,
+    base: 0.25,
+    long: 0.5,
+  },
 };
 
 const contrast = {
@@ -342,6 +361,7 @@ export const theme = {
   letterSpacing,
   transition,
   timing,
+  gsap,
   contrast,
   settings,
 };

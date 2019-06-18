@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
 // import stylisAtomic from 'stylis-atomic';
-import stylisCalc from 'stylis-calc';
+// import stylisCalc from 'stylis-calc';
 import { ThemeProvider } from 'emotion-theming';
 import { CacheProvider, Global } from '@emotion/core';
 import createCache from '@emotion/cache';
@@ -44,7 +44,7 @@ const ckCache = createCache({
         return false;
     }
   },
-  stylisPlugins: [stylisCalc],
+  // stylisPlugins: [stylisCalc],
 });
 
 const Foundation = ({ children }) => {

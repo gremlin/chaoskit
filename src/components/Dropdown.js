@@ -1,17 +1,21 @@
-import React, { useRef } from 'react';
+import { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import useMount from 'react-use/lib/useMount';
 import { TimelineMax } from 'gsap/TweenMax';
+import { withTheme } from 'emotion-theming';
 
 import Button from './Button';
 import Icon from './Icon';
-import { config } from '../helpers/config';
+import { misc } from '../assets/styles/utility';
+
+const DropdownPanelStylesVariables = theme => ({
+  offset: theme.space.base,
+});
 
 const Dropdown = ({
   children,
   className,
-  panelClassName,
   onComplete,
   onReverseComplete,
   onReverseStart,
@@ -19,11 +23,13 @@ const Dropdown = ({
   position,
   trigger,
   showArrow,
+  theme,
   ...opts
 }) => {
   const dropdownRef = useRef();
   const dropdownPanelRef = useRef();
   const dropdownTriggerRef = useRef();
+  const [hidden, setHidden] = useState(true);
 
   const dropdownOpen = () => {
     const $dropdown = dropdownRef.current;
@@ -43,7 +49,7 @@ const Dropdown = ({
    * @return {false}
    */
   const checkInside = (e) => {
-    if (e.target.closest('.dropdown-panel') === null) {
+    if (e.target.closest('.CK__Dropdown__Panel') === null) {
       dropdownClose();
 
       return;
@@ -52,9 +58,20 @@ const Dropdown = ({
     return false;
   };
 
+  const handleOnStart = () => {
+    setHidden(false);
+
+    onStart();
+  };
+
+  const handleOnReverseStart = () => {
+    setHidden(true);
+
+    onReverseStart();
+  };
+
   const attachTimeline = () => {
     const $dropdown = dropdownRef.current;
-    const $trigger = dropdownTriggerRef.current;
     const $panel = dropdownPanelRef.current;
 
     let forward = true;
@@ -64,13 +81,7 @@ const Dropdown = ({
     $dropdown.timeline = new TimelineMax({
       paused: true,
       onStart() {
-        onStart();
-
-        $dropdown.classList.add(config.classes.open);
-        // Toggle aria state
-        $dropdown.setAttribute('aria-expanded', true);
-        // Add active class from trigger
-        $trigger.classList.add(config.classes.active);
+        handleOnStart();
       },
       onComplete() {
         onComplete();
@@ -86,13 +97,7 @@ const Dropdown = ({
         ) {
           forward = !forward;
           if (!forward) {
-            onReverseStart();
-
-            $dropdown.classList.remove(config.classes.open);
-            // Toggle aria state
-            $dropdown.setAttribute('aria-expanded', false);
-            // Remove active class from trigger
-            $trigger.classList.remove(config.classes.active);
+            handleOnReverseStart();
           }
         }
         lastTime = newTime;
@@ -108,13 +113,13 @@ const Dropdown = ({
       .set($panel, {
         display: 'block',
       })
-      .to($panel, 0.175, {
+      .to($panel, theme.gsap.timing.short, {
         css: {
           y: 0,
           scale: 1,
           opacity: 1,
         },
-        ease: config.easingBounce,
+        ease: theme.gsap.transition.bounce,
       });
   };
 
@@ -132,38 +137,125 @@ const Dropdown = ({
     }
   };
 
-  const classes = cx(
-    'dropdown',
-    {
-      'dropdown--center': position === 'center',
-      'dropdown--right': position === 'right',
-      'dropdown--up': position === 'up-left',
-      'dropdown--up dropdown--center': position === 'up-center',
-      'dropdown--up dropdown--right': position === 'up-right',
-    },
-    className,
-  );
-  const panelClasses = cx('dropdown-panel', panelClassName);
-
   return (
     <div
-      className={classes}
+      css={{
+        display: 'inline-block',
+        position: 'relative',
+      }}
+      className={cx('CK__Dropdown', className)}
       aria-haspopup="true"
-      aria-expanded="false"
+      aria-expanded={!hidden}
       ref={dropdownRef}
       {...opts}
     >
       <Button
         onClick={handleDropdownToggle}
+        active={!hidden}
         {...trigger.props}
         ref={dropdownTriggerRef}
       >
         {trigger.label}
         {showArrow && (
-          <Icon size="small" icon="caret-down" className="dropdown-arrow" />
+          <Icon
+            css={{
+              marginLeft: theme.space.small,
+              transition: `transform ${theme.timing.base} ${
+                theme.transition.base
+              }`,
+              transform: !hidden && 'rotate(180deg)',
+            }}
+            size="small"
+            icon="caret-down"
+          />
         )}
       </Button>
-      <div className={panelClasses} ref={dropdownPanelRef}>
+      <div
+        css={[
+          misc.trimChildren,
+          {
+            // 1. GSAP
+            background: `linear-gradient(to bottom, ${
+              theme.color.panel.base
+            }, ${theme.color.panel.dark})`,
+            padding: theme.space.large,
+            position: 'absolute',
+            width: 250,
+            maxHeight: 500,
+            overflowY: 'auto',
+            color: theme.fontColor.base,
+
+            border: `1px solid ${theme.border.base}`,
+            borderRadius: theme.borderRadius.base,
+            textAlign: 'left',
+            zIndex: 10,
+            boxShadow: theme.boxShadow.neutral,
+            // 1
+            opacity: 0,
+            display: 'none',
+          },
+
+          position === 'left' && {
+            transformOrigin: 'left top',
+            transform: `translateY(-${
+              DropdownPanelStylesVariables(theme).offset
+            }px) scale(0.75)`,
+            left: 0,
+            top: `calc(100% + ${DropdownPanelStylesVariables(theme).offset}px)`,
+          },
+
+          position === 'center' && {
+            transformOrigin: 'center top',
+            left: '50%',
+            transform: `translate(-50%, -${
+              DropdownPanelStylesVariables(theme).offset
+            }px) scale(0.75)`,
+            top: `calc(100% + ${DropdownPanelStylesVariables(theme).offset}px)`,
+          },
+
+          position === 'right' && {
+            transformOrigin: 'right top',
+            transform: `translateY(-${
+              DropdownPanelStylesVariables(theme).offset
+            }px) scale(0.75)`,
+            top: `calc(100% + ${DropdownPanelStylesVariables(theme).offset}px)`,
+          },
+
+          position === 'up-left' && {
+            transformOrigin: 'left bottom',
+            transform: `translateY(${
+              DropdownPanelStylesVariables(theme).offset
+            }px) scale(0.75)`,
+            bottom: `calc(100% + ${
+              DropdownPanelStylesVariables(theme).offset
+            }px)`,
+          },
+
+          position === 'up-center' && {
+            transformOrigin: 'center bottom',
+            left: '50%',
+            transform: `translate(-50%, ${
+              DropdownPanelStylesVariables(theme).offset
+            }px) scale(0.75)`,
+            bottom: `calc(100% + ${
+              DropdownPanelStylesVariables(theme).offset
+            }px)`,
+          },
+
+          position === 'up-right' && {
+            transformOrigin: 'right bottom',
+            right: 0,
+            transform: `translateY(${
+              DropdownPanelStylesVariables(theme).offset
+            }px) scale(0.75)`,
+            bottom: `calc(100% + ${
+              DropdownPanelStylesVariables(theme).offset
+            }px)`,
+          },
+        ]}
+        className="CK__Dropdown__Panel"
+        ref={dropdownPanelRef}
+      >
         {children}
       </div>
     </div>
@@ -173,7 +265,6 @@ const Dropdown = ({
 Dropdown.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
-  panelClassName: PropTypes.string,
   /** GSAP callback */
   onComplete: PropTypes.func,
   /** GSAP callback */
@@ -196,6 +287,7 @@ Dropdown.propTypes = {
     label: PropTypes.any.isRequired,
   }),
   showArrow: PropTypes.bool,
+  theme: PropTypes.object.isRequired,
 };
 
 Dropdown.defaultProps = {
@@ -206,4 +298,4 @@ Dropdown.defaultProps = {
   position: 'left',
 };
 
-export default Dropdown;
+export default withTheme(Dropdown);
