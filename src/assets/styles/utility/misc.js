@@ -1,3 +1,5 @@
+import { hideVisually, fluidRange } from 'polished';
+
 export const trimChildren = {
   '*': {
     '&:last-child': {
@@ -28,8 +30,7 @@ export const overflow = {
 };
 
 export const hide = {
-  display: 'none !important',
-  visibility: 'hidden !important',
+  ...hideVisually(),
 };
 
 export const absoluteCenter = {
@@ -38,3 +39,20 @@ export const absoluteCenter = {
   top: '50%',
   transform: 'translate(-50%, -50%)',
 };
+
+export const fluidSize = ({
+  theme = {},
+  property = 'padding',
+  from = 0,
+  to = 0,
+  breakpointFrom = 'small',
+  breakpointTo = 'medium',
+}) => fluidRange(
+  {
+    prop: property,
+    fromSize: `${from}px`,
+    toSize: `${to}px`,
+  },
+  `${theme.breakpoint[breakpointFrom]}px`,
+  `${theme.breakpoint[breakpointTo]}px`,
+);

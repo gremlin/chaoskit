@@ -93,6 +93,18 @@ const Foundation = ({ children }) => {
             Test
           </div>
           <div
+            css={[
+              misc.fluidSize({
+                theme,
+                property: 'padding',
+                from: theme.space.base,
+                to: theme.space.large,
+              }),
+            ]}
+          >
+            fluid padding
+          </div>
+          <div
             className="u-contrast"
             css={[misc.trimChildren, { background: theme.color.primary.base }]}
           >
