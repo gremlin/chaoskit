@@ -186,8 +186,8 @@ const OffCanvas = ({
             padding: StylesOffCanvasVariables(theme).size,
             boxShadow:
               align === 'left'
-                ? `7.5px 0 17.5px ${theme.boxShadowColors.xxlight}`
-                : `-7.5px 0 17.5px ${theme.boxShadowColors.xxlight}`,
+                ? `7.5px 0 17.5px ${theme.boxShadowColors.xlight}`
+                : `-7.5px 0 17.5px ${theme.boxShadowColors.xlight}`,
             // 1
             transform:
               align === 'left' ? 'translateX(-100%)' : 'translateX(100%)',

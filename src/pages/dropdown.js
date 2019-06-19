@@ -8,6 +8,7 @@ import {
   List,
   ListItem,
 } from '../components';
+import { DropdownMenuItemStyles } from '../components/Dropdown';
 import Docs from '../docs/Docs';
 import Live from '../docs/Live';
 
@@ -31,14 +32,6 @@ const DropdownExample = `
   <Dropdown position="up-right" trigger={{ label: 'Up Right', props: { type: 'primary' }}}>
     <p>👋 from the dropdown!</p>
   </Dropdown>
-
-  <Dropdown showArrow position="up-center" trigger={{ label: 'Menu', props: { type: 'secondary' }}}>
-    <DropdownHeader>Menu Header</DropdownHeader>
-    <List className="dropdown-menu">
-      <ListItem><a href="#">Menu link</a></ListItem>
-      <ListItem><a className="is-active" href="#">Active Menu link</a></ListItem>
-    </List>
-  </Dropdown>
 </Inline>
 `.trim();
 
@@ -53,10 +46,39 @@ const DropdownScope = {
   Inline,
   List,
   ListItem,
+  DropdownMenuItemStyles,
 };
 
 const DropdownDocs = () => (
   <BaseLayout pageTitle="Dropdown">
+    <div css={{ textAlign: 'center' }}>
+      <Dropdown
+        showArrow
+        position="up-center"
+        trigger={{ label: 'Menu', props: { type: 'secondary' } }}
+      >
+        <DropdownHeader>Menu Header</DropdownHeader>
+        <List space="small">
+          <ListItem>
+            <a
+              href="https://www.gremlin.com"
+              css={theme => DropdownMenuItemStyles(theme)}
+            >
+              Menu link
+            </a>
+          </ListItem>
+          <ListItem>
+            <a
+              href="https://www.gremlin.com"
+              css={theme => DropdownMenuItemStyles(theme, { active: true })}
+            >
+              Active Menu link
+            </a>
+          </ListItem>
+        </List>
+      </Dropdown>
+    </div>
+
     <p>
       Common use-cases for the Dropdown component include navigation sub-items
       and quick-actions. On small devices, dropdowns may not be a good option to

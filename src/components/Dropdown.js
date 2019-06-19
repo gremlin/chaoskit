@@ -7,11 +7,32 @@ import { withTheme } from 'emotion-theming';
 
 import Button from './Button';
 import Icon from './Icon';
-import { misc } from '../assets/styles/utility';
+import { misc, text } from '../assets/styles/utility';
 
 const DropdownPanelStylesVariables = theme => ({
   offset: theme.space.base,
 });
+
+export const DropdownMenuItemStyles = (theme, props = {}) => [
+  theme.fontSize.medium__fluid,
+  text.heading(theme),
+  {
+    margin: `0 -${theme.space.small}px`,
+    color: theme.fontColor.base,
+    padding: theme.space.small,
+    display: 'block',
+    borderRadius: theme.borderRadius.base,
+
+    '&:hover, &:focus': {
+      color: theme.fontColor.base,
+      background: theme.color.panel.dark,
+    },
+  },
+
+  props.active && {
+    background: theme.color.panel.dark,
+  },
+];
 
 const Dropdown = ({
   children,
@@ -161,7 +182,7 @@ const Dropdown = ({
             css={{
               marginLeft: theme.space.small,
               transition: `transform ${theme.timing.base} ${
-                theme.transition.base
+                theme.transition.bounce
               }`,
               transform: !hidden && 'rotate(180deg)',
             }}
@@ -176,8 +197,8 @@ const Dropdown = ({
           {
             // 1. GSAP
             background: `linear-gradient(to bottom, ${
-              theme.color.panel.base
-            }, ${theme.color.panel.dark})`,
+              theme.color.panel.light
+            }, ${theme.color.panel.base})`,
             padding: theme.space.large,
             position: 'absolute',
             width: 250,

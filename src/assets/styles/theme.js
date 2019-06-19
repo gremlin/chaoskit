@@ -35,9 +35,9 @@ const brand = {
   lightBlack: '#333',
   lightBlack__filter:
     'invert(16%) sepia(0%) saturate(1335%) hue-rotate(142deg) brightness(86%) contrast(82%)',
-  black: '#222',
+  black: '#131313',
   black__filter:
-    'invert(14%) sepia(43%) saturate(1%) hue-rotate(314deg) brightness(100%) contrast(104%)',
+    'invert(3%) sepia(8%) saturate(12%) hue-rotate(314deg) brightness(101%) contrast(90%)',
   red: '#d00252',
   red__filter:
     'brightness(0) saturate(100%) invert(13%) sepia(99%) saturate(4118%) hue-rotate(327deg) brightness(85%) contrast(106%)',
@@ -87,11 +87,11 @@ const color = {
   },
   panel: {
     base: '#fafbfc',
-    get dark() {
-      return shade(0.05, this.base);
+    get light() {
+      return tint(0.5, this.base);
     },
-    get xdark() {
-      return shade(0.1, this.base);
+    get dark() {
+      return shade(0.025, this.base);
     },
   },
   dark: {
@@ -145,16 +145,15 @@ const borderRadius = {
 const boxShadowColors = {
   base: rgba(color.dark.base, 0.18),
   light: rgba(color.dark.base, 0.14),
-  xlight: rgba(color.dark.base, 0.07),
-  xxlight: rgba(color.dark.base, 0.01),
+  xlight: rgba(color.dark.base, 0.1),
 };
 
 const boxShadow = {
   base: `0 0 6px -2px ${boxShadowColors.base}`,
-  large: `0 15px 35px ${boxShadowColors.xxlight}, 0 5px 15px ${
+  large: `0 15px 35px ${boxShadowColors.xlight}, 0 5px 15px ${
     boxShadowColors.xlight
   }`,
-  neutral: `0 5px 15px ${boxShadowColors.xxlight}`,
+  neutral: `0 5px 15px ${boxShadowColors.xlight}`,
 };
 
 const fontFamily = {
