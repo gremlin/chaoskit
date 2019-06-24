@@ -302,6 +302,7 @@ const space = {
 const settings = {
   contrast: true,
   buttonContrast: true,
+  formContrast: true,
 };
 
 const transition = {
