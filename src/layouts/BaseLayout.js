@@ -165,6 +165,11 @@ const BaseLayout = ({ children, pageTitle }) => {
                   </Link>
                 </ListItem>
                 <ListItem>
+                  <Link to="/subnav/" activeClassName={config.classes.active}>
+                    Subnav
+                  </Link>
+                </ListItem>
+                <ListItem>
                   <Link to="/tabs/" activeClassName={config.classes.active}>
                     Tabs
                   </Link>

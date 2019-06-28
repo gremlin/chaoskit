@@ -5,10 +5,6 @@ export const heading = theme => ({
   color: theme.fontColor.heading,
   textTransform: 'none',
   letterSpacing: theme.letterSpacing.negative,
-
-  '* + &': {
-    marginTop: theme.space.large,
-  },
 });
 
 export const underline = {

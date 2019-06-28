@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 const Inline = ({
-  className, size, wrap, ...opts
+  as: Component, className, size, wrap, ...opts
 }) => (
-  <div
+  <Component
     css={theme => [
       {
         display: 'flex',
@@ -31,6 +31,7 @@ const Inline = ({
 );
 
 Inline.propTypes = {
+  as: PropTypes.oneOf(['div', 'ul']),
   className: PropTypes.string,
   size: PropTypes.oneOf(['small', 'base', 'medium', 'large', 'xlarge']),
   wrap: PropTypes.bool,
@@ -39,6 +40,7 @@ Inline.propTypes = {
 Inline.defaultProps = {
   size: 'base',
   wrap: true,
+  as: 'div',
 };
 
 export default Inline;

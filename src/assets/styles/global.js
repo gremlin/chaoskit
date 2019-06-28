@@ -208,13 +208,46 @@ export const globalStyles = theme => ({
     marginTop: theme.space.base,
   },
 
-  h1: [text.heading(theme), theme.fontSize.h1__fluid],
+  h1: [
+    text.heading(theme),
+    theme.fontSize.h1__fluid,
+    {
+      '* + &': {
+        marginTop: theme.space.large,
+      },
+    },
+  ],
 
-  h2: [text.heading(theme), theme.fontSize.h2__fluid],
+  h2: [
+    text.heading(theme),
+    theme.fontSize.h2__fluid,
+    {
+      '* + &': {
+        marginTop: theme.space.large,
+      },
+    },
+  ],
 
-  h3: [text.heading(theme), theme.fontSize.h3__fluid],
+  h3: [
+    text.heading(theme),
+    theme.fontSize.h3__fluid,
+    {
+      '* + &': {
+        marginTop: theme.space.large,
+      },
+    },
+  ],
 
-  h4: [text.heading(theme), { fontSize: theme.fontSize.h4 }],
+  h4: [
+    text.heading(theme),
+    {
+      fontSize: theme.fontSize.h4,
+
+      '* + &': {
+        marginTop: theme.space.large,
+      },
+    },
+  ],
 
   h5: [
     text.heading(theme),
@@ -222,6 +255,10 @@ export const globalStyles = theme => ({
       fontSize: theme.fontSize.h5,
       letterSpacing: theme.letterSpacing.medium,
       textTransform: 'uppercase',
+
+      '* + &': {
+        marginTop: theme.space.large,
+      },
     },
   ],
 
