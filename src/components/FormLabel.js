@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-import { text } from '../assets/styles/utility';
 import asterisk from '../assets/icons/asterisk.svg';
 import close from '../assets/icons/close.svg';
 
 export const StylesFormLabelBase = (theme, props = {}) => [
-  text.heading(theme, 'base'),
   {
     display: 'block', // Behave like block-level element
     marginBottom: theme.space.small,
     color: theme.fontColor.base,
+    fontWeight: theme.fontWeight.bold,
+    lineHeight: theme.lineHeight.small,
   },
 
   (props.required || props.error) && {
