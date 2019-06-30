@@ -5,5 +5,7 @@
 - `inline component` supports more space variations
 - modal footer -- removing center prop for new align prop, remove optional footer styles
 - modal header -- center to centered, onCloseClick is required, remove optional header styles
+- social icon -- changed base size/height
+- form label -- have required figured out, but need to work on logic for valid state and need to pass through props to formlabel component
 
 -- NEED TO MOVE OVER TOOLTIP GSAP CONFIG TO THEME VARS

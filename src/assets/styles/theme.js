@@ -84,6 +84,7 @@ const opacity = {
 const color = {
   light: {
     base: '#fff',
+    filter: 'brightness(0) invert(1)',
   },
   panel: {
     base: '#fafbfc',
@@ -100,6 +101,7 @@ const color = {
     get overlay() {
       return rgba(this.base, opacity.overlay);
     },
+    filter: brand.lightBlack__filter,
   },
   primary: {
     base: brand.green,
@@ -109,6 +111,7 @@ const color = {
     get dark() {
       return shade(0.1, this.base);
     },
+    filter: brand.green__filter,
   },
   warning: {
     base: brand.yellow,
@@ -118,6 +121,7 @@ const color = {
     get dark() {
       return shade(0.1, this.base);
     },
+    filter: brand.yellow__filter,
   },
   danger: {
     base: brand.red,
@@ -127,6 +131,7 @@ const color = {
     get dark() {
       return shade(0.1, this.base);
     },
+    filter: brand.red__filter,
   },
   highlight: {
     base: '#ffa',
@@ -177,6 +182,7 @@ const fontColor = {
 };
 
 const fontSize = {
+  xxsmall: 10,
   xsmall: 12,
   small: 14,
   base: 16,
@@ -339,6 +345,7 @@ const contrast = {
   get hr() {
     return rgba(this.base, 0.05);
   },
+  filter: color.light.filter,
 };
 
 export const theme = {

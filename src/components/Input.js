@@ -59,7 +59,9 @@ const Input = React.forwardRef(
 
     return (
       <div className={classes}>
-        <FormLabel id={id}>{label}</FormLabel>
+        <FormLabel required={required} id={id}>
+          {label}
+        </FormLabel>
         {prefixIcon ? (
           <div className="form-prefix-wrapper">
             <div className="form-prefix-content">
