@@ -1,9 +1,10 @@
-export const heading = theme => ({
+export const heading = (theme, lineHeight = 'small') => ({
   fontFamily: theme.fontFamily.heading,
   fontWeight: theme.fontWeight.bold,
   color: theme.fontColor.heading,
   textTransform: 'none',
   letterSpacing: theme.letterSpacing.negative,
+  lineHeight: theme.lineHeight[lineHeight],
 });
 
 export const underline = {

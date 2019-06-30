@@ -13,6 +13,7 @@ export { default as Container } from './Container.js';
 export { default as Dropdown } from './Dropdown.js';
 export { default as DropdownHeader } from './DropdownHeader.js';
 export { default as FormFooter } from './FormFooter.js';
+export { default as FormGroup } from './FormGroup.js';
 export { default as FormLabel } from './FormLabel.js';
 export { default as Icon } from './Icon.js';
 export { default as Inline } from './Inline.js';

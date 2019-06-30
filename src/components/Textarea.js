@@ -31,7 +31,7 @@ const Textarea = ({
 
   return (
     <div className={classes}>
-      <FormLabel required={required} error={validationMessage} id={id}>
+      <FormLabel required={required} error={!!validationMessage} id={id}>
         {label}
       </FormLabel>
       <TextareaAutoSize id={id} name={name} onChange={handleChange} {...opts} />

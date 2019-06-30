@@ -71,7 +71,7 @@ const ChoicesSingle = ({
           <div className={formGroupClasses}>
             <FormLabel
               required={required}
-              error={validationMessage}
+              error={!!validationMessage}
               {...downshift.getLabelProps()}
             >
               {label}

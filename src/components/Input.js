@@ -4,10 +4,10 @@ import cx from 'classnames';
 import MaskedInput from 'react-text-mask';
 
 import FormFooter from './FormFooter';
+import FormGroup from './FormGroup';
 import FormLabel from './FormLabel';
 import Icon from './Icon';
 import { generateUUID } from '../helpers/utility';
-import { config } from '../helpers/config';
 
 const Input = React.forwardRef(
   (
@@ -49,17 +49,12 @@ const Input = React.forwardRef(
         return <MaskedInput {...defaultProps} mask={mask} guide={guide} />;
       }
 
-      return <input {...defaultProps} />;
+      return <input className={cx('CK__Input', className)} {...defaultProps} />;
     };
 
-    const classes = cx('form-group', className, {
-      [config.classes.notValid]: validationMessage,
-      [config.classes.required]: required,
-    });
-
     return (
-      <div className={classes}>
-        <FormLabel required={required} error={validationMessage} id={id}>
+      <FormGroup>
+        <FormLabel required={required} error={!!validationMessage} id={id}>
           {label}
         </FormLabel>
         {prefixIcon ? (
@@ -76,7 +71,7 @@ const Input = React.forwardRef(
           explanationMessage={explanationMessage}
           validationMessage={validationMessage}
         />
-      </div>
+      </FormGroup>
     );
   },
 );

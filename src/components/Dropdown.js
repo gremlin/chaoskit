@@ -15,13 +15,14 @@ const DropdownPanelStylesVariables = theme => ({
 
 export const DropdownMenuItemStyles = (theme, props = {}) => [
   theme.fontSize.medium__fluid,
-  text.heading(theme),
+  text.heading(theme, 'base'),
   {
     margin: `0 -${theme.space.small}px`,
     color: theme.fontColor.base,
     padding: theme.space.small,
     display: 'block',
     borderRadius: theme.borderRadius.base,
+    lineHeight: theme.lineHeight.base,
 
     '&:hover, &:focus': {
       color: theme.fontColor.base,
