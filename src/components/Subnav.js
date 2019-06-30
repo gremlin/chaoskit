@@ -20,7 +20,6 @@ export const SubnavMenuItemStyles = (theme, props = {}) => [
     fontSize: theme.fontSize.small,
     letterSpacing: theme.letterSpacing.medium,
     textTransform: 'uppercase',
-    margin: 0,
     transition: `color ${theme.timing.base} ${theme.transition.base}`,
 
     '&:hover, &:focus': {
@@ -43,7 +42,7 @@ export const SubnavMenuItemStyles = (theme, props = {}) => [
       left: '0',
       width: '100%',
       bottom: '0',
-      height: '3px',
+      height: 3,
       background: theme.color.primary.base,
     },
   },

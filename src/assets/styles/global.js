@@ -212,6 +212,8 @@ export const globalStyles = theme => ({
     text.heading(theme),
     theme.fontSize.h1__fluid,
     {
+      margin: `0 0 ${theme.space.base}px`,
+
       '* + &': {
         marginTop: theme.space.large,
       },
@@ -222,6 +224,8 @@ export const globalStyles = theme => ({
     text.heading(theme),
     theme.fontSize.h2__fluid,
     {
+      margin: `0 0 ${theme.space.base}px`,
+
       '* + &': {
         marginTop: theme.space.large,
       },
@@ -232,6 +236,8 @@ export const globalStyles = theme => ({
     text.heading(theme),
     theme.fontSize.h3__fluid,
     {
+      margin: `0 0 ${theme.space.base}px`,
+
       '* + &': {
         marginTop: theme.space.large,
       },
@@ -242,6 +248,7 @@ export const globalStyles = theme => ({
     text.heading(theme),
     {
       fontSize: theme.fontSize.h4,
+      margin: `0 0 ${theme.space.base}px`,
 
       '* + &': {
         marginTop: theme.space.large,
@@ -255,6 +262,7 @@ export const globalStyles = theme => ({
       fontSize: theme.fontSize.h5,
       letterSpacing: theme.letterSpacing.medium,
       textTransform: 'uppercase',
+      margin: `0 0 ${theme.space.base}px`,
 
       '* + &': {
         marginTop: theme.space.large,
