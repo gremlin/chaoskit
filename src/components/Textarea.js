@@ -31,7 +31,9 @@ const Textarea = ({
 
   return (
     <div className={classes}>
-      <FormLabel id={id}>{label}</FormLabel>
+      <FormLabel required={required} error={validationMessage} id={id}>
+        {label}
+      </FormLabel>
       <TextareaAutoSize id={id} name={name} onChange={handleChange} {...opts} />
       <FormFooter
         explanationMessage={explanationMessage}

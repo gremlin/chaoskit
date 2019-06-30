@@ -103,7 +103,13 @@ const ChoicesMulti = ({
 
         return (
           <div className={formGroupClasses}>
-            <FormLabel {...downshift.getLabelProps()}>{label}</FormLabel>
+            <FormLabel
+              required={required}
+              error={validationMessage}
+              {...downshift.getLabelProps()}
+            >
+              {label}
+            </FormLabel>
             <div className="form-choicesSelect" disabled={disabled}>
               <div className={choicesClasses} data-type="select-multiple">
                 {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events */}

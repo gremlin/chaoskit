@@ -42,7 +42,9 @@ const CheckboxGroup = ({
 
   return (
     <div className={classes} {...opts}>
-      <FormLabel id="">{label}</FormLabel>
+      <FormLabel required={required} error={validationMessage} id="">
+        {label}
+      </FormLabel>
       {renderItems()}
       <FormFooter
         explanationMessage={explanationMessage}

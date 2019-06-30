@@ -59,7 +59,7 @@ const Input = React.forwardRef(
 
     return (
       <div className={classes}>
-        <FormLabel required={required} id={id}>
+        <FormLabel required={required} error={validationMessage} id={id}>
           {label}
         </FormLabel>
         {prefixIcon ? (

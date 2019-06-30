@@ -54,7 +54,7 @@ const RadioGroup = ({
 
   return (
     <div className={classes} {...opts}>
-      <FormLabel required={required} id="">
+      <FormLabel required={required} error={validationMessage} id="">
         {label}
       </FormLabel>
       {renderItems()}

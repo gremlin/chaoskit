@@ -3,9 +3,10 @@ import cx from 'classnames';
 
 import { text } from '../assets/styles/utility';
 import asterisk from '../assets/icons/asterisk.svg';
+import close from '../assets/icons/close.svg';
 
 const FormLabel = ({
-  children, className, id, required, valid, ...opts
+  children, className, id, required, error, ...opts
 }) => (children ? (
   <label // eslint-disable-line jsx-a11y/label-has-for
     htmlFor={id}
@@ -17,7 +18,7 @@ const FormLabel = ({
         color: theme.fontColor.base,
       },
 
-      (required || valid) && {
+      (required || error) && {
         '&::after': {
           content: "''",
           display: 'inline-block',
@@ -38,12 +39,19 @@ const FormLabel = ({
         },
       },
 
+      error && {
+        '&::after': {
+          backgroundImage: `url(${close})`,
+          filter: theme.color.danger.filter,
+        },
+      },
+
       theme.settings.contrast
           && theme.settings.formContrast && {
         '.u-contrast &': [
           { color: theme.contrast.base },
 
-          (required || valid) && {
+          (required || error) && {
             '&::after': {
               filter: theme.contrast.filter,
             },
@@ -63,11 +71,7 @@ FormLabel.propTypes = {
   className: PropTypes.string,
   id: PropTypes.string,
   required: PropTypes.bool,
-  valid: PropTypes.bool,
-};
-
-FormLabel.defaultProps = {
-  valid: null,
+  error: PropTypes.bool,
 };
 
 export default FormLabel;
