@@ -165,6 +165,14 @@ const BaseLayout = ({ children, pageTitle }) => {
                   </Link>
                 </ListItem>
                 <ListItem>
+                  <Link
+                    to="/social-icon/"
+                    activeClassName={config.classes.active}
+                  >
+                    Social Icon
+                  </Link>
+                </ListItem>
+                <ListItem>
                   <Link to="/subnav/" activeClassName={config.classes.active}>
                     Subnav
                   </Link>

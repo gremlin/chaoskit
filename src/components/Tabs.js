@@ -93,6 +93,8 @@ const Tab = ({
       },
     ]}
     className={cx('CK__Tab', className)}
+    disabled={disabled}
+    selected={selected}
     {...rest}
   />
 );

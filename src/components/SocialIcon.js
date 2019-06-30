@@ -1,26 +1,30 @@
-import cx from 'classnames';
 import PropTypes from 'prop-types';
-import React from 'react';
 
+import Button from './Button';
 import Icon from './Icon';
 
 const SocialIcon = ({
-  className, service, title, url,
-}) => {
-  const classes = cx('socialIcon', className);
+  className, service, title, url, ...opts
+}) => (
+  <Button
+    url={url}
+    css={theme => ({
+      transition: `all ${theme.timing.base} ${theme.transition.bounce}`,
 
-  return (
-    <a
-      href={url}
-      className={classes}
-      title={title}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <Icon icon={service} />
-    </a>
-  );
-};
+      '&:hover, &:focus': {
+        transform: 'scale(1.1)',
+      },
+    })}
+    title={title}
+    target="_blank"
+    rel="noopener noreferrer"
+    iconOnly
+    type="default"
+    {...opts}
+  >
+    <Icon icon={service} />
+  </Button>
+);
 
 SocialIcon.propTypes = {
   className: PropTypes.string,
