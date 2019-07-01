@@ -145,6 +145,7 @@ const Alert = ({
           display: 'flex',
           padding: theme.space.base,
           borderLeft: '8px solid transparent',
+          color: theme.fontColor.base,
 
           '&:not(:last-child)': {
             marginBottom: theme.space.base,
