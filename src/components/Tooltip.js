@@ -1,16 +1,32 @@
-import React, {
-  Fragment, useRef, useState, useEffect,
+import {
+  Children,
+  cloneElement,
+  Fragment,
+  useRef,
+  useState,
+  useEffect,
 } from 'react';
+import cx from 'classnames';
 import PropTypes from 'prop-types';
+import { withTheme } from 'emotion-theming';
 import ReactDOM from 'react-dom';
 import useUpdateEffect from 'react-use/lib/useUpdateEffect';
 import { TimelineMax } from 'gsap/TweenMax';
 
 import { isTouchDevice } from '../helpers/utility';
-import { config } from '../helpers/config';
+
+const StylesTooltipVariables = theme => ({
+  arrowSize: 10,
+  borderRadius: theme.borderRadius.base,
+});
 
 const Tooltip = ({
-  children, content, placement, mobileTap,
+  children,
+  className,
+  content,
+  placement,
+  mobileTap,
+  theme,
 }) => {
   const tooltipRef = useRef();
   const tooltipTriggerRef = useRef();
@@ -24,7 +40,7 @@ const Tooltip = ({
   const openTooltip = () => {
     const $tooltip = tooltipRef.current;
 
-    $tooltip.timeline.play();
+    if ($tooltip) $tooltip.timeline.play();
   };
 
   const closeTooltip = () => {
@@ -128,20 +144,20 @@ const Tooltip = ({
         transformOrigin,
         scale: 0.75,
       })
-      .to($tooltip, 0.175, {
+      .to($tooltip, theme.gsap.timing.short, {
         css: {
           y: 0,
           x: 0,
           scale: 1,
           opacity: 1,
         },
-        ease: config.easingBounce,
+        ease: theme.gsap.transition.bounce,
       });
 
     styleTooltip();
   };
 
-  const renderChildren = React.Children.map(children, child => React.cloneElement(child, {
+  const renderChildren = Children.map(children, child => cloneElement(child, {
     ref: tooltipTriggerRef,
   }));
 
@@ -191,8 +207,88 @@ const Tooltip = ({
       {renderChildren}
       {renderTooltip
         && ReactDOM.createPortal(
-          <div className="tooltip" ref={tooltipRef} role="tooltip">
-            <div className="tooltip-inner">{content}</div>
+          <div
+            css={[
+              {
+                // 1. GSAP
+                position: 'absolute',
+                zIndex: 10,
+                display: 'block',
+                fontSize: theme.fontSize.small,
+                padding: StylesTooltipVariables(theme).arrowSize + 1,
+                opacity: 0, // 1
+              },
+            ]}
+            className={cx('CK__Tooltip', className)}
+            ref={tooltipRef}
+            role="tooltip"
+          >
+            <div
+              css={[
+                {
+                  color: theme.fontColor.base,
+                  maxWidth: 250,
+                  padding: theme.space.small,
+                  background: theme.color.light.base,
+                  border: `1px solid ${theme.border.base}`,
+                  borderRadius: StylesTooltipVariables(theme).borderRadius,
+                  wordWrap: 'break-word',
+                  textAlign: 'center',
+                  position: 'relative',
+                  boxShadow: theme.boxShadow.base,
+
+                  '&::after': {
+                    content: "''",
+                    width: StylesTooltipVariables(theme).arrowSize,
+                    height: StylesTooltipVariables(theme).arrowSize,
+                    position: 'absolute',
+                    background: theme.color.light.base,
+                    border: `1px solid ${theme.border.base}`,
+                    borderBottomLeftRadius:
+                      StylesTooltipVariables(theme).borderRadius / 2,
+                    borderRight: 0,
+                    borderTop: 0,
+                  },
+                },
+
+                placement === 'top' && {
+                  '&::after': {
+                    bottom: -StylesTooltipVariables(theme).arrowSize / 2 - 1,
+                    left: '50%',
+                    transform: 'translateX(-50%) rotate(-45deg)',
+                  },
+                },
+
+                placement === 'right' && {
+                  '&::after': {
+                    left: -StylesTooltipVariables(theme).arrowSize / 2 - 1,
+                    top: '50%',
+                    transform: 'translateY(-50%) rotate(45deg)',
+                  },
+                },
+
+                placement === 'bottom' && {
+                  '&::after': {
+                    top: -StylesTooltipVariables(theme).arrowSize / 2 - 1,
+                    left: '50%',
+                    transform: 'translateX(-50%) rotate(135deg)',
+                    borderBottomLeftRadius: StylesTooltipVariables(theme)
+                      .borderRadius,
+                  },
+                },
+
+                placement === 'left' && {
+                  '&::after': {
+                    right: -StylesTooltipVariables(theme).arrowSize / 2 - 1,
+                    top: '50%',
+                    transform: 'translateY(-50%) rotate(-135deg)',
+                  },
+                },
+              ]}
+              className="CK__Tooltip__Inner"
+            >
+              {content}
+            </div>
           </div>,
           document.body,
         )}
@@ -202,10 +298,12 @@ const Tooltip = ({
 
 Tooltip.propTypes = {
   children: PropTypes.node.isRequired,
+  className: PropTypes.string,
   content: PropTypes.any.isRequired,
   placement: PropTypes.oneOf(['top', 'bottom', 'left', 'right']),
   /** Disables tooltips on touch devices to not interfere with interactive elements */
   mobileTap: PropTypes.bool,
+  theme: PropTypes.object.isRequired,
 };
 
 Tooltip.defaultProps = {
@@ -213,4 +311,4 @@ Tooltip.defaultProps = {
   mobileTap: false,
 };
 
-export default Tooltip;
+export default withTheme(Tooltip);

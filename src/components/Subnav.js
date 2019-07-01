@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import React from 'react';
 import cx from 'classnames';
 
 import Container from './Container';
@@ -39,9 +38,9 @@ export const SubnavMenuItemStyles = (theme, props = {}) => [
     '&::before': {
       content: "''",
       position: 'absolute',
-      left: '0',
+      left: 0,
       width: '100%',
-      bottom: '0',
+      bottom: 0,
       height: 3,
       background: theme.color.primary.base,
     },

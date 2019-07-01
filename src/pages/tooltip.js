@@ -59,7 +59,7 @@ const TooltipDocs = () => (
       propDescriptions={TooltipPropDescriptions}
     />
     <Alert type="warning" title="Note">
-      <List type={['number', 'space']}>
+      <List space="base" type="numbers">
         <ListItem>
           The Tooltip component can be wrapped around any fellow component or
           standard HTML; just make sure it&apos;s only one child!
