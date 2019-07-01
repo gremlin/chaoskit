@@ -9,12 +9,10 @@ import { mix, tint } from 'polished';
  * @return {String}                            Full gradient value
  */
 export function generateGradient({
-  start = null,
-  stop = null,
+  start = '#fff',
+  stop = '#fff',
   position = 'to right',
 }) {
-  if (!start || !stop) return;
-
   const colors = [start];
   const steps = 19;
 
