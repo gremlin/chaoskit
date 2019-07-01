@@ -12,6 +12,7 @@ import { config } from '../helpers/config';
 import {
   Button, Container, Icon, Inline, List, ListItem,
 } from '../components';
+import { gradient } from '../assets/styles/utility';
 import { version } from '../../package.json';
 
 import mascot from '../assets/media/logo-mascot.svg';
@@ -278,7 +279,10 @@ const BaseLayout = ({ children, pageTitle }) => {
         })}
       >
         <Container>
-          <Container className="u-contrast" css={{ background: 'blue' }}>
+          <Container
+            className="u-contrast"
+            css={theme => [gradient.blueGreen(theme)]}
+          >
             test
           </Container>
           <Inline>
