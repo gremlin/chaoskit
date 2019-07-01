@@ -29,6 +29,7 @@ $alert-danger-color: $global-danger !default;
     background: $alert-default-color;
     border-left: $alert-border-width solid $alert-default-border;
     padding: $global-whitespace-regular;
+    color: $global-font-color;
 
     @media (min-width: $global-viewport-medium) {
       padding: $global-whitespace-medium;
