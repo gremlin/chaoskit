@@ -10,13 +10,16 @@ const Row = ({
   const gutterCalc = size => [
     gutter[size] && {
       [theme.mq[size]]: {
-        marginLeft: gutter[size] === 'collapse' ? 0 : -theme.space[size],
+        marginLeft:
+          gutter[size] === 'collapse' ? 0 : -theme.space[gutter[size]],
         // 1
-        marginTop: gutter[size] === 'collapse' ? 0 : -theme.space[size],
+        marginTop: gutter[size] === 'collapse' ? 0 : -theme.space[gutter[size]],
 
         '> .CK__RowColumn': {
-          paddingLeft: gutter[size] === 'collapse' ? 0 : theme.space[size],
-          paddingTop: gutter[size] === 'collapse' ? 0 : theme.space[size],
+          paddingLeft:
+            gutter[size] === 'collapse' ? 0 : theme.space[gutter[size]],
+          paddingTop:
+            gutter[size] === 'collapse' ? 0 : theme.space[gutter[size]],
         },
       },
     },

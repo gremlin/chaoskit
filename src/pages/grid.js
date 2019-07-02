@@ -3,39 +3,28 @@ import React from 'react';
 import BaseLayout from '../layouts/BaseLayout';
 import { Alert, Row, RowColumn } from '../components';
 import Live from '../docs/Live';
+import ExampleFill from '../docs/ExampleFill';
 
 const GridExample = `
-<Row gutter={{base: 'collapse', medium: 'small', large: 'collapse'}}>
-  <RowColumn size={{base: 3}}>test</RowColumn>
-  <RowColumn size={{base: 4, medium: 5}} offset={{medium: 2}} order={{medium: 'first'}}>first medium up</RowColumn>
-  <RowColumn size={{base: 3}}>test</RowColumn>
-  <RowColumn size={{base: 3}}>test</RowColumn>
+<Row>
+  <RowColumn size={{base: 3}}><ExampleFill/></RowColumn>
+  <RowColumn size={{base: 4}}><ExampleFill/></RowColumn>
+  <RowColumn size={{base: 5}}><ExampleFill/></RowColumn>
+  <RowColumn size={{base: 6}}><ExampleFill/></RowColumn>
+  <RowColumn size={{base: 6}}><ExampleFill/></RowColumn>
+  <RowColumn size={{base: 8}}><ExampleFill/></RowColumn>
+  <RowColumn size={{base: 4}}><ExampleFill/></RowColumn>
 </Row>
 `.trim();
 
 const GridSpacingExample = `
-<div className="row row--collapse row--largeGutter@small row--xlargeGutter@medium">
-  <div className="column-6">
-    <div className="docs__box--fill">
-      .column-6
-    </div>
-  </div>
-  <div className="column-6">
-    <div className="docs__box--fill">
-      .column-6
-    </div>
-  </div>
-  <div className="column-6">
-    <div className="docs__box--fill">
-      .column-6
-    </div>
-  </div>
-  <div className="column-6">
-    <div className="docs__box--fill">
-      .column-6
-    </div>
-  </div>
-</div>
+<Row gutter={{base: 'collapse', medium: 'small', large: 'xlarge'}}>
+  <RowColumn size={{base: 6}}><ExampleFill/></RowColumn>
+  <RowColumn size={{base: 6}}><ExampleFill/></RowColumn>
+  <RowColumn size={{base: 6}}><ExampleFill/></RowColumn>
+  <RowColumn size={{base: 6}}><ExampleFill/></RowColumn>
+</Row>
+
 `.trim();
 
 const GridSizingExample = `
@@ -90,7 +79,7 @@ const GridSourceOrderExample = `
 </Row>
 `.trim();
 
-const GridScope = { Row, RowColumn };
+const GridScope = { Row, RowColumn, ExampleFill };
 
 const GridDocs = () => (
   <BaseLayout pageTitle="Grid">
