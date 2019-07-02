@@ -1,51 +1,116 @@
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+import { withTheme } from 'emotion-theming';
 
 import { misc } from '../assets/styles/utility';
 
-const Row = ({ className, size, ...opts }) => (
-  <div
-    css={theme => [
-      misc.trimChildren,
-      {
-        // 1. Margin so wrapping columns have space
-        // 2. Reset list-style to allow use of `<ul>`
-        display: 'flex',
-        flex: '0 1 auto',
-        flexFlow: 'row wrap',
-        marginLeft: size === 'collapse' ? 0 : -theme.space[size],
+const Row = ({
+  className, gutter, theme, ...opts
+}) => {
+  const gutterCalc = size => [
+    gutter[size] && {
+      [theme.mq[size]]: {
+        marginLeft: gutter[size] === 'collapse' ? 0 : -theme.space[size],
         // 1
-        marginTop: size === 'collapse' ? 0 : -theme.space[size],
-        // 2
-        padding: '0',
-        listStyle: 'none',
+        marginTop: gutter[size] === 'collapse' ? 0 : -theme.space[size],
 
-        // Default spacing/flex attributes
         '> .CK__RowColumn': {
-          paddingLeft: size === 'collapse' ? 0 : theme.space[size],
-          paddingTop: size === 'collapse' ? 0 : theme.space[size],
+          paddingLeft: gutter[size] === 'collapse' ? 0 : theme.space[size],
+          paddingTop: gutter[size] === 'collapse' ? 0 : theme.space[size],
         },
       },
-    ]}
-    className={cx('CK__Row', className)}
-    {...opts}
-  />
-);
+    },
+  ];
+
+  return (
+    <div
+      css={[
+        misc.trimChildren,
+        {
+          // 1. Reset list-style to allow use of `<ul>`
+          display: 'flex',
+          flex: '0 1 auto',
+          flexFlow: 'row wrap',
+
+          // 1
+          padding: '0',
+          listStyle: 'none',
+        },
+
+        gutter.base && {
+          marginLeft:
+            gutter.base === 'collapse' ? 0 : -theme.space[gutter.base],
+          // 1
+          marginTop: gutter.base === 'collapse' ? 0 : -theme.space[gutter.base],
+
+          '> .CK__RowColumn': {
+            paddingLeft:
+              gutter.base === 'collapse' ? 0 : theme.space[gutter.base],
+            paddingTop:
+              gutter.base === 'collapse' ? 0 : theme.space[gutter.base],
+          },
+        },
+
+        gutterCalc('small'),
+        gutterCalc('medium'),
+        gutterCalc('large'),
+        gutterCalc('xlarge'),
+      ]}
+      className={cx('CK__Row', className)}
+      {...opts}
+    />
+  );
+};
 
 Row.propTypes = {
   className: PropTypes.string,
-  size: PropTypes.oneOf([
-    'collapse',
-    'small',
-    'base',
-    'medium',
-    'large',
-    'xlarge',
-  ]),
+  gutter: PropTypes.shape({
+    base: PropTypes.oneOf([
+      'collapse',
+      'small',
+      'base',
+      'medium',
+      'large',
+      'xlarge',
+    ]),
+    small: PropTypes.oneOf([
+      'collapse',
+      'small',
+      'base',
+      'medium',
+      'large',
+      'xlarge',
+    ]),
+    medium: PropTypes.oneOf([
+      'collapse',
+      'small',
+      'base',
+      'medium',
+      'large',
+      'xlarge',
+    ]),
+    large: PropTypes.oneOf([
+      'collapse',
+      'small',
+      'base',
+      'medium',
+      'large',
+      'xlarge',
+    ]),
+    xlarge: PropTypes.oneOf([
+      'collapse',
+      'small',
+      'base',
+      'medium',
+      'large',
+      'xlarge',
+    ]),
+  }),
+  theme: PropTypes.object.isRequired,
 };
 
 Row.defaultProps = {
-  size: 'base',
+  gutter: { base: 'base' },
 };
 
-export default Row;
+export default withTheme(Row);
