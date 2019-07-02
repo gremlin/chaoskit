@@ -5,6 +5,8 @@ import { Alert, Row, RowColumn } from '../components';
 import Live from '../docs/Live';
 import ExampleFill from '../docs/ExampleFill';
 
+import { flex } from '../assets/styles/utility';
+
 const GridExample = `
 <Row>
   <RowColumn size={{base: 3}}><ExampleFill/></RowColumn>
@@ -24,58 +26,14 @@ const GridSpacingExample = `
   <RowColumn size={{base: 6}}><ExampleFill/></RowColumn>
   <RowColumn size={{base: 6}}><ExampleFill/></RowColumn>
 </Row>
-
 `.trim();
 
 const GridSizingExample = `
 <Row>
-  <div className="column-6@medium">
-    <div className="docs__box--fill">
-      .column-6@medium
-    </div>
-  </div>
-  <div className="column-6@medium">
-    <div className="docs__box--fill">
-      .column-6@medium
-    </div>
-  </div>
-  <div className="column-6 column-5@large">
-    <div className="docs__box--fill">
-      .column-6.column-5@large
-    </div>
-  </div>
-  <div className="column-6 column-6@large">
-    <div className="docs__box--fill">
-      .column-6.column-6@large
-    </div>
-  </div>
-</Row>
-`.trim();
-
-const GridAlignmentExample = `
-<div className="row u-flexMiddle u-flexEnd">
-  <div className="column-4">
-    <div className="docs__box--fill">
-      <p>Guards! Bring me the forms I need to fill out to have her taken away! Why would a robot need to drink? Soothe us with sweet lies. THE BIG BRAIN AM WINNING AGAIN! I AM THE GREETEST! NOW I AM LEAVING EARTH, FOR NO RAISEN!</p>
-    </div>
-  </div>
-  <div className="column-5">
-    <div className="docs__box--fill">
-      <p>Now Fry, it's been a few years since medical school, so remind me. Disemboweling in your species: fatal or non-fatal? Why would I want to know that? Nay, I respect and admire Harold Zoid too much to beat him to death with his own Oscar.</p>
-      <p>Bender, quit destroying the universe! Switzerland is small and neutral! We are more like Germany, ambitious and misunderstood! I'm just glad my fat, ugly mama isn't alive to see this day. I usually try to keep my sadness pent up inside where it can fester quietly as a mental illness.</p>
-    </div>
-  </div>
-</div>
-`.trim();
-
-const GridSourceOrderExample = `
-<Row>
-  <div className="column-6@medium column--last@medium">
-    <div className="docs__box--fill">This column will appear last on tablet screen sizes and up.</div>
-  </div>
-  <div className="column-6@medium">
-    <div className="docs__box--fill">This column will appear first on tablet sizes and up.</div>
-  </div>
+  <RowColumn size={{medium: 6}}><ExampleFill /></RowColumn>
+  <RowColumn size={{medium: 6}}><ExampleFill /></RowColumn>
+  <RowColumn size={{base: 6, large: 5}}><ExampleFill /></RowColumn>
+  <RowColumn size={{base: 6}}><ExampleFill /></RowColumn>
 </Row>
 `.trim();
 
@@ -184,7 +142,35 @@ const GridDocs = () => (
       <a href="/flex/">Flex</a> utility.
     </p>
 
-    <Live code={GridAlignmentExample} scope={GridScope} showDocs={false} />
+    <Row css={{ alignItems: 'center', justifyContent: 'flex-end' }}>
+      <RowColumn size={{ base: 4 }}>
+        <ExampleFill>
+          <p>
+            Guards! Bring me the forms I need to fill out to have her taken
+            away! Why would a robot need to drink? Soothe us with sweet lies.
+            THE BIG BRAIN AM WINNING AGAIN! I AM THE GREETEST! NOW I AM LEAVING
+            EARTH, FOR NO RAISEN!
+          </p>
+        </ExampleFill>
+      </RowColumn>
+      <RowColumn size={{ base: 4 }}>
+        <ExampleFill>
+          <p>
+            Now Fry, it's been a few years since medical school, so remind me.
+            Disemboweling in your species: fatal or non-fatal? Why would I want
+            to know that? Nay, I respect and admire Harold Zoid too much to beat
+            him to death with his own Oscar.
+          </p>
+          <p>
+            Bender, quit destroying the universe! Switzerland is small and
+            neutral! We are more like Germany, ambitious and misunderstood! I'm
+            just glad my fat, ugly mama isn't alive to see this day. I usually
+            try to keep my sadness pent up inside where it can fester quietly as
+            a mental illness.
+          </p>
+        </ExampleFill>
+      </RowColumn>
+    </Row>
 
     <h3>Source order modifiers</h3>
 
@@ -195,45 +181,45 @@ const GridDocs = () => (
       <code>.column</code>.
     </p>
 
-    <Alert type="warning" title="Note" className="u-mb--regular">
-      <code>{'{small,medium,large}'}</code> indicate rule declarations at
-      respective screen-sizes.
-    </Alert>
+    <Row>
+      <RowColumn size={{ base: 4 }} order={{ medium: 'last' }}>
+        <ExampleFill>
+          <p>Last on medium breakpoint and up</p>
+        </ExampleFill>
+      </RowColumn>
+      <RowColumn size={{ base: 4 }}>
+        <ExampleFill>
+          <p>First until medium breakpoint</p>
+        </ExampleFill>
+      </RowColumn>
+    </Row>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Class</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <code>.column--first</code>
-            <br />
-            <code>.column--first@{'{small,medium,large}'}</code>
-          </td>
-          <td>
-            Column will appear first on specified size regardless of DOM
-            position.
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <code>.column--last</code>
-            <br />
-            <code>.column--last@{'{small,medium,large}'}</code>
-          </td>
-          <td>
-            Column will appear last on specified size regardless of DOM
-            position.
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <h3>Deep Match</h3>
 
-    <Live code={GridSourceOrderExample} scope={GridScope} showDocs={false} />
+    <Row css={flex.deepMatch}>
+      <RowColumn size={{ medium: 4 }}>
+        <ExampleFill>
+          <p>Should be just as tall as next column.</p>
+        </ExampleFill>
+      </RowColumn>
+      <RowColumn size={{ medium: 4 }}>
+        <ExampleFill>
+          <p>
+            Now Fry, it's been a few years since medical school, so remind me.
+            Disemboweling in your species: fatal or non-fatal? Why would I want
+            to know that? Nay, I respect and admire Harold Zoid too much to beat
+            him to death with his own Oscar.
+          </p>
+          <p>
+            Bender, quit destroying the universe! Switzerland is small and
+            neutral! We are more like Germany, ambitious and misunderstood! I'm
+            just glad my fat, ugly mama isn't alive to see this day. I usually
+            try to keep my sadness pent up inside where it can fester quietly as
+            a mental illness.
+          </p>
+        </ExampleFill>
+      </RowColumn>
+    </Row>
   </BaseLayout>
 );
 
