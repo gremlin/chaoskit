@@ -19,6 +19,7 @@ const SocialIcon = ({
     target="_blank"
     rel="noopener noreferrer"
     iconOnly
+    size="small"
     type="default"
     {...opts}
   >

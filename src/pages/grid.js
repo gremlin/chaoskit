@@ -1,47 +1,16 @@
 import React from 'react';
 
 import BaseLayout from '../layouts/BaseLayout';
-import { Alert } from '../components';
+import { Alert, Row, RowColumn } from '../components';
 import Live from '../docs/Live';
 
 const GridExample = `
-<div className="row">
-  <div className="column-3">
-    <div className="docs__box--fill">
-      .column-3
-    </div>
-  </div>
-  <div className="column-4">
-    <div className="docs__box--fill">
-      .column-4
-    </div>
-  </div>
-  <div className="column-5">
-    <div className="docs__box--fill">
-      .column-5
-    </div>
-  </div>
-  <div className="column-6">
-    <div className="docs__box--fill">
-      .column-6
-    </div>
-  </div>
-  <div className="column-6">
-    <div className="docs__box--fill">
-      .column-6
-    </div>
-  </div>
-  <div className="column-8">
-    <div className="docs__box--fill">
-      .column-8
-    </div>
-  </div>
-  <div className="column-4">
-    <div className="docs__box--fill">
-      .column-4
-    </div>
-  </div>
-</div>
+<Row>
+  <RowColumn size={{base: 3}}>test</RowColumn>
+  <RowColumn size={{base: 3, medium: 5}} offset={{medium: 2}} order={{medium: 'first'}}>first medium up</RowColumn>
+  <RowColumn size={{base: 3}}>test</RowColumn>
+  <RowColumn size={{base: 3}}>test</RowColumn>
+</Row>
 `.trim();
 
 const GridSpacingExample = `
@@ -70,7 +39,7 @@ const GridSpacingExample = `
 `.trim();
 
 const GridSizingExample = `
-<div className="row">
+<Row>
   <div className="column-6@medium">
     <div className="docs__box--fill">
       .column-6@medium
@@ -91,7 +60,7 @@ const GridSizingExample = `
       .column-6.column-6@large
     </div>
   </div>
-</div>
+</Row>
 `.trim();
 
 const GridAlignmentExample = `
@@ -111,17 +80,17 @@ const GridAlignmentExample = `
 `.trim();
 
 const GridSourceOrderExample = `
-<div className="row">
+<Row>
   <div className="column-6@medium column--last@medium">
     <div className="docs__box--fill">This column will appear last on tablet screen sizes and up.</div>
   </div>
   <div className="column-6@medium">
     <div className="docs__box--fill">This column will appear first on tablet sizes and up.</div>
   </div>
-</div>
+</Row>
 `.trim();
 
-const GridScope = {};
+const GridScope = { Row, RowColumn };
 
 const GridDocs = () => (
   <BaseLayout pageTitle="Grid">

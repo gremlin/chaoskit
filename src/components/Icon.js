@@ -7,6 +7,7 @@ import Icons from '../assets/icons/icons.json';
 export const StylesIconVariables = {
   small: '0.65em',
   base: '1em',
+  medium: '1.5em',
   large: '1.65em',
   xlarge: '3em',
 };

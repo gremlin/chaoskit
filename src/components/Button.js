@@ -296,6 +296,11 @@ export const StylesButtonIconOnly = (theme, props = {}) => [
   },
   props.size === 'small' && {
     width: theme.height.small,
+
+    svg: {
+      width: StylesIconVariables.medium,
+      height: StylesIconVariables.medium,
+    },
   },
   props.size === 'xsmall' && {
     width: theme.height.xsmall,

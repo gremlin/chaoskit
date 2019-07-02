@@ -1,13 +1,18 @@
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
+export const StylesContainerVariables = {
+  base: 1000,
+  small: 800,
+};
+
 const Container = ({ className, size, ...opts }) => (
   <div
     className={cx('CK__Container', className)}
     css={theme => [
       {
         width: '100%',
-        maxWidth: 1000,
+        maxWidth: StylesContainerVariables.base,
         margin: '0 auto',
         padding: `0 ${theme.space.base}px`,
 
@@ -18,7 +23,7 @@ const Container = ({ className, size, ...opts }) => (
       },
 
       size === 'small' && {
-        maxWidth: 800,
+        maxWidth: StylesContainerVariables.small,
       },
     ]}
     {...opts}
