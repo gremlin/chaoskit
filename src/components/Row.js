@@ -20,15 +20,10 @@ const Row = ({ className, size, ...opts }) => (
         padding: '0',
         listStyle: 'none',
 
-        // 1. Default spacing/flex attributes
-        // 2. Default child elements of row to 100% width until size modifiers kick-in
+        // Default spacing/flex attributes
         '> .CK__RowColumn': {
-          // 1
           paddingLeft: size === 'collapse' ? 0 : theme.space[size],
           paddingTop: size === 'collapse' ? 0 : theme.space[size],
-          // 2
-          flex: '0 0 100%',
-          maxWidth: '100%',
         },
       },
     ]}

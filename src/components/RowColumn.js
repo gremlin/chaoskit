@@ -9,12 +9,18 @@ const RowColumn = ({
   const percentWidth = (columnSize) => {
     const calc = (100 / columns) * columnSize;
 
-    return `${calc}% !important`;
+    return `${calc}%`;
   };
 
   return (
     <div
       css={theme => [
+        // Default child elements of row to 100% width until size modifiers kick-in
+        {
+          flex: '0 0 100%',
+          maxWidth: '100%',
+        },
+
         //
         // Size
         //

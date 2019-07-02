@@ -7,7 +7,7 @@ import Live from '../docs/Live';
 const GridExample = `
 <Row>
   <RowColumn size={{base: 3}}>test</RowColumn>
-  <RowColumn size={{base: 3, medium: 5}} offset={{medium: 2}} order={{medium: 'first'}}>first medium up</RowColumn>
+  <RowColumn size={{base: 4, medium: 5}} offset={{medium: 2}} order={{medium: 'first'}}>first medium up</RowColumn>
   <RowColumn size={{base: 3}}>test</RowColumn>
   <RowColumn size={{base: 3}}>test</RowColumn>
 </Row>
