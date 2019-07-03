@@ -1,81 +1,71 @@
 import React from 'react';
 
 import BaseLayout from '../layouts/BaseLayout';
-import { Alert } from '../components';
+import { Alert, BlockGrid, ListItem } from '../components';
 import Live from '../docs/Live';
+import ExampleFill from '../docs/ExampleFill';
 
 const BlockGridExample = `
-<ul className="blockGrid blockGrid-4">
-  <li>
-    <div className="docs__box--fill" />
-  </li>
-  <li>
-    <div className="docs__box--fill" />
-  </li>
-  <li>
-    <div className="docs__box--fill" />
-  </li>
-  <li>
-    <div className="docs__box--fill" />
-  </li>
-  <li>
-    <div className="docs__box--fill" />
-  </li>
-  <li>
-    <div className="docs__box--fill" />
-  </li>
-  <li>
-    <div className="docs__box--fill" />
-  </li>
-</ul>
+<BlockGrid size={{base: 4}}>
+  <ListItem>
+    <ExampleFill />
+  </ListItem>
+  <ListItem>
+    <ExampleFill />
+  </ListItem>
+  <ListItem>
+    <ExampleFill />
+  </ListItem>
+  <ListItem>
+    <ExampleFill />
+  </ListItem>
+  <ListItem>
+    <ExampleFill />
+  </ListItem>
+  <ListItem>
+    <ExampleFill />
+  </ListItem>
+  <ListItem>
+    <ExampleFill />
+  </ListItem>
+</BlockGrid>
 `.trim();
 
 const BlockGridSpacingExample = `
-<ul className="blockGrid blockGrid-4 blockGrid--collapse blockGrid--largeGutter@small blockGrid--xlargeGutter@medium">
-  <li>
-    <div className="docs__box--fill" />
-  </li>
-  <li>
-    <div className="docs__box--fill" />
-  </li>
-  <li>
-    <div className="docs__box--fill" />
-  </li>
-  <li>
-    <div className="docs__box--fill" />
-  </li>
-</ul>
+<BlockGrid size={{base: 4}} gutter={{base: 'collapse', small: 'large', medium: 'xlarge'}}>
+  <ListItem>
+    <ExampleFill />
+  </ListItem>
+  <ListItem>
+    <ExampleFill />
+  </ListItem>
+  <ListItem>
+    <ExampleFill />
+  </ListItem>
+  <ListItem>
+    <ExampleFill />
+  </ListItem>
+</BlockGrid>
 `.trim();
 
 const BlockGridSizingExample = `
-<ul className="blockGrid blockGrid-2@medium blockGrid-3@large">
-  <li>
-    <div className="docs__box--fill" />
-  </li>
-  <li>
-    <div className="docs__box--fill" />
-  </li>
-  <li>
-    <div className="docs__box--fill" />
-  </li>
-  <li>
-    <div className="docs__box--fill" />
-  </li>
-</ul>
+<BlockGrid size={{medium: 2, large: 3}}>
+  <ListItem>
+    <ExampleFill />
+  </ListItem>
+  <ListItem>
+    <ExampleFill />
+  </ListItem>
+  <ListItem>
+    <ExampleFill />
+  </ListItem>
+  <ListItem>
+    <ExampleFill />
+  </ListItem>
+</BlockGrid>
 `.trim();
 
-const BlockGridAlignmentExample = `
-<ul className="blockGrid blockGrid-2@small blockGrid-3@medium u-flexEnd">
-  <li>
-    <div className="docs__box--fill" />
-  </li>
-  <li>
-    <div className="docs__box--fill" />
-  </li>
-</ul>
-`.trim();
-
-const BlockGridScope = {};
+const BlockGridScope = { BlockGrid, ListItem, ExampleFill };
 
 const BlockGridDocs = () => (
   <BaseLayout pageTitle="BlockGrid">
@@ -191,11 +181,17 @@ const BlockGridDocs = () => (
       the <a href="/flex/">Flex</a> utility.
     </p>
 
-    <Live
-      code={BlockGridAlignmentExample}
-      scope={BlockGridScope}
-      showDocs={false}
-    />
+    <BlockGrid
+      size={{ small: 2, medium: 3 }}
+      css={{ justifyContent: 'flex-end' }}
+    >
+      <ListItem>
+        <ExampleFill />
+      </ListItem>
+      <ListItem>
+        <ExampleFill />
+      </ListItem>
+    </BlockGrid>
   </BaseLayout>
 );
 
