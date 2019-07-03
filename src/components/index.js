@@ -33,6 +33,7 @@ export { default as RadioGroup } from './RadioGroup.js';
 export { default as Reveal } from './Reveal.js';
 export { default as Row } from './Row.js';
 export { default as RowColumn } from './RowColumn.js';
+export { default as Section } from './Section.js';
 export { default as Select } from './Select.js';
 export { default as SocialIcon } from './SocialIcon.js';
 export { default as Subnav } from './Subnav.js';
