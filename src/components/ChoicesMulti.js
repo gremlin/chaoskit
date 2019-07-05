@@ -26,17 +26,17 @@ const ChoicesMulti = ({
 
   const itemToString = item => (item ? item.label : '');
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = e => {
     if (selected.length && !value.length && e.keyCode === 8) {
       onChange(selected.slice(0, selected.length - 1));
     }
   };
 
-  const handleInputChange = (e) => {
+  const handleInputChange = e => {
     setValue(e.target.value);
   };
 
-  const handleChange = (item) => {
+  const handleChange = item => {
     onChange(name, [...selected, item]);
 
     // Clear out any typed values
@@ -60,8 +60,8 @@ const ChoicesMulti = ({
 
   const optionsList = value.length
     ? matchSorter(options, value, {
-      keys: ['label'],
-    })
+        keys: ['label'],
+      })
     : options;
   const formGroupClasses = cx('form-group', className, {
     [config.classes.notValid]: validationMessage,
@@ -70,10 +70,10 @@ const ChoicesMulti = ({
   const selectedOptions = [];
   // Based on current selection to remove from dropdown
   const filteredOptions = optionsList.filter(
-    item => JSON.stringify(selected).indexOf(JSON.stringify(item)) === -1,
+    item => JSON.stringify(selected).indexOf(JSON.stringify(item)) === -1
   );
 
-  selected.forEach((item) => {
+  selected.forEach(item => {
     if (typeof item !== 'object') {
       const selectedOption = optionsList.find(x => x.value === item);
       selectedOptions.push(selectedOption);
@@ -90,12 +90,12 @@ const ChoicesMulti = ({
       itemToString={itemToString}
       stateReducer={stateReducer}
     >
-      {(downshift) => {
+      {downshift => {
         const choicesClasses = cx('choices', {
           'is-focused is-open': downshift.isOpen,
         });
         // Only re-open menu if we didn't click on `x` within a multi-select item
-        const handleContainerClick = (e) => {
+        const handleContainerClick = e => {
           if (!e.target.classList.contains('choices__button')) {
             downshift.openMenu();
           }
@@ -154,7 +154,7 @@ const ChoicesMulti = ({
                             {
                               'is-highlighted':
                                 downshift.highlightedIndex === index,
-                            },
+                            }
                           );
 
                           return (

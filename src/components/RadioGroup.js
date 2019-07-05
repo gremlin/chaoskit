@@ -25,19 +25,20 @@ const RadioGroup = ({
   required,
   ...opts
 }) => {
-  const renderChildren = () => React.Children.map(children, (child) => {
-    const onChangeFunc = () => {
-      onChange(name, child.props.value);
-    };
+  const renderChildren = () =>
+    React.Children.map(children, child => {
+      const onChangeFunc = () => {
+        onChange(name, child.props.value);
+      };
 
-    return (
-      <RadioGroupProvider
-        value={{ selectedValue, name, onChange: onChangeFunc }}
-      >
-        {inline ? child : <ListItem>{child}</ListItem>}
-      </RadioGroupProvider>
-    );
-  });
+      return (
+        <RadioGroupProvider
+          value={{ selectedValue, name, onChange: onChangeFunc }}
+        >
+          {inline ? child : <ListItem>{child}</ListItem>}
+        </RadioGroupProvider>
+      );
+    });
 
   const renderItems = () => {
     if (inline) {

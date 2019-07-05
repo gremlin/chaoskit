@@ -2,9 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 
-const FormLabel = ({
-  children, className, id, ...opts
-}) => {
+const FormLabel = ({ children, className, id, ...opts }) => {
   const classes = cx('form-label', className);
 
   return children ? (

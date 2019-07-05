@@ -4,9 +4,7 @@ import React from 'react';
 
 import Close from './Close';
 
-const ModalHeader = ({
-  center, className, onCloseClick, title, ...opts
-}) => {
+const ModalHeader = ({ center, className, onCloseClick, title, ...opts }) => {
   const handleCloseClick = () => {
     if (onCloseClick) onCloseClick();
   };

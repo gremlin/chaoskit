@@ -60,8 +60,8 @@ const Modal = ({
       onUpdate: () => {
         const newTime = $modal.timeline.time();
         if (
-          (forward && newTime < lastTime)
-          || (!forward && newTime > lastTime)
+          (forward && newTime < lastTime) ||
+          (!forward && newTime > lastTime)
         ) {
           forward = !forward;
           if (!forward) {
@@ -101,36 +101,27 @@ const Modal = ({
       });
   };
 
-  useEffect(
-    () => {
-      if (open) {
-        setRenderModal(true);
-      }
-    },
-    [open],
-  );
+  useEffect(() => {
+    if (open) {
+      setRenderModal(true);
+    }
+  }, [open]);
 
-  useUpdateEffect(
-    () => {
-      if (renderModal) {
-        attachTimeline();
+  useUpdateEffect(() => {
+    if (renderModal) {
+      attachTimeline();
 
-        openModal();
-      } else {
-        onReverseComplete();
-      }
-    },
-    [renderModal],
-  );
+      openModal();
+    } else {
+      onReverseComplete();
+    }
+  }, [renderModal]);
 
-  useUpdateEffect(
-    () => {
-      if (!open) {
-        closeModal();
-      }
-    },
-    [open],
-  );
+  useUpdateEffect(() => {
+    if (!open) {
+      closeModal();
+    }
+  }, [open]);
 
   const modalClasses = cx(
     'modal',
@@ -138,21 +129,21 @@ const Modal = ({
       'modal--small': size === 'small',
       'modal--large': size === 'large',
     },
-    className,
+    className
   );
 
   useClickAway(modalDialogRef, () => onOutsideModalClick());
   useLockBodyScroll(renderModal);
 
   return (
-    renderModal
-    && ReactDOM.createPortal(
+    renderModal &&
+    ReactDOM.createPortal(
       <div className={modalClasses} ref={modalRef} {...opts}>
         <div className="modal-dialog" ref={modalDialogRef}>
           {children}
         </div>
       </div>,
-      document.body,
+      document.body
     )
   );
 };

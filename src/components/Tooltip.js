@@ -1,6 +1,4 @@
-import React, {
-  Fragment, useRef, useState, useEffect,
-} from 'react';
+import React, { Fragment, useRef, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import useUpdateEffect from 'react-use/lib/useUpdateEffect';
@@ -9,9 +7,7 @@ import { TimelineMax } from 'gsap/TweenMax';
 import { isTouchDevice } from '../helpers/utility';
 import { config } from '../helpers/config';
 
-const Tooltip = ({
-  children, content, placement, mobileTap,
-}) => {
+const Tooltip = ({ children, content, placement, mobileTap }) => {
   const tooltipRef = useRef();
   const tooltipTriggerRef = useRef();
 
@@ -51,8 +47,10 @@ const Tooltip = ({
     // Tooltip dimensions
     const tooltipDim = { w: $tooltip.offsetWidth, h: $tooltip.offsetHeight };
 
-    const scrollYOffset = window.pageYOffset || document.documentElement.scrollTop;
-    const scrollXOffset = window.pageXOffset || document.documentElement.scrollLeft;
+    const scrollYOffset =
+      window.pageYOffset || document.documentElement.scrollTop;
+    const scrollXOffset =
+      window.pageXOffset || document.documentElement.scrollLeft;
 
     // Apply styling
     // eslint-disable-next-line default-case
@@ -61,30 +59,30 @@ const Tooltip = ({
     ) {
       case 'top':
         $tooltip.style.top = `${rect.top + scrollYOffset - tooltipDim.h}px`;
-        $tooltip.style.left = `${rect.left
-          + scrollXOffset
-          + linkDim.w / 2
-          - tooltipDim.w / 2}px`;
+        $tooltip.style.left = `${rect.left +
+          scrollXOffset +
+          linkDim.w / 2 -
+          tooltipDim.w / 2}px`;
         break;
       case 'bottom':
         $tooltip.style.top = `${rect.top + scrollYOffset + linkDim.h}px`;
-        $tooltip.style.left = `${rect.left
-          + scrollXOffset
-          + linkDim.w / 2
-          - tooltipDim.w / 2}px`;
+        $tooltip.style.left = `${rect.left +
+          scrollXOffset +
+          linkDim.w / 2 -
+          tooltipDim.w / 2}px`;
         break;
       case 'left':
-        $tooltip.style.top = `${rect.top
-          + scrollYOffset
-          + linkDim.h / 2
-          - tooltipDim.h / 2}px`;
+        $tooltip.style.top = `${rect.top +
+          scrollYOffset +
+          linkDim.h / 2 -
+          tooltipDim.h / 2}px`;
         $tooltip.style.left = `${rect.left + scrollXOffset - tooltipDim.w}px`;
         break;
       case 'right':
-        $tooltip.style.top = `${rect.top
-          + scrollYOffset
-          + linkDim.h / 2
-          - tooltipDim.h / 2}px`;
+        $tooltip.style.top = `${rect.top +
+          scrollYOffset +
+          linkDim.h / 2 -
+          tooltipDim.h / 2}px`;
         $tooltip.style.left = `${rect.left + scrollXOffset + linkDim.w}px`;
         break;
     }
@@ -141,60 +139,52 @@ const Tooltip = ({
     styleTooltip();
   };
 
-  const renderChildren = React.Children.map(children, child => React.cloneElement(child, {
-    ref: tooltipTriggerRef,
-  }));
+  const renderChildren = React.Children.map(children, child =>
+    React.cloneElement(child, {
+      ref: tooltipTriggerRef,
+    })
+  );
 
   // @NOTE Attaching event listeners here is not ideal, but `onMouseEnter` (and `onMouseOver`) is not reliably fired; as well as the context of the currentTarget being incorrect.
-  useEffect(
-    () => {
-      const $tooltipTrigger = tooltipTriggerRef.current;
+  useEffect(() => {
+    const $tooltipTrigger = tooltipTriggerRef.current;
 
-      // Add event listeners
-      // Tooltips are not triggered on touch-devices to not interfere with actionable items
-      // This can be overidden with the `mobileTap` prop
+    // Add event listeners
+    // Tooltips are not triggered on touch-devices to not interfere with actionable items
+    // This can be overidden with the `mobileTap` prop
+    if (!isTouchDevice() || mobileTap) {
+      $tooltipTrigger.addEventListener('mouseenter', handleMouseEnter, false);
+      $tooltipTrigger.addEventListener('mouseleave', closeTooltip, false);
+    }
+
+    return () => {
+      // Remove event listeners from non-touch devices
       if (!isTouchDevice() || mobileTap) {
-        $tooltipTrigger.addEventListener('mouseenter', handleMouseEnter, false);
-        $tooltipTrigger.addEventListener('mouseleave', closeTooltip, false);
+        $tooltipTrigger.removeEventListener(
+          'mouseenter',
+          handleMouseEnter,
+          false
+        );
+        $tooltipTrigger.removeEventListener('mouseleave', closeTooltip, false);
       }
+    };
+  }, [tooltipTriggerRef]);
 
-      return () => {
-        // Remove event listeners from non-touch devices
-        if (!isTouchDevice() || mobileTap) {
-          $tooltipTrigger.removeEventListener(
-            'mouseenter',
-            handleMouseEnter,
-            false,
-          );
-          $tooltipTrigger.removeEventListener(
-            'mouseleave',
-            closeTooltip,
-            false,
-          );
-        }
-      };
-    },
-    [tooltipTriggerRef],
-  );
-
-  useUpdateEffect(
-    () => {
-      if (renderTooltip) {
-        attachTimeline();
-      }
-    },
-    [renderTooltip],
-  );
+  useUpdateEffect(() => {
+    if (renderTooltip) {
+      attachTimeline();
+    }
+  }, [renderTooltip]);
 
   return (
     <Fragment>
       {renderChildren}
-      {renderTooltip
-        && ReactDOM.createPortal(
+      {renderTooltip &&
+        ReactDOM.createPortal(
           <div className="tooltip" ref={tooltipRef} role="tooltip">
             <div className="tooltip-inner">{content}</div>
           </div>,
-          document.body,
+          document.body
         )}
     </Fragment>
   );

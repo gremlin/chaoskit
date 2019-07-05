@@ -4,9 +4,7 @@ import React, { useState } from 'react';
 
 import Icon from './Icon';
 
-const Avatar = ({
-  className, image, name, size, ...opts
-}) => {
+const Avatar = ({ className, image, name, size, ...opts }) => {
   const [error, setError] = useState(false);
 
   const nameProp = name ? name.trim() : '';

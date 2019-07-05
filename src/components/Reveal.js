@@ -48,8 +48,8 @@ const Reveal = ({
         const newTime = $reveal.timeline.time();
 
         if (
-          (forward && newTime < lastTime)
-          || (!forward && newTime > lastTime)
+          (forward && newTime < lastTime) ||
+          (!forward && newTime > lastTime)
         ) {
           forward = !forward;
           if (!forward) {
@@ -125,16 +125,13 @@ const Reveal = ({
     attachTimeline();
   });
 
-  useUpdateEffect(
-    () => {
-      if (reveal) {
-        revealOpen();
-      } else {
-        revealClose();
-      }
-    },
-    [reveal],
-  );
+  useUpdateEffect(() => {
+    if (reveal) {
+      revealOpen();
+    } else {
+      revealClose();
+    }
+  }, [reveal]);
 
   const classes = cx('reveal-content', className);
 

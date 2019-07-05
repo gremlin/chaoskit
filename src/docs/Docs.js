@@ -47,11 +47,11 @@ const propTypesArray = [
   },
 ];
 
-const getReactPropType = (propTypeFunc) => {
+const getReactPropType = propTypeFunc => {
   let name = 'custom';
   let isRequired = false;
 
-  propTypesArray.some((propType) => {
+  propTypesArray.some(propType => {
     if (propTypeFunc === propType.test) {
       name = propType.key;
       return true;
@@ -75,17 +75,19 @@ const Docs = ({ component, propDescriptions }) => {
   // If no component was specified; ignore
   if (!component || !component.propTypes) return null;
 
-  Object.keys(component.propTypes).map(propName => propTypes.push({
-    propName,
-    type: getReactPropType(component.propTypes[propName]),
-    description: ReactHtmlParser(propDescriptions[propName]) || '',
-    default:
-        component.defaultProps
-        && component.defaultProps[propName]
-        && (typeof component.defaultProps[propName] !== 'function'
+  Object.keys(component.propTypes).map(propName =>
+    propTypes.push({
+      propName,
+      type: getReactPropType(component.propTypes[propName]),
+      description: ReactHtmlParser(propDescriptions[propName]) || '',
+      default:
+        component.defaultProps &&
+        component.defaultProps[propName] &&
+        (typeof component.defaultProps[propName] !== 'function'
           ? component.defaultProps[propName].toString()
           : null),
-  }));
+    })
+  );
 
   return (
     <table className="u-textSmall">

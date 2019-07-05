@@ -61,8 +61,8 @@ const OffCanvas = ({
       onUpdate: () => {
         const newTime = $offCanvas.timeline.time();
         if (
-          (forward && newTime < lastTime)
-          || (!forward && newTime > lastTime)
+          (forward && newTime < lastTime) ||
+          (!forward && newTime > lastTime)
         ) {
           forward = !forward;
           if (!forward) {
@@ -96,7 +96,7 @@ const OffCanvas = ({
             opacity: 1,
           },
         },
-        'offCanvas',
+        'offCanvas'
       )
       .to(
         $panel,
@@ -107,62 +107,53 @@ const OffCanvas = ({
           },
           ease: config.easing,
         },
-        'offCanvas',
+        'offCanvas'
       );
   };
 
-  useEffect(
-    () => {
-      if (open) {
-        setRenderOffCanvas(true);
-      }
-    },
-    [open],
-  );
+  useEffect(() => {
+    if (open) {
+      setRenderOffCanvas(true);
+    }
+  }, [open]);
 
-  useUpdateEffect(
-    () => {
-      if (renderOffCanvas) {
-        attachTimeline();
+  useUpdateEffect(() => {
+    if (renderOffCanvas) {
+      attachTimeline();
 
-        openOffCanvas();
-      } else {
-        onReverseComplete();
-      }
-    },
-    [renderOffCanvas],
-  );
+      openOffCanvas();
+    } else {
+      onReverseComplete();
+    }
+  }, [renderOffCanvas]);
 
-  useUpdateEffect(
-    () => {
-      if (!open) {
-        closeOffCanvas();
-      }
-    },
-    [open],
-  );
+  useUpdateEffect(() => {
+    if (!open) {
+      closeOffCanvas();
+    }
+  }, [open]);
 
   const classes = cx(
     'offCanvas',
     {
       'offCanvas--right': align === 'right',
     },
-    className,
+    className
   );
 
   useClickAway(offCanvasPanelRef, () => onOffCanvasToggle());
   useLockBodyScroll(renderOffCanvas);
 
   return (
-    renderOffCanvas
-    && ReactDOM.createPortal(
+    renderOffCanvas &&
+    ReactDOM.createPortal(
       <div className={classes} ref={offCanvasRef} {...opts}>
         <div className="offCanvas-panel" ref={offCanvasPanelRef}>
           <Close onClick={onOffCanvasToggle} className="offCanvas-close" />
           {children}
         </div>
       </div>,
-      document.body,
+      document.body
     )
   );
 };
