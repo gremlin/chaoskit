@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 import { rgba } from 'polished';
 
 import { misc } from '../assets/styles/utility';
@@ -7,32 +8,11 @@ const StylesSectionVariables = {
   slantOffset: 2.5,
 };
 
-export const StylesSectionTitleWrapper = theme => [
-  misc.trimChildren,
-  misc.fluidSize({
-    theme,
-    property: 'marginBottom',
-    from: theme.space.large,
-    to: theme.space.xlarge,
-  }),
-  {
-    textAlign: 'center',
-  },
-];
-
-export const StylesSectionTitleSub = theme => ({
-  color: theme.fontColor.muted,
-  fontSize: theme.fontSize.medium,
-  maxWidth: 625,
-  margin: '0 auto',
-
-  '.u-contrast &': {
-    color: theme.contrast.muted,
-  },
-});
-
-const Section = ({ space, slant, ...opts }) => (
+const Section = ({
+  space, slant, className, ...opts
+}) => (
   <section
+    className={cx('CK__Section', className)}
     css={theme => [
       misc.trimChildren,
 
@@ -93,6 +73,7 @@ const Section = ({ space, slant, ...opts }) => (
 Section.propTypes = {
   space: PropTypes.oneOf(['small', 'base', 'medium', 'large', 'xlarge']),
   slant: PropTypes.oneOf(['top', 'bottom', 'bottom-shadow']),
+  className: PropTypes.string,
 };
 
 Section.defaultProps = {

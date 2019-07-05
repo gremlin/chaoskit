@@ -9,10 +9,7 @@ import { CacheProvider, Global } from '@emotion/core';
 import createCache from '@emotion/cache';
 import 'what-input';
 
-import Section, {
-  StylesSectionTitleWrapper,
-  StylesSectionTitleSub,
-} from '../components/Section';
+import { Section, SectionTitle } from '../components';
 
 import { theme } from '../assets/styles/theme';
 import { contrast, misc } from '../assets/styles/utility';
@@ -114,10 +111,7 @@ const Foundation = ({ children }) => {
             css={{ background: theme.color.danger.base }}
             slant="bottom"
           >
-            <div css={[StylesSectionTitleWrapper(theme)]}>
-              <h3>Header</h3>
-              <div css={[StylesSectionTitleSub(theme)]}>Sub</div>
-            </div>
+            <SectionTitle title="Header" sub="Sub" />
           </Section>
           <div
             className="u-contrast"
