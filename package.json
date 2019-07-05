@@ -39,8 +39,6 @@
     "postcss-size": "3.0.0",
     "postcss-sorting": "5.0.0",
     "prettier": "1.18.2",
-    "prettier-eslint": "8.8.2",
-    "prettier-eslint-cli": "4.7.1",
     "prettier-stylelint-temp": "0.4.4",
     "prismjs": "1.16.0",
     "react-helmet": "5.2.1",
@@ -87,7 +85,7 @@
     "build-serve": "yarn build && gatsby serve",
     "develop": "yarn && yarn run icons && gatsby develop --open",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prettier": "prettier-eslint --write '**/*.{js,jsx}' && prettier-stylelint-temp --write --quiet '**/*.{css,scss}'"
+    "prettier": "prettier --write '**/*.{js,jsx}' && prettier-stylelint-temp --write --quiet '**/*.{css,scss}'"
   },
   "repository": {
     "type": "git",

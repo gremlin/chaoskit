@@ -42,7 +42,7 @@ const Dropdown = ({
    * @param  {event} e
    * @return {false}
    */
-  const checkInside = (e) => {
+  const checkInside = e => {
     if (e.target.closest('.dropdown-panel') === null) {
       dropdownClose();
 
@@ -81,8 +81,8 @@ const Dropdown = ({
         const newTime = $dropdown.timeline.time();
 
         if (
-          (forward && newTime < lastTime)
-          || (!forward && newTime > lastTime)
+          (forward && newTime < lastTime) ||
+          (!forward && newTime > lastTime)
         ) {
           forward = !forward;
           if (!forward) {
@@ -141,7 +141,7 @@ const Dropdown = ({
       'dropdown--up dropdown--center': position === 'up-center',
       'dropdown--up dropdown--right': position === 'up-right',
     },
-    className,
+    className
   );
   const panelClasses = cx('dropdown-panel', panelClassName);
 

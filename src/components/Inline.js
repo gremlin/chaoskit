@@ -2,9 +2,7 @@ import cx from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const Inline = ({
-  className, size, wrap, ...opts
-}) => {
+const Inline = ({ className, size, wrap, ...opts }) => {
   const classes = cx('inline', className, {
     'inline--small': size === 'small',
     'inline--medium': size === 'medium',

@@ -24,7 +24,7 @@ const phoneMask = [
   /\d/,
 ];
 
-const onlyNumbers = (rawValue) => {
+const onlyNumbers = rawValue => {
   const mask = [];
 
   for (let i = 0; i < rawValue.length; i += 1) {

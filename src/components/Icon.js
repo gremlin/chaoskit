@@ -5,9 +5,7 @@ import React from 'react';
 import Icons from '../assets/icons/icons.json';
 
 const Icon = React.forwardRef(
-  ({
-    icon, additionalIcons, fallback, className, size, ...opts
-  }, ref) => {
+  ({ icon, additionalIcons, fallback, className, size, ...opts }, ref) => {
     const getIcon = () => {
       const classes = cx('icon', className, {
         'icon--small': size === 'small',
@@ -44,7 +42,7 @@ const Icon = React.forwardRef(
     };
 
     return getIcon();
-  },
+  }
 );
 
 Icon.propTypes = {

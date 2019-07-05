@@ -9,9 +9,7 @@ import useUpdateEffect from 'react-use/lib/useUpdateEffect';
 import Foundation from './Foundation';
 import { styles } from '../helpers/styles';
 import { config } from '../helpers/config';
-import {
-  Button, Icon, Inline, List, ListItem,
-} from '../components';
+import { Button, Icon, Inline, List, ListItem } from '../components';
 import { version } from '../../package.json';
 
 import mascot from '../assets/media/logo-mascot.svg';
@@ -20,38 +18,35 @@ import '../assets/styles/site.scss';
 const BaseLayout = ({ children, pageTitle }) => {
   const [isMobileNavOpen, setMobileNavOpen] = useState(false);
 
-  const viewportMediumMin = typeof window !== 'undefined'
-    && window.matchMedia(`(min-width: ${styles.viewport.medium})`);
+  const viewportMediumMin =
+    typeof window !== 'undefined' &&
+    window.matchMedia(`(min-width: ${styles.viewport.medium})`);
 
   const handleMobileNavToggle = () => {
     setMobileNavOpen(!isMobileNavOpen);
   };
 
   // Make sure we close mobile nav if resizing from mobile to desktop
-  const checkSize = (event) => {
+  const checkSize = event => {
     if (isMobileNavOpen && event.matches) {
       setMobileNavOpen(false);
     }
   };
 
-  useUpdateEffect(
-    () => {
-      viewportMediumMin.addListener(checkSize);
+  useUpdateEffect(() => {
+    viewportMediumMin.addListener(checkSize);
 
-      window.onpopstate = (event) => {
-        if (
-          event.srcElement.location.pathname === event.target.location.pathname
-        ) return;
+    window.onpopstate = event => {
+      if (event.srcElement.location.pathname === event.target.location.pathname)
+        return;
 
-        setMobileNavOpen(false);
-      };
+      setMobileNavOpen(false);
+    };
 
-      return () => {
-        viewportMediumMin.removeListener(checkSize);
-      };
-    },
-    [isMobileNavOpen],
-  );
+    return () => {
+      viewportMediumMin.removeListener(checkSize);
+    };
+  }, [isMobileNavOpen]);
 
   const navClasses = cx('docs__sidebar', {
     [config.classes.open]: isMobileNavOpen,

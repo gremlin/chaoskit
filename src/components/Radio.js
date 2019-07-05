@@ -6,10 +6,8 @@ import { RadioGroupContext } from './RadioGroup';
 import { generateUUID } from '../helpers/utility';
 import { config } from '../helpers/config';
 
-const Radio = (props) => {
-  const {
-    className, disabled, label, value, ...opts
-  } = props;
+const Radio = props => {
+  const { className, disabled, label, value, ...opts } = props;
 
   const { selectedValue, name, onChange } = useContext(RadioGroupContext);
   const id = `${name}-${generateUUID()}`;

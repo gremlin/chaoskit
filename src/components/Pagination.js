@@ -9,26 +9,27 @@ const Pagination = ({
   prevPageLink,
   nextPageLink,
   ...opts
-}) => (hasPrevPage || hasNextPage ? (
-  <div className="pagination" {...opts}>
-    <Button
-      rel={hasPrevPage ? 'prev' : null}
-      type="default"
-      route={hasPrevPage ? prevPageLink : null}
-      disabled={!hasPrevPage}
-    >
+}) =>
+  hasPrevPage || hasNextPage ? (
+    <div className="pagination" {...opts}>
+      <Button
+        rel={hasPrevPage ? 'prev' : null}
+        type="default"
+        route={hasPrevPage ? prevPageLink : null}
+        disabled={!hasPrevPage}
+      >
         Previous
-    </Button>
-    <Button
-      rel={hasNextPage ? 'next' : null}
-      type="default"
-      route={hasNextPage ? nextPageLink : null}
-      disabled={!hasNextPage}
-    >
+      </Button>
+      <Button
+        rel={hasNextPage ? 'next' : null}
+        type="default"
+        route={hasNextPage ? nextPageLink : null}
+        disabled={!hasNextPage}
+      >
         Next
-    </Button>
-  </div>
-) : null);
+      </Button>
+    </div>
+  ) : null;
 
 Pagination.propTypes = {
   hasPrevPage: PropTypes.bool.isRequired,

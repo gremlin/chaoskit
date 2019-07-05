@@ -18,7 +18,7 @@ const Foundation = props => (
         }
       }
     `}
-    render={(data) => {
+    render={data => {
       const {
         site: {
           siteMetadata: { title, description },

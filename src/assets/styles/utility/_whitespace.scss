@@ -9,7 +9,7 @@ $whitespace-sizes: (
   medium: $global-whitespace-medium,
   large: $global-whitespace-large,
   xlarge: $global-whitespace-xlarge,
-  remove: 0
+  remove: 0,
 ) !default;
 
 @mixin whitespace() {

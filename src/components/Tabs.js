@@ -35,6 +35,4 @@ TabPanel.propTypes = {
 
 TabPanel.tabsRole = 'TabPanel';
 
-export {
-  Tabs, TabList, Tab, TabPanel,
-};
+export { Tabs, TabList, Tab, TabPanel };

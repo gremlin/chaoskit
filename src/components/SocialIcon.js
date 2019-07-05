@@ -4,9 +4,7 @@ import React from 'react';
 
 import Icon from './Icon';
 
-const SocialIcon = ({
-  className, service, title, url,
-}) => {
+const SocialIcon = ({ className, service, title, url }) => {
   const classes = cx('socialIcon', className);
 
   return (

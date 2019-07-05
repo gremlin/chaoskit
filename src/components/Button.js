@@ -24,7 +24,7 @@ const Button = React.forwardRef(
       url,
       ...opts
     },
-    ref,
+    ref
   ) => {
     const classes = cx(className, {
       button: type !== 'reset',
@@ -69,7 +69,7 @@ const Button = React.forwardRef(
         {loading && <Loader />}
       </Component>
     );
-  },
+  }
 );
 
 Button.propTypes = {
