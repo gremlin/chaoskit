@@ -41,9 +41,7 @@ export const StylesBadgeRounded = theme => ({
   borderRadius: StylesBadgeVariables(theme).height / 2,
 });
 
-const Badge = ({
-  className, label, rounded, type, ...opts
-}) => (
+const Badge = ({ className, label, rounded, type, ...opts }) => (
   <div
     css={theme => [
       StylesBadgeBase(theme),

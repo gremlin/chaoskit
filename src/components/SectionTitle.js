@@ -27,9 +27,7 @@ export const StylesSectionTitleSub = theme => ({
   },
 });
 
-const SectionTitle = ({
-  title, sub, className, ...opts
-}) => (
+const SectionTitle = ({ title, sub, className, ...opts }) => (
   <div
     className={(cx('CK__SectionTitle'), className)}
     css={theme => StylesSectionTitleWrapper(theme)}

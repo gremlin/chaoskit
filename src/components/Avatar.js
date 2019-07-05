@@ -34,9 +34,7 @@ const StylesAvatarBase = (theme, props = {}) => [
   },
 ];
 
-const Avatar = ({
-  className, image, name, size, ...opts
-}) => {
+const Avatar = ({ className, image, name, size, ...opts }) => {
   const [error, setError] = useState(false);
 
   const nameProp = name ? name.trim() : '';

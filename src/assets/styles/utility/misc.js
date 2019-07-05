@@ -47,12 +47,13 @@ export const fluidSize = ({
   to = 0,
   breakpointFrom = 'small',
   breakpointTo = 'medium',
-}) => fluidRange(
-  {
-    prop: property,
-    fromSize: `${from}px`,
-    toSize: `${to}px`,
-  },
-  `${theme.breakpoint[breakpointFrom]}px`,
-  `${theme.breakpoint[breakpointTo]}px`,
-);
+}) =>
+  fluidRange(
+    {
+      prop: property,
+      fromSize: `${from}px`,
+      toSize: `${to}px`,
+    },
+    `${theme.breakpoint[breakpointFrom]}px`,
+    `${theme.breakpoint[breakpointTo]}px`
+  );

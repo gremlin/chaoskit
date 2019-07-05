@@ -78,8 +78,8 @@ const Alert = ({
       onUpdate: () => {
         const newTime = $alert.timeline.time();
         if (
-          (forward && newTime < lastTime)
-          || (!forward && newTime > lastTime)
+          (forward && newTime < lastTime) ||
+          (!forward && newTime > lastTime)
         ) {
           forward = !forward;
           if (!forward) {
@@ -127,16 +127,13 @@ const Alert = ({
     attachTimeline();
   });
 
-  useUpdateEffect(
-    () => {
-      if (collapse) {
-        collapseAlert();
-      } else {
-        openAlert();
-      }
-    },
-    [collapse],
-  );
+  useUpdateEffect(() => {
+    if (collapse) {
+      collapseAlert();
+    } else {
+      openAlert();
+    }
+  }, [collapse]);
 
   return (
     <div

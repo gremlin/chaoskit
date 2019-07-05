@@ -25,7 +25,7 @@ const Input = React.forwardRef(
       required,
       ...opts
     },
-    ref,
+    ref
   ) => {
     const id = `${name}-${generateUUID()}`;
 
@@ -73,7 +73,7 @@ const Input = React.forwardRef(
         />
       </FormGroup>
     );
-  },
+  }
 );
 
 Input.propTypes = {

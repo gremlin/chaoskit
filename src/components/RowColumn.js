@@ -3,10 +3,8 @@ import cx from 'classnames';
 
 const columns = 12;
 
-const RowColumn = ({
-  className, offset, order, size, ...opts
-}) => {
-  const percentWidth = (columnSize) => {
+const RowColumn = ({ className, offset, order, size, ...opts }) => {
+  const percentWidth = columnSize => {
     const calc = (100 / columns) * columnSize;
 
     return `${calc}%`;

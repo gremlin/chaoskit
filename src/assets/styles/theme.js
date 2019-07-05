@@ -1,6 +1,4 @@
-import {
-  fluidRange, rgba, shade, tint, timingFunctions,
-} from 'polished';
+import { fluidRange, rgba, shade, tint, timingFunctions } from 'polished';
 import { Back, Expo } from 'gsap/TweenMax';
 
 // @NOTE Filter generator https://codepen.io/zslabs/pen/xePEVN
@@ -155,9 +153,7 @@ const boxShadowColors = {
 
 const boxShadow = {
   base: `0 0 6px -2px ${boxShadowColors.base}`,
-  large: `0 15px 35px ${boxShadowColors.xlight}, 0 5px 15px ${
-    boxShadowColors.xlight
-  }`,
+  large: `0 15px 35px ${boxShadowColors.xlight}, 0 5px 15px ${boxShadowColors.xlight}`,
   neutral: `0 5px 15px ${boxShadowColors.xlight}`,
 };
 
@@ -204,7 +200,7 @@ const fontSize = {
         toSize: `${this.medium}px`,
       },
       `${breakpoint.small}px`,
-      `${breakpoint.large}px`,
+      `${breakpoint.large}px`
     );
   },
   get large__fluid() {
@@ -215,7 +211,7 @@ const fontSize = {
         toSize: `${this.large}px`,
       },
       `${breakpoint.small}px`,
-      `${breakpoint.large}px`,
+      `${breakpoint.large}px`
     );
   },
   get xlarge__fluid() {
@@ -226,7 +222,7 @@ const fontSize = {
         toSize: `${this.xlarge}px`,
       },
       `${breakpoint.small}px`,
-      `${breakpoint.large}px`,
+      `${breakpoint.large}px`
     );
   },
   get h1__fluid() {
@@ -237,7 +233,7 @@ const fontSize = {
         toSize: `${this.h1}px`,
       },
       `${breakpoint.small}px`,
-      `${breakpoint.large}px`,
+      `${breakpoint.large}px`
     );
   },
   get h2__fluid() {
@@ -248,7 +244,7 @@ const fontSize = {
         toSize: `${this.h2}px`,
       },
       `${breakpoint.small}px`,
-      `${breakpoint.large}px`,
+      `${breakpoint.large}px`
     );
   },
   get h3__fluid() {
@@ -259,7 +255,7 @@ const fontSize = {
         toSize: `${this.h3}px`,
       },
       `${breakpoint.small}px`,
-      `${breakpoint.large}px`,
+      `${breakpoint.large}px`
     );
   },
 };

@@ -70,7 +70,7 @@ const Dropdown = ({
    * @param  {event} e
    * @return {false}
    */
-  const checkInside = (e) => {
+  const checkInside = e => {
     if (e.target.closest('.CK__Dropdown__Panel') === null) {
       dropdownClose();
 
@@ -114,8 +114,8 @@ const Dropdown = ({
         const newTime = $dropdown.timeline.time();
 
         if (
-          (forward && newTime < lastTime)
-          || (!forward && newTime > lastTime)
+          (forward && newTime < lastTime) ||
+          (!forward && newTime > lastTime)
         ) {
           forward = !forward;
           if (!forward) {
@@ -182,9 +182,7 @@ const Dropdown = ({
           <Icon
             css={{
               marginLeft: theme.space.small,
-              transition: `transform ${theme.timing.base} ${
-                theme.transition.bounce
-              }`,
+              transition: `transform ${theme.timing.base} ${theme.transition.bounce}`,
               transform: !hidden && 'rotate(180deg)',
             }}
             size="small"
@@ -197,9 +195,7 @@ const Dropdown = ({
           misc.trimChildren,
           {
             // 1. GSAP
-            background: `linear-gradient(to bottom, ${
-              theme.color.panel.light
-            }, ${theme.color.panel.base})`,
+            background: `linear-gradient(to bottom, ${theme.color.panel.light}, ${theme.color.panel.base})`,
             padding: theme.space.large,
             position: 'absolute',
             width: 250,

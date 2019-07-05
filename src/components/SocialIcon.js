@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import Button from './Button';
 import Icon from './Icon';
 
-const SocialIcon = ({
-  className, service, title, url, ...opts
-}) => (
+const SocialIcon = ({ className, service, title, url, ...opts }) => (
   <Button
     url={url}
     css={theme => ({

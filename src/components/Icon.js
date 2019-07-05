@@ -13,9 +13,7 @@ export const StylesIconVariables = {
 };
 
 const Icon = forwardRef(
-  ({
-    className, icon, additionalIcons, fallback, size, ...opts
-  }, ref) => {
+  ({ className, icon, additionalIcons, fallback, size, ...opts }, ref) => {
     const getIcon = () => {
       // Merge in base icons with anything additional
       const iconSource = Object.assign(Icons, additionalIcons);
@@ -85,7 +83,7 @@ const Icon = forwardRef(
     };
 
     return getIcon();
-  },
+  }
 );
 
 Icon.propTypes = {

@@ -40,7 +40,7 @@ const Select = ({
     'form-select--multiple': multiple,
   });
 
-  const renderOpts = (option) => {
+  const renderOpts = option => {
     // If the option has options as well we're in an `<optgroup>`
     if (option.options) {
       return (

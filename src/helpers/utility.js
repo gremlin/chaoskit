@@ -21,7 +21,7 @@ export function forEach(array, callback, scope) {
 export function throttleScroll(action) {
   let isRunning = false;
   // eslint-disable-next-line func-names
-  return function () {
+  return function() {
     if (isRunning) return;
     isRunning = true;
     window.requestAnimationFrame(() => {
@@ -52,7 +52,7 @@ export function generateUUID(a) {
  */
 export function unique(array, propertyName) {
   return array.filter(
-    (e, i) => array.findIndex(a => a[propertyName] === e[propertyName]) === i,
+    (e, i) => array.findIndex(a => a[propertyName] === e[propertyName]) === i
   );
 }
 

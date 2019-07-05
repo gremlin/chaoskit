@@ -1,9 +1,7 @@
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-const Inline = ({
-  as: Component, className, size, wrap, ...opts
-}) => (
+const Inline = ({ as: Component, className, size, wrap, ...opts }) => (
   <Component
     css={theme => [
       {

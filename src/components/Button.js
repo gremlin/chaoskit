@@ -61,8 +61,8 @@ export const StylesButtonBase = (theme, props = {}) => [
     position: 'relative',
     letterSpacing: theme.letterSpacing.medium,
     // 8
-    lineHeight: `${theme.height.base
-      - StylesButtonVariables(theme).borderWidth * 2}px`,
+    lineHeight: `${theme.height.base -
+      StylesButtonVariables(theme).borderWidth * 2}px`,
     // 9
     height: theme.height.base,
     // 10
@@ -92,32 +92,32 @@ export const StylesButtonBase = (theme, props = {}) => [
     },
   },
 
-  theme.settings.contrast
-    && theme.settings.buttonContrast
-    && !props.noContrast && {
-    '.u-contrast &': {
-      color: theme.contrast.base,
-
-      '&:hover, &:focus': {
+  theme.settings.contrast &&
+    theme.settings.buttonContrast &&
+    !props.noContrast && {
+      '.u-contrast &': {
         color: theme.contrast.base,
+
+        '&:hover, &:focus': {
+          color: theme.contrast.base,
+        },
       },
     },
-  },
 ];
 
 export const StylesButtonSmall = theme => ({
   padding: `0 ${theme.space.base}px`,
   height: theme.height.small,
-  lineHeight: `${theme.height.small
-    - StylesButtonVariables(theme).borderWidth * 2}px`,
+  lineHeight: `${theme.height.small -
+    StylesButtonVariables(theme).borderWidth * 2}px`,
 });
 
 export const StylesButtonXsmall = theme => ({
   padding: `0 ${theme.space.base}px`,
   fontSize: theme.fontSize.xsmall,
   height: theme.height.xsmall,
-  lineHeight: `${theme.height.xsmall
-    - StylesButtonVariables(theme).borderWidth * 2}px`,
+  lineHeight: `${theme.height.xsmall -
+    StylesButtonVariables(theme).borderWidth * 2}px`,
 });
 
 export const StylesButtonDefault = (theme, props = {}) => [
@@ -131,19 +131,19 @@ export const StylesButtonDefault = (theme, props = {}) => [
     },
   },
 
-  theme.settings.contrast
-    && theme.settings.buttonContrast
-    && !props.noContrast && {
-    '.u-contrast &': {
-      background: 'transparent',
-      color: theme.contrast.base,
-      borderColor: theme.contrast.base,
-
-      '&:hover, &:focus': {
+  theme.settings.contrast &&
+    theme.settings.buttonContrast &&
+    !props.noContrast && {
+      '.u-contrast &': {
+        background: 'transparent',
         color: theme.contrast.base,
+        borderColor: theme.contrast.base,
+
+        '&:hover, &:focus': {
+          color: theme.contrast.base,
+        },
       },
     },
-  },
 ];
 
 export const StylesButtonOutlinePrimary = (theme, props = {}) => {
@@ -163,19 +163,19 @@ export const StylesButtonOutlinePrimary = (theme, props = {}) => {
 
     props.active && interactiveStyles,
 
-    theme.settings.contrast
-      && theme.settings.buttonContrast
-      && !props.noContrast && {
-      '.u-contrast &': [
-        {
-          color: StylesButtonVariables(theme).color.base,
+    theme.settings.contrast &&
+      theme.settings.buttonContrast &&
+      !props.noContrast && {
+        '.u-contrast &': [
+          {
+            color: StylesButtonVariables(theme).color.base,
 
-          '&:hover, &:focus': interactiveStyles,
-        },
+            '&:hover, &:focus': interactiveStyles,
+          },
 
-        props.active && interactiveStyles,
-      ],
-    },
+          props.active && interactiveStyles,
+        ],
+      },
   ];
 };
 
@@ -201,21 +201,21 @@ export const StylesButtonPrimary = (theme, props = {}) => {
 
     props.active && interactiveStyles,
 
-    theme.settings.contrast
-      && theme.settings.buttonContrast
-      && !props.noContrast && {
-      '.u-contrast &': [
-        {
-          background: theme.contrast.base,
-          borderColor: theme.contrast.base,
-          color: theme.color.primary.base,
+    theme.settings.contrast &&
+      theme.settings.buttonContrast &&
+      !props.noContrast && {
+        '.u-contrast &': [
+          {
+            background: theme.contrast.base,
+            borderColor: theme.contrast.base,
+            color: theme.color.primary.base,
 
-          '&:hover, &:focus': interactiveStylesContrast,
-        },
+            '&:hover, &:focus': interactiveStylesContrast,
+          },
 
-        props.active && interactiveStylesContrast,
-      ],
-    },
+          props.active && interactiveStylesContrast,
+        ],
+      },
   ];
 };
 
@@ -229,19 +229,19 @@ export const StylesButtonSecondary = (theme, props = {}) => [
       color: theme.contrast.base,
     },
   },
-  theme.settings.contrast
-    && theme.settings.buttonContrast
-    && !props.noContrast && {
-    '.u-contrast &': {
-      background: theme.contrast.base,
-      borderColor: theme.contrast.base,
-      color: StylesButtonVariables(theme).color.base,
-
-      '&:hover, &:focus': {
+  theme.settings.contrast &&
+    theme.settings.buttonContrast &&
+    !props.noContrast && {
+      '.u-contrast &': {
+        background: theme.contrast.base,
+        borderColor: theme.contrast.base,
         color: StylesButtonVariables(theme).color.base,
+
+        '&:hover, &:focus': {
+          color: StylesButtonVariables(theme).color.base,
+        },
       },
     },
-  },
 ];
 
 export const StylesButtonDanger = (theme, props = {}) => {
@@ -266,21 +266,21 @@ export const StylesButtonDanger = (theme, props = {}) => {
 
     props.active && interactiveStyles,
 
-    theme.settings.contrast
-      && theme.settings.buttonContrast
-      && !props.noContrast && {
-      '.u-contrast &': [
-        {
-          background: theme.contrast.base,
-          borderColor: theme.contrast.base,
-          color: theme.color.danger.base,
+    theme.settings.contrast &&
+      theme.settings.buttonContrast &&
+      !props.noContrast && {
+        '.u-contrast &': [
+          {
+            background: theme.contrast.base,
+            borderColor: theme.contrast.base,
+            color: theme.color.danger.base,
 
-          '&:hover, &:focus': interactiveStylesContrast,
-        },
+            '&:hover, &:focus': interactiveStylesContrast,
+          },
 
-        props.active && interactiveStylesContrast,
-      ],
-    },
+          props.active && interactiveStylesContrast,
+        ],
+      },
   ];
 };
 
@@ -373,7 +373,7 @@ const Button = forwardRef(
       url,
       ...opts
     },
-    ref,
+    ref
   ) => {
     let Component = as;
 
@@ -400,10 +400,10 @@ const Button = forwardRef(
           size === 'small' && StylesButtonSmall(theme),
           size === 'xsmall' && StylesButtonXsmall(theme),
           type === 'default' && StylesButtonDefault(theme, { noContrast }),
-          type === 'outlinePrimary'
-            && StylesButtonOutlinePrimary(theme, { active, noContrast }),
-          type === 'primary'
-            && StylesButtonPrimary(theme, { active, noContrast }),
+          type === 'outlinePrimary' &&
+            StylesButtonOutlinePrimary(theme, { active, noContrast }),
+          type === 'primary' &&
+            StylesButtonPrimary(theme, { active, noContrast }),
           type === 'secondary' && StylesButtonSecondary(theme, { noContrast }),
           type === 'danger' && StylesButtonDanger(theme, { noContrast }),
           iconOnly && StylesButtonIconOnly(theme, { size }),
@@ -435,7 +435,7 @@ const Button = forwardRef(
         )}
       </Component>
     );
-  },
+  }
 );
 
 Button.propTypes = {

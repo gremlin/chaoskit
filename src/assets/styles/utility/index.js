@@ -6,6 +6,4 @@ import * as link from './link';
 import * as gradient from './gradient';
 import * as misc from './misc';
 
-export {
-  contrast, flex, list, text, link, gradient, misc,
-};
+export { contrast, flex, list, text, link, gradient, misc };

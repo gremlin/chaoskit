@@ -4,10 +4,8 @@ import { withTheme } from 'emotion-theming';
 
 import { misc } from '../assets/styles/utility';
 
-const BlockGrid = ({
-  className, gutter, size, theme, ...opts
-}) => {
-  const percentWidth = (columnSize) => {
+const BlockGrid = ({ className, gutter, size, theme, ...opts }) => {
+  const percentWidth = columnSize => {
     const calc = 100 / columnSize;
 
     return `${calc}%`;

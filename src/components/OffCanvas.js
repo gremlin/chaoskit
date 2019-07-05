@@ -66,8 +66,8 @@ const OffCanvas = ({
       onUpdate: () => {
         const newTime = $offCanvas.timeline.time();
         if (
-          (forward && newTime < lastTime)
-          || (!forward && newTime > lastTime)
+          (forward && newTime < lastTime) ||
+          (!forward && newTime > lastTime)
         ) {
           forward = !forward;
           if (!forward) {
@@ -99,7 +99,7 @@ const OffCanvas = ({
             opacity: 1,
           },
         },
-        'offCanvas',
+        'offCanvas'
       )
       .to(
         $panel,
@@ -110,40 +110,31 @@ const OffCanvas = ({
           },
           ease: theme.gsap.transition.base,
         },
-        'offCanvas',
+        'offCanvas'
       );
   };
 
-  useEffect(
-    () => {
-      if (open) {
-        setRenderOffCanvas(true);
-      }
-    },
-    [open],
-  );
+  useEffect(() => {
+    if (open) {
+      setRenderOffCanvas(true);
+    }
+  }, [open]);
 
-  useUpdateEffect(
-    () => {
-      if (renderOffCanvas) {
-        attachTimeline();
+  useUpdateEffect(() => {
+    if (renderOffCanvas) {
+      attachTimeline();
 
-        openOffCanvas();
-      } else {
-        onReverseComplete();
-      }
-    },
-    [renderOffCanvas],
-  );
+      openOffCanvas();
+    } else {
+      onReverseComplete();
+    }
+  }, [renderOffCanvas]);
 
-  useUpdateEffect(
-    () => {
-      if (!open) {
-        closeOffCanvas();
-      }
-    },
-    [open],
-  );
+  useUpdateEffect(() => {
+    if (!open) {
+      closeOffCanvas();
+    }
+  }, [open]);
 
   useClickAway(offCanvasPanelRef, () => onOffCanvasToggle());
   useLockBodyScroll(renderOffCanvas);
@@ -212,7 +203,7 @@ const OffCanvas = ({
         {children}
       </div>
     </div>,
-    document.body,
+    document.body
   );
 };
 

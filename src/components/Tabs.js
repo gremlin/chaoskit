@@ -42,9 +42,7 @@ TabList.propTypes = {
 
 TabList.tabsRole = 'TabList';
 
-const Tab = ({
-  className, disabled, selected, ...rest
-}) => (
+const Tab = ({ className, disabled, selected, ...rest }) => (
   <ReactTab
     css={theme => [
       text.heading(theme),
@@ -123,6 +121,4 @@ TabPanel.propTypes = {
 
 TabPanel.tabsRole = 'TabPanel';
 
-export {
-  Tabs, TabList, Tab, TabPanel,
-};
+export { Tabs, TabList, Tab, TabPanel };

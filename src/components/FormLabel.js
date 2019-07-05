@@ -41,32 +41,31 @@ export const StylesFormLabelBase = (theme, props = {}) => [
     },
   },
 
-  theme.settings.contrast
-    && theme.settings.formContrast && {
-    '.u-contrast &': [
-      { color: theme.contrast.base },
+  theme.settings.contrast &&
+    theme.settings.formContrast && {
+      '.u-contrast &': [
+        { color: theme.contrast.base },
 
-      (props.required || props.error) && {
-        '&::after': {
-          filter: theme.contrast.filter,
+        (props.required || props.error) && {
+          '&::after': {
+            filter: theme.contrast.filter,
+          },
         },
-      },
-    ],
-  },
+      ],
+    },
 ];
 
-const FormLabel = ({
-  children, className, id, required, error, ...opts
-}) => (children ? (
-  <label // eslint-disable-line jsx-a11y/label-has-for
-    htmlFor={id}
-    css={theme => StylesFormLabelBase(theme, { required, error })}
-    className={cx('CK__FormLabel', className)}
-    {...opts}
-  >
-    {children}
-  </label>
-) : null);
+const FormLabel = ({ children, className, id, required, error, ...opts }) =>
+  children ? (
+    <label // eslint-disable-line jsx-a11y/label-has-for
+      htmlFor={id}
+      css={theme => StylesFormLabelBase(theme, { required, error })}
+      className={cx('CK__FormLabel', className)}
+      {...opts}
+    >
+      {children}
+    </label>
+  ) : null;
 
 FormLabel.propTypes = {
   children: PropTypes.node,

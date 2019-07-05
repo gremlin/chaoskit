@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 
 import { list } from '../assets/styles/utility';
 
-const List = ({
-  className, space, type, border, ...opts
-}) => (
+const List = ({ className, space, type, border, ...opts }) => (
   <ul
     css={theme => [
       {
@@ -25,8 +23,8 @@ const List = ({
 
       type === 'numbers' && list.numbers({ theme }),
 
-      type === 'circles'
-        && list.circles({ theme, space: space && theme.space[space] }),
+      type === 'circles' &&
+        list.circles({ theme, space: space && theme.space[space] }),
     ]}
     className={cx('UK__List', className)}
     {...opts}

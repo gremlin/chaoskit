@@ -8,9 +8,7 @@ const StylesModalHeaderVariables = theme => ({
   closeOffset: theme.space.small,
 });
 
-const ModalHeader = ({
-  centered, className, onCloseClick, title, ...opts
-}) => (
+const ModalHeader = ({ centered, className, onCloseClick, title, ...opts }) => (
   <div
     css={theme => [
       {
@@ -21,8 +19,8 @@ const ModalHeader = ({
 
       centered && {
         marginLeft:
-          StylesCloseVariables(theme).size
-          + StylesModalHeaderVariables(theme).closeOffset,
+          StylesCloseVariables(theme).size +
+          StylesModalHeaderVariables(theme).closeOffset,
       },
     ]}
     className={cx('CK__ModalHeader', className)}

@@ -5,9 +5,7 @@ import React, { useRef } from 'react';
 import FormLabel from './FormLabel';
 import { generateUUID } from '../helpers/utility';
 
-const Toggle = ({
-  name, className, label, onChange, value, ...opts
-}) => {
+const Toggle = ({ name, className, label, onChange, value, ...opts }) => {
   const toggleLabelRef = useRef();
 
   const id = `${name}-${generateUUID()}`;

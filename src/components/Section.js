@@ -8,9 +8,7 @@ const StylesSectionVariables = {
   slantOffset: 2.5,
 };
 
-const Section = ({
-  space, slant, className, ...opts
-}) => (
+const Section = ({ space, slant, className, ...opts }) => (
   <section
     className={cx('CK__Section', className)}
     css={theme => [
@@ -59,8 +57,8 @@ const Section = ({
             left: 0,
             bottom: `-${StylesSectionVariables.slantOffset}vw`,
             zIndex: -1,
-            borderBottom: `${StylesSectionVariables.slantOffset
-              * 2.25}vw solid ${rgba(theme.color.dark.base, 0.03)}`,
+            borderBottom: `${StylesSectionVariables.slantOffset *
+              2.25}vw solid ${rgba(theme.color.dark.base, 0.03)}`,
             filter: 'blur(5px)',
           },
         },

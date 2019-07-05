@@ -38,9 +38,7 @@ export { default as SectionTitle } from './SectionTitle.js';
 export { default as Select } from './Select.js';
 export { default as SocialIcon } from './SocialIcon.js';
 export { default as Subnav } from './Subnav.js';
-export {
-  Tabs, TabList, Tab, TabPanel,
-} from './Tabs.js';
+export { Tabs, TabList, Tab, TabPanel } from './Tabs.js';
 export { default as Textarea } from './Textarea.js';
 export { default as Toggle } from './Toggle.js';
 export { default as Tooltip } from './Tooltip.js';

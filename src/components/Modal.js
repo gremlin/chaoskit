@@ -69,8 +69,8 @@ const Modal = ({
       onUpdate: () => {
         const newTime = $modal.timeline.time();
         if (
-          (forward && newTime < lastTime)
-          || (!forward && newTime > lastTime)
+          (forward && newTime < lastTime) ||
+          (!forward && newTime > lastTime)
         ) {
           forward = !forward;
           if (!forward) {
@@ -108,36 +108,27 @@ const Modal = ({
       });
   };
 
-  useEffect(
-    () => {
-      if (open) {
-        setRenderModal(true);
-      }
-    },
-    [open],
-  );
+  useEffect(() => {
+    if (open) {
+      setRenderModal(true);
+    }
+  }, [open]);
 
-  useUpdateEffect(
-    () => {
-      if (renderModal) {
-        attachTimeline();
+  useUpdateEffect(() => {
+    if (renderModal) {
+      attachTimeline();
 
-        openModal();
-      } else {
-        onReverseComplete();
-      }
-    },
-    [renderModal],
-  );
+      openModal();
+    } else {
+      onReverseComplete();
+    }
+  }, [renderModal]);
 
-  useUpdateEffect(
-    () => {
-      if (!open) {
-        closeModal();
-      }
-    },
-    [open],
-  );
+  useUpdateEffect(() => {
+    if (!open) {
+      closeModal();
+    }
+  }, [open]);
 
   useClickAway(modalDialogRef, () => onOutsideModalClick());
   useLockBodyScroll(renderModal);
@@ -202,7 +193,7 @@ const Modal = ({
         {children}
       </div>
     </div>,
-    document.body,
+    document.body
   );
 };
 

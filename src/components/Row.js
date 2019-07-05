@@ -4,9 +4,7 @@ import { withTheme } from 'emotion-theming';
 
 import { misc } from '../assets/styles/utility';
 
-const Row = ({
-  className, gutter, theme, ...opts
-}) => {
+const Row = ({ className, gutter, theme, ...opts }) => {
   const gutterCalc = size => [
     gutter[size] && {
       [theme.mq[size]]: {

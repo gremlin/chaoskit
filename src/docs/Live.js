@@ -2,9 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import scriptjs from 'scriptjs';
 import useMount from 'react-use/lib/useMount';
-import {
-  LiveProvider, LiveEditor, LiveError, LivePreview,
-} from 'react-live';
+import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 
 import { Loader } from '../components';
 import Docs from './Docs';
@@ -45,9 +43,10 @@ const Live = ({
           scope={scopeProps}
           code={code}
           mountStylesheet={false}
-          transformCode={input => window.Babel.transform(input, {
-            presets: ['stage-0', 'react'],
-          }).code
+          transformCode={input =>
+            window.Babel.transform(input, {
+              presets: ['stage-0', 'react'],
+            }).code
           }
         >
           {showEditor && <LiveEditor />}

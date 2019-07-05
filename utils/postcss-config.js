@@ -10,8 +10,8 @@ const sorting = require('postcss-sorting');
 const cssnano = require('cssnano');
 
 // eslint-disable-next-line func-names
-exports.postCssPlugins = function (
-  paths = ['./src/assets/icons/', './src/assets/media/'],
+exports.postCssPlugins = function(
+  paths = ['./src/assets/icons/', './src/assets/media/']
 ) {
   return [
     pImport(),
