@@ -1,5 +1,5 @@
 {
-  "extends": "airbnb",
+  "extends": ["airbnb", "prettier", "prettier/react"],
   "parser": "babel-eslint",
   "parserOptions": {
     "ecmaVersion": 2018,
@@ -8,6 +8,7 @@
       "classes": true
     }
   },
+  "plugins": ["react", "jsx-a11y", "react-hooks", "prettier"],
   "env": {
     "browser": true,
     "node": true
@@ -44,8 +45,7 @@
         "specialLink": ["to"],
         "aspects": ["noHref", "invalidHref", "preferButton"]
       }
-    ]
-  },
-
-  "plugins": ["react", "jsx-a11y", "react-hooks"]
+    ],
+    "prettier/prettier": "error"
+  }
 }
