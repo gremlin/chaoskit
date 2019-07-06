@@ -224,7 +224,7 @@ const Tooltip = ({
                   maxWidth: 250,
                   padding: theme.space.small,
                   background: theme.color.light.base,
-                  border: `1px solid ${theme.border.base}`,
+                  border: theme.border.base,
                   borderRadius: StylesTooltipVariables(theme).borderRadius,
                   wordWrap: 'break-word',
                   textAlign: 'center',
@@ -237,7 +237,7 @@ const Tooltip = ({
                     height: StylesTooltipVariables(theme).arrowSize,
                     position: 'absolute',
                     background: theme.color.light.base,
-                    border: `1px solid ${theme.border.base}`,
+                    border: theme.border.base,
                     borderBottomLeftRadius:
                       StylesTooltipVariables(theme).borderRadius / 2,
                     borderRight: 0,

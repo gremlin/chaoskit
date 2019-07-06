@@ -7,7 +7,7 @@ const StylesBadgeVariables = theme => ({
 
 export const StylesBadgeBase = theme => ({
   background: theme.color.light.base,
-  border: `1px solid ${theme.border.base}`,
+  border: theme.border.base,
   borderRadius: theme.borderRadius.base,
   color: theme.fontColor.muted,
   cursor: 'default',

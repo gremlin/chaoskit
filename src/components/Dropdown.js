@@ -203,7 +203,7 @@ const Dropdown = ({
             overflowY: 'auto',
             color: theme.fontColor.base,
 
-            border: `1px solid ${theme.border.base}`,
+            border: theme.border.base,
             borderRadius: theme.borderRadius.base,
             textAlign: 'left',
             zIndex: 10,

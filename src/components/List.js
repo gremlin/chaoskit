@@ -17,7 +17,7 @@ const List = ({ className, space, type, border, ...opts }) => (
       border && {
         '> li:not(:first-of-type)': {
           paddingTop: space && theme.space[space],
-          borderTop: `1px solid ${theme.border.base}`,
+          borderTop: theme.border.base,
         },
       },
 

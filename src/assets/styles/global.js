@@ -310,7 +310,7 @@ export const globalStyles = theme => ({
     // 4
     margin: `${theme.space.base}px 0`,
     border: 0,
-    borderTop: `2px solid ${theme.border.base}`,
+    borderTop: `2px solid ${theme.color.border.base}`,
 
     '* + &': {
       marginTop: theme.space.base,
@@ -325,7 +325,7 @@ export const globalStyles = theme => ({
   // Blockquote
   blockquote: {
     paddingLeft: theme.space.base,
-    borderLeft: `5px solid ${theme.border.base}`,
+    borderLeft: `5px solid ${theme.color.border.base}`,
     fontSize: theme.fontSize.base,
     lineHeight: theme.lineHeight.base,
     fontStyle: 'normal',
@@ -341,7 +341,7 @@ export const globalStyles = theme => ({
       font: `1em/${theme.lineHeight.base} ${theme.fontFamily.code}`,
       color: theme.fontColor.base,
       tabSize: '4',
-      border: `1px solid ${theme.border.base}`,
+      border: theme.border.base,
       borderRadius: theme.borderRadius.base,
     },
   ],

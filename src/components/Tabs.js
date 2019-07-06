@@ -25,7 +25,7 @@ const TabList = ({ className, ...rest }) => (
       misc.spaceChildren({ theme, size: theme.space.medium }),
       {
         marginBottom: theme.space.base,
-        borderBottom: `1px solid ${theme.border.base}`,
+        borderBottom: theme.border.base,
         position: 'relative',
         top: 1,
         zIndex: 2,

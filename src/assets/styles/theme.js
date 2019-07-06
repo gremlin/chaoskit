@@ -134,10 +134,13 @@ const color = {
   highlight: {
     base: '#ffa',
   },
+  border: {
+    base: '#eff0f1',
+  },
 };
 
 const border = {
-  base: '#eff0f1',
+  base: `1px solid ${color.border.base}`,
 };
 
 const borderRadius = {

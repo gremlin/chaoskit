@@ -51,7 +51,7 @@ const Subnav = ({ children, className, ...opts }) => (
   <div
     css={theme => ({
       background: theme.color.panel.base,
-      borderBottom: `1px solid ${theme.border.base}`,
+      borderBottom: theme.border.base,
     })}
     className={cx('CK__Subnav', className)}
     {...opts}
