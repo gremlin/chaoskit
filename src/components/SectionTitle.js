@@ -33,7 +33,19 @@ const SectionTitle = ({ title, sub, className, ...opts }) => (
     css={theme => StylesSectionTitleWrapper(theme)}
     {...opts}
   >
-    <h3 className="CK__SectionTitle__Header">{title}</h3>
+    <h3
+      css={theme => [
+        misc.fluidSize({
+          theme,
+          property: 'marginBottom',
+          from: theme.space.small,
+          to: theme.space.base,
+        }),
+      ]}
+      className="CK__SectionTitle__Header"
+    >
+      {title}
+    </h3>
     {sub && (
       <div
         className="CK__SectionTitle__Sub"
