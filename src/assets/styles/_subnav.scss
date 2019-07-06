@@ -1,0 +1,70 @@
+//
+// Variables
+//
+
+$subnav-height: $global-height-large !default;
+$subnav-background: $global-panel-background !default;
+$subnav-border: 1px solid $global-border !default;
+
+//
+// Component
+//
+
+@mixin subnav() {
+  .subnav-wrapper {
+    background: $subnav-background;
+    border: $subnav-border;
+  }
+
+  .subnav {
+    @include spaceChildren('margin-left', $global-whitespace-large);
+
+    height: $subnav-height;
+    margin: 0 auto;
+    width: 100%;
+    max-width: $container-max-width;
+    padding: 0 $global-whitespace-regular;
+    display: flex;
+    align-items: center;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    justify-content: space-between;
+
+    @if (mixin-exists(hook-subnav)) {
+      @include hook-subnav();
+    }
+  }
+
+  .subnav-nav {
+    a {
+      font-size: $global-font-size-small;
+      font-family: $button-font-family;
+      letter-spacing: $button-letter-spacing;
+      font-weight: $button-font-weight;
+      text-transform: uppercase;
+      height: $subnav-height;
+      line-height: $subnav-height;
+      color: $global-muted;
+
+      &:hover,
+      &:focus,
+      &.is-active {
+        color: $global-font-color;
+      }
+
+      &.is-active {
+        position: relative;
+
+        &::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          width: 100%;
+          bottom: 0;
+          height: 3px;
+          background: $global-primary;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,168 @@
+//
+// Variables
+//
+
+$modal-background: rgba($global-dark-overlay, 0.65) !default;
+$modal-dialog-background: $global-background !default;
+$modal-header-footer-styles-enable: false !default;
+$modal-border-radius: $global-border-radius !default;
+
+$modal-size-regular: 600px !default;
+$modal-size-small: 400px !default;
+$modal-size-large: 800px !default;
+
+$modal-small-enable: true !default;
+$modal-large-enable: true !default;
+
+//
+// Component
+//
+
+@mixin modal() {
+  // 1. JS styles
+  .modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: $modal-background;
+    overflow-y: auto;
+    z-index: 10;
+    -webkit-overflow-scrolling: touch;
+
+    // 1.
+    opacity: 0;
+    display: none;
+
+    @media (min-width: $global-viewport-medium) {
+      .modal-dialog {
+        max-width: $modal-size-regular;
+        margin: $global-whitespace-xlarge auto;
+      }
+    }
+
+    @if (mixin-exists(hook-modal)) {
+      @include hook-modal();
+    }
+  }
+
+  @if $modal-small-enable {
+    @media (min-width: $global-viewport-medium) {
+      .modal--small {
+        .modal-dialog {
+          max-width: $modal-size-small;
+
+          @if (mixin-exists(hook-modal-dialog-small)) {
+            @include hook-modal-dialog-small();
+          }
+        }
+      }
+    }
+  }
+
+  @if $modal-large-enable {
+    @media (min-width: $global-viewport-large) {
+      .modal--large {
+        .modal-dialog {
+          max-width: $modal-size-large;
+
+          @if (mixin-exists(hook-modal-dialog-large)) {
+            @include hook-modal-dialog-large();
+          }
+        }
+      }
+    }
+  }
+
+  .modal-dialog {
+    background: $modal-dialog-background;
+    border-radius: $modal-border-radius;
+    margin: $global-whitespace-regular;
+    z-index: 5;
+    transform: translateY(25%);
+    transform-origin: center bottom;
+    opacity: 0;
+    box-shadow: $global-big-media-shadow;
+
+    @if (mixin-exists(hook-modal-dialog)) {
+      @include hook-modal-dialog();
+    }
+  }
+
+  .modal-header {
+    display: flex;
+    padding: $global-whitespace-large;
+    justify-content: space-between;
+
+    @if ($modal-header-footer-styles-enable) {
+      background: $global-panel-background;
+      border-bottom: 1px solid $global-border;
+      border-top-left-radius: $modal-border-radius;
+      border-top-right-radius: $modal-border-radius;
+    }
+
+    &--center {
+      &:not(.modal-header--hasNoClose) h4 {
+        margin-left: ($close-size + $close-offset);
+      }
+
+      h4 {
+        flex: 1;
+        text-align: center;
+      }
+    }
+
+    > * {
+      margin-bottom: 0;
+    }
+
+    @if (mixin-exists(hook-modal-header)) {
+      @include hook-modal-header();
+    }
+  }
+
+  .modal-body {
+    @include trimChildren();
+
+    padding: $global-whitespace-large;
+
+    @if (mixin-exists(hook-modal-body)) {
+      @include hook-modal-body();
+    }
+  }
+
+  .modal-footer {
+    display: flex;
+    padding: $global-whitespace-large;
+    align-items: center;
+    justify-content: flex-end;
+
+    @if ($modal-header-footer-styles-enable) {
+      background: $global-panel-background;
+      border-top: 1px solid $global-border;
+      border-bottom-left-radius: $modal-border-radius;
+      border-bottom-right-radius: $modal-border-radius;
+    }
+
+    &--center {
+      justify-content: center;
+    }
+
+    @if (mixin-exists(hook-modal-footer)) {
+      @include hook-modal-footer();
+    }
+  }
+
+  .modal-close {
+    margin-left: $close-offset;
+
+    @if (mixin-exists(hook-modal-close)) {
+      @include hook-modal-close();
+    }
+  }
+
+  @if (mixin-exists(hook-modal-misc)) {
+    @include hook-modal-misc();
+  }
+}

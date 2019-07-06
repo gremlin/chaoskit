@@ -1,0 +1,45 @@
+//
+// Variables
+//
+
+$close-color: $global-font-color !default;
+$close-size: $global-font-size !default;
+$close-transition: 0.25s easeInOutCubic !default;
+$close-offset: $global-whitespace-small !default;
+
+//
+// Component
+//
+
+@mixin close() {
+  // 1. To align better with headers
+  .close {
+    color: $close-color;
+    line-height: $global-line-height-small; // 1
+    size: $close-size;
+    opacity: $global-disabled-opacity;
+    transition: opacity $close-transition;
+
+    @if (mixin-exists(hook-close)) {
+      @include hook-close();
+    }
+
+    > .icon {
+      transition: transform $close-transition;
+      transform-origin: center center;
+
+      @if (mixin-exists(hook-close-icon)) {
+        @include hook-close-icon();
+      }
+    }
+
+    &:hover,
+    &:focus {
+      opacity: 1;
+
+      > .icon {
+        transform: scale(1.15);
+      }
+    }
+  }
+}

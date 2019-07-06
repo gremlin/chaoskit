@@ -1,0 +1,296 @@
+// These styles depend on the form component
+
+//
+// Variables
+//
+
+$form-choices-icon-size: 14px !default;
+$form-choices-close-icon-size: 10px !default;
+$form-choices-max-height: 200px !default;
+
+//
+// Icons
+//
+
+@svg-load choices-close url('close.svg') {
+  .icon-stroke {
+    stroke: $global-contrast;
+  }
+}
+
+@svg-load choices-single-close url('close.svg') {
+  .icon-stroke {
+    stroke: $global-muted;
+  }
+}
+
+@svg-load choices-search url('search.svg') {
+  .icon-stroke {
+    stroke: $global-primary;
+  }
+}
+
+//
+// Component
+//
+
+@mixin choices() {
+  // 1. Reset default text direction if inside of centered container
+  .form-choicesSelect {
+    color: $global-font-color;
+    font-size: $form-font-size;
+    // 1
+    text-align: left;
+
+    &[disabled] {
+      opacity: $global-disabled-opacity;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+  }
+
+  .choices__button {
+    text-indent: -9999px;
+    display: inline-block;
+    vertical-align: middle;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    background-color: transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 2;
+  }
+
+  .choices {
+    position: relative;
+
+    &:focus {
+      outline: none;
+    }
+
+    &[data-type='select-one'] {
+      &::after {
+        @include form-select-arrow();
+      }
+    }
+
+    &.is-open {
+      // Up arrow
+      &::after {
+        transform: translateY(-50%) rotate(-180deg); // Need to add-in default `translateY` prop
+      }
+    }
+
+    &__placeholder {
+      color: $global-muted;
+      text-overflow: ellipsis;
+    }
+
+    // Duplicating some base `<select>` styles
+    &__inner {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid $global-border;
+      background: $form-background;
+      color: $global-font-color;
+      border-radius: $global-border-radius;
+      width: 100%;
+      position: relative;
+      min-height: $form-height;
+      overflow: hidden;
+      box-shadow: $form-box-shadow;
+
+      .is-notValid & {
+        border-color: $global-danger;
+      }
+
+      .is-focused &,
+      .is-open & {
+        border-color: $global-primary;
+        box-shadow: $form-focus-box-shadow;
+      }
+
+      .is-open & {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-bottom-color: $global-border;
+      }
+
+      // For inline input
+      input[type='text'] {
+        border: 0;
+        border-radius: 0;
+        width: 100% !important;
+        order: -1;
+        box-shadow: none;
+
+        &:focus {
+          box-shadow: none;
+          border: 0;
+        }
+      }
+    }
+
+    // Resolve input border - line-height
+    &__list--single {
+      line-height: $form-line-height;
+
+      // Space around arrow
+      .choices__item {
+        padding: $form-select-arrow-surround-padding;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        // Hide remove button on single with placeholder
+        &.choices__placeholder {
+          .choices__button {
+            display: none;
+          }
+        }
+
+        // Style remove button
+        &:not(.choices__placeholder) {
+          padding-right:
+            $forms-select-arrow-right-padding +
+            $form-choices-icon-size + $global-whitespace-xsmall;
+
+          .choices__button {
+            background-image: svg-inline(choices-single-close);
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            size: $form-choices-icon-size;
+            right: $forms-select-arrow-right-padding;
+          }
+        }
+      }
+    }
+
+    &__list--multiple {
+      display: inline-flex;
+      flex-wrap: wrap;
+
+      &:not(:empty) {
+        margin-left: -$global-whitespace-small;
+        padding:
+          0 $global-whitespace-small $global-whitespace-small
+          $global-whitespace-small;
+      }
+
+      .choices__item {
+        background: $global-primary;
+        color: $global-contrast;
+        border-radius: $global-border-radius;
+        font-size: $global-font-size-small;
+        line-height: 1;
+        padding: $global-whitespace-small;
+        margin-left: $global-whitespace-small;
+        margin-top: $global-whitespace-small;
+
+        &.is-highlighted,
+        &:hover,
+        &:focus {
+          background: $global-primary-hover;
+        }
+      }
+
+      // Remove item
+      .choices__button {
+        size: $form-choices-close-icon-size;
+        margin-left: $global-whitespace-xsmall;
+        background-image: svg-inline(choices-close);
+      }
+    }
+
+    &__list--dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      z-index: 10;
+      background: $form-background;
+      border-bottom-right-radius: $global-border-radius;
+      border-bottom-left-radius: $global-border-radius;
+      border: 1px solid $global-primary;
+      border-top: 0;
+      display: none;
+
+      // Hide placeholder in dropdown since we have close button now
+      .choices__placeholder {
+        display: none;
+      }
+
+      &.is-active {
+        display: block;
+      }
+
+      [data-type='select-one'] & {
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          transform:
+            translateY(
+              (($form-height / 2) - ($form-choices-icon-size / 2))
+            );
+          left: $form-padding-horizontal;
+          background-image: svg-inline(choices-search);
+          background-repeat: no-repeat;
+          background-size: contain;
+          size: $form-choices-icon-size;
+          z-index: 2;
+        }
+      }
+
+      [data-type='select-multiple'] & {
+        max-height: $form-choices-max-height;
+        overflow-y: auto;
+      }
+
+      input[type='text'] {
+        background: $global-panel-background;
+        border-width: 0 0 1px;
+        border-radius: 0;
+        border-color: $global-border;
+        padding-left:
+          (
+            $form-choices-icon-size + $form-padding-horizontal +
+            $global-whitespace-small
+          );
+
+        &:focus {
+          box-shadow: none;
+          border-color: $global-border;
+          background: $global-panel-background;
+        }
+      }
+    }
+
+    &__heading {
+      text-transform: uppercase;
+      font-weight: $global-font-weight-bold;
+      padding: $global-whitespace-xsmall $global-whitespace-small;
+      background: $global-panel-background;
+    }
+
+    &__item {
+      cursor: default;
+
+      &--choice {
+        padding: $global-whitespace-xsmall $global-whitespace-small;
+
+        &.is-highlighted:not(.choices__item--disabled) {
+          color: $global-contrast;
+          background: $global-primary;
+        }
+      }
+
+      &--disabled {
+        cursor: not-allowed;
+        opacity: $global-disabled-opacity;
+      }
+    }
+  }
+}

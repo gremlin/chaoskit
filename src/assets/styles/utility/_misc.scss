@@ -1,0 +1,40 @@
+//
+// Component
+//
+
+@mixin miscUtility() {
+  // Overflow container
+  .u-overflowContainer {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .u-overflowHidden {
+    overflow: hidden;
+  }
+
+  // Inline Block
+  .u-inlineBlock {
+    display: inline-block !important;
+  }
+
+  // Block
+  .u-block {
+    display: block !important;
+  }
+
+  // Flip
+  .u-flip {
+    &H {
+      transform: scaleX(-1);
+    }
+
+    &V {
+      transform: scaleY(-1);
+    }
+  }
+
+  @if (mixin-exists(hook-utility-misc)) {
+    @include hook-utility-misc();
+  }
+}

@@ -1,0 +1,68 @@
+//
+// Variables
+//
+
+$badge-height: $global-height-micro !default;
+
+$badge-font-family: $base-heading-font-family !default;
+$badge-letter-spacing: 1px !default;
+
+$badge-primary-enable: true !default;
+$badge-danger-enable: true !default;
+$badge-rounded-enable: true !default;
+
+//
+// Component
+//
+
+@mixin badge() {
+  .badge {
+    background: $global-background;
+    border: 1px solid $global-border;
+    border-radius: $global-border-radius;
+    color: $global-muted;
+    cursor: default;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 $global-whitespace-small;
+    line-height: 1;
+    font-size: $global-font-size-xsmall;
+    font-family: $badge-font-family;
+    font-weight: $global-font-weight-bold;
+    letter-spacing: $badge-letter-spacing;
+    height: $badge-height;
+    text-align: center;
+    text-transform: uppercase;
+    user-select: none;
+
+    @if (mixin-exists(hook-badge)) {
+      @include hook-badge();
+    }
+  }
+
+  @if $badge-primary-enable {
+    .badge--primary {
+      border-color: $global-primary;
+      background: $global-primary;
+      color: $global-contrast;
+    }
+  }
+
+  @if $badge-danger-enable {
+    .badge--danger {
+      border-color: $global-danger;
+      background: $global-danger;
+      color: $global-contrast;
+    }
+  }
+
+  @if $badge-rounded-enable {
+    .badge--rounded {
+      border-radius: ($badge-height / 2);
+    }
+  }
+
+  @if (mixin-exists(hook-badge-misc)) {
+    @include hook-badge-misc();
+  }
+}

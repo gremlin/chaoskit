@@ -1,0 +1,16 @@
+.notFound__wrapper {
+  @extend %u-gradient--darkerBlue-darkestBlue;
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.notFound__title {
+  font-size: 25vw !important;
+  background: url('../media/logo-mascot.svg') no-repeat center center;
+  background-size: cover;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
