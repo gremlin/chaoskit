@@ -148,16 +148,21 @@ const borderRadius = {
   large: 8,
 };
 
-const boxShadowColors = {
+const boxShadowColor = {
   base: rgba(color.dark.base, 0.18),
   light: rgba(color.dark.base, 0.14),
   xlight: rgba(color.dark.base, 0.1),
 };
 
+const boxShadowOffset = {
+  base: '0 0 6px -2px',
+  neutral: '0 5px 15px',
+};
+
 const boxShadow = {
-  base: `0 0 6px -2px ${boxShadowColors.base}`,
-  large: `0 15px 35px ${boxShadowColors.xlight}, 0 5px 15px ${boxShadowColors.xlight}`,
-  neutral: `0 5px 15px ${boxShadowColors.xlight}`,
+  base: `${boxShadowOffset.base} ${boxShadowColor.base}`,
+  large: `0 15px 35px ${boxShadowColor.xlight}, 0 5px 15px ${boxShadowColor.xlight}`,
+  neutral: `${boxShadowOffset.neutral} ${boxShadowColor.xlight}`,
 };
 
 const fontFamily = {
@@ -354,7 +359,8 @@ export const theme = {
   borderRadius,
   breakpoint,
   mq,
-  boxShadowColors,
+  boxShadowColor,
+  boxShadowOffset,
   boxShadow,
   fontFamily,
   fontColor,
