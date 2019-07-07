@@ -23,7 +23,7 @@ export const input = (theme, props = {}) => [
     // 2
     maxWidth: '100%',
     // 3
-    padding: `0 ${variables(theme).padding}`,
+    padding: `0 ${variables(theme).padding}px`,
     // 4
     border: theme.border.base,
     background: variables(theme).background,
