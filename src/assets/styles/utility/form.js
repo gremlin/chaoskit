@@ -12,6 +12,24 @@ export const variables = theme => ({
   },
 });
 
+// To be used in all input, select, and textarea controls
+//
+// 1. Address margins set differently in Firefox/IE and Chrome/Safari/Opera.
+// 2. Remove `border-radius` in iOS.
+// 3. Correct `font` properties and `color` not being inherited.
+export const base = theme => ({
+  // 1
+  margin: 0,
+  // 2
+  borderRadius: 0,
+  // 3
+  font: 'inherit',
+  fontSize: variables(theme).fontSize,
+  color: 'inherit',
+});
+
+// Used for base control styles for input, textarea, and select
+//
 // 1. Must be `height` because `min-height` is not working in OSX
 // 2. Responsiveness: Sets a maximum width relative to the parent to scale on narrower viewports
 // 3. Vertical `padding` needed for `select` elements in Firefox
