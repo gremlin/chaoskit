@@ -1,22 +1,18 @@
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 
 import { RadioGroupContext } from './RadioGroup';
 import { generateUUID } from '../helpers/utility';
-import { config } from '../helpers/config';
 
 const Radio = props => {
   const { className, disabled, label, value, ...opts } = props;
 
   const { selectedValue, name, onChange } = useContext(RadioGroupContext);
   const id = `${name}-${generateUUID()}`;
-  const classes = cx('form-radio', className, {
-    [config.classes.disabled]: disabled,
-  });
 
   return (
-    <div className={classes}>
+    <div css={{}} className={cx('CK__Radio', className)}>
       <input
         type="radio"
         disabled={disabled}

@@ -1,13 +1,12 @@
-import cx from 'classnames';
+import { Children } from 'react';
 import PropTypes from 'prop-types';
-import React from 'react';
 
+import FormGroup from './FormGroup';
 import FormLabel from './FormLabel';
 import FormFooter from './FormFooter';
 import Inline from './Inline';
 import List from './List';
 import ListItem from './ListItem';
-import { config } from '../helpers/config';
 
 const CheckboxGroup = ({
   children,
@@ -20,7 +19,7 @@ const CheckboxGroup = ({
   ...opts
 }) => {
   const renderChildren = () =>
-    React.Children.map(children, child => {
+    Children.map(children, child => {
       if (inline) {
         return child;
       }
@@ -30,28 +29,28 @@ const CheckboxGroup = ({
 
   const renderItems = () => {
     if (inline) {
-      return <Inline className="form-inlineCombo">{renderChildren()}</Inline>;
+      return <Inline>{renderChildren()}</Inline>;
     }
 
     return <List type={['space']}>{renderChildren()}</List>;
   };
 
-  const classes = cx('form-group', className, {
-    [config.classes.notValid]: validationMessage,
-    [config.classes.required]: required,
-  });
-
   return (
-    <div className={classes} {...opts}>
+    <FormGroup {...opts}>
       <FormLabel required={required} error={!!validationMessage} id="">
         {label}
       </FormLabel>
       {renderItems()}
       <FormFooter
+        css={theme => [
+          inline && {
+            marginTop: theme.space.xsmall,
+          },
+        ]}
         explanationMessage={explanationMessage}
         validationMessage={validationMessage}
       />
-    </div>
+    </FormGroup>
   );
 };
 

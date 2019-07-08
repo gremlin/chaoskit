@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import TextareaAutoSize from 'react-textarea-autosize';
 
+import FormGroup from './FormGroup';
 import FormLabel from './FormLabel';
 import FormFooter from './FormFooter';
+import { form } from '../assets/styles/utility';
 import { generateUUID } from '../helpers/utility';
-import { config } from '../helpers/config';
 
 const Textarea = ({
   className,
@@ -24,22 +25,24 @@ const Textarea = ({
     onChange(fieldName, fieldValue);
   };
 
-  const classes = cx('form-group', className, {
-    [config.classes.notValid]: validationMessage,
-    [config.classes.required]: required,
-  });
-
   return (
-    <div className={classes}>
+    <FormGroup>
       <FormLabel required={required} error={!!validationMessage} id={id}>
         {label}
       </FormLabel>
-      <TextareaAutoSize id={id} name={name} onChange={handleChange} {...opts} />
+      <TextareaAutoSize
+        css={theme => [form.base(theme)]}
+        className={cx('CK__Textarea', className)}
+        id={id}
+        name={name}
+        onChange={handleChange}
+        {...opts}
+      />
       <FormFooter
         explanationMessage={explanationMessage}
         validationMessage={validationMessage}
       />
-    </div>
+    </FormGroup>
   );
 };
 

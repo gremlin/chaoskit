@@ -17,6 +17,7 @@ export const variables = theme => ({
 // 1. Address margins set differently in Firefox/IE and Chrome/Safari/Opera.
 // 2. Remove `border-radius` in iOS.
 // 3. Correct `font` properties and `color` not being inherited.
+// 4. Removes inner padding and border in Firefox 4+.
 export const base = theme => ({
   // 1
   margin: 0,
@@ -26,6 +27,12 @@ export const base = theme => ({
   font: 'inherit',
   fontSize: variables(theme).fontSize,
   color: 'inherit',
+
+  // 4
+  '&::-moz-focus-inner': {
+    bottom: 0,
+    padding: 0,
+  },
 });
 
 // Used for base control styles for input, textarea, and select
@@ -66,7 +73,7 @@ export const input = (theme, props = {}) => [
 
     '&[disabled]': {
       opacity: theme.opacity.base,
-      borderColor: theme.borderColor.base,
+      borderColor: theme.color.border.base,
       backgroundColor: theme.color.panel.base,
       color: variables(theme).fontColor,
       cursor: 'not-allowed',

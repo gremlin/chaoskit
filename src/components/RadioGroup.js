@@ -1,13 +1,12 @@
-import cx from 'classnames';
+import { Children, createContext } from 'react';
 import PropTypes from 'prop-types';
-import React, { createContext } from 'react';
 
+import FormGroup from './FormGroup';
 import FormLabel from './FormLabel';
 import FormFooter from './FormFooter';
 import Inline from './Inline';
 import List from './List';
 import ListItem from './ListItem';
-import { config } from '../helpers/config';
 
 export const RadioGroupContext = createContext();
 export const RadioGroupProvider = RadioGroupContext.Provider;
@@ -26,7 +25,7 @@ const RadioGroup = ({
   ...opts
 }) => {
   const renderChildren = () =>
-    React.Children.map(children, child => {
+    Children.map(children, child => {
       const onChangeFunc = () => {
         onChange(name, child.props.value);
       };
@@ -42,28 +41,28 @@ const RadioGroup = ({
 
   const renderItems = () => {
     if (inline) {
-      return <Inline className="form-inlineCombo">{renderChildren()}</Inline>;
+      return <Inline>{renderChildren()}</Inline>;
     }
 
     return <List type={['space']}>{renderChildren()}</List>;
   };
 
-  const classes = cx('form-group', className, {
-    [config.classes.notValid]: validationMessage,
-    [config.classes.required]: required,
-  });
-
   return (
-    <div className={classes} {...opts}>
+    <FormGroup {...opts}>
       <FormLabel required={required} error={!!validationMessage} id="">
         {label}
       </FormLabel>
       {renderItems()}
       <FormFooter
+        css={theme => [
+          inline && {
+            marginTop: theme.space.xsmall,
+          },
+        ]}
         explanationMessage={explanationMessage}
         validationMessage={validationMessage}
       />
-    </div>
+    </FormGroup>
   );
 };
 

@@ -1,9 +1,8 @@
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 
 import { generateUUID } from '../helpers/utility';
-import { config } from '../helpers/config';
 
 const Checkbox = ({
   className,
@@ -24,12 +23,8 @@ const Checkbox = ({
     onChange(fieldName, fieldValue, checked);
   };
 
-  const classes = cx('form-checkbox', className, {
-    [config.classes.disabled]: disabled,
-  });
-
   return (
-    <div className={classes}>
+    <div css={{}} className={cx('CK__Checkbox', className)}>
       <input
         value={value}
         type="checkbox"
