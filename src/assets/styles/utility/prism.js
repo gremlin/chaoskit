@@ -30,7 +30,7 @@ export const styles = (theme, StylesGlobalVariables) => {
 
   return [
     {
-      'code[class*="language-"], pre[class*="language-"]': {
+      'code[class*="language-"], pre[class*="language-"], pre[contenteditable]': {
         color: colors.base,
         fontFamily: theme.fontFamily.code,
         textAlign: 'left',
@@ -45,7 +45,7 @@ export const styles = (theme, StylesGlobalVariables) => {
       },
 
       // Code blocks
-      'pre[class*="language-"]': {
+      'pre[class*="language-"], pre[contenteditable]': {
         padding: theme.space.base,
         overflow: 'auto',
         background: colors.background,

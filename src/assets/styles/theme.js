@@ -314,10 +314,14 @@ const settings = {
     enable: true,
     button: true,
     form: true,
+    table: true,
   },
   prism: {
     enable: true,
     theme: 'dark',
+  },
+  table: {
+    enable: true,
   },
 };
 
