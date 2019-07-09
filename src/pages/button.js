@@ -97,7 +97,7 @@ const ButtonDocs = () => (
       propDescriptions={ButtonPropDescriptions}
     />
     <Alert type="warning" title="Notes">
-      <List type={['number', 'space']}>
+      <List space="base" type="numbers">
         <ListItem>
           <code>type=&quot;reset&quot;</code> is used for elements that have no
           direct path attached to them; to ensure we keep our markup semantic

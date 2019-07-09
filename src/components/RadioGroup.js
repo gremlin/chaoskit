@@ -44,7 +44,7 @@ const RadioGroup = ({
       return <Inline>{renderChildren()}</Inline>;
     }
 
-    return <List type={['space']}>{renderChildren()}</List>;
+    return <List space="base">{renderChildren()}</List>;
   };
 
   return (
