@@ -52,16 +52,10 @@ export const styles = (theme, StylesGlobalVariables) => {
       },
 
       // Inline code
-      ':not(pre) > code[class*="language-"]': [
-        {
-          whiteSpace: 'normal',
-          color: colors.noLanguage,
-        },
-
-        theme.settings.prism.theme === 'dark' && {
-          background: theme.contrast.base,
-        },
-      ],
+      ':not(pre) > code[class*="language-"]': {
+        whiteSpace: 'normal',
+        color: colors.noLanguage,
+      },
 
       '.token.comment, .token.prolog, .token.doctype, .token.cdata': {
         color: colors.comment,
@@ -152,6 +146,13 @@ export const styles = (theme, StylesGlobalVariables) => {
         display: 'block',
         paddingRight: '0.8em',
         textAlign: 'right',
+      },
+    },
+
+    // Dark theme specific overrides
+    theme.settings.prism.theme === 'dark' && {
+      '.token.string, .token.char, .token.attr-value, .token.builtin, .token.inserted': {
+        color: '#98c379',
       },
     },
   ];
