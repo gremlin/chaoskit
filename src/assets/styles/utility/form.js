@@ -96,8 +96,8 @@ export const input = (theme, props = {}) => [
     )}`,
   },
 
-  theme.settings.contrast &&
-    theme.settings.formContrast &&
+  theme.settings.contrast.enable &&
+    theme.settings.contrast.form &&
     !props.noContrast && {
       '.u-contrast &': {
         background: variables(theme).contrast.background,

@@ -310,9 +310,15 @@ const space = {
 };
 
 const settings = {
-  contrast: true,
-  buttonContrast: true,
-  formContrast: true,
+  contrast: {
+    enable: true,
+    button: true,
+    form: true,
+  },
+  prism: {
+    enable: true,
+    theme: 'dark',
+  },
 };
 
 const transition = {

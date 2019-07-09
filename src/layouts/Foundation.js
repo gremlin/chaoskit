@@ -12,7 +12,7 @@ import 'what-input';
 import { Section, SectionTitle } from '../components';
 
 import { theme } from '../assets/styles/theme';
-import { contrast, misc } from '../assets/styles/utility';
+import { misc } from '../assets/styles/utility';
 import { fonts } from '../assets/styles/fonts';
 import { globalStyles } from '../assets/styles/global';
 
@@ -73,9 +73,7 @@ const Foundation = ({ children }) => {
       />
       <CacheProvider value={ckCache}>
         <ThemeProvider theme={theme}>
-          <Global
-            styles={[globalStyles(theme), contrast.styles(theme), fonts(theme)]}
-          />
+          <Global styles={[globalStyles(theme), fonts(theme)]} />
           <div
             className="u-contrast"
             css={{

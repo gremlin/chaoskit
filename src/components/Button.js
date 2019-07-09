@@ -92,8 +92,8 @@ export const StylesButtonBase = (theme, props = {}) => [
     },
   },
 
-  theme.settings.contrast &&
-    theme.settings.buttonContrast &&
+  theme.settings.contrast.enable &&
+    theme.settings.contrast.button &&
     !props.noContrast && {
       '.u-contrast &': {
         color: theme.contrast.base,
@@ -131,8 +131,8 @@ export const StylesButtonDefault = (theme, props = {}) => [
     },
   },
 
-  theme.settings.contrast &&
-    theme.settings.buttonContrast &&
+  theme.settings.contrast.enable &&
+    theme.settings.contrast.button &&
     !props.noContrast && {
       '.u-contrast &': {
         background: 'transparent',
@@ -163,8 +163,8 @@ export const StylesButtonOutlinePrimary = (theme, props = {}) => {
 
     props.active && interactiveStyles,
 
-    theme.settings.contrast &&
-      theme.settings.buttonContrast &&
+    theme.settings.contrast.enable &&
+      theme.settings.contrast.button &&
       !props.noContrast && {
         '.u-contrast &': [
           {
@@ -201,8 +201,8 @@ export const StylesButtonPrimary = (theme, props = {}) => {
 
     props.active && interactiveStyles,
 
-    theme.settings.contrast &&
-      theme.settings.buttonContrast &&
+    theme.settings.contrast.enable &&
+      theme.settings.contrast.button &&
       !props.noContrast && {
         '.u-contrast &': [
           {
@@ -229,8 +229,8 @@ export const StylesButtonSecondary = (theme, props = {}) => [
       color: theme.contrast.base,
     },
   },
-  theme.settings.contrast &&
-    theme.settings.buttonContrast &&
+  theme.settings.contrast.enable &&
+    theme.settings.contrast.button &&
     !props.noContrast && {
       '.u-contrast &': {
         background: theme.contrast.base,
@@ -266,8 +266,8 @@ export const StylesButtonDanger = (theme, props = {}) => {
 
     props.active && interactiveStyles,
 
-    theme.settings.contrast &&
-      theme.settings.buttonContrast &&
+    theme.settings.contrast.enable &&
+      theme.settings.contrast.button &&
       !props.noContrast && {
         '.u-contrast &': [
           {

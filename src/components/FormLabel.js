@@ -41,8 +41,8 @@ export const StylesFormLabelBase = (theme, props = {}) => [
     },
   },
 
-  theme.settings.contrast &&
-    theme.settings.formContrast && {
+  theme.settings.contrast.enable &&
+    theme.settings.contrast.form && {
       '.u-contrast &': [
         { color: theme.contrast.base },
 
