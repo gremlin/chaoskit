@@ -56,26 +56,26 @@ const Input = forwardRef(
             {
               //  Remove default style in browsers that support `appearance`
               appearance: 'none',
+            },
 
-              // Apply default form styling, except for `file`, `submit`, `reset`, `button` and `image`
-              '&:not([type="submit"]):not([type="button"]):not([type="reset"]):not([type="file"]):not([type="image"])': form.input(
-                theme
-              ),
+            // Apply default form styling, except for `file`, `submit`, `reset`, `button` and `image`
+            !['file', 'submit', 'reset', 'button', 'image'].includes(type) &&
+              form.input(theme),
 
-              // Fix the cursor style for Chrome's increment/decrement buttons. For certain `font-size` values of the `input`, it causes the cursor style of the decrement button to change from `default` to `text`.
-              '&[type="number"]': {
-                '&::-webkit-inner-spin-button, &::-webkit-outer-spin-button': {
-                  height: 'auto',
-                },
+            // Fix the cursor style for Chrome's increment/decrement buttons. For certain `font-size` values of the `input`, it causes the cursor style of the decrement button to change from `default` to `text`.
+            type === 'number' && {
+              '&::-webkit-inner-spin-button, &::-webkit-outer-spin-button': {
+                height: 'auto',
               },
+            },
 
-              // Remove inner padding and search cancel button in Chrome, Safari and Opera on OS X.
-              '&[type="search"]': {
-                '&::-webkit-search-cancel-button, &::-webkit-search-decoration': {
-                  appearance: 'none',
-                },
+            // Remove inner padding and search cancel button in Chrome, Safari and Opera on OS X.
+            type === 'search' && {
+              '&::-webkit-search-cancel-button, &::-webkit-search-decoration': {
+                appearance: 'none',
               },
-
+            },
+            {
               // 1. Correct the inability to style clickable types in iOS and Safari.
               // 2. Change font properties to `inherit` in Safari.
               '&::--webkit-file-upload-button': {
