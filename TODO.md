@@ -5,4 +5,4 @@
 - modal footer -- removing center prop for new align prop, remove optional footer styles
 - modal header -- center to centered, onCloseClick is required, remove optional header styles
 - social icon -- changed base size/height
-- radio (finish and change contrast button to white), checkbox, select, choices, export input/textarea styles
+- radio (finish and change contrast button to white -- potentially change alignment to top with slight offset), checkbox (potentially change alignment to top with slight offset), select, choices, export input/textarea styles
