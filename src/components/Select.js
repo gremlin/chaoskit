@@ -2,10 +2,11 @@ import React from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 
+import FormGroup from './FormGroup';
 import FormLabel from './FormLabel';
 import FormFooter from './FormFooter';
+import { form } from '../assets/styles/utility';
 import { generateUUID } from '../helpers/utility';
-import { config } from '../helpers/config';
 
 const Select = ({
   className,
@@ -31,15 +32,6 @@ const Select = ({
     onChange(fieldName, selectedValue);
   };
 
-  const classes = cx('form-group', className, {
-    [config.classes.notValid]: validationMessage,
-    [config.classes.required]: required,
-  });
-
-  const selectClasses = cx('form-select', {
-    'form-select--multiple': multiple,
-  });
-
   const renderOpts = option => {
     // If the option has options as well we're in an `<optgroup>`
     if (option.options) {
@@ -63,16 +55,24 @@ const Select = ({
   };
 
   return (
-    <div className={classes}>
+    <FormGroup>
       <FormLabel required={required} error={!!validationMessage} id={id}>
         {label}
       </FormLabel>
-      <div className={selectClasses}>
+      <div className={cx('CK__Select', className)}>
         <select
           id={id}
           name={name}
           onChange={handleOnChange}
           multiple={multiple}
+          css={theme => [
+            form.base(theme),
+            form.input(theme),
+            {
+              // Remove default style in browsers that support `appearance`
+              appearance: 'none',
+            },
+          ]}
           {...opts}
         >
           {options.map(renderOpts)}
@@ -82,7 +82,7 @@ const Select = ({
         explanationMessage={explanationMessage}
         validationMessage={validationMessage}
       />
-    </div>
+    </FormGroup>
   );
 };
 

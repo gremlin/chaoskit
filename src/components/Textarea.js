@@ -31,7 +31,28 @@ const Textarea = ({
         {label}
       </FormLabel>
       <TextareaAutoSize
-        css={theme => [form.base(theme)]}
+        css={theme => [
+          form.base(theme),
+          form.input(theme),
+          {
+            // Remove default style in browsers that support `appearance`
+            apperance: 'none',
+
+            // Remove default vertical scrollbar in IE 8/9/10/11.
+            overflow: 'auto',
+            // Improve readability and alignment in all browsers.
+            verticalAlign: 'top',
+            // Only allow vertical resizing
+            resize: 'vertical',
+            // Force minimum height
+            minHeight: theme.height.base * 2,
+            // Allow `textarea` to be controlled via [row] more explicitly
+            height: 'auto',
+            // Style
+            padding: `${theme.space.small}px ${theme.space.base}px`,
+            maxHeight: 300,
+          },
+        ]}
         className={cx('CK__Textarea', className)}
         id={id}
         name={name}

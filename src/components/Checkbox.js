@@ -1,6 +1,5 @@
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import { useRef } from 'react';
 
 import { generateUUID } from '../helpers/utility';
 
@@ -13,8 +12,6 @@ const Checkbox = ({
   value,
   ...opts
 }) => {
-  const checkboxLabelRef = useRef();
-
   const id = `${name}-${generateUUID()}`;
 
   const toggleChecked = ({
@@ -24,7 +21,7 @@ const Checkbox = ({
   };
 
   return (
-    <div css={{}} className={cx('CK__Checkbox', className)}>
+    <div className={cx('CK__Checkbox', className)}>
       <input
         value={value}
         type="checkbox"
@@ -32,12 +29,16 @@ const Checkbox = ({
         name={name}
         id={id}
         onChange={toggleChecked}
+        css={{
+          '&:not(:disabled)': {
+            cursor: 'pointer',
+          },
+        }}
         {...opts}
       />
       {label && (
         <label // eslint-disable-line jsx-a11y/label-has-for
           htmlFor={id}
-          ref={checkboxLabelRef}
         >
           {label}
         </label>

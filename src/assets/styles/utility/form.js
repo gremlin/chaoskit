@@ -17,7 +17,6 @@ export const variables = theme => ({
 // 1. Address margins set differently in Firefox/IE and Chrome/Safari/Opera.
 // 2. Remove `border-radius` in iOS.
 // 3. Correct `font` properties and `color` not being inherited.
-// 4. Removes inner padding and border in Firefox 4+.
 export const base = theme => ({
   // 1
   margin: 0,
@@ -27,12 +26,6 @@ export const base = theme => ({
   font: 'inherit',
   fontSize: variables(theme).fontSize,
   color: 'inherit',
-
-  // 4
-  '&::-moz-focus-inner': {
-    bottom: 0,
-    padding: 0,
-  },
 });
 
 // Used for base control styles for input, textarea, and select
@@ -71,7 +64,7 @@ export const input = (theme, props = {}) => [
       zIndex: 1,
     },
 
-    '&[disabled]': {
+    '&:disabled': {
       opacity: theme.opacity.base,
       borderColor: theme.color.border.base,
       backgroundColor: theme.color.panel.base,
@@ -86,6 +79,31 @@ export const input = (theme, props = {}) => [
         transitionProperty: 'background-color, color',
       },
     },
+
+    // 1. Removes placeholder transparency in Firefox
+    '::placeholder': [
+      {
+        opacity: 1, // 1
+        color: theme.fontColor.muted,
+        textOverflow: 'hidden',
+
+        '&:disabled': {
+          color: theme.fontColor.base,
+        },
+      },
+
+      theme.settings.contrast.enable &&
+        theme.settings.contrast.form &&
+        !props.noContrast && {
+          '.u-contrast &': {
+            color: theme.contrast.muted,
+
+            '&:disabled': {
+              color: theme.contrast.base,
+            },
+          },
+        },
+    ],
   },
 
   props.error && {
@@ -113,11 +131,47 @@ export const input = (theme, props = {}) => [
           }`,
         },
 
-        '&[disabled]': {
+        '&:disabled': {
           backgroundColor: 'transparent',
           borderColor: variables(theme).contrast.borderColor,
           color: variables(theme).contrast.fontColor,
         },
       },
     },
+];
+
+export const styles = theme => [
+  {
+    // Define consistent border, margin, and padding.
+    fieldset: {
+      border: 0,
+      margin: 0,
+      padding: 0,
+    },
+
+    legend: {
+      // Behave like a block element
+      width: '100%',
+      // Remove default border/padding
+      border: 0,
+      padding: 0,
+      // `margin-bottom` is not working in Safari and Opera. Using `padding` and :after instead to create the border
+      paddingBottom: theme.space.small,
+      fontSize: theme.fontSize.base,
+      fontWeight: theme.fontWeight.bold,
+      color: theme.fontColor.muted,
+      position: 'relative',
+
+      '&::after': {
+        content: "''",
+        position: 'absolute',
+        top: '50%',
+        transform: `translateY(-${(theme.space.small - 1) / 2}px)`,
+        width: '100%',
+        background: theme.color.border.base,
+        height: 1,
+        marginLeft: theme.space.xsmall,
+      },
+    },
+  },
 ];

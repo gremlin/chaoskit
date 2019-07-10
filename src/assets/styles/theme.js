@@ -320,6 +320,9 @@ const settings = {
     enable: true,
     theme: 'dark',
   },
+  form: {
+    enable: true,
+  },
   table: {
     enable: true,
   },

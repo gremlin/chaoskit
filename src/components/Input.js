@@ -53,41 +53,44 @@ const Input = forwardRef(
         <input
           css={theme => [
             form.base(theme),
-
-            // 1. Remove default style in browsers that support `appearance`
-            // 2. Apply default form styling, except for `range`, `radio`, `checkbox`, `file`,
-            // `submit`, `reset`, `button` and `image`
-            // 3. Removes excess padding in IE 8/9/10.
-            // 4. Improves consistency of cursor style for clickable elements
-            // 5. Fix the cursor style for Chrome's increment/decrement buttons. For certain
-            // `font-size` values of the `input`, it causes the cursor style of the
-            // decrement button to change from `default` to `text`.
-            // 6. Remove inner padding and search cancel button in Chrome, Safari and Opera on OS X.
-            // 7. Vertical alignment
-
             {
-              // 1
-              '&:not([type]), &[type="text"], &[type="password"], &[type="email"], &[type="url"], &[type="search"], &[type="tel"], &[type="number"], &[type="datetime"], &[type="range"]': {
-                appearance: 'none',
-              },
+              //  Remove default style in browsers that support `appearance`
+              appearance: 'none',
 
-              // 2
-              '&:not([type]), &[type="text"], &[type="password"], &[type="datetime"], &[type="datetime-local"], &[type="date"], &[type="month"], &[type="time"], &[type="week"], &[type="number"], &[type="email"], &[type="url"], &[type="search"], &[type="tel"], &[type="color"]': form.input(
+              // Apply default form styling, except for `file`, `submit`, `reset`, `button` and `image`
+              '&:not([type="submit"]):not([type="button"]):not([type="reset"]):not([type="file"]):not([type="image"])': form.input(
                 theme
               ),
 
-              // 5
+              // Fix the cursor style for Chrome's increment/decrement buttons. For certain `font-size` values of the `input`, it causes the cursor style of the decrement button to change from `default` to `text`.
               '&[type="number"]': {
                 '&::-webkit-inner-spin-button, &::-webkit-outer-spin-button': {
                   height: 'auto',
                 },
               },
 
-              // 6
+              // Remove inner padding and search cancel button in Chrome, Safari and Opera on OS X.
               '&[type="search"]': {
                 '&::-webkit-search-cancel-button, &::-webkit-search-decoration': {
                   appearance: 'none',
                 },
+              },
+
+              // 1. Correct the inability to style clickable types in iOS and Safari.
+              // 2. Change font properties to `inherit` in Safari.
+              '&::--webkit-file-upload-button': {
+                appearance: 'button', // 1
+                font: 'inherit', // 2
+              },
+
+              // Remove clear button in IE on inputs
+              '&::ms-clear': {
+                display: 'none',
+              },
+
+              // Removes `box-shadow` for invalid controls in Firefox.
+              '&:invalid': {
+                boxShadow: 'none',
               },
             },
           ]}
