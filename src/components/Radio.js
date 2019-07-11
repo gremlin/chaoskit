@@ -65,6 +65,7 @@ const Radio = props => {
                     2,
                   top: '50%',
                   transform: 'translateY(-50%)',
+                  zIndex: 2,
                 },
               },
             },
