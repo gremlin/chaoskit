@@ -14,7 +14,8 @@
     "node": true
   },
   "rules": {
-    "arrow-body-style": ["error", "as-needed"],
+    // @NOTE https://github.com/prettier/eslint-plugin-prettier/issues/65
+    // "arrow-body-style": ["error", "as-needed"],
     "no-param-reassign": 0,
     "class-methods-use-this": 0,
     "no-underscore-dangle": 0,
