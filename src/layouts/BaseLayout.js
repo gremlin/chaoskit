@@ -259,7 +259,10 @@ const BaseLayout = ({ children, pageTitle }) => {
               </List>
             </div>
           </aside>
-          <main className="docs__content">
+          <main
+            css={theme => ({ padding: theme.space.base })}
+            className="docs__content"
+          >
             <h1>{pageTitle}</h1>
             {children}
           </main>

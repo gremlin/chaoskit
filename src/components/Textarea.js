@@ -49,7 +49,9 @@ const Textarea = ({
             // Allow `textarea` to be controlled via [row] more explicitly
             height: 'auto',
             // Style
-            padding: `${theme.space.small}px ${theme.space.base}px`,
+            padding: `${theme.space.small + theme.space.xsmall}px ${
+              theme.space.base
+            }px`,
             maxHeight: 300,
           },
         ]}
