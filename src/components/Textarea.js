@@ -13,6 +13,7 @@ const Textarea = ({
   className,
   label,
   name,
+  noContrast,
   onChange,
   validationMessage,
   explanationMessage,
@@ -33,7 +34,7 @@ const Textarea = ({
       <TextareaAutoSize
         css={theme => [
           form.base(theme),
-          form.input(theme),
+          form.input(theme, { error: validationMessage, noContrast }),
           {
             // Remove default style in browsers that support `appearance`
             apperance: 'none',
@@ -77,6 +78,7 @@ Textarea.propTypes = {
   required: PropTypes.bool,
   label: PropTypes.string,
   name: PropTypes.string.isRequired,
+  noContrast: PropTypes.bool,
 };
 
 export default Textarea;

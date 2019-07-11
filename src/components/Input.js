@@ -19,7 +19,10 @@ const StylesInputBase = (theme, props = {}) => [
 
   // Apply default form styling, except for `file`, `submit`, `reset`, `button` and `image`
   !['file', 'submit', 'reset', 'button', 'image'].includes(props.type) &&
-    form.input(theme),
+    form.input(theme, {
+      error: props.validationMessage,
+      noContrast: props.noContrast,
+    }),
 
   // Fix the cursor style for Chrome's increment/decrement buttons. For certain `font-size` values of the `input`, it causes the cursor style of the decrement button to change from `default` to `text`.
   props.type === 'number' && {

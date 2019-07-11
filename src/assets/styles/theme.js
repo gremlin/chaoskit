@@ -171,13 +171,18 @@ const fontFamily = {
   heading: "Circular, 'Helvetica Neue', Arial, sans-serif",
 };
 
+const muted = {
+  base: 0.6,
+};
+
 const fontColor = {
   base: color.dark.light,
+  base__filter: brand.lightBlack__filter,
   get muted() {
-    return rgba(this.base, 0.6);
+    return rgba(this.base, muted.base);
   },
   get mutedDark() {
-    return rgba(shade(0.1, this.muted), 0.6);
+    return rgba(shade(0.1, this.muted), muted.base);
   },
   heading: color.dark.base,
   get headingDark() {
@@ -376,6 +381,7 @@ export const theme = {
   boxShadowOffset,
   boxShadow,
   fontFamily,
+  muted,
   fontColor,
   fontSize,
   fontWeight,
