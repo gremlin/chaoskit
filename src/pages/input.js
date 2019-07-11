@@ -51,6 +51,14 @@ const InputExample = `
         validationMessage="I'm an error!"
       />
       <Input
+        name="search"
+        onChange={handleChange}
+        required
+        explanationMessage="Description text"
+        validationMessage="I'm an error!"
+        prefixIcon="search"
+      />
+      <Input
         label="Mask Input (phone number)"
         name="phone"
         placeholder="+1 (555) 867-5309"
@@ -64,6 +72,7 @@ const InputExample = `
         placeholder="12345"
         mask={onlyNumbers}
         onChange={handleChange}
+        prefixIcon="arrow-up"
       />
     </Fragment>
   )

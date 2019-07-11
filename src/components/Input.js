@@ -6,7 +6,7 @@ import MaskedInput from 'react-text-mask';
 import FormFooter from './FormFooter';
 import FormGroup from './FormGroup';
 import FormLabel from './FormLabel';
-import Icon from './Icon';
+import Icon, { StylesIconVariables } from './Icon';
 import { form } from '../assets/styles/utility';
 import { generateUUID } from '../helpers/utility';
 
@@ -52,6 +52,11 @@ const StylesInputBase = (theme, props = {}) => [
       boxShadow: 'none',
     },
   },
+
+  props.prefixIcon && {
+    paddingLeft: `calc(${form.variables(theme).padding +
+      theme.space.small}px + ${StylesIconVariables.base})`,
+  },
 ];
 
 const Input = forwardRef(
@@ -62,6 +67,7 @@ const Input = forwardRef(
       guide,
       mask,
       name,
+      noContrast,
       onChange,
       type,
       validationMessage,
@@ -97,7 +103,12 @@ const Input = forwardRef(
             guide={guide}
             render={(maskRef, props) => (
               <input
-                css={theme => StylesInputBase(theme, defaultProps)}
+                css={theme =>
+                  StylesInputBase(theme, {
+                    type,
+                    prefixIcon,
+                  })
+                }
                 className={cx('CK__Input', className)}
                 ref={input => maskRef(input)}
                 {...props}
@@ -109,7 +120,12 @@ const Input = forwardRef(
 
       return (
         <input
-          css={theme => StylesInputBase(theme, defaultProps)}
+          css={theme =>
+            StylesInputBase(theme, {
+              type,
+              prefixIcon,
+            })
+          }
           className={cx('CK__Input', className)}
           {...defaultProps}
         />
@@ -122,8 +138,27 @@ const Input = forwardRef(
           {label}
         </FormLabel>
         {prefixIcon ? (
-          <div className="form-prefix-wrapper">
-            <div className="form-prefix-content">
+          <div css={{ position: 'relative' }}>
+            <div
+              css={theme => [
+                {
+                  color: theme.fontColor.muted,
+                  position: 'absolute',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  left: form.variables(theme).padding,
+                  zIndex: 2,
+                },
+
+                theme.settings.contrast.enable &&
+                  theme.settings.contrast.form &&
+                  !noContrast && {
+                    '.u-contrast &': {
+                      color: theme.contrast.muted,
+                    },
+                  },
+              ]}
+            >
               <Icon icon={prefixIcon} />
             </div>
             {inputRender()}
@@ -146,6 +181,7 @@ Input.propTypes = {
   validationMessage: PropTypes.string,
   guide: PropTypes.bool,
   onChange: PropTypes.func,
+  noContrast: PropTypes.bool,
   prefixIcon: PropTypes.string,
   required: PropTypes.bool,
   label: PropTypes.string,

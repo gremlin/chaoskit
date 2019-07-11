@@ -61,6 +61,10 @@ const Icon = forwardRef(
                 width: StylesIconVariables.small,
                 height: StylesIconVariables.small,
               },
+              size === 'medium' && {
+                width: StylesIconVariables.medium,
+                height: StylesIconVariables.medium,
+              },
               size === 'large' && {
                 width: StylesIconVariables.large,
                 height: StylesIconVariables.large,
@@ -93,7 +97,7 @@ Icon.propTypes = {
   icon: PropTypes.string.isRequired,
   /** Pass in (and override) additional icon data to search through */
   additionalIcons: PropTypes.object,
-  size: PropTypes.oneOf(['small', 'large', 'xlarge']),
+  size: PropTypes.oneOf(['small', 'medium', 'large', 'xlarge']),
 };
 
 export default Icon;
