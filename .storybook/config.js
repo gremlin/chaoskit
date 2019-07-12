@@ -75,7 +75,13 @@ addDecorator(story => (
   <CacheProvider value={ckCache}>
     <ThemeProvider theme={theme}>
       <Global styles={[globalStyles(theme), fonts(theme)]} />
-      {story()}
+      <div
+        css={{
+          padding: theme.space.base,
+        }}
+      >
+        {story()}
+      </div>
     </ThemeProvider>
   </CacheProvider>
 ));
