@@ -5,8 +5,8 @@ import Downshift from 'downshift';
 import matchSorter from 'match-sorter';
 
 import FormFooter from './FormFooter';
+import FormGroup from './FormGroup';
 import FormLabel from './FormLabel';
-import { config } from '../helpers/config';
 
 const ChoicesSingle = ({
   className,
@@ -49,10 +49,6 @@ const ChoicesSingle = ({
         keys: ['label'],
       })
     : options;
-  const formGroupClasses = cx('form-group', className, {
-    [config.classes.notValid]: validationMessage,
-    [config.classes.required]: required,
-  });
   const selectedOption =
     selected !== -1 ? optionsList.find(x => x.value === selected) : -1;
 
@@ -69,7 +65,7 @@ const ChoicesSingle = ({
         });
 
         return (
-          <div className={formGroupClasses}>
+          <FormGroup {...downshift.getRootProps()}>
             <FormLabel
               required={required}
               error={!!validationMessage}
@@ -77,7 +73,23 @@ const ChoicesSingle = ({
             >
               {label}
             </FormLabel>
-            <div className="form-choicesSelect" disabled={disabled}>
+            <div
+              css={theme => [
+                {
+                  // 1. Reset default text direction if inside of centered container
+                  color: theme.fontColor.base,
+                  fontSize: theme.fontSize.base,
+                  textAlign: 'left', // 1
+                },
+
+                disabled && {
+                  opacity: theme.opacity.base,
+                  cursor: 'not-allowed',
+                  pointerEvents: 'none',
+                },
+              ]}
+              className={cx('CK__ChoicesSingle', className)}
+            >
               <div className={choicesClasses} data-type="select-one">
                 {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events */}
                 <div className="choices__inner" onClick={downshift.openMenu}>
@@ -153,7 +165,7 @@ const ChoicesSingle = ({
               explanationMessage={explanationMessage}
               validationMessage={validationMessage}
             />
-          </div>
+          </FormGroup>
         );
       }}
     </Downshift>

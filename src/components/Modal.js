@@ -187,7 +187,7 @@ const Modal = ({
             },
           },
         ]}
-        className="UK__Modal__Dialog"
+        className="CK__Modal__Dialog"
         ref={modalDialogRef}
       >
         {children}
