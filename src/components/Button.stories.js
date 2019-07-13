@@ -6,7 +6,7 @@ import { Button, Icon } from '.';
 import { gradient } from '../assets/styles/utility';
 import icons from '../assets/icons/icons.json';
 
-const params = {
+export const params = {
   disabled: () => boolean('Disabled', false),
   noRadius: () => boolean('No Radius', false),
   noContrast: () => boolean('No Contrast', false),
