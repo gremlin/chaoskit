@@ -35,8 +35,6 @@ const Icon = forwardRef(
             css={[
               {
                 // 1. Help against rendering bug when scaling
-                width: StylesIconVariables.base,
-                height: StylesIconVariables.base,
                 lineHeight: '1',
                 position: 'relative',
                 top: '-0.1em',
@@ -56,6 +54,10 @@ const Icon = forwardRef(
                     vectorEffect: 'non-scaling-stroke',
                   },
                 },
+              },
+              size === 'base' && {
+                width: StylesIconVariables.base,
+                height: StylesIconVariables.base,
               },
               size === 'small' && {
                 width: StylesIconVariables.small,
@@ -97,7 +99,11 @@ Icon.propTypes = {
   icon: PropTypes.string.isRequired,
   /** Pass in (and override) additional icon data to search through */
   additionalIcons: PropTypes.object,
-  size: PropTypes.oneOf(['small', 'medium', 'large', 'xlarge']),
+  size: PropTypes.oneOf(['base', 'small', 'medium', 'large', 'xlarge']),
+};
+
+Icon.defaultProps = {
+  size: 'base',
 };
 
 export default Icon;
