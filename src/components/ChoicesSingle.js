@@ -118,11 +118,12 @@ const ChoicesSingle = ({
                       flexDirection: 'column',
                       overflow: 'hidden',
                       boxShadow: form.variables(theme).boxShadow,
+                      transition: 'none',
                     },
 
                     downshift.isOpen && {
                       borderColor: theme.color.primary.base,
-                      boxShadow: `${theme.boxShadowOffset} ${rgba(
+                      boxShadow: `${theme.boxShadowOffset.base} ${rgba(
                         theme.color.primary.base,
                         0.75
                       )}`,
@@ -164,10 +165,38 @@ const ChoicesSingle = ({
                   </div>
                 </div>
                 {downshift.isOpen && (
-                  <div className="choices__list choices__list--dropdown is-active">
+                  <div
+                    css={theme => [
+                      {
+                        position: 'absolute',
+                        top: '100%',
+                        left: 0,
+                        width: '100%',
+                        zIndex: '10',
+                        background: form.variables(theme).background,
+                        borderBottomRightRadius: theme.borderRadius.base,
+                        borderBottomLeftRadius: theme.borderRadius.base,
+                        border: `1px solid ${theme.color.primary.base}`,
+                        borderTop: 0,
+                      },
+                    ]}
+                    className="choices__list choices__list--dropdown is-active"
+                  >
                     <Input
                       prefixIcon="search"
                       name={id}
+                      css={theme => ({
+                        borderRadius: 0,
+                        borderWidth: `0 0 1px 0`,
+                        boxShadow: 'none',
+                        background: theme.color.panel.base,
+
+                        '&:focus': {
+                          boxShadow: 'none',
+                          borderColor: theme.color.border.base,
+                          background: theme.color.panel.base,
+                        },
+                      })}
                       {...downshift.getInputProps({
                         placeholder: searchPlaceholder,
                         onChange: handleInputChange,
