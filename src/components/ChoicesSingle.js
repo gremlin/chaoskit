@@ -8,6 +8,7 @@ import { rgba } from 'polished';
 import FormFooter from './FormFooter';
 import FormGroup from './FormGroup';
 import FormLabel from './FormLabel';
+import Input from './Input';
 import { form } from '../assets/styles/utility';
 import { StylesSelectVariables } from './Select';
 
@@ -109,6 +110,12 @@ const ChoicesSingle = ({
                 <div
                   css={theme => [
                     form.input(theme, { error: !!validationMessage }),
+                    {
+                      display: 'flex',
+                      flexDirection: 'column',
+                      overflow: 'hidden',
+                      boxShadow: form.variables(theme).boxShadow,
+                    },
 
                     downshift.isOpen && {
                       borderColor: theme.color.primary.base,
@@ -155,9 +162,8 @@ const ChoicesSingle = ({
                 </div>
                 {downshift.isOpen && (
                   <div className="choices__list choices__list--dropdown is-active">
-                    <input
-                      className="choices__input"
-                      type="text"
+                    <Input
+                      prefixIcon="search"
                       {...downshift.getInputProps({
                         placeholder: searchPlaceholder,
                         onChange: handleInputChange,

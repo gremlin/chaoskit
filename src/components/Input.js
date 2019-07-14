@@ -10,7 +10,7 @@ import Icon, { StylesIconVariables } from './Icon';
 import { form } from '../assets/styles/utility';
 import { generateUUID } from '../helpers/utility';
 
-const StylesInputBase = (theme, props = {}) => [
+export const StylesInputBase = (theme, props = {}) => [
   form.base(theme),
   {
     //  Remove default style in browsers that support `appearance`

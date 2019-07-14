@@ -102,4 +102,8 @@ Icon.propTypes = {
   size: PropTypes.oneOf(['base', 'small', 'medium', 'large', 'xlarge']),
 };
 
+Icon.defaultProps = {
+  size: 'base',
+};
+
 export default Icon;
