@@ -1,0 +1,44 @@
+---
+name: Button
+menu: Components
+---
+
+import { Playground, Props } from 'docz';
+
+import Contrast from '../docs/Contrast';
+import Button from './Button';
+import Inline from './Inline';
+
+Hello there!
+
+<Props of={Button} />
+
+<Playground>
+  <Inline>
+    <Button>Blank</Button>
+    <Button type="default">Default</Button>
+    <Button type="primary">Primary</Button>
+    <Button type="secondary">Secondary</Button>
+    <Button type="danger">Danger</Button>
+    <Button type="outlinePrimary">Primary Outline</Button>
+    <Button type="reset" className="u-link">
+      Reset
+    </Button>
+  </Inline>
+</Playground>
+
+<Playground>
+  <Contrast>
+    <Inline>
+      <Button>Blank</Button>
+      <Button type="default">Default</Button>
+      <Button type="primary">Primary</Button>
+      <Button type="secondary">Secondary</Button>
+      <Button type="danger">Danger</Button>
+      <Button type="outlinePrimary">Primary Outline</Button>
+      <Button type="reset" className="u-link">
+        Reset
+      </Button>
+    </Inline>
+  </Contrast>
+</Playground>

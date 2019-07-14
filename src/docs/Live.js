@@ -18,7 +18,7 @@ const Live = ({
   const [isLoading, setLoading] = useState(true);
 
   useMount(() => {
-    scriptjs('https://unpkg.com/babel-standalone@6/babel.min.js', () => {
+    scriptjs('https://unpkg.com/@babel/standalone/babel.min.js', () => {
       setLoading(false);
     });
   });
