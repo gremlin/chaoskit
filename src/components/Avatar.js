@@ -24,6 +24,9 @@ const StylesAvatarBase = (theme, props = {}) => [
     pointerEvents: 'none',
     position: 'relative',
     verticalAlign: 'bottom', // 1
+  },
+
+  props.size === 'base' && {
     width: 40,
     height: 40,
   },
@@ -140,12 +143,12 @@ Avatar.propTypes = {
   className: PropTypes.string,
   image: PropTypes.string,
   name: PropTypes.string,
-  size: PropTypes.oneOf(['default', 'large']),
+  size: PropTypes.oneOf(['base', 'large']),
   src: PropTypes.string,
 };
 
 Avatar.defaultProps = {
-  size: 'default',
+  size: 'base',
 };
 
 export default Avatar;
