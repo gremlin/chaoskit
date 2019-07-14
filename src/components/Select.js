@@ -8,7 +8,7 @@ import { form } from '../assets/styles/utility';
 import { generateUUID } from '../helpers/utility';
 import caretDown from '../assets/icons/caret-down.svg';
 
-const StylesSelectVariables = (theme, props = {}) => ({
+export const StylesSelectVariables = (theme, props = {}) => ({
   iconSize: 12,
   get arrow() {
     return {
@@ -27,6 +27,9 @@ const StylesSelectVariables = (theme, props = {}) => ({
       opacity: props.disabled && theme.opacity.base,
       zIndex: '2',
     };
+  },
+  get arrowOffset() {
+    return this.iconSize + form.variables(theme).padding + theme.space.small;
   },
 });
 
@@ -136,9 +139,9 @@ const Select = ({
             !multiple &&
               !size && [
                 {
-                  padding: `0 ${StylesSelectVariables(theme).iconSize +
-                    form.variables(theme).padding +
-                    theme.space.small}px 0 ${form.variables(theme).padding}px`,
+                  padding: `0 ${StylesSelectVariables(theme).arrowOffset}px 0 ${
+                    form.variables(theme).padding
+                  }px`,
 
                   // Remove select arrows from IE
                   '&::-ms-expand': {

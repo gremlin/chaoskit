@@ -3,10 +3,13 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import Downshift from 'downshift';
 import matchSorter from 'match-sorter';
+import { rgba } from 'polished';
 
 import FormFooter from './FormFooter';
 import FormGroup from './FormGroup';
 import FormLabel from './FormLabel';
+import { form } from '../assets/styles/utility';
+import { StylesSelectVariables } from './Select';
 
 const ChoicesSingle = ({
   className,
@@ -60,10 +63,6 @@ const ChoicesSingle = ({
       itemToString={itemToString}
     >
       {downshift => {
-        const choicesClasses = cx('choices', {
-          'is-focused is-open': downshift.isOpen,
-        });
-
         return (
           <FormGroup {...downshift.getRootProps()}>
             <FormLabel
@@ -90,10 +89,50 @@ const ChoicesSingle = ({
               ]}
               className={cx('CK__ChoicesSingle', className)}
             >
-              <div className={choicesClasses} data-type="select-one">
+              <div
+                css={theme => [
+                  {
+                    position: 'relative',
+
+                    '&::after': [
+                      StylesSelectVariables(theme).arrow,
+
+                      downshift.isOpen && {
+                        transform: 'translateY(-50%) rotate(-180deg)', // Need to add-in default `translateY` prop
+                      },
+                    ],
+                  },
+                ]}
+                data-type="select-one"
+              >
                 {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events */}
-                <div className="choices__inner" onClick={downshift.openMenu}>
-                  <div className="choices__list choices__list--single">
+                <div
+                  css={theme => [
+                    form.input(theme, { error: !!validationMessage }),
+
+                    downshift.isOpen && {
+                      borderColor: theme.color.primary.base,
+                      boxShadow: `${theme.boxShadowOffset} ${rgba(
+                        theme.color.primary.base,
+                        0.75
+                      )}`,
+                      borderBottomLeftRadius: 0,
+                      borderBottomRightRadius: 0,
+                      borderBottomColor: theme.color.border.base,
+                    },
+                  ]}
+                  className="choices__inner"
+                  onClick={downshift.openMenu}
+                >
+                  <div
+                    css={theme => [
+                      {
+                        // lineHeight is based on form height minus border (top + bottom)
+                        lineHeight: `${form.variables(theme).height - 2}px`,
+                      },
+                    ]}
+                    className="choices__list choices__list--single"
+                  >
                     {downshift.selectedItem && downshift.selectedItem !== -1 ? (
                       <div className="choices__item choices__item--selectable">
                         {downshift.selectedItem.label}
