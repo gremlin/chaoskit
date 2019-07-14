@@ -35,4 +35,10 @@ const ModalExample = () => {
   );
 };
 
-storiesOf('Components|Modal', module).add('Overview', () => <ModalExample />);
+storiesOf('Components|Modal', module)
+  .addParameters({
+    props: {
+      propTables: [Modal, ModalHeader, ModalBody, ModalFooter],
+    },
+  })
+  .add('Overview', () => <ModalExample />);

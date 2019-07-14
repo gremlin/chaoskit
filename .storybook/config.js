@@ -1,13 +1,14 @@
 import React from 'react';
 import { addDecorator, addParameters, configure } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
 import { withKnobs } from '@storybook/addon-knobs';
 import { withA11y } from '@storybook/addon-a11y';
+import { withPropsTable } from 'storybook-addon-react-docgen';
 
 import { ThemeProvider } from 'emotion-theming';
 import { CacheProvider, Global } from '@emotion/core';
 import createCache from '@emotion/cache';
 import 'what-input';
+import ExampleFill from './components/ExampleFill';
 
 import { theme } from '../src/assets/styles/theme';
 import { fonts } from '../src/assets/styles/fonts';
@@ -65,8 +66,8 @@ addParameters({
 //
 
 addDecorator(
-  withInfo({
-    header: false,
+  withPropsTable({
+    propTablesExclude: [ExampleFill],
   })
 );
 addDecorator(withKnobs);

@@ -34,6 +34,10 @@ const OffCanvasExample = () => {
   );
 };
 
-storiesOf('Components|OffCanvas', module).add('Overview', () => (
-  <OffCanvasExample />
-));
+storiesOf('Components|OffCanvas', module)
+  .addParameters({
+    props: {
+      propTables: [OffCanvas],
+    },
+  })
+  .add('Overview', () => <OffCanvasExample />);
