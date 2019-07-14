@@ -71,7 +71,6 @@ const Input = forwardRef(
       mask,
       name,
       noContrast,
-      onChange,
       type,
       validationMessage,
       explanationMessage,
@@ -83,16 +82,11 @@ const Input = forwardRef(
   ) => {
     const id = `${name}-${generateUUID()}`;
 
-    const handleChange = ({ target: { name: fieldName, value } }) => {
-      onChange(fieldName, value);
-    };
-
     const inputRender = () => {
       const defaultProps = {
         id,
         name,
         type,
-        onChange: handleChange,
         ref,
         ...opts,
       };
@@ -183,7 +177,6 @@ Input.propTypes = {
   explanationMessage: PropTypes.string,
   validationMessage: PropTypes.string,
   guide: PropTypes.bool,
-  onChange: PropTypes.func,
   noContrast: PropTypes.bool,
   prefixIcon: PropTypes.string,
   required: PropTypes.bool,

@@ -9,7 +9,7 @@ const RadioExample = `
 () => {
   const [selectedValue, setSelectedValue] = useState();
 
-  const handleChange = (name, value) => {
+  const handleChange = ({target: { name, value }}) => {
     console.log(name, value);
 
     setSelectedValue(value);

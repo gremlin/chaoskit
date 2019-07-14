@@ -43,22 +43,11 @@ const Select = ({
   name,
   noContrast,
   options,
-  onChange,
   required,
   validationMessage,
   ...opts
 }) => {
   const id = `${name}-${generateUUID()}`;
-
-  const handleOnChange = ({
-    target: { name: fieldName, value: fieldValue },
-  }) => {
-    const selectedValue = parseInt(fieldValue, 10)
-      ? parseInt(fieldValue, 10)
-      : fieldValue;
-
-    onChange(fieldName, selectedValue);
-  };
 
   const renderOpts = option => {
     // If the option has options as well we're in an `<optgroup>`
@@ -113,7 +102,6 @@ const Select = ({
         <select
           id={id}
           name={name}
-          onChange={handleOnChange}
           multiple={multiple}
           disabled={disabled}
           size={size}
@@ -189,7 +177,6 @@ Select.propTypes = {
   name: PropTypes.string.isRequired,
   noContrast: PropTypes.bool,
   options: PropTypes.array.isRequired,
-  onChange: PropTypes.func,
   required: PropTypes.bool,
   validationMessage: PropTypes.string,
 };

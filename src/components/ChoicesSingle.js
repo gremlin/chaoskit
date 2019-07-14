@@ -11,6 +11,7 @@ import FormLabel from './FormLabel';
 import Input from './Input';
 import { form } from '../assets/styles/utility';
 import { StylesSelectVariables } from './Select';
+import { generateUUID } from '../helpers/utility';
 
 const ChoicesSingle = ({
   className,
@@ -28,6 +29,8 @@ const ChoicesSingle = ({
   selected,
 }) => {
   const [value, setValue] = useState('');
+
+  const id = `${name}-${generateUUID()}`;
 
   const itemToString = item => (item ? item.label : '');
 
@@ -164,6 +167,7 @@ const ChoicesSingle = ({
                   <div className="choices__list choices__list--dropdown is-active">
                     <Input
                       prefixIcon="search"
+                      name={id}
                       {...downshift.getInputProps({
                         placeholder: searchPlaceholder,
                         onChange: handleInputChange,
