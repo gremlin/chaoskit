@@ -4,6 +4,7 @@ import { boolean, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
 import { CheckboxGroup, Checkbox } from '.';
+import Contrast from '../docs/Contrast';
 
 const params = {
   firstCheckbox: {
@@ -56,4 +57,31 @@ storiesOf('Forms|Checkbox', module)
         onChange={(name, value) => action('onChange 2')({ name }, { value })}
       />
     </CheckboxGroup>
+  ))
+  .add('Contrast', () => (
+    <Contrast>
+      <CheckboxGroup
+        label={params.group.label()}
+        explanationMessage={params.group.explanationMessage()}
+        validationMessage={params.group.validationMessage()}
+        inline={params.group.inline()}
+      >
+        <Checkbox
+          disabled={params.firstCheckbox.disabled()}
+          isChecked={params.firstCheckbox.isChecked()}
+          name="field-name1"
+          label={params.firstCheckbox.label()}
+          value="field-value1"
+          onChange={(name, value) => action('onChange 1')({ name }, { value })}
+        />
+        <Checkbox
+          disabled={params.secondCheckbox.disabled()}
+          isChecked={params.secondCheckbox.isChecked()}
+          name="field-name2"
+          label={params.secondCheckbox.label()}
+          value="field-value2"
+          onChange={(name, value) => action('onChange 2')({ name }, { value })}
+        />
+      </CheckboxGroup>
+    </Contrast>
   ));

@@ -6,7 +6,7 @@ import { Avatar } from '.';
 
 const params = {
   image: () => text('image', 'https://source.unsplash.com/random'),
-  size: () => select('size', ['default', 'large'], 'default'),
+  size: () => select('size', ['base', 'large'], 'base'),
   name: () => text('name', 'Zach Schnackel'),
 };
 

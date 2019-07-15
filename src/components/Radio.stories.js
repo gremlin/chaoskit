@@ -1,9 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { boolean, text } from '@storybook/addon-knobs';
+import { boolean, text, select } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
 import { RadioGroup, Radio } from '.';
+import Contrast from '../docs/Contrast';
 
 const params = {
   firstRadio: {
@@ -20,6 +21,8 @@ const params = {
     explanationMessage: () =>
       text('(Group) explanation message', 'Explanation message'),
     validationMessage: () => text('(Group) validation message', ''),
+    selectedValue: () =>
+      select('Selected value', ['field1', 'field2'], 'field1'),
   },
 };
 
@@ -37,17 +40,43 @@ storiesOf('Forms|Radio', module)
       validationMessage={params.group.validationMessage()}
       inline={params.group.inline()}
       name="field-name"
+      sel
       onChange={(name, value) => action('onChange')({ name }, { value })}
+      selectedValue={params.group.selectedValue()}
     >
       <Radio
         disabled={params.firstRadio.disabled()}
         label={params.firstRadio.label()}
-        value="field-value1"
+        value="field1"
       />
       <Radio
         disabled={params.secondRadio.disabled()}
         label={params.secondRadio.label()}
-        value="field-value2"
+        value="field2"
       />
     </RadioGroup>
+  ))
+  .add('Contrast', () => (
+    <Contrast>
+      <RadioGroup
+        label={params.group.label()}
+        explanationMessage={params.group.explanationMessage()}
+        validationMessage={params.group.validationMessage()}
+        inline={params.group.inline()}
+        name="field-name"
+        onChange={(name, value) => action('onChange')({ name }, { value })}
+        selectedValue={params.group.selectedValue()}
+      >
+        <Radio
+          disabled={params.firstRadio.disabled()}
+          label={params.firstRadio.label()}
+          value="field1"
+        />
+        <Radio
+          disabled={params.secondRadio.disabled()}
+          label={params.secondRadio.label()}
+          value="field2"
+        />
+      </RadioGroup>
+    </Contrast>
   ));

@@ -6,7 +6,9 @@ const Contrast = ({ ...opts }) => (
     css={theme => [
       gradient.blueGreen(theme),
       {
-        padding: theme.space.base,
+        padding: theme.space.large,
+        borderRadius: theme.borderRadius.base,
+        boxShadow: theme.boxShadow.large,
       },
     ]}
     {...opts}

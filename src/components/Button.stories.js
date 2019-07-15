@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { boolean, select, text } from '@storybook/addon-knobs';
 
 import { Button, Icon } from '.';
-import { gradient } from '../assets/styles/utility';
+import Contrast from '../docs/Contrast';
 import icons from '../assets/icons/icons.json';
 
 export const params = {
@@ -65,15 +65,7 @@ storiesOf('Components|Button', module)
   .add(
     'Contrast',
     () => (
-      <div
-        css={theme => [
-          gradient.blueGreen(theme),
-          {
-            padding: theme.space.base,
-          },
-        ]}
-        className="u-contrast"
-      >
+      <Contrast>
         <Button
           disabled={params.disabled()}
           loading={params.loading()}
@@ -85,7 +77,7 @@ storiesOf('Components|Button', module)
         >
           {params.label()}
         </Button>
-      </div>
+      </Contrast>
     ),
     {
       notes: `

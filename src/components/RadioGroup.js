@@ -56,7 +56,7 @@ const RadioGroup = ({
       <FormFooter
         css={theme => [
           inline && {
-            marginTop: theme.space.xsmall,
+            marginTop: theme.space.small,
           },
         ]}
         explanationMessage={explanationMessage}
