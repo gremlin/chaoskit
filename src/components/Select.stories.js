@@ -6,6 +6,7 @@ import { Select } from '.';
 import Contrast from '../docs/Contrast';
 
 const params = {
+  disabled: () => boolean('Disabled', false),
   label: () => text('Label', 'Form label'),
   explanationMessage: () => text('Explanation Message', 'Explanation message'),
   validationMessage: () => text('Validation Message', 'Validation message'),
@@ -23,6 +24,7 @@ const SelectExample = () => {
 
   return (
     <Select
+      disabled={params.disabled()}
       onChange={({ target: { name, value } }) =>
         action('onChange')({ name }, { value })
       }

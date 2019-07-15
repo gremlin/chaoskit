@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { storiesOf } from '@storybook/react';
+import { boolean } from '@storybook/addon-knobs';
 
 import { ChoicesSingle } from '.';
 
@@ -28,6 +29,7 @@ const ChoicesSingleExample = () => {
 
   return (
     <ChoicesSingle
+      disabled={boolean('Disabled', false)}
       selected={selected}
       options={selectOpts}
       label="Favorite color"
@@ -39,6 +41,6 @@ const ChoicesSingleExample = () => {
   );
 };
 
-storiesOf('Components|Choices (Single)', module).add('Overview', () => (
+storiesOf('Forms|Choices (Single)', module).add('Overview', () => (
   <ChoicesSingleExample />
 ));

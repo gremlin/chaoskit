@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import useUpdateEffect from 'react-use/lib/useUpdateEffect';
+import { boolean } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 
 import { ChoicesMulti } from '.';
@@ -46,6 +47,7 @@ const ChoicesMultiExample = () => {
 
   return (
     <ChoicesMulti
+      disabled={boolean('Disabled', false)}
       selected={selected}
       options={selectOpts}
       name="colors"
@@ -57,6 +59,6 @@ const ChoicesMultiExample = () => {
   );
 };
 
-storiesOf('Components|Choices (Multi)', module).add('Overview', () => (
+storiesOf('Forms|Choices (Multi)', module).add('Overview', () => (
   <ChoicesMultiExample />
 ));

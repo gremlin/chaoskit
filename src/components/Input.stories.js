@@ -6,6 +6,7 @@ import Contrast from '../docs/Contrast';
 import icons from '../assets/icons/icons.json';
 
 const params = {
+  disabled: () => boolean('Disabled', false),
   label: () => text('Label', 'Form label'),
   explanationMessage: () => text('Explanation Message', 'Explanation message'),
   validationMessage: () => text('Validation Message', 'Validation message'),
@@ -17,6 +18,7 @@ const params = {
 storiesOf('Forms|Input', module)
   .add('Overview', () => (
     <Input
+      disabled={params.disabled()}
       name="test"
       label={params.label()}
       explanationMessage={params.explanationMessage()}
@@ -26,6 +28,7 @@ storiesOf('Forms|Input', module)
   ))
   .add('Prefix Icon', () => (
     <Input
+      disabled={params.disabled()}
       name="test"
       label={params.label()}
       explanationMessage={params.explanationMessage()}
@@ -37,6 +40,7 @@ storiesOf('Forms|Input', module)
   .add('Contrast', () => (
     <Contrast>
       <Input
+        disabled={params.disabled()}
         name="test"
         label={params.label()}
         explanationMessage={params.explanationMessage()}

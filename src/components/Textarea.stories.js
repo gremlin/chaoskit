@@ -5,6 +5,7 @@ import { Textarea } from '.';
 import Contrast from '../docs/Contrast';
 
 const params = {
+  disabled: () => boolean('Disabled', false),
   label: () => text('Label', 'Form label'),
   explanationMessage: () => text('Explanation Message', ''),
   validationMessage: () => text('Validation Message', ''),
@@ -15,6 +16,7 @@ const params = {
 storiesOf('Forms|Textarea', module)
   .add('Overview', () => (
     <Textarea
+      disabled={params.disabled()}
       name="test"
       label={params.label()}
       explanationMessage={params.explanationMessage()}
@@ -25,6 +27,7 @@ storiesOf('Forms|Textarea', module)
   .add('Contrast', () => (
     <Contrast>
       <Textarea
+        disabled={params.disabled()}
         name="test"
         label={params.label()}
         explanationMessage={params.explanationMessage()}
