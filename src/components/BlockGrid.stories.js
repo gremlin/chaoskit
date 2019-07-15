@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 
 import { BlockGrid, ListItem } from '.';
-import ExampleFill from '../docs/ExampleFill';
+import ExampleFill from '../../.storybook/components/ExampleFill';
 
 storiesOf('Components|Block Grid', module)
   .add('Overview', () => (

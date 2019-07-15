@@ -3,7 +3,7 @@ import React from 'react';
 import BaseLayout from '../layouts/BaseLayout';
 import { Alert, BlockGrid, ListItem } from '../components';
 import Live from '../docs/Live';
-import ExampleFill from '../docs/ExampleFill';
+import ExampleFill from '../../.storybook/components/ExampleFill';
 
 const BlockGridExample = `
 <BlockGrid size={{base: 4}}>

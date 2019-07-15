@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/react';
 import { boolean, select, text } from '@storybook/addon-knobs';
 
 import { Input } from '.';
-import Contrast from '../docs/Contrast';
+import Contrast from '../../.storybook/components/Contrast';
 import icons from '../assets/icons/icons.json';
 
 const params = {

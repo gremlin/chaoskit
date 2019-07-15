@@ -1,4 +1,4 @@
-import { gradient } from '../assets/styles/utility';
+import { gradient } from '../../src/assets/styles/utility';
 
 const Contrast = ({ ...opts }) => (
   <div

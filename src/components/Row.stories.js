@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/react';
 
 import { Row, RowColumn } from '.';
 import { flex } from '../assets/styles/utility';
-import ExampleFill from '../docs/ExampleFill';
+import ExampleFill from '../../.storybook/components/ExampleFill';
 
 storiesOf('Components|Row', module)
   .add('Overview', () => (

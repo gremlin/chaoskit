@@ -3,7 +3,7 @@ import { boolean, text, select } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
 import { RadioGroup, Radio } from '.';
-import Contrast from '../docs/Contrast';
+import Contrast from '../../.storybook/components/Contrast';
 
 const params = {
   firstRadio: {
