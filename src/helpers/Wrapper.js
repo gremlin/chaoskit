@@ -8,7 +8,6 @@ import { theme } from '../assets/styles/theme';
 import { fonts } from '../assets/styles/fonts';
 import { globalStyles } from '../assets/styles/global';
 
-// @TODO Potentially make this exportable or bring in from another spot
 const ckCache = createCache({
   key: 'ck',
   // Only prefix the following style properties

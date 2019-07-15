@@ -8,7 +8,7 @@ storiesOf('Components|Section', module).add('Overview', () => (
     css={theme => ({
       background: theme.color.panel.base,
     })}
-    slant={select('Slant', ['', 'top', 'bottom', 'bottom-shadow'], '')}
+    slant={select('Slant', ['', 'top', 'bottom', 'bottom-shadow'], null)}
     space={select(
       'Space',
       ['small', 'base', 'medium', 'large', 'xlarge'],
