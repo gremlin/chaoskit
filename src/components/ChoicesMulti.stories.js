@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import useUpdateEffect from 'react-use/lib/useUpdateEffect';
 import { boolean } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 
 import { ChoicesMulti } from '.';
 
@@ -41,8 +42,7 @@ const ChoicesMultiExample = () => {
   }, []);
 
   useUpdateEffect(() => {
-    // eslint-disable-next-line no-console
-    console.log({ selected });
+    action('Selected')({ selected });
   }, [selected]);
 
   return (

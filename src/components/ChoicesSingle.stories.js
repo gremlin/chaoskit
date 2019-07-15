@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { storiesOf } from '@storybook/react';
 import { boolean } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
 
 import { ChoicesSingle } from '.';
 
@@ -16,8 +17,7 @@ const ChoicesSingleExample = () => {
   };
 
   useEffect(() => {
-    // eslint-disable-next-line no-console
-    console.log({ selected });
+    action('Selected')({ selected });
   }, [selected]);
 
   const selectOpts = [
