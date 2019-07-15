@@ -7,8 +7,8 @@ import icons from '../assets/icons/icons.json';
 
 const params = {
   label: () => text('Label', 'Form label'),
-  explanationMessage: () => text('Explanation Message', ''),
-  validationMessage: () => text('Validation Message', ''),
+  explanationMessage: () => text('Explanation Message', 'Explanation message'),
+  validationMessage: () => text('Validation Message', 'Validation message'),
   noContrast: () => boolean('No contrast', false),
   prefixIcon: () => select('Icon', Object.keys(icons), 'user'),
   required: () => boolean('Required', false),

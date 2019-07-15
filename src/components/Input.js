@@ -104,6 +104,7 @@ const Input = forwardRef(
                   StylesInputBase(theme, {
                     type,
                     prefixIcon,
+                    validationMessage,
                   })
                 }
                 className={cx('CK__Input', className)}
@@ -121,6 +122,7 @@ const Input = forwardRef(
             StylesInputBase(theme, {
               type,
               prefixIcon,
+              validationMessage,
             })
           }
           className={cx('CK__Input', className)}
