@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import Downshift from 'downshift';
 import matchSorter from 'match-sorter';
-import { rgba } from 'polished';
+import { ellipsis, rgba } from 'polished';
 
+import Button from './Button';
 import FormFooter from './FormFooter';
 import FormGroup from './FormGroup';
 import FormLabel from './FormLabel';
+import Icon from './Icon';
 import Input from './Input';
 import { form } from '../assets/styles/utility';
 import { StylesSelectVariables } from './Select';
@@ -148,17 +150,30 @@ const ChoicesSingle = ({
                       <div className="choices__item choices__item--selectable">
                         {downshift.selectedItem.label}
                         {removeItem && (
-                          <button
-                            type="button"
-                            className="choices__button"
+                          <Button
+                            title="Remove item"
+                            size="xsmall"
+                            iconOnly
                             onClick={removeItem}
+                            css={theme => ({
+                              position: 'absolute',
+                              top: '50%',
+                              transform: 'translateY(-50%)',
+                              right: StylesSelectVariables(theme).arrowOffset,
+                            })}
                           >
-                            Remove item
-                          </button>
+                            <Icon icon="close" />
+                          </Button>
                         )}
                       </div>
                     ) : (
-                      <div className="choices__item choices__item--selectable choices__placeholder">
+                      <div
+                        css={theme => ({
+                          ...ellipsis(),
+                          color: theme.fontColor.muted,
+                        })}
+                        className="choices__item choices__item--selectable choices__placeholder"
+                      >
                         {placeholder}
                       </div>
                     )}
@@ -221,6 +236,17 @@ const ChoicesSingle = ({
 
                           return (
                             <div
+                              css={theme => [
+                                {
+                                  padding: `${theme.space.xsmall}px ${theme.space.small}px`,
+                                  cursor: 'default',
+                                },
+                                (downshift.highlightedIndex === index ||
+                                  downshift.selectedItem === item) && {
+                                  background: theme.color.primary.base,
+                                  color: theme.contrast.base,
+                                },
+                              ]}
                               className={itemClasses}
                               {...downshift.getItemProps({ item })}
                               key={item.value}
@@ -230,7 +256,12 @@ const ChoicesSingle = ({
                           );
                         })
                       ) : (
-                        <div className="choices__item choices__item--choice has-no-results">
+                        <div
+                          css={theme => ({
+                            padding: `${theme.space.xsmall}px ${theme.space.small}px`,
+                          })}
+                          className="choices__item choices__item--choice has-no-results"
+                        >
                           No results found
                         </div>
                       )}

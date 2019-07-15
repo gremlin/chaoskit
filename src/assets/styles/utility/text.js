@@ -11,9 +11,3 @@ export const underline = {
   textDecoration: 'underline !important',
   textDecorationSkipInk: 'auto',
 };
-
-export const truncate = {
-  overflow: 'hidden',
-  textOverflow: 'ellipsis',
-  whiteSpace: 'nowrap',
-};
