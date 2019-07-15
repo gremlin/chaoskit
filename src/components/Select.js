@@ -9,7 +9,7 @@ import { generateUUID } from '../helpers/utility';
 import caretDown from '../assets/icons/caret-down.svg';
 
 export const StylesSelectVariables = (theme, props = {}) => ({
-  iconSize: 12,
+  iconSize: theme.fontSize.xsmall,
   get arrow() {
     return {
       content: "''",

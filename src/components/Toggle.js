@@ -9,7 +9,7 @@ import { misc } from '../assets/styles/utility';
 import { generateUUID } from '../helpers/utility';
 
 const StylesToggleVariables = theme => ({
-  height: theme.height.micro,
+  height: theme.height.xxsmall,
   get width() {
     return this.height * 1.75;
   },

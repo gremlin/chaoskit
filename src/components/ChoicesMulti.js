@@ -1,14 +1,17 @@
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import Downshift from 'downshift';
 import matchSorter from 'match-sorter';
 import { rgba } from 'polished';
 
+import Badge from './Badge';
 import FormFooter from './FormFooter';
 import FormGroup from './FormGroup';
 import FormLabel from './FormLabel';
+import Icon from './Icon';
 import Input from './Input';
+import Inline from './Inline';
 import { form } from '../assets/styles/utility';
 import { generateUUID } from '../helpers/utility';
 
@@ -136,12 +139,15 @@ const ChoicesMulti = ({
                 <div
                   css={theme => [
                     form.input(theme, { error: !!validationMessage }),
+                    // 1. Override height properties from normal input since this list will grow
                     {
                       display: 'flex',
                       flexDirection: 'column',
                       overflow: 'hidden',
                       boxShadow: form.variables(theme).boxShadow,
                       transition: 'none',
+                      minHeight: form.variables(theme).height,
+                      height: 'auto',
                     },
 
                     downshift.isOpen && {
@@ -159,33 +165,51 @@ const ChoicesMulti = ({
                   onClick={handleContainerClick}
                 >
                   {downshift.selectedItem.length > 0 && (
-                    <div className="choices__list choices__list--multiple">
-                      {downshift.selectedItem.map((item, i) => (
-                        <div
-                          className="choices__item choices__item--selectable"
-                          // eslint-disable-next-line
-                          key={i}
-                        >
-                          {item.label}
-                          {removeItem && (
-                            <button
-                              type="button"
-                              className="choices__button"
-                              onClick={() => removeItem(item)}
-                            >
-                              Remove item
-                            </button>
-                          )}
-                        </div>
-                      ))}
-                    </div>
+                    <Inline
+                      size="small"
+                      css={theme => ({
+                        order: 1,
+                        paddingBottom: form.variables(theme).padding,
+                      })}
+                    >
+                      {downshift.selectedItem.map((item, i) => {
+                        const key = `${item.label}-${i}`;
+
+                        return (
+                          <Badge
+                            key={key}
+                            title="Remove item"
+                            type="primary"
+                            onClick={() => removeItem(item)}
+                            rounded
+                            css={theme => ({
+                              cursor: 'pointer',
+                              height: theme.height.xxxsmall,
+                              fontSize: theme.fontSize.xxsmall,
+                            })}
+                            label={
+                              <Fragment>
+                                {item.label}
+                                <Icon
+                                  icon="close"
+                                  size="small"
+                                  css={theme => ({
+                                    top: 0,
+                                    marginLeft: theme.space.xsmall,
+                                  })}
+                                />
+                              </Fragment>
+                            }
+                          />
+                        );
+                      })}
+                    </Inline>
                   )}
                   <Input
                     css={{
                       border: 0,
                       borderRadius: 0,
                       width: '100% !important',
-                      order: '-1',
                       boxShadow: 'none',
                       padding: 0,
 
@@ -292,7 +316,7 @@ ChoicesMulti.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   required: PropTypes.bool,
-  removeItem: PropTypes.func,
+  removeItem: PropTypes.func.isRequired,
   validationMessage: PropTypes.string,
   selected: PropTypes.array,
 };
