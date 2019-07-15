@@ -147,7 +147,19 @@ const ChoicesSingle = ({
                     className="choices__list choices__list--single"
                   >
                     {downshift.selectedItem && downshift.selectedItem !== -1 ? (
-                      <div className="choices__item choices__item--selectable">
+                      <div
+                        css={theme => ({
+                          ...ellipsis(),
+                          cursor: 'default',
+                          // Takes care of select arrow for ellipsis
+                          // @NOTE theme.height.small from `xsmall` <Button /> size used for removal
+                          paddingRight:
+                            StylesSelectVariables(theme).arrowOffset -
+                            form.variables(theme).padding +
+                            theme.height.small,
+                        })}
+                        className="choices__item choices__item--selectable"
+                      >
                         {downshift.selectedItem.label}
                         {removeItem && (
                           <Button
@@ -160,6 +172,7 @@ const ChoicesSingle = ({
                               top: '50%',
                               transform: 'translateY(-50%)',
                               right: StylesSelectVariables(theme).arrowOffset,
+                              zIndex: 1,
                             })}
                           >
                             <Icon icon="close" />
@@ -171,6 +184,11 @@ const ChoicesSingle = ({
                         css={theme => ({
                           ...ellipsis(),
                           color: theme.fontColor.muted,
+                          cursor: 'default',
+                          // Takes care of select arrow for ellipsis
+                          paddingRight:
+                            StylesSelectVariables(theme).arrowOffset -
+                            form.variables(theme).padding,
                         })}
                         className="choices__item choices__item--selectable choices__placeholder"
                       >
@@ -259,6 +277,7 @@ const ChoicesSingle = ({
                         <div
                           css={theme => ({
                             padding: `${theme.space.xsmall}px ${theme.space.small}px`,
+                            color: theme.fontColor.muted,
                           })}
                           className="choices__item choices__item--choice has-no-results"
                         >
