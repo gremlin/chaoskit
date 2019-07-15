@@ -1,11 +1,24 @@
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-const columns = 12;
+const columnOptions = [
+  '1',
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
+  '7',
+  '8',
+  '9',
+  '10',
+  '11',
+  '12',
+];
 
 const RowColumn = ({ className, offset, order, size, ...opts }) => {
   const percentWidth = columnSize => {
-    const calc = (100 / columns) * columnSize;
+    const calc = (100 / columnOptions.length) * columnSize;
 
     return `${calc}%`;
   };
@@ -129,18 +142,18 @@ const RowColumn = ({ className, offset, order, size, ...opts }) => {
 RowColumn.propTypes = {
   className: PropTypes.string,
   size: PropTypes.shape({
-    base: PropTypes.number,
-    small: PropTypes.number,
-    medium: PropTypes.number,
-    large: PropTypes.number,
-    xlarge: PropTypes.number,
+    base: PropTypes.oneOf(columnOptions),
+    small: PropTypes.oneOf(columnOptions),
+    medium: PropTypes.oneOf(columnOptions),
+    large: PropTypes.oneOf(columnOptions),
+    xlarge: PropTypes.oneOf(columnOptions),
   }),
   offset: PropTypes.shape({
-    base: PropTypes.number,
-    small: PropTypes.number,
-    medium: PropTypes.number,
-    large: PropTypes.number,
-    xlarge: PropTypes.number,
+    base: PropTypes.oneOf(columnOptions),
+    small: PropTypes.oneOf(columnOptions),
+    medium: PropTypes.oneOf(columnOptions),
+    large: PropTypes.oneOf(columnOptions),
+    xlarge: PropTypes.oneOf(columnOptions),
   }),
   order: PropTypes.shape({
     base: PropTypes.oneOf(['first', 'last']),
