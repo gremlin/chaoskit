@@ -6,7 +6,7 @@ import { Button, Select } from '../components';
 
 const SelectExample = `
 () => {
-  const handleChange = (name, value) => {
+  const handleChange = ({ target: { name, value } }) => {
     console.log({name, value});
   };
 

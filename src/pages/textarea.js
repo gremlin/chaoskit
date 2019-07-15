@@ -8,7 +8,7 @@ const TextareaExample = `
 <Textarea
   label="Test label"
   name="test"
-  onChange={(name, value) => console.log({ name, value })}
+  onChange={({ target: { name, value } }) => console.log({ name, value })}
   defaultValue="Default value!"
   validationMessage="This field has an error"
 />

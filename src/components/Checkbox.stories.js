@@ -45,7 +45,9 @@ storiesOf('Forms|Checkbox', module)
         name="field-name1"
         label={params.firstCheckbox.label()}
         value="field-value1"
-        onChange={(name, value) => action('onChange 1')({ name }, { value })}
+        onChange={({ target: { name, value } }) =>
+          action('onChange 1')({ name }, { value })
+        }
       />
       <Checkbox
         disabled={params.secondCheckbox.disabled()}
@@ -53,7 +55,9 @@ storiesOf('Forms|Checkbox', module)
         name="field-name2"
         label={params.secondCheckbox.label()}
         value="field-value2"
-        onChange={(name, value) => action('onChange 2')({ name }, { value })}
+        onChange={({ target: { name, value } }) =>
+          action('onChange 2')({ name }, { value })
+        }
       />
     </CheckboxGroup>
   ))
@@ -71,7 +75,9 @@ storiesOf('Forms|Checkbox', module)
           name="field-name1"
           label={params.firstCheckbox.label()}
           value="field-value1"
-          onChange={(name, value) => action('onChange 1')({ name }, { value })}
+          onChange={({ target: { name, value } }) =>
+            action('onChange 1')({ name }, { value })
+          }
         />
         <Checkbox
           disabled={params.secondCheckbox.disabled()}
@@ -79,7 +85,9 @@ storiesOf('Forms|Checkbox', module)
           name="field-name2"
           label={params.secondCheckbox.label()}
           value="field-value2"
-          onChange={(name, value) => action('onChange 2')({ name }, { value })}
+          onChange={({ target: { name, value } }) =>
+            action('onChange 2')({ name }, { value })
+          }
         />
       </CheckboxGroup>
     </Contrast>

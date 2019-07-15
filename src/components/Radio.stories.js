@@ -40,7 +40,9 @@ storiesOf('Forms|Radio', module)
       inline={params.group.inline()}
       name="field-name"
       sel
-      onChange={(name, value) => action('onChange')({ name }, { value })}
+      onChange={({ target: { name, value } }) =>
+        action('onChange')({ name }, { value })
+      }
       selectedValue={params.group.selectedValue()}
     >
       <Radio
@@ -63,7 +65,9 @@ storiesOf('Forms|Radio', module)
         validationMessage={params.group.validationMessage()}
         inline={params.group.inline()}
         name="field-name"
-        onChange={(name, value) => action('onChange')({ name }, { value })}
+        onChange={({ target: { name, value } }) =>
+          action('onChange')({ name }, { value })
+        }
         selectedValue={params.group.selectedValue()}
       >
         <Radio
