@@ -1,6 +1,6 @@
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import React, { useState, Fragment } from 'react';
+import { useState, Fragment } from 'react';
 import Downshift from 'downshift';
 import matchSorter from 'match-sorter';
 import { rgba } from 'polished';
