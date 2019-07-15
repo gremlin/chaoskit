@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 const StylesBadgeVariables = theme => ({
-  height: theme.height.micro,
+  height: theme.height.xxsmall,
 });
 
 export const StylesBadgeBase = theme => ({
@@ -58,7 +58,7 @@ const Badge = ({ className, label, rounded, type, ...opts }) => (
 
 Badge.propTypes = {
   className: PropTypes.string,
-  label: PropTypes.string.isRequired,
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
   rounded: PropTypes.bool,
   type: PropTypes.oneOf(['default', 'primary', 'danger']),
 };

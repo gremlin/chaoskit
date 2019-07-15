@@ -16,17 +16,10 @@ const Checkbox = ({
   label,
   name,
   noContrast,
-  onChange,
   value,
   ...opts
 }) => {
   const id = `${name}-${generateUUID()}`;
-
-  const toggleChecked = ({
-    target: { name: fieldName, value: fieldValue, checked },
-  }) => {
-    onChange(fieldName, fieldValue, checked);
-  };
 
   return (
     <div
@@ -45,7 +38,6 @@ const Checkbox = ({
         disabled={disabled}
         name={name}
         id={id}
-        onChange={toggleChecked}
         css={theme => [
           misc.hide,
           {
@@ -153,7 +145,6 @@ Checkbox.propTypes = {
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
   name: PropTypes.string.isRequired,
   noContrast: PropTypes.bool,
-  onChange: PropTypes.func,
   value: PropTypes.string,
 };
 

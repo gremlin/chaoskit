@@ -2,6 +2,7 @@ import { rgba } from 'polished';
 
 export const variables = theme => ({
   background: theme.color.light.base,
+  boxShadow: theme.boxShadow.base,
   height: theme.height.base,
   padding: theme.space.base,
   fontColor: theme.fontColor.base,
@@ -50,7 +51,7 @@ export const input = (theme, props = {}) => [
     borderRadius: theme.borderRadius.base,
     width: '100%',
     position: 'relative',
-    boxShadow: theme.boxShadow.base,
+    boxShadow: variables(theme).boxShadow,
 
     '&:focus': {
       borderColor: theme.color.primary.base,

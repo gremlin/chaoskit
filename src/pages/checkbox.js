@@ -7,7 +7,7 @@ import { CheckboxGroup, Checkbox } from '../components';
 
 const CheckboxExample = `
 () => {
-  const handleChange = (name, value, checked) => {
+  const handleChange = ({target: { name, value, checked } }) => {
     console.log(name, value, checked);
   };
 

@@ -9,7 +9,7 @@ import { misc } from '../assets/styles/utility';
 import { generateUUID } from '../helpers/utility';
 
 const StylesToggleVariables = theme => ({
-  height: theme.height.micro,
+  height: theme.height.xxsmall,
   get width() {
     return this.height * 1.75;
   },
@@ -31,19 +31,12 @@ const Toggle = ({
   disabled,
   label,
   noContrast,
-  onChange,
   value,
   ...opts
 }) => {
   const toggleLabelRef = useRef();
 
   const id = `${name}-${generateUUID()}`;
-
-  const toggleChecked = ({
-    target: { name: fieldName, value: fieldValue, checked },
-  }) => {
-    onChange(fieldName, fieldValue, checked);
-  };
 
   return (
     <FormGroup>
@@ -67,7 +60,6 @@ const Toggle = ({
             disabled={disabled}
             name={name}
             id={id}
-            onChange={toggleChecked}
             css={theme => [
               misc.hide,
 
@@ -192,7 +184,6 @@ Toggle.propTypes = {
   disabled: PropTypes.bool,
   name: PropTypes.string.isRequired,
   noContrast: PropTypes.bool,
-  onChange: PropTypes.func,
   label: PropTypes.string,
   value: PropTypes.string,
 };

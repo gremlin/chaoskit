@@ -8,8 +8,8 @@ import { form } from '../assets/styles/utility';
 import { generateUUID } from '../helpers/utility';
 import caretDown from '../assets/icons/caret-down.svg';
 
-const StylesSelectVariables = (theme, props = {}) => ({
-  iconSize: 12,
+export const StylesSelectVariables = (theme, props = {}) => ({
+  iconSize: theme.fontSize.xsmall,
   get arrow() {
     return {
       content: "''",
@@ -28,6 +28,9 @@ const StylesSelectVariables = (theme, props = {}) => ({
       zIndex: '2',
     };
   },
+  get arrowOffset() {
+    return this.iconSize + form.variables(theme).padding + theme.space.small;
+  },
 });
 
 const Select = ({
@@ -40,22 +43,11 @@ const Select = ({
   name,
   noContrast,
   options,
-  onChange,
   required,
   validationMessage,
   ...opts
 }) => {
   const id = `${name}-${generateUUID()}`;
-
-  const handleOnChange = ({
-    target: { name: fieldName, value: fieldValue },
-  }) => {
-    const selectedValue = parseInt(fieldValue, 10)
-      ? parseInt(fieldValue, 10)
-      : fieldValue;
-
-    onChange(fieldName, selectedValue);
-  };
 
   const renderOpts = option => {
     // If the option has options as well we're in an `<optgroup>`
@@ -110,7 +102,6 @@ const Select = ({
         <select
           id={id}
           name={name}
-          onChange={handleOnChange}
           multiple={multiple}
           disabled={disabled}
           size={size}
@@ -136,9 +127,9 @@ const Select = ({
             !multiple &&
               !size && [
                 {
-                  padding: `0 ${StylesSelectVariables(theme).iconSize +
-                    form.variables(theme).padding +
-                    theme.space.small}px 0 ${form.variables(theme).padding}px`,
+                  padding: `0 ${StylesSelectVariables(theme).arrowOffset}px 0 ${
+                    form.variables(theme).padding
+                  }px`,
 
                   // Remove select arrows from IE
                   '&::-ms-expand': {
@@ -186,7 +177,6 @@ Select.propTypes = {
   name: PropTypes.string.isRequired,
   noContrast: PropTypes.bool,
   options: PropTypes.array.isRequired,
-  onChange: PropTypes.func,
   required: PropTypes.bool,
   validationMessage: PropTypes.string,
 };

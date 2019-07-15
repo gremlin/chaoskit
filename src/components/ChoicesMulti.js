@@ -1,12 +1,19 @@
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import Downshift from 'downshift';
 import matchSorter from 'match-sorter';
+import { rgba } from 'polished';
 
+import Badge from './Badge';
 import FormFooter from './FormFooter';
+import FormGroup from './FormGroup';
 import FormLabel from './FormLabel';
-import { config } from '../helpers/config';
+import Icon from './Icon';
+import Input from './Input';
+import Inline from './Inline';
+import { form } from '../assets/styles/utility';
+import { generateUUID } from '../helpers/utility';
 
 const ChoicesMulti = ({
   className,
@@ -23,6 +30,8 @@ const ChoicesMulti = ({
   selected,
 }) => {
   const [value, setValue] = useState('');
+
+  const id = `${name}-${generateUUID()}`;
 
   const itemToString = item => (item ? item.label : '');
 
@@ -63,10 +72,6 @@ const ChoicesMulti = ({
         keys: ['label'],
       })
     : options;
-  const formGroupClasses = cx('form-group', className, {
-    [config.classes.notValid]: validationMessage,
-    [config.classes.required]: required,
-  });
   const selectedOptions = [];
   // Based on current selection to remove from dropdown
   const filteredOptions = optionsList.filter(
@@ -91,9 +96,6 @@ const ChoicesMulti = ({
       stateReducer={stateReducer}
     >
       {downshift => {
-        const choicesClasses = cx('choices', {
-          'is-focused is-open': downshift.isOpen,
-        });
         // Only re-open menu if we didn't click on `x` within a multi-select item
         const handleContainerClick = e => {
           if (!e.target.classList.contains('choices__button')) {
@@ -102,7 +104,7 @@ const ChoicesMulti = ({
         };
 
         return (
-          <div className={formGroupClasses}>
+          <FormGroup {...downshift.getRootProps()}>
             <FormLabel
               required={required}
               error={!!validationMessage}
@@ -110,35 +112,113 @@ const ChoicesMulti = ({
             >
               {label}
             </FormLabel>
-            <div className="form-choicesSelect" disabled={disabled}>
-              <div className={choicesClasses} data-type="select-multiple">
+            <div
+              css={theme => [
+                {
+                  // 1. Reset default text direction if inside of centered container
+                  color: theme.fontColor.base,
+                  fontSize: theme.fontSize.base,
+                  textAlign: 'left', // 1
+                },
+
+                disabled && {
+                  opacity: theme.opacity.base,
+                  cursor: 'not-allowed',
+                  pointerEvents: 'none',
+                },
+              ]}
+              className={cx('CK__ChoicesMulti', className)}
+            >
+              <div
+                css={{
+                  position: 'relative',
+                }}
+                data-type="select-multiple"
+              >
                 {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events */}
-                <div className="choices__inner" onClick={handleContainerClick}>
+                <div
+                  css={theme => [
+                    form.input(theme, { error: !!validationMessage }),
+                    // 1. Override height properties from normal input since this list will grow
+                    {
+                      display: 'flex',
+                      flexDirection: 'column',
+                      overflow: 'hidden',
+                      boxShadow: form.variables(theme).boxShadow,
+                      transition: 'none',
+                      minHeight: form.variables(theme).height,
+                      height: 'auto',
+                    },
+
+                    downshift.isOpen && {
+                      borderColor: theme.color.primary.base,
+                      boxShadow: `${theme.boxShadowOffset.base} ${rgba(
+                        theme.color.primary.base,
+                        0.75
+                      )}`,
+                      borderBottomLeftRadius: 0,
+                      borderBottomRightRadius: 0,
+                      borderBottomColor: theme.color.border.base,
+                    },
+                  ]}
+                  className="choices__inner"
+                  onClick={handleContainerClick}
+                >
                   {downshift.selectedItem.length > 0 && (
-                    <div className="choices__list choices__list--multiple">
-                      {downshift.selectedItem.map((item, i) => (
-                        <div
-                          className="choices__item choices__item--selectable"
-                          // eslint-disable-next-line
-                          key={i}
-                        >
-                          {item.label}
-                          {removeItem && (
-                            <button
-                              type="button"
-                              className="choices__button"
-                              onClick={() => removeItem(item)}
-                            >
-                              Remove item
-                            </button>
-                          )}
-                        </div>
-                      ))}
-                    </div>
+                    <Inline
+                      size="small"
+                      css={theme => ({
+                        order: 1,
+                        paddingBottom: form.variables(theme).padding,
+                      })}
+                    >
+                      {downshift.selectedItem.map((item, i) => {
+                        const key = `${item.label}-${i}`;
+
+                        return (
+                          <Badge
+                            key={key}
+                            title="Remove item"
+                            type="primary"
+                            onClick={() => removeItem(item)}
+                            rounded
+                            css={theme => ({
+                              cursor: 'pointer',
+                              height: theme.height.xxxsmall,
+                              fontSize: theme.fontSize.xxsmall,
+                            })}
+                            label={
+                              <Fragment>
+                                {item.label}
+                                <Icon
+                                  icon="close"
+                                  size="small"
+                                  css={theme => ({
+                                    top: 0,
+                                    marginLeft: theme.space.xsmall,
+                                  })}
+                                />
+                              </Fragment>
+                            }
+                          />
+                        );
+                      })}
+                    </Inline>
                   )}
-                  <input
+                  <Input
+                    css={{
+                      border: 0,
+                      borderRadius: 0,
+                      width: '100% !important',
+                      boxShadow: 'none',
+                      padding: 0,
+
+                      '&:focus': {
+                        boxShadow: 'none',
+                      },
+                    }}
                     className="choices__input"
-                    type="text"
+                    name={id}
                     {...downshift.getInputProps({
                       placeholder,
                       onChange: handleInputChange,
@@ -147,7 +227,23 @@ const ChoicesMulti = ({
                   />
                 </div>
                 {downshift.isOpen && (
-                  <div className="choices__list choices__list--dropdown is-active">
+                  <div
+                    css={theme => [
+                      {
+                        position: 'absolute',
+                        top: '100%',
+                        left: 0,
+                        width: '100%',
+                        zIndex: '10',
+                        background: form.variables(theme).background,
+                        borderBottomRightRadius: theme.borderRadius.base,
+                        borderBottomLeftRadius: theme.borderRadius.base,
+                        border: `1px solid ${theme.color.primary.base}`,
+                        borderTop: 0,
+                      },
+                    ]}
+                    className="choices__list choices__list--dropdown is-active"
+                  >
                     <div
                       className="choices__list"
                       {...downshift.getMenuProps()}
@@ -165,6 +261,16 @@ const ChoicesMulti = ({
 
                           return (
                             <div
+                              css={theme => [
+                                {
+                                  padding: `${theme.space.xsmall}px ${theme.space.small}px`,
+                                  cursor: 'default',
+                                },
+                                downshift.highlightedIndex === index && {
+                                  background: theme.color.primary.base,
+                                  color: theme.contrast.base,
+                                },
+                              ]}
                               className={itemClasses}
                               {...downshift.getItemProps({ item })}
                               key={item.value}
@@ -174,8 +280,14 @@ const ChoicesMulti = ({
                           );
                         })
                       ) : (
-                        <div className="choices__item choices__item--choice has-no-choices">
-                          No choices to choose from
+                        <div
+                          css={theme => ({
+                            padding: `${theme.space.xsmall}px ${theme.space.small}px`,
+                            color: theme.fontColor.muted,
+                          })}
+                          className="choices__item choices__item--choice has-no-results"
+                        >
+                          No results found
                         </div>
                       )}
                     </div>
@@ -187,7 +299,7 @@ const ChoicesMulti = ({
               explanationMessage={explanationMessage}
               validationMessage={validationMessage}
             />
-          </div>
+          </FormGroup>
         );
       }}
     </Downshift>
@@ -204,7 +316,7 @@ ChoicesMulti.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   required: PropTypes.bool,
-  removeItem: PropTypes.func,
+  removeItem: PropTypes.func.isRequired,
   validationMessage: PropTypes.string,
   selected: PropTypes.array,
 };

@@ -284,7 +284,8 @@ const height = {
   base: 48,
   small: 40,
   xsmall: 32,
-  micro: 28,
+  xxsmall: 28,
+  xxxsmall: 24,
 };
 
 const lineHeight = {

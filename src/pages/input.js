@@ -37,7 +37,7 @@ const onlyNumbers = rawValue => {
 
 const InputExample = `
 () => {
-  const handleChange = (name, value) => {
+  const handleChange = ({ target: { name, value } }) => {
     console.log({name}, {value});
   };
 

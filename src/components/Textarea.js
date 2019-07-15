@@ -14,17 +14,12 @@ const Textarea = ({
   label,
   name,
   noContrast,
-  onChange,
   validationMessage,
   explanationMessage,
   required,
   ...opts
 }) => {
   const id = `${name}-${generateUUID()}`;
-
-  const handleChange = ({ target: { name: fieldName, value: fieldValue } }) => {
-    onChange(fieldName, fieldValue);
-  };
 
   return (
     <FormGroup>
@@ -59,7 +54,6 @@ const Textarea = ({
         className={cx('CK__Textarea', className)}
         id={id}
         name={name}
-        onChange={handleChange}
         {...opts}
       />
       <FormFooter
@@ -74,7 +68,6 @@ Textarea.propTypes = {
   className: PropTypes.string,
   explanationMessage: PropTypes.string,
   validationMessage: PropTypes.string,
-  onChange: PropTypes.func,
   required: PropTypes.bool,
   label: PropTypes.string,
   name: PropTypes.string.isRequired,
