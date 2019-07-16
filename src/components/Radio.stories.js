@@ -22,6 +22,7 @@ const params = {
     validationMessage: () => text('(Group) validation message', ''),
     selectedValue: () =>
       select('Selected value', ['field1', 'field2'], 'field1'),
+    noContrast: () => boolean('No contrast', false),
   },
 };
 
@@ -71,6 +72,7 @@ storiesOf('Forms|Radio', module)
             action('onChange')({ name }, { value })
           }
           selectedValue={params.group.selectedValue()}
+          noContrast={params.group.noContrast()}
         >
           <Radio
             disabled={params.firstRadio.disabled()}
