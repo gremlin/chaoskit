@@ -22,6 +22,7 @@ const params = {
     explanationMessage: () =>
       text('(Group) explanationMessage', 'Explanation message'),
     validationMessage: () => text('(Group) validationMessage', ''),
+    required: () => boolean('Required', false),
     noContrast: () => boolean('No contrast', false),
   },
 };
@@ -35,6 +36,7 @@ storiesOf('Forms|Checkbox', module)
         explanationMessage={params.group.explanationMessage()}
         validationMessage={params.group.validationMessage()}
         inline={params.group.inline()}
+        required={params.group.required()}
       >
         <Checkbox
           disabled={params.firstCheckbox.disabled()}
@@ -72,6 +74,7 @@ storiesOf('Forms|Checkbox', module)
           explanationMessage={params.group.explanationMessage()}
           validationMessage={params.group.validationMessage()}
           inline={params.group.inline()}
+          required={params.group.required()}
           noContrast={params.group.noContrast()}
         >
           <Checkbox

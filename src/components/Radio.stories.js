@@ -22,6 +22,7 @@ const params = {
     validationMessage: () => text('(Group) validation message', ''),
     selectedValue: () =>
       select('Selected value', ['field1', 'field2'], 'field1'),
+    required: () => boolean('Required', false),
     noContrast: () => boolean('No contrast', false),
   },
 };
@@ -36,7 +37,7 @@ storiesOf('Forms|Radio', module)
         validationMessage={params.group.validationMessage()}
         inline={params.group.inline()}
         name="field-name"
-        sel
+        required={params.group.required()}
         onChange={({ target: { name, value } }) =>
           action('onChange')({ name }, { value })
         }
@@ -72,6 +73,7 @@ storiesOf('Forms|Radio', module)
             action('onChange')({ name }, { value })
           }
           selectedValue={params.group.selectedValue()}
+          required={params.group.required()}
           noContrast={params.group.noContrast()}
         >
           <Radio
