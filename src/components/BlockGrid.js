@@ -4,20 +4,7 @@ import { withTheme } from 'emotion-theming';
 
 import { misc } from '../assets/styles/utility';
 
-const columnOptions = [
-  '1',
-  '2',
-  '3',
-  '4',
-  '5',
-  '6',
-  '7',
-  '8',
-  '9',
-  '10',
-  '11',
-  '12',
-];
+const columnOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 const gutterOptions = [
   'collapse',
   'small',
