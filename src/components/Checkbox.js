@@ -1,6 +1,8 @@
 import cx from 'classnames';
 import PropTypes from 'prop-types';
+import { useContext } from 'react';
 
+import { CheckboxGroupContext } from './CheckboxGroup';
 import checkbox from '../assets/icons/check.svg';
 import { misc, form } from '../assets/styles/utility';
 import { generateUUID } from '../helpers/utility';
@@ -10,15 +12,9 @@ export const StylesCheckboxVariables = {
   iconSize: 12,
 };
 
-const Checkbox = ({
-  className,
-  disabled,
-  label,
-  name,
-  noContrast,
-  value,
-  ...opts
-}) => {
+const Checkbox = ({ className, disabled, label, name, value, ...opts }) => {
+  const { noContrast } = useContext(CheckboxGroupContext);
+
   const id = `${name}-${generateUUID()}`;
 
   return (

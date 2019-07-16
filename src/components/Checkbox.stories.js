@@ -9,12 +9,12 @@ const params = {
   firstCheckbox: {
     label: () => text('(First Checkbox) label', 'Label 1'),
     disabled: () => boolean('(First Checkbox) disabled', false),
-    isChecked: () => boolean('(First Checkbox) checked', false),
+    checked: () => boolean('(First Checkbox) checked', false),
   },
   secondCheckbox: {
     label: () => text('(Second Checkbox) label', 'Label 2'),
     disabled: () => boolean('(Second Checkbox) disabled', false),
-    isChecked: () => boolean('(Second Checkbox) checked', false),
+    checked: () => boolean('(Second Checkbox) checked', false),
   },
   group: {
     inline: () => boolean('(Group) inline', false),
@@ -22,6 +22,7 @@ const params = {
     explanationMessage: () =>
       text('(Group) explanationMessage', 'Explanation message'),
     validationMessage: () => text('(Group) validationMessage', ''),
+    noContrast: () => boolean('No contrast', false),
   },
 };
 
@@ -37,7 +38,7 @@ storiesOf('Forms|Checkbox', module)
       >
         <Checkbox
           disabled={params.firstCheckbox.disabled()}
-          isChecked={params.firstCheckbox.isChecked()}
+          checked={params.firstCheckbox.checked()}
           name="field-name1"
           label={params.firstCheckbox.label()}
           value="field-value1"
@@ -47,7 +48,7 @@ storiesOf('Forms|Checkbox', module)
         />
         <Checkbox
           disabled={params.secondCheckbox.disabled()}
-          isChecked={params.secondCheckbox.isChecked()}
+          checked={params.secondCheckbox.checked()}
           name="field-name2"
           label={params.secondCheckbox.label()}
           value="field-value2"
@@ -71,10 +72,11 @@ storiesOf('Forms|Checkbox', module)
           explanationMessage={params.group.explanationMessage()}
           validationMessage={params.group.validationMessage()}
           inline={params.group.inline()}
+          noContrast={params.group.noContrast()}
         >
           <Checkbox
             disabled={params.firstCheckbox.disabled()}
-            isChecked={params.firstCheckbox.isChecked()}
+            checked={params.firstCheckbox.checked()}
             name="field-name1"
             label={params.firstCheckbox.label()}
             value="field-value1"
@@ -84,7 +86,7 @@ storiesOf('Forms|Checkbox', module)
           />
           <Checkbox
             disabled={params.secondCheckbox.disabled()}
-            isChecked={params.secondCheckbox.isChecked()}
+            checked={params.secondCheckbox.checked()}
             name="field-name2"
             label={params.secondCheckbox.label()}
             value="field-value2"

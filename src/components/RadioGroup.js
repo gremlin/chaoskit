@@ -18,6 +18,7 @@ const RadioGroup = ({
   inline,
   label,
   name,
+  noContrast,
   onChange,
   selectedValue,
   validationMessage,
@@ -32,7 +33,7 @@ const RadioGroup = ({
 
       return (
         <RadioGroupProvider
-          value={{ selectedValue, name, onChange: onChangeFunc }}
+          value={{ selectedValue, name, onChange: onChangeFunc, noContrast }}
         >
           {inline ? child : <ListItem>{child}</ListItem>}
         </RadioGroupProvider>
@@ -73,6 +74,7 @@ RadioGroup.propTypes = {
   inline: PropTypes.bool,
   label: PropTypes.string,
   name: PropTypes.string.isRequired,
+  noContrast: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
   selectedValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   validationMessage: PropTypes.string,

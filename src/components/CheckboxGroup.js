@@ -1,4 +1,4 @@
-import { Children } from 'react';
+import { Children, createContext } from 'react';
 import PropTypes from 'prop-types';
 
 import FormGroup from './FormGroup';
@@ -8,23 +8,27 @@ import Inline from './Inline';
 import List from './List';
 import ListItem from './ListItem';
 
+export const CheckboxGroupContext = createContext();
+export const CheckboxGroupProvider = CheckboxGroupContext.Provider;
+
 const CheckboxGroup = ({
   children,
   className,
   explanationMessage,
   inline,
   label,
+  noContrast,
   required,
   validationMessage,
   ...opts
 }) => {
   const renderChildren = () =>
     Children.map(children, child => {
-      if (inline) {
-        return child;
-      }
-
-      return <ListItem>{child}</ListItem>;
+      return (
+        <CheckboxGroupProvider value={{ noContrast }}>
+          {inline ? child : <ListItem>{child}</ListItem>}
+        </CheckboxGroupProvider>
+      );
     });
 
   const renderItems = () => {
@@ -60,6 +64,7 @@ CheckboxGroup.propTypes = {
   explanationMessage: PropTypes.string,
   inline: PropTypes.bool,
   label: PropTypes.string,
+  noContrast: PropTypes.bool,
   required: PropTypes.bool,
   validationMessage: PropTypes.string,
 };
