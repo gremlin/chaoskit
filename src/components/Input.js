@@ -107,6 +107,7 @@ const Input = forwardRef(
                     type,
                     prefixIcon,
                     validationMessage,
+                    noContrast,
                   })
                 }
                 className={cx('CK__Input', className)}
@@ -125,6 +126,7 @@ const Input = forwardRef(
               type,
               prefixIcon,
               validationMessage,
+              noContrast,
             })
           }
           className={cx('CK__Input', className)}
