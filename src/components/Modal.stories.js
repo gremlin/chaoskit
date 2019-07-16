@@ -41,4 +41,7 @@ storiesOf('Components|Modal', module)
       propTables: [Modal, ModalHeader, ModalBody, ModalFooter],
     },
   })
-  .add('Overview', () => <ModalExample />);
+  .add('Overview', () => <ModalExample />, {
+    notes:
+      'When resetting UI on-close (like form-values), use the `onReverseComplete` prop; which waits until the animation is complete to fire',
+  });

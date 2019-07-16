@@ -11,19 +11,18 @@ const params = {
   trigger: () => text('Trigger', 'Trigger'),
 };
 
-storiesOf('Components|Tooltip', module)
-  .addParameters({
-    info: {
-      text: `
-        1. The Tooltip component can be wrapped around any fellow component or
-        standard HTML; just make sure it&apos;s only one child!
-        1. Tooltip content can contain normal strings or other components. Go
-        crazy!
-      `,
-    },
-  })
-  .add('Overview', () => (
+storiesOf('Components|Tooltip', module).add(
+  'Overview',
+  () => (
     <Tooltip content={params.content()} placement={params.placement()}>
       <div css={{ display: 'inline-block' }}>{params.trigger()}</div>
     </Tooltip>
-  ));
+  ),
+  {
+    notes: `The Tooltip component can be wrapped around any fellow component or
+          standard HTML; just make sure it&apos;s only one child!
+
+          > Tooltip content can contain normal strings or other components. Go
+          crazy!`,
+  }
+);

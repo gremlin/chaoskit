@@ -24,16 +24,28 @@ storiesOf('Forms|Textarea', module)
       required={params.required()}
     />
   ))
-  .add('Contrast', () => (
-    <Contrast>
-      <Textarea
-        disabled={params.disabled()}
-        name="test"
-        label={params.label()}
-        explanationMessage={params.explanationMessage()}
-        validationMessage={params.validationMessage()}
-        required={params.required()}
-        noContrast={params.noContrast()}
-      />
-    </Contrast>
-  ));
+  .add(
+    'Contrast',
+    () => (
+      <Contrast>
+        <Textarea
+          disabled={params.disabled()}
+          name="test"
+          label={params.label()}
+          explanationMessage={params.explanationMessage()}
+          validationMessage={params.validationMessage()}
+          required={params.required()}
+          noContrast={params.noContrast()}
+        />
+      </Contrast>
+    ),
+    {
+      notes: `
+        Automatically adapts to parent containers
+        containing \`.u-contrast\`.
+
+        If you'd like to override the contrast styles,
+        you can apply the \`noContrast\` prop.
+      `,
+    }
+  );

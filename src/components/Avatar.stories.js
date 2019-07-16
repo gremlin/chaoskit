@@ -9,6 +9,13 @@ const params = {
   name: () => text('name', 'Zach Schnackel'),
 };
 
-storiesOf('Components|Avatar', module).add('Overview', () => (
-  <Avatar image={params.image()} size={params.size()} name={params.name()} />
-));
+storiesOf('Components|Avatar', module).add(
+  'Overview',
+  () => (
+    <Avatar image={params.image()} size={params.size()} name={params.name()} />
+  ),
+  {
+    notes:
+      'Without the `image` prop, Avatars will first attempt to create a monogram version based on the `name` prop; ultimately falling back to a generic user icon.',
+  }
+);

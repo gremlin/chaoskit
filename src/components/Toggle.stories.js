@@ -27,8 +27,20 @@ const ToggleExample = () => {
 
 storiesOf('Forms|Toggle', module)
   .add('Overview', () => <ToggleExample />)
-  .add('Contrast', () => (
-    <Contrast>
-      <ToggleExample />
-    </Contrast>
-  ));
+  .add(
+    'Contrast',
+    () => (
+      <Contrast>
+        <ToggleExample />
+      </Contrast>
+    ),
+    {
+      notes: `
+        Automatically adapts to parent containers
+        containing \`.u-contrast\`.
+
+        If you'd like to override the contrast styles,
+        you can apply the \`noContrast\` prop.
+      `,
+    }
+  );

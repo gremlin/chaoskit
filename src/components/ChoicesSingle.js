@@ -134,7 +134,6 @@ const ChoicesSingle = ({
                       borderBottomColor: theme.color.border.base,
                     },
                   ]}
-                  className="choices__inner"
                   onClick={downshift.openMenu}
                 >
                   <div
@@ -144,7 +143,6 @@ const ChoicesSingle = ({
                         lineHeight: `${form.variables(theme).height - 2}px`,
                       },
                     ]}
-                    className="choices__list choices__list--single"
                   >
                     {downshift.selectedItem && downshift.selectedItem !== -1 ? (
                       <div
@@ -158,7 +156,6 @@ const ChoicesSingle = ({
                             form.variables(theme).padding +
                             theme.height.small,
                         })}
-                        className="choices__item choices__item--selectable"
                       >
                         {downshift.selectedItem.label}
                         {removeItem && (
@@ -190,7 +187,6 @@ const ChoicesSingle = ({
                             StylesSelectVariables(theme).arrowOffset -
                             form.variables(theme).padding,
                         })}
-                        className="choices__item choices__item--selectable choices__placeholder"
                       >
                         {placeholder}
                       </div>
@@ -213,7 +209,6 @@ const ChoicesSingle = ({
                         borderTop: 0,
                       },
                     ]}
-                    className="choices__list choices__list--dropdown is-active"
                   >
                     <Input
                       prefixIcon="search"
@@ -236,50 +231,33 @@ const ChoicesSingle = ({
                         onKeyDown: handleKeyDown,
                       })}
                     />
-                    <div
-                      className="choices__list"
-                      {...downshift.getMenuProps()}
-                    >
+                    <div {...downshift.getMenuProps()}>
                       {optionsList.length > 0 ? (
-                        optionsList.map((item, index) => {
-                          // eslint-disable-next-line
-                          const itemClasses = cx(
-                            'choices__item choices__item--choice',
-                            {
-                              'is-highlighted':
-                                downshift.highlightedIndex === index ||
-                                downshift.selectedItem === item,
-                            }
-                          );
-
-                          return (
-                            <div
-                              css={theme => [
-                                {
-                                  padding: `${theme.space.xsmall}px ${theme.space.small}px`,
-                                  cursor: 'default',
-                                },
-                                (downshift.highlightedIndex === index ||
-                                  downshift.selectedItem === item) && {
-                                  background: theme.color.primary.base,
-                                  color: theme.contrast.base,
-                                },
-                              ]}
-                              className={itemClasses}
-                              {...downshift.getItemProps({ item })}
-                              key={item.value}
-                            >
-                              {item.label}
-                            </div>
-                          );
-                        })
+                        optionsList.map((item, index) => (
+                          <div
+                            css={theme => [
+                              {
+                                padding: `${theme.space.xsmall}px ${theme.space.small}px`,
+                                cursor: 'default',
+                              },
+                              (downshift.highlightedIndex === index ||
+                                downshift.selectedItem === item) && {
+                                background: theme.color.primary.base,
+                                color: theme.contrast.base,
+                              },
+                            ]}
+                            {...downshift.getItemProps({ item })}
+                            key={item.value}
+                          >
+                            {item.label}
+                          </div>
+                        ))
                       ) : (
                         <div
                           css={theme => ({
                             padding: `${theme.space.xsmall}px ${theme.space.small}px`,
                             color: theme.fontColor.muted,
                           })}
-                          className="choices__item choices__item--choice has-no-results"
                         >
                           No results found
                         </div>

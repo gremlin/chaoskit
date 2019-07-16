@@ -10,7 +10,18 @@ module.exports = ({ config }) => {
 
   /* config.module.rules.push({
     test: /\.stories\.jsx?$/,
-    loaders: [require.resolve('@storybook/addon-storysource/loader')],
+    loaders: [
+      {
+        loader: require.resolve('@storybook/addon-storysource/loader'),
+        options: {
+          prettierConfig: {
+            printWidth: 80,
+            singleQuote: true,
+            trailingComma: 'es5',
+          },
+        },
+      },
+    ],
     enforce: 'pre',
   }); */
 

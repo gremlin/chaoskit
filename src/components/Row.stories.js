@@ -5,31 +5,43 @@ import { flex } from '../assets/styles/utility';
 import ExampleFill from '../../.storybook/components/ExampleFill';
 
 storiesOf('Components|Row', module)
-  .add('Overview', () => (
-    <Row>
-      <RowColumn size={{ base: 3 }}>
-        <ExampleFill />
-      </RowColumn>
-      <RowColumn size={{ base: 4 }}>
-        <ExampleFill />
-      </RowColumn>
-      <RowColumn size={{ base: 5 }}>
-        <ExampleFill />
-      </RowColumn>
-      <RowColumn size={{ base: 6 }}>
-        <ExampleFill />
-      </RowColumn>
-      <RowColumn size={{ base: 6 }}>
-        <ExampleFill />
-      </RowColumn>
-      <RowColumn size={{ base: 8 }}>
-        <ExampleFill />
-      </RowColumn>
-      <RowColumn size={{ base: 4 }}>
-        <ExampleFill />
-      </RowColumn>
-    </Row>
-  ))
+  .add(
+    'Overview',
+    () => (
+      <Row>
+        <RowColumn size={{ base: 3 }}>
+          <ExampleFill />
+        </RowColumn>
+        <RowColumn size={{ base: 4 }}>
+          <ExampleFill />
+        </RowColumn>
+        <RowColumn size={{ base: 5 }}>
+          <ExampleFill />
+        </RowColumn>
+        <RowColumn size={{ base: 6 }}>
+          <ExampleFill />
+        </RowColumn>
+        <RowColumn size={{ base: 6 }}>
+          <ExampleFill />
+        </RowColumn>
+        <RowColumn size={{ base: 8 }}>
+          <ExampleFill />
+        </RowColumn>
+        <RowColumn size={{ base: 4 }}>
+          <ExampleFill />
+        </RowColumn>
+      </Row>
+    ),
+    {
+      notes: `We use a 12-column grid with a default grid-gutter of \`16px\`.
+      Columns that add-up to more than 12 automatically get some space
+      in-between. So you can use grids for dayz 'yo.
+
+      > There should be no whitespace modifiers attached to the \`<Row />\` component
+        or its direct child - \`<RowColumn />\`. You can attach them on adjacent DOM or by
+        wrapping the component.`,
+    }
+  )
   .add('Gutter Spacing', () => (
     <Row gutter={{ base: 'collapse', medium: 'small', large: 'xlarge' }}>
       <RowColumn size={{ base: 6 }}>

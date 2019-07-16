@@ -20,29 +20,31 @@ const params = {
 };
 
 storiesOf('Components|Dropdown', module)
-  .addParameters({
-    info: {
-      text:
-        'Common use-cases for the Dropdown component include navigation sub-items and quick-actions. On small devices, dropdowns may not be a good option to avoid unecessary scrolling where on-page options may serve your users better.',
-    },
-  })
-  .add('Overview', () => (
-    <Dropdown
-      showArrow={params.showArrow()}
-      position={params.position()}
-      trigger={{
-        label: params.trigger.label(),
-        props: {
-          disabled: params.trigger.disabled(),
-          type: params.trigger.type(),
-          size: params.trigger.size(),
-          noRadius: params.trigger.noRadius(),
-        },
-      }}
-    >
-      {params.children()}
-    </Dropdown>
-  ))
+  .add(
+    'Overview',
+    () => (
+      <Dropdown
+        showArrow={params.showArrow()}
+        position={params.position()}
+        trigger={{
+          label: params.trigger.label(),
+          props: {
+            disabled: params.trigger.disabled(),
+            type: params.trigger.type(),
+            size: params.trigger.size(),
+            noRadius: params.trigger.noRadius(),
+          },
+        }}
+      >
+        {params.children()}
+      </Dropdown>
+    ),
+    {
+      notes: `Common use-cases for the Dropdown component include navigation sub-items and quick-actions.
+
+        > On small devices, dropdowns may not be a good option to avoid unecessary scrolling where on-page options may serve your users better.`,
+    }
+  )
   .add('Menu', () => (
     <Dropdown
       showArrow={params.showArrow()}

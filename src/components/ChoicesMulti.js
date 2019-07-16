@@ -161,7 +161,6 @@ const ChoicesMulti = ({
                       borderBottomColor: theme.color.border.base,
                     },
                   ]}
-                  className="choices__inner"
                   onClick={handleContainerClick}
                 >
                   {downshift.selectedItem.length > 0 && (
@@ -217,7 +216,6 @@ const ChoicesMulti = ({
                         boxShadow: 'none',
                       },
                     }}
-                    className="choices__input"
                     name={id}
                     {...downshift.getInputProps({
                       placeholder,
@@ -242,50 +240,33 @@ const ChoicesMulti = ({
                         borderTop: 0,
                       },
                     ]}
-                    className="choices__list choices__list--dropdown is-active"
                   >
-                    <div
-                      className="choices__list"
-                      {...downshift.getMenuProps()}
-                    >
+                    <div {...downshift.getMenuProps()}>
                       {filteredOptions.length > 0 ? (
-                        filteredOptions.map((item, index) => {
-                          // eslint-disable-next-line
-                          const itemClasses = cx(
-                            'choices__item choices__item--choice',
-                            {
-                              'is-highlighted':
-                                downshift.highlightedIndex === index,
-                            }
-                          );
-
-                          return (
-                            <div
-                              css={theme => [
-                                {
-                                  padding: `${theme.space.xsmall}px ${theme.space.small}px`,
-                                  cursor: 'default',
-                                },
-                                downshift.highlightedIndex === index && {
-                                  background: theme.color.primary.base,
-                                  color: theme.contrast.base,
-                                },
-                              ]}
-                              className={itemClasses}
-                              {...downshift.getItemProps({ item })}
-                              key={item.value}
-                            >
-                              {item.label}
-                            </div>
-                          );
-                        })
+                        filteredOptions.map((item, index) => (
+                          <div
+                            css={theme => [
+                              {
+                                padding: `${theme.space.xsmall}px ${theme.space.small}px`,
+                                cursor: 'default',
+                              },
+                              downshift.highlightedIndex === index && {
+                                background: theme.color.primary.base,
+                                color: theme.contrast.base,
+                              },
+                            ]}
+                            {...downshift.getItemProps({ item })}
+                            key={item.value}
+                          >
+                            {item.label}
+                          </div>
+                        ))
                       ) : (
                         <div
                           css={theme => ({
                             padding: `${theme.space.xsmall}px ${theme.space.small}px`,
                             color: theme.fontColor.muted,
                           })}
-                          className="choices__item choices__item--choice has-no-results"
                         >
                           No results found
                         </div>

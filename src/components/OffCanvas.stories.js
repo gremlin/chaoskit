@@ -40,4 +40,7 @@ storiesOf('Components|OffCanvas', module)
       propTables: [OffCanvas],
     },
   })
-  .add('Overview', () => <OffCanvasExample />);
+  .add('Overview', () => <OffCanvasExample />, {
+    notes:
+      'When resetting UI on-close (like form-values), use the `onReverseComplete` prop; which waits until the animation is complete to fire',
+  });

@@ -23,25 +23,25 @@ export const params = {
 };
 
 storiesOf('Components|Button', module)
-  .addParameters({
-    info: {
-      text: `
-        > When aligning buttons next to each other, consider using the Inline component for proper horizontal and vertical spacing.
-      `,
-    },
-  })
-  .add('Overview', () => (
-    <Button
-      disabled={params.disabled()}
-      loading={params.loading()}
-      type={params.type()}
-      size={params.size()}
-      noRadius={params.noRadius()}
-      url={params.url()}
-    >
-      {params.label()}
-    </Button>
-  ))
+  .add(
+    'Overview',
+    () => (
+      <Button
+        disabled={params.disabled()}
+        loading={params.loading()}
+        type={params.type()}
+        size={params.size()}
+        noRadius={params.noRadius()}
+        url={params.url()}
+      >
+        {params.label()}
+      </Button>
+    ),
+    {
+      notes:
+        '> When aligning buttons next to each other, consider using the Inline component for proper horizontal and vertical spacing',
+    }
+  )
   .add(
     'Icon only',
     () => (
@@ -57,8 +57,9 @@ storiesOf('Components|Button', module)
       </Button>
     ),
     {
-      notes:
-        'Icon buttons only contain a single icon and can be used to indicate shortcuts. Icons are automatically sized based on the button size modifier provided.',
+      notes: `Icon buttons only contain a single icon and can be used to indicate shortcuts.
+
+        > Icons are automatically sized based on the button size modifier provided.`,
     }
   )
   .add(
@@ -80,10 +81,10 @@ storiesOf('Components|Button', module)
     ),
     {
       notes: `
-        The Button component automatically adapts to parent containers
+        Automatically adapts to parent containers
         containing \`.u-contrast\`.
 
-        If you'd like to override the contrast styles for a given button,
+        If you'd like to override the contrast styles,
         you can apply the \`noContrast\` prop.
       `,
     }
