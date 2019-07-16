@@ -66,6 +66,7 @@ const Input = forwardRef(
   (
     {
       className,
+      disabled,
       label,
       guide,
       mask,
@@ -88,6 +89,7 @@ const Input = forwardRef(
         name,
         type,
         ref,
+        disabled,
         ...opts,
       };
 
@@ -104,6 +106,7 @@ const Input = forwardRef(
                   StylesInputBase(theme, {
                     type,
                     prefixIcon,
+                    validationMessage,
                   })
                 }
                 className={cx('CK__Input', className)}
@@ -121,6 +124,7 @@ const Input = forwardRef(
             StylesInputBase(theme, {
               type,
               prefixIcon,
+              validationMessage,
             })
           }
           className={cx('CK__Input', className)}
@@ -145,6 +149,7 @@ const Input = forwardRef(
                   transform: 'translateY(-50%)',
                   left: form.variables(theme).padding,
                   zIndex: 2,
+                  opacity: disabled && theme.opacity.base,
                 },
 
                 theme.settings.contrast.enable &&
@@ -174,6 +179,7 @@ const Input = forwardRef(
 
 Input.propTypes = {
   className: PropTypes.string,
+  disabled: PropTypes.bool,
   explanationMessage: PropTypes.string,
   validationMessage: PropTypes.string,
   guide: PropTypes.bool,

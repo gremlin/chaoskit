@@ -6,4 +6,3 @@
 - ALL INPUTS PASS NORMAL EVENTS OBJECT FOR ONCHANGE!!!
 - modal header -- center to centered, onCloseClick is required, remove optional header styles
 - social icon -- changed base size/height
-- choices

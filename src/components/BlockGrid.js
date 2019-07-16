@@ -4,6 +4,16 @@ import { withTheme } from 'emotion-theming';
 
 import { misc } from '../assets/styles/utility';
 
+const columnOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+const gutterOptions = [
+  'collapse',
+  'small',
+  'base',
+  'medium',
+  'large',
+  'xlarge',
+];
+
 const BlockGrid = ({ className, gutter, size, theme, ...opts }) => {
   const percentWidth = columnSize => {
     const calc = 100 / columnSize;
@@ -137,53 +147,18 @@ const BlockGrid = ({ className, gutter, size, theme, ...opts }) => {
 BlockGrid.propTypes = {
   className: PropTypes.string,
   gutter: PropTypes.shape({
-    base: PropTypes.oneOf([
-      'collapse',
-      'small',
-      'base',
-      'medium',
-      'large',
-      'xlarge',
-    ]),
-    small: PropTypes.oneOf([
-      'collapse',
-      'small',
-      'base',
-      'medium',
-      'large',
-      'xlarge',
-    ]),
-    medium: PropTypes.oneOf([
-      'collapse',
-      'small',
-      'base',
-      'medium',
-      'large',
-      'xlarge',
-    ]),
-    large: PropTypes.oneOf([
-      'collapse',
-      'small',
-      'base',
-      'medium',
-      'large',
-      'xlarge',
-    ]),
-    xlarge: PropTypes.oneOf([
-      'collapse',
-      'small',
-      'base',
-      'medium',
-      'large',
-      'xlarge',
-    ]),
+    base: PropTypes.oneOf(gutterOptions),
+    small: PropTypes.oneOf(gutterOptions),
+    medium: PropTypes.oneOf(gutterOptions),
+    large: PropTypes.oneOf(gutterOptions),
+    xlarge: PropTypes.oneOf(gutterOptions),
   }),
   size: PropTypes.shape({
-    base: PropTypes.number,
-    small: PropTypes.number,
-    medium: PropTypes.number,
-    large: PropTypes.number,
-    xlarge: PropTypes.number,
+    base: PropTypes.oneOf(columnOptions),
+    small: PropTypes.oneOf(columnOptions),
+    medium: PropTypes.oneOf(columnOptions),
+    large: PropTypes.oneOf(columnOptions),
+    xlarge: PropTypes.oneOf(columnOptions),
   }),
   theme: PropTypes.object.isRequired,
 };

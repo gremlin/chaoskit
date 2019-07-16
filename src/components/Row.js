@@ -4,6 +4,15 @@ import { withTheme } from 'emotion-theming';
 
 import { misc } from '../assets/styles/utility';
 
+const gutterOptions = [
+  'collapse',
+  'small',
+  'base',
+  'medium',
+  'large',
+  'xlarge',
+];
+
 const Row = ({ className, gutter, theme, ...opts }) => {
   const gutterCalc = size => [
     gutter[size] && {
@@ -66,46 +75,11 @@ const Row = ({ className, gutter, theme, ...opts }) => {
 Row.propTypes = {
   className: PropTypes.string,
   gutter: PropTypes.shape({
-    base: PropTypes.oneOf([
-      'collapse',
-      'small',
-      'base',
-      'medium',
-      'large',
-      'xlarge',
-    ]),
-    small: PropTypes.oneOf([
-      'collapse',
-      'small',
-      'base',
-      'medium',
-      'large',
-      'xlarge',
-    ]),
-    medium: PropTypes.oneOf([
-      'collapse',
-      'small',
-      'base',
-      'medium',
-      'large',
-      'xlarge',
-    ]),
-    large: PropTypes.oneOf([
-      'collapse',
-      'small',
-      'base',
-      'medium',
-      'large',
-      'xlarge',
-    ]),
-    xlarge: PropTypes.oneOf([
-      'collapse',
-      'small',
-      'base',
-      'medium',
-      'large',
-      'xlarge',
-    ]),
+    base: PropTypes.oneOf(gutterOptions),
+    small: PropTypes.oneOf(gutterOptions),
+    medium: PropTypes.oneOf(gutterOptions),
+    large: PropTypes.oneOf(gutterOptions),
+    xlarge: PropTypes.oneOf(gutterOptions),
   }),
   theme: PropTypes.object.isRequired,
 };
