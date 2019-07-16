@@ -452,7 +452,7 @@ Button.propTypes = {
   loading: PropTypes.bool,
   noContrast: PropTypes.bool,
   noRadius: PropTypes.bool,
-  size: PropTypes.oneOf(['default', 'xsmall', 'small']),
+  size: PropTypes.oneOf(['base', 'xsmall', 'small']),
   /** reset is used for elements that have no direct path attached to them; to ensure we keep our markup semantic and accessible. */
   type: PropTypes.oneOf([
     'reset',

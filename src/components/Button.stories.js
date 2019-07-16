@@ -19,7 +19,7 @@ export const params = {
       'default'
     ),
   url: () => text('URL', ''),
-  size: () => select('Size', ['default', 'xsmall', 'small'], 'default'),
+  size: () => select('Size', ['base', 'xsmall', 'small'], 'base'),
 };
 
 storiesOf('Components|Button', module)

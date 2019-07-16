@@ -19,7 +19,7 @@ const ModalExample = () => {
         onComplete={action('opened')}
         onReverseStart={action('closing')}
         onReverseComplete={action('closed')}
-        size={select('size', ['base', 'small', 'large'], 'default')}
+        size={select('size', ['base', 'small', 'large'], 'base')}
         open={isOpen}
         onOutsideModalClick={handleToggle}
       >
