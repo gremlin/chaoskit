@@ -86,18 +86,16 @@ const Radio = ({ className, disabled, label, value, ...opts }) => {
             theme.settings.contrast.form &&
             !noContrast && {
               '.u-contrast &': {
-                '+ label': {
-                  '&::before': {
-                    borderColor: theme.contrast.base,
-                  },
+                '+ label::before': {
+                  borderColor: theme.contrast.base,
+                },
 
-                  '&::after': {
-                    background: form.variables.borderColor,
-                  },
+                '&:checked + label::after': {
+                  background: theme.contrast.base,
                 },
 
                 '&:disabled + label::before': {
-                  backgroundColor: form.variables.background,
+                  backgroundColor: form.variables(theme).contrast.background,
                 },
               },
             },

@@ -84,18 +84,16 @@ const Checkbox = ({ className, disabled, label, name, value, ...opts }) => {
             theme.settings.contrast.form &&
             !noContrast && {
               '.u-contrast &': {
-                '+ label': {
-                  '&::before': {
-                    borderColor: theme.contrast.base,
-                  },
+                '+ label::before': {
+                  borderColor: theme.contrast.base,
+                },
 
-                  '&::after': {
-                    filter: theme.contrast.filter,
-                  },
+                '&:checked + label::after': {
+                  filter: theme.contrast.filter,
                 },
 
                 '&:disabled + label::before': {
-                  backgroundColor: form.variables.background,
+                  backgroundColor: form.variables(theme).contrast.background,
                 },
               },
             },
