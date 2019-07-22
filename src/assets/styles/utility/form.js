@@ -57,7 +57,7 @@ export const input = (theme, props = {}) => [
       borderColor: theme.color.primary.base,
       outline: 0,
       background: variables(theme).background,
-      boxShadow: `${theme.boxShadowOffset} ${rgba(
+      boxShadow: `${theme.boxShadowOffset.base} ${rgba(
         theme.color.primary.base,
         0.75
       )}`,
@@ -109,7 +109,7 @@ export const input = (theme, props = {}) => [
 
   props.error && {
     borderColor: theme.color.danger.base,
-    boxShadow: `${theme.boxShadowOffset} ${rgba(
+    boxShadow: `${theme.boxShadowOffset.base} ${rgba(
       theme.color.danger.base,
       0.75
     )}`,
@@ -127,7 +127,7 @@ export const input = (theme, props = {}) => [
         '&:focus': {
           borderColor: variables(theme).contrast.borderColor,
           background: 'transparent',
-          boxShadow: `${theme.boxShadowOffset} ${
+          boxShadow: `${theme.boxShadowOffset.base} ${
             variables(theme).contrast.background
           }`,
         },

@@ -156,7 +156,7 @@ const boxShadowColor = {
 };
 
 const boxShadowOffset = {
-  base: '0 0 6px -2px',
+  base: '0 1px 5px -2px',
   neutral: '0 5px 15px',
 };
 
