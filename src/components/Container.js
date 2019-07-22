@@ -12,7 +12,6 @@ const Container = ({ className, size, ...opts }) => (
     css={theme => [
       {
         width: '100%',
-        maxWidth: StylesContainerVariables.base,
         margin: '0 auto',
         padding: `0 ${theme.space.base}px`,
 
@@ -20,6 +19,10 @@ const Container = ({ className, size, ...opts }) => (
         '.CK__Container': {
           padding: 0,
         },
+      },
+
+      size === 'base' && {
+        maxWidth: StylesContainerVariables.base,
       },
 
       size === 'small' && {
@@ -31,8 +34,12 @@ const Container = ({ className, size, ...opts }) => (
 );
 
 Container.propTypes = {
-  size: PropTypes.oneOf(['small']),
+  size: PropTypes.oneOf(['base', 'small']),
   className: PropTypes.string,
+};
+
+Container.defaultProps = {
+  size: 'base',
 };
 
 export default Container;
