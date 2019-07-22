@@ -318,7 +318,7 @@ export const globalStyles = theme => [
       // 4
       margin: `${theme.space.base}px 0`,
       border: 0,
-      borderTop: `2px solid ${theme.color.border.base}`,
+      borderTop: theme.border.large,
 
       '* + &': {
         marginTop: theme.space.base,

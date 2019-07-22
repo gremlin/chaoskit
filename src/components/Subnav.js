@@ -3,6 +3,7 @@ import cx from 'classnames';
 
 import Container from './Container';
 import { misc, text } from '../assets/styles/utility';
+import { generateGradient } from '../assets/styles/utility/gradient';
 
 const StylesSubnavVariables = theme => ({
   height: theme.height.large,
@@ -50,8 +51,12 @@ export const SubnavMenuItemStyles = (theme, props = {}) => [
 const Subnav = ({ children, className, ...opts }) => (
   <div
     css={theme => ({
-      background: theme.color.panel.base,
-      borderBottom: theme.border.base,
+      background: generateGradient({
+        start: theme.color.panel.light,
+        stop: theme.color.panel.base,
+        position: 'to bottom',
+      }),
+      borderBottom: theme.border.large,
     })}
     className={cx('CK__Subnav', className)}
     {...opts}

@@ -141,6 +141,7 @@ const color = {
 
 const border = {
   base: `1px solid ${color.border.base}`,
+  large: `2px solid ${color.border.base}`,
 };
 
 const borderRadius = {
