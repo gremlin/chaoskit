@@ -19,7 +19,19 @@ export const StylesModalVariables = theme => ({
   },
 });
 
+const MODAL_ANIMATE_PROPERTIES = {
+  bottom: {
+    label: 'center bottom',
+    transform: 'translateY(25%)',
+  },
+  top: {
+    label: 'center top',
+    transform: 'translateY(-25%)',
+  },
+};
+
 const Modal = ({
+  animateFrom,
   children,
   className,
   size,
@@ -167,10 +179,9 @@ const Modal = ({
             margin: theme.space.base,
             zIndex: 5,
             boxShadow: theme.boxShadow.large,
-            // 1
-            transform: 'translateY(25%)',
-            transformOrigin: 'center bottom',
             opacity: 0,
+            transform: MODAL_ANIMATE_PROPERTIES[animateFrom].transform,
+            transformOrigin: MODAL_ANIMATE_PROPERTIES[animateFrom].label,
           },
 
           ['small', 'base'].includes(size) && {
@@ -198,6 +209,8 @@ const Modal = ({
 };
 
 Modal.propTypes = {
+  /** Change entrance direction */
+  animateFrom: PropTypes.oneOf(['bottom', 'top']),
   children: PropTypes.node,
   className: PropTypes.string,
   size: PropTypes.oneOf(['base', 'small', 'large']),
@@ -215,6 +228,7 @@ Modal.propTypes = {
 };
 
 Modal.defaultProps = {
+  animateFrom: 'bottom',
   onOutsideModalClick: () => {},
   onComplete: () => {},
   onReverseComplete: () => {},
