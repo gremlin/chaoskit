@@ -1,8 +1,0 @@
-- `base.scss`: `is-loaded` needs to be applied in Gatsby sites (possibly)
-- `list`: prop reorganization in component + style updates that allow more combinations
-- button -- teal is no longer a prop type option, is-active gone (obviously) so use `active` prop elsewhere
-- `inline component` supports more space variations
-- modal footer -- removing center prop for new align prop, remove optional footer styles
-- ALL INPUTS PASS NORMAL EVENTS OBJECT FOR ONCHANGE!!!
-- modal header -- center to centered, onCloseClick is required, remove optional header styles
-- social icon -- changed base size/height
