@@ -43,6 +43,7 @@ const Dropdown = ({
   onReverseComplete,
   onReverseStart,
   onStart,
+  panelWidth,
   position,
   trigger,
   showArrow,
@@ -203,7 +204,7 @@ const Dropdown = ({
             }),
             padding: theme.space.large,
             position: 'absolute',
-            width: 250,
+            width: panelWidth,
             maxHeight: 500,
             overflowY: 'auto',
             color: theme.fontColor.base,
@@ -296,6 +297,7 @@ Dropdown.propTypes = {
   onReverseStart: PropTypes.func,
   /** GSAP callback */
   onStart: PropTypes.func,
+  panelWidth: PropTypes.number,
   position: PropTypes.oneOf([
     'left',
     'center',
@@ -318,6 +320,7 @@ Dropdown.defaultProps = {
   onReverseComplete: () => {},
   onReverseStart: () => {},
   onStart: () => {},
+  panelWidth: 250,
   position: 'left',
 };
 
