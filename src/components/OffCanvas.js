@@ -1,6 +1,6 @@
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import React, { useRef, useState, useLayoutEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import useUpdateEffect from 'react-use/lib/useUpdateEffect';
 import useLockBodyScroll from 'react-use/lib/useLockBodyScroll';
 import useClickAway from 'react-use/lib/useClickAway';
@@ -111,7 +111,7 @@ const OffCanvas = ({
       );
   };
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (open) {
       setRenderOffCanvas(true);
     }
