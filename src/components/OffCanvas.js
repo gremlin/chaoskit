@@ -1,6 +1,6 @@
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useLayoutEffect } from 'react';
 import useUpdateEffect from 'react-use/lib/useUpdateEffect';
 import useLockBodyScroll from 'react-use/lib/useLockBodyScroll';
 import useClickAway from 'react-use/lib/useClickAway';
@@ -22,10 +22,10 @@ const OffCanvas = ({
   onStart,
   ...opts
 }) => {
+  const [renderOffCanvas, setRenderOffCanvas] = useState(open);
+
   const offCanvasRef = useRef();
   const offCanvasPanelRef = useRef();
-
-  const [renderOffCanvas, setRenderOffCanvas] = useState(open);
 
   const openOffCanvas = () => {
     const $offCanvas = offCanvasRef.current;
@@ -111,9 +111,15 @@ const OffCanvas = ({
       );
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (open) {
       setRenderOffCanvas(true);
+    }
+  }, [open]);
+
+  useUpdateEffect(() => {
+    if (!open) {
+      closeOffCanvas();
     }
   }, [open]);
 
@@ -126,12 +132,6 @@ const OffCanvas = ({
       onReverseComplete();
     }
   }, [renderOffCanvas]);
-
-  useUpdateEffect(() => {
-    if (!open) {
-      closeOffCanvas();
-    }
-  }, [open]);
 
   const classes = cx(
     'offCanvas',

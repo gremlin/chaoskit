@@ -1,6 +1,6 @@
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useLayoutEffect } from 'react';
 import useUpdateEffect from 'react-use/lib/useUpdateEffect';
 import useLockBodyScroll from 'react-use/lib/useLockBodyScroll';
 import useClickAway from 'react-use/lib/useClickAway';
@@ -21,10 +21,10 @@ const Modal = ({
   onStart,
   ...opts
 }) => {
+  const [renderModal, setRenderModal] = useState(open);
+
   const modalRef = useRef();
   const modalDialogRef = useRef();
-
-  const [renderModal, setRenderModal] = useState(open);
 
   const openModal = () => {
     const $modal = modalRef.current;
@@ -101,9 +101,15 @@ const Modal = ({
       });
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (open) {
       setRenderModal(true);
+    }
+  }, [open]);
+
+  useUpdateEffect(() => {
+    if (!open) {
+      closeModal();
     }
   }, [open]);
 
@@ -116,12 +122,6 @@ const Modal = ({
       onReverseComplete();
     }
   }, [renderModal]);
-
-  useUpdateEffect(() => {
-    if (!open) {
-      closeModal();
-    }
-  }, [open]);
 
   const modalClasses = cx(
     'modal',
