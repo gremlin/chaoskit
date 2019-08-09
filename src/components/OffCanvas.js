@@ -78,7 +78,7 @@ const OffCanvas = ({
       },
       onComplete: () => {
         // Focus on active offCanvas for screen readers
-        $offCanvas.focus();
+        $panel.focus();
 
         onComplete();
       },
