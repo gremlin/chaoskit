@@ -77,6 +77,7 @@ const Input = forwardRef(
       explanationMessage,
       prefixIcon,
       required,
+      wrapperProps,
       ...opts
     },
     ref
@@ -136,7 +137,7 @@ const Input = forwardRef(
     };
 
     return (
-      <FormGroup>
+      <FormGroup {...wrapperProps}>
         <FormLabel required={required} error={!!validationMessage} id={id}>
           {label}
         </FormLabel>
@@ -192,6 +193,7 @@ Input.propTypes = {
   mask: PropTypes.oneOfType([PropTypes.array, PropTypes.func]),
   name: PropTypes.string.isRequired,
   type: PropTypes.string,
+  wrapperProps: PropTypes.object,
 };
 
 Input.defaultProps = {

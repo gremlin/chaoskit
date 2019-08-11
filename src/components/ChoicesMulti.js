@@ -28,6 +28,7 @@ const ChoicesMulti = ({
   removeItem,
   validationMessage,
   selected,
+  wrapperProps,
 }) => {
   const [value, setValue] = useState('');
 
@@ -104,7 +105,7 @@ const ChoicesMulti = ({
         };
 
         return (
-          <FormGroup {...downshift.getRootProps()}>
+          <FormGroup {...downshift.getRootProps()} {...wrapperProps}>
             <FormLabel
               required={required}
               error={!!validationMessage}
@@ -300,6 +301,7 @@ ChoicesMulti.propTypes = {
   removeItem: PropTypes.func.isRequired,
   validationMessage: PropTypes.string,
   selected: PropTypes.array,
+  wrapperProps: PropTypes.object,
 };
 
 ChoicesMulti.defaultProps = {

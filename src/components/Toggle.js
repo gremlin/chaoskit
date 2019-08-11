@@ -32,6 +32,7 @@ const Toggle = ({
   label,
   noContrast,
   value,
+  wrapperProps,
   ...opts
 }) => {
   const toggleLabelRef = useRef();
@@ -39,7 +40,7 @@ const Toggle = ({
   const id = `${name}-${generateUUID()}`;
 
   return (
-    <FormGroup>
+    <FormGroup {...wrapperProps}>
       <div
         css={{
           display: 'flex',
@@ -186,6 +187,7 @@ Toggle.propTypes = {
   noContrast: PropTypes.bool,
   label: PropTypes.string,
   value: PropTypes.string,
+  wrapperProps: PropTypes.object,
 };
 
 export default Toggle;

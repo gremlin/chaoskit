@@ -29,6 +29,7 @@ const ChoicesSingle = ({
   validationMessage,
   searchPlaceholder,
   selected,
+  wrapperProps,
 }) => {
   const [value, setValue] = useState('');
 
@@ -70,7 +71,7 @@ const ChoicesSingle = ({
     >
       {downshift => {
         return (
-          <FormGroup {...downshift.getRootProps()}>
+          <FormGroup {...downshift.getRootProps()} {...wrapperProps}>
             <FormLabel
               required={required}
               error={!!validationMessage}
@@ -292,6 +293,7 @@ ChoicesSingle.propTypes = {
   validationMessage: PropTypes.string,
   searchPlaceholder: PropTypes.string,
   selected: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  wrapperProps: PropTypes.object,
 };
 
 ChoicesSingle.defaultProps = {

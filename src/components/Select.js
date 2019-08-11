@@ -45,6 +45,7 @@ const Select = ({
   options,
   required,
   validationMessage,
+  wrapperProps,
   ...opts
 }) => {
   const id = `${name}-${generateUUID()}`;
@@ -72,7 +73,7 @@ const Select = ({
   };
 
   return (
-    <FormGroup>
+    <FormGroup {...wrapperProps}>
       <FormLabel required={required} error={!!validationMessage} id={id}>
         {label}
       </FormLabel>
@@ -179,6 +180,7 @@ Select.propTypes = {
   options: PropTypes.array.isRequired,
   required: PropTypes.bool,
   validationMessage: PropTypes.string,
+  wrapperProps: PropTypes.object,
 };
 
 export default Select;

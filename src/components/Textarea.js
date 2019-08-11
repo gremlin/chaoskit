@@ -16,12 +16,13 @@ const Textarea = ({
   validationMessage,
   explanationMessage,
   required,
+  wrapperProps,
   ...opts
 }) => {
   const id = `${name}-${generateUUID()}`;
 
   return (
-    <FormGroup>
+    <FormGroup {...wrapperProps}>
       <FormLabel required={required} error={!!validationMessage} id={id}>
         {label}
       </FormLabel>
@@ -71,6 +72,7 @@ Textarea.propTypes = {
   label: PropTypes.string,
   name: PropTypes.string.isRequired,
   noContrast: PropTypes.bool,
+  wrapperProps: PropTypes.object,
 };
 
 export default Textarea;
