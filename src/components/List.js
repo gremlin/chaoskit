@@ -34,7 +34,14 @@ const List = ({ className, space, type, border, ...opts }) => (
 List.propTypes = {
   border: PropTypes.bool,
   className: PropTypes.string,
-  space: PropTypes.oneOf(['small', 'base', 'medium', 'large', 'xlarge']),
+  space: PropTypes.oneOf([
+    'xsmall',
+    'small',
+    'base',
+    'medium',
+    'large',
+    'xlarge',
+  ]),
   type: PropTypes.oneOf(['numbers', 'circles']),
 };
 

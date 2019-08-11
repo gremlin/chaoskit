@@ -11,7 +11,7 @@ storiesOf('Components|Section', module).add('Overview', () => (
     slant={select('Slant', ['', 'top', 'bottom', 'bottom-shadow'], null)}
     space={select(
       'Space',
-      ['small', 'base', 'medium', 'large', 'xlarge'],
+      ['xsmall', 'small', 'base', 'medium', 'large', 'xlarge'],
       'large'
     )}
   >

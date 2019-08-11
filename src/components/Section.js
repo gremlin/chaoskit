@@ -69,7 +69,14 @@ const Section = ({ space, slant, className, ...opts }) => (
 );
 
 Section.propTypes = {
-  space: PropTypes.oneOf(['small', 'base', 'medium', 'large', 'xlarge']),
+  space: PropTypes.oneOf([
+    'xsmall',
+    'small',
+    'base',
+    'medium',
+    'large',
+    'xlarge',
+  ]),
   slant: PropTypes.oneOf(['top', 'bottom', 'bottom-shadow']),
   className: PropTypes.string,
 };

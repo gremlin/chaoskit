@@ -6,7 +6,11 @@ import { List, ListItem } from '.';
 const params = {
   border: () => boolean('Border', false),
   space: () =>
-    select('Space', [null, 'small', 'base', 'medium', 'large', 'xlarge'], null),
+    select(
+      'Space',
+      [null, 'xsmall', 'small', 'base', 'medium', 'large', 'xlarge'],
+      null
+    ),
   type: () => select('Type', [null, 'numbers', 'circles'], null),
 };
 
