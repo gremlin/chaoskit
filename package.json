@@ -5,7 +5,7 @@
     ">10%",
     "not op_mini all"
   ],
-  "version": "1.4.6",
+  "version": "1.4.7",
   "engines": {
     "node": ">=10.15.3 <11.0.0",
     "yarn": ">=1.16.0 <2.0.0",
@@ -21,7 +21,7 @@
     "babel-plugin-emotion": "10.0.16",
     "babel-plugin-polished": "1.1.0",
     "classnames": "2.2.6",
-    "downshift": "3.2.10",
+    "downshift": "3.2.12",
     "emotion-theming": "10.0.14",
     "eslint": "5.16.0",
     "eslint-config-airbnb": "17.1.0",
@@ -44,7 +44,7 @@
     "react-tabs": "3.0.0",
     "react-text-mask": "5.4.3",
     "react-textarea-autosize": "7.1.0",
-    "react-use": "10.5.0",
+    "react-use": "10.7.0",
     "recursive-readdir-sync": "1.0.6",
     "rsvp": "4.8.5",
     "stylis-atomic": "0.0.1",
