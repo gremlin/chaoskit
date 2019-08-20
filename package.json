@@ -16,7 +16,7 @@
     "babel-cli": "6.26.0",
     "classnames": "2.2.6",
     "cssnano": "4.1.10",
-    "downshift": "3.2.10",
+    "downshift": "3.2.12",
     "eslint": "5.16.0",
     "eslint-config-airbnb": "17.1.0",
     "eslint-config-prettier": "5.1.0",
@@ -48,7 +48,7 @@
     "react-tabs": "3.0.0",
     "react-text-mask": "5.4.3",
     "react-textarea-autosize": "7.1.0",
-    "react-use": "10.5.0",
+    "react-use": "10.7.0",
     "recursive-readdir-sync": "1.0.6",
     "rsvp": "4.8.5",
     "stylelint": "10.1.0",
@@ -69,13 +69,13 @@
     "gatsby-remark-prismjs": "3.2.9",
     "gatsby-source-filesystem": "2.0.37",
     "node-sass": "4.12.0",
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
+    "react": "16.9.0",
+    "react-dom": "16.9.0",
     "scriptjs": "2.5.9"
   },
   "peerDependencies": {
-    "react": ">=16.8.4",
-    "react-dom": ">=16.8.4"
+    "react": ">=16.9.0",
+    "react-dom": ">=16.9.0"
   },
   "license": "MIT",
   "scripts": {
@@ -85,8 +85,7 @@
     "build": "yarn && yarn run icons && gatsby build",
     "build-serve": "yarn build && gatsby serve",
     "develop": "yarn && yarn run icons && gatsby develop --open",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prettier": "prettier --write '**/*.{js,jsx}' && prettier-stylelint-temp --write --quiet '**/*.{css,scss}'"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
