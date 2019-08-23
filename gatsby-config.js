@@ -16,7 +16,13 @@ module.exports = {
     'gatsby-plugin-catch-links',
     'gatsby-plugin-react-helmet',
     {
-      resolve: 'gatsby-mdx',
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/src/pages`,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-mdx',
       options: {
         defaultLayouts: {
           default: require.resolve('./src/layouts/BaseLayout.js'),
@@ -26,12 +32,6 @@ module.exports = {
             resolve: 'gatsby-remark-prismjs',
           },
         ],
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        path: `${__dirname}/src/pages`,
       },
     },
     {
