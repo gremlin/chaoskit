@@ -1,12 +1,11 @@
 import { storiesOf } from '@storybook/react';
-import { boolean, select, text } from '@storybook/addon-knobs';
+import { boolean, select } from '@storybook/addon-knobs';
 
 import { Dropdown, DropdownHeader, List, ListItem } from '.';
 import { DropdownMenuItemStyles } from './Dropdown';
 import { params as buttonParams } from './Button.stories';
 
 const params = {
-  children: () => text('children', 'Hello from the dropdown!'),
   position: () =>
     select(
       'Position',
@@ -36,7 +35,7 @@ storiesOf('Components|Dropdown', module)
           },
         }}
       >
-        {params.children()}
+        <p>Hello from the dropdown!</p>
       </Dropdown>
     ),
     {
