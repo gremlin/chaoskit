@@ -24,7 +24,7 @@ const List = ({ className, space, type, border, ...opts }) => (
       type === 'numbers' && list.numbers({ theme }),
 
       type === 'circles' &&
-        list.circles({ theme, space: space && theme.space[space] }),
+        list.circles({ theme, space: space && theme.space[space], border }),
     ]}
     className={cx('UK__List', className)}
     {...opts}

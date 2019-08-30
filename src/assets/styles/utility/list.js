@@ -23,6 +23,7 @@ export const circles = ({
   fontSize = theme.fontSize.base,
   space = 0,
   circleSize = 8,
+  border = false,
 }) => ({
   '> li': [
     {
@@ -46,7 +47,8 @@ export const circles = ({
       },
 
       '&:not(:first-of-type)::before': {
-        top: `${(fontSize * theme.lineHeight.base - circleSize) / 2 + space}px`,
+        top: `${(fontSize * theme.lineHeight.base - circleSize) / 2 +
+          (border && space)}px`,
       },
     },
 
