@@ -32,7 +32,7 @@ const Textarea = ({
           form.input(theme, { error: validationMessage, noContrast }),
           {
             // Remove default style in browsers that support `appearance`
-            apperance: 'none',
+            appearance: 'none',
 
             // Remove default vertical scrollbar in IE 8/9/10/11.
             overflow: 'auto',
