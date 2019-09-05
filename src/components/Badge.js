@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-const StylesBadgeVariables = theme => ({
+export const StylesBadgeVariables = theme => ({
   height: theme.height.xxsmall,
 });
 
