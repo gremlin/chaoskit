@@ -49,7 +49,7 @@ const Badge = ({ className, label, rounded, type, ...opts }) => (
       type === 'danger' && StylesBadgeDanger(theme),
       rounded && StylesBadgeRounded(theme),
     ]}
-    className={cx('CK__Button', className)}
+    className={cx('CK__Badge', className)}
     {...opts}
   >
     {label}
