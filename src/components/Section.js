@@ -1,3 +1,4 @@
+import { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { rgba } from 'polished';
@@ -8,8 +9,9 @@ const StylesSectionVariables = {
   slantOffset: 2.5,
 };
 
-const Section = ({ space, slant, className, ...opts }) => (
+const Section = forwardRef(({ space, slant, className, ...opts }, ref) => (
   <section
+    ref={ref}
     className={cx('CK__Section', className)}
     css={theme => [
       misc.trimChildren,
@@ -66,7 +68,7 @@ const Section = ({ space, slant, className, ...opts }) => (
     ]}
     {...opts}
   />
-);
+));
 
 Section.propTypes = {
   space: PropTypes.oneOf([
