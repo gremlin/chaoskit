@@ -27,40 +27,49 @@ export const StylesSectionTitleSub = theme => ({
   },
 });
 
-const SectionTitle = ({ title, sub, className, ...opts }) => (
-  <div
-    className={(cx('CK__SectionTitle'), className)}
-    css={theme => StylesSectionTitleWrapper(theme)}
-    {...opts}
-  >
-    <h3
-      css={theme => [
-        misc.fluidSize({
-          theme,
-          property: 'marginBottom',
-          from: theme.space.small,
-          to: theme.space.base,
-        }),
-      ]}
-      className="CK__SectionTitle__Header"
+const SectionTitle = ({ title, as, sub, className, ...opts }) => {
+  const TitleTag = as;
+
+  return (
+    <div
+      className={(cx('CK__SectionTitle'), className)}
+      css={theme => StylesSectionTitleWrapper(theme)}
+      {...opts}
     >
-      {title}
-    </h3>
-    {sub && (
-      <div
-        className="CK__SectionTitle__Sub"
-        css={theme => StylesSectionTitleSub(theme)}
+      <TitleTag
+        css={theme => [
+          misc.fluidSize({
+            theme,
+            property: 'marginBottom',
+            from: theme.space.small,
+            to: theme.space.base,
+          }),
+        ]}
+        className="CK__SectionTitle__Header"
       >
-        {sub}
-      </div>
-    )}
-  </div>
-);
+        {title}
+      </TitleTag>
+      {sub && (
+        <div
+          className="CK__SectionTitle__Sub"
+          css={theme => StylesSectionTitleSub(theme)}
+        >
+          {sub}
+        </div>
+      )}
+    </div>
+  );
+};
 
 SectionTitle.propTypes = {
   title: PropTypes.string.isRequired,
+  as: PropTypes.string,
   sub: PropTypes.string,
   className: PropTypes.string,
+};
+
+SectionTitle.defaultProps = {
+  as: 'h3',
 };
 
 export default SectionTitle;
