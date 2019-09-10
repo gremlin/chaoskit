@@ -40,13 +40,13 @@ const Tooltip = ({
   const openTooltip = () => {
     const $tooltip = tooltipRef.current;
 
-    if ($tooltip) $tooltip.timeline.play();
+    if ($tooltip && $tooltip.timeline) $tooltip.timeline.play();
   };
 
   const closeTooltip = () => {
     const $tooltip = tooltipRef.current;
 
-    if ($tooltip) $tooltip.timeline.reverse();
+    if ($tooltip && $tooltip.timeline) $tooltip.timeline.reverse();
   };
 
   /**

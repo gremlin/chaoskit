@@ -114,13 +114,13 @@ const Alert = ({
   const collapseAlert = () => {
     const $alert = alertRef.current;
 
-    $alert.timeline.play();
+    if ($alert && $alert.timeline) $alert.timeline.play();
   };
 
   const openAlert = () => {
     const $alert = alertRef.current;
 
-    $alert.timeline.reverse();
+    if ($alert && $alert.timeline) $alert.timeline.reverse();
   };
 
   useMount(() => {
