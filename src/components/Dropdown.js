@@ -28,13 +28,13 @@ const Dropdown = ({
   const dropdownOpen = () => {
     const $dropdown = dropdownRef.current;
 
-    if ($dropdown) $dropdown.timeline.play();
+    if ($dropdown && $dropdown.timeline) $dropdown.timeline.play();
   };
 
   const dropdownClose = () => {
     const $dropdown = dropdownRef.current;
 
-    if ($dropdown) $dropdown.timeline.reverse();
+    if ($dropdown && $dropdown.timeline) $dropdown.timeline.reverse();
   };
 
   /**

@@ -102,13 +102,13 @@ const Reveal = ({
   const revealOpen = () => {
     const $reveal = revealRef.current;
 
-    if ($reveal) $reveal.timeline.play();
+    if ($reveal && $reveal.timeline) $reveal.timeline.play();
   };
 
   const revealClose = () => {
     const $reveal = revealRef.current;
 
-    if ($reveal) $reveal.timeline.reverse();
+    if ($reveal && $reveal.timeline) $reveal.timeline.reverse();
   };
 
   const handleRevealToggle = () => {

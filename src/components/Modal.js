@@ -29,13 +29,13 @@ const Modal = ({
   const openModal = () => {
     const $modal = modalRef.current;
 
-    $modal.timeline.play();
+    if ($modal && $modal.timeline) $modal.timeline.play();
   };
 
   const closeModal = () => {
     const $modal = modalRef.current;
 
-    $modal.timeline.reverse();
+    if ($modal && $modal.timeline) $modal.timeline.reverse();
   };
 
   const handleOnReverseComplete = () => {

@@ -20,13 +20,13 @@ const Tooltip = ({ children, content, placement, mobileTap }) => {
   const openTooltip = () => {
     const $tooltip = tooltipRef.current;
 
-    $tooltip.timeline.play();
+    if ($tooltip && $tooltip.timline) $tooltip.timeline.play();
   };
 
   const closeTooltip = () => {
     const $tooltip = tooltipRef.current;
 
-    if ($tooltip) $tooltip.timeline.reverse();
+    if ($tooltip && $tooltip.timeline) $tooltip.timeline.reverse();
   };
 
   /**

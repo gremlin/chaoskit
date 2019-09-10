@@ -30,13 +30,13 @@ const OffCanvas = ({
   const openOffCanvas = () => {
     const $offCanvas = offCanvasRef.current;
 
-    $offCanvas.timeline.play();
+    if ($offCanvas && $offCanvas.timeline) $offCanvas.timeline.play();
   };
 
   const closeOffCanvas = () => {
     const $offCanvas = offCanvasRef.current;
 
-    $offCanvas.timeline.reverse();
+    if ($offCanvas && $offCanvas.timeline) $offCanvas.timeline.reverse();
   };
 
   const handleOnReverseComplete = () => {
