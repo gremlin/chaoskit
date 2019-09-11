@@ -8,7 +8,7 @@ import {
 } from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import { withTheme } from 'emotion-theming';
+import { useTheme } from 'emotion-theming';
 import ReactDOM from 'react-dom';
 import useUpdateEffect from 'react-use/lib/useUpdateEffect';
 import { TimelineMax } from 'gsap/TweenMax';
@@ -20,14 +20,9 @@ const StylesTooltipVariables = theme => ({
   borderRadius: theme.borderRadius.base,
 });
 
-const Tooltip = ({
-  children,
-  className,
-  content,
-  placement,
-  mobileTap,
-  theme,
-}) => {
+const Tooltip = ({ children, className, content, placement, mobileTap }) => {
+  const theme = useTheme();
+
   const tooltipRef = useRef();
   const tooltipTriggerRef = useRef();
 
@@ -297,7 +292,6 @@ Tooltip.propTypes = {
   placement: PropTypes.oneOf(['top', 'bottom', 'left', 'right']),
   /** Disables tooltips on touch devices to not interfere with interactive elements */
   mobileTap: PropTypes.bool,
-  theme: PropTypes.object.isRequired,
 };
 
 Tooltip.defaultProps = {
@@ -305,4 +299,4 @@ Tooltip.defaultProps = {
   mobileTap: false,
 };
 
-export default withTheme(Tooltip);
+export default Tooltip;

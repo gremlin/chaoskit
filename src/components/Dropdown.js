@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import useMount from 'react-use/lib/useMount';
 import { TimelineMax } from 'gsap/TweenMax';
-import { withTheme } from 'emotion-theming';
+import { useTheme } from 'emotion-theming';
 
 import Button from './Button';
 import Icon from './Icon';
@@ -47,9 +47,10 @@ const Dropdown = ({
   position,
   trigger,
   showArrow,
-  theme,
   ...opts
 }) => {
+  const theme = useTheme();
+
   const dropdownRef = useRef();
   const dropdownPanelRef = useRef();
   const dropdownTriggerRef = useRef();
@@ -312,7 +313,6 @@ Dropdown.propTypes = {
     label: PropTypes.any.isRequired,
   }),
   showArrow: PropTypes.bool,
-  theme: PropTypes.object.isRequired,
 };
 
 Dropdown.defaultProps = {
@@ -324,4 +324,4 @@ Dropdown.defaultProps = {
   position: 'left',
 };
 
-export default withTheme(Dropdown);
+export default Dropdown;

@@ -6,7 +6,7 @@ import useLockBodyScroll from 'react-use/lib/useLockBodyScroll';
 import useClickAway from 'react-use/lib/useClickAway';
 import ReactDOM from 'react-dom';
 import { TimelineMax } from 'gsap/TweenMax';
-import { withTheme } from 'emotion-theming';
+import { useTheme } from 'emotion-theming';
 
 import { misc } from '../assets/styles/utility';
 import Close from './Close';
@@ -26,9 +26,10 @@ const OffCanvas = ({
   onReverseStart,
   onStart,
   panelWidth,
-  theme,
   ...opts
 }) => {
+  const theme = useTheme();
+
   const offCanvasRef = useRef();
   const offCanvasPanelRef = useRef();
 
@@ -222,7 +223,6 @@ OffCanvas.propTypes = {
   /** GSAP callback */
   onStart: PropTypes.func,
   panelWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  theme: PropTypes.object.isRequired,
 };
 
 OffCanvas.defaultProps = {
@@ -234,4 +234,4 @@ OffCanvas.defaultProps = {
   align: 'left',
 };
 
-export default withTheme(OffCanvas);
+export default OffCanvas;

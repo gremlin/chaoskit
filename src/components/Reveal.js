@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import useMount from 'react-use/lib/useMount';
 import useUpdateEffect from 'react-use/lib/useUpdateEffect';
 import { TimelineMax } from 'gsap/TweenMax';
-import { withTheme } from 'emotion-theming';
+import { useTheme } from 'emotion-theming';
 
 import Button from './Button';
 import { misc } from '../assets/styles/utility';
@@ -18,9 +18,10 @@ const Reveal = ({
   children,
   className,
   trigger,
-  theme,
   ...opts
 }) => {
+  const theme = useTheme();
+
   const revealRef = useRef();
   const [hidden, setHidden] = useState(true);
 
@@ -173,7 +174,6 @@ Reveal.propTypes = {
     props: PropTypes.object,
     label: PropTypes.any.isRequired,
   }),
-  theme: PropTypes.object.isRequired,
 };
 
 Reveal.defaultProps = {
@@ -183,4 +183,4 @@ Reveal.defaultProps = {
   onStart: () => {},
 };
 
-export default withTheme(Reveal);
+export default Reveal;

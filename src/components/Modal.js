@@ -6,7 +6,7 @@ import useLockBodyScroll from 'react-use/lib/useLockBodyScroll';
 import useClickAway from 'react-use/lib/useClickAway';
 import ReactDOM from 'react-dom';
 import { TimelineMax } from 'gsap/TweenMax';
-import { withTheme } from 'emotion-theming';
+import { useTheme } from 'emotion-theming';
 
 import { misc } from '../assets/styles/utility';
 
@@ -41,9 +41,10 @@ const Modal = ({
   onReverseComplete,
   onReverseStart,
   onStart,
-  theme,
   ...opts
 }) => {
+  const theme = useTheme();
+
   const modalRef = useRef();
   const modalDialogRef = useRef();
 
@@ -224,7 +225,6 @@ Modal.propTypes = {
   onReverseStart: PropTypes.func,
   /** GSAP callback */
   onStart: PropTypes.func,
-  theme: PropTypes.object.isRequired,
 };
 
 Modal.defaultProps = {
@@ -237,4 +237,4 @@ Modal.defaultProps = {
   size: 'base',
 };
 
-export default withTheme(Modal);
+export default Modal;

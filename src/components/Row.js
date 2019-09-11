@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import { withTheme } from 'emotion-theming';
+import { useTheme } from 'emotion-theming';
 
 import { misc } from '../assets/styles/utility';
 
@@ -13,7 +13,9 @@ const gutterOptions = [
   'xlarge',
 ];
 
-const Row = ({ className, gutter, theme, ...opts }) => {
+const Row = ({ className, gutter, ...opts }) => {
+  const theme = useTheme();
+
   const gutterCalc = size => [
     gutter[size] && {
       [theme.mq[size]]: {
@@ -81,11 +83,10 @@ Row.propTypes = {
     large: PropTypes.oneOf(gutterOptions),
     xlarge: PropTypes.oneOf(gutterOptions),
   }),
-  theme: PropTypes.object.isRequired,
 };
 
 Row.defaultProps = {
   gutter: { base: 'base' },
 };
 
-export default withTheme(Row);
+export default Row;

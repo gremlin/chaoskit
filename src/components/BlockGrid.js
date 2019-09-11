@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import { withTheme } from 'emotion-theming';
+import { useTheme } from 'emotion-theming';
 
 import { misc } from '../assets/styles/utility';
 
@@ -14,7 +14,9 @@ const gutterOptions = [
   'xlarge',
 ];
 
-const BlockGrid = ({ className, gutter, size, theme, ...opts }) => {
+const BlockGrid = ({ className, gutter, size, ...opts }) => {
+  const theme = useTheme();
+
   const percentWidth = columnSize => {
     const calc = 100 / columnSize;
 
@@ -160,7 +162,6 @@ BlockGrid.propTypes = {
     large: PropTypes.oneOf(columnOptions),
     xlarge: PropTypes.oneOf(columnOptions),
   }),
-  theme: PropTypes.object.isRequired,
 };
 
 BlockGrid.defaultProps = {
@@ -168,4 +169,4 @@ BlockGrid.defaultProps = {
   size: {},
 };
 
-export default withTheme(BlockGrid);
+export default BlockGrid;

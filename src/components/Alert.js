@@ -5,7 +5,7 @@ import useMount from 'react-use/lib/useMount';
 import useUpdateEffect from 'react-use/lib/useUpdateEffect';
 import { TimelineMax } from 'gsap/TweenMax';
 import { kebabCase, toLower } from 'lodash-es';
-import { withTheme } from 'emotion-theming';
+import { useTheme } from 'emotion-theming';
 
 import { misc, text } from '../assets/styles/utility';
 import Close from './Close';
@@ -45,9 +45,10 @@ const Alert = ({
   close,
   title,
   type,
-  theme,
   ...opts
 }) => {
+  const theme = useTheme();
+
   const alertRef = useRef();
   const [hidden, setHidden] = useState(false);
 
@@ -222,7 +223,6 @@ Alert.propTypes = {
   close: PropTypes.bool,
   title: PropTypes.string,
   type: PropTypes.oneOf(['default', 'primary', 'warning', 'danger']),
-  theme: PropTypes.object.isRequired,
 };
 
 Alert.defaultProps = {
@@ -234,4 +234,4 @@ Alert.defaultProps = {
   type: 'default',
 };
 
-export default withTheme(Alert);
+export default Alert;
