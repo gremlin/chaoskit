@@ -283,7 +283,7 @@ export const globalStyles = theme => [
     //
 
     'ul, ol': {
-      paddingLeft: theme.space.base,
+      paddingLeft: theme.space.large,
     },
 
     // Reset margin for nested lists
