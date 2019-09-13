@@ -3,9 +3,19 @@ import { forwardRef } from 'react';
 import cx from 'classnames';
 import { shade } from 'polished';
 
-import { misc } from '../assets/styles/utility';
+import { gradient, misc } from '../assets/styles/utility';
 import { StylesIconVariables } from './Icon';
 import Loader from './Loader';
+
+const buttonBorderGradient = (start, stop) => ({
+  borderColor: 'transparent',
+  background: `${gradient.generateGradient({
+    start,
+    stop,
+  })}, ${gradient.generateGradient({ start, stop })}`,
+  backgroundOrigin: 'border-box',
+  backgroundClip: 'content-box, border-box',
+});
 
 const StylesButtonVariables = theme => ({
   borderWidth: 2,
@@ -180,11 +190,16 @@ export const StylesButtonOutlinePrimary = (theme, props = {}) => {
 };
 
 export const StylesButtonPrimary = (theme, props = {}) => {
-  const interactiveStyles = {
-    color: theme.contrast.base,
-    background: theme.color.primary.dark,
-    borderColor: theme.color.primary.dark,
-  };
+  const interactiveStyles = [
+    {
+      color: theme.contrast.base,
+      background: theme.color.primary.dark,
+      borderColor: theme.color.primary.dark,
+    },
+
+    theme.settings.button.gradient &&
+      buttonBorderGradient(theme.brand.teal, theme.color.primary.base),
+  ];
 
   const interactiveStylesContrast = {
     color: theme.color.primary.dark,
@@ -198,6 +213,12 @@ export const StylesButtonPrimary = (theme, props = {}) => {
 
       '&:hover, &:focus': interactiveStyles,
     },
+
+    theme.settings.button.gradient &&
+      buttonBorderGradient(
+        theme.settings.button.primaryGradientStart,
+        theme.color.primary.base
+      ),
 
     props.active && interactiveStyles,
 

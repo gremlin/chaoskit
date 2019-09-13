@@ -323,6 +323,10 @@ const settings = {
     form: true,
     table: true,
   },
+  button: {
+    gradient: true,
+    primaryGradientStart: brand.teal,
+  },
   prism: {
     enable: true,
     theme: 'dark',
