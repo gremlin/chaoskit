@@ -197,7 +197,7 @@ export const StylesButtonPrimary = (theme, props = {}) => {
       borderColor: theme.color.primary.dark,
     },
 
-    theme.settings.button.gradient &&
+    theme.settings.button.gradient.enable &&
       buttonBorderGradient(theme.brand.teal, theme.color.primary.base),
   ];
 
@@ -214,9 +214,9 @@ export const StylesButtonPrimary = (theme, props = {}) => {
       '&:hover, &:focus': interactiveStyles,
     },
 
-    theme.settings.button.gradient &&
+    theme.settings.button.gradient.enable &&
       buttonBorderGradient(
-        theme.settings.button.primaryGradientStart,
+        theme.settings.button.gradient.primaryStart,
         theme.color.primary.base
       ),
 
