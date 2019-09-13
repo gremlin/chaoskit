@@ -414,7 +414,7 @@ const Button = forwardRef(
             borderRadius: 0,
           },
         ]}
-        className={cx('CK__Button', className)}
+        className={cx(`CK__Button CK__Button--${type}`, className)}
         {...buttonProps}
       >
         {type === 'reset' ? (

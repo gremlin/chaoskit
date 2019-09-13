@@ -89,7 +89,7 @@
     "babel-preset-react-app": "9.0.1",
     "react": "16.9.0",
     "react-dom": "16.9.0",
-    "storybook-addon-react-docgen": "1.2.6"
+    "storybook-addon-react-docgen": "1.2.15"
   },
   "peerDependencies": {
     "react": ">=16.9.0",
