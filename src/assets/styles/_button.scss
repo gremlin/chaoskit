@@ -6,6 +6,7 @@ $button-font-weight: $global-font-weight-bold !default;
 $button-font-family: $base-heading-font-family;
 $button-border-width: 2px !default;
 $button-transition: all 0.25s easeInOutCubic !default;
+$button-gradient: true !default;
 
 $button-height: $global-height;
 $button-height-small: $global-height-small;
@@ -31,6 +32,7 @@ $button-primary-enable: true !default;
 $button-primary-color: $global-contrast !default;
 $button-primary-background: $global-primary !default;
 $button-primary-border: $global-primary !default;
+$button-primary-gradient-start: $GREMLIN_teal !default;
 
 $button-secondary-enable: true !default;
 $button-secondary-color: $global-contrast !default;
@@ -68,6 +70,15 @@ $button-loader-enable: true !default;
 $button-loader-size: 1.5em !default;
 
 $button-icon-enable: true !default;
+
+@mixin buttonBorderGradient($start, $stop) {
+  border-color: transparent;
+  background:
+    linear-gradient(to right, $start, ease-in-out, $stop),
+    linear-gradient(to right, $start, ease-in-out, $stop);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
 
 //
 // Component
@@ -298,6 +309,13 @@ $button-icon-enable: true !default;
       background: $button-primary-background;
       border-color: $button-primary-border;
       color: $button-primary-color;
+
+      @if $button-gradient {
+        @include buttonBorderGradient(
+          $button-primary-gradient-start,
+          $button-primary-background
+        );
+      }
 
       &:hover,
       &:focus,
