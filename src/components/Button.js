@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
 import cx from 'classnames';
-import { shade } from 'polished';
+import { shade, rgba } from 'polished';
 
 import { gradient, misc } from '../assets/styles/utility';
 import { StylesIconVariables } from './Icon';
@@ -145,7 +145,7 @@ export const StylesButtonDefault = (theme, props = {}) => [
     theme.settings.contrast.button &&
     !props.noContrast && {
       '.u-contrast &': {
-        background: 'transparent',
+        background: rgba(theme.contrast.base, 0.15),
         color: theme.contrast.base,
         borderColor: theme.contrast.base,
 
