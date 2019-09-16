@@ -58,7 +58,7 @@ $button-outline-primary-border: $button-primary-background !default;
 
 $button-contrast-enable: true !default;
 $button-contrast-color: $global-contrast !default;
-$button-contrast-background: transparent !default;
+$button-contrast-background: rgba($global-contrast, 0.2) !default;
 
 $button-contrast-primary-color: $global-primary !default;
 $button-contrast-primary-background: $global-background !default;
