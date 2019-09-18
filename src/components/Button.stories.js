@@ -7,7 +7,6 @@ import icons from '../assets/icons/icons.json';
 
 export const params = {
   disabled: () => boolean('Disabled', false),
-  noRadius: () => boolean('No Radius', false),
   noContrast: () => boolean('No Contrast', false),
   icon: () => select('Icon', Object.keys(icons), 'check'),
   label: () => text('Label', 'Button'),
@@ -31,7 +30,6 @@ storiesOf('Components|Button', module)
         loading={params.loading()}
         type={params.type()}
         size={params.size()}
-        noRadius={params.noRadius()}
         url={params.url()}
       >
         {params.label()}
@@ -71,7 +69,6 @@ storiesOf('Components|Button', module)
           loading={params.loading()}
           type={params.type()}
           size={params.size()}
-          noRadius={params.noRadius()}
           noContrast={params.noContrast()}
           url={params.url()}
         >

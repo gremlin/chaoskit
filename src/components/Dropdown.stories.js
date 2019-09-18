@@ -31,7 +31,6 @@ storiesOf('Components|Dropdown', module)
             disabled: params.trigger.disabled(),
             type: params.trigger.type(),
             size: params.trigger.size(),
-            noRadius: params.trigger.noRadius(),
           },
         }}
       >
@@ -54,7 +53,6 @@ storiesOf('Components|Dropdown', module)
           disabled: params.trigger.disabled(),
           type: params.trigger.type(),
           size: params.trigger.size(),
-          noRadius: params.trigger.noRadius(),
         },
       }}
     >

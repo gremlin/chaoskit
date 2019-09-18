@@ -388,7 +388,6 @@ const Button = forwardRef(
       iconOnly,
       loading,
       noContrast,
-      noRadius,
       size,
       type,
       url,
@@ -431,9 +430,6 @@ const Button = forwardRef(
           fullWidth && {
             width: '100%',
           },
-          noRadius && {
-            borderRadius: 0,
-          },
         ]}
         className={cx(`CK__Button CK__Button--${type}`, className)}
         {...buttonProps}
@@ -472,7 +468,6 @@ Button.propTypes = {
   /** Re-uses the Loader component */
   loading: PropTypes.bool,
   noContrast: PropTypes.bool,
-  noRadius: PropTypes.bool,
   size: PropTypes.oneOf(['base', 'xsmall', 'small']),
   /** reset is used for elements that have no direct path attached to them; to ensure we keep our markup semantic and accessible. */
   type: PropTypes.oneOf([
