@@ -324,8 +324,10 @@ const settings = {
     table: true,
   },
   button: {
-    gradient: true,
-    primaryGradientStart: brand.teal,
+    gradient: {
+      enable: true,
+      primaryStart: brand.teal,
+    },
   },
   prism: {
     enable: true,

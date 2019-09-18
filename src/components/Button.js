@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
 import cx from 'classnames';
-import { shade } from 'polished';
+import { shade, rgba } from 'polished';
 
 import { gradient, misc } from '../assets/styles/utility';
 import { StylesIconVariables } from './Icon';
@@ -145,7 +145,7 @@ export const StylesButtonDefault = (theme, props = {}) => [
     theme.settings.contrast.button &&
     !props.noContrast && {
       '.u-contrast &': {
-        background: 'transparent',
+        background: rgba(theme.contrast.base, 0.15),
         color: theme.contrast.base,
         borderColor: theme.contrast.base,
 
@@ -197,7 +197,7 @@ export const StylesButtonPrimary = (theme, props = {}) => {
       borderColor: theme.color.primary.dark,
     },
 
-    theme.settings.button.gradient &&
+    theme.settings.button.gradient.enable &&
       buttonBorderGradient(theme.brand.teal, theme.color.primary.base),
   ];
 
@@ -214,9 +214,9 @@ export const StylesButtonPrimary = (theme, props = {}) => {
       '&:hover, &:focus': interactiveStyles,
     },
 
-    theme.settings.button.gradient &&
+    theme.settings.button.gradient.enable &&
       buttonBorderGradient(
-        theme.settings.button.primaryGradientStart,
+        theme.settings.button.gradient.primaryStart,
         theme.color.primary.base
       ),
 
