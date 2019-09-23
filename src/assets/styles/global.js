@@ -327,7 +327,7 @@ export const globalStyles = theme => [
 
     // Address
     address: {
-      fontStyle: theme.fontWeight.base,
+      fontStyle: 'normal',
     },
 
     // Blockquote
