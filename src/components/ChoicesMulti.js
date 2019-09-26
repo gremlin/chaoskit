@@ -1,6 +1,6 @@
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import { useState, Fragment } from 'react';
+import { useState } from 'react';
 import Downshift from 'downshift';
 import matchSorter from 'match-sorter';
 import { rgba } from 'polished';
@@ -188,7 +188,7 @@ const ChoicesMulti = ({
                               fontSize: theme.fontSize.xxsmall,
                             })}
                             label={
-                              <Fragment>
+                              <>
                                 {item.label}
                                 <Icon
                                   icon="close"
@@ -198,7 +198,7 @@ const ChoicesMulti = ({
                                     marginLeft: theme.space.xsmall,
                                   })}
                                 />
-                              </Fragment>
+                              </>
                             }
                           />
                         );

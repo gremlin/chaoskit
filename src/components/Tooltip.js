@@ -1,11 +1,4 @@
-import {
-  Children,
-  cloneElement,
-  Fragment,
-  useRef,
-  useState,
-  useEffect,
-} from 'react';
+import { Children, cloneElement, useRef, useState, useEffect } from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 import { useTheme } from 'emotion-theming';
@@ -192,7 +185,7 @@ const Tooltip = ({ children, className, content, placement, mobileTap }) => {
   }, [renderTooltip]);
 
   return (
-    <Fragment>
+    <>
       {renderChildren}
       {renderTooltip &&
         ReactDOM.createPortal(
@@ -281,7 +274,7 @@ const Tooltip = ({ children, className, content, placement, mobileTap }) => {
           </div>,
           document.body
         )}
-    </Fragment>
+    </>
   );
 };
 
