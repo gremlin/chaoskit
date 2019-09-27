@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { Fragment, useRef, useState } from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 import useMount from 'react-use/lib/useMount';
@@ -135,7 +135,7 @@ const Reveal = ({
   }, [reveal]);
 
   return (
-    <>
+    <Fragment>
       <Button active={!hidden} onClick={handleRevealToggle} {...trigger.props}>
         {trigger.label}
       </Button>
@@ -154,7 +154,7 @@ const Reveal = ({
           {children}
         </div>
       </div>
-    </>
+    </Fragment>
   );
 };
 

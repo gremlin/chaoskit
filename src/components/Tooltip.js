@@ -185,7 +185,7 @@ const Tooltip = ({ children, className, content, placement, mobileTap }) => {
   }, [renderTooltip]);
 
   return (
-    <>
+    <Fragment>
       {renderChildren}
       {renderTooltip &&
         ReactDOM.createPortal(
@@ -274,7 +274,7 @@ const Tooltip = ({ children, className, content, placement, mobileTap }) => {
           </div>,
           document.body
         )}
-    </>
+    </Fragment>
   );
 };
 

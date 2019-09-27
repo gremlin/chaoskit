@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { select } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
@@ -13,7 +13,7 @@ const ModalExample = () => {
   };
 
   return (
-    <>
+    <Fragment>
       <Modal
         onStart={action('opening')}
         onComplete={action('opened')}
@@ -31,7 +31,7 @@ const ModalExample = () => {
       <Button onClick={handleToggle} type="primary">
         Open Modal
       </Button>
-    </>
+    </Fragment>
   );
 };
 

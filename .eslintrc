@@ -39,6 +39,7 @@
     "react/forbid-foreign-prop-types": 0,
     "react/no-unescaped-entities": 0,
     "react/jsx-props-no-spreading": 0,
+    "react/jsx-fragments": [2, "element"],
     "react/no-access-state-in-setstate": 0,
     "react-hooks/rules-of-hooks": "error",
     "jsx-a11y/accessible-emoji": 0,

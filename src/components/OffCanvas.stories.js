@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { select, number } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
@@ -13,7 +13,7 @@ const OffCanvasExample = () => {
   };
 
   return (
-    <>
+    <Fragment>
       <OffCanvas
         onStart={action('opening')}
         onComplete={action('opened')}
@@ -30,7 +30,7 @@ const OffCanvasExample = () => {
       <Button onClick={handleToggle} type="primary">
         Open OffCanvas
       </Button>
-    </>
+    </Fragment>
   );
 };
 
