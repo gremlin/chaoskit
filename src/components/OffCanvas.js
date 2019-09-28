@@ -13,6 +13,7 @@ import Close from './Close';
 
 const StylesOffCanvasVariables = theme => ({
   size: theme.space.large,
+  panelOffset: theme.space.large,
 });
 
 const OffCanvas = ({
@@ -98,6 +99,7 @@ const OffCanvas = ({
         {
           css: {
             opacity: 1,
+            backdropFilter: 'blur(2px)',
           },
         },
         'offCanvas'
@@ -173,7 +175,9 @@ const OffCanvas = ({
             [align]: 0,
             zIndex: 5,
             height: '100%',
-            width: '100%',
+            width: `calc(100% - ${
+              StylesOffCanvasVariables(theme).panelOffset
+            }px)`,
             background: theme.color.light.base,
             padding: StylesOffCanvasVariables(theme).size,
             boxShadow:
