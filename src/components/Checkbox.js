@@ -1,6 +1,7 @@
+import { useContext } from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import { useContext } from 'react';
+import { useTheme } from 'emotion-theming';
 
 import { CheckboxGroupContext } from './CheckboxGroup';
 import checkbox from '../assets/icons/check.svg';
@@ -13,13 +14,14 @@ export const StylesCheckboxVariables = {
 };
 
 const Checkbox = ({ className, disabled, label, name, value, ...opts }) => {
+  const theme = useTheme();
   const { noContrast } = useContext(CheckboxGroupContext);
 
   const id = `${name}-${generateUUID()}`;
 
   return (
     <div
-      css={theme => [
+      css={[
         {
           display: 'inline-flex',
           alignItems: 'center',
@@ -34,7 +36,7 @@ const Checkbox = ({ className, disabled, label, name, value, ...opts }) => {
         disabled={disabled}
         name={name}
         id={id}
-        css={theme => [
+        css={[
           misc.hide,
           {
             '&:not(:disabled)': {
@@ -103,7 +105,7 @@ const Checkbox = ({ className, disabled, label, name, value, ...opts }) => {
       {label && (
         <label // eslint-disable-line jsx-a11y/label-has-for
           htmlFor={id}
-          css={theme => [
+          css={[
             {
               cursor: 'pointer',
               userSelect: 'none',

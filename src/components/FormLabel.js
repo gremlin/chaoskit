@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+import { useTheme } from 'emotion-theming';
 
 import asterisk from '../assets/icons/asterisk.svg';
 import close from '../assets/icons/close.svg';
@@ -55,17 +56,20 @@ export const StylesFormLabelBase = (theme, props = {}) => [
     },
 ];
 
-const FormLabel = ({ children, className, id, required, error, ...opts }) =>
-  children ? (
+const FormLabel = ({ children, className, id, required, error, ...opts }) => {
+  const theme = useTheme();
+
+  return children ? (
     <label // eslint-disable-line jsx-a11y/label-has-for
       htmlFor={id}
-      css={theme => StylesFormLabelBase(theme, { required, error })}
+      css={StylesFormLabelBase(theme, { required, error })}
       className={cx('CK__FormLabel', className)}
       {...opts}
     >
       {children}
     </label>
   ) : null;
+};
 
 FormLabel.propTypes = {
   children: PropTypes.node,

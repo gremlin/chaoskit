@@ -1,6 +1,7 @@
 import { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+import { useTheme } from 'emotion-theming';
 import MaskedInput from 'react-text-mask';
 
 import FormFooter from './FormFooter';
@@ -82,6 +83,7 @@ const Input = forwardRef(
     },
     ref
   ) => {
+    const theme = useTheme();
     const id = `${name}-${generateUUID()}`;
 
     const inputRender = () => {
@@ -103,14 +105,12 @@ const Input = forwardRef(
             guide={guide}
             render={(maskRef, props) => (
               <input
-                css={theme =>
-                  StylesInputBase(theme, {
-                    type,
-                    prefixIcon,
-                    validationMessage,
-                    noContrast,
-                  })
-                }
+                css={StylesInputBase(theme, {
+                  type,
+                  prefixIcon,
+                  validationMessage,
+                  noContrast,
+                })}
                 className={cx('CK__Input', className)}
                 ref={input => maskRef(input)}
                 {...props}
@@ -122,14 +122,12 @@ const Input = forwardRef(
 
       return (
         <input
-          css={theme =>
-            StylesInputBase(theme, {
-              type,
-              prefixIcon,
-              validationMessage,
-              noContrast,
-            })
-          }
+          css={StylesInputBase(theme, {
+            type,
+            prefixIcon,
+            validationMessage,
+            noContrast,
+          })}
           className={cx('CK__Input', className)}
           {...defaultProps}
         />
@@ -144,7 +142,7 @@ const Input = forwardRef(
         {prefixIcon ? (
           <div css={{ position: 'relative' }}>
             <div
-              css={theme => [
+              css={[
                 {
                   color: theme.fontColor.muted,
                   position: 'absolute',

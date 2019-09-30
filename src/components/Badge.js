@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { useTheme } from 'emotion-theming';
 import cx from 'classnames';
 
 export const StylesBadgeVariables = theme => ({
@@ -41,20 +42,24 @@ export const StylesBadgeRounded = theme => ({
   borderRadius: StylesBadgeVariables(theme).height / 2,
 });
 
-const Badge = ({ className, label, rounded, type, ...opts }) => (
-  <div
-    css={theme => [
-      StylesBadgeBase(theme),
-      type === 'primary' && StylesBadgePrimary(theme),
-      type === 'danger' && StylesBadgeDanger(theme),
-      rounded && StylesBadgeRounded(theme),
-    ]}
-    className={cx('CK__Badge', className)}
-    {...opts}
-  >
-    {label}
-  </div>
-);
+const Badge = ({ className, label, rounded, type, ...opts }) => {
+  const theme = useTheme();
+
+  return (
+    <div
+      css={[
+        StylesBadgeBase(theme),
+        type === 'primary' && StylesBadgePrimary(theme),
+        type === 'danger' && StylesBadgeDanger(theme),
+        rounded && StylesBadgeRounded(theme),
+      ]}
+      className={cx('CK__Badge', className)}
+      {...opts}
+    >
+      {label}
+    </div>
+  );
+};
 
 Badge.propTypes = {
   className: PropTypes.string,

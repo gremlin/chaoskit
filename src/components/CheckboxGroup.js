@@ -1,5 +1,6 @@
 import { Children, createContext } from 'react';
 import PropTypes from 'prop-types';
+import { useTheme } from 'emotion-theming';
 
 import FormGroup from './FormGroup';
 import FormLabel from './FormLabel';
@@ -22,6 +23,8 @@ const CheckboxGroup = ({
   validationMessage,
   ...opts
 }) => {
+  const theme = useTheme();
+
   const renderChildren = () =>
     Children.map(children, child => {
       return (
@@ -46,7 +49,7 @@ const CheckboxGroup = ({
       </FormLabel>
       {renderItems()}
       <FormFooter
-        css={theme => [
+        css={[
           inline && {
             marginTop: theme.space.small,
           },
