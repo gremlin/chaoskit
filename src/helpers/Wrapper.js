@@ -14,6 +14,7 @@ export const ckCache = createCache({
   prefix: key => {
     switch (key) {
       case 'appearance':
+      case 'backdrop-filter':
       case 'box-decoration-break':
       case 'clip-path':
       case 'mask-border-outset':
