@@ -15,6 +15,7 @@ export const ckCache = createCache({
     switch (key) {
       case 'appearance':
       case 'box-decoration-break':
+      case 'clip-path':
       case 'mask-border-outset':
       case 'mask-border-repeat':
       case 'mask-border-slice':
