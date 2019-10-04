@@ -9900,16 +9900,6 @@ style-loader@^0.23.1:
     loader-utils "^1.1.0"
     schema-utils "^1.0.0"
 
-stylis-atomic@0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/stylis-atomic/-/stylis-atomic-0.0.1.tgz#e529c001421c06a4351e8638c678b3d839fd91d6"
-  integrity sha1-5SnAAUIcBqQ1HoY4xniz2Dn9kdY=
-
-stylis-calc@0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/stylis-calc/-/stylis-calc-0.0.1.tgz#45d1ef0ceee6daef218a7956945d82629a9bf6bb"
-  integrity sha1-RdHvDO7m2u8hinlWlF2CYpqb9rs=
-
 stylis@3.5.0:
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/stylis/-/stylis-3.5.0.tgz#016fa239663d77f868fef5b67cf201c4b7c701e1"
