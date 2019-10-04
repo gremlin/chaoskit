@@ -8,7 +8,7 @@ import { theme } from '../assets/styles/theme';
 import { fonts } from '../assets/styles/fonts';
 import { globalStyles } from '../assets/styles/global';
 
-export const ckCache = () =>
+export const createCKCache = () =>
   createCache({
     key: 'ck',
     // Only prefix the following style properties
@@ -42,6 +42,8 @@ export const ckCache = () =>
       }
     },
   });
+
+export const ckCache = createCKCache();
 
 const Wrapper = ({ children }) => (
   <CacheProvider value={ckCache}>
