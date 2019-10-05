@@ -1,17 +1,4 @@
 /**
- * Loop over DOM nodes
- * @param  {array}   array
- * @param  {function} callback
- * @param  {scope}   scope
- * @return {void}
- */
-export function forEach(array, callback, scope) {
-  for (let i = 0, { length } = array; i < length; i += 1) {
-    callback.call(scope, i, array[i]);
-  }
-}
-
-/**
  * Used for more performant scroll listeners
  * Example: window.addEventListener('scroll', throttleScroll(() => console.log('PERFORMANCE!')));
  *

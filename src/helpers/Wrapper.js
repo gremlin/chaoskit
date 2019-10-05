@@ -2,11 +2,17 @@ import PropTypes from 'prop-types';
 import { ThemeProvider } from 'emotion-theming';
 import { CacheProvider, Global } from '@emotion/core';
 import createCache from '@emotion/cache';
+import { merge } from 'lodash-es';
 import 'what-input';
 
 import { theme } from '../assets/styles/theme';
 import { fonts } from '../assets/styles/fonts';
 import { globalStyles } from '../assets/styles/global';
+
+// Handy-dandy utility function to deep-merge themes
+export function extendTheme(...themes) {
+  return merge({}, ...themes);
+}
 
 export const createCKCache = () =>
   createCache({
