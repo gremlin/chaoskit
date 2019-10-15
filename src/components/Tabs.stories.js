@@ -13,7 +13,7 @@ storiesOf('Components|Tabs', module).add('Overview', () => (
 
     <TabPanel>
       <img
-        src="http://futurama-madhouse.net/bios/bioFry.jpg"
+        src="https://upload.wikimedia.org/wikipedia/en/2/28/Philip_Fry.png"
         alt="Philip J. Fry"
       />
       <List>
@@ -31,7 +31,7 @@ storiesOf('Components|Tabs', module).add('Overview', () => (
     </TabPanel>
     <TabPanel>
       <img
-        src="http://futurama-madhouse.net/bios/bioLeela.jpg"
+        src="https://upload.wikimedia.org/wikipedia/en/d/d4/Turanga_Leela.png"
         alt="Turanga Leela"
       />
       <List>
@@ -50,7 +50,7 @@ storiesOf('Components|Tabs', module).add('Overview', () => (
     </TabPanel>
     <TabPanel>
       <img
-        src="http://futurama-madhouse.net/bios/bioBender.jpg"
+        src="https://upload.wikimedia.org/wikipedia/en/a/a6/Bender_Rodriguez.png"
         alt="Bender Rodriguez"
       />
       <List>
@@ -68,7 +68,7 @@ storiesOf('Components|Tabs', module).add('Overview', () => (
     </TabPanel>
     <TabPanel>
       <img
-        src="http://futurama-madhouse.net/bios/bioZoidberg.jpg"
+        src="https://upload.wikimedia.org/wikipedia/en/4/4a/Dr_John_Zoidberg.png"
         alt="Dr. Zoidberg"
       />
       <List>

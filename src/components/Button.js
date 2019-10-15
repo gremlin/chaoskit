@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
 import cx from 'classnames';
 import { shade, rgba } from 'polished';
+import { useTheme } from 'emotion-theming';
 
 import { gradient, misc } from '../assets/styles/utility';
 import { StylesIconVariables } from './Icon';
@@ -395,6 +396,8 @@ const Button = forwardRef(
     },
     ref
   ) => {
+    const theme = useTheme();
+
     let Component = as;
 
     const buttonProps = {
@@ -414,7 +417,7 @@ const Button = forwardRef(
 
     return (
       <Component
-        css={theme => [
+        css={[
           type !== 'reset' && StylesButtonBase(theme, { noContrast }),
           type === 'reset' && StylesButtonReset,
           size === 'small' && StylesButtonSmall(theme),

@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { useTheme } from 'emotion-theming';
 import cx from 'classnames';
 
 export const StylesContainerVariables = {
@@ -6,32 +7,36 @@ export const StylesContainerVariables = {
   small: 800,
 };
 
-const Container = ({ className, size, ...opts }) => (
-  <div
-    className={cx('CK__Container', className)}
-    css={theme => [
-      {
-        width: '100%',
-        margin: '0 auto',
-        padding: `0 ${theme.space.base}px`,
+const Container = ({ className, size, ...opts }) => {
+  const theme = useTheme();
 
-        // Children containers should not have padding
-        '.CK__Container': {
-          padding: 0,
+  return (
+    <div
+      className={cx('CK__Container', className)}
+      css={[
+        {
+          width: '100%',
+          margin: '0 auto',
+          padding: `0 ${theme.space.base}px`,
+
+          // Children containers should not have padding
+          '.CK__Container': {
+            padding: 0,
+          },
         },
-      },
 
-      size === 'base' && {
-        maxWidth: StylesContainerVariables.base,
-      },
+        size === 'base' && {
+          maxWidth: StylesContainerVariables.base,
+        },
 
-      size === 'small' && {
-        maxWidth: StylesContainerVariables.small,
-      },
-    ]}
-    {...opts}
-  />
-);
+        size === 'small' && {
+          maxWidth: StylesContainerVariables.small,
+        },
+      ]}
+      {...opts}
+    />
+  );
+};
 
 Container.propTypes = {
   size: PropTypes.oneOf(['base', 'small']),

@@ -1,4 +1,11 @@
-import { Children, cloneElement, useRef, useState, useEffect } from 'react';
+import {
+  Children,
+  cloneElement,
+  useRef,
+  useState,
+  useEffect,
+  Fragment,
+} from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 import { useTheme } from 'emotion-theming';

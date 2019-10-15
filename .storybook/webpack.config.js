@@ -8,23 +8,6 @@ module.exports = ({ config }) => {
     })
   );
 
-  /* config.module.rules.push({
-    test: /\.stories\.jsx?$/,
-    loaders: [
-      {
-        loader: require.resolve('@storybook/addon-storysource/loader'),
-        options: {
-          prettierConfig: {
-            printWidth: 80,
-            singleQuote: true,
-            trailingComma: 'es5',
-          },
-        },
-      },
-    ],
-    enforce: 'pre',
-  }); */
-
   // Enable eslint
   config.module.rules.push({
     test: /\.jsx?$/,

@@ -4,6 +4,7 @@ import { Fragment, useState } from 'react';
 import Downshift from 'downshift';
 import matchSorter from 'match-sorter';
 import { rgba } from 'polished';
+import { useTheme } from 'emotion-theming';
 
 import Badge from './Badge';
 import FormFooter from './FormFooter';
@@ -30,6 +31,7 @@ const ChoicesMulti = ({
   selected,
   wrapperProps,
 }) => {
+  const theme = useTheme();
   const [value, setValue] = useState('');
 
   const id = `${name}-${generateUUID()}`;
@@ -114,7 +116,7 @@ const ChoicesMulti = ({
               {label}
             </FormLabel>
             <div
-              css={theme => [
+              css={[
                 {
                   // 1. Reset default text direction if inside of centered container
                   color: theme.fontColor.base,
@@ -138,7 +140,7 @@ const ChoicesMulti = ({
               >
                 {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events */}
                 <div
-                  css={theme => [
+                  css={[
                     form.input(theme, { error: !!validationMessage }),
                     // 1. Override height properties from normal input since this list will grow
                     {
@@ -167,10 +169,10 @@ const ChoicesMulti = ({
                   {downshift.selectedItem.length > 0 && (
                     <Inline
                       size="small"
-                      css={theme => ({
+                      css={{
                         order: 1,
                         paddingBottom: form.variables(theme).padding,
-                      })}
+                      }}
                     >
                       {downshift.selectedItem.map((item, i) => {
                         const key = `${item.label}-${i}`;
@@ -182,21 +184,21 @@ const ChoicesMulti = ({
                             type="primary"
                             onClick={() => removeItem(item)}
                             rounded
-                            css={theme => ({
+                            css={{
                               cursor: 'pointer',
                               height: theme.height.xxxsmall,
                               fontSize: theme.fontSize.xxsmall,
-                            })}
+                            }}
                             label={
                               <Fragment>
                                 {item.label}
                                 <Icon
                                   icon="close"
                                   size="small"
-                                  css={theme => ({
+                                  css={{
                                     top: 0,
                                     marginLeft: theme.space.xsmall,
-                                  })}
+                                  }}
                                 />
                               </Fragment>
                             }
@@ -227,7 +229,7 @@ const ChoicesMulti = ({
                 </div>
                 {downshift.isOpen && (
                   <div
-                    css={theme => [
+                    css={[
                       {
                         position: 'absolute',
                         top: '100%',
@@ -246,7 +248,7 @@ const ChoicesMulti = ({
                       {filteredOptions.length > 0 ? (
                         filteredOptions.map((item, index) => (
                           <div
-                            css={theme => [
+                            css={[
                               {
                                 padding: `${theme.space.xsmall}px ${theme.space.small}px`,
                                 cursor: 'default',
@@ -264,10 +266,10 @@ const ChoicesMulti = ({
                         ))
                       ) : (
                         <div
-                          css={theme => ({
+                          css={{
                             padding: `${theme.space.xsmall}px ${theme.space.small}px`,
                             color: theme.fontColor.muted,
-                          })}
+                          }}
                         >
                           No results found
                         </div>

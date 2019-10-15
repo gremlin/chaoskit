@@ -339,6 +339,10 @@ const settings = {
   table: {
     enable: true,
   },
+  classes: {
+    active: 'is-active',
+    open: 'is-open',
+  },
 };
 
 const transition = {

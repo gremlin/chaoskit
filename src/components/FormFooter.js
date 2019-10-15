@@ -1,15 +1,18 @@
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+import { useTheme } from 'emotion-theming';
 
 const FormFooter = ({
   className,
   explanationMessage,
   validationMessage,
   ...opts
-}) =>
-  explanationMessage || validationMessage ? (
+}) => {
+  const theme = useTheme();
+
+  return explanationMessage || validationMessage ? (
     <div
-      css={theme => [
+      css={[
         {
           fontSize: theme.fontSize.small,
           lineHeight: theme.lineHeight.small,
@@ -25,7 +28,7 @@ const FormFooter = ({
     >
       {explanationMessage && (
         <div
-          css={theme => [
+          css={[
             {
               color: theme.fontColor.muted,
               marginTop: theme.space.xsmall,
@@ -50,7 +53,7 @@ const FormFooter = ({
       )}
       {validationMessage && (
         <div
-          css={theme => [
+          css={[
             {
               color: theme.color.danger.base,
               marginTop: theme.space.xsmall,
@@ -73,6 +76,7 @@ const FormFooter = ({
       )}
     </div>
   ) : null;
+};
 
 FormFooter.propTypes = {
   className: PropTypes.string,

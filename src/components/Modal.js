@@ -107,18 +107,29 @@ const Modal = ({
       .set($modal, {
         display: 'block',
       })
-      .to($modal, theme.gsap.timing.base, {
-        css: {
-          opacity: 1,
+      .to(
+        $modal,
+        theme.gsap.timing.base,
+        {
+          css: {
+            opacity: 1,
+            backdropFilter: 'blur(2px)',
+          },
         },
-      })
-      .to($modalDialog, theme.gsap.timing.base, {
-        css: {
-          opacity: 1,
-          y: 0,
+        'modal'
+      )
+      .to(
+        $modalDialog,
+        theme.gsap.timing.base,
+        {
+          css: {
+            opacity: 1,
+            y: 0,
+          },
+          ease: theme.gsap.transition.bounce,
         },
-        ease: theme.gsap.transition.bounce,
-      });
+        'modal'
+      );
   };
 
   useEffect(() => {
@@ -180,6 +191,8 @@ const Modal = ({
             margin: theme.space.base,
             zIndex: 5,
             boxShadow: theme.boxShadow.large,
+
+            // 1
             opacity: 0,
             transform: MODAL_ANIMATE_PROPERTIES[animateFrom].transform,
             transformOrigin: MODAL_ANIMATE_PROPERTIES[animateFrom].label,

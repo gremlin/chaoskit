@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Downshift from 'downshift';
 import matchSorter from 'match-sorter';
 import { ellipsis, rgba } from 'polished';
+import { useTheme } from 'emotion-theming';
 
 import Button from './Button';
 import FormFooter from './FormFooter';
@@ -31,6 +32,7 @@ const ChoicesSingle = ({
   selected,
   wrapperProps,
 }) => {
+  const theme = useTheme();
   const [value, setValue] = useState('');
 
   const id = `${name}-${generateUUID()}`;
@@ -80,7 +82,7 @@ const ChoicesSingle = ({
               {label}
             </FormLabel>
             <div
-              css={theme => [
+              css={[
                 {
                   // 1. Reset default text direction if inside of centered container
                   color: theme.fontColor.base,
@@ -97,7 +99,7 @@ const ChoicesSingle = ({
               className={cx('CK__ChoicesSingle', className)}
             >
               <div
-                css={theme => [
+                css={[
                   {
                     position: 'relative',
 
@@ -114,7 +116,7 @@ const ChoicesSingle = ({
               >
                 {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events */}
                 <div
-                  css={theme => [
+                  css={[
                     form.input(theme, { error: !!validationMessage }),
                     {
                       display: 'flex',
@@ -138,7 +140,7 @@ const ChoicesSingle = ({
                   onClick={downshift.openMenu}
                 >
                   <div
-                    css={theme => [
+                    css={[
                       {
                         // lineHeight is based on form height minus border (top + bottom)
                         lineHeight: `${form.variables(theme).height - 2}px`,
@@ -147,7 +149,7 @@ const ChoicesSingle = ({
                   >
                     {downshift.selectedItem && downshift.selectedItem !== -1 ? (
                       <div
-                        css={theme => ({
+                        css={{
                           ...ellipsis(),
                           cursor: 'default',
                           // Takes care of select arrow for ellipsis
@@ -156,7 +158,7 @@ const ChoicesSingle = ({
                             StylesSelectVariables(theme).arrowOffset -
                             form.variables(theme).padding +
                             theme.height.small,
-                        })}
+                        }}
                       >
                         {downshift.selectedItem.label}
                         {removeItem && (
@@ -165,13 +167,13 @@ const ChoicesSingle = ({
                             size="xsmall"
                             iconOnly
                             onClick={removeItem}
-                            css={theme => ({
+                            css={{
                               position: 'absolute',
                               top: '50%',
                               transform: 'translateY(-50%)',
                               right: StylesSelectVariables(theme).arrowOffset,
                               zIndex: 1,
-                            })}
+                            }}
                           >
                             <Icon icon="close" />
                           </Button>
@@ -179,7 +181,7 @@ const ChoicesSingle = ({
                       </div>
                     ) : (
                       <div
-                        css={theme => ({
+                        css={{
                           ...ellipsis(),
                           color: theme.fontColor.muted,
                           cursor: 'default',
@@ -187,7 +189,7 @@ const ChoicesSingle = ({
                           paddingRight:
                             StylesSelectVariables(theme).arrowOffset -
                             form.variables(theme).padding,
-                        })}
+                        }}
                       >
                         {placeholder}
                       </div>
@@ -196,7 +198,7 @@ const ChoicesSingle = ({
                 </div>
                 {downshift.isOpen && (
                   <div
-                    css={theme => [
+                    css={[
                       {
                         position: 'absolute',
                         top: '100%',
@@ -214,7 +216,7 @@ const ChoicesSingle = ({
                     <Input
                       prefixIcon="search"
                       name={id}
-                      css={theme => ({
+                      css={{
                         borderRadius: 0,
                         borderWidth: `0 0 1px 0`,
                         boxShadow: 'none',
@@ -225,7 +227,7 @@ const ChoicesSingle = ({
                           borderColor: theme.color.border.base,
                           background: theme.color.panel.base,
                         },
-                      })}
+                      }}
                       {...downshift.getInputProps({
                         placeholder: searchPlaceholder,
                         onChange: handleInputChange,
@@ -236,7 +238,7 @@ const ChoicesSingle = ({
                       {optionsList.length > 0 ? (
                         optionsList.map((item, index) => (
                           <div
-                            css={theme => [
+                            css={[
                               {
                                 padding: `${theme.space.xsmall}px ${theme.space.small}px`,
                                 cursor: 'default',
@@ -255,10 +257,10 @@ const ChoicesSingle = ({
                         ))
                       ) : (
                         <div
-                          css={theme => ({
+                          css={{
                             padding: `${theme.space.xsmall}px ${theme.space.small}px`,
                             color: theme.fontColor.muted,
-                          })}
+                          }}
                         >
                           No results found
                         </div>
