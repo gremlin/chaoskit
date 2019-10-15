@@ -433,6 +433,7 @@ const Button = forwardRef(
           fullWidth && {
             width: '100%',
           },
+          theme.settings.button.misc,
         ]}
         className={cx(`CK__Button CK__Button--${type}`, className)}
         {...buttonProps}

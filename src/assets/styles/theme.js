@@ -328,6 +328,7 @@ const settings = {
       enable: true,
       primaryStart: brand.teal,
     },
+    misc: {},
   },
   prism: {
     enable: true,
