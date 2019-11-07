@@ -689,11 +689,13 @@ $form-contrast-background-focus: transparent !default;
           + label {
             &::before {
               border-color: $global-contrast;
+              background: transparent;
               box-shadow: none;
             }
 
             &::after {
               background: $global-contrast;
+              border: 0;
             }
           }
 
@@ -812,6 +814,7 @@ $form-contrast-background-focus: transparent !default;
           + label {
             &::before {
               border-color: $global-contrast;
+              background: transparent;
               box-shadow: none;
             }
 
