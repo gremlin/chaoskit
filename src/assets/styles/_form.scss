@@ -33,7 +33,7 @@ $form-textarea-max-height: 300px !default;
 
 $form-radio-label-spacing: $global-whitespace-small !default;
 $form-radio-size: 22px !default;
-$form-radio-icon-size: 8px !default;
+$form-radio-icon-size: 10px !default;
 
 $form-checkbox-label-spacing: $global-whitespace-small !default;
 $form-checkbox-size: 22px !default;
@@ -92,12 +92,6 @@ $form-contrast-background-focus: transparent !default;
 @svg-load form-notValid url('close.svg') {
   .icon-stroke {
     stroke: $global-danger;
-  }
-}
-
-@svg-load form-check url('check.svg') {
-  .icon-stroke {
-    stroke: $global-primary;
   }
 }
 
@@ -632,12 +626,14 @@ $form-contrast-background-focus: transparent !default;
       &:checked {
         + label {
           &::before {
-            border-color: $global-primary;
+            border-color: $global-primary-hover;
+            background: $global-primary;
           }
 
           &::after {
             content: '';
-            background: $global-primary;
+            background: $global-background;
+            border: 1px solid $global-primary-hover;
             width: $form-radio-icon-size;
             height: $form-radio-icon-size;
             background-repeat: no-repeat;
@@ -732,12 +728,13 @@ $form-contrast-background-focus: transparent !default;
       &:checked {
         + label {
           &::before {
-            border-color: $global-primary;
+            border-color: $global-primary-hover;
+            background: $global-primary;
           }
 
           &::after {
             content: '';
-            background-image: svg-inline(form-check);
+            background-image: svg-inline(form-check-contrast);
             width: $form-checkbox-icon-size;
             height: $form-checkbox-icon-size;
             background-repeat: no-repeat;

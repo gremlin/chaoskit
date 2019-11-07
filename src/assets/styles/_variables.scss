@@ -63,7 +63,7 @@ $global-danger-hover: shade($global-danger, 10) !default;
 $global-dark: $GREMLIN_black !default;
 $global-dark-overlay: rgba($global-dark, 0.85) !default;
 
-$global-box-shadow-offset: 0 0 6px -2px !default;
+$global-box-shadow-offset: 0 1px 5px -2px !default;
 $global-box-shadow-color: rgba($global-dark, 0.18) !default;
 $global-box-shadow-color-light: rgba($global-dark, 0.14) !default;
 $global-box-shadow: $global-box-shadow-offset $global-box-shadow-color !default;
