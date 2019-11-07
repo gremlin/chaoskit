@@ -8,7 +8,7 @@ import { generateUUID } from '../helpers/utility';
 
 export const StylesRadioVariables = {
   size: 22,
-  iconSize: 8,
+  iconSize: 10,
 };
 
 const Radio = ({ className, disabled, label, value, ...opts }) => {
@@ -46,12 +46,14 @@ const Radio = ({ className, disabled, label, value, ...opts }) => {
             '&:checked': {
               '+ label': {
                 '&::before': {
-                  borderColor: theme.color.primary.base,
+                  borderColor: theme.color.primary.dark,
+                  background: theme.color.primary.base,
                 },
 
                 '&::after': {
                   content: "''",
-                  background: theme.color.primary.base,
+                  background: theme.contrast.base,
+                  border: `1px solid ${theme.color.primary.dark}`,
                   width: StylesRadioVariables.iconSize,
                   height: StylesRadioVariables.iconSize,
                   backgroundRepeat: 'no-repeat',
@@ -88,10 +90,11 @@ const Radio = ({ className, disabled, label, value, ...opts }) => {
               '.u-contrast &': {
                 '+ label::before': {
                   borderColor: theme.contrast.base,
+                  background: 'transparent',
                 },
 
                 '&:checked + label::after': {
-                  background: theme.contrast.base,
+                  border: 0,
                 },
 
                 '&:disabled + label::before': {

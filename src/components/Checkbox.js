@@ -46,7 +46,8 @@ const Checkbox = ({ className, disabled, label, name, value, ...opts }) => {
             '&:checked': {
               '+ label': {
                 '&::before': {
-                  borderColor: theme.color.primary.base,
+                  borderColor: theme.color.primary.dark,
+                  background: theme.color.primary.base,
                 },
 
                 '&::after': {
@@ -54,7 +55,7 @@ const Checkbox = ({ className, disabled, label, name, value, ...opts }) => {
                   width: StylesCheckboxVariables.iconSize,
                   height: StylesCheckboxVariables.iconSize,
                   backgroundImage: `url(${checkbox})`,
-                  filter: theme.color.primary.filter,
+                  filter: theme.contrast.filter,
                   backgroundRepeat: 'no-repeat',
                   backgroundSize: 'contain',
                   display: 'inline-block',
@@ -88,10 +89,7 @@ const Checkbox = ({ className, disabled, label, name, value, ...opts }) => {
               '.u-contrast &': {
                 '+ label::before': {
                   borderColor: theme.contrast.base,
-                },
-
-                '&:checked + label::after': {
-                  filter: theme.contrast.filter,
+                  background: 'transparent',
                 },
 
                 '&:disabled + label::before': {
