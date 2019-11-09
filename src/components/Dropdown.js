@@ -8,7 +8,6 @@ import { useTheme } from 'emotion-theming';
 import Button from './Button';
 import Icon from './Icon';
 import { misc, text } from '../assets/styles/utility';
-import { generateGradient } from '../assets/styles/utility/gradient';
 
 const DropdownPanelStylesVariables = theme => ({
   offset: theme.space.base,
@@ -198,11 +197,7 @@ const Dropdown = ({
           misc.trimChildren,
           {
             // 1. GSAP
-            background: generateGradient({
-              start: theme.color.panel.light,
-              stop: theme.color.panel.base,
-              position: 'to bottom',
-            }),
+            background: theme.color.panel.light,
             padding: theme.space.large,
             position: 'absolute',
             width: panelWidth,

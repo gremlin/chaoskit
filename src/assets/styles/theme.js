@@ -85,7 +85,7 @@ const color = {
     filter: 'brightness(0) invert(1)',
   },
   panel: {
-    base: '#fafbfc',
+    base: '#f8f8f8',
     get light() {
       return tint(0.5, this.base);
     },
@@ -135,7 +135,7 @@ const color = {
     base: '#ffa',
   },
   border: {
-    base: '#eff0f1',
+    base: '#e6e6e6',
   },
 };
 
