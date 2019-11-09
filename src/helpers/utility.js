@@ -31,58 +31,6 @@ export function generateUUID(a) {
 }
 
 /**
- * Get unique items in array by value
- *
- * @param  {array} array
- * @param  {string} propertyName
- * @return {array}
- */
-export function unique(array, propertyName) {
-  return array.filter(
-    (e, i) => array.findIndex(a => a[propertyName] === e[propertyName]) === i
-  );
-}
-
-/**
- * Returns a random number between min (inclusive) and max (exclusive)
- *
- * @param  {integer} min
- * @param  {integer} max
- * @return {integer}
- */
-export function getRandomInteger(min, max) {
-  return Math.random() * (max - min) + min;
-}
-
-/**
- * Determine if link is external
- *
- * @param  {string}  url
- * @return {Boolean}
- */
-export function isExternalUrl(url) {
-  return !/^\/(?!\/)/.test(url);
-}
-
-/**
- * Make sure all internal links end with `/` to match directory structure
- *
- * @param  {string} url
- * @return {string}
- */
-export function directoryUrl(url) {
-  if (isExternalUrl(url)) return url;
-
-  let newUrl = url;
-
-  if (!newUrl.endsWith('/')) {
-    newUrl = `${newUrl}/`;
-  }
-
-  return newUrl;
-}
-
-/**
  * Check for touch screen capability
  * @SOURCE https://stackoverflow.com/questions/4817029/whats-the-best-way-to-detect-a-touch-screen-device-using-javascript/4819886#4819886
  *
@@ -90,40 +38,4 @@ export function directoryUrl(url) {
  */
 export function isTouchDevice() {
   return 'ontouchstart' in document.documentElement;
-}
-
-/**
- * Add-in proper punctuation for numbers
- *
- * @param  {integer} number
- * @return {string}
- */
-export function formatNumber(number) {
-  const parts = number
-    .toFixed(2)
-    .toString()
-    .split('.');
-
-  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-
-  return parts.join('.');
-}
-
-export function formatNumberShorthand(number, min = 1e3) {
-  // Alter numbers larger than 1k
-  if (number >= min) {
-    const units = ['k', 'M', 'B', 'T'];
-
-    const order = Math.floor(Math.log(number) / Math.log(1000));
-
-    const unitname = units[order - 1];
-    // eslint-disable-next-line no-mixed-operators
-    const num = (number / 1000 ** order).toFixed(2);
-
-    // Output number remainder + unitname
-    return num + unitname;
-  }
-
-  // return formatted original number
-  return number.toLocaleString();
 }
