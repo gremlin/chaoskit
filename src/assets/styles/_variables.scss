@@ -75,8 +75,9 @@ $global-small-media-shadow: 0 7.5px 17.5px rgba($global-dark, 0.1),
   0 2.5px 7.5px rgba($global-dark, 0.07) !default;
 $global-neutral-box-shadow: 0 5px 15px rgba($global-dark, 0.1);
 
-$global-panel-background: #fafbfc !default;
-$global-panel-background-hover: shade($global-panel-background, 2.5%) !default;
+$global-panel-background: #f8f8f8 !default;
+$global-panel-background-hover: shade($global-panel-background, 3.5%) !default;
+$global-panel-background-light: tint($global-panel-background, 5%);
 
 $global-disabled-opacity: 0.5 !default;
 
@@ -84,7 +85,7 @@ $global-disabled-opacity: 0.5 !default;
 // Borders
 //
 
-$global-border: #eff0f1 !default;
+$global-border: #e6e6e6 !default;
 $global-border-radius: 4px !default;
 $global-border-radius-large: 8px !default;
 
