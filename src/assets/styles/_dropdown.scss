@@ -5,7 +5,12 @@
 $dropdown-width: 250px !default;
 
 $dropdown-panel-offset: $global-whitespace-regular !default;
-$dropdown-panel-background: $global-panel-background-light;
+$dropdown-panel-background: linear-gradient(
+  to bottom,
+  $global-background,
+  ease-in-out,
+  $global-panel-background-light
+);
 $dropdown-panel-padding: $global-whitespace-large !default;
 
 $dropdown-arrow-offset: $global-whitespace-small !default;
