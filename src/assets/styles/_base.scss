@@ -522,8 +522,7 @@ $base-selection-color: $global-background !default;
   pre {
     padding: $base-pre-padding;
     background: $base-pre-background;
-    font:
-      $base-pre-font-size unquote('/') $base-pre-line-height
+    font: $base-pre-font-size unquote('/') $base-pre-line-height
       $base-pre-font-family;
     color: $base-pre-color;
     tab-size: 4;

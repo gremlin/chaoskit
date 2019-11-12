@@ -74,11 +74,10 @@ $toggle-contrast-enable: true !default;
 
             // Offset for contrast border
             .u-contrast & {
-              left:
-                (
-                  $toggle-width - $toggle-button-size - $toggle-button-offset -
+              left: (
+                $toggle-width - $toggle-button-size - $toggle-button-offset -
                   2px
-                );
+              );
             }
           }
         }

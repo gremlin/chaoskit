@@ -38,24 +38,22 @@ $section-slant-offset: 2.5vw !default;
   }
 
   .section--slant {
-    clip-path:
-      polygon(
-        0 0,
-        100% #{$section-slant-offset},
-        100% 100%,
-        0 calc(100% - #{$section-slant-offset})
-      );
+    clip-path: polygon(
+      0 0,
+      100% #{$section-slant-offset},
+      100% 100%,
+      0 calc(100% - #{$section-slant-offset})
+    );
     margin-top: -$section-slant-offset;
   }
 
   .section--slant-bottom {
-    clip-path:
-      polygon(
-        0 0,
-        100% 0,
-        100% 100%,
-        0 calc(100% - #{$section-slant-offset})
-      );
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% 100%,
+      0 calc(100% - #{$section-slant-offset})
+    );
   }
 
   .section--shadow {
@@ -68,8 +66,7 @@ $section-slant-offset: 2.5vw !default;
       left: 0;
       bottom: -$section-slant-offset;
       z-index: -1;
-      border-bottom:
-        ($section-slant-offset * 2.25) solid
+      border-bottom: ($section-slant-offset * 2.25) solid
         rgba($global-dark, 0.03);
       filter: blur(5px);
     }

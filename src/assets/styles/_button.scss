@@ -73,8 +73,7 @@ $button-icon-enable: true !default;
 
 @mixin buttonBorderGradient($start, $stop) {
   border-color: transparent;
-  background:
-    linear-gradient(to right, $start, ease-in-out, $stop),
+  background: linear-gradient(to right, $start, ease-in-out, $stop),
     linear-gradient(to right, $start, ease-in-out, $stop);
   background-origin: border-box;
   background-clip: content-box, border-box;

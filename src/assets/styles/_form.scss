@@ -43,7 +43,7 @@ $form-select-arrow-color: $form-placeholder-color !default;
 $form-select-arrow-icon-size: 12px !default;
 $forms-select-arrow-right-padding: (
   $form-select-arrow-icon-size + $form-padding-horizontal +
-  $global-whitespace-small
+    $global-whitespace-small
 ) !default;
 $form-select-arrow-surround-padding: 0 $forms-select-arrow-right-padding 0
   $form-padding-horizontal !default;
@@ -176,7 +176,8 @@ $form-contrast-background-focus: transparent !default;
 
   @if $global-contrast-enable and
     $form-contrast-enable and
-    $form-contrast-input-enable {
+    $form-contrast-input-enable
+  {
     .u-contrast & {
       background: $form-contrast-background;
       border: 1px solid $global-contrast;
@@ -283,7 +284,6 @@ $form-contrast-background-focus: transparent !default;
 
     // 2
     &:not([type]),
-    &[type='text'],
     &[type='text'],
     &[type='password'],
     &[type='datetime'],
@@ -428,7 +428,8 @@ $form-contrast-background-focus: transparent !default;
 
   @if $global-contrast-enable and
     $form-contrast-enable and
-    $form-contrast-input-enable {
+    $form-contrast-input-enable
+  {
     .u-contrast {
       ::placeholder {
         color: $global-contrast-muted;
@@ -445,10 +446,9 @@ $form-contrast-background-focus: transparent !default;
     position: relative;
 
     input {
-      padding-left:
-        (
-          $form-padding-horizontal + $global-font-size + $global-whitespace-small
-        );
+      padding-left: (
+        $form-padding-horizontal + $global-font-size + $global-whitespace-small
+      );
     }
   }
 
@@ -462,7 +462,8 @@ $form-contrast-background-focus: transparent !default;
 
     @if $global-contrast-enable and
       $form-contrast-enable and
-      $form-contrast-input-prefix-enable {
+      $form-contrast-input-prefix-enable
+    {
       .u-contrast & {
         color: $global-contrast-muted;
       }
@@ -496,10 +497,9 @@ $form-contrast-background-focus: transparent !default;
       content: '';
       position: absolute;
       top: 50%;
-      transform:
-        translateY(
-          (($form-legend-spacing - $form-legend-line-thickness) / -2)
-        );
+      transform: translateY(
+        (($form-legend-spacing - $form-legend-line-thickness) / -2)
+      );
       width: 100%;
       background: $form-legend-line-background;
       height: $form-legend-line-thickness;
@@ -683,7 +683,8 @@ $form-contrast-background-focus: transparent !default;
 
     @if $global-contrast-enable and
       $form-contrast-enable and
-      $form-contrast-radio-enable {
+      $form-contrast-radio-enable
+    {
       .u-contrast & {
         input {
           + label {
@@ -808,7 +809,8 @@ $form-contrast-background-focus: transparent !default;
 
     @if $global-contrast-enable and
       $form-contrast-enable and
-      $form-contrast-checkbox-enable {
+      $form-contrast-checkbox-enable
+    {
       .u-contrast & {
         input {
           + label {
@@ -864,7 +866,8 @@ $form-contrast-background-focus: transparent !default;
 
     @if $global-contrast-enable and
       $form-contrast-enable and
-      $form-contrast-select-enable {
+      $form-contrast-select-enable
+    {
       .u-contrast & {
         select {
           option {
@@ -889,8 +892,7 @@ $form-contrast-background-focus: transparent !default;
       }
 
       option {
-        padding:
-          $form-padding-horizontal
+        padding: $form-padding-horizontal
           ($form-padding-horizontal - $global-whitespace-xsmall);
       }
     }

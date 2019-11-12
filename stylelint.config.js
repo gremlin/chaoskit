@@ -1,5 +1,5 @@
 module.exports = {
-  extends: 'stylelint-config-standard',
+  extends: ['stylelint-config-standard', 'stylelint-prettier/recommended'],
   rules: {
     'at-rule-no-unknown': [
       true,
@@ -18,14 +18,6 @@ module.exports = {
           'extend',
           'svg-load',
         ],
-      },
-    ],
-    'at-rule-empty-line-before': [
-      'always',
-      {
-        except: ['blockless-after-same-name-blockless', 'first-nested'],
-        ignore: ['after-comment'],
-        ignoreAtRules: ['include', 'mixin'],
       },
     ],
     'max-nesting-depth': [

@@ -123,7 +123,8 @@ $offset-properties: 'margin-left' !default;
   @each $size in $global-breakpoint-sizes {
     @include queries($size, $global-queries) {
       @for $i from 1 through $columns {
-        #{$selector}#{$block-delimiter}#{$i}#{$breakpoint-delimiter}#{$size} > * {
+        #{$selector}#{$block-delimiter}#{$i}#{$breakpoint-delimiter}#{$size}
+          > * {
           @content;
 
           @each $prop in $properties {

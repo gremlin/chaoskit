@@ -49,8 +49,7 @@ $loader-circle-animation-duration: 1.5s !default;
   .loader-circle {
     stroke-dasharray: 1, 200;
     stroke-dashoffset: 0;
-    animation:
-      loader-dash $loader-circle-animation-duration ease-in-out
+    animation: loader-dash $loader-circle-animation-duration ease-in-out
       infinite;
     stroke-linecap: round;
     stroke: currentColor;

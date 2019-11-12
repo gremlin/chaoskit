@@ -11,10 +11,9 @@
 
   display: block;
   position: relative;
-  padding-left:
-    (
-      ($global-whitespace-small + $global-whitespace-xsmall) + $list-circle-size
-    );
+  padding-left: (
+    ($global-whitespace-small + $global-whitespace-xsmall) + $list-circle-size
+  );
 
   &::before {
     content: '';

@@ -152,8 +152,7 @@ $form-choices-max-height: 200px !default;
 
         // Style remove button
         &:not(.choices__placeholder) {
-          padding-right:
-            $forms-select-arrow-right-padding +
+          padding-right: $forms-select-arrow-right-padding +
             $form-choices-icon-size + $global-whitespace-xsmall;
 
           .choices__button {
@@ -174,8 +173,7 @@ $form-choices-max-height: 200px !default;
 
       &:not(:empty) {
         margin-left: -$global-whitespace-small;
-        padding:
-          0 $global-whitespace-small $global-whitespace-small
+        padding: 0 $global-whitespace-small $global-whitespace-small
           $global-whitespace-small;
       }
 
@@ -231,10 +229,9 @@ $form-choices-max-height: 200px !default;
           content: '';
           position: absolute;
           top: 0;
-          transform:
-            translateY(
-              (($form-height / 2) - ($form-choices-icon-size / 2))
-            );
+          transform: translateY(
+            (($form-height / 2) - ($form-choices-icon-size / 2))
+          );
           left: $form-padding-horizontal;
           background-image: svg-inline(choices-search);
           background-repeat: no-repeat;
@@ -254,11 +251,10 @@ $form-choices-max-height: 200px !default;
         border-width: 0 0 1px;
         border-radius: 0;
         border-color: $global-border;
-        padding-left:
-          (
-            $form-choices-icon-size + $form-padding-horizontal +
+        padding-left: (
+          $form-choices-icon-size + $form-padding-horizontal +
             $global-whitespace-small
-          );
+        );
 
         &:focus {
           box-shadow: none;

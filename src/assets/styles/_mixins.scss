@@ -109,16 +109,15 @@
   $lower-range: 480px,
   $upper-range: 960px
 ) {
-  font-size:
-    calc(
-      #{$min-font-size} + #{(
+  font-size: calc(
+    #{$min-font-size} + #{(
         ($max-font-size / ($max-font-size * 0 + 1)) -
-        ($min-font-size / ($min-font-size * 0 + 1))
+          ($min-font-size / ($min-font-size * 0 + 1))
       )} * ((100vw - #{$lower-range}) / #{(
-        ($upper-range / ($upper-range * 0 + 1)) -
-        ($lower-range / ($lower-range * 0 + 1))
-      )})
-    );
+            ($upper-range / ($upper-range * 0 + 1)) -
+              ($lower-range / ($lower-range * 0 + 1))
+          )})
+  );
 
   @media (max-width: $lower-range) {
     font-size: $min-font-size !important;
