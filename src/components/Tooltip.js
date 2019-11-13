@@ -8,53 +8,74 @@ import {
 } from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
+import { keyframes } from '@emotion/core';
 import { useTheme } from 'emotion-theming';
 import ReactDOM from 'react-dom';
 import useUpdateEffect from 'react-use/lib/useUpdateEffect';
-import { TimelineMax } from 'gsap/TweenMax';
-
-import { isTouchDevice } from '../helpers/utility';
 
 const StylesTooltipVariables = theme => ({
   arrowSize: 10,
   borderRadius: theme.borderRadius.base,
 });
 
-const Tooltip = ({ children, className, content, placement, mobileTap }) => {
+const tooltipKeyframes = keyframes({
+  from: {
+    transform: 'scale(0.5)',
+    opacity: 0,
+  },
+
+  to: {
+    transform: 'scale(1)',
+    opacity: 1,
+  },
+});
+
+const Tooltip = ({ children, className, content, placement }) => {
   const theme = useTheme();
 
   const tooltipRef = useRef();
   const tooltipTriggerRef = useRef();
-
-  const [renderTooltip, setRenderTooltip] = useState(false);
+  const [isHovered, setHover] = useState(false);
 
   const handleMouseEnter = () => {
-    setRenderTooltip(true);
+    setHover(true);
   };
 
-  const openTooltip = () => {
-    const $tooltip = tooltipRef.current;
-
-    if ($tooltip && $tooltip.timeline) $tooltip.timeline.play();
+  const handleMouseLeave = () => {
+    setTimeout(() => {
+      setHover(false);
+    }, 250);
   };
 
-  const closeTooltip = () => {
-    const $tooltip = tooltipRef.current;
+  useEffect(() => {
+    const $tooltipTrigger = tooltipTriggerRef.current;
 
-    if ($tooltip && $tooltip.timeline) $tooltip.timeline.reverse();
-  };
+    if ($tooltipTrigger) {
+      $tooltipTrigger.addEventListener('mouseenter', handleMouseEnter, false);
+      $tooltipTrigger.addEventListener('mouseleave', handleMouseLeave, false);
+    }
 
-  /**
-   * Figure out direciton and position
-   * @return {void}
-   */
-  const styleTooltip = () => {
+    return () => {
+      if ($tooltipTrigger) {
+        $tooltipTrigger.removeEventListener(
+          'mouseenter',
+          handleMouseEnter,
+          false
+        );
+        $tooltipTrigger.removeEventListener(
+          'mouseleave',
+          handleMouseLeave,
+          false
+        );
+      }
+    };
+  }, []);
+
+  const renderTooltip = () => {
     const $tooltip = tooltipRef.current;
     const $tooltipTrigger = tooltipTriggerRef.current;
 
     const rect = $tooltipTrigger.getBoundingClientRect();
-
-    $tooltip.classList.add(`tooltip--${placement}`);
 
     // Grab dimensions of link
     const linkDim = { w: rect.width, h: rect.height };
@@ -62,10 +83,8 @@ const Tooltip = ({ children, className, content, placement, mobileTap }) => {
     // Tooltip dimensions
     const tooltipDim = { w: $tooltip.offsetWidth, h: $tooltip.offsetHeight };
 
-    const scrollYOffset =
-      window.pageYOffset || document.documentElement.scrollTop;
-    const scrollXOffset =
-      window.pageXOffset || document.documentElement.scrollLeft;
+    const scrollYOffset = window.pageYOffset;
+    const scrollXOffset = window.pageXOffset;
 
     // Apply styling
     // eslint-disable-next-line default-case
@@ -101,57 +120,6 @@ const Tooltip = ({ children, className, content, placement, mobileTap }) => {
         $tooltip.style.left = `${rect.left + scrollXOffset + linkDim.w}px`;
         break;
     }
-
-    openTooltip();
-  };
-
-  const attachTimeline = () => {
-    const $tooltip = tooltipRef.current;
-
-    // Attach GSAP
-    $tooltip.timeline = new TimelineMax({
-      paused: true,
-      onReverseComplete: () => {
-        setRenderTooltip(false);
-      },
-    });
-
-    let transformOrigin;
-
-    // eslint-disable-next-line default-case
-    switch (
-      placement // eslint-disable-line default-case
-    ) {
-      case 'top':
-        transformOrigin = 'center bottom';
-        break;
-      case 'bottom':
-        transformOrigin = 'center top';
-        break;
-      case 'left':
-        transformOrigin = 'right center';
-        break;
-      case 'right':
-        transformOrigin = 'left center';
-        break;
-    }
-
-    $tooltip.timeline
-      .set($tooltip, {
-        transformOrigin,
-        scale: 0.75,
-      })
-      .to($tooltip, theme.gsap.timing.short, {
-        css: {
-          y: 0,
-          x: 0,
-          scale: 1,
-          opacity: 1,
-        },
-        ease: theme.gsap.transition.bounce,
-      });
-
-    styleTooltip();
   };
 
   const renderChildren = Children.map(children, child =>
@@ -160,52 +128,38 @@ const Tooltip = ({ children, className, content, placement, mobileTap }) => {
     })
   );
 
-  // @NOTE Attaching event listeners here is not ideal, but `onMouseEnter` (and `onMouseOver`) is not reliably fired; as well as the context of the currentTarget being incorrect.
-  useEffect(() => {
-    const $tooltipTrigger = tooltipTriggerRef.current;
-
-    // Add event listeners
-    // Tooltips are not triggered on touch-devices to not interfere with actionable items
-    // This can be overidden with the `mobileTap` prop
-    if (!isTouchDevice() || mobileTap) {
-      $tooltipTrigger.addEventListener('mouseenter', handleMouseEnter, false);
-      $tooltipTrigger.addEventListener('mouseleave', closeTooltip, false);
-    }
-
-    return () => {
-      // Remove event listeners from non-touch devices
-      if (!isTouchDevice() || mobileTap) {
-        $tooltipTrigger.removeEventListener(
-          'mouseenter',
-          handleMouseEnter,
-          false
-        );
-        $tooltipTrigger.removeEventListener('mouseleave', closeTooltip, false);
-      }
-    };
-  }, [tooltipTriggerRef]);
-
   useUpdateEffect(() => {
-    if (renderTooltip) {
-      attachTimeline();
+    if (isHovered) {
+      renderTooltip();
     }
-  }, [renderTooltip]);
+  }, [isHovered]);
 
   return (
     <Fragment>
       {renderChildren}
-      {renderTooltip &&
+      {isHovered &&
         ReactDOM.createPortal(
           <div
             css={[
               {
-                // 1. GSAP
                 position: 'absolute',
                 zIndex: 10,
                 display: 'block',
                 fontSize: theme.fontSize.small,
                 padding: StylesTooltipVariables(theme).arrowSize + 1,
-                opacity: 0, // 1
+                animation: `${tooltipKeyframes} 0.25s ${theme.transition.bounce}`,
+              },
+              placement === 'top' && {
+                transformOrigin: 'center bottom',
+              },
+              placement === 'right' && {
+                transformOrigin: 'left center',
+              },
+              placement === 'bottom' && {
+                transformOrigin: 'center top',
+              },
+              placement === 'left' && {
+                transformOrigin: 'right center',
               },
             ]}
             className={cx('CK__Tooltip', className)}
@@ -290,13 +244,10 @@ Tooltip.propTypes = {
   className: PropTypes.string,
   content: PropTypes.any.isRequired,
   placement: PropTypes.oneOf(['top', 'bottom', 'left', 'right']),
-  /** Disables tooltips on touch devices to not interfere with interactive elements */
-  mobileTap: PropTypes.bool,
 };
 
 Tooltip.defaultProps = {
   placement: 'top',
-  mobileTap: false,
 };
 
 export default Tooltip;
