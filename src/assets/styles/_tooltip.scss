@@ -4,7 +4,7 @@
 
 $tooltip-arrow-size: 10px !default;
 $tooltip-radius: 2px !default;
-$tooltip-transition: 0.175s easeInOutBack !default; // Brought over from JS component so we can match CSS transitions when needed
+$tooltip-transition: 0.5s easeInOutBack !default; // Brought over from JS component so we can match CSS transitions when needed
 
 //
 // Component
@@ -16,8 +16,11 @@ $tooltip-transition: 0.175s easeInOutBack !default; // Brought over from JS comp
     z-index: 10;
     display: block;
     font-size: $global-font-size-small;
-    opacity: 0;
     padding: ($tooltip-arrow-size + 1);
+    animation-name: tooltip;
+    animation-duration: 0.25s;
+    animation-timing-function: easeInOutBack;
+    backface-visibility: hidden;
 
     &-inner {
       color: $global-font-color;
@@ -95,5 +98,17 @@ $tooltip-transition: 0.175s easeInOutBack !default; // Brought over from JS comp
     @if (mixin-exists(hook-tooltip)) {
       @include hook-tooltip();
     }
+  }
+}
+
+@keyframes tooltip {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
   }
 }
