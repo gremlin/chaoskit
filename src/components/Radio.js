@@ -12,7 +12,7 @@ export const StylesRadioVariables = {
   iconSize: 10,
 };
 
-const Radio = ({ className, disabled, label, value, ...opts }) => {
+const Radio = ({ className, disabled, label, value, noContrast, ...opts }) => {
   const theme = useTheme();
 
   const { selectedValue, name, onChange } = useContext(RadioGroupContext);
@@ -24,6 +24,11 @@ const Radio = ({ className, disabled, label, value, ...opts }) => {
           display: 'flex',
           alignItems: 'center',
           fontSize: theme.fontSize.base,
+        },
+
+        disabled && {
+          cursor: 'not-allowed',
+          opacity: theme.opacity.base,
         },
       ]}
       className={cx('CK__Radio', className)}
@@ -61,6 +66,10 @@ const Radio = ({ className, disabled, label, value, ...opts }) => {
               cursor: 'pointer',
             },
 
+            '&:disabled': {
+              backgroundColor: theme.color.panel.base,
+            },
+
             '&:checked, &:indeterminate': {
               backgroundColor: theme.color.primary.base,
             },
@@ -84,6 +93,29 @@ const Radio = ({ className, disabled, label, value, ...opts }) => {
               },
             },
           },
+
+          theme.settings.contrast.enable &&
+            theme.settings.contrast.form &&
+            !noContrast && {
+              '.u-contrast &': {
+                borderColor: theme.contrast.base,
+                backgroundColor: 'transparent',
+
+                '&:disabled': {
+                  backgroundColor: form.variables(theme).contrast.background,
+                },
+
+                '&:checked, &:indeterminate': {
+                  backgroundColor: 'transparent',
+                },
+
+                '&:checked': {
+                  '&::after': {
+                    border: 0,
+                  },
+                },
+              },
+            },
         ]}
         {...opts}
       />
@@ -97,6 +129,7 @@ Radio.propTypes = {
   disabled: PropTypes.bool,
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   name: PropTypes.string,
+  noContrast: PropTypes.bool,
   onChange: PropTypes.func,
   selectedValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
