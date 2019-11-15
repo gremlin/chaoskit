@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control, jsx-a11y/label-has-for */
 import { useContext } from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
@@ -5,8 +6,7 @@ import { useTheme } from 'emotion-theming';
 
 import { CheckboxGroupContext } from './CheckboxGroup';
 import checkbox from '../assets/icons/check.svg';
-import { misc, form } from '../assets/styles/utility';
-import { generateUUID } from '../helpers/utility';
+import { form } from '../assets/styles/utility';
 
 export const StylesCheckboxVariables = {
   size: 22,
@@ -17,15 +17,18 @@ const Checkbox = ({ className, disabled, label, name, value, ...opts }) => {
   const theme = useTheme();
   const { noContrast } = useContext(CheckboxGroupContext);
 
-  const id = `${name}-${generateUUID()}`;
-
   return (
-    <div
+    <label
       css={[
         {
-          display: 'inline-flex',
+          display: 'flex',
           alignItems: 'center',
           fontSize: theme.fontSize.base,
+        },
+
+        disabled && {
+          cursor: 'not-allowed',
+          opacity: theme.opacity.base,
         },
       ]}
       className={cx('CK__Checkbox', className)}
@@ -35,50 +38,56 @@ const Checkbox = ({ className, disabled, label, name, value, ...opts }) => {
         type="checkbox"
         disabled={disabled}
         name={name}
-        id={id}
         css={[
-          misc.hide,
+          form.base(theme),
+          // 1. Style
+          // 2. Make box Make box more robust so it clips the child element
+          // 3. Remoe default style
+          // 4. Fix background on iOS
           {
+            // 1
+            width: StylesCheckboxVariables.size,
+            height: StylesCheckboxVariables.size,
+            verticalAlign: 'middle',
+            borderRadius: theme.borderRadius.base,
+            border: theme.border.base,
+            boxShadow: theme.boxShadow.base,
+            position: 'relative',
+            // 2
+            overflow: 'hidden',
+            // 3
+            appearance: 'none',
+            // 4
+            backgroundColor: theme.color.light.base,
+
             '&:not(:disabled)': {
               cursor: 'pointer',
             },
 
-            '&:checked': {
-              '+ label': {
-                '&::before': {
-                  borderColor: theme.color.primary.dark,
-                  background: theme.color.primary.base,
-                },
-
-                '&::after': {
-                  content: "''",
-                  width: StylesCheckboxVariables.iconSize,
-                  height: StylesCheckboxVariables.iconSize,
-                  backgroundImage: `url(${checkbox})`,
-                  filter: theme.contrast.filter,
-                  backgroundRepeat: 'no-repeat',
-                  backgroundSize: 'contain',
-                  display: 'inline-block',
-                  position: 'absolute',
-                  left:
-                    (StylesCheckboxVariables.size -
-                      StylesCheckboxVariables.iconSize) /
-                    2,
-                  top: '50%',
-                  transform: 'translateY(-50%)',
-                  zIndex: 2,
-                },
-              },
+            '&:disabled': {
+              backgroundColor: theme.color.panel.base,
             },
 
-            '&:disabled': {
-              '+ label': {
-                opacity: theme.opacity.base,
-                cursor: 'not-allowed',
+            '&:checked, &:indeterminate': {
+              backgroundColor: theme.color.primary.base,
+            },
 
-                '&::before': {
-                  backgroundColor: theme.color.panel.base,
-                },
+            '&:checked': {
+              color: theme.contrast.base,
+              borderColor: theme.color.primary.dark,
+
+              '&::after': {
+                content: "''",
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: StylesCheckboxVariables.iconSize,
+                height: StylesCheckboxVariables.iconSize,
+                backgroundImage: `url(${checkbox})`,
+                filter: theme.contrast.filter,
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'contain',
               },
             },
           },
@@ -87,49 +96,23 @@ const Checkbox = ({ className, disabled, label, name, value, ...opts }) => {
             theme.settings.contrast.form &&
             !noContrast && {
               '.u-contrast &': {
-                '+ label::before': {
-                  borderColor: theme.contrast.base,
-                  background: 'transparent',
+                borderColor: theme.contrast.base,
+                background: 'transparent',
+
+                '&:disabled': {
+                  backgroundColor: form.variables(theme).contrast.background,
                 },
 
-                '&:disabled + label::before': {
-                  backgroundColor: form.variables(theme).contrast.background,
+                '&:checked, &:indeterminate': {
+                  backgroundColor: 'transparent',
                 },
               },
             },
         ]}
         {...opts}
       />
-      {label && (
-        <label // eslint-disable-line jsx-a11y/label-has-for
-          htmlFor={id}
-          css={[
-            {
-              cursor: 'pointer',
-              userSelect: 'none',
-              paddingLeft: StylesCheckboxVariables.size + theme.space.small,
-              position: 'relative',
-              lineHeight: theme.lineHeight.small,
-
-              '&::before': {
-                content: "''",
-                position: 'absolute',
-                left: '0',
-                top: '50%',
-                transform: 'translateY(-50%)',
-                border: theme.border.base,
-                borderRadius: theme.borderRadius.base,
-                height: StylesCheckboxVariables.size,
-                width: StylesCheckboxVariables.size,
-                boxShadow: theme.boxShadow.base,
-              },
-            },
-          ]}
-        >
-          {label}
-        </label>
-      )}
-    </div>
+      {label && <span css={{ marginLeft: theme.space.small }}>{label}</span>}
+    </label>
   );
 };
 
