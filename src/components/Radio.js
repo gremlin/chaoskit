@@ -12,10 +12,12 @@ export const StylesRadioVariables = {
   iconSize: 10,
 };
 
-const Radio = ({ className, disabled, label, value, noContrast, ...opts }) => {
+const Radio = ({ className, disabled, label, value, ...opts }) => {
   const theme = useTheme();
 
-  const { selectedValue, name, onChange } = useContext(RadioGroupContext);
+  const { selectedValue, name, onChange, noContrast } = useContext(
+    RadioGroupContext
+  );
 
   return (
     <label
@@ -129,7 +131,6 @@ Radio.propTypes = {
   disabled: PropTypes.bool,
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   name: PropTypes.string,
-  noContrast: PropTypes.bool,
   onChange: PropTypes.func,
   selectedValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
