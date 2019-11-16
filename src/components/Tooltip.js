@@ -1,11 +1,4 @@
-import {
-  Children,
-  cloneElement,
-  Fragment,
-  useRef,
-  useState,
-  useEffect,
-} from 'react';
+import { Children, cloneElement, Fragment, useRef, useState } from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 import { keyframes } from '@emotion/core';
@@ -15,12 +8,14 @@ import useUpdateEffect from 'react-use/lib/useUpdateEffect';
 
 const StylesTooltipVariables = theme => ({
   arrowSize: 10,
+  background: theme.color.light.base,
   borderRadius: theme.borderRadius.base,
+  color: theme.fontColor.base,
 });
 
 const tooltipKeyframes = keyframes({
   from: {
-    transform: 'scale(0.5)',
+    transform: 'scale(0.75)',
     opacity: 0,
   },
 
@@ -46,30 +41,6 @@ const Tooltip = ({ children, className, content, placement }) => {
       setHover(false);
     }, 250);
   };
-
-  useEffect(() => {
-    const $tooltipTrigger = tooltipTriggerRef.current;
-
-    if ($tooltipTrigger) {
-      $tooltipTrigger.addEventListener('mouseenter', handleMouseEnter, false);
-      $tooltipTrigger.addEventListener('mouseleave', handleMouseLeave, false);
-    }
-
-    return () => {
-      if ($tooltipTrigger) {
-        $tooltipTrigger.removeEventListener(
-          'mouseenter',
-          handleMouseEnter,
-          false
-        );
-        $tooltipTrigger.removeEventListener(
-          'mouseleave',
-          handleMouseLeave,
-          false
-        );
-      }
-    };
-  }, []);
 
   const renderTooltip = () => {
     const $tooltip = tooltipRef.current;
@@ -125,6 +96,8 @@ const Tooltip = ({ children, className, content, placement }) => {
   const renderChildren = Children.map(children, child =>
     cloneElement(child, {
       ref: tooltipTriggerRef,
+      onMouseEnter: handleMouseEnter,
+      onMouseLeave: handleMouseLeave,
     })
   );
 
@@ -169,10 +142,10 @@ const Tooltip = ({ children, className, content, placement }) => {
             <div
               css={[
                 {
-                  color: theme.fontColor.base,
+                  color: StylesTooltipVariables(theme).color,
                   maxWidth: 250,
                   padding: theme.space.small,
-                  background: theme.color.light.base,
+                  background: StylesTooltipVariables(theme).background,
                   border: theme.border.base,
                   borderRadius: StylesTooltipVariables(theme).borderRadius,
                   wordWrap: 'break-word',
@@ -185,7 +158,7 @@ const Tooltip = ({ children, className, content, placement }) => {
                     width: StylesTooltipVariables(theme).arrowSize,
                     height: StylesTooltipVariables(theme).arrowSize,
                     position: 'absolute',
-                    background: theme.color.light.base,
+                    background: StylesTooltipVariables(theme).background,
                     border: theme.border.base,
                     borderBottomLeftRadius:
                       StylesTooltipVariables(theme).borderRadius / 2,
