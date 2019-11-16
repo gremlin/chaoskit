@@ -15,6 +15,7 @@ const RadioWithContext = ({ value, ...props }) => {
       name={name}
       onChange={onChange}
       noContrast={noContrast}
+      value={value}
       checked={value === selectedValue}
       {...props}
     />

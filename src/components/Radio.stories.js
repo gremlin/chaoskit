@@ -39,6 +39,10 @@ storiesOf('Forms|Radio', module)
       disabled={params.overview.disabled()}
       label={params.overview.label()}
       checked={params.overview.checked()}
+      onChange={({ target: { name, value } }) =>
+        action('onChange')({ name }, { value })
+      }
+      value="value"
     />
   ))
   .add(
@@ -90,6 +94,10 @@ storiesOf('Forms|Radio', module)
           disabled={params.overview.disabled()}
           label={params.overview.label()}
           checked={params.overview.checked()}
+          value="value"
+          onChange={({ target: { name, value } }) =>
+            action('onChange')({ name }, { value })
+          }
         />
       </Contrast>
     ),
