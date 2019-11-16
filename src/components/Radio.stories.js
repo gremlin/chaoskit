@@ -2,10 +2,15 @@ import { storiesOf } from '@storybook/react';
 import { boolean, text, select } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
-import { RadioGroup, Radio } from '.';
+import { List, ListItem, RadioGroup, Radio, RadioWithContext } from '.';
 import Contrast from '../../.storybook/components/Contrast';
 
 const params = {
+  overview: {
+    label: () => text('Label', 'Label 1'),
+    disabled: () => boolean('Disabled', false),
+    checked: () => boolean('Selected', false),
+  },
   firstRadio: {
     label: () => text('(First Radio) Label', 'Label 1'),
     disabled: () => boolean('(First Radio) Disabled', false),
@@ -15,8 +20,8 @@ const params = {
     disabled: () => boolean('(Second Radio) Disabled', false),
   },
   group: {
-    inline: () => boolean('(Group) Inline', false),
     label: () => text('(Group) label', 'Group'),
+    name: () => text('(Group) name', 'name'),
     explanationMessage: () =>
       text('(Group) explanation message', 'Explanation message'),
     validationMessage: () => text('(Group) validation message', ''),
@@ -28,65 +33,64 @@ const params = {
 };
 
 storiesOf('Forms|Radio', module)
+  .add('Overview', () => (
+    <Radio
+      name="field1"
+      disabled={params.overview.disabled()}
+      label={params.overview.label()}
+      checked={params.overview.checked()}
+    />
+  ))
   .add(
-    'Overview',
+    'With context',
     () => (
       <RadioGroup
         label={params.group.label()}
         explanationMessage={params.group.explanationMessage()}
         validationMessage={params.group.validationMessage()}
-        inline={params.group.inline()}
         name="field-name"
-        required={params.group.required()}
         onChange={({ target: { name, value } }) =>
           action('onChange')({ name }, { value })
         }
         selectedValue={params.group.selectedValue()}
+        required={params.group.required()}
       >
-        <Radio
-          disabled={params.firstRadio.disabled()}
-          label={params.firstRadio.label()}
-          value="field1"
-        />
-        <Radio
-          disabled={params.secondRadio.disabled()}
-          label={params.secondRadio.label()}
-          value="field2"
-        />
+        <List space="base">
+          <ListItem>
+            <RadioWithContext
+              disabled={params.firstRadio.disabled()}
+              label={params.firstRadio.label()}
+              value="field1"
+              name={params.group.name()}
+            />
+          </ListItem>
+          <ListItem>
+            <RadioWithContext
+              disabled={params.secondRadio.disabled()}
+              label={params.secondRadio.label()}
+              value="field2"
+              name={params.group.name()}
+            />
+          </ListItem>
+        </List>
       </RadioGroup>
     ),
     {
-      notes: `Always surround the \`<Radio />\` component with \`<RadioGroup />\`; as it provides not only event handlers, but additional display options.`,
+      notes: `
+        Wrap in \`<RadioGroup />\` and use \`<RadioWithContext />\` to handle \`name\`, \`onChange\`, \`selectedValue\`, and \`noContrast\` from the parent component.
+      `,
     }
   )
   .add(
     'Contrast',
     () => (
       <Contrast>
-        <RadioGroup
-          label={params.group.label()}
-          explanationMessage={params.group.explanationMessage()}
-          validationMessage={params.group.validationMessage()}
-          inline={params.group.inline()}
-          name="field-name"
-          onChange={({ target: { name, value } }) =>
-            action('onChange')({ name }, { value })
-          }
-          selectedValue={params.group.selectedValue()}
-          required={params.group.required()}
-          noContrast={params.group.noContrast()}
-        >
-          <Radio
-            disabled={params.firstRadio.disabled()}
-            label={params.firstRadio.label()}
-            value="field1"
-          />
-          <Radio
-            disabled={params.secondRadio.disabled()}
-            label={params.secondRadio.label()}
-            value="field2"
-          />
-        </RadioGroup>
+        <Radio
+          name="field1"
+          disabled={params.overview.disabled()}
+          label={params.overview.label()}
+          checked={params.overview.checked()}
+        />
       </Contrast>
     ),
     {

@@ -7,9 +7,7 @@ import { rgba } from 'polished';
 import { useTheme } from 'emotion-theming';
 
 import Badge from './Badge';
-import FormFooter from './FormFooter';
-import FormGroup from './FormGroup';
-import FormLabel from './FormLabel';
+import FormControlWrapper from './FormControlWrapper';
 import Icon from './Icon';
 import Input from './Input';
 import Inline from './Inline';
@@ -29,7 +27,7 @@ const ChoicesMulti = ({
   removeItem,
   validationMessage,
   selected,
-  wrapperProps,
+  ...opts
 }) => {
   const theme = useTheme();
   const [value, setValue] = useState('');
@@ -107,14 +105,15 @@ const ChoicesMulti = ({
         };
 
         return (
-          <FormGroup {...downshift.getRootProps()} {...wrapperProps}>
-            <FormLabel
-              required={required}
-              error={!!validationMessage}
-              {...downshift.getLabelProps()}
-            >
-              {label}
-            </FormLabel>
+          <FormControlWrapper
+            {...downshift.getRootProps()}
+            required={required}
+            label={label}
+            labelProps={{ as: 'label', ...downshift.getLabelProps() }}
+            explanationMessage={explanationMessage}
+            validationMessage={validationMessage}
+            {...opts}
+          >
             <div
               css={[
                 {
@@ -279,11 +278,7 @@ const ChoicesMulti = ({
                 )}
               </div>
             </div>
-            <FormFooter
-              explanationMessage={explanationMessage}
-              validationMessage={validationMessage}
-            />
-          </FormGroup>
+          </FormControlWrapper>
         );
       }}
     </Downshift>

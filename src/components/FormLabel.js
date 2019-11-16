@@ -1,3 +1,4 @@
+import { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { useTheme } from 'emotion-theming';
@@ -12,6 +13,7 @@ export const StylesFormLabelBase = (theme, props = {}) => [
     color: theme.fontColor.base,
     fontWeight: theme.fontWeight.bold,
     lineHeight: theme.lineHeight.small,
+    cursor: 'default',
   },
 
   (props.required || props.error) && {
@@ -56,27 +58,34 @@ export const StylesFormLabelBase = (theme, props = {}) => [
     },
 ];
 
-const FormLabel = ({ children, className, id, required, error, ...opts }) => {
-  const theme = useTheme();
+const FormLabel = forwardRef(
+  ({ as, children, className, required, error, ...opts }, ref) => {
+    const theme = useTheme();
+    const Component = as;
 
-  return children ? (
-    <label // eslint-disable-line jsx-a11y/label-has-for
-      htmlFor={id}
-      css={StylesFormLabelBase(theme, { required, error })}
-      className={cx('CK__FormLabel', className)}
-      {...opts}
-    >
-      {children}
-    </label>
-  ) : null;
-};
+    return children ? (
+      <Component
+        css={StylesFormLabelBase(theme, { required, error })}
+        className={cx('CK__FormLabel', className)}
+        ref={ref}
+        {...opts}
+      >
+        {children}
+      </Component>
+    ) : null;
+  }
+);
 
 FormLabel.propTypes = {
+  as: PropTypes.string,
   children: PropTypes.node,
   className: PropTypes.string,
-  id: PropTypes.string,
   required: PropTypes.bool,
   error: PropTypes.bool,
+};
+
+FormLabel.defaultProps = {
+  as: 'div',
 };
 
 export default FormLabel;
