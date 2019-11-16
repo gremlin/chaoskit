@@ -74,7 +74,7 @@ const Select = ({
 
   return (
     <FormGroup {...wrapperProps}>
-      <FormLabel required={required} error={!!validationMessage} for={id}>
+      <FormLabel required={required} error={!!validationMessage} htmlFor={id}>
         {label}
       </FormLabel>
       <div
