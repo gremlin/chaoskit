@@ -228,7 +228,7 @@ const ChoicesSingle = ({
                       }}
                       name={id}
                       {...downshift.getInputProps({
-                        placeholder,
+                        placeholder: searchPlaceholder,
                         onChange: handleInputChange,
                         onKeyDown: handleKeyDown,
                       })}

@@ -20,13 +20,13 @@ const ChoicesMulti = ({
   explanationMessage,
   label,
   options,
-  placeholder,
   name,
   onChange,
   required,
   removeItem,
   validationMessage,
   selected,
+  searchPlaceholder,
   ...opts
 }) => {
   const theme = useTheme();
@@ -220,7 +220,7 @@ const ChoicesMulti = ({
                     }}
                     name={id}
                     {...downshift.getInputProps({
-                      placeholder,
+                      placeholder: searchPlaceholder,
                       onChange: handleInputChange,
                       onKeyDown: handleKeyDown,
                     })}
@@ -291,18 +291,18 @@ ChoicesMulti.propTypes = {
   explanationMessage: PropTypes.string,
   label: PropTypes.string,
   options: PropTypes.array.isRequired,
-  placeholder: PropTypes.string,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   required: PropTypes.bool,
   removeItem: PropTypes.func.isRequired,
   validationMessage: PropTypes.string,
+  searchPlaceholder: PropTypes.string,
   selected: PropTypes.array,
   wrapperProps: PropTypes.object,
 };
 
 ChoicesMulti.defaultProps = {
-  placeholder: 'Select',
+  searchPlaceholder: 'Search',
   selected: [],
 };
 
