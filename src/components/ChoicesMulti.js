@@ -109,7 +109,7 @@ const ChoicesMulti = ({
             {...downshift.getRootProps()}
             required={required}
             label={label}
-            labelProps={{ as: 'label', ...downshift.getLabelProps() }}
+            labelProps={{ ...downshift.getLabelProps() }}
             explanationMessage={explanationMessage}
             validationMessage={validationMessage}
             {...opts}

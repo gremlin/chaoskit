@@ -85,7 +85,7 @@ FormLabel.propTypes = {
 };
 
 FormLabel.defaultProps = {
-  as: 'div',
+  as: 'label',
 };
 
 export default FormLabel;

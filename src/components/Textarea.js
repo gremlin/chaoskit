@@ -23,7 +23,7 @@ const Textarea = ({
 
   return (
     <FormGroup {...wrapperProps}>
-      <FormLabel required={required} error={!!validationMessage} id={id}>
+      <FormLabel required={required} error={!!validationMessage} for={id}>
         {label}
       </FormLabel>
       <TextareaAutoSize

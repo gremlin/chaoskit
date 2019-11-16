@@ -37,6 +37,7 @@ const RadioGroup = ({
   return (
     <FormControlWrapper
       label={label}
+      labelProps={{ as: 'div' }}
       required={required}
       validationMessage={validationMessage}
       explanationMessage={explanationMessage}
