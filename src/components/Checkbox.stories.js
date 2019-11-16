@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/react';
 import { boolean, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
-import { CheckboxGroup, Checkbox } from '.';
+import { Checkbox, FormControlWrapper, List, ListItem } from '.';
 import Contrast from '../../.storybook/components/Contrast';
 
 const params = {
@@ -28,55 +28,15 @@ const params = {
 };
 
 storiesOf('Forms|Checkbox', module)
-  .add(
-    'Overview',
-    () => (
-      <CheckboxGroup
-        label={params.group.label()}
-        explanationMessage={params.group.explanationMessage()}
-        validationMessage={params.group.validationMessage()}
-        inline={params.group.inline()}
-        required={params.group.required()}
-      >
-        <Checkbox
-          disabled={params.firstCheckbox.disabled()}
-          checked={params.firstCheckbox.checked()}
-          name="field-name1"
-          label={params.firstCheckbox.label()}
-          value="field-value1"
-          onChange={({ target: { name, value } }) =>
-            action('onChange 1')({ name }, { value })
-          }
-        />
-        <Checkbox
-          disabled={params.secondCheckbox.disabled()}
-          checked={params.secondCheckbox.checked()}
-          name="field-name2"
-          label={params.secondCheckbox.label()}
-          value="field-value2"
-          onChange={({ target: { name, value } }) =>
-            action('onChange 2')({ name }, { value })
-          }
-        />
-      </CheckboxGroup>
-    ),
-    {
-      notes:
-        'Always surround the Checkbox component with CheckboxGroup; as it provides not only event handlers, but additional display options.',
-    }
-  )
-  .add(
-    'Contrast',
-    () => (
-      <Contrast>
-        <CheckboxGroup
-          label={params.group.label()}
-          explanationMessage={params.group.explanationMessage()}
-          validationMessage={params.group.validationMessage()}
-          inline={params.group.inline()}
-          required={params.group.required()}
-          noContrast={params.group.noContrast()}
-        >
+  .add('Overview', () => (
+    <FormControlWrapper
+      label={params.group.label()}
+      explanationMessage={params.group.explanationMessage()}
+      validationMessage={params.group.validationMessage()}
+      required={params.group.required()}
+    >
+      <List space="base">
+        <ListItem>
           <Checkbox
             disabled={params.firstCheckbox.disabled()}
             checked={params.firstCheckbox.checked()}
@@ -87,6 +47,8 @@ storiesOf('Forms|Checkbox', module)
               action('onChange 1')({ name }, { value })
             }
           />
+        </ListItem>
+        <ListItem>
           <Checkbox
             disabled={params.secondCheckbox.disabled()}
             checked={params.secondCheckbox.checked()}
@@ -97,7 +59,49 @@ storiesOf('Forms|Checkbox', module)
               action('onChange 2')({ name }, { value })
             }
           />
-        </CheckboxGroup>
+        </ListItem>
+      </List>
+    </FormControlWrapper>
+  ))
+  .add(
+    'Contrast',
+    () => (
+      <Contrast>
+        <FormControlWrapper
+          label={params.group.label()}
+          explanationMessage={params.group.explanationMessage()}
+          validationMessage={params.group.validationMessage()}
+          required={params.group.required()}
+        >
+          <List space="base">
+            <ListItem>
+              <Checkbox
+                disabled={params.firstCheckbox.disabled()}
+                checked={params.firstCheckbox.checked()}
+                name="field-name1"
+                label={params.firstCheckbox.label()}
+                value="field-value1"
+                onChange={({ target: { name, value } }) =>
+                  action('onChange 1')({ name }, { value })
+                }
+                noContrast={params.group.noContrast()}
+              />
+            </ListItem>
+            <ListItem>
+              <Checkbox
+                disabled={params.secondCheckbox.disabled()}
+                checked={params.secondCheckbox.checked()}
+                name="field-name2"
+                label={params.secondCheckbox.label()}
+                value="field-value2"
+                onChange={({ target: { name, value } }) =>
+                  action('onChange 2')({ name }, { value })
+                }
+                noContrast={params.group.noContrast()}
+              />
+            </ListItem>
+          </List>
+        </FormControlWrapper>
       </Contrast>
     ),
     {

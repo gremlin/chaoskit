@@ -7,9 +7,7 @@ import { ellipsis, rgba } from 'polished';
 import { useTheme } from 'emotion-theming';
 
 import Button from './Button';
-import FormFooter from './FormFooter';
-import FormGroup from './FormGroup';
-import FormLabel from './FormLabel';
+import FormControlWrapper from './FormControlWrapper';
 import Icon from './Icon';
 import Input from './Input';
 import { form } from '../assets/styles/utility';
@@ -30,7 +28,7 @@ const ChoicesSingle = ({
   validationMessage,
   searchPlaceholder,
   selected,
-  wrapperProps,
+  ...opts
 }) => {
   const theme = useTheme();
   const [value, setValue] = useState('');
@@ -73,14 +71,15 @@ const ChoicesSingle = ({
     >
       {downshift => {
         return (
-          <FormGroup {...downshift.getRootProps()} {...wrapperProps}>
-            <FormLabel
-              required={required}
-              error={!!validationMessage}
-              {...downshift.getLabelProps()}
-            >
-              {label}
-            </FormLabel>
+          <FormControlWrapper
+            {...downshift.getRootProps()}
+            required={required}
+            label={label}
+            labelProps={{ ...downshift.getLabelProps() }}
+            explanationMessage={explanationMessage}
+            validationMessage={validationMessage}
+            {...opts}
+          >
             <div
               css={[
                 {
@@ -215,7 +214,6 @@ const ChoicesSingle = ({
                   >
                     <Input
                       prefixIcon="search"
-                      name={id}
                       css={{
                         borderRadius: 0,
                         borderWidth: `0 0 1px 0`,
@@ -228,6 +226,7 @@ const ChoicesSingle = ({
                           background: theme.color.panel.base,
                         },
                       }}
+                      name={id}
                       {...downshift.getInputProps({
                         placeholder: searchPlaceholder,
                         onChange: handleInputChange,
@@ -270,11 +269,7 @@ const ChoicesSingle = ({
                 )}
               </div>
             </div>
-            <FormFooter
-              explanationMessage={explanationMessage}
-              validationMessage={validationMessage}
-            />
-          </FormGroup>
+          </FormControlWrapper>
         );
       }}
     </Downshift>

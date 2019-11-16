@@ -2,9 +2,7 @@
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 import { useTheme } from 'emotion-theming';
-import { useContext } from 'react';
 
-import { RadioGroupContext } from './RadioGroup';
 import { form } from '../assets/styles/utility';
 
 export const StylesRadioVariables = {
@@ -12,12 +10,17 @@ export const StylesRadioVariables = {
   iconSize: 10,
 };
 
-const Radio = ({ className, disabled, label, value, ...opts }) => {
+const Radio = ({
+  checked,
+  className,
+  disabled,
+  label,
+  name,
+  value,
+  noContrast,
+  ...opts
+}) => {
   const theme = useTheme();
-
-  const { selectedValue, name, onChange, noContrast } = useContext(
-    RadioGroupContext
-  );
 
   return (
     <label
@@ -37,11 +40,10 @@ const Radio = ({ className, disabled, label, value, ...opts }) => {
     >
       <input
         type="radio"
-        disabled={disabled}
         name={name}
+        disabled={disabled}
         value={value}
-        checked={value === selectedValue}
-        onChange={onChange}
+        checked={checked}
         css={[
           form.base(theme),
           // 1. Style
@@ -71,12 +73,8 @@ const Radio = ({ className, disabled, label, value, ...opts }) => {
             '&:disabled': {
               backgroundColor: theme.color.panel.base,
             },
-
-            '&:checked, &:indeterminate': {
-              backgroundColor: theme.color.primary.base,
-            },
-
             '&:checked': {
+              backgroundColor: theme.color.primary.base,
               color: theme.contrast.base,
               borderColor: theme.color.primary.dark,
 
@@ -107,11 +105,9 @@ const Radio = ({ className, disabled, label, value, ...opts }) => {
                   backgroundColor: form.variables(theme).contrast.background,
                 },
 
-                '&:checked, &:indeterminate': {
-                  backgroundColor: 'transparent',
-                },
-
                 '&:checked': {
+                  backgroundColor: 'transparent',
+
                   '&::after': {
                     border: 0,
                   },
@@ -127,12 +123,12 @@ const Radio = ({ className, disabled, label, value, ...opts }) => {
 };
 
 Radio.propTypes = {
+  checked: PropTypes.bool,
   className: PropTypes.string,
   disabled: PropTypes.bool,
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  name: PropTypes.string,
-  onChange: PropTypes.func,
-  selectedValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  name: PropTypes.string.isRequired,
+  noContrast: PropTypes.bool,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 };
 

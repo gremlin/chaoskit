@@ -1,11 +1,9 @@
 /* eslint-disable jsx-a11y/label-has-associated-control, jsx-a11y/label-has-for */
-import { useContext } from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 import { useTheme } from 'emotion-theming';
 
-import { CheckboxGroupContext } from './CheckboxGroup';
-import checkbox from '../assets/icons/check.svg';
+import check from '../assets/icons/check.svg';
 import { form } from '../assets/styles/utility';
 
 export const StylesCheckboxVariables = {
@@ -13,9 +11,16 @@ export const StylesCheckboxVariables = {
   iconSize: 12,
 };
 
-const Checkbox = ({ className, disabled, label, name, value, ...opts }) => {
+const Checkbox = ({
+  className,
+  disabled,
+  label,
+  name,
+  noContrast,
+  value,
+  ...opts
+}) => {
   const theme = useTheme();
-  const { noContrast } = useContext(CheckboxGroupContext);
 
   return (
     <label
@@ -68,11 +73,8 @@ const Checkbox = ({ className, disabled, label, name, value, ...opts }) => {
               backgroundColor: theme.color.panel.base,
             },
 
-            '&:checked, &:indeterminate': {
-              backgroundColor: theme.color.primary.base,
-            },
-
             '&:checked': {
+              backgroundColor: theme.color.primary.base,
               color: theme.contrast.base,
               borderColor: theme.color.primary.dark,
 
@@ -84,7 +86,7 @@ const Checkbox = ({ className, disabled, label, name, value, ...opts }) => {
                 transform: 'translate(-50%, -50%)',
                 width: StylesCheckboxVariables.iconSize,
                 height: StylesCheckboxVariables.iconSize,
-                backgroundImage: `url(${checkbox})`,
+                backgroundImage: `url(${check})`,
                 filter: theme.contrast.filter,
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'contain',
@@ -103,7 +105,7 @@ const Checkbox = ({ className, disabled, label, name, value, ...opts }) => {
                   backgroundColor: form.variables(theme).contrast.background,
                 },
 
-                '&:checked, &:indeterminate': {
+                '&:checked': {
                   backgroundColor: 'transparent',
                 },
               },

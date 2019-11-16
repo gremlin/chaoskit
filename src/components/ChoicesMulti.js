@@ -7,9 +7,7 @@ import { rgba } from 'polished';
 import { useTheme } from 'emotion-theming';
 
 import Badge from './Badge';
-import FormFooter from './FormFooter';
-import FormGroup from './FormGroup';
-import FormLabel from './FormLabel';
+import FormControlWrapper from './FormControlWrapper';
 import Icon from './Icon';
 import Input from './Input';
 import Inline from './Inline';
@@ -22,14 +20,14 @@ const ChoicesMulti = ({
   explanationMessage,
   label,
   options,
-  placeholder,
   name,
   onChange,
   required,
   removeItem,
   validationMessage,
   selected,
-  wrapperProps,
+  searchPlaceholder,
+  ...opts
 }) => {
   const theme = useTheme();
   const [value, setValue] = useState('');
@@ -107,14 +105,15 @@ const ChoicesMulti = ({
         };
 
         return (
-          <FormGroup {...downshift.getRootProps()} {...wrapperProps}>
-            <FormLabel
-              required={required}
-              error={!!validationMessage}
-              {...downshift.getLabelProps()}
-            >
-              {label}
-            </FormLabel>
+          <FormControlWrapper
+            {...downshift.getRootProps()}
+            required={required}
+            label={label}
+            labelProps={{ ...downshift.getLabelProps() }}
+            explanationMessage={explanationMessage}
+            validationMessage={validationMessage}
+            {...opts}
+          >
             <div
               css={[
                 {
@@ -221,7 +220,7 @@ const ChoicesMulti = ({
                     }}
                     name={id}
                     {...downshift.getInputProps({
-                      placeholder,
+                      placeholder: searchPlaceholder,
                       onChange: handleInputChange,
                       onKeyDown: handleKeyDown,
                     })}
@@ -279,11 +278,7 @@ const ChoicesMulti = ({
                 )}
               </div>
             </div>
-            <FormFooter
-              explanationMessage={explanationMessage}
-              validationMessage={validationMessage}
-            />
-          </FormGroup>
+          </FormControlWrapper>
         );
       }}
     </Downshift>
@@ -296,18 +291,18 @@ ChoicesMulti.propTypes = {
   explanationMessage: PropTypes.string,
   label: PropTypes.string,
   options: PropTypes.array.isRequired,
-  placeholder: PropTypes.string,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   required: PropTypes.bool,
   removeItem: PropTypes.func.isRequired,
   validationMessage: PropTypes.string,
+  searchPlaceholder: PropTypes.string,
   selected: PropTypes.array,
   wrapperProps: PropTypes.object,
 };
 
 ChoicesMulti.defaultProps = {
-  placeholder: 'Select',
+  searchPlaceholder: 'Search',
   selected: [],
 };
 
