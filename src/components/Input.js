@@ -4,9 +4,7 @@ import cx from 'classnames';
 import { useTheme } from 'emotion-theming';
 import MaskedInput from 'react-text-mask';
 
-import FormFooter from './FormFooter';
-import FormGroup from './FormGroup';
-import FormLabel from './FormLabel';
+import FormControlWrapper from './FormControlWrapper';
 import Icon, { StylesIconVariables } from './Icon';
 import { form } from '../assets/styles/utility';
 import { generateUUID } from '../helpers/utility';
@@ -135,10 +133,14 @@ const Input = forwardRef(
     };
 
     return (
-      <FormGroup {...wrapperProps}>
-        <FormLabel required={required} error={!!validationMessage} htmlFor={id}>
-          {label}
-        </FormLabel>
+      <FormControlWrapper
+        required={required}
+        label={label}
+        labelProps={{ htmlFor: id }}
+        explanationMessage={explanationMessage}
+        validationMessage={validationMessage}
+        {...wrapperProps}
+      >
         {prefixIcon ? (
           <div css={{ position: 'relative' }}>
             <div
@@ -169,11 +171,7 @@ const Input = forwardRef(
         ) : (
           inputRender()
         )}
-        <FormFooter
-          explanationMessage={explanationMessage}
-          validationMessage={validationMessage}
-        />
-      </FormGroup>
+      </FormControlWrapper>
     );
   }
 );
