@@ -18,6 +18,7 @@ const Radio = ({
   name,
   value,
   noContrast,
+  onChange,
   ...opts
 }) => {
   const theme = useTheme();
@@ -44,6 +45,7 @@ const Radio = ({
         disabled={disabled}
         value={value}
         checked={checked}
+        onChange={onChange}
         css={[
           form.base(theme),
           // 1. Style
@@ -129,6 +131,7 @@ Radio.propTypes = {
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   name: PropTypes.string.isRequired,
   noContrast: PropTypes.bool,
+  onChange: PropTypes.func.isRequired,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 };
 
