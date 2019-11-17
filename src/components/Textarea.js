@@ -2,9 +2,7 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import TextareaAutoSize from 'react-textarea-autosize';
 
-import FormGroup from './FormGroup';
-import FormLabel from './FormLabel';
-import FormFooter from './FormFooter';
+import FormControlWrapper from './FormControlWrapper';
 import { form } from '../assets/styles/utility';
 import { generateUUID } from '../helpers/utility';
 
@@ -22,10 +20,16 @@ const Textarea = ({
   const id = `${name}-${generateUUID()}`;
 
   return (
-    <FormGroup {...wrapperProps}>
-      <FormLabel required={required} error={!!validationMessage} htmlFor={id}>
-        {label}
-      </FormLabel>
+    <FormControlWrapper
+      required={required}
+      label={label}
+      labelProps={{
+        htmlFor: id,
+      }}
+      explanationMessage={explanationMessage}
+      validationMessage={validationMessage}
+      {...wrapperProps}
+    >
       <TextareaAutoSize
         css={theme => [
           form.base(theme),
@@ -56,11 +60,7 @@ const Textarea = ({
         name={name}
         {...opts}
       />
-      <FormFooter
-        explanationMessage={explanationMessage}
-        validationMessage={validationMessage}
-      />
-    </FormGroup>
+    </FormControlWrapper>
   );
 };
 

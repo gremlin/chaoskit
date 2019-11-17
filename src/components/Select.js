@@ -1,9 +1,7 @@
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 
-import FormGroup from './FormGroup';
-import FormLabel from './FormLabel';
-import FormFooter from './FormFooter';
+import FormControlWrapper from './FormControlWrapper';
 import { form } from '../assets/styles/utility';
 import { generateUUID } from '../helpers/utility';
 import caretDown from '../assets/icons/caret-down.svg';
@@ -73,10 +71,16 @@ const Select = ({
   };
 
   return (
-    <FormGroup {...wrapperProps}>
-      <FormLabel required={required} error={!!validationMessage} htmlFor={id}>
-        {label}
-      </FormLabel>
+    <FormControlWrapper
+      required={required}
+      label={label}
+      labelProps={{
+        htmlFor: id,
+      }}
+      explanationMessage={explanationMessage}
+      validationMessage={validationMessage}
+      {...wrapperProps}
+    >
       <div
         css={theme => [
           {
@@ -160,11 +164,7 @@ const Select = ({
           {options.map(renderOpts)}
         </select>
       </div>
-      <FormFooter
-        explanationMessage={explanationMessage}
-        validationMessage={validationMessage}
-      />
-    </FormGroup>
+    </FormControlWrapper>
   );
 };
 
