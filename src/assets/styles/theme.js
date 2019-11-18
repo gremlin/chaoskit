@@ -64,6 +64,7 @@ const breakpoint = {
 };
 
 const mq = {
+  xsmall__max: `@media (max-width: ${breakpoint.xsmall__max}px)`,
   small: `@media (min-width: ${breakpoint.small}px)`,
   small__max: `@media (max-width: ${breakpoint.small__max}px)`,
   medium: `@media (min-width: ${breakpoint.medium}px)`,
@@ -71,7 +72,6 @@ const mq = {
   large: `@media (min-width: ${breakpoint.large}px)`,
   large__max: `@media (max-width: ${breakpoint.large__max}px)`,
   xlarge: `@media (min-width: ${breakpoint.xlarge}px)`,
-  xlarge__max: `@media (max-width: ${breakpoint.xlarge__max}px)`,
 };
 
 const opacity = {
