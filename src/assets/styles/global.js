@@ -278,6 +278,18 @@ export const globalStyles = theme => [
       },
     ],
 
+    h6: [
+      text.heading(theme),
+      {
+        fontSize: theme.fontSize.base,
+        margin: `0 0 ${theme.space.base}px`,
+
+        '* + &': {
+          marginTop: theme.space.large,
+        },
+      },
+    ],
+
     //
     // Lists
     //
