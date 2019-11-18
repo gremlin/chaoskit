@@ -47,6 +47,9 @@ $base-h5-font-weight: $global-font-weight-bold !default;
 $base-h5-line-height: $base-heading-line-height !default;
 $base-h5-text-transform: uppercase !default;
 $base-h5-letter-spacing: 0.2em !default;
+$base-h6-font-size: $global-font-size !default;
+$base-h6-font-weight: $global-font-weight-bold !default;
+$base-h6-line-height: $base-heading-line-height !default;
 $base-list-padding-left: $global-whitespace-large !default;
 $base-hr-margin-vertical: $base-margin-vertical !default;
 $base-hr-border: $global-border !default;
@@ -432,8 +435,20 @@ $base-selection-color: $global-background !default;
     letter-spacing: $base-h5-letter-spacing;
     text-transform: $base-h5-text-transform;
 
-    @if (mixin-exists(hook-base-h4)) {
-      @include hook-base-h4();
+    @if (mixin-exists(hook-base-h5)) {
+      @include hook-base-h5();
+    }
+  }
+
+  @include selector-placeholder('h6') {
+    @include base-heading-styles();
+
+    font-size: $base-h5-font-size;
+    font-weight: $base-h5-font-weight;
+    line-height: $base-h5-line-height;
+
+    @if (mixin-exists(hook-base-h6)) {
+      @include hook-base-h6();
     }
   }
 
