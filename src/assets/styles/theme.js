@@ -58,6 +58,9 @@ const breakpoint = {
     return this.medium - 1;
   },
   small: 480,
+  get xsmall__max() {
+    return this.small - 1;
+  },
 };
 
 const mq = {
