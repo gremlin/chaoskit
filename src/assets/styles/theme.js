@@ -1,5 +1,4 @@
 import { fluidRange, rgba, shade, tint, timingFunctions } from 'polished';
-import { Back, Expo } from 'gsap/TweenMax';
 
 // @NOTE Filter generator https://codepen.io/zslabs/pen/xePEVN
 const brand = {
@@ -359,8 +358,8 @@ const timing = {
 
 const gsap = {
   transition: {
-    base: Expo.easeInOut,
-    bounce: Back.easeOut.config(1),
+    base: 'expo.inOut',
+    bounce: 'back.out(1)',
   },
   timing: {
     short: 0.175,

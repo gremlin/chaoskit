@@ -4,8 +4,8 @@ import { useRef, useState, useEffect } from 'react';
 import useUpdateEffect from 'react-use/lib/useUpdateEffect';
 import useLockBodyScroll from 'react-use/lib/useLockBodyScroll';
 import useClickAway from 'react-use/lib/useClickAway';
-import ReactDOM from 'react-dom';
-import { TimelineMax } from 'gsap/TweenMax';
+import { createPortal } from 'react-dom';
+import gsap from 'gsap';
 import { useTheme } from 'emotion-theming';
 
 import { misc } from '../assets/styles/utility';
@@ -74,13 +74,14 @@ const Modal = ({
     let lastTime = 0;
 
     // Attach timeline to each instance
-    $modal.timeline = new TimelineMax({
+    $modal.timeline = gsap.timeline({
       paused: !open,
       onStart: () => {
         onStart();
       },
       onUpdate: () => {
         const newTime = $modal.timeline.time();
+
         if (
           (forward && newTime < lastTime) ||
           (!forward && newTime > lastTime)
@@ -109,23 +110,19 @@ const Modal = ({
       })
       .to(
         $modal,
-        theme.gsap.timing.base,
         {
-          css: {
-            opacity: 1,
-            backdropFilter: 'blur(2px)',
-          },
+          duration: theme.gsap.timing.base,
+          opacity: 1,
+          backdropFilter: 'blur(2px)',
         },
         'modal'
       )
       .to(
         $modalDialog,
-        theme.gsap.timing.base,
         {
-          css: {
-            opacity: 1,
-            y: 0,
-          },
+          duration: theme.gsap.timing.base,
+          opacity: 1,
+          y: 0,
           ease: theme.gsap.transition.bounce,
         },
         'modal'
@@ -159,7 +156,7 @@ const Modal = ({
 
   if (!renderModal) return null;
 
-  return ReactDOM.createPortal(
+  return createPortal(
     <div
       css={[
         misc.overflow,

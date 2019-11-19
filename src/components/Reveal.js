@@ -3,7 +3,7 @@ import cx from 'classnames';
 import PropTypes from 'prop-types';
 import useMount from 'react-use/lib/useMount';
 import useUpdateEffect from 'react-use/lib/useUpdateEffect';
-import { TimelineMax } from 'gsap/TweenMax';
+import gsap from 'gsap';
 import { useTheme } from 'emotion-theming';
 
 import Button from './Button';
@@ -44,13 +44,10 @@ const Reveal = ({
     let lastTime = 0;
 
     // Attach GSAP
-    $reveal.timeline = new TimelineMax({
+    $reveal.timeline = gsap.timeline({
       paused: true,
       onStart: () => {
         handleOnStart();
-
-        // Set initial height to `auto`
-        $reveal.style.height = 'auto';
       },
       onUpdate: () => {
         const newTime = $reveal.timeline.time();
@@ -67,33 +64,19 @@ const Reveal = ({
         lastTime = newTime;
       },
       onComplete() {
-        // Allow height to fill-up space
-        $reveal.style.height = 'auto';
-
         onComplete();
       },
       onReverseComplete() {
-        // Set height of content
-        $reveal.style.height = '0';
-
         onReverseComplete();
       },
     });
 
-    $reveal.timeline
-      .set($reveal, {
-        css: {
-          display: 'block',
-          height: 'auto',
-        },
-      })
-      .from($reveal, theme.gsap.timing.long, {
-        css: {
-          height: 0,
-          opacity: 0,
-        },
-        ease: theme.gsap.transition.base,
-      });
+    $reveal.timeline.to($reveal, {
+      duration: theme.gsap.timing.long,
+      height: 'auto',
+      opacity: 1,
+      ease: theme.gsap.transition.base,
+    });
 
     if (reveal) {
       $reveal.timeline.progress(1);
@@ -143,7 +126,8 @@ const Reveal = ({
         css={{
           // Take care of overflowing content
           overflow: 'hidden',
-          display: 'none',
+          opacity: 0,
+          height: 0,
         }}
         className={cx('CK__Reveal', className)}
         ref={revealRef}

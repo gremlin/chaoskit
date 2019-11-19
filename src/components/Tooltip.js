@@ -3,7 +3,7 @@ import cx from 'classnames';
 import PropTypes from 'prop-types';
 import { keyframes } from '@emotion/core';
 import { useTheme } from 'emotion-theming';
-import ReactDOM from 'react-dom';
+import { createPortal } from 'react-dom';
 import useUpdateEffect from 'react-use/lib/useUpdateEffect';
 
 const StylesTooltipVariables = theme => ({
@@ -111,7 +111,7 @@ const Tooltip = ({ children, className, content, placement }) => {
     <Fragment>
       {renderChildren}
       {isHovered &&
-        ReactDOM.createPortal(
+        createPortal(
           <div
             css={[
               {

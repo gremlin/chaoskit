@@ -4,8 +4,8 @@ import { useRef, useState, useEffect } from 'react';
 import useUpdateEffect from 'react-use/lib/useUpdateEffect';
 import useLockBodyScroll from 'react-use/lib/useLockBodyScroll';
 import useClickAway from 'react-use/lib/useClickAway';
-import ReactDOM from 'react-dom';
-import { TimelineMax } from 'gsap/TweenMax';
+import { createPortal } from 'react-dom';
+import gsap from 'gsap';
 import { useTheme } from 'emotion-theming';
 
 import { misc } from '../assets/styles/utility';
@@ -60,13 +60,14 @@ const OffCanvas = ({
     let lastTime = 0;
 
     // Attach timeline to each instance
-    $offCanvas.timeline = new TimelineMax({
+    $offCanvas.timeline = gsap.timeline({
       paused: !open,
       onStart: () => {
         onStart();
       },
       onUpdate: () => {
         const newTime = $offCanvas.timeline.time();
+
         if (
           (forward && newTime < lastTime) ||
           (!forward && newTime > lastTime)
@@ -95,22 +96,18 @@ const OffCanvas = ({
       })
       .to(
         $offCanvas,
-        theme.gsap.timing.long,
         {
-          css: {
-            opacity: 1,
-            backdropFilter: 'blur(2px)',
-          },
+          duration: theme.gsap.timing.long,
+          opacity: 1,
+          backdropFilter: 'blur(2px)',
         },
         'offCanvas'
       )
       .to(
         $panel,
-        theme.gsap.timing.long,
         {
-          css: {
-            x: 0,
-          },
+          duration: theme.gsap.timing.long,
+          x: 0,
           ease: theme.gsap.transition.base,
         },
         'offCanvas'
@@ -144,7 +141,7 @@ const OffCanvas = ({
 
   if (!renderOffCanvas) return null;
 
-  return ReactDOM.createPortal(
+  return createPortal(
     <div
       css={{
         // 1. GSAP

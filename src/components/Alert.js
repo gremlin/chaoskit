@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useRef, useState } from 'react';
 import useMount from 'react-use/lib/useMount';
 import useUpdateEffect from 'react-use/lib/useUpdateEffect';
-import { TimelineMax } from 'gsap/TweenMax';
+import gsap from 'gsap';
 import { kebabCase, toLower } from 'lodash-es';
 import { useTheme } from 'emotion-theming';
 
@@ -71,13 +71,14 @@ const Alert = ({
     let lastTime = 0;
 
     // Attach GSAP
-    $alert.timeline = new TimelineMax({
+    $alert.timeline = gsap.timeline({
       paused: true,
       onStart: () => {
         onStart();
       },
       onUpdate: () => {
         const newTime = $alert.timeline.time();
+
         if (
           (forward && newTime < lastTime) ||
           (!forward && newTime > lastTime)
@@ -97,13 +98,12 @@ const Alert = ({
       },
     });
 
-    $alert.timeline.to($alert, theme.gsap.timing.long, {
-      css: {
-        marginTop: -$alert.offsetHeight,
-        transformOrigin: 'center center',
-        y: '50%',
-        opacity: 0,
-      },
+    $alert.timeline.to($alert, {
+      duration: theme.gsap.timing.long,
+      marginTop: -$alert.offsetHeight,
+      transformOrigin: 'center center',
+      y: '50%',
+      opacity: 0,
       ease: theme.gsap.transition.base,
     });
 

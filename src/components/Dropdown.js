@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import useMount from 'react-use/lib/useMount';
-import { TimelineMax } from 'gsap/TweenMax';
+import gsap from 'gsap';
 import { useTheme } from 'emotion-theming';
 
 import Button from './Button';
@@ -103,7 +103,7 @@ const Dropdown = ({
     let lastTime = 0;
 
     // Attach GSAP
-    $dropdown.timeline = new TimelineMax({
+    $dropdown.timeline = gsap.timeline({
       paused: true,
       onStart() {
         handleOnStart();
@@ -138,12 +138,11 @@ const Dropdown = ({
       .set($panel, {
         display: 'block',
       })
-      .to($panel, theme.gsap.timing.short, {
-        css: {
-          y: 0,
-          scale: 1,
-          opacity: 1,
-        },
+      .to($panel, {
+        duration: theme.gsap.timing.short,
+        y: 0,
+        scale: 1,
+        opacity: 1,
         ease: theme.gsap.transition.bounce,
       });
   };
