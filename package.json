@@ -7,7 +7,7 @@
     "not dead",
     "not op_mini all"
   ],
-  "version": "1.6.4",
+  "version": "1.6.5",
   "author": "Zach Schnackel <zach@gremlin.com>",
   "dependencies": {
     "babel-cli": "6.26.0",
