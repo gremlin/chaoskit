@@ -1,6 +1,7 @@
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 import { useTheme } from 'emotion-theming';
+import { tint } from 'polished';
 
 import FormControlWrapper from './FormControlWrapper';
 import { generateUUID } from '../helpers/utility';
@@ -8,15 +9,25 @@ import { generateUUID } from '../helpers/utility';
 const StylesRangeVariables = theme => ({
   thumb: {
     size: theme.height.xxxsmall,
-    background: theme.color.light.base,
-    border: theme.border.base,
+    background: theme.color.primary.base,
   },
   track: {
+    borderRadius: theme.height.xxxsmall / 2,
     height: theme.height.xxxsmall / 3,
-    background: theme.color.panel.dark,
-    backgroundFocus: theme.color.panel.dark,
   },
 });
+
+const generateProgressGradient = (theme, { value = 0, min = 0, max = 0 }) => {
+  const val = (value - min) / (max - min);
+  const percentage = val * 100;
+
+  return `linear-gradient(to right, ${
+    StylesRangeVariables(theme).thumb.background
+  } ${percentage}%, ${tint(
+    0.75,
+    StylesRangeVariables(theme).thumb.background
+  )} ${percentage}%)`;
+};
 
 const Range = ({
   className,
@@ -28,6 +39,9 @@ const Range = ({
   required,
   validationMessage,
   wrapperProps,
+  min,
+  max,
+  step,
   ...props
 }) => {
   const theme = useTheme();
@@ -51,6 +65,9 @@ const Range = ({
         name={name}
         disabled={disabled}
         className={cx('CK__Range', className)}
+        min={min}
+        max={max}
+        step={step}
         css={[
           {
             // 1. Normalize and defaults
@@ -62,7 +79,14 @@ const Range = ({
             margin: 0,
             verticalAlign: 'middle',
             appearance: 'none',
-            background: 'transparent',
+            background: generateProgressGradient(theme, {
+              ...props,
+              min,
+              max,
+              step,
+            }),
+            borderRadius: StylesRangeVariables(theme).track.borderRadius,
+            height: StylesRangeVariables(theme).track.height,
             padding: 0,
             // 2
             maxWidth: '100%',
@@ -73,13 +97,6 @@ const Range = ({
               border: 0,
             },
 
-            // Improves consistency of cursor style for clickable elements
-            '&:not(:disabled)': {
-              '&::-webkit-slider-thumb, &::moz-range-thumb, ::-ms-thumb': {
-                cursor: 'pointer',
-              },
-            },
-
             //
             // Thumb
             //
@@ -87,12 +104,11 @@ const Range = ({
             // Webkit
             '&::-webkit-slider-thumb': {
               appearance: 'none',
-              transform: 'translateY(-40%)',
               height: StylesRangeVariables(theme).thumb.size,
               width: StylesRangeVariables(theme).thumb.size,
               borderRadius: '50%',
               background: StylesRangeVariables(theme).thumb.background,
-              border: StylesRangeVariables(theme).thumb.border,
+              border: 0,
             },
 
             // Firefox
@@ -101,7 +117,7 @@ const Range = ({
               width: StylesRangeVariables(theme).thumb.size,
               borderRadius: '50%',
               background: StylesRangeVariables(theme).thumb.background,
-              border: StylesRangeVariables(theme).thumb.border,
+              border: 0,
             },
 
             // Edge
@@ -111,7 +127,7 @@ const Range = ({
               width: StylesRangeVariables(theme).thumb.size,
               borderRadius: '50%',
               background: StylesRangeVariables(theme).thumb.background,
-              border: StylesRangeVariables(theme).thumb.border,
+              border: 0,
             },
 
             '&::-ms-tooltip': {
@@ -122,38 +138,9 @@ const Range = ({
             // Track
             //
 
-            // Chrome
-            '&::-webkit-slider-runnable-track': {
+            '&::-webkit-slider-runnable-track, &::-moz-range-track, &::-ms-fill-lower, &::-ms-fill-upper': {
               height: StylesRangeVariables(theme).track.height,
-              borderRadius: StylesRangeVariables(theme).track.height / 2,
-              background: StylesRangeVariables(theme).track.background,
-
-              // Safari does not have `focus` state. Using active instead
-              '&:focus, &:active': {
-                background: StylesRangeVariables(theme).track.backgroundFocus,
-              },
-            },
-
-            // Firefox
-            '&::-moz-range-track': {
-              height: StylesRangeVariables(theme).track.height,
-              borderRadius: StylesRangeVariables(theme).track.height / 2,
-              background: StylesRangeVariables(theme).track.background,
-
-              '&:focus': {
-                background: StylesRangeVariables(theme).track.backgroundFocus,
-              },
-            },
-
-            // Edge
-            '&::-ms-fill-lower, &::-ms-fill-upper': {
-              height: StylesRangeVariables(theme).track.height,
-              borderRadius: StylesRangeVariables(theme).track.height / 2,
-              background: StylesRangeVariables(theme).track.background,
-
-              '&:focus': {
-                background: StylesRangeVariables(theme).track.backgroundFocus,
-              },
+              background: 'transparent',
             },
           },
         ]}
@@ -172,6 +159,9 @@ Range.propTypes = {
   noContrast: PropTypes.bool,
   required: PropTypes.bool,
   validationMessage: PropTypes.string,
+  min: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  max: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  step: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   wrapperProps: PropTypes.object,
 };
 
