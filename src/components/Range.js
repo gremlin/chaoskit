@@ -138,6 +138,7 @@ const Range = ({
             // Track
             //
 
+            // We handle all these styles in the main `input`
             '&::-webkit-slider-runnable-track, &::-moz-range-track, &::-ms-fill-lower, &::-ms-fill-upper': {
               height: StylesRangeVariables(theme).track.height,
               background: 'transparent',
