@@ -2,7 +2,9 @@
   "name": "chaoskit",
   "description": "A lightweight and modular front-end framework for developing fast and powerful web interfaces within Gremlin",
   "browserslist": [
-    ">10%",
+    ">1%",
+    "not IE 11",
+    "not dead",
     "not op_mini all"
   ],
   "version": "1.4.7",
