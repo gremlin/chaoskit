@@ -143,6 +143,11 @@ const Range = ({
               background: 'transparent',
             },
           },
+
+          disabled && {
+            opacity: theme.opacity.base,
+            cursor: 'not-allowed',
+          },
         ]}
         {...props}
       />
