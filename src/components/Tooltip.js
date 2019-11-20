@@ -6,11 +6,13 @@ import { useTheme } from 'emotion-theming';
 import { createPortal } from 'react-dom';
 import useUpdateEffect from 'react-use/lib/useUpdateEffect';
 
-const StylesTooltipVariables = theme => ({
+const StylesTooltipVariables = (theme, variation) => ({
   arrowSize: 10,
-  background: theme.color.light.base,
+  background:
+    variation === 'light' ? theme.color.light.base : theme.color.dark.base,
+  border: variation === 'light' ? theme.border.base : theme.color.dark.base,
   borderRadius: theme.borderRadius.base,
-  color: theme.fontColor.base,
+  color: variation === 'light' ? theme.fontColor.base : theme.contrast.base,
 });
 
 const tooltipKeyframes = keyframes({
@@ -25,7 +27,7 @@ const tooltipKeyframes = keyframes({
   },
 });
 
-const Tooltip = ({ children, className, content, placement }) => {
+const Tooltip = ({ children, className, content, placement, variation }) => {
   const theme = useTheme();
 
   const tooltipRef = useRef();
@@ -119,7 +121,7 @@ const Tooltip = ({ children, className, content, placement }) => {
                 zIndex: 10,
                 display: 'block',
                 fontSize: theme.fontSize.small,
-                padding: StylesTooltipVariables(theme).arrowSize + 1,
+                padding: StylesTooltipVariables(theme, variation).arrowSize + 1,
                 animation: `${tooltipKeyframes} 0.25s ${theme.transition.bounce}`,
               },
               placement === 'top' && {
@@ -142,12 +144,14 @@ const Tooltip = ({ children, className, content, placement }) => {
             <div
               css={[
                 {
-                  color: StylesTooltipVariables(theme).color,
+                  color: StylesTooltipVariables(theme, variation).color,
                   maxWidth: 250,
                   padding: theme.space.small,
-                  background: StylesTooltipVariables(theme).background,
+                  background: StylesTooltipVariables(theme, variation)
+                    .background,
                   border: theme.border.base,
-                  borderRadius: StylesTooltipVariables(theme).borderRadius,
+                  borderRadius: StylesTooltipVariables(theme, variation)
+                    .borderRadius,
                   wordWrap: 'break-word',
                   textAlign: 'center',
                   position: 'relative',
@@ -155,13 +159,14 @@ const Tooltip = ({ children, className, content, placement }) => {
 
                   '&::after': {
                     content: "''",
-                    width: StylesTooltipVariables(theme).arrowSize,
-                    height: StylesTooltipVariables(theme).arrowSize,
+                    width: StylesTooltipVariables(theme, variation).arrowSize,
+                    height: StylesTooltipVariables(theme, variation).arrowSize,
                     position: 'absolute',
-                    background: StylesTooltipVariables(theme).background,
+                    background: StylesTooltipVariables(theme, variation)
+                      .background,
                     border: theme.border.base,
                     borderBottomLeftRadius:
-                      StylesTooltipVariables(theme).borderRadius / 2,
+                      StylesTooltipVariables(theme, variation).borderRadius / 2,
                     borderRight: 0,
                     borderTop: 0,
                   },
@@ -169,7 +174,9 @@ const Tooltip = ({ children, className, content, placement }) => {
 
                 placement === 'top' && {
                   '&::after': {
-                    bottom: -StylesTooltipVariables(theme).arrowSize / 2 - 1,
+                    bottom:
+                      -StylesTooltipVariables(theme, variation).arrowSize / 2 -
+                      1,
                     left: '50%',
                     transform: 'translateX(-50%) rotate(-45deg)',
                   },
@@ -177,7 +184,9 @@ const Tooltip = ({ children, className, content, placement }) => {
 
                 placement === 'right' && {
                   '&::after': {
-                    left: -StylesTooltipVariables(theme).arrowSize / 2 - 1,
+                    left:
+                      -StylesTooltipVariables(theme, variation).arrowSize / 2 -
+                      1,
                     top: '50%',
                     transform: 'translateY(-50%) rotate(45deg)',
                   },
@@ -185,17 +194,23 @@ const Tooltip = ({ children, className, content, placement }) => {
 
                 placement === 'bottom' && {
                   '&::after': {
-                    top: -StylesTooltipVariables(theme).arrowSize / 2 - 1,
+                    top:
+                      -StylesTooltipVariables(theme, variation).arrowSize / 2 -
+                      1,
                     left: '50%',
                     transform: 'translateX(-50%) rotate(135deg)',
-                    borderBottomLeftRadius: StylesTooltipVariables(theme)
-                      .borderRadius,
+                    borderBottomLeftRadius: StylesTooltipVariables(
+                      theme,
+                      variation
+                    ).borderRadius,
                   },
                 },
 
                 placement === 'left' && {
                   '&::after': {
-                    right: -StylesTooltipVariables(theme).arrowSize / 2 - 1,
+                    right:
+                      -StylesTooltipVariables(theme, variation).arrowSize / 2 -
+                      1,
                     top: '50%',
                     transform: 'translateY(-50%) rotate(-135deg)',
                   },
@@ -217,10 +232,12 @@ Tooltip.propTypes = {
   className: PropTypes.string,
   content: PropTypes.any.isRequired,
   placement: PropTypes.oneOf(['top', 'bottom', 'left', 'right']),
+  variation: PropTypes.oneOf(['light', 'dark']),
 };
 
 Tooltip.defaultProps = {
   placement: 'top',
+  variation: 'light',
 };
 
 export default Tooltip;
