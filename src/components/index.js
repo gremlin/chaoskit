@@ -31,6 +31,7 @@ export { default as Pagination } from './Pagination';
 export { default as Radio } from './Radio';
 export { default as RadioWithContext } from './RadioWithContext';
 export { default as RadioGroup } from './RadioGroup';
+export { default as Range } from './Range';
 export { default as Reveal } from './Reveal';
 export { default as Row } from './Row';
 export { default as RowColumn } from './RowColumn';
