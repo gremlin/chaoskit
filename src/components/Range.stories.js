@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import { boolean, text } from '@storybook/addon-knobs';
 
 import Range from './Range';
@@ -23,7 +24,12 @@ const RangeExample = ({ ...props }) => {
       step={1}
       min={1}
       max={10}
-      onChange={({ target: { value: rangeValue } }) => setValue(rangeValue)}
+      onChange={({ target: { value: rangeValue } }) => {
+        action('Current value')(rangeValue);
+
+        setValue(rangeValue);
+      }}
+      showTicks
       {...props}
     />
   );
