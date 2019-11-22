@@ -12,7 +12,6 @@ const StylesRangeVariables = theme => ({
     background: theme.color.primary.base,
   },
   track: {
-    borderRadius: theme.height.xxxsmall / 2,
     height: theme.height.xxxsmall / 3,
   },
 });
@@ -87,7 +86,7 @@ const Range = ({
             margin: 0,
             verticalAlign: 'middle',
             appearance: 'none',
-            borderRadius: StylesRangeVariables(theme).track.borderRadius,
+            borderRadius: StylesRangeVariables(theme).track.height / 2,
             height: StylesRangeVariables(theme).track.height,
             padding: 0,
             // 2
