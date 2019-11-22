@@ -68,6 +68,14 @@ const Range = ({
         min={min}
         max={max}
         step={step}
+        style={{
+          background: generateProgressGradient(theme, {
+            ...props,
+            min,
+            max,
+            step,
+          }),
+        }}
         css={[
           {
             // 1. Normalize and defaults
@@ -79,12 +87,6 @@ const Range = ({
             margin: 0,
             verticalAlign: 'middle',
             appearance: 'none',
-            background: generateProgressGradient(theme, {
-              ...props,
-              min,
-              max,
-              step,
-            }),
             borderRadius: StylesRangeVariables(theme).track.borderRadius,
             height: StylesRangeVariables(theme).track.height,
             padding: 0,
