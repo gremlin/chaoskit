@@ -4359,10 +4359,10 @@ eslint-plugin-prettier@3.1.1:
   dependencies:
     prettier-linter-helpers "^1.0.0"
 
-eslint-plugin-react-hooks@2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-2.2.0.tgz#078264e9e388da6929ace09d6abe92c85963aff4"
-  integrity sha512-jSlnBjV2cmyIeL555H/FbvuSbQ1AtpHjLMHuPrQnt1eVA6lX8yufdygh7AArI2m8ct7ChHGx2uOaCuxq2MUn6g==
+eslint-plugin-react-hooks@2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-2.3.0.tgz#53e073961f1f5ccf8dd19558036c1fac8c29d99a"
+  integrity sha512-gLKCa52G4ee7uXzdLiorca7JIQZPPXRAQDXV83J4bUEeUuc5pIEyZYAZ45Xnxe5IuupxEqHS+hUhSLIimK1EMw==
 
 eslint-plugin-react@7.16.0:
   version "7.16.0"
@@ -4920,10 +4920,10 @@ format@^0.2.2:
   resolved "https://registry.yarnpkg.com/format/-/format-0.2.2.tgz#d6170107e9efdc4ed30c9dc39016df942b5cb58b"
   integrity sha1-1hcBB+nv3E7TDJ3DkBbflCtctYs=
 
-formik@2.0.4:
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/formik/-/formik-2.0.4.tgz#0743a9a5c7ab0a247d3fa2c072d599f221fc8e75"
-  integrity sha512-Y0mR8PGRtq/U072U4tkX1wnS/geDYs0n7uPlvmKtMTIJS4g8xCpaccAerQFWxEfClMK/JGpmEyG93zItAdASJA==
+formik@2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/formik/-/formik-2.0.6.tgz#e22e3452399a69ad057ba9828ba8fb0d2319df53"
+  integrity sha512-x2fC80v8AIrGgpxWrLqKaK9hdV8WX4OSLK+Fr5lclqExA59NCuxdB3WiuxJQc9/g043BmfTIuaILrV9Wq0MPVw==
   dependencies:
     deepmerge "^2.1.1"
     hoist-non-react-statics "^3.3.0"
@@ -7982,10 +7982,10 @@ react-transition-group@^2.2.1:
     prop-types "^15.6.2"
     react-lifecycles-compat "^3.0.4"
 
-react-use@13.8.1:
-  version "13.8.1"
-  resolved "https://registry.yarnpkg.com/react-use/-/react-use-13.8.1.tgz#6173a5c93365b8534223ac2f9e0977ece1d7f541"
-  integrity sha512-XsrKcfXP6kPaqsZYEuaV5F/DMV1IT8FXHtcAOJAOFASHo6YoBL3/N5pYqnh+NczAVgH6BWF+gXi6Zke2R4/wpg==
+react-use@13.8.2:
+  version "13.8.2"
+  resolved "https://registry.yarnpkg.com/react-use/-/react-use-13.8.2.tgz#1665adb037c7c44214aa6ee210d7abd2322c1ef1"
+  integrity sha512-I0xjVQrdiP592107vqfrGD4OGtTqTpo/TuQluWtFweeJm95kg3JmPQ79Ltv4hr9rKmU5MaSBj33vwMaL6x8KkQ==
   dependencies:
     copy-to-clipboard "^3.2.0"
     nano-css "^5.2.1"
