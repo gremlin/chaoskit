@@ -29,7 +29,6 @@ const RangeExample = ({ ...props }) => {
 
         setValue(rangeValue);
       }}
-      showTicks
       {...props}
     />
   );
