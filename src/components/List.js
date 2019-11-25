@@ -10,7 +10,7 @@ const List = ({ className, space, type, border, ...opts }) => (
         listStyle: 'none',
         paddingLeft: 0,
         display: 'grid',
-        gridTemplateColumns: 'minmax(0, 1fr)',
+        gridTemplateColumns: 'minmax(auto, 1fr)',
         gridGap: space && theme.space[space],
       },
 
