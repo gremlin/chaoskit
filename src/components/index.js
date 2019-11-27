@@ -38,6 +38,7 @@ export { default as RowColumn } from './RowColumn';
 export { default as Section } from './Section';
 export { default as SectionTitle } from './SectionTitle';
 export { default as Select } from './Select';
+export { default as Skeleton } from './Skeleton';
 export { default as SocialIcon } from './SocialIcon';
 export { default as Subnav } from './Subnav';
 export { Tabs, TabList, Tab, TabPanel } from './Tabs';

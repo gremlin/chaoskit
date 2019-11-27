@@ -7982,10 +7982,10 @@ react-transition-group@^2.2.1:
     prop-types "^15.6.2"
     react-lifecycles-compat "^3.0.4"
 
-react-use@13.8.2:
-  version "13.8.2"
-  resolved "https://registry.yarnpkg.com/react-use/-/react-use-13.8.2.tgz#1665adb037c7c44214aa6ee210d7abd2322c1ef1"
-  integrity sha512-I0xjVQrdiP592107vqfrGD4OGtTqTpo/TuQluWtFweeJm95kg3JmPQ79Ltv4hr9rKmU5MaSBj33vwMaL6x8KkQ==
+react-use@13.9.0:
+  version "13.9.0"
+  resolved "https://registry.yarnpkg.com/react-use/-/react-use-13.9.0.tgz#ff080858ff5887763c63fcafb87c56357c5c385b"
+  integrity sha512-wjyalFVfGr+pzM8FMwAzjGW010m7cFZ+qPT3NmVE+R+K9y4z2jBexCC8xNtcox9EwJHGnOx52aovjYZXws03jg==
   dependencies:
     copy-to-clipboard "^3.2.0"
     nano-css "^5.2.1"
