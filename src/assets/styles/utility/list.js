@@ -5,11 +5,13 @@ export const numbers = ({ theme = {}, fill = theme.color.primary.base }) => ({
 
   '> li': {
     listStyle: 'none',
+    display: 'grid',
+    gridTemplateColumns: 'auto 1fr',
+    gap: theme.space.base,
 
     '&::before': {
       content: 'counter(list-counter, decimal)',
       counterIncrement: 'list-counter',
-      marginRight: theme.space.base,
       fontWeight: theme.fontWeight.bold,
       color: fill,
     },
@@ -21,20 +23,17 @@ export const circles = ({
   fill = theme.color.primary.base,
   hoverFill = false,
   fontSize = theme.fontSize.base,
-  space = 0,
   circleSize = 8,
-  border = false,
 }) => ({
   '> li': [
     {
-      display: 'block',
-      position: 'relative',
-      paddingLeft: theme.space.base + circleSize,
+      display: 'grid',
+      gridTemplateColumns: 'auto 1fr',
+      gap: theme.space.base,
 
       '&::before': {
         content: "''",
-        position: 'absolute',
-        left: 0,
+        position: 'relative',
         display: 'inline-block',
         width: circleSize,
         height: circleSize,
@@ -42,13 +41,8 @@ export const circles = ({
         border: `1px solid ${fill}`,
       },
 
-      '&:first-of-type::before': {
+      '::before': {
         top: `${(fontSize * theme.lineHeight.base - circleSize) / 2}px`,
-      },
-
-      '&:not(:first-of-type)::before': {
-        top: `${(fontSize * theme.lineHeight.base - circleSize) / 2 +
-          (border && space)}px`,
       },
     },
 
