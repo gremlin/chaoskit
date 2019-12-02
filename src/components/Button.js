@@ -381,7 +381,7 @@ const Button = forwardRef(
     {
       active,
       actionType,
-      as,
+      as: Component,
       children,
       className,
       disabled,
@@ -397,8 +397,6 @@ const Button = forwardRef(
     ref
   ) => {
     const theme = useTheme();
-
-    let Component = as;
 
     const buttonProps = {
       disabled: disabled || loading,

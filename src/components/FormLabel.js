@@ -59,9 +59,8 @@ export const StylesFormLabelBase = (theme, props = {}) => [
 ];
 
 const FormLabel = forwardRef(
-  ({ as, children, className, required, error, ...opts }, ref) => {
+  ({ as: Component, children, className, required, error, ...opts }, ref) => {
     const theme = useTheme();
-    const Component = as;
 
     return children ? (
       <Component

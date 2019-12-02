@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 
 import { list } from '../assets/styles/utility';
 
-const List = ({ className, space, type, border, ...opts }) => (
-  <ul
+const List = ({ as: Component, className, space, type, border, ...opts }) => (
+  <Component
     css={theme => [
       {
         listStyle: 'none',
         paddingLeft: 0,
         display: 'grid',
         gridTemplateColumns: 'minmax(auto, 1fr)',
-        gridGap: space && theme.space[space],
+        gap: space && theme.space[space],
       },
 
       border && {
@@ -23,7 +23,8 @@ const List = ({ className, space, type, border, ...opts }) => (
 
       type === 'numbers' && list.numbers({ theme }),
 
-      type === 'circles' && list.circles({ theme }),
+      type === 'circles' &&
+        list.circles({ theme, space: space && theme.space[space], border }),
     ]}
     className={cx('UK__List', className)}
     {...opts}
@@ -31,6 +32,7 @@ const List = ({ className, space, type, border, ...opts }) => (
 );
 
 List.propTypes = {
+  as: PropTypes.oneOf(['ul', 'ol']),
   border: PropTypes.bool,
   className: PropTypes.string,
   space: PropTypes.oneOf([
@@ -42,6 +44,10 @@ List.propTypes = {
     'xlarge',
   ]),
   type: PropTypes.oneOf(['numbers', 'circles']),
+};
+
+List.defaultProps = {
+  as: 'ul',
 };
 
 export default List;

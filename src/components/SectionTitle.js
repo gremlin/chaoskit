@@ -27,16 +27,14 @@ export const StylesSectionTitleSub = theme => ({
   },
 });
 
-const SectionTitle = ({ title, as, sub, className, ...opts }) => {
-  const TitleTag = as;
-
+const SectionTitle = ({ title, as: Component, sub, className, ...opts }) => {
   return (
     <div
       className={(cx('CK__SectionTitle'), className)}
       css={theme => StylesSectionTitleWrapper(theme)}
       {...opts}
     >
-      <TitleTag
+      <Component
         css={theme => [
           misc.fluidSize({
             theme,
@@ -48,7 +46,7 @@ const SectionTitle = ({ title, as, sub, className, ...opts }) => {
         className="CK__SectionTitle__Header"
       >
         {title}
-      </TitleTag>
+      </Component>
       {sub && (
         <div
           className="CK__SectionTitle__Sub"
