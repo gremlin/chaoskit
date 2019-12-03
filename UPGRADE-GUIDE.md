@@ -15,7 +15,7 @@
 - `<Button />`
   - `teal` type property has been removed.
 - `<ModalFooter />`
-  - `center` prop has been removed
+  - Only supplies padding; BYOS.
 - `<ModalHeader />`
   - `center` prop has been renamed to `centered`
 - All form inputs pass normal event object instead of `name, value` to increase usability and standards.
