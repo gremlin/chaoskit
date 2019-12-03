@@ -5,7 +5,7 @@ import { useTheme } from 'emotion-theming';
 import { misc } from '../assets/styles/utility';
 import { StylesModalVariables } from './Modal';
 
-const ModalFooter = ({ align, className, ...opts }) => {
+const ModalFooter = ({ className, ...opts }) => {
   const theme = useTheme();
 
   return (
@@ -13,9 +13,6 @@ const ModalFooter = ({ align, className, ...opts }) => {
       css={[
         misc.trimChildren,
         {
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: [align],
           padding: StylesModalVariables(theme).padding,
         },
       ]}
@@ -26,12 +23,7 @@ const ModalFooter = ({ align, className, ...opts }) => {
 };
 
 ModalFooter.propTypes = {
-  align: PropTypes.oneOf(['flex-start', 'center', 'flex-end']),
   className: PropTypes.string,
-};
-
-ModalFooter.defaultProps = {
-  align: 'flex-start',
 };
 
 export default ModalFooter;

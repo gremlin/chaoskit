@@ -3,7 +3,7 @@ import { useTheme } from 'emotion-theming';
 import cx from 'classnames';
 
 export const StylesBadgeVariables = theme => ({
-  height: theme.height.xxsmall,
+  height: theme.height.xxxsmall,
 });
 
 export const StylesBadgeBase = theme => ({

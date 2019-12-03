@@ -4,23 +4,18 @@ import PropTypes from 'prop-types';
 import Close, { StylesCloseVariables } from './Close';
 import { StylesModalVariables } from './Modal';
 
-const StylesModalHeaderVariables = theme => ({
-  closeOffset: theme.space.small,
-});
-
 const ModalHeader = ({ centered, className, onCloseClick, title, ...opts }) => (
   <div
     css={theme => [
       {
-        display: 'flex',
+        display: 'grid',
+        gridTemplateColumns: centered
+          ? `${StylesCloseVariables(theme).size}px 1fr ${
+              StylesCloseVariables(theme).size
+            }px`
+          : `1fr ${StylesCloseVariables(theme).size}px`,
+        gap: theme.space.small,
         padding: StylesModalVariables(theme).padding,
-        justifyContent: 'space-between',
-      },
-
-      centered && {
-        marginLeft:
-          StylesCloseVariables(theme).size +
-          StylesModalHeaderVariables(theme).closeOffset,
       },
     ]}
     className={cx('CK__ModalHeader', className)}
@@ -33,7 +28,7 @@ const ModalHeader = ({ centered, className, onCloseClick, title, ...opts }) => (
         },
 
         centered && {
-          flex: 1,
+          gridColumn: 2,
           textAlign: 'center',
         },
       ]}
@@ -42,9 +37,11 @@ const ModalHeader = ({ centered, className, onCloseClick, title, ...opts }) => (
     </h4>
     <Close
       onClick={onCloseClick}
-      css={theme => ({
-        marginLeft: StylesModalHeaderVariables(theme).closeOffset,
-      })}
+      css={[
+        centered && {
+          gridColumn: 3,
+        },
+      ]}
     />
   </div>
 );
