@@ -100,7 +100,6 @@ $base-selection-color: $global-background !default;
   // 5. Text rendering defaults
   // 6. border-box by default
   // 7. Change the default tap highlight to be completely transparent in iOS.
-  // 8. Enable smooth scrolling for anchors (where supported)
   html {
     // 1
     font-family: $base-body-font-family;
@@ -126,11 +125,6 @@ $base-selection-color: $global-background !default;
     box-sizing: border-box;
     // 7
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-
-    &.is-loaded {
-      // 8
-      scroll-behavior: smooth;
-    }
 
     @if (mixin-exists(hook-base-html)) {
       @include hook-base-html();
