@@ -5213,10 +5213,10 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.4
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.3.tgz#4a12ff1b60376ef09862c2093edd908328be8423"
   integrity sha512-a30VEBm4PEdx1dRB7MFK7BejejvCvBronbLjht+sHuGYj8PHs7M/5Z+rt5lw551vZ7yfTCj4Vuyy3mSJytDWRQ==
 
-gsap@3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/gsap/-/gsap-3.0.1.tgz#946b49e860487bd23e6c884b95152d556a5f86f1"
-  integrity sha512-9nzEBF7Ss9Ogyw6oEOXZxxVYH8WNRA/nHmIp3DrPOTKmlLxX9MN2ovSoH9TApA+rucBgp9veCedujp5oSQRvZw==
+gsap@3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/gsap/-/gsap-3.0.2.tgz#419682be9d4f1353080b920205e2d5f0587d95f6"
+  integrity sha512-BEDoe/MSOtsXFC83c2TcEmCS3XJ4tetIejh9zE3OGnRtf3uDgIRR+2u1Tu+nU36IZiaytqp97uyF2pWJkLoLZQ==
 
 gud@^1.0.0:
   version "1.0.0"
@@ -8000,10 +8000,10 @@ react-transition-group@^2.2.1:
     prop-types "^15.6.2"
     react-lifecycles-compat "^3.0.4"
 
-react-use@13.10.0:
-  version "13.10.0"
-  resolved "https://registry.yarnpkg.com/react-use/-/react-use-13.10.0.tgz#c7ee46b33b5e78d6f6e4557a619c413a9a644864"
-  integrity sha512-KT6bzGV5ua3JjOAn1pt7LnPQ92yqXrEb6a2YkKJmyjk/TA4PtXaywNXzAI92et8YpGTIG4juD6FkpMFkG309nw==
+react-use@13.10.2:
+  version "13.10.2"
+  resolved "https://registry.yarnpkg.com/react-use/-/react-use-13.10.2.tgz#4250d258ca9068662943299c01794a136408c8e9"
+  integrity sha512-z3VFSiPHW6arViGVnajO7YKY5OD+Z9LWcImoJdYHkau23cLSoTctxM3XENLpGxjhJlHaYiQZ6pPgq7pwGTqSZA==
   dependencies:
     copy-to-clipboard "^3.2.0"
     nano-css "^5.2.1"
