@@ -1,6 +1,7 @@
 import { useMemo, useRef } from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
+import { useTheme } from 'emotion-theming';
 
 import { tint, shade } from 'polished';
 
@@ -36,6 +37,7 @@ const Toggle = ({
   wrapperProps,
   ...opts
 }) => {
+  const theme = useTheme();
   const toggleLabelRef = useRef();
 
   // Only regenerate this if the name prop changes
@@ -63,7 +65,7 @@ const Toggle = ({
             disabled={disabled}
             name={name}
             id={id}
-            css={theme => [
+            css={[
               misc.hide,
 
               {
@@ -110,7 +112,7 @@ const Toggle = ({
           <label // eslint-disable-line jsx-a11y/label-has-for, jsx-a11y/label-has-associated-control
             htmlFor={id}
             ref={toggleLabelRef}
-            css={theme => [
+            css={[
               {
                 position: 'relative',
                 display: 'block',
@@ -158,7 +160,7 @@ const Toggle = ({
         {label && (
           <label // eslint-disable-line jsx-a11y/label-has-for
             htmlFor={id}
-            css={theme => [
+            css={[
               {
                 cursor: 'pointer',
                 userSelect: 'none',

@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
+import { useTheme } from 'emotion-theming';
 
 import FormControlWrapper from './FormControlWrapper';
 import { form } from '../assets/styles/utility';
@@ -47,6 +48,8 @@ const Select = ({
   wrapperProps,
   ...opts
 }) => {
+  const theme = useTheme();
+
   // Only regenerate this if the name prop changes
   const id = useMemo(() => `${name}-${generateUUID()}`, [name]);
 
@@ -84,7 +87,7 @@ const Select = ({
       {...wrapperProps}
     >
       <div
-        css={theme => [
+        css={[
           {
             position: 'relative',
           },
@@ -112,7 +115,7 @@ const Select = ({
           multiple={multiple}
           disabled={disabled}
           size={size}
-          css={theme => [
+          css={[
             form.base(theme),
             form.input(theme, { error: validationMessage, noContrast }),
             {

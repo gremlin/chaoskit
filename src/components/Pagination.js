@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+import { useTheme } from 'emotion-theming';
 
 import Button from './Button';
 
@@ -7,45 +8,51 @@ const Pagination = ({
   className,
   hasPrevPage,
   hasNextPage,
-  prevPageLink,
-  nextPageLink,
+  prevPageProps,
+  nextPageProps,
   ...opts
-}) =>
-  hasPrevPage || hasNextPage ? (
+}) => {
+  const theme = useTheme();
+
+  return (
     <div
-      css={theme => ({
+      css={{
         display: 'flex',
+        alignItems: 'center',
         justifyContent: 'space-between',
         marginTop: theme.space.xlarge,
-      })}
+      }}
       className={cx('CK__Pagination', className)}
       {...opts}
     >
       <Button
         rel={hasPrevPage ? 'prev' : null}
         type="default"
-        route={hasPrevPage ? prevPageLink : null}
+        size="small"
         disabled={!hasPrevPage}
+        {...prevPageProps}
       >
         Previous
       </Button>
       <Button
         rel={hasNextPage ? 'next' : null}
         type="default"
-        route={hasNextPage ? nextPageLink : null}
+        size="small"
         disabled={!hasNextPage}
+        {...nextPageProps}
       >
         Next
       </Button>
     </div>
-  ) : null;
+  );
+};
 
 Pagination.propTypes = {
   className: PropTypes.string,
   hasPrevPage: PropTypes.bool.isRequired,
   hasNextPage: PropTypes.bool.isRequired,
-  prevPageLink: PropTypes.string.isRequired,
-  nextPageLink: PropTypes.string.isRequired,
+  prevPageProps: PropTypes.object.isRequired,
+  nextPageProps: PropTypes.object.isRequired,
 };
 
 export default Pagination;

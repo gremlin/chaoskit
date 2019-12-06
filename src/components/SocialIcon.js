@@ -1,29 +1,34 @@
 import PropTypes from 'prop-types';
+import { useTheme } from 'emotion-theming';
 
 import Button from './Button';
 import Icon from './Icon';
 
-const SocialIcon = ({ className, service, title, url, ...opts }) => (
-  <Button
-    url={url}
-    css={theme => ({
-      transition: `all ${theme.timing.base} ${theme.transition.bounce}`,
+const SocialIcon = ({ className, service, title, url, ...opts }) => {
+  const theme = useTheme();
 
-      '&:hover, &:focus': {
-        transform: 'scale(1.1)',
-      },
-    })}
-    title={title}
-    target="_blank"
-    rel="noopener noreferrer"
-    iconOnly
-    size="small"
-    type="default"
-    {...opts}
-  >
-    <Icon icon={service} />
-  </Button>
-);
+  return (
+    <Button
+      url={url}
+      css={{
+        transition: `all ${theme.timing.base} ${theme.transition.bounce}`,
+
+        '&:hover, &:focus': {
+          transform: 'scale(1.1)',
+        },
+      }}
+      title={title}
+      target="_blank"
+      rel="noopener noreferrer"
+      iconOnly
+      size="small"
+      type="default"
+      {...opts}
+    >
+      <Icon icon={service} />
+    </Button>
+  );
+};
 
 SocialIcon.propTypes = {
   className: PropTypes.string,

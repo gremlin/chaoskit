@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+import { useTheme } from 'emotion-theming';
 
 import { misc } from '../assets/styles/utility';
 
@@ -28,14 +29,16 @@ export const StylesSectionTitleSub = theme => ({
 });
 
 const SectionTitle = ({ title, as: Component, sub, className, ...opts }) => {
+  const theme = useTheme();
+
   return (
     <div
       className={(cx('CK__SectionTitle'), className)}
-      css={theme => StylesSectionTitleWrapper(theme)}
+      css={StylesSectionTitleWrapper(theme)}
       {...opts}
     >
       <Component
-        css={theme => [
+        css={[
           misc.fluidSize({
             theme,
             property: 'marginBottom',
@@ -50,7 +53,7 @@ const SectionTitle = ({ title, as: Component, sub, className, ...opts }) => {
       {sub && (
         <div
           className="CK__SectionTitle__Sub"
-          css={theme => StylesSectionTitleSub(theme)}
+          css={StylesSectionTitleSub(theme)}
         >
           {sub}
         </div>
