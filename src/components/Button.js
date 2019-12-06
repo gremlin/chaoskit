@@ -433,7 +433,7 @@ const Button = forwardRef(
           },
           theme.settings.button.misc,
         ]}
-        className={cx(`CK__Button CK__Button--${type}`, className)}
+        className={cx(`CK__Button CK__Button--${type || 'blank'}`, className)}
         {...buttonProps}
       >
         {type === 'reset' ? (

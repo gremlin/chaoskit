@@ -1,6 +1,7 @@
+import { useMemo, useRef } from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import { useRef } from 'react';
+
 import { tint, shade } from 'polished';
 
 import FormGroup from './FormGroup';
@@ -37,7 +38,8 @@ const Toggle = ({
 }) => {
   const toggleLabelRef = useRef();
 
-  const id = `${name}-${generateUUID()}`;
+  // Only regenerate this if the name prop changes
+  const id = useMemo(() => `${name}-${generateUUID()}`, [name]);
 
   return (
     <FormGroup {...wrapperProps}>

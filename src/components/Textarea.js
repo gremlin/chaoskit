@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import TextareaAutoSize from 'react-textarea-autosize';
@@ -17,7 +18,8 @@ const Textarea = ({
   wrapperProps,
   ...opts
 }) => {
-  const id = `${name}-${generateUUID()}`;
+  // Only regenerate this if the name prop changes
+  const id = useMemo(() => `${name}-${generateUUID()}`, [name]);
 
   return (
     <FormControlWrapper

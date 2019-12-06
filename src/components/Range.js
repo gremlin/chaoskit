@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 import { useTheme } from 'emotion-theming';
@@ -44,8 +45,8 @@ const Range = ({
   ...props
 }) => {
   const theme = useTheme();
-
-  const id = `${name}-${generateUUID()}`;
+  // Only regenerate this if the name prop changes
+  const id = useMemo(() => `${name}-${generateUUID()}`, [name]);
 
   return (
     <FormControlWrapper

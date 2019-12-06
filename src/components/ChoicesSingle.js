@@ -1,6 +1,6 @@
+import { useMemo, useState } from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import { useState } from 'react';
 import Downshift from 'downshift';
 import matchSorter from 'match-sorter';
 import { ellipsis, rgba } from 'polished';
@@ -33,7 +33,8 @@ const ChoicesSingle = ({
   const theme = useTheme();
   const [value, setValue] = useState('');
 
-  const id = `${name}-${generateUUID()}`;
+  // Only regenerate this if the name prop changes
+  const id = useMemo(() => `${name}-${generateUUID()}`, [name]);
 
   const itemToString = item => (item ? item.label : '');
 

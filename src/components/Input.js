@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import { forwardRef, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { useTheme } from 'emotion-theming';
@@ -82,7 +82,8 @@ const Input = forwardRef(
     ref
   ) => {
     const theme = useTheme();
-    const id = `${name}-${generateUUID()}`;
+    // Only regenerate this if the name prop changes
+    const id = useMemo(() => `${name}-${generateUUID()}`, [name]);
 
     const inputRender = () => {
       const defaultProps = {

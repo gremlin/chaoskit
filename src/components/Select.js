@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 
@@ -46,7 +47,8 @@ const Select = ({
   wrapperProps,
   ...opts
 }) => {
-  const id = `${name}-${generateUUID()}`;
+  // Only regenerate this if the name prop changes
+  const id = useMemo(() => `${name}-${generateUUID()}`, [name]);
 
   const renderOpts = option => {
     // If the option has options as well we're in an `<optgroup>`
