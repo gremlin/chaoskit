@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+import { useTheme } from 'emotion-theming';
 
 import Container from './Container';
 import { misc, text } from '../assets/styles/utility';
@@ -48,34 +49,38 @@ export const SubnavMenuItemStyles = (theme, props = {}) => [
   },
 ];
 
-const Subnav = ({ children, className, ...opts }) => (
-  <div
-    css={theme => ({
-      background: generateGradient({
-        start: theme.color.panel.light,
-        stop: theme.color.panel.base,
-        position: 'to bottom',
-      }),
-      borderBottom: theme.border.large,
-    })}
-    className={cx('CK__Subnav', className)}
-    {...opts}
-  >
-    <Container
-      css={theme => [
-        misc.overflow,
-        {
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          height: StylesSubnavVariables(theme).height,
-        },
-      ]}
+const Subnav = ({ children, className, ...opts }) => {
+  const theme = useTheme();
+
+  return (
+    <div
+      css={{
+        background: generateGradient({
+          start: theme.color.panel.light,
+          stop: theme.color.panel.base,
+          position: 'to bottom',
+        }),
+        borderBottom: theme.border.large,
+      }}
+      className={cx('CK__Subnav', className)}
+      {...opts}
     >
-      {children}
-    </Container>
-  </div>
-);
+      <Container
+        css={[
+          misc.overflow,
+          {
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            height: StylesSubnavVariables(theme).height,
+          },
+        ]}
+      >
+        {children}
+      </Container>
+    </div>
+  );
+};
 
 Subnav.propTypes = {
   children: PropTypes.node,

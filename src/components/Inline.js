@@ -1,32 +1,37 @@
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+import { useTheme } from 'emotion-theming';
 
-const Inline = ({ as: Component, className, size, wrap, ...opts }) => (
-  <Component
-    css={theme => [
-      {
-        display: 'flex',
-        flexWrap: 'wrap',
-        alignItems: 'center',
-        listStyle: 'none',
-        padding: 0,
-        margin: `-${theme.space[size]}px 0 0 -${theme.space[size]}px`,
+const Inline = ({ as: Component, className, size, wrap, ...opts }) => {
+  const theme = useTheme();
 
-        '> *': {
-          marginLeft: `${theme.space[size]}px !important`,
-          marginTop: `${theme.space[size]}px !important`,
+  return (
+    <Component
+      css={[
+        {
+          display: 'flex',
+          flexWrap: 'wrap',
+          alignItems: 'center',
+          listStyle: 'none',
+          padding: 0,
+          margin: `-${theme.space[size]}px 0 0 -${theme.space[size]}px`,
+
+          '> *': {
+            marginLeft: `${theme.space[size]}px !important`,
+            marginTop: `${theme.space[size]}px !important`,
+          },
         },
-      },
 
-      !wrap && {
-        whiteSpace: 'nowrap',
-        flexWrap: 'nowrap',
-      },
-    ]}
-    className={cx('CK__Inline', className)}
-    {...opts}
-  />
-);
+        !wrap && {
+          whiteSpace: 'nowrap',
+          flexWrap: 'nowrap',
+        },
+      ]}
+      className={cx('CK__Inline', className)}
+      {...opts}
+    />
+  );
+};
 
 Inline.propTypes = {
   as: PropTypes.oneOf(['div', 'ul']),

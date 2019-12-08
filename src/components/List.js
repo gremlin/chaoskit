@@ -1,35 +1,40 @@
 import cx from 'classnames';
 import PropTypes from 'prop-types';
+import { useTheme } from 'emotion-theming';
 
 import { list } from '../assets/styles/utility';
 
-const List = ({ as: Component, className, space, type, border, ...opts }) => (
-  <Component
-    css={theme => [
-      {
-        listStyle: 'none',
-        paddingLeft: 0,
-        display: 'grid',
-        gridTemplateColumns: 'minmax(auto, 1fr)',
-        gap: space && theme.space[space],
-      },
+const List = ({ as: Component, className, space, type, border, ...opts }) => {
+  const theme = useTheme();
 
-      border && {
-        '> li:not(:first-of-type)': {
-          paddingTop: space && theme.space[space],
-          borderTop: theme.border.base,
+  return (
+    <Component
+      css={[
+        {
+          listStyle: 'none',
+          paddingLeft: 0,
+          display: 'grid',
+          gridTemplateColumns: 'minmax(auto, 1fr)',
+          gap: space && theme.space[space],
         },
-      },
 
-      type === 'numbers' && list.numbers({ theme }),
+        border && {
+          '> li:not(:first-of-type)': {
+            paddingTop: space && theme.space[space],
+            borderTop: theme.border.base,
+          },
+        },
 
-      type === 'circles' &&
-        list.circles({ theme, space: space && theme.space[space], border }),
-    ]}
-    className={cx('UK__List', className)}
-    {...opts}
-  />
-);
+        type === 'numbers' && list.numbers({ theme }),
+
+        type === 'circles' &&
+          list.circles({ theme, space: space && theme.space[space], border }),
+      ]}
+      className={cx('UK__List', className)}
+      {...opts}
+    />
+  );
+};
 
 List.propTypes = {
   as: PropTypes.oneOf(['ul', 'ol']),

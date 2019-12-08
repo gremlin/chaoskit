@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+import { useTheme } from 'emotion-theming';
 import TextareaAutoSize from 'react-textarea-autosize';
 
 import FormControlWrapper from './FormControlWrapper';
@@ -18,6 +19,8 @@ const Textarea = ({
   wrapperProps,
   ...opts
 }) => {
+  const theme = useTheme();
+
   // Only regenerate this if the name prop changes
   const id = useMemo(() => `${name}-${generateUUID()}`, [name]);
 
@@ -33,7 +36,7 @@ const Textarea = ({
       {...wrapperProps}
     >
       <TextareaAutoSize
-        css={theme => [
+        css={[
           form.base(theme),
           form.input(theme, { error: validationMessage, noContrast }),
           {
