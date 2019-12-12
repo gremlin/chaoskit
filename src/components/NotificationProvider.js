@@ -13,7 +13,7 @@ import { useTheme } from 'emotion-theming';
 import gsap from 'gsap';
 
 import { generateUUID } from '../helpers/utility';
-import Close from './Close';
+import Icon from './Icon';
 
 const NotificationContext = createContext();
 
@@ -26,7 +26,7 @@ const reducer = (state, action) => {
         {
           index: generateUUID(),
           content: action.payload.content,
-          color: action.payload.color,
+          status: action.payload.status,
         },
       ].concat(state);
     }
@@ -40,40 +40,73 @@ const reducer = (state, action) => {
   }
 };
 
-const Notification = forwardRef(({ children, color }, ref) => {
+const Notification = forwardRef(({ children, status }, ref) => {
   const theme = useTheme();
 
   return (
+    /* eslint-disable-next-line jsx-a11y/click-events-have-key-events */
     <div
-      className="u-contrast"
+      tabIndex="-1"
+      role="button"
       css={{
-        background: theme.color[color].base,
-        padding: theme.space.base,
+        display: 'grid',
+        background: theme.color.light.base,
+        border: theme.border.base,
+        boxShadow: theme.boxShadow.base,
+        alignItems: 'center',
+        cursor: 'pointer',
+        gap: theme.space.small,
+        gridTemplateColumns: 'auto 1fr',
+        padding: theme.space.small,
         borderRadius: theme.borderRadius.base,
-        color: theme.contrast.muted,
+        marginBottom: theme.space.small,
+        fontSize: theme.fontSize.small,
+        transition: `transform ${theme.timing.base} ${theme.transition.bounce}`,
+        transformOrigin: 'center center',
+
+        '&:hover, &:focus': {
+          transform: 'scale(1.025)',
+        },
 
         // GSAP
         visibility: 'hidden',
       }}
+      onClick={() => {
+        ref.current.timeline.reverse();
+      }}
       ref={ref}
     >
-      {children}
-      <Close
-        onClick={() => {
-          ref.current.timeline.reverse();
+      <div
+        css={{
+          borderRadius: '50%',
+          background:
+            theme.color[status === 'success' ? 'primary' : 'danger'].base,
+          height: theme.height.xxsmall,
+          width: theme.height.xxsmall,
+          textAlign: 'center',
+          lineHeight: `${theme.height.xxsmall}px`,
         }}
-      />
+      >
+        <Icon
+          size="small"
+          icon={status === 'success' ? 'check' : 'close'}
+          css={{
+            color: theme.contrast.base,
+          }}
+        />
+      </div>
+      <div>{children}</div>
     </div>
   );
 });
 
 Notification.propTypes = {
   children: PropTypes.node.isRequired,
-  color: PropTypes.oneOf(['primary', 'danger']),
+  status: PropTypes.oneOf(['success', 'error']),
 };
 
 Notification.defaultProps = {
-  color: 'primary',
+  status: 'success',
 };
 
 const NotificationWrapper = ({ notification }) => {
@@ -84,7 +117,6 @@ const NotificationWrapper = ({ notification }) => {
 
   useEffect(() => {
     notificationRef.current.timeline = gsap.timeline({
-      yoyo: true,
       onReverseComplete() {
         dispatch({
           type: 'remove',
@@ -96,9 +128,8 @@ const NotificationWrapper = ({ notification }) => {
     notificationRef.current.timeline
       .set(notificationRef.current, {
         visibility: 'visible',
-        marginBottom: theme.space.small,
         marginTop: -notificationRef.current.offsetHeight,
-        opacity: theme.opacity.base,
+        opacity: 0,
       })
       .to(notificationRef.current, {
         duration: theme.gsap.timing.base,
@@ -109,8 +140,8 @@ const NotificationWrapper = ({ notification }) => {
   }, []);
 
   return (
-    <Notification color={notification.color} ref={notificationRef}>
-      {notification.content} {notification.index}
+    <Notification status={notification.status} ref={notificationRef}>
+      {notification.content}
     </Notification>
   );
 };
@@ -132,10 +163,12 @@ const NotificationProvider = ({ children }) => {
           <div
             css={{
               position: 'fixed',
-              top: theme.space.small,
-              right: theme.space.small,
+              top: 0,
+              right: 0,
+              padding: theme.space.small,
               zIndex: 10,
               overflowY: 'auto',
+              width: '100%',
               scrollBarWidth: 'none',
               msOverflowStyle: 'none',
               WebkitOverflowScrolling: 'touch',
@@ -146,6 +179,11 @@ const NotificationProvider = ({ children }) => {
 
               [theme.mq.small]: {
                 width: 300,
+              },
+
+              // Hide if empty to not take up space
+              '&:empty': {
+                display: 'none',
               },
             }}
           >

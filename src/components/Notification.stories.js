@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { storiesOf } from '@storybook/react';
 
 import Button from './Button';
+import Inline from './Inline';
 import {
   NotificationContext,
   NotificationProvider,
@@ -11,18 +12,35 @@ const NotificationExample = () => {
   const { dispatch } = useContext(NotificationContext);
 
   return (
-    <Button
-      onClick={() => {
-        dispatch({
-          type: 'add',
-          payload: {
-            content: 'yo yo',
-          },
-        });
-      }}
-    >
-      Add
-    </Button>
+    <Inline>
+      <Button
+        type="primary"
+        onClick={() => {
+          dispatch({
+            type: 'add',
+            payload: {
+              content: 'Hello from the success toast!',
+            },
+          });
+        }}
+      >
+        Add Success
+      </Button>
+      <Button
+        type="danger"
+        onClick={() => {
+          dispatch({
+            type: 'add',
+            payload: {
+              status: 'error',
+              content: 'Hello from the error toast!',
+            },
+          });
+        }}
+      >
+        Add Error
+      </Button>
+    </Inline>
   );
 };
 
