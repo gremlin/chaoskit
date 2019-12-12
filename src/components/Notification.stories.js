@@ -34,6 +34,7 @@ const NotificationExample = () => {
             payload: {
               status: 'error',
               content: 'Hello from the error toast!',
+              timeout: 10000,
             },
           });
         }}

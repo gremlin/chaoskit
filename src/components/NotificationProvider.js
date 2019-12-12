@@ -27,6 +27,7 @@ const reducer = (state, action) => {
           index: generateUUID(),
           content: action.payload.content,
           status: action.payload.status,
+          timeout: action.payload.timeout,
         },
       ].concat(state);
     }
@@ -137,6 +138,13 @@ const NotificationWrapper = ({ notification }) => {
         opacity: 1,
         marginTop: 0,
       });
+
+    // Remove notification after timeout
+    setTimeout(() => {
+      if (notificationRef.current) {
+        notificationRef.current.timeline.reverse();
+      }
+    }, notification.timeout || 5000);
   }, []);
 
   return (
