@@ -19,7 +19,8 @@ const NotificationExample = () => {
           dispatch({
             type: 'add',
             payload: {
-              content: 'Hello from the success toast!',
+              content: 'Hello from the success toast! 🎉',
+              timeout: -1,
             },
           });
         }}
@@ -33,6 +34,7 @@ const NotificationExample = () => {
             type: 'add',
             payload: {
               status: 'error',
+              title: 'Ruh-roh!',
               content: 'Hello from the error toast!',
               timeout: 10000,
             },

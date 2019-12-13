@@ -13,6 +13,7 @@ import { useTheme } from 'emotion-theming';
 import gsap from 'gsap';
 
 import { generateUUID } from '../helpers/utility';
+import { misc } from '../assets/styles/utility';
 import Icon from './Icon';
 
 const NotificationContext = createContext();
@@ -25,6 +26,7 @@ const reducer = (state, action) => {
       return [
         {
           index: generateUUID(),
+          title: action.payload.title,
           content: action.payload.content,
           status: action.payload.status,
           timeout: action.payload.timeout,
@@ -41,7 +43,7 @@ const reducer = (state, action) => {
   }
 };
 
-const Notification = forwardRef(({ children, status }, ref) => {
+const Notification = forwardRef(({ children, status, title }, ref) => {
   const theme = useTheme();
 
   return (
@@ -62,6 +64,7 @@ const Notification = forwardRef(({ children, status }, ref) => {
         borderRadius: theme.borderRadius.base,
         marginBottom: theme.space.small,
         fontSize: theme.fontSize.small,
+        lineHeight: theme.lineHeight.small,
         transition: `transform ${theme.timing.base} ${theme.transition.bounce}`,
         transformOrigin: 'center center',
 
@@ -93,10 +96,23 @@ const Notification = forwardRef(({ children, status }, ref) => {
           icon={status === 'success' ? 'check' : 'close'}
           css={{
             color: theme.contrast.base,
+            top: 0, // Reset default top offset
           }}
         />
       </div>
-      <div>{children}</div>
+      <div css={[misc.trimChildren]}>
+        {title && (
+          <h4
+            css={{
+              fontSize: theme.fontSize.medium,
+              marginBottom: theme.space.xsmall,
+            }}
+          >
+            {title}
+          </h4>
+        )}
+        <p css={{ marginTop: 0 }}>{children}</p>
+      </div>
     </div>
   );
 });
@@ -104,6 +120,7 @@ const Notification = forwardRef(({ children, status }, ref) => {
 Notification.propTypes = {
   children: PropTypes.node.isRequired,
   status: PropTypes.oneOf(['success', 'error']),
+  title: PropTypes.string,
 };
 
 Notification.defaultProps = {
@@ -140,15 +157,21 @@ const NotificationWrapper = ({ notification }) => {
       });
 
     // Remove notification after timeout
-    setTimeout(() => {
-      if (notificationRef.current) {
-        notificationRef.current.timeline.reverse();
-      }
-    }, notification.timeout || 5000);
+    if (notification.timeout !== -1) {
+      setTimeout(() => {
+        if (notificationRef.current) {
+          notificationRef.current.timeline.reverse();
+        }
+      }, notification.timeout || 5000);
+    }
   }, []);
 
   return (
-    <Notification status={notification.status} ref={notificationRef}>
+    <Notification
+      status={notification.status}
+      title={notification.title}
+      ref={notificationRef}
+    >
       {notification.content}
     </Notification>
   );
