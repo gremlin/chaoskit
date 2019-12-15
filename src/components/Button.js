@@ -62,7 +62,9 @@ export const StylesButtonBase = (theme, props = {}) => [
     textTransform: 'uppercase',
     // 7
     display: 'inline-block',
-    padding: `0 ${theme.space.medium}px`,
+    padding: `0 ${
+      theme.settings.ui.radius ? theme.space.medium : theme.space.base
+    }px`,
     backgroundColor: 'transparent',
     verticalAlign: 'middle',
     cursor: 'pointer',
@@ -117,14 +119,20 @@ export const StylesButtonBase = (theme, props = {}) => [
 ];
 
 export const StylesButtonSmall = theme => ({
-  padding: `0 ${theme.space.base}px`,
+  padding: `0 ${
+    theme.settings.ui.radius
+      ? theme.space.base
+      : theme.space.small + theme.space.xsmall
+  }px`,
   height: theme.height.small,
   lineHeight: `${theme.height.small -
     StylesButtonVariables(theme).borderWidth * 2}px`,
 });
 
 export const StylesButtonXsmall = theme => ({
-  padding: `0 ${theme.space.base}px`,
+  padding: `0 ${
+    theme.settings.ui.radius ? theme.space.base : theme.space.small
+  }px`,
   fontSize: theme.fontSize.xsmall,
   height: theme.height.xsmall,
   lineHeight: `${theme.height.xsmall -
