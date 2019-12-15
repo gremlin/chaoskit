@@ -14,7 +14,7 @@ const params = {
   required: () => boolean('Required', false),
 };
 
-const SelectExample = () => {
+const SelectExample = ({ ...props }) => {
   const selectOpts = [
     { value: 1, label: 'Option One' },
     { value: 'test-string', label: 'Option Two' },
@@ -24,26 +24,37 @@ const SelectExample = () => {
 
   return (
     <Select
-      disabled={params.disabled()}
       onChange={({ target: { name, value } }) =>
         action('onChange')({ name }, { value })
       }
       defaultValue="3"
       options={selectOpts}
       name="select"
+      {...props}
+    />
+  );
+};
+
+storiesOf('Forms|Select', module)
+  .add('Overview', () => (
+    <SelectExample
+      disabled={params.disabled()}
       label={params.label()}
       explanationMessage={params.explanationMessage()}
       validationMessage={params.validationMessage()}
       required={params.required()}
       noContrast={params.noContrast()}
     />
-  );
-};
-
-storiesOf('Forms|Select', module)
-  .add('Overview', () => <SelectExample />)
+  ))
   .add('Contrast', () => (
     <Contrast>
-      <SelectExample />
+      <SelectExample
+        disabled={params.disabled()}
+        label={params.label()}
+        explanationMessage={params.explanationMessage()}
+        validationMessage={params.validationMessage()}
+        required={params.required()}
+        noContrast={params.noContrast()}
+      />
     </Contrast>
   ));

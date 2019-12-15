@@ -206,10 +206,13 @@ const ChoicesSingle = ({
                         width: '100%',
                         zIndex: '10',
                         background: form.variables(theme).background,
-                        borderBottomRightRadius: theme.borderRadius.base,
-                        borderBottomLeftRadius: theme.borderRadius.base,
                         border: `1px solid ${theme.color.primary.base}`,
                         borderTop: 0,
+                      },
+
+                      theme.settings.ui.radius && {
+                        borderBottomRightRadius: theme.borderRadius.base,
+                        borderBottomLeftRadius: theme.borderRadius.base,
                       },
                     ]}
                   >

@@ -66,7 +66,7 @@ export const StylesButtonBase = (theme, props = {}) => [
     backgroundColor: 'transparent',
     verticalAlign: 'middle',
     cursor: 'pointer',
-    borderRadius: theme.height.base / 2,
+    borderRadius: theme.settings.ui.radius && theme.height.base / 2,
     transition: `all ${theme.timing.base} ${theme.transition.base}`,
     backgroundSize: '100% 100%',
     position: 'relative',

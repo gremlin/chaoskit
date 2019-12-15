@@ -54,7 +54,7 @@ const Checkbox = ({
             width: StylesCheckboxVariables.size,
             height: StylesCheckboxVariables.size,
             verticalAlign: 'middle',
-            borderRadius: theme.borderRadius.base,
+            borderRadius: theme.settings.ui.radius && theme.borderRadius.base,
             border: theme.border.base,
             boxShadow: theme.boxShadow.base,
             position: 'relative',

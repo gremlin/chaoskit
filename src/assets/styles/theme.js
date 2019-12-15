@@ -322,6 +322,9 @@ const settings = {
     form: true,
     table: true,
   },
+  ui: {
+    radius: true,
+  },
   button: {
     gradient: {
       enable: true,

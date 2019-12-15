@@ -13,7 +13,7 @@ storiesOf('Components|Icon', module).add(
           <div
             css={theme => ({
               border: theme.border.base,
-              borderRadius: theme.borderRadius.base,
+              borderRadius: theme.settings.ui.radius && theme.borderRadius.base,
               boxShadow: theme.boxShadow.base,
               padding: theme.space.base,
               textAlign: 'center',

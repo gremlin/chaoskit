@@ -61,7 +61,7 @@ const Notification = forwardRef(({ children, status, title }, ref) => {
         gap: theme.space.small,
         gridTemplateColumns: 'auto 1fr',
         padding: theme.space.small,
-        borderRadius: theme.borderRadius.base,
+        borderRadius: theme.settings.ui.radius && theme.borderRadius.base,
         marginBottom: theme.space.small,
         fontSize: theme.fontSize.small,
         lineHeight: theme.lineHeight.small,

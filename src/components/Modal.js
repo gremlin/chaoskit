@@ -184,7 +184,7 @@ const Modal = ({
           {
             // 1. GSAP
             background: theme.color.light.base,
-            borderRadius: theme.borderRadius.base,
+            borderRadius: theme.settings.ui.radius && theme.borderRadius.base,
             margin: theme.space.base,
             zIndex: 5,
             boxShadow: theme.boxShadow.large,

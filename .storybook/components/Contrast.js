@@ -12,7 +12,7 @@ const Contrast = ({ ...opts }) => {
         gradient.blueGreen(theme),
         {
           padding: theme.space.large,
-          borderRadius: theme.borderRadius.base,
+          borderRadius: theme.settings.ui.radius && theme.borderRadius.base,
           boxShadow: theme.boxShadow.large,
         },
       ]}

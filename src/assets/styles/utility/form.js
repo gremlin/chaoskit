@@ -48,7 +48,7 @@ export const input = (theme, props = {}) => [
     background: variables(theme).background,
     color: variables(theme).fontColor,
     transition: `border-color ${theme.timing.base} ${theme.transition.base}`,
-    borderRadius: theme.borderRadius.base,
+    borderRadius: theme.settings.ui.radius && theme.borderRadius.base,
     width: '100%',
     position: 'relative',
     boxShadow: variables(theme).boxShadow,

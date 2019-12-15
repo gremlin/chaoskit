@@ -362,7 +362,7 @@ export const globalStyles = theme => [
         color: theme.fontColor.base,
         tabSize: '4',
         border: theme.border.base,
-        borderRadius: theme.borderRadius.base,
+        borderRadius: theme.settings.ui.radius && theme.borderRadius.base,
       },
     ],
 
