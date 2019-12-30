@@ -91,11 +91,8 @@ Section.propTypes = {
 };
 
 Section.defaultProps = {
-  space: 'large',
-};
-
-Section.defaultProps = {
   as: 'section',
+  space: 'large',
 };
 
 export default Section;
