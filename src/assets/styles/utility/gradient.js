@@ -53,6 +53,13 @@ export const greenTeal = theme => ({
   }),
 });
 
+export const tealGreen = theme => ({
+  background: generateGradient({
+    start: theme.brand.teal,
+    stop: theme.brand.green,
+  }),
+});
+
 export const darkerBlueDarkestBlue = theme => ({
   background: generateGradient({
     start: theme.brand.darkerBlue,
