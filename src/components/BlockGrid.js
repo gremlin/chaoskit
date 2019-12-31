@@ -106,7 +106,7 @@ const BlockGrid = ({ className, gutter, size, ...opts }) => {
 
         size.small && {
           [theme.mq.small]: {
-            '.CK__ListItem': {
+            '> .CK__ListItem': {
               flexBasis: percentWidth(size.small),
               maxWidth: percentWidth(size.small),
             },
@@ -115,7 +115,7 @@ const BlockGrid = ({ className, gutter, size, ...opts }) => {
 
         size.medium && {
           [theme.mq.medium]: {
-            '.CK__ListItem': {
+            '> .CK__ListItem': {
               flexBasis: percentWidth(size.medium),
               maxWidth: percentWidth(size.medium),
             },
@@ -124,7 +124,7 @@ const BlockGrid = ({ className, gutter, size, ...opts }) => {
 
         size.large && {
           [theme.mq.large]: {
-            '.CK__ListItem': {
+            '> .CK__ListItem': {
               flexBasis: percentWidth(size.large),
               maxWidth: percentWidth(size.large),
             },
@@ -133,7 +133,7 @@ const BlockGrid = ({ className, gutter, size, ...opts }) => {
 
         size.xlarge && {
           [theme.mq.xlarge]: {
-            '.CK__ListItem': {
+            '> .CK__ListItem': {
               flexBasis: percentWidth(size.xlarge),
               maxWidth: percentWidth(size.xlarge),
             },
