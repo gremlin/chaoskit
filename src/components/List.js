@@ -30,7 +30,7 @@ const List = ({ as: Component, className, space, type, border, ...opts }) => {
         type === 'circles' &&
           list.circles({ theme, space: space && theme.space[space], border }),
       ]}
-      className={cx('UK__List', className)}
+      className={cx('CK__List', className)}
       {...opts}
     />
   );
