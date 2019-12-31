@@ -9,7 +9,7 @@ export const styles = theme => ({
     'a:not([class]), .u-link': {
       color: theme.contrast.base,
 
-      '&:hover, &:focus': [
+      '&:hover, &:focus, &.is-active': [
         text.underline,
         {
           color: theme.contrast.base,
