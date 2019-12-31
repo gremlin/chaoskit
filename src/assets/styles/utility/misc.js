@@ -46,7 +46,7 @@ export const fluidSize = ({
   from = 0,
   to = 0,
   breakpointFrom = 'small',
-  breakpointTo = 'medium',
+  breakpointTo = 'large',
 }) =>
   fluidRange(
     {
