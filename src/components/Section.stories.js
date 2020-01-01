@@ -16,7 +16,7 @@ storiesOf('Components|Section', module).add('Overview', () => (
     )}
   >
     <Container>
-      <SectionTitle title="Title" sub="Subtitle" />
+      <SectionTitle space="large" title="Title" sub="Subtitle" />
       <p>Section content.</p>
     </Container>
   </Section>
