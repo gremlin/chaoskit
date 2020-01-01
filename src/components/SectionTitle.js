@@ -41,6 +41,7 @@ const SectionTitle = ({
   as: Component,
   sub,
   space,
+  children,
   className,
   ...opts
 }) => {
@@ -73,11 +74,13 @@ const SectionTitle = ({
           {sub}
         </div>
       )}
+      {children}
     </div>
   );
 };
 
 SectionTitle.propTypes = {
+  children: PropTypes.node,
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
   as: PropTypes.string,
   sub: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
