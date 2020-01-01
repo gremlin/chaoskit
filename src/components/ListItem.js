@@ -8,9 +8,11 @@ const ListItem = ({ className, ...opts }) => {
   return (
     <li
       css={{
+        /*
         '>:last-of-type': {
           marginBottom: 0,
         },
+        */
 
         'ul, ol': {
           marginTop: theme.space.base,
