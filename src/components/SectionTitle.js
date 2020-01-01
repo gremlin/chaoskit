@@ -63,9 +63,9 @@ const SectionTitle = ({ title, as: Component, sub, className, ...opts }) => {
 };
 
 SectionTitle.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
   as: PropTypes.string,
-  sub: PropTypes.string,
+  sub: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   className: PropTypes.string,
 };
 
