@@ -38,8 +38,10 @@ export const StylesSectionTitleSub = theme => ({
 
 const SectionTitle = ({
   title,
+  titleProps,
   as: Component,
   sub,
+  subProps,
   space,
   children,
   className,
@@ -63,6 +65,7 @@ const SectionTitle = ({
           }),
         ]}
         className="CK__SectionTitle__Header"
+        {...titleProps}
       >
         {title}
       </Component>
@@ -70,6 +73,7 @@ const SectionTitle = ({
         <div
           className="CK__SectionTitle__Sub"
           css={StylesSectionTitleSub(theme)}
+          {...subProps}
         >
           {sub}
         </div>
@@ -82,8 +86,10 @@ const SectionTitle = ({
 SectionTitle.propTypes = {
   children: PropTypes.node,
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+  titleProps: PropTypes.object,
   as: PropTypes.string,
   sub: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  subProps: PropTypes.object,
   className: PropTypes.string,
   space: PropTypes.string,
 };
