@@ -25,6 +25,14 @@ export function generateGradient({
   return `linear-gradient(${position}, ${colors.toString()})`;
 }
 
+// Not using utility due to banding issue
+export const dark = theme => ({
+  background: `linear-gradient(to right, ${tint(
+    0.15,
+    theme.color.dark.base
+  )}, ${theme.color.dark.base})`,
+});
+
 export const blueGreen = theme => ({
   background: generateGradient({
     start: theme.brand.blue,
