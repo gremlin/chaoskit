@@ -5,6 +5,7 @@ import cx from 'classnames';
 export const StylesContainerVariables = {
   base: 1000,
   small: 800,
+  extended: 1400,
 };
 
 const Container = ({ className, size, ...opts }) => {
