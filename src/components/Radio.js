@@ -52,6 +52,7 @@ const Radio = ({
           // 2. Make box Make box more robust so it clips the child element
           // 3. Remoe default style
           // 4. Fix background on iOS
+          // 5. Don't collapse
           {
             // 1
             width: StylesRadioVariables.size,
@@ -67,6 +68,8 @@ const Radio = ({
             appearance: 'none',
             // 4
             backgroundColor: theme.color.light.base,
+            // 5
+            flex: 'none',
 
             '&:not(:disabled)': {
               cursor: 'pointer',
