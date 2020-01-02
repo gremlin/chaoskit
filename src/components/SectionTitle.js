@@ -4,37 +4,86 @@ import { useTheme } from 'emotion-theming';
 
 import { misc } from '../assets/styles/utility';
 
-export const StylesSectionTitleWrapper = (theme, props) => [
-  misc.trimChildren,
-  props.space === 'xlarge' &&
-    misc.fluidSize({
-      theme,
-      property: 'marginBottom',
-      from: theme.space.large,
-      to: theme.space.xlarge,
-    }),
-  props.space === 'large' &&
-    misc.fluidSize({
-      theme,
-      property: 'marginBottom',
-      from: theme.space.medium,
-      to: theme.space.large,
-    }),
+export const StylesSectionTitleWrapper = (theme, props) => {
+  // Translate "align" prop to work with `justifyItems`
+  const getJustify = align => {
+    if (align === 'left') return 'start';
+
+    if (align === 'right') return 'end';
+
+    return align;
+  };
+
+  return [
+    misc.trimChildren,
+    props.space === 'xlarge' &&
+      misc.fluidSize({
+        theme,
+        property: 'marginBottom',
+        from: theme.space.large,
+        to: theme.space.xlarge,
+      }),
+    props.space === 'large' &&
+      misc.fluidSize({
+        theme,
+        property: 'marginBottom',
+        from: theme.space.medium,
+        to: theme.space.large,
+      }),
+    {
+      display: 'grid',
+      gridTemplateColumns: 'minmax(auto, 1fr)',
+      justifyItems: 'center',
+      textAlign: 'center',
+    },
+
+    props.align.base &&
+      props.align.base !== 'center' && {
+        textAlign: props.align.base,
+        justifyItems: getJustify(props.align.base),
+      },
+
+    props.align.small && {
+      [theme.mq.small]: {
+        textAlign: props.align.small,
+        justifyItems: getJustify(props.align.small),
+      },
+    },
+
+    props.align.medium && {
+      [theme.mq.medium]: {
+        textAlign: props.align.medium,
+        justifyItems: getJustify(props.align.medium),
+      },
+    },
+
+    props.align.large && {
+      [theme.mq.large]: {
+        textAlign: props.align.large,
+        justifyItems: getJustify(props.align.large),
+      },
+    },
+
+    props.align.xlarge && {
+      [theme.mq.xlarge]: {
+        textAlign: props.align.xlarge,
+        justifyItems: getJustify(props.align.xlarge),
+      },
+    },
+  ];
+};
+
+export const StylesSectionTitleSub = theme => [
   {
-    textAlign: 'center',
+    color: theme.fontColor.muted,
+    fontSize: theme.fontSize.medium,
+    maxWidth: 625,
+
+    '.u-contrast &': {
+      color: theme.contrast.muted,
+    },
   },
 ];
-
-export const StylesSectionTitleSub = theme => ({
-  color: theme.fontColor.muted,
-  fontSize: theme.fontSize.medium,
-  maxWidth: 625,
-  margin: '0 auto',
-
-  '.u-contrast &': {
-    color: theme.contrast.muted,
-  },
-});
 
 const SectionTitle = ({
   title,
@@ -45,6 +94,7 @@ const SectionTitle = ({
   space,
   children,
   className,
+  align,
   ...opts
 }) => {
   const theme = useTheme();
@@ -52,7 +102,7 @@ const SectionTitle = ({
   return (
     <div
       className={(cx('CK__SectionTitle'), className)}
-      css={StylesSectionTitleWrapper(theme, { space })}
+      css={StylesSectionTitleWrapper(theme, { space, align })}
       {...opts}
     >
       <Component
@@ -92,11 +142,19 @@ SectionTitle.propTypes = {
   subProps: PropTypes.object,
   className: PropTypes.string,
   space: PropTypes.string,
+  align: PropTypes.shape({
+    base: PropTypes.oneOf(['left', 'center', 'right']),
+    small: PropTypes.oneOf(['left', 'center', 'right']),
+    medium: PropTypes.oneOf(['left', 'center', 'right']),
+    large: PropTypes.oneOf(['left', 'center', 'right']),
+    xlarge: PropTypes.oneOf(['left', 'center', 'right']),
+  }),
 };
 
 SectionTitle.defaultProps = {
   as: 'h3',
   space: 'xlarge',
+  align: { base: 'center' },
 };
 
 export default SectionTitle;
