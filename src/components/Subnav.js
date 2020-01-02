@@ -10,7 +10,7 @@ const StylesSubnavVariables = theme => ({
   height: theme.height.large,
 });
 
-export const SubnavMenuItemStyles = (theme, props = {}) => [
+export const SubnavMenuItemStyles = theme => [
   text.heading(theme),
   {
     color: theme.fontColor.base,
@@ -32,19 +32,19 @@ export const SubnavMenuItemStyles = (theme, props = {}) => [
       cursor: 'not-allowed',
       pointerEvents: 'none',
     },
-  },
 
-  props.active && {
-    color: theme.color.primary.base,
+    '&.is-active': {
+      color: theme.color.primary.base,
 
-    '&::before': {
-      content: "''",
-      position: 'absolute',
-      left: 0,
-      width: '100%',
-      bottom: 0,
-      height: 3,
-      background: theme.color.primary.base,
+      '&::before': {
+        content: "''",
+        position: 'absolute',
+        left: 0,
+        width: '100%',
+        bottom: 0,
+        height: 3,
+        background: theme.color.primary.base,
+      },
     },
   },
 ];
