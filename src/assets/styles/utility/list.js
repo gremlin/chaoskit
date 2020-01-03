@@ -1,11 +1,11 @@
 import { tint } from 'polished';
 
-export const reset = () => ({
+export const reset = {
   listStyle: 'none',
   paddingLeft: 0,
   display: 'grid',
   gridTemplateColumns: 'minmax(auto, 1fr)',
-});
+};
 
 export const numbers = ({ theme = {}, fill = theme.color.primary.base }) => ({
   counterReset: 'list-counter',
