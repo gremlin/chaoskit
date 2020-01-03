@@ -10,11 +10,8 @@ const List = ({ as: Component, className, space, type, border, ...opts }) => {
   return (
     <Component
       css={[
+        list.reset,
         {
-          listStyle: 'none',
-          paddingLeft: 0,
-          display: 'grid',
-          gridTemplateColumns: 'minmax(auto, 1fr)',
           gap: space && theme.space[space],
         },
 
