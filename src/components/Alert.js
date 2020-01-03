@@ -10,6 +10,32 @@ import { useTheme } from 'emotion-theming';
 import { misc, text } from '../assets/styles/utility';
 import Close from './Close';
 
+export const StylesAlertBase = theme => ({
+  display: 'flex',
+  padding: theme.space.base,
+  borderLeft: '8px solid transparent',
+  color: theme.fontColor.base,
+
+  '&:not(:last-child)': {
+    marginBottom: theme.space.base,
+  },
+
+  [theme.mq.medium]: {
+    padding: theme.space.medium,
+  },
+
+  'a:not([class]), .u-link': [
+    text.underline,
+    {
+      color: 'currentColor',
+
+      '&:hover, &:focus': {
+        color: 'currentColor',
+      },
+    },
+  ],
+});
+
 export const StylesAlertDefault = theme => ({
   borderColor: theme.border.base,
   background: theme.color.panel.base,
@@ -139,31 +165,7 @@ const Alert = ({
   return (
     <div
       css={[
-        {
-          display: 'flex',
-          padding: theme.space.base,
-          borderLeft: '8px solid transparent',
-          color: theme.fontColor.base,
-
-          '&:not(:last-child)': {
-            marginBottom: theme.space.base,
-          },
-
-          [theme.mq.medium]: {
-            padding: theme.space.medium,
-          },
-
-          'a:not([class]), .u-link': [
-            text.underline,
-            {
-              color: 'currentColor',
-
-              '&:hover, &:focus': {
-                color: 'currentColor',
-              },
-            },
-          ],
-        },
+        StylesAlertBase(theme),
 
         hidden && misc.hide,
 
