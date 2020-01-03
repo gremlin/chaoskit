@@ -9,6 +9,12 @@ import { misc } from '../assets/styles/utility';
 const StylesAvatarVariables = theme => ({
   background: theme.color.panel.base,
   color: theme.fontColor.base,
+  size: {
+    base: theme.height.base,
+    get large() {
+      return this.base * 2;
+    },
+  },
 });
 
 const StylesAvatarBase = (theme, props = {}) => [
@@ -25,16 +31,8 @@ const StylesAvatarBase = (theme, props = {}) => [
     pointerEvents: 'none',
     position: 'relative',
     verticalAlign: 'bottom', // 1
-  },
-
-  props.size === 'base' && {
-    width: 40,
-    height: 40,
-  },
-
-  props.size === 'large' && {
-    width: 80,
-    height: 80,
+    width: StylesAvatarVariables(theme).size[props.size],
+    height: StylesAvatarVariables(theme).size[props.size],
   },
 ];
 
