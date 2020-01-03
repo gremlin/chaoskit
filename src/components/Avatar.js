@@ -6,7 +6,7 @@ import { useTheme } from 'emotion-theming';
 import Icon from './Icon';
 import { misc } from '../assets/styles/utility';
 
-const StylesAvatarVariables = theme => ({
+export const StylesAvatarVariables = theme => ({
   background: theme.color.panel.base,
   color: theme.fontColor.base,
   size: {
