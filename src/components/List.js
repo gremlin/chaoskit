@@ -22,7 +22,8 @@ const List = ({ as: Component, className, space, type, border, ...opts }) => {
           },
         },
 
-        type === 'numbers' && list.numbers({ theme }),
+        type === 'numbers' &&
+          list.numbers({ theme, space: space && theme.space[space], border }),
 
         type === 'circles' &&
           list.circles({ theme, space: space && theme.space[space], border }),
