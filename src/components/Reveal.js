@@ -119,7 +119,12 @@ const Reveal = ({
 
   return (
     <Fragment>
-      <Button active={!hidden} onClick={handleRevealToggle} {...trigger.props}>
+      <Button
+        className={cx({ [theme.settings.classes.active]: !hidden })}
+        active={!hidden}
+        onClick={handleRevealToggle}
+        {...trigger.props}
+      >
         {trigger.label}
       </Button>
       <div
