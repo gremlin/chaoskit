@@ -10,15 +10,20 @@ import {
 
 import { flex, misc, text } from '../assets/styles/utility';
 
-const Tabs = ({ className, ...rest }) => (
-  <ReactTabs className={cx('CK__Tabs', className)} {...rest} />
+const Tabs = ({ className, customCss, ...rest }) => (
+  <ReactTabs css={customCss} className={cx('CK__Tabs', className)} {...rest} />
 );
 
 Tabs.propTypes = {
   className: PropTypes.string,
+  customCss: PropTypes.oneOfType(PropTypes.array, PropTypes.object),
 };
 
-const TabList = ({ className, reset, ...rest }) => {
+Tabs.defaultProps = {
+  customCss: {},
+};
+
+const TabList = ({ className, reset, customCss, ...rest }) => {
   const theme = useTheme();
 
   return (
@@ -35,6 +40,7 @@ const TabList = ({ className, reset, ...rest }) => {
             zIndex: 2,
           },
         ],
+        customCss,
       ]}
       className={cx('CK__TabList', className)}
       {...rest}
@@ -45,11 +51,16 @@ const TabList = ({ className, reset, ...rest }) => {
 TabList.propTypes = {
   className: PropTypes.string,
   reset: PropTypes.bool,
+  customCss: PropTypes.oneOfType(PropTypes.array, PropTypes.object),
+};
+
+TabList.defaultProps = {
+  customCss: {},
 };
 
 TabList.tabsRole = 'TabList';
 
-const Tab = ({ className, disabled, selected, reset, ...rest }) => {
+const Tab = ({ className, disabled, selected, reset, customCss, ...rest }) => {
   const theme = useTheme();
 
   return (
@@ -101,12 +112,10 @@ const Tab = ({ className, disabled, selected, reset, ...rest }) => {
             },
           },
         ],
+        customCss,
       ]}
-      className={cx(
-        'CK__Tab',
-        { [theme.settings.classes.active]: selected },
-        className
-      )}
+      selectedClassName={theme.settings.classes.active}
+      className={cx('CK__Tab', className)}
       disabled={disabled}
       selected={selected}
       {...rest}
@@ -114,27 +123,29 @@ const Tab = ({ className, disabled, selected, reset, ...rest }) => {
   );
 };
 
+Tab.defaultProps = {
+  customCss: {},
+};
+
 Tab.propTypes = {
   className: PropTypes.string,
   disabled: PropTypes.bool,
   selected: PropTypes.bool,
   reset: PropTypes.bool,
+  customCss: PropTypes.oneOfType(PropTypes.array, PropTypes.object),
 };
 
 Tab.tabsRole = 'Tab';
 
-const TabPanel = ({ className, selected, ...rest }) => {
+const TabPanel = ({ className, selected, customCss, ...rest }) => {
   const theme = useTheme();
 
   return (
     <ReactTabPanel
       selected={selected}
-      css={() => [misc.trimChildren]}
-      className={cx(
-        'CK__TabsPanel',
-        { [theme.settings.classes.active]: selected },
-        className
-      )}
+      css={() => [misc.trimChildren, customCss]}
+      selectedClassName={theme.settings.classes.active}
+      className={cx('CK__TabsPanel', className)}
       {...rest}
     />
   );
@@ -143,6 +154,11 @@ const TabPanel = ({ className, selected, ...rest }) => {
 TabPanel.propTypes = {
   className: PropTypes.string,
   selected: PropTypes.bool,
+  customCss: PropTypes.oneOfType(PropTypes.array, PropTypes.object),
+};
+
+TabPanel.defaultProps = {
+  customCss: {},
 };
 
 TabPanel.tabsRole = 'TabPanel';
