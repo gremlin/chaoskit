@@ -16,7 +16,7 @@ const Tabs = ({ className, customCss, ...rest }) => (
 
 Tabs.propTypes = {
   className: PropTypes.string,
-  customCss: PropTypes.oneOfType(PropTypes.array, PropTypes.object),
+  customCss: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
 };
 
 Tabs.defaultProps = {
@@ -51,7 +51,7 @@ const TabList = ({ className, reset, customCss, ...rest }) => {
 TabList.propTypes = {
   className: PropTypes.string,
   reset: PropTypes.bool,
-  customCss: PropTypes.oneOfType(PropTypes.array, PropTypes.object),
+  customCss: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
 };
 
 TabList.defaultProps = {
@@ -132,7 +132,7 @@ Tab.propTypes = {
   disabled: PropTypes.bool,
   selected: PropTypes.bool,
   reset: PropTypes.bool,
-  customCss: PropTypes.oneOfType(PropTypes.array, PropTypes.object),
+  customCss: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
 };
 
 Tab.tabsRole = 'Tab';
@@ -154,7 +154,7 @@ const TabPanel = ({ className, selected, customCss, ...rest }) => {
 TabPanel.propTypes = {
   className: PropTypes.string,
   selected: PropTypes.bool,
-  customCss: PropTypes.oneOfType(PropTypes.array, PropTypes.object),
+  customCss: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
 };
 
 TabPanel.defaultProps = {
