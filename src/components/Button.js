@@ -178,6 +178,8 @@ export const StylesButtonOutlinePrimary = (theme, props = {}) => {
       color: StylesButtonVariables(theme).color.base,
 
       '&:hover, &:focus': interactiveStyles,
+
+      '&.is-active': interactiveStyles,
     },
 
     props.active && interactiveStyles,
@@ -190,6 +192,8 @@ export const StylesButtonOutlinePrimary = (theme, props = {}) => {
             color: StylesButtonVariables(theme).color.base,
 
             '&:hover, &:focus': interactiveStyles,
+
+            '&.is-active': interactiveStyles,
           },
 
           props.active && interactiveStyles,
@@ -221,6 +225,8 @@ export const StylesButtonPrimary = (theme, props = {}) => {
       color: theme.contrast.base,
 
       '&:hover, &:focus': interactiveStyles,
+
+      '&.is-active': interactiveStyles,
     },
 
     theme.settings.button.gradient.enable &&
@@ -241,6 +247,8 @@ export const StylesButtonPrimary = (theme, props = {}) => {
             color: theme.color.primary.base,
 
             '&:hover, &:focus': interactiveStylesContrast,
+
+            '&.is-active': interactiveStylesContrast,
           },
 
           props.active && interactiveStylesContrast,
@@ -292,6 +300,8 @@ export const StylesButtonDanger = (theme, props = {}) => {
       color: theme.contrast.base,
 
       '&:hover, &:focus': interactiveStyles,
+
+      '&.is-active': interactiveStyles,
     },
 
     props.active && interactiveStyles,
@@ -306,6 +316,8 @@ export const StylesButtonDanger = (theme, props = {}) => {
             color: theme.color.danger.base,
 
             '&:hover, &:focus': interactiveStylesContrast,
+
+            '&.is-active': interactiveStylesContrast,
           },
 
           props.active && interactiveStylesContrast,

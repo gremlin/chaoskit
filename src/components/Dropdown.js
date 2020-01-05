@@ -29,6 +29,10 @@ export const DropdownMenuItemStyles = (theme, props = {}) => [
       color: theme.fontColor.base,
       background: theme.color.panel.dark,
     },
+
+    '&.is-active': {
+      background: theme.color.panel.dark,
+    },
   },
 
   props.active && {
