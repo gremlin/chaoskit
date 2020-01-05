@@ -44,7 +44,7 @@ const Container = ({ className, size, ...opts }) => {
 };
 
 Container.propTypes = {
-  size: PropTypes.oneOf(['base', 'small']),
+  size: PropTypes.oneOf(['base', 'small', 'extended']),
   className: PropTypes.string,
 };
 
