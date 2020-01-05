@@ -1,5 +1,6 @@
 import { storiesOf } from '@storybook/react';
 import { boolean, select } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
 
 import { Dropdown, DropdownHeader, List, ListItem } from '.';
 import { DropdownMenuItemStyles } from './Dropdown';
@@ -23,6 +24,10 @@ storiesOf('Components|Dropdown', module)
     'Overview',
     () => (
       <Dropdown
+        onStart={action('opening')}
+        onComplete={action('opened')}
+        onReverseStart={action('closing')}
+        onReverseComplete={action('closed')}
         showArrow={params.showArrow()}
         position={params.position()}
         trigger={{

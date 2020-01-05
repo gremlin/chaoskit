@@ -1,7 +1,6 @@
-import { Fragment, useRef, useState } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import useMount from 'react-use/lib/useMount';
 import useUpdateEffect from 'react-use/lib/useUpdateEffect';
 import gsap from 'gsap';
 import { useTheme } from 'emotion-theming';
@@ -40,33 +39,16 @@ const Reveal = ({
   const attachTimeline = () => {
     const $reveal = revealRef.current;
 
-    let forward = true;
-    let lastTime = 0;
-
     // Attach GSAP
     $reveal.timeline = gsap.timeline({
       paused: true,
       onStart: () => {
         handleOnStart();
       },
-      onUpdate: () => {
-        const newTime = $reveal.timeline.time();
-
-        if (
-          (forward && newTime < lastTime) ||
-          (!forward && newTime > lastTime)
-        ) {
-          forward = !forward;
-          if (!forward) {
-            handleOnReverseStart();
-          }
-        }
-        lastTime = newTime;
-      },
-      onComplete() {
+      onComplete: () => {
         onComplete();
       },
-      onReverseComplete() {
+      onReverseComplete: () => {
         onReverseComplete();
       },
     });
@@ -92,7 +74,11 @@ const Reveal = ({
   const revealClose = () => {
     const $reveal = revealRef.current;
 
-    if ($reveal && $reveal.timeline) $reveal.timeline.reverse();
+    if ($reveal && $reveal.timeline) {
+      $reveal.timeline.reverse();
+
+      handleOnReverseStart();
+    }
   };
 
   const handleRevealToggle = () => {
@@ -105,9 +91,9 @@ const Reveal = ({
     }
   };
 
-  useMount(() => {
+  useEffect(() => {
     attachTimeline();
-  });
+  }, []);
 
   useUpdateEffect(() => {
     if (reveal) {

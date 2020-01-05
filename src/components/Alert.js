@@ -1,7 +1,6 @@
+import { useEffect, useRef, useState } from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import { useRef, useState } from 'react';
-import useMount from 'react-use/lib/useMount';
 import useUpdateEffect from 'react-use/lib/useUpdateEffect';
 import gsap from 'gsap';
 import { kebabCase, toLower } from 'lodash-es';
@@ -150,9 +149,9 @@ const Alert = ({
     if ($alert && $alert.timeline) $alert.timeline.reverse();
   };
 
-  useMount(() => {
+  useEffect(() => {
     attachTimeline();
-  });
+  }, []);
 
   useUpdateEffect(() => {
     if (collapse) {

@@ -1,9 +1,9 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import useMount from 'react-use/lib/useMount';
 import gsap from 'gsap';
 import { useTheme } from 'emotion-theming';
+import { useUpdateEffect } from 'react-use';
 
 import Button from './Button';
 import Icon from './Icon';
@@ -72,6 +72,14 @@ const Dropdown = ({
     if ($dropdown && $dropdown.timeline) $dropdown.timeline.reverse();
   };
 
+  const handleOnStart = () => {
+    setHidden(false);
+  };
+
+  const handleOnReverseStart = () => {
+    setHidden(true);
+  };
+
   /**
    * Determine if click originates from outside `.dropdown-panel`
    * @param  {event} e
@@ -81,30 +89,25 @@ const Dropdown = ({
     if (e.target.closest('.CK__Dropdown__Panel') === null) {
       dropdownClose();
 
+      handleOnReverseStart();
+
       return;
     }
 
     return false;
   };
 
-  const handleOnStart = () => {
-    setHidden(false);
-
-    onStart();
-  };
-
-  const handleOnReverseStart = () => {
-    setHidden(true);
-
-    onReverseStart();
-  };
+  useUpdateEffect(() => {
+    if (hidden) {
+      onReverseStart();
+    } else {
+      onStart();
+    }
+  }, [hidden]);
 
   const attachTimeline = () => {
     const $dropdown = dropdownRef.current;
     const $panel = dropdownPanelRef.current;
-
-    let forward = true;
-    let lastTime = 0;
 
     // Attach GSAP
     $dropdown.timeline = gsap.timeline({
@@ -116,20 +119,6 @@ const Dropdown = ({
         onComplete();
 
         document.addEventListener('click', checkInside, false);
-      },
-      onUpdate: () => {
-        const newTime = $dropdown.timeline.time();
-
-        if (
-          (forward && newTime < lastTime) ||
-          (!forward && newTime > lastTime)
-        ) {
-          forward = !forward;
-          if (!forward) {
-            handleOnReverseStart();
-          }
-        }
-        lastTime = newTime;
       },
       onReverseComplete() {
         onReverseComplete();
@@ -151,15 +140,17 @@ const Dropdown = ({
       });
   };
 
-  useMount(() => {
+  useEffect(() => {
     attachTimeline();
-  });
+  }, []);
 
   const handleDropdownToggle = () => {
     const $dropdown = dropdownRef.current;
 
     if ($dropdown.timeline.progress() === 1) {
       dropdownClose();
+
+      handleOnReverseStart();
     } else {
       dropdownOpen();
     }
@@ -179,7 +170,7 @@ const Dropdown = ({
     >
       <Button
         onClick={handleDropdownToggle}
-        active={!hidden}
+        className={cx({ 'is-active': !hidden })}
         {...trigger.props}
         ref={dropdownTriggerRef}
       >
