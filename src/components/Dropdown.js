@@ -4,6 +4,7 @@ import cx from 'classnames';
 import useMount from 'react-use/lib/useMount';
 import gsap from 'gsap';
 import { useTheme } from 'emotion-theming';
+import { useUpdateEffect } from 'react-use';
 
 import Button from './Button';
 import Icon from './Icon';
@@ -27,6 +28,10 @@ export const DropdownMenuItemStyles = (theme, props = {}) => [
 
     '&:hover, &:focus': {
       color: theme.fontColor.base,
+      background: theme.color.panel.dark,
+    },
+
+    '&.is-active': {
       background: theme.color.panel.dark,
     },
   },
@@ -56,6 +61,16 @@ const Dropdown = ({
   const dropdownTriggerRef = useRef();
   const [hidden, setHidden] = useState(true);
 
+  useUpdateEffect(() => {
+    const $dropdown = dropdownRef.current;
+
+    if (hidden && $dropdown && $dropdown.timeline) {
+      $dropdown.timeline.reverse();
+
+      onReverseStart();
+    }
+  }, [hidden]);
+
   const dropdownOpen = () => {
     const $dropdown = dropdownRef.current;
 
@@ -63,9 +78,7 @@ const Dropdown = ({
   };
 
   const dropdownClose = () => {
-    const $dropdown = dropdownRef.current;
-
-    if ($dropdown && $dropdown.timeline) $dropdown.timeline.reverse();
+    setHidden(true);
   };
 
   /**
@@ -89,18 +102,9 @@ const Dropdown = ({
     onStart();
   };
 
-  const handleOnReverseStart = () => {
-    setHidden(true);
-
-    onReverseStart();
-  };
-
   const attachTimeline = () => {
     const $dropdown = dropdownRef.current;
     const $panel = dropdownPanelRef.current;
-
-    let forward = true;
-    let lastTime = 0;
 
     // Attach GSAP
     $dropdown.timeline = gsap.timeline({
@@ -112,20 +116,6 @@ const Dropdown = ({
         onComplete();
 
         document.addEventListener('click', checkInside, false);
-      },
-      onUpdate: () => {
-        const newTime = $dropdown.timeline.time();
-
-        if (
-          (forward && newTime < lastTime) ||
-          (!forward && newTime > lastTime)
-        ) {
-          forward = !forward;
-          if (!forward) {
-            handleOnReverseStart();
-          }
-        }
-        lastTime = newTime;
       },
       onReverseComplete() {
         onReverseComplete();
@@ -175,7 +165,7 @@ const Dropdown = ({
     >
       <Button
         onClick={handleDropdownToggle}
-        active={!hidden}
+        className={cx({ [theme.settings.classes.active]: !hidden })}
         {...trigger.props}
         ref={dropdownTriggerRef}
       >

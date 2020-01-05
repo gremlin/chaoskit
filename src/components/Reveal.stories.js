@@ -1,5 +1,6 @@
 import { storiesOf } from '@storybook/react';
 import { boolean } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
 
 import { Reveal } from '.';
 import { params as buttonParams } from './Button.stories';
@@ -14,6 +15,10 @@ const params = {
 storiesOf('Components|Reveal', module).add('Overview', () => (
   <Reveal
     reveal={params.reveal()}
+    onStart={action('opening')}
+    onComplete={action('opened')}
+    onReverseStart={action('closing')}
+    onReverseComplete={action('closed')}
     trigger={{
       label: params.trigger.label(),
       props: {

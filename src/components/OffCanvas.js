@@ -45,7 +45,11 @@ const OffCanvas = ({
   const closeOffCanvas = () => {
     const $offCanvas = offCanvasRef.current;
 
-    if ($offCanvas && $offCanvas.timeline) $offCanvas.timeline.reverse();
+    if ($offCanvas && $offCanvas.timeline) {
+      $offCanvas.timeline.reverse();
+
+      onReverseStart();
+    }
   };
 
   const handleOnReverseComplete = () => {
@@ -56,28 +60,11 @@ const OffCanvas = ({
     const $offCanvas = offCanvasRef.current;
     const $panel = offCanvasPanelRef.current;
 
-    let forward = true;
-    let lastTime = 0;
-
     // Attach timeline to each instance
     $offCanvas.timeline = gsap.timeline({
       paused: !open,
       onStart: () => {
         onStart();
-      },
-      onUpdate: () => {
-        const newTime = $offCanvas.timeline.time();
-
-        if (
-          (forward && newTime < lastTime) ||
-          (!forward && newTime > lastTime)
-        ) {
-          forward = !forward;
-          if (!forward) {
-            onReverseStart();
-          }
-        }
-        lastTime = newTime;
       },
       onComplete: () => {
         // Focus on active offCanvas for screen readers

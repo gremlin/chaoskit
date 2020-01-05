@@ -1,10 +1,15 @@
 import { storiesOf } from '@storybook/react';
 import { boolean, select } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
 
 import { Alert } from '.';
 
 storiesOf('Components|Alert', module).add('Overview', () => (
   <Alert
+    onStart={action('closing')}
+    onComplete={action('closed')}
+    onReverseStart={action('opening')}
+    onReverseComplete={action('open')}
     title="Who am I making this out to?"
     type={select(
       'Type',

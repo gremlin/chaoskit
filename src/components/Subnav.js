@@ -13,7 +13,7 @@ const StylesSubnavVariables = theme => ({
 export const SubnavMenuItemStyles = theme => [
   text.heading(theme),
   {
-    color: theme.fontColor.base,
+    color: theme.fontColor.muted,
     display: 'block',
     height: StylesSubnavVariables(theme).height,
     lineHeight: `${StylesSubnavVariables(theme).height}px`,
@@ -24,7 +24,7 @@ export const SubnavMenuItemStyles = theme => [
     transition: `color ${theme.timing.base} ${theme.transition.base}`,
 
     '&:hover, &:focus': {
-      color: theme.color.primary.base,
+      color: theme.fontColor.base,
     },
 
     '&[disabled]': {
@@ -34,7 +34,7 @@ export const SubnavMenuItemStyles = theme => [
     },
 
     '&.is-active': {
-      color: theme.color.primary.base,
+      color: theme.fontColor.base,
 
       '&::before': {
         content: "''",

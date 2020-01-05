@@ -59,7 +59,11 @@ const Modal = ({
   const closeModal = () => {
     const $modal = modalRef.current;
 
-    if ($modal && $modal.timeline) $modal.timeline.reverse();
+    if ($modal && $modal.timeline) {
+      $modal.timeline.reverse();
+
+      onReverseStart();
+    }
   };
 
   const handleOnReverseComplete = () => {
@@ -70,28 +74,11 @@ const Modal = ({
     const $modal = modalRef.current;
     const $modalDialog = modalDialogRef.current;
 
-    let forward = true;
-    let lastTime = 0;
-
     // Attach timeline to each instance
     $modal.timeline = gsap.timeline({
       paused: !open,
       onStart: () => {
         onStart();
-      },
-      onUpdate: () => {
-        const newTime = $modal.timeline.time();
-
-        if (
-          (forward && newTime < lastTime) ||
-          (!forward && newTime > lastTime)
-        ) {
-          forward = !forward;
-          if (!forward) {
-            onReverseStart();
-          }
-        }
-        lastTime = newTime;
       },
       onComplete: () => {
         // Focus on active modal for screen readers

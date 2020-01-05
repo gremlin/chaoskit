@@ -23,7 +23,17 @@ const Reveal = ({
   const theme = useTheme();
 
   const revealRef = useRef();
-  const [hidden, setHidden] = useState(true);
+  const [hidden, setHidden] = useState(!reveal);
+
+  useUpdateEffect(() => {
+    const $reveal = revealRef.current;
+
+    if (hidden && $reveal && $reveal.timeline) {
+      $reveal.timeline.reverse();
+
+      onReverseStart();
+    }
+  }, [hidden]);
 
   const handleOnStart = () => {
     setHidden(false);
@@ -31,37 +41,14 @@ const Reveal = ({
     onStart();
   };
 
-  const handleOnReverseStart = () => {
-    setHidden(true);
-
-    onReverseStart();
-  };
-
   const attachTimeline = () => {
     const $reveal = revealRef.current;
-
-    let forward = true;
-    let lastTime = 0;
 
     // Attach GSAP
     $reveal.timeline = gsap.timeline({
       paused: true,
       onStart: () => {
         handleOnStart();
-      },
-      onUpdate: () => {
-        const newTime = $reveal.timeline.time();
-
-        if (
-          (forward && newTime < lastTime) ||
-          (!forward && newTime > lastTime)
-        ) {
-          forward = !forward;
-          if (!forward) {
-            handleOnReverseStart();
-          }
-        }
-        lastTime = newTime;
       },
       onComplete() {
         onComplete();
@@ -78,7 +65,7 @@ const Reveal = ({
       ease: theme.gsap.transition.base,
     });
 
-    if (reveal) {
+    if (!hidden) {
       $reveal.timeline.progress(1);
     }
   };
@@ -90,9 +77,7 @@ const Reveal = ({
   };
 
   const revealClose = () => {
-    const $reveal = revealRef.current;
-
-    if ($reveal && $reveal.timeline) $reveal.timeline.reverse();
+    setHidden(true);
   };
 
   const handleRevealToggle = () => {
