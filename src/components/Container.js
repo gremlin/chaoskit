@@ -33,6 +33,10 @@ const Container = ({ className, size, ...opts }) => {
         size === 'small' && {
           maxWidth: StylesContainerVariables.small,
         },
+
+        size === 'extended' && {
+          maxWidth: StylesContainerVariables.extended,
+        },
       ]}
       {...opts}
     />
