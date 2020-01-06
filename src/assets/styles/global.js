@@ -273,7 +273,7 @@ export const globalStyles = theme => [
       {
         color: theme.fontColor.heading,
         fontSize: theme.fontSize.h5,
-        letterSpacing: theme.letterSpacing.medium,
+        letterSpacing: theme.letterSpacing.small,
         textTransform: 'uppercase',
         margin: `0 0 ${theme.space.base}px`,
 

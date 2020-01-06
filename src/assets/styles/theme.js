@@ -303,7 +303,6 @@ const letterSpacing = {
   base: 'normal',
   negative: '-0.025em',
   small: '0.1em',
-  medium: '0.2em',
 };
 
 const space = {

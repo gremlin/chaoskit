@@ -72,7 +72,7 @@ export const StylesButtonBase = (theme, props = {}) => [
     transition: `all ${theme.timing.base} ${theme.transition.base}`,
     backgroundSize: '100% 100%',
     position: 'relative',
-    letterSpacing: theme.letterSpacing.medium,
+    letterSpacing: theme.letterSpacing.small,
     // 8
     lineHeight: `${theme.height.base -
       StylesButtonVariables(theme).borderWidth * 2}px`,
