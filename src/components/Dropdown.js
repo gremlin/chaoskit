@@ -20,7 +20,10 @@ export const DropdownMenuItemStyles = (theme, props = {}) => [
   {
     margin: `0 -${theme.space.small}px`,
     color: theme.fontColor.base,
-    padding: theme.space.small,
+    paddingTop: theme.space.xsmall,
+    paddingBottom: theme.space.xsmall,
+    paddingLeft: theme.space.small,
+    paddingRight: theme.space.small,
     display: 'block',
     borderRadius: theme.settings.ui.radius && theme.borderRadius.base,
     lineHeight: theme.lineHeight.base,
