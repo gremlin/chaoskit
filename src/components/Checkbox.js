@@ -18,6 +18,7 @@ const Checkbox = ({
   name,
   noContrast,
   value,
+  wrapperProps,
   ...opts
 }) => {
   const theme = useTheme();
@@ -37,6 +38,7 @@ const Checkbox = ({
         },
       ]}
       className={cx('CK__Checkbox', className)}
+      {...wrapperProps}
     >
       <input
         value={value}
@@ -128,6 +130,7 @@ Checkbox.propTypes = {
   name: PropTypes.string.isRequired,
   noContrast: PropTypes.bool,
   value: PropTypes.string,
+  wrapperProps: PropTypes.object,
 };
 
 export default Checkbox;

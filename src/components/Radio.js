@@ -19,6 +19,7 @@ const Radio = ({
   value,
   noContrast,
   onChange,
+  wrapperProps,
   ...opts
 }) => {
   const theme = useTheme();
@@ -38,6 +39,7 @@ const Radio = ({
         },
       ]}
       className={cx('CK__Radio', className)}
+      {...wrapperProps}
     >
       <input
         type="radio"
@@ -136,6 +138,7 @@ Radio.propTypes = {
   noContrast: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  wrapperProps: PropTypes.object,
 };
 
 export default Radio;
