@@ -186,6 +186,7 @@ const OffCanvas = ({
             position: 'absolute',
             top: StylesOffCanvasVariables(theme).size,
             right: StylesOffCanvasVariables(theme).size,
+            zIndex: 10,
           }}
           className="CK__OffCanvas__Close"
         />
