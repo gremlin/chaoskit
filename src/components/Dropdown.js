@@ -170,7 +170,7 @@ const Dropdown = ({
     >
       <Button
         onClick={handleDropdownToggle}
-        className={cx({ 'is-active': !hidden })}
+        className={cx({ [theme.settings.classes.active]: !hidden })}
         {...trigger.props}
         ref={dropdownTriggerRef}
       >
