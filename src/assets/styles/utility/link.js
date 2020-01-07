@@ -40,6 +40,14 @@ export const heading = theme => ({
   },
 });
 
+export const contrast = theme => ({
+  color: `${theme.contrast.base} !important`,
+
+  '&:hover, &:focus': {
+    color: `${theme.contrast.base} !important`,
+  },
+});
+
 export const linkUnderline = {
   '&:hover, &:focus': {
     ...underline,
