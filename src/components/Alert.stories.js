@@ -19,11 +19,13 @@ storiesOf('Components|Alert', module).add('Overview', () => (
     close
     collapse={boolean('Collapse', false)}
   >
-    <p>
-      And then the battle is not so bad? What are you hacking off? Is it my
-      torso?! It is! My precious torso! I decline the title of Iron Cook and
-      accept the lesser title of Zinc Saucier, which I just made up. Uhh… also,
-      comes with double prize money.
-    </p>
+    <div>
+      <p>
+        And then the battle is not so bad? What are you hacking off? Is it my
+        torso?! It is! My precious torso! I decline the title of Iron Cook and
+        accept the lesser title of Zinc Saucier, which I just made up. Uhh…
+        also, comes with double prize money.
+      </p>
+    </div>
   </Alert>
 ));
