@@ -1,8 +1,8 @@
-import { Fragment, useEffect, useRef, useState } from 'react';
+import { Fragment, useEffect, useRef } from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import useUpdateEffect from 'react-use/lib/useUpdateEffect';
 import gsap from 'gsap';
+import useUpdateEffect from 'react-use/lib/useUpdateEffect';
 import { useTheme } from 'emotion-theming';
 
 import Button from './Button';
@@ -22,28 +22,22 @@ const Reveal = ({
   const theme = useTheme();
 
   const revealRef = useRef();
-  const [hidden, setHidden] = useState(true);
-
-  const handleOnStart = () => {
-    setHidden(false);
-
-    onStart();
-  };
-
-  const handleOnReverseStart = () => {
-    setHidden(true);
-
-    onReverseStart();
-  };
+  const triggerRef = useRef();
 
   const attachTimeline = () => {
     const $reveal = revealRef.current;
+    const $trigger = triggerRef.current;
 
     // Attach GSAP
     $reveal.timeline = gsap.timeline({
       paused: true,
       onStart: () => {
-        handleOnStart();
+        // Add active class to trigger
+        $trigger.classList.add([theme.settings.classes.active]);
+        // Toggle aria state
+        $reveal.setAttribute('aria-hidden', false);
+
+        onStart();
       },
       onComplete: () => {
         onComplete();
@@ -65,10 +59,22 @@ const Reveal = ({
     }
   };
 
+  const handleOnReverseStart = () => {
+    const $reveal = revealRef.current;
+    const $trigger = triggerRef.current;
+
+    // Remove active class on trigger
+    $trigger.classList.remove([theme.settings.classes.active]);
+    // Toggle aria state
+    $reveal.setAttribute('aria-hidden', true);
+  };
+
   const revealOpen = () => {
     const $reveal = revealRef.current;
 
-    if ($reveal && $reveal.timeline) $reveal.timeline.play();
+    if ($reveal && $reveal.timeline) {
+      $reveal.timeline.play();
+    }
   };
 
   const revealClose = () => {
@@ -91,26 +97,23 @@ const Reveal = ({
     }
   };
 
+  useUpdateEffect(() => {
+    const $reveal = revealRef.current;
+
+    if ($reveal.timeline.progress() === 1) {
+      revealClose();
+    } else {
+      revealOpen();
+    }
+  }, [reveal]);
+
   useEffect(() => {
     attachTimeline();
   }, []);
 
-  useUpdateEffect(() => {
-    if (reveal) {
-      revealOpen();
-    } else {
-      revealClose();
-    }
-  }, [reveal]);
-
   return (
     <Fragment>
-      <Button
-        className={cx({ [theme.settings.classes.active]: !hidden })}
-        active={!hidden}
-        onClick={handleRevealToggle}
-        {...trigger.props}
-      >
+      <Button ref={triggerRef} onClick={handleRevealToggle} {...trigger.props}>
         {trigger.label}
       </Button>
       <div
@@ -122,7 +125,7 @@ const Reveal = ({
         }}
         className={cx('CK__Reveal', className)}
         ref={revealRef}
-        aria-hidden={hidden ? 'true' : 'false'}
+        aria-hidden={reveal ? 'false' : 'true'}
         {...opts}
       >
         <div css={misc.trimChildren} className="CK__Reveal__Content">

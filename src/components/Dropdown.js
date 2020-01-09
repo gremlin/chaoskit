@@ -1,9 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import gsap from 'gsap';
 import { useTheme } from 'emotion-theming';
-import { useUpdateEffect } from 'react-use';
 
 import Button from './Button';
 import Icon from './Icon';
@@ -61,26 +60,36 @@ const Dropdown = ({
   const dropdownRef = useRef();
   const dropdownPanelRef = useRef();
   const dropdownTriggerRef = useRef();
-  const [hidden, setHidden] = useState(true);
+
+  const handleOnReverseStart = () => {
+    const $dropdown = dropdownRef.current;
+
+    const $trigger = dropdownTriggerRef.current;
+
+    // Remove active class on trigger
+    $trigger.classList.remove([theme.settings.classes.active]);
+    // Toggle aria state
+    $dropdown.setAttribute('aria-expanded', false);
+
+    onReverseStart();
+  };
 
   const dropdownOpen = () => {
     const $dropdown = dropdownRef.current;
 
-    if ($dropdown && $dropdown.timeline) $dropdown.timeline.play();
+    if ($dropdown && $dropdown.timeline) {
+      $dropdown.timeline.play();
+    }
   };
 
   const dropdownClose = () => {
     const $dropdown = dropdownRef.current;
 
-    if ($dropdown && $dropdown.timeline) $dropdown.timeline.reverse();
-  };
+    if ($dropdown && $dropdown.timeline) {
+      $dropdown.timeline.reverse();
 
-  const handleOnStart = () => {
-    setHidden(false);
-  };
-
-  const handleOnReverseStart = () => {
-    setHidden(true);
+      handleOnReverseStart();
+    }
   };
 
   /**
@@ -100,30 +109,28 @@ const Dropdown = ({
     return false;
   };
 
-  useUpdateEffect(() => {
-    if (hidden) {
-      onReverseStart();
-    } else {
-      onStart();
-    }
-  }, [hidden]);
-
   const attachTimeline = () => {
     const $dropdown = dropdownRef.current;
     const $panel = dropdownPanelRef.current;
+    const $trigger = dropdownTriggerRef.current;
 
     // Attach GSAP
     $dropdown.timeline = gsap.timeline({
       paused: true,
-      onStart() {
-        handleOnStart();
+      onStart: () => {
+        // Add active class to trigger
+        $trigger.classList.add([theme.settings.classes.active]);
+        // Toggle aria state
+        $dropdown.setAttribute('aria-expanded', true);
+
+        onStart();
       },
-      onComplete() {
+      onComplete: () => {
         onComplete();
 
         document.addEventListener('click', checkInside, false);
       },
-      onReverseComplete() {
+      onReverseComplete: () => {
         onReverseComplete();
 
         document.removeEventListener('click', checkInside, false);
@@ -167,13 +174,12 @@ const Dropdown = ({
       }}
       className={cx('CK__Dropdown', className)}
       aria-haspopup="true"
-      aria-expanded={!hidden}
+      aria-expanded="false"
       ref={dropdownRef}
       {...opts}
     >
       <Button
         onClick={handleDropdownToggle}
-        className={cx({ [theme.settings.classes.active]: !hidden })}
         {...trigger.props}
         ref={dropdownTriggerRef}
       >
@@ -183,7 +189,10 @@ const Dropdown = ({
             css={{
               marginLeft: theme.space.small,
               transition: `transform ${theme.timing.base} ${theme.transition.bounce}`,
-              transform: !hidden && 'rotate(180deg)',
+
+              '.is-active &': {
+                transform: 'rotate(180deg)',
+              },
             }}
             size="small"
             icon="caret-down"
