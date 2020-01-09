@@ -32,12 +32,15 @@ const TabList = ({ className, reset, customCss, ...rest }) => {
         !reset && [
           flex.base,
           misc.overflow,
-          misc.spaceChildren({ theme, size: theme.space.medium }),
           {
             marginBottom: theme.space.base,
             borderBottom: theme.border.large,
             position: 'relative',
             zIndex: 2,
+
+            '> .CK__Tab + .CK__Tab': {
+              marginLeft: theme.space.base,
+            },
           },
         ],
         customCss,
