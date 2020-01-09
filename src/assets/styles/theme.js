@@ -345,6 +345,7 @@ const settings = {
     active: 'is-active',
     open: 'is-open',
     trim: 'use-trimChildren',
+    contrast: 'u-contrast',
   },
 };
 
