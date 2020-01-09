@@ -1,16 +1,8 @@
 import { hideVisually, fluidRange } from 'polished';
 
 export const trimChildren = {
-  '*': {
-    '&:last-child': {
-      marginBottom: '0 !important',
-    },
-
-    '> *': {
-      '&:last-child': {
-        marginBottom: '0 !important',
-      },
-    },
+  '> :last-child': {
+    marginBottom: '0 !important',
   },
 };
 

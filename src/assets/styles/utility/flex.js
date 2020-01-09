@@ -4,15 +4,3 @@ export const base = {
   padding: 0,
   margin: 0,
 };
-
-export const deepMatch = {
-  '> *': {
-    display: 'flex',
-    flexWrap: 'wrap',
-
-    '> *': {
-      flex: 'none',
-      width: '100%',
-    },
-  },
-};

@@ -2,11 +2,11 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { useTheme } from 'emotion-theming';
 
-const Inline = ({ as: Component, className, size, wrap, ...opts }) => {
+const Inline = ({ className, size, wrap, ...opts }) => {
   const theme = useTheme();
 
   return (
-    <Component
+    <ul
       css={[
         {
           display: 'flex',
@@ -16,7 +16,7 @@ const Inline = ({ as: Component, className, size, wrap, ...opts }) => {
           padding: 0,
           margin: `-${theme.space[size]}px 0 0 -${theme.space[size]}px`,
 
-          '> *': {
+          '> .CK__ListItem': {
             marginLeft: `${theme.space[size]}px !important`,
             marginTop: `${theme.space[size]}px !important`,
           },
@@ -34,7 +34,6 @@ const Inline = ({ as: Component, className, size, wrap, ...opts }) => {
 };
 
 Inline.propTypes = {
-  as: PropTypes.oneOf(['div', 'ul']),
   className: PropTypes.string,
   size: PropTypes.oneOf(['small', 'base', 'medium', 'large', 'xlarge']),
   wrap: PropTypes.bool,
@@ -43,7 +42,6 @@ Inline.propTypes = {
 Inline.defaultProps = {
   size: 'base',
   wrap: true,
-  as: 'div',
 };
 
 export default Inline;
