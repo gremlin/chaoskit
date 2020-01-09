@@ -414,6 +414,10 @@ export const globalStyles = theme => [
     iframe: {
       border: 0,
     },
+
+    // Ensure inline styles are never shown when using universal selectors
+    // https://github.com/emotion-js/emotion/issues/1468#issuecomment-572484633
+    style: { display: 'none !important' },
   },
 
   theme.settings.form.enable && form.styles(theme),
