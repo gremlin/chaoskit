@@ -14,7 +14,7 @@ const ListItem = ({ className, ...opts }) => {
         },
         */
 
-        'ul, ol': {
+        'ul:not(.CK__Inline), ol': {
           marginTop: theme.space.base,
           paddingLeft: theme.space.base,
         },
