@@ -5,7 +5,7 @@ import { SubnavMenuItemStyles } from './Subnav';
 
 storiesOf('Components|Subnav', module).add('Overview', () => (
   <Subnav>
-    <Inline as="ul" size="large" wrap={false}>
+    <Inline size="large" wrap={false}>
       <ListItem>
         <a
           href="https://www.google.com"

@@ -151,7 +151,6 @@ const OffCanvas = ({
       <div
         css={[
           misc.overflow,
-          misc.trimChildren,
           {
             // 1. GSAP
             position: 'absolute',
@@ -177,7 +176,7 @@ const OffCanvas = ({
             },
           },
         ]}
-        className="CK__OffCanvas__Panel"
+        className={`CK__OffCanvas__Panel ${theme.settings.classes.trim}`}
         ref={offCanvasPanelRef}
       >
         <Close

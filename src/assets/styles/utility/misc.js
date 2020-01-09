@@ -1,5 +1,7 @@
 import { hideVisually, fluidRange } from 'polished';
 
+// Avoid using this in SSR applications as they have trouble matching against universal selectors
+// Use `.use-trimChildren` utility class instead
 export const trimChildren = {
   '*': {
     '&:last-child': {

@@ -2,8 +2,6 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { useTheme } from 'emotion-theming';
 
-import { misc } from '../assets/styles/utility';
-
 const gutterOptions = [
   'collapse',
   'small',
@@ -37,7 +35,6 @@ const Row = ({ className, gutter, ...opts }) => {
   return (
     <div
       css={[
-        misc.trimChildren,
         {
           // 1. Reset list-style to allow use of `<ul>`
           display: 'flex',
@@ -68,7 +65,7 @@ const Row = ({ className, gutter, ...opts }) => {
         gutterCalc('large'),
         gutterCalc('xlarge'),
       ]}
-      className={cx('CK__Row', className)}
+      className={cx(`CK__Row ${theme.settings.classes.trim}`, className)}
       {...opts}
     />
   );

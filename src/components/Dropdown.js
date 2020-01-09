@@ -6,7 +6,7 @@ import { useTheme } from 'emotion-theming';
 
 import Button from './Button';
 import Icon from './Icon';
-import { misc, text } from '../assets/styles/utility';
+import { text } from '../assets/styles/utility';
 import { generateGradient } from '../assets/styles/utility/gradient';
 
 const DropdownPanelStylesVariables = theme => ({
@@ -201,7 +201,6 @@ const Dropdown = ({
       </Button>
       <div
         css={[
-          misc.trimChildren,
           {
             // 1. GSAP
             background: generateGradient({
@@ -284,7 +283,7 @@ const Dropdown = ({
             }px)`,
           },
         ]}
-        className="CK__Dropdown__Panel"
+        className={`CK__Dropdown__Panel ${theme.settings.classes.trim}`}
         ref={dropdownPanelRef}
       >
         {children}

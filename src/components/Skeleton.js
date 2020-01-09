@@ -14,11 +14,11 @@ const skeletonKeyframes = keyframes({
   },
 });
 
-const Skeleton = ({ className, ...props }) => {
+const Skeleton = ({ as: Component, className, ...props }) => {
   const theme = useTheme();
 
   return (
-    <div
+    <Component
       css={[
         {
           animation: `${skeletonKeyframes} 1.25s linear infinite`,
@@ -50,7 +50,12 @@ const Skeleton = ({ className, ...props }) => {
 };
 
 Skeleton.propTypes = {
+  as: PropTypes.any,
   className: PropTypes.string,
+};
+
+Skeleton.defaultProps = {
+  as: 'div',
 };
 
 export default Skeleton;

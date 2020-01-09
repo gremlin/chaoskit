@@ -15,7 +15,6 @@ export const StylesSectionTitleWrapper = (theme, props) => {
   };
 
   return [
-    misc.trimChildren,
     props.space === 'xlarge' &&
       misc.fluidSize({
         theme,
@@ -101,7 +100,9 @@ const SectionTitle = ({
 
   return (
     <div
-      className={(cx('CK__SectionTitle'), className)}
+      className={
+        (cx(`CK__SectionTitle ${theme.settings.classes.trim}`), className)
+      }
       css={StylesSectionTitleWrapper(theme, { space, align })}
       {...opts}
     >

@@ -19,7 +19,7 @@ const ListItem = ({ className, ...opts }) => {
           paddingLeft: theme.space.base,
         },
       }}
-      className={cx('CK__ListItem', className)}
+      className={cx(`CK__ListItem ${theme.settings.classes.trim}`, className)}
       {...opts}
     />
   );

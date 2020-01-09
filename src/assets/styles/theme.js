@@ -344,6 +344,7 @@ const settings = {
   classes: {
     active: 'is-active',
     open: 'is-open',
+    trim: 'use-trimChildren',
   },
 };
 

@@ -13,6 +13,7 @@ import Input from './Input';
 import Inline from './Inline';
 import { form } from '../assets/styles/utility';
 import { generateUUID } from '../helpers/utility';
+import ListItem from './ListItem';
 
 const ChoicesMulti = ({
   className,
@@ -177,31 +178,33 @@ const ChoicesMulti = ({
                         const key = `${item.label}-${i}`;
 
                         return (
-                          <Badge
-                            key={key}
-                            title="Remove item"
-                            type="primary"
-                            onClick={() => removeItem(item)}
-                            rounded
-                            css={{
-                              cursor: 'pointer',
-                              height: theme.height.xxxsmall,
-                              fontSize: theme.fontSize.xxsmall,
-                            }}
-                            label={
-                              <Fragment>
-                                {item.label}
-                                <Icon
-                                  icon="close"
-                                  size="small"
-                                  css={{
-                                    top: 0,
-                                    marginLeft: theme.space.xsmall,
-                                  }}
-                                />
-                              </Fragment>
-                            }
-                          />
+                          <ListItem>
+                            <Badge
+                              key={key}
+                              title="Remove item"
+                              type="primary"
+                              onClick={() => removeItem(item)}
+                              rounded
+                              css={{
+                                cursor: 'pointer',
+                                height: theme.height.xxxsmall,
+                                fontSize: theme.fontSize.xxsmall,
+                              }}
+                              label={
+                                <Fragment>
+                                  {item.label}
+                                  <Icon
+                                    icon="close"
+                                    size="small"
+                                    css={{
+                                      top: 0,
+                                      marginLeft: theme.space.xsmall,
+                                    }}
+                                  />
+                                </Fragment>
+                              }
+                            />
+                          </ListItem>
                         );
                       })}
                     </Inline>

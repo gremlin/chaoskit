@@ -13,7 +13,6 @@ import { useTheme } from 'emotion-theming';
 import gsap from 'gsap';
 
 import { generateUUID } from '../helpers/utility';
-import { misc } from '../assets/styles/utility';
 import Icon from './Icon';
 
 const NotificationContext = createContext();
@@ -100,7 +99,7 @@ const Notification = forwardRef(({ children, status, title }, ref) => {
           }}
         />
       </div>
-      <div css={[misc.trimChildren]}>
+      <div className={theme.settings.classes.trim}>
         {title && (
           <h4
             css={{

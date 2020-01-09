@@ -17,10 +17,8 @@ const Section = forwardRef(
     return (
       <Component
         ref={ref}
-        className={cx('CK__Section', className)}
+        className={cx(`CK__Section ${theme.settings.classes.trim}`, className)}
         css={[
-          misc.trimChildren,
-
           misc.fluidSize({
             theme,
             property: 'paddingTop',

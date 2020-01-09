@@ -146,9 +146,9 @@ const TabPanel = ({ className, selected, customCss, ...rest }) => {
   return (
     <ReactTabPanel
       selected={selected}
-      css={() => [misc.trimChildren, customCss]}
+      css={() => [customCss]}
       selectedClassName={theme.settings.classes.active}
-      className={cx('CK__TabsPanel', className)}
+      className={cx(`CK__TabsPanel ${theme.settings.classes.trim}`, className)}
       {...rest}
     />
   );

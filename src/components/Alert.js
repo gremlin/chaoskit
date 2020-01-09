@@ -180,13 +180,10 @@ const Alert = ({
       {...opts}
     >
       <div
-        css={[
-          misc.trimChildren,
-          {
-            flex: 1,
-          },
-        ]}
-        className="CK__Alert__Content"
+        css={{
+          flex: 1,
+        }}
+        className={`CK__Alert__Content ${theme.settings.classes.trim}`}
       >
         {title && (
           <h4 id={kebabCase(toLower(title))} className="CK__Alert__Title">

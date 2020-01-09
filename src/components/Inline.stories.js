@@ -3,6 +3,7 @@ import { boolean, select } from '@storybook/addon-knobs';
 
 import { Inline } from '.';
 import ExampleFill from '../../.storybook/components/ExampleFill';
+import ListItem from './ListItem';
 
 storiesOf('Components|Inline', module).add(
   'Overview',
@@ -15,11 +16,21 @@ storiesOf('Components|Inline', module).add(
       )}
       wrap={boolean('Wrap', true)}
     >
-      <ExampleFill />
-      <ExampleFill />
-      <ExampleFill />
-      <ExampleFill />
-      <ExampleFill />
+      <ListItem>
+        <ExampleFill />
+      </ListItem>
+      <ListItem>
+        <ExampleFill />
+      </ListItem>
+      <ListItem>
+        <ExampleFill />
+      </ListItem>
+      <ListItem>
+        <ExampleFill />
+      </ListItem>
+      <ListItem>
+        <ExampleFill />
+      </ListItem>
     </Inline>
   ),
   {
@@ -28,8 +39,6 @@ storiesOf('Components|Inline', module).add(
       spacing horizontally and vertically when they stack, we created the Inline
       component. You can modify alignment by using flexbox properties.
 
-      > There should be no whitespace modifiers attached to the \`<Inline />\` component
-        or its direct children. You can attach them on adjacent DOM or by
-        wrapping the component.`,
+      > Only \`<ListItem />\` should be used as a child component.`,
   }
 );

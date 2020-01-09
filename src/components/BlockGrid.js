@@ -2,8 +2,6 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { useTheme } from 'emotion-theming';
 
-import { misc } from '../assets/styles/utility';
-
 const columnOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 const gutterOptions = [
   'collapse',
@@ -63,14 +61,11 @@ const BlockGrid = ({ className, gutter, size, ...opts }) => {
           padding: '0',
           listStyle: 'none',
 
-          '> .CK__ListItem': [
-            misc.trimChildren,
-            {
-              // Default child elements of row to 100% width until size modifiers kick-in
-              flex: '0 0 100%',
-              maxWidth: '100%',
-            },
-          ],
+          '> .CK__ListItem': {
+            // Default child elements of row to 100% width until size modifiers kick-in
+            flex: '0 0 100%',
+            maxWidth: '100%',
+          },
         },
 
         gutter.base && {

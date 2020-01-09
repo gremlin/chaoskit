@@ -1,10 +1,11 @@
+import PropTypes from 'prop-types';
 import { useTheme } from 'emotion-theming';
 
-const ExampleFill = ({ ...opts }) => {
+const ExampleFill = ({ as: Component, ...opts }) => {
   const theme = useTheme();
 
   return (
-    <div
+    <Component
       css={{
         padding: theme.space.medium,
         background: theme.color.primary.base,
@@ -16,6 +17,14 @@ const ExampleFill = ({ ...opts }) => {
       {...opts}
     />
   );
+};
+
+ExampleFill.propTypes = {
+  as: PropTypes.any,
+};
+
+ExampleFill.defaultProps = {
+  as: 'div',
 };
 
 export default ExampleFill;

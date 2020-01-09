@@ -6,7 +6,6 @@ import useUpdateEffect from 'react-use/lib/useUpdateEffect';
 import { useTheme } from 'emotion-theming';
 
 import Button from './Button';
-import { misc } from '../assets/styles/utility';
 
 const Reveal = ({
   onStart,
@@ -128,7 +127,7 @@ const Reveal = ({
         aria-hidden={reveal ? 'false' : 'true'}
         {...opts}
       >
-        <div css={misc.trimChildren} className="CK__Reveal__Content">
+        <div className={`CK__Reveal__Content ${theme.settings.classes.trim}`}>
           {children}
         </div>
       </div>

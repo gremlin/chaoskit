@@ -2,9 +2,11 @@ import { storiesOf } from '@storybook/react';
 import { select } from '@storybook/addon-knobs';
 
 import { Container, Section, SectionTitle } from '.';
+import RowColumn from './RowColumn';
 
 storiesOf('Components|Section', module).add('Overview', () => (
   <Section
+    as={RowColumn}
     css={theme => ({
       background: theme.color.panel.base,
     })}

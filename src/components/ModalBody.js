@@ -2,7 +2,6 @@ import cx from 'classnames';
 import PropTypes from 'prop-types';
 import { useTheme } from 'emotion-theming';
 
-import { misc } from '../assets/styles/utility';
 import { StylesModalVariables } from './Modal';
 
 const ModalBody = ({ className, ...opts }) => {
@@ -10,13 +9,10 @@ const ModalBody = ({ className, ...opts }) => {
 
   return (
     <div
-      css={[
-        misc.trimChildren,
-        {
-          padding: StylesModalVariables(theme).padding,
-        },
-      ]}
-      className={cx('CK__ModalBody', className)}
+      css={{
+        padding: StylesModalVariables(theme).padding,
+      }}
+      className={cx(`CK__ModalBody ${theme.settings.classes.trim}`, className)}
       {...opts}
     />
   );
