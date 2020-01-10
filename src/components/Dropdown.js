@@ -63,13 +63,17 @@ const Dropdown = ({
 
   const handleOnReverseStart = () => {
     const $dropdown = dropdownRef.current;
-
     const $trigger = dropdownTriggerRef.current;
 
-    // Remove active class on trigger
-    $trigger.classList.remove(theme.settings.classes.active);
-    // Toggle aria state
-    $dropdown.setAttribute('aria-expanded', false);
+    if ($trigger) {
+      // Remove active class on trigger
+      $trigger.classList.remove(theme.settings.classes.active);
+    }
+
+    if ($dropdown) {
+      // Toggle aria state
+      $dropdown.setAttribute('aria-expanded', false);
+    }
 
     onReverseStart();
   };

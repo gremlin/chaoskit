@@ -62,10 +62,15 @@ const Reveal = ({
     const $reveal = revealRef.current;
     const $trigger = triggerRef.current;
 
-    // Remove active class on trigger
-    $trigger.classList.remove(theme.settings.classes.active);
-    // Toggle aria state
-    $reveal.setAttribute('aria-hidden', true);
+    if ($trigger) {
+      // Remove active class on trigger
+      $trigger.classList.remove(theme.settings.classes.active);
+    }
+
+    if ($reveal) {
+      // Toggle aria state
+      $reveal.setAttribute('aria-hidden', true);
+    }
   };
 
   const revealOpen = () => {
