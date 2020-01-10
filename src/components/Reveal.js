@@ -32,7 +32,7 @@ const Reveal = ({
       paused: true,
       onStart: () => {
         // Add active class to trigger
-        $trigger.classList.add([theme.settings.classes.active]);
+        $trigger.classList.add(theme.settings.classes.active);
         // Toggle aria state
         $reveal.setAttribute('aria-hidden', false);
 
@@ -63,7 +63,7 @@ const Reveal = ({
     const $trigger = triggerRef.current;
 
     // Remove active class on trigger
-    $trigger.classList.remove([theme.settings.classes.active]);
+    $trigger.classList.remove(theme.settings.classes.active);
     // Toggle aria state
     $reveal.setAttribute('aria-hidden', true);
   };

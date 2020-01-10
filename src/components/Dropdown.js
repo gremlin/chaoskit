@@ -67,7 +67,7 @@ const Dropdown = ({
     const $trigger = dropdownTriggerRef.current;
 
     // Remove active class on trigger
-    $trigger.classList.remove([theme.settings.classes.active]);
+    $trigger.classList.remove(theme.settings.classes.active);
     // Toggle aria state
     $dropdown.setAttribute('aria-expanded', false);
 
@@ -119,7 +119,7 @@ const Dropdown = ({
       paused: true,
       onStart: () => {
         // Add active class to trigger
-        $trigger.classList.add([theme.settings.classes.active]);
+        $trigger.classList.add(theme.settings.classes.active);
         // Toggle aria state
         $dropdown.setAttribute('aria-expanded', true);
 
