@@ -1,9 +1,13 @@
-import { storiesOf } from '@storybook/react';
+import Inline from './Inline';
+import ListItem from './ListItem';
+import Subnav, { SubnavMenuItemStyles } from './Subnav';
 
-import { Inline, ListItem, Subnav } from '.';
-import { SubnavMenuItemStyles } from './Subnav';
+export default {
+  title: 'Components/Subnav',
+  component: Subnav,
+};
 
-storiesOf('Components|Subnav', module).add('Overview', () => (
+export const Overview = () => (
   <Subnav>
     <Inline size="large" wrap={false}>
       <ListItem>
@@ -57,4 +61,4 @@ storiesOf('Components|Subnav', module).add('Overview', () => (
       </ListItem>
     </Inline>
   </Subnav>
-));
+);

@@ -1,7 +1,11 @@
-import { storiesOf } from '@storybook/react';
 import { boolean, select, text } from '@storybook/addon-knobs';
 
-import { Badge } from '.';
+import Badge from './Badge';
+
+export default {
+  title: 'Components/Badge',
+  component: Badge,
+};
 
 const params = {
   rounded: () => boolean('Rounded', false),
@@ -9,10 +13,10 @@ const params = {
   type: () => select('Type', ['default', 'primary', 'danger'], 'default'),
 };
 
-storiesOf('Components|Badge', module).add('Overview', () => (
+export const Overview = () => (
   <Badge
     rounded={params.rounded()}
     label={params.label()}
     type={params.type()}
   />
-));
+);

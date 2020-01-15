@@ -1,9 +1,13 @@
 import { useState } from 'react';
-import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { boolean, text } from '@storybook/addon-knobs';
 
 import Range from './Range';
+
+export default {
+  title: 'Forms/Range',
+  component: Range,
+};
 
 const params = {
   disabled: () => boolean('Disabled', false),
@@ -34,7 +38,7 @@ const RangeExample = ({ ...props }) => {
   );
 };
 
-storiesOf('Forms|Range', module).add('Overview', () => (
+export const Overview = () => (
   <RangeExample
     disabled={params.disabled()}
     label={params.label()}
@@ -42,4 +46,4 @@ storiesOf('Forms|Range', module).add('Overview', () => (
     validationMessage={params.validationMessage()}
     required={params.required()}
   />
-));
+);

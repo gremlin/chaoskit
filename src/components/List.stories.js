@@ -1,7 +1,12 @@
-import { storiesOf } from '@storybook/react';
 import { boolean, select } from '@storybook/addon-knobs';
 
-import { List, ListItem } from '.';
+import List from './List';
+import ListItem from './ListItem';
+
+export default {
+  title: 'Components/List',
+  component: List,
+};
 
 const params = {
   border: () => boolean('Border', false),
@@ -14,9 +19,9 @@ const params = {
   type: () => select('Type', [null, 'numbers', 'circles'], null),
 };
 
-storiesOf('Components|List', module).add('Overview', () => (
+export const Overview = () => (
   <List border={params.border()} space={params.space()} type={params.type()}>
     <ListItem>List item 1</ListItem>
     <ListItem>List item 2</ListItem>
   </List>
-));
+);

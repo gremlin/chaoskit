@@ -1,5 +1,4 @@
 import { useContext } from 'react';
-import { storiesOf } from '@storybook/react';
 
 import Button from './Button';
 import {
@@ -8,6 +7,10 @@ import {
 } from './NotificationProvider';
 import Inline from './Inline';
 import ListItem from './ListItem';
+
+export default {
+  title: 'Components/Notification',
+};
 
 const NotificationExample = () => {
   const { dispatch } = useContext(NotificationContext);
@@ -52,8 +55,8 @@ const NotificationExample = () => {
   );
 };
 
-storiesOf('Components|Notification', module).add('Overview', () => (
+export const Overview = () => (
   <NotificationProvider>
     <NotificationExample />
   </NotificationProvider>
-));
+);

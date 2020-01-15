@@ -1,9 +1,13 @@
-import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import Pagination from './Pagination';
 
-storiesOf('Components|Pagination', module).add('Overview', () => (
+export default {
+  title: 'Components/Pagination',
+  component: Pagination,
+};
+
+export const Overview = () => (
   <Pagination
     hasPrevPage
     prevPageProps={{
@@ -14,4 +18,4 @@ storiesOf('Components|Pagination', module).add('Overview', () => (
       onClick: action('Next page click'),
     }}
   />
-));
+);

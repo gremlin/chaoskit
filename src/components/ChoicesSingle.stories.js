@@ -1,9 +1,13 @@
 import { useState, useEffect } from 'react';
-import { storiesOf } from '@storybook/react';
 import { boolean } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
-import { ChoicesSingle } from '.';
+import ChoicesSingle from './ChoicesSingle';
+
+export default {
+  title: 'Forms/Choices (Single)',
+  component: ChoicesSingle,
+};
 
 const ChoicesSingleExample = () => {
   const [selected, setSelected] = useState(-1);
@@ -41,6 +45,4 @@ const ChoicesSingleExample = () => {
   );
 };
 
-storiesOf('Forms|Choices (Single)', module).add('Overview', () => (
-  <ChoicesSingleExample />
-));
+export const Overview = () => <ChoicesSingleExample />;

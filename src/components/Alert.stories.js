@@ -1,10 +1,14 @@
-import { storiesOf } from '@storybook/react';
 import { boolean, select } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
-import { Alert } from '.';
+import Alert from './Alert';
 
-storiesOf('Components|Alert', module).add('Overview', () => (
+export default {
+  title: 'Components/Alert',
+  component: Alert,
+};
+
+export const Overview = () => (
   <Alert
     onStart={action('closing')}
     onComplete={action('closed')}
@@ -28,4 +32,4 @@ storiesOf('Components|Alert', module).add('Overview', () => (
       </p>
     </div>
   </Alert>
-));
+);

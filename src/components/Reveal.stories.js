@@ -1,9 +1,13 @@
-import { storiesOf } from '@storybook/react';
 import { boolean } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
-import { Reveal } from '.';
+import Reveal from './Reveal';
 import { params as buttonParams } from './Button.stories';
+
+export default {
+  title: 'Components/Reveal',
+  component: Reveal,
+};
 
 const params = {
   reveal: () => boolean('Reveal', false),
@@ -12,7 +16,7 @@ const params = {
   },
 };
 
-storiesOf('Components|Reveal', module).add('Overview', () => (
+export const Overview = () => (
   <Reveal
     onStart={action('opening')}
     onComplete={action('opened')}
@@ -31,4 +35,4 @@ storiesOf('Components|Reveal', module).add('Overview', () => (
     Then we will go with that data file! Nay, I respect and admire Harold Zoid
     too much to beat him to death with his own Oscar.
   </Reveal>
-));
+);

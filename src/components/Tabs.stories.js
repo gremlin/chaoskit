@@ -1,8 +1,13 @@
-import { storiesOf } from '@storybook/react';
+import List from './List';
+import ListItem from './ListItem';
+import { Tabs, TabPanel, TabList, Tab } from './Tabs';
 
-import { List, ListItem, Tabs, TabPanel, TabList, Tab } from '.';
+export default {
+  title: 'Components/Tabs',
+  component: Tabs,
+};
 
-storiesOf('Components|Tabs', module).add('Overview', () => (
+export const Overview = () => (
   <Tabs>
     <TabList>
       <Tab>Philip J. Fry</Tab>
@@ -86,4 +91,4 @@ storiesOf('Components|Tabs', module).add('Overview', () => (
       </List>
     </TabPanel>
   </Tabs>
-));
+);

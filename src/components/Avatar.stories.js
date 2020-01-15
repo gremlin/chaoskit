@@ -1,7 +1,11 @@
-import { storiesOf } from '@storybook/react';
 import { select, text } from '@storybook/addon-knobs';
 
-import { Avatar } from '.';
+import Avatar from './Avatar';
+
+export default {
+  title: 'Components/Avatar',
+  component: Avatar,
+};
 
 const params = {
   image: () => text('image', 'https://source.unsplash.com/random'),
@@ -9,13 +13,9 @@ const params = {
   name: () => text('name', 'Zach Schnackel'),
 };
 
-storiesOf('Components|Avatar', module).add(
-  'Overview',
-  () => (
-    <Avatar image={params.image()} size={params.size()} name={params.name()} />
-  ),
-  {
-    notes:
-      'Without the `image` prop, Avatars will first attempt to create a monogram version based on the `name` prop; ultimately falling back to a generic user icon.',
-  }
+// @TODO For docs
+// Without the `image` prop, Avatars will first attempt to create a monogram version based on the `name` prop; ultimately falling back to a generic user icon.
+
+export const overview = () => (
+  <Avatar image={params.image()} size={params.size()} name={params.name()} />
 );

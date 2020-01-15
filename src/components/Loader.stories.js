@@ -1,8 +1,11 @@
-import { storiesOf } from '@storybook/react';
+import Loader from './Loader';
 
-import { Loader } from '.';
+export default {
+  title: 'Components/Loader',
+  component: Loader,
+};
 
-storiesOf('Components|Loader', module).add('Overview', () => <Loader />, {
-  notes:
-    '> Loaders are just as maluable as any piece of text; with both their size and color inheritting from its own, or parent selectors.',
-});
+// @TODO For docs
+// Loaders are just as maluable as any piece of text; with both their size and color inheritting from its own, or parent selectors.
+
+export const Overview = () => <Loader />;

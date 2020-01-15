@@ -1,9 +1,18 @@
-import { storiesOf } from '@storybook/react';
 import { boolean, text, select } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
-import { List, ListItem, RadioGroup, Radio, RadioWithContext } from '.';
-import Contrast from '../../.storybook/components/Contrast';
+import List from './List';
+import ListItem from './ListItem';
+import RadioGroup from './RadioGroup';
+import Radio from './Radio';
+import RadioWithContext from './RadioWithContext';
+
+import ContrastWrapper from '../../.storybook/components/Contrast';
+
+export default {
+  title: 'Forms/Radio',
+  component: Radio,
+};
 
 const params = {
   overview: {
@@ -32,82 +41,70 @@ const params = {
   },
 };
 
-storiesOf('Forms|Radio', module)
-  .add('Overview', () => (
+export const Overview = () => (
+  <Radio
+    name="field1"
+    disabled={params.overview.disabled()}
+    label={params.overview.label()}
+    checked={params.overview.checked()}
+    onChange={({ target: { name, value } }) =>
+      action('onChange')({ name }, { value })
+    }
+    value="value"
+  />
+);
+
+// @TODO For docs
+// Wrap in \`<RadioGroup />\` and use \`<RadioWithContext />\` to handle \`name\`, \`onChange\`, \`selectedValue\`, and \`noContrast\` from the parent component.
+
+export const WithContext = () => (
+  <RadioGroup
+    label={params.group.label()}
+    explanationMessage={params.group.explanationMessage()}
+    validationMessage={params.group.validationMessage()}
+    name="field-name"
+    onChange={({ target: { name, value } }) =>
+      action('onChange')({ name }, { value })
+    }
+    selectedValue={params.group.selectedValue()}
+    required={params.group.required()}
+  >
+    <List space="base">
+      <ListItem>
+        <RadioWithContext
+          disabled={params.firstRadio.disabled()}
+          label={params.firstRadio.label()}
+          value="field1"
+          name={params.group.name()}
+        />
+      </ListItem>
+      <ListItem>
+        <RadioWithContext
+          disabled={params.secondRadio.disabled()}
+          label={params.secondRadio.label()}
+          value="field2"
+          name={params.group.name()}
+        />
+      </ListItem>
+    </List>
+  </RadioGroup>
+);
+
+// @TODO For docs
+// Automatically adapts to parent containers containing \`.u-contrast\`.
+// If you'd like to override the contrast styles, you can apply the \`noContrast\` prop.
+
+export const Contrast = () => (
+  <ContrastWrapper>
     <Radio
       name="field1"
       disabled={params.overview.disabled()}
       label={params.overview.label()}
       checked={params.overview.checked()}
+      value="value"
       onChange={({ target: { name, value } }) =>
         action('onChange')({ name }, { value })
       }
-      value="value"
     />
-  ))
-  .add(
-    'With context',
-    () => (
-      <RadioGroup
-        label={params.group.label()}
-        explanationMessage={params.group.explanationMessage()}
-        validationMessage={params.group.validationMessage()}
-        name="field-name"
-        onChange={({ target: { name, value } }) =>
-          action('onChange')({ name }, { value })
-        }
-        selectedValue={params.group.selectedValue()}
-        required={params.group.required()}
-      >
-        <List space="base">
-          <ListItem>
-            <RadioWithContext
-              disabled={params.firstRadio.disabled()}
-              label={params.firstRadio.label()}
-              value="field1"
-              name={params.group.name()}
-            />
-          </ListItem>
-          <ListItem>
-            <RadioWithContext
-              disabled={params.secondRadio.disabled()}
-              label={params.secondRadio.label()}
-              value="field2"
-              name={params.group.name()}
-            />
-          </ListItem>
-        </List>
-      </RadioGroup>
-    ),
-    {
-      notes: `
-        Wrap in \`<RadioGroup />\` and use \`<RadioWithContext />\` to handle \`name\`, \`onChange\`, \`selectedValue\`, and \`noContrast\` from the parent component.
-      `,
-    }
-  )
-  .add(
-    'Contrast',
-    () => (
-      <Contrast>
-        <Radio
-          name="field1"
-          disabled={params.overview.disabled()}
-          label={params.overview.label()}
-          checked={params.overview.checked()}
-          value="value"
-          onChange={({ target: { name, value } }) =>
-            action('onChange')({ name }, { value })
-          }
-        />
-      </Contrast>
-    ),
-    {
-      notes: `
-        Automatically adapts to parent containers
-        containing \`.u-contrast\`.
-
-        If you'd like to override the contrast styles,
-        you can apply the \`noContrast\` prop.
-      `,
-    }
-  );
+  </ContrastWrapper>
+);

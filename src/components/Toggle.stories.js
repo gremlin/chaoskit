@@ -1,9 +1,13 @@
-import { storiesOf } from '@storybook/react';
 import { boolean, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
-import { Toggle } from '.';
-import Contrast from '../../.storybook/components/Contrast';
+import Toggle from './Toggle';
+import ContrastWrapper from '../../.storybook/components/Contrast';
+
+export default {
+  title: 'Forms/Toggle',
+  component: Toggle,
+};
 
 const params = {
   disabled: () => boolean('Disabled', false),
@@ -25,22 +29,14 @@ const ToggleExample = () => {
   );
 };
 
-storiesOf('Forms|Toggle', module)
-  .add('Overview', () => <ToggleExample />)
-  .add(
-    'Contrast',
-    () => (
-      <Contrast>
-        <ToggleExample />
-      </Contrast>
-    ),
-    {
-      notes: `
-        Automatically adapts to parent containers
-        containing \`.u-contrast\`.
+export const Overview = () => <ToggleExample />;
 
-        If you'd like to override the contrast styles,
-        you can apply the \`noContrast\` prop.
-      `,
-    }
-  );
+// @TODO For docs
+// Automatically adapts to parent containers containing \`.u-contrast\`.
+// If you'd like to override the contrast styles, you can apply the \`noContrast\` prop.
+
+export const Contrast = () => (
+  <ContrastWrapper>
+    <ToggleExample />
+  </ContrastWrapper>
+);

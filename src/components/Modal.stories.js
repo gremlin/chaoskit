@@ -1,9 +1,17 @@
 import { Fragment, useState } from 'react';
-import { storiesOf } from '@storybook/react';
 import { select } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from '.';
+import Button from './Button';
+import Modal from './Modal';
+import ModalHeader from './ModalHeader';
+import ModalBody from './ModalBody';
+import ModalFooter from './ModalFooter';
+
+export default {
+  title: 'Components/Modal',
+  component: Modal,
+};
 
 const ModalExample = () => {
   const [isOpen, toggleOpen] = useState(false);
@@ -35,13 +43,7 @@ const ModalExample = () => {
   );
 };
 
-storiesOf('Components|Modal', module)
-  .addParameters({
-    props: {
-      propTables: [Modal, ModalHeader, ModalBody, ModalFooter],
-    },
-  })
-  .add('Overview', () => <ModalExample />, {
-    notes:
-      'When resetting UI on-close (like form-values), use the `onReverseComplete` prop; which waits until the animation is complete to fire',
-  });
+// @TODO For docs
+// When resetting UI on-close (like form-values), use the `onReverseComplete` prop; which waits until the animation is complete to fire
+
+export const Overview = () => <ModalExample />;

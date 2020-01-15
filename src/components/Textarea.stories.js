@@ -1,8 +1,12 @@
-import { storiesOf } from '@storybook/react';
 import { boolean, text } from '@storybook/addon-knobs';
 
-import { Textarea } from '.';
-import Contrast from '../../.storybook/components/Contrast';
+import Textarea from './Textarea';
+import ContrastWrapper from '../../.storybook/components/Contrast';
+
+export default {
+  title: 'Forms/Textarea',
+  component: Textarea,
+};
 
 const params = {
   disabled: () => boolean('Disabled', false),
@@ -13,8 +17,23 @@ const params = {
   required: () => boolean('Required', false),
 };
 
-storiesOf('Forms|Textarea', module)
-  .add('Overview', () => (
+export const Overview = () => (
+  <Textarea
+    disabled={params.disabled()}
+    name="test"
+    label={params.label()}
+    explanationMessage={params.explanationMessage()}
+    validationMessage={params.validationMessage()}
+    required={params.required()}
+  />
+);
+
+// @TODO For docs
+// Automatically adapts to parent containers containing \`.u-contrast\`.
+// If you'd like to override the contrast styles, you can apply the \`noContrast\` prop.
+
+export const Contrast = () => (
+  <ContrastWrapper>
     <Textarea
       disabled={params.disabled()}
       name="test"
@@ -22,30 +41,7 @@ storiesOf('Forms|Textarea', module)
       explanationMessage={params.explanationMessage()}
       validationMessage={params.validationMessage()}
       required={params.required()}
+      noContrast={params.noContrast()}
     />
-  ))
-  .add(
-    'Contrast',
-    () => (
-      <Contrast>
-        <Textarea
-          disabled={params.disabled()}
-          name="test"
-          label={params.label()}
-          explanationMessage={params.explanationMessage()}
-          validationMessage={params.validationMessage()}
-          required={params.required()}
-          noContrast={params.noContrast()}
-        />
-      </Contrast>
-    ),
-    {
-      notes: `
-        Automatically adapts to parent containers
-        containing \`.u-contrast\`.
-
-        If you'd like to override the contrast styles,
-        you can apply the \`noContrast\` prop.
-      `,
-    }
-  );
+  </ContrastWrapper>
+);

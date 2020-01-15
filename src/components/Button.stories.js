@@ -1,9 +1,13 @@
-import { storiesOf } from '@storybook/react';
 import { boolean, select, text } from '@storybook/addon-knobs';
 
 import { Button, Icon } from '.';
-import Contrast from '../../.storybook/components/Contrast';
+import ContrastWrapper from '../../.storybook/components/Contrast';
 import icons from '../assets/icons/icons.json';
+
+export default {
+  title: 'Components/Button',
+  component: Button,
+};
 
 export const params = {
   disabled: () => boolean('Disabled', false),
@@ -21,68 +25,53 @@ export const params = {
   size: () => select('Size', ['base', 'xsmall', 'small'], 'base'),
 };
 
-storiesOf('Components|Button', module)
-  .add(
-    'Overview',
-    () => (
-      <Button
-        disabled={params.disabled()}
-        loading={params.loading()}
-        type={params.type()}
-        size={params.size()}
-        url={params.url()}
-      >
-        {params.label()}
-      </Button>
-    ),
-    {
-      notes:
-        '> When aligning buttons next to each other, consider using the Inline component for proper horizontal and vertical spacing',
-    }
-  )
-  .add(
-    'Icon only',
-    () => (
-      <Button
-        iconOnly
-        disabled={params.disabled()}
-        loading={params.loading()}
-        type={params.type()}
-        size={params.size()}
-        url={params.url()}
-      >
-        <Icon icon={params.icon()} />
-      </Button>
-    ),
-    {
-      notes: `Icon buttons only contain a single icon and can be used to indicate shortcuts.
+// @TODO For docs
+// When aligning buttons next to each other, consider using the Inline component for proper horizontal and vertical spacing
 
-        > Icons are automatically sized based on the button size modifier provided.`,
-    }
-  )
-  .add(
-    'Contrast',
-    () => (
-      <Contrast>
-        <Button
-          disabled={params.disabled()}
-          loading={params.loading()}
-          type={params.type()}
-          size={params.size()}
-          noContrast={params.noContrast()}
-          url={params.url()}
-        >
-          {params.label()}
-        </Button>
-      </Contrast>
-    ),
-    {
-      notes: `
-        Automatically adapts to parent containers
-        containing \`.u-contrast\`.
+export const Overview = () => (
+  <Button
+    disabled={params.disabled()}
+    loading={params.loading()}
+    type={params.type()}
+    size={params.size()}
+    url={params.url()}
+  >
+    {params.label()}
+  </Button>
+);
 
-        If you'd like to override the contrast styles,
-        you can apply the \`noContrast\` prop.
-      `,
-    }
-  );
+// @TODO For docs
+// Icon buttons only contain a single icon and can be used to indicate shortcuts.
+// Icons are automatically sized based on the button size modifier provided
+
+export const IconOnly = () => (
+  <Button
+    iconOnly
+    disabled={params.disabled()}
+    loading={params.loading()}
+    type={params.type()}
+    size={params.size()}
+    url={params.url()}
+  >
+    <Icon icon={params.icon()} />
+  </Button>
+);
+
+// @TODO For docs
+// Automatically adapts to parent containers containing \`.u-contrast\`.
+// If you'd like to override the contrast styles, you can apply the \`noContrast\` prop.
+
+export const Contrast = () => (
+  <ContrastWrapper>
+    <Button
+      disabled={params.disabled()}
+      loading={params.loading()}
+      type={params.type()}
+      size={params.size()}
+      noContrast={params.noContrast()}
+      url={params.url()}
+    >
+      {params.label()}
+    </Button>
+  </ContrastWrapper>
+);

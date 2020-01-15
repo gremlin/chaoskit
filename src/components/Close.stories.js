@@ -1,13 +1,17 @@
-import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import { Close } from '.';
-import Contrast from '../../.storybook/components/Contrast';
+import Close from './Close';
+import ContrastWrapper from '../../.storybook/components/Contrast';
 
-storiesOf('Components|Close', module)
-  .add('Overview', () => <Close onClick={action('Clicked')} />)
-  .add('Contrast', () => (
-    <Contrast>
-      <Close onClick={action('Clicked')} />
-    </Contrast>
-  ));
+export default {
+  title: 'Components/Close',
+  component: Close,
+};
+
+export const Overview = () => <Close onClick={action('Clicked')} />;
+
+export const Contrast = () => (
+  <ContrastWrapper>
+    <Close onClick={action('Clicked')} />
+  </ContrastWrapper>
+);

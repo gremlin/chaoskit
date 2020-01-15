@@ -1,9 +1,13 @@
-import { storiesOf } from '@storybook/react';
 import { boolean, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
-import { Select } from '.';
-import Contrast from '../../.storybook/components/Contrast';
+import Select from './Select';
+import ContrastWrapper from '../../.storybook/components/Contrast';
+
+export default {
+  title: 'Forms/Select',
+  component: Select,
+};
 
 const params = {
   disabled: () => boolean('Disabled', false),
@@ -35,8 +39,19 @@ const SelectExample = ({ ...props }) => {
   );
 };
 
-storiesOf('Forms|Select', module)
-  .add('Overview', () => (
+export const Overview = () => (
+  <SelectExample
+    disabled={params.disabled()}
+    label={params.label()}
+    explanationMessage={params.explanationMessage()}
+    validationMessage={params.validationMessage()}
+    required={params.required()}
+    noContrast={params.noContrast()}
+  />
+);
+
+export const Contrast = () => (
+  <ContrastWrapper>
     <SelectExample
       disabled={params.disabled()}
       label={params.label()}
@@ -45,16 +60,5 @@ storiesOf('Forms|Select', module)
       required={params.required()}
       noContrast={params.noContrast()}
     />
-  ))
-  .add('Contrast', () => (
-    <Contrast>
-      <SelectExample
-        disabled={params.disabled()}
-        label={params.label()}
-        explanationMessage={params.explanationMessage()}
-        validationMessage={params.validationMessage()}
-        required={params.required()}
-        noContrast={params.noContrast()}
-      />
-    </Contrast>
-  ));
+  </ContrastWrapper>
+);

@@ -1,10 +1,16 @@
-import { storiesOf } from '@storybook/react';
 import { select } from '@storybook/addon-knobs';
 
-import { Container, Section, SectionTitle } from '.';
+import Container from './Container';
 import RowColumn from './RowColumn';
+import Section from './Section';
+import SectionTitle from './SectionTitle';
 
-storiesOf('Components|Section', module).add('Overview', () => (
+export default {
+  title: 'Components/Section',
+  component: Section,
+};
+
+export const Overview = () => (
   <Section
     as={RowColumn}
     css={theme => ({
@@ -27,4 +33,4 @@ storiesOf('Components|Section', module).add('Overview', () => (
       <p>Section content.</p>
     </Container>
   </Section>
-));
+);

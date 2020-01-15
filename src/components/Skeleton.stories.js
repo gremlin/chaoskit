@@ -1,8 +1,12 @@
-import { storiesOf } from '@storybook/react';
-
-import { Inline, Skeleton } from '.';
-import Contrast from '../../.storybook/components/Contrast';
+import Inline from './Inline';
+import Skeleton from './Skeleton';
+import ContrastWrapper from '../../.storybook/components/Contrast';
 import ListItem from './ListItem';
+
+export default {
+  title: 'Components/Skeleton',
+  component: Skeleton,
+};
 
 const SkeletonExample = () => (
   <Inline>
@@ -15,10 +19,10 @@ const SkeletonExample = () => (
   </Inline>
 );
 
-storiesOf('Components|Skeleton', module)
-  .add('Overview', () => <SkeletonExample />)
-  .add('Contrast', () => (
-    <Contrast>
-      <SkeletonExample />
-    </Contrast>
-  ));
+export const Overview = () => <SkeletonExample />;
+
+export const Contrast = () => (
+  <ContrastWrapper>
+    <SkeletonExample />
+  </ContrastWrapper>
+);

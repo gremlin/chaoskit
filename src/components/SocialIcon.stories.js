@@ -1,9 +1,13 @@
-import { storiesOf } from '@storybook/react';
-
-import { Inline, SocialIcon } from '.';
+import Inline from './Inline';
 import ListItem from './ListItem';
+import SocialIcon from './SocialIcon';
 
-storiesOf('Components|Social Icon', module).add('Overview', () => (
+export default {
+  title: 'Components/Social Icon',
+  component: SocialIcon,
+};
+
+export const Overview = () => (
   <Inline>
     <ListItem>
       <SocialIcon service="twitter" url="https://twitter.com" />
@@ -21,4 +25,4 @@ storiesOf('Components|Social Icon', module).add('Overview', () => (
       <SocialIcon service="linkedin" url="https://linkedin.com" />
     </ListItem>
   </Inline>
-));
+);

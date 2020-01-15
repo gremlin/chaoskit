@@ -1,7 +1,11 @@
-import { storiesOf } from '@storybook/react';
 import { select, text } from '@storybook/addon-knobs';
 
-import { Tooltip } from '.';
+import Tooltip from './Tooltip';
+
+export default {
+  title: 'Components/Tooltip',
+  component: Tooltip,
+};
 
 const params = {
   content: () => text('Content', '😜 Hey there!'),
@@ -10,18 +14,12 @@ const params = {
   trigger: () => text('Trigger', 'Trigger'),
 };
 
-storiesOf('Components|Tooltip', module).add(
-  'Overview',
-  () => (
-    <Tooltip content={params.content()} placement={params.placement()}>
-      <div css={{ display: 'inline-block' }}>{params.trigger()}</div>
-    </Tooltip>
-  ),
-  {
-    notes: `The Tooltip component can be wrapped around any fellow component or
-          standard HTML; just make sure it&apos;s only one child!
+// @TODO For docs
+// The Tooltip component can be wrapped around any fellow component or standard HTML; just make sure it&apos;s only one child!
+// Tooltip content can contain normal strings or other components. Go crazy!
 
-          > Tooltip content can contain normal strings or other components. Go
-          crazy!`,
-  }
+export const Overview = () => (
+  <Tooltip content={params.content()} placement={params.placement()}>
+    <div css={{ display: 'inline-block' }}>{params.trigger()}</div>
+  </Tooltip>
 );

@@ -1,10 +1,14 @@
 import { useState, useEffect } from 'react';
 import useUpdateEffect from 'react-use/lib/useUpdateEffect';
 import { boolean } from '@storybook/addon-knobs';
-import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import { ChoicesMulti } from '.';
+import ChoicesMulti from './ChoicesMulti';
+
+export default {
+  title: 'Forms/Choices (Multi)',
+  component: ChoicesMulti,
+};
 
 const ChoicesMultiExample = () => {
   const [selected, setSelected] = useState([]);
@@ -59,6 +63,4 @@ const ChoicesMultiExample = () => {
   );
 };
 
-storiesOf('Forms|Choices (Multi)', module).add('Overview', () => (
-  <ChoicesMultiExample />
-));
+export const Overview = () => <ChoicesMultiExample />;
