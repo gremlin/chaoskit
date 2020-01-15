@@ -1,7 +1,7 @@
 import { boolean, select, text } from '@storybook/addon-knobs';
 
 import { Button, Icon } from '.';
-import ContrastWrapper from '../../.storybook/components/Contrast';
+import ContrastWrapper from '../../.storybook/components/ContrastWrapper';
 import icons from '../assets/icons/icons.json';
 
 export default {

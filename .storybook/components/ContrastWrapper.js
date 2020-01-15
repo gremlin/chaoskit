@@ -2,7 +2,7 @@ import { useTheme } from 'emotion-theming';
 
 import { gradient } from '../../src/assets/styles/utility';
 
-const Contrast = ({ ...opts }) => {
+const ContrastWrapper = ({ ...opts }) => {
   const theme = useTheme();
 
   return (
@@ -21,4 +21,4 @@ const Contrast = ({ ...opts }) => {
   );
 };
 
-export default Contrast;
+export default ContrastWrapper;

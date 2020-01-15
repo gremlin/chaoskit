@@ -1,6 +1,6 @@
 import Inline from './Inline';
 import Skeleton from './Skeleton';
-import ContrastWrapper from '../../.storybook/components/Contrast';
+import ContrastWrapper from '../../.storybook/components/ContrastWrapper';
 import ListItem from './ListItem';
 
 export default {

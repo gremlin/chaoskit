@@ -5,7 +5,7 @@ import Checkbox from './Checkbox';
 import FormControlWrapper from './FormControlWrapper';
 import List from './List';
 import ListItem from './ListItem';
-import ContrastWrapper from '../../.storybook/components/Contrast';
+import ContrastWrapper from '../../.storybook/components/ContrastWrapper';
 
 export default {
   title: 'Forms/Checkbox',

@@ -1,7 +1,7 @@
 import { action } from '@storybook/addon-actions';
 
 import Close from './Close';
-import ContrastWrapper from '../../.storybook/components/Contrast';
+import ContrastWrapper from '../../.storybook/components/ContrastWrapper';
 
 export default {
   title: 'Components/Close',

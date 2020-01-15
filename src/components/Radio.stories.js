@@ -7,7 +7,7 @@ import RadioGroup from './RadioGroup';
 import Radio from './Radio';
 import RadioWithContext from './RadioWithContext';
 
-import ContrastWrapper from '../../.storybook/components/Contrast';
+import ContrastWrapper from '../../.storybook/components/ContrastWrapper';
 
 export default {
   title: 'Forms/Radio',
