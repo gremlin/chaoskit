@@ -7,6 +7,7 @@ import icons from '../assets/icons/icons.json';
 export default {
   title: 'Components/Button',
   component: Button,
+  includeStories: ['Overview', 'IconOnly', 'Contrast'],
 };
 
 export const params = {
