@@ -2,7 +2,6 @@ import { useMemo } from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 import { useTheme } from 'emotion-theming';
-import { tint } from 'polished';
 
 import FormControlWrapper from './FormControlWrapper';
 import { generateUUID } from '../helpers/utility';
@@ -10,7 +9,6 @@ import { generateUUID } from '../helpers/utility';
 const StylesRangeVariables = theme => ({
   thumb: {
     size: theme.height.xxxsmall,
-    background: theme.color.primary.base,
   },
   track: {
     height: theme.height.xxxsmall / 3,
@@ -21,12 +19,7 @@ const generateProgressGradient = (theme, { value = 0, min = 0, max = 0 }) => {
   const val = (value - min) / (max - min);
   const percentage = val * 100;
 
-  return `linear-gradient(to right, ${
-    StylesRangeVariables(theme).thumb.background
-  } ${percentage}%, ${tint(
-    0.75,
-    StylesRangeVariables(theme).thumb.background
-  )} ${percentage}%)`;
+  return `linear-gradient(to right, ${theme.color.primary.base} 0%, ${theme.color.primary.dark} ${percentage}%, ${theme.color.border.base} ${percentage}%)`;
 };
 
 const Range = ({
@@ -35,13 +28,12 @@ const Range = ({
   explanationMessage,
   label,
   name,
-  noContrast,
   required,
   validationMessage,
   wrapperProps,
   min,
   max,
-  step,
+  value,
   ...props
 }) => {
   const theme = useTheme();
@@ -67,13 +59,12 @@ const Range = ({
         className={cx('CK__Range', className)}
         min={min}
         max={max}
-        step={step}
+        value={value}
         style={{
           background: generateProgressGradient(theme, {
-            ...props,
+            value,
             min,
             max,
-            step,
           }),
         }}
         css={[
@@ -103,14 +94,43 @@ const Range = ({
             // Thumb
             //
 
+            // @NOTE These styles cannot be combined similarly to how highlight selectors work in CSS
+            '&:hover, &:focus': {
+              '&::-webkit-slider-thumb': {
+                boxShadow: theme.boxShadow.base,
+              },
+
+              '&::-moz-range-thumb': {
+                boxShadow: theme.boxShadow.base,
+              },
+
+              '&::-ms-thumb': {
+                boxShadow: theme.boxShadow.base,
+              },
+            },
+
+            '&:focus': {
+              '&::-webkit-slider-thumb': {
+                borderColor: theme.color.primary.base,
+              },
+
+              '&::-moz-range-thumb': {
+                borderColor: theme.color.primary.base,
+              },
+
+              '&::-ms-thumb': {
+                borderColor: theme.color.primary.base,
+              },
+            },
+
             // Webkit
             '&::-webkit-slider-thumb': {
               appearance: 'none',
               height: StylesRangeVariables(theme).thumb.size,
               width: StylesRangeVariables(theme).thumb.size,
               borderRadius: '50%',
-              background: StylesRangeVariables(theme).thumb.background,
-              border: 0,
+              background: theme.color.light.base,
+              border: theme.border.base,
             },
 
             // Firefox
@@ -118,8 +138,8 @@ const Range = ({
               height: StylesRangeVariables(theme).thumb.size,
               width: StylesRangeVariables(theme).thumb.size,
               borderRadius: '50%',
-              background: StylesRangeVariables(theme).thumb.background,
-              border: 0,
+              background: theme.color.light.base,
+              border: theme.border.base,
             },
 
             // Edge
@@ -128,8 +148,8 @@ const Range = ({
               height: StylesRangeVariables(theme).thumb.size,
               width: StylesRangeVariables(theme).thumb.size,
               borderRadius: '50%',
-              background: StylesRangeVariables(theme).thumb.background,
-              border: 0,
+              background: theme.color.light.base,
+              border: theme.border.base,
             },
 
             '&::-ms-tooltip': {
@@ -164,12 +184,11 @@ Range.propTypes = {
   explanationMessage: PropTypes.string,
   label: PropTypes.string,
   name: PropTypes.string.isRequired,
-  noContrast: PropTypes.bool,
   required: PropTypes.bool,
   validationMessage: PropTypes.string,
   min: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   max: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  step: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   wrapperProps: PropTypes.object,
 };
 
