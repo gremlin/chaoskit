@@ -98,14 +98,17 @@ const Range = ({
             '&:hover, &:focus': {
               '&::-webkit-slider-thumb': {
                 boxShadow: theme.boxShadow.base,
+                transform: 'scale(1.15)',
               },
 
               '&::-moz-range-thumb': {
                 boxShadow: theme.boxShadow.base,
+                transform: 'scale(1.15)',
               },
 
               '&::-ms-thumb': {
                 boxShadow: theme.boxShadow.base,
+                transform: 'scale(1.15)',
               },
             },
 
@@ -131,6 +134,8 @@ const Range = ({
               borderRadius: '50%',
               background: theme.color.light.base,
               border: theme.border.base,
+              transition: `transform ${theme.timing.base} ${theme.transition.base}`,
+              transformOrigin: 'center center',
             },
 
             // Firefox
@@ -140,6 +145,8 @@ const Range = ({
               borderRadius: '50%',
               background: theme.color.light.base,
               border: theme.border.base,
+              transition: `transform ${theme.timing.base} ${theme.transition.base}`,
+              transformOrigin: 'center center',
             },
 
             // Edge
@@ -150,6 +157,8 @@ const Range = ({
               borderRadius: '50%',
               background: theme.color.light.base,
               border: theme.border.base,
+              transition: `transform ${theme.timing.base} ${theme.transition.base}`,
+              transformOrigin: 'center center',
             },
 
             '&::-ms-tooltip': {
