@@ -139,7 +139,9 @@ const Modal = ({
   }, [open]);
 
   useClickAway(modalDialogRef, () => onOutsideModalClick());
-  useLockBodyScroll(renderModal);
+
+  // If not explicitly a boolean, the body lock will not release
+  useLockBodyScroll(Boolean(renderModal));
 
   if (!renderModal) return null;
 

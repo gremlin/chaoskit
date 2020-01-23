@@ -124,7 +124,9 @@ const OffCanvas = ({
   }, [open]);
 
   useClickAway(offCanvasPanelRef, () => onOffCanvasToggle());
-  useLockBodyScroll(renderOffCanvas);
+
+  // If not explicitly a boolean, the body lock will not release
+  useLockBodyScroll(Boolean(renderOffCanvas));
 
   if (!renderOffCanvas) return null;
 
