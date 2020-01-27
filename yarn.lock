@@ -2106,10 +2106,10 @@
     "@webassemblyjs/wast-parser" "1.8.5"
     "@xtuc/long" "4.2.2"
 
-"@xobotyi/scrollbar-width@1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@xobotyi/scrollbar-width/-/scrollbar-width-1.5.0.tgz#488210bff634548040dc22a72f62722a85b134e1"
-  integrity sha512-BK+HR1D00F2xh7n4+5en8/dMkG13uvIXLmEbsjtc1702b7+VwXkvlBDKoRPJMbkRN5hD7VqWa3nS9fNT8JG3CA==
+"@xobotyi/scrollbar-width@1.6.0":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@xobotyi/scrollbar-width/-/scrollbar-width-1.6.0.tgz#efd0f9d94c2a483faee3d162c9727e4fed40d55e"
+  integrity sha512-i3rX8RomNGFiAD5yR9JplU25/vJcibWmBIvD1LPX7aXuiko9i3oiKPz4nUVTbnrCDlTt78xHxZxWYy0wDLi3nQ==
 
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"
@@ -5793,10 +5793,10 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.4
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.3.tgz#4a12ff1b60376ef09862c2093edd908328be8423"
   integrity sha512-a30VEBm4PEdx1dRB7MFK7BejejvCvBronbLjht+sHuGYj8PHs7M/5Z+rt5lw551vZ7yfTCj4Vuyy3mSJytDWRQ==
 
-gsap@3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/gsap/-/gsap-3.1.0.tgz#9fe728437f74569d4d9a56bdbc0e7e0f746fd3d2"
-  integrity sha512-hSJlhcCHxabWRIAIOs3z9Ghj2tzVzmzg0egHHfWqE+xNQ65Nk8QENCFmTrN+2M5TIY6GcGc1oHQySR4PMiSsUg==
+gsap@3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/gsap/-/gsap-3.1.1.tgz#b3f5f646563d4099aab9681d16703613f5de6a8c"
+  integrity sha512-ISkCKuXMtBbmbchJxWXuZydXnnWVV9SqNqd8vAevvtq0yzyBapMbXLxwambK73S/2kpTIVzYW8eJXlDD7yHhvw==
 
 gud@^1.0.0:
   version "1.0.0"
@@ -8560,10 +8560,10 @@ pnp-webpack-plugin@1.5.0:
   dependencies:
     ts-pnp "^1.1.2"
 
-polished@3.4.2, polished@^3.3.1:
-  version "3.4.2"
-  resolved "https://registry.yarnpkg.com/polished/-/polished-3.4.2.tgz#b4780dad81d64df55615fbfc77acb52fd17d88cd"
-  integrity sha512-9Rch6iMZckABr6EFCLPZsxodeBpXMo9H4fRlfR/9VjMEyy5xpo1/WgXlJGgSjPyVhEZNycbW7UmYMNyWS5MI0g==
+polished@3.4.3:
+  version "3.4.3"
+  resolved "https://registry.yarnpkg.com/polished/-/polished-3.4.3.tgz#9b2580a3ead4ef2e030265c3eccbc06a2b68a049"
+  integrity sha512-EcA6RleHgFalVDZg5djztOyraWOkZcFSNwDCASkq6MZf68B+QlciKWRiNJn5sUDtwOLrk/xbqgvxoTfMjazvuw==
   dependencies:
     "@babel/runtime" "^7.6.3"
 
@@ -8571,6 +8571,13 @@ polished@^1.0.0:
   version "1.9.3"
   resolved "https://registry.yarnpkg.com/polished/-/polished-1.9.3.tgz#d61b8a0c4624efe31e2583ff24a358932b6b75e1"
   integrity sha512-4NmSD7fMFlM8roNxs7YXPv7UFRbYzb0gufR5zBxJLRzY54+zFsavxBo6zsQzP9ep6Hh3pC2pTyrpSTBEaB6IkQ==
+
+polished@^3.3.1:
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/polished/-/polished-3.4.2.tgz#b4780dad81d64df55615fbfc77acb52fd17d88cd"
+  integrity sha512-9Rch6iMZckABr6EFCLPZsxodeBpXMo9H4fRlfR/9VjMEyy5xpo1/WgXlJGgSjPyVhEZNycbW7UmYMNyWS5MI0g==
+  dependencies:
+    "@babel/runtime" "^7.6.3"
 
 popper.js@^1.14.4, popper.js@^1.14.7:
   version "1.16.0"
@@ -9350,13 +9357,13 @@ react-transition-group@^2.2.1:
     prop-types "^15.6.2"
     react-lifecycles-compat "^3.0.4"
 
-react-use@13.21.0:
-  version "13.21.0"
-  resolved "https://registry.yarnpkg.com/react-use/-/react-use-13.21.0.tgz#9dd689264d0cd6eca31512099c43e769850b14eb"
-  integrity sha512-JwGAYb6XRIRsadqJ9LoYy+kJC5QPB6HhHFsToPvdX/Hg3P0RBDHMIYt5ITkuRqWrEOkkdCYPt8p3jADH/0CRVw==
+react-use@13.22.1:
+  version "13.22.1"
+  resolved "https://registry.yarnpkg.com/react-use/-/react-use-13.22.1.tgz#cc0a5200255f7cdc14c1435ed8fd1c37b1e27b64"
+  integrity sha512-n4DHJfbkyT3gsaJVHhtQ3mPvRBis7q18yQtuqQTtnYPKXAYQ0JGCd++PvWlSxnvG7QbEjNahcA50jLwCnWWOmQ==
   dependencies:
     "@types/js-cookie" "2.2.4"
-    "@xobotyi/scrollbar-width" "1.5.0"
+    "@xobotyi/scrollbar-width" "1.6.0"
     copy-to-clipboard "^3.2.0"
     fast-shallow-equal "^1.0.0"
     js-cookie "^2.2.1"
