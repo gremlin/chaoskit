@@ -1,4 +1,4 @@
-import { fluidRange } from 'polished';
+import { fluidRange, hideVisually } from 'polished';
 
 // Avoid using this in SSR applications as they have trouble matching against universal selectors
 // Use `.use-trimChildren` utility class instead
@@ -21,24 +21,7 @@ export const overflow = {
   WebkitOverflowScrolling: 'touch',
 };
 
-export const hide = {
-  // Note: The use of `clip-path` causes performance degredation on scroll events in Chrome.
-  // For more information, see:
-  // * h5bp/html5-boilerplate#2021
-  // * zurb/foundation-sites#10914
-  // * twbs/bootstrap#24906
-
-  border: '0',
-  clip: 'rect(0 0 0 0)',
-  // clipPath: 'inset(50%)',
-  height: '1px',
-  margin: '-1px',
-  overflow: 'hidden',
-  padding: '0',
-  position: 'absolute',
-  whiteSpace: 'nowrap',
-  width: '1px',
-};
+export const hide = { ...hideVisually() };
 
 export const absoluteCenter = {
   position: 'absolute',
