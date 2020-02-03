@@ -1,13 +1,13 @@
-import { boolean, text } from '@storybook/addon-knobs';
-import { action } from '@storybook/addon-actions';
+import { boolean, text } from '@storybook/addon-knobs'
+import { action } from '@storybook/addon-actions'
 
-import Select from './Select';
-import ContrastWrapper from '../../.storybook/components/ContrastWrapper';
+import Select from './Select'
+import ContrastWrapper from '../../.storybook/components/ContrastWrapper'
 
 export default {
   title: 'Forms/Select',
   component: Select,
-};
+}
 
 const params = {
   disabled: () => boolean('Disabled', false),
@@ -16,7 +16,7 @@ const params = {
   validationMessage: () => text('Validation Message', 'Validation message'),
   noContrast: () => boolean('No contrast', false),
   required: () => boolean('Required', false),
-};
+}
 
 const SelectExample = ({ ...props }) => {
   const selectOpts = [
@@ -24,7 +24,7 @@ const SelectExample = ({ ...props }) => {
     { value: 'test-string', label: 'Option Two' },
     { value: 3, label: 'Option Three' },
     { value: 4, label: 'Option Four' },
-  ];
+  ]
 
   return (
     <Select
@@ -36,8 +36,8 @@ const SelectExample = ({ ...props }) => {
       name="select"
       {...props}
     />
-  );
-};
+  )
+}
 
 export const Overview = () => (
   <SelectExample
@@ -48,7 +48,7 @@ export const Overview = () => (
     required={params.required()}
     noContrast={params.noContrast()}
   />
-);
+)
 
 export const Contrast = () => (
   <ContrastWrapper>
@@ -61,4 +61,4 @@ export const Contrast = () => (
       noContrast={params.noContrast()}
     />
   </ContrastWrapper>
-);
+)

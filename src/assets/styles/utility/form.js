@@ -1,4 +1,4 @@
-import { rgba } from 'polished';
+import { rgba } from 'polished'
 
 export const variables = theme => ({
   background: theme.color.light.base,
@@ -11,7 +11,7 @@ export const variables = theme => ({
     fontColor: theme.contrast.base,
     borderColor: theme.contrast.base,
   },
-});
+})
 
 // To be used in all input, select, and textarea controls
 //
@@ -27,7 +27,7 @@ export const base = theme => ({
   font: 'inherit',
   fontSize: variables(theme).fontSize,
   color: 'inherit',
-});
+})
 
 // Used for base control styles for input, textarea, and select
 //
@@ -139,7 +139,7 @@ export const input = (theme, props = {}) => [
         },
       },
     },
-];
+]
 
 export const styles = theme => [
   {
@@ -175,4 +175,4 @@ export const styles = theme => [
       },
     },
   },
-];
+]

@@ -1,11 +1,11 @@
-import cx from 'classnames';
-import PropTypes from 'prop-types';
-import { useTheme } from 'emotion-theming';
+import cx from 'classnames'
+import PropTypes from 'prop-types'
+import { useTheme } from 'emotion-theming'
 
-import { StylesModalVariables } from './Modal';
+import { StylesModalVariables } from './Modal'
 
 const ModalFooter = ({ className, ...opts }) => {
-  const theme = useTheme();
+  const theme = useTheme()
 
   return (
     <div
@@ -18,11 +18,11 @@ const ModalFooter = ({ className, ...opts }) => {
       )}
       {...opts}
     />
-  );
-};
+  )
+}
 
 ModalFooter.propTypes = {
   className: PropTypes.string,
-};
+}
 
-export default ModalFooter;
+export default ModalFooter

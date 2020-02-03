@@ -1,4 +1,4 @@
-import { text } from '.';
+import { text } from '.'
 
 export const styles = theme => ({
   '.u-contrast': {
@@ -33,4 +33,4 @@ export const styles = theme => ({
       borderTopColor: theme.contrast.hr,
     },
   },
-});
+})

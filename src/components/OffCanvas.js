@@ -1,20 +1,20 @@
-import cx from 'classnames';
-import PropTypes from 'prop-types';
-import { useRef, useState, useEffect } from 'react';
-import useUpdateEffect from 'react-use/lib/useUpdateEffect';
-import useLockBodyScroll from 'react-use/lib/useLockBodyScroll';
-import useClickAway from 'react-use/lib/useClickAway';
-import { createPortal } from 'react-dom';
-import gsap from 'gsap';
-import { useTheme } from 'emotion-theming';
+import cx from 'classnames'
+import PropTypes from 'prop-types'
+import { useRef, useState, useEffect } from 'react'
+import useUpdateEffect from 'react-use/lib/useUpdateEffect'
+import useLockBodyScroll from 'react-use/lib/useLockBodyScroll'
+import useClickAway from 'react-use/lib/useClickAway'
+import { createPortal } from 'react-dom'
+import gsap from 'gsap'
+import { useTheme } from 'emotion-theming'
 
-import { misc } from '../assets/styles/utility';
-import Close from './Close';
+import { misc } from '../assets/styles/utility'
+import Close from './Close'
 
 const StylesOffCanvasVariables = theme => ({
   size: theme.space.large,
   panelOffset: theme.space.large,
-});
+})
 
 const OffCanvas = ({
   children,
@@ -29,53 +29,53 @@ const OffCanvas = ({
   panelWidth,
   ...opts
 }) => {
-  const theme = useTheme();
+  const theme = useTheme()
 
-  const offCanvasRef = useRef();
-  const offCanvasPanelRef = useRef();
+  const offCanvasRef = useRef()
+  const offCanvasPanelRef = useRef()
 
-  const [renderOffCanvas, setRenderOffCanvas] = useState(open);
+  const [renderOffCanvas, setRenderOffCanvas] = useState(open)
 
   const openOffCanvas = () => {
-    const $offCanvas = offCanvasRef.current;
+    const $offCanvas = offCanvasRef.current
 
-    if ($offCanvas && $offCanvas.timeline) $offCanvas.timeline.play();
-  };
+    if ($offCanvas && $offCanvas.timeline) $offCanvas.timeline.play()
+  }
 
   const closeOffCanvas = () => {
-    const $offCanvas = offCanvasRef.current;
+    const $offCanvas = offCanvasRef.current
 
     if ($offCanvas && $offCanvas.timeline) {
-      $offCanvas.timeline.reverse();
+      $offCanvas.timeline.reverse()
 
-      onReverseStart();
+      onReverseStart()
     }
-  };
+  }
 
   const handleOnReverseComplete = () => {
-    setRenderOffCanvas(false);
-  };
+    setRenderOffCanvas(false)
+  }
 
   const attachTimeline = () => {
-    const $offCanvas = offCanvasRef.current;
-    const $panel = offCanvasPanelRef.current;
+    const $offCanvas = offCanvasRef.current
+    const $panel = offCanvasPanelRef.current
 
     // Attach timeline to each instance
     $offCanvas.timeline = gsap.timeline({
       paused: !open,
       onStart: () => {
-        onStart();
+        onStart()
       },
       onComplete: () => {
         // Focus on active offCanvas for screen readers
-        $panel.focus();
+        $panel.focus()
 
-        onComplete();
+        onComplete()
       },
       onReverseComplete: () => {
-        handleOnReverseComplete();
+        handleOnReverseComplete()
       },
-    });
+    })
 
     $offCanvas.timeline
       .set($offCanvas, {
@@ -98,37 +98,37 @@ const OffCanvas = ({
           ease: theme.gsap.transition.base,
         },
         'offCanvas'
-      );
-  };
+      )
+  }
 
   useEffect(() => {
     if (open) {
-      setRenderOffCanvas(true);
+      setRenderOffCanvas(true)
     }
-  }, [open]);
+  }, [open])
 
   useUpdateEffect(() => {
     if (renderOffCanvas) {
-      attachTimeline();
+      attachTimeline()
 
-      openOffCanvas();
+      openOffCanvas()
     } else {
-      onReverseComplete();
+      onReverseComplete()
     }
-  }, [renderOffCanvas]);
+  }, [renderOffCanvas])
 
   useUpdateEffect(() => {
     if (!open) {
-      closeOffCanvas();
+      closeOffCanvas()
     }
-  }, [open]);
+  }, [open])
 
-  useClickAway(offCanvasPanelRef, () => onOffCanvasToggle());
+  useClickAway(offCanvasPanelRef, () => onOffCanvasToggle())
 
   // If not explicitly a boolean, the body lock will not release
-  useLockBodyScroll(Boolean(renderOffCanvas));
+  useLockBodyScroll(Boolean(renderOffCanvas))
 
-  if (!renderOffCanvas) return null;
+  if (!renderOffCanvas) return null
 
   return createPortal(
     <div
@@ -195,8 +195,8 @@ const OffCanvas = ({
       </div>
     </div>,
     document.body
-  );
-};
+  )
+}
 
 OffCanvas.propTypes = {
   children: PropTypes.node,
@@ -213,7 +213,7 @@ OffCanvas.propTypes = {
   /** GSAP callback */
   onStart: PropTypes.func,
   panelWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-};
+}
 
 OffCanvas.defaultProps = {
   onComplete: () => {},
@@ -222,6 +222,6 @@ OffCanvas.defaultProps = {
   onStart: () => {},
   panelWidth: 300,
   align: 'left',
-};
+}
 
-export default OffCanvas;
+export default OffCanvas

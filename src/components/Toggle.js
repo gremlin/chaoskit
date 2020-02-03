@@ -1,22 +1,22 @@
-import { useMemo, useRef } from 'react';
-import cx from 'classnames';
-import PropTypes from 'prop-types';
-import { useTheme } from 'emotion-theming';
+import { useMemo, useRef } from 'react'
+import cx from 'classnames'
+import PropTypes from 'prop-types'
+import { useTheme } from 'emotion-theming'
 
-import { tint, shade } from 'polished';
+import { tint, shade } from 'polished'
 
-import FormGroup from './FormGroup';
-import { generateGradient } from '../assets/styles/utility/gradient';
-import { misc } from '../assets/styles/utility';
-import { generateUUID } from '../helpers/utility';
+import FormGroup from './FormGroup'
+import { generateGradient } from '../assets/styles/utility/gradient'
+import { misc } from '../assets/styles/utility'
+import { generateUUID } from '../helpers/utility'
 
 const StylesToggleVariables = theme => ({
   height: theme.height.xxsmall,
   get width() {
-    return this.height * 1.75;
+    return this.height * 1.75
   },
   get buttonSize() {
-    return this.height - 6;
+    return this.height - 6
   },
   offset: theme.space.xsmall,
   contrastBorderWidth: 1,
@@ -25,7 +25,7 @@ const StylesToggleVariables = theme => ({
     active: theme.color.primary.base,
   },
   transition: `all ${theme.timing.base} ${theme.transition.base}`,
-});
+})
 
 const Toggle = ({
   name,
@@ -37,11 +37,11 @@ const Toggle = ({
   wrapperProps,
   ...opts
 }) => {
-  const theme = useTheme();
-  const toggleLabelRef = useRef();
+  const theme = useTheme()
+  const toggleLabelRef = useRef()
 
   // Only regenerate this if the name prop changes
-  const id = useMemo(() => `${name}-${generateUUID()}`, [name]);
+  const id = useMemo(() => `${name}-${generateUUID()}`, [name])
 
   return (
     <FormGroup {...wrapperProps}>
@@ -181,8 +181,8 @@ const Toggle = ({
         )}
       </div>
     </FormGroup>
-  );
-};
+  )
+}
 
 Toggle.propTypes = {
   className: PropTypes.string,
@@ -192,6 +192,6 @@ Toggle.propTypes = {
   label: PropTypes.string,
   value: PropTypes.string,
   wrapperProps: PropTypes.object,
-};
+}
 
-export default Toggle;
+export default Toggle

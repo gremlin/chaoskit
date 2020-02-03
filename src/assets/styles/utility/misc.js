@@ -1,4 +1,4 @@
-import { fluidRange, hideVisually } from 'polished';
+import { fluidRange, hideVisually } from 'polished'
 
 // Avoid using this in SSR applications as they have trouble matching against universal selectors
 // Use `.use-trimChildren` utility class instead
@@ -14,21 +14,21 @@ export const trimChildren = {
       },
     },
   },
-};
+}
 
 export const overflow = {
   overflow: 'auto',
   WebkitOverflowScrolling: 'touch',
-};
+}
 
-export const hide = { ...hideVisually() };
+export const hide = { ...hideVisually() }
 
 export const absoluteCenter = {
   position: 'absolute',
   left: '50%',
   top: '50%',
   transform: 'translate(-50%, -50%)',
-};
+}
 
 export const fluidSize = ({
   theme = {},
@@ -46,4 +46,4 @@ export const fluidSize = ({
     },
     `${theme.breakpoint[breakpointFrom]}px`,
     `${theme.breakpoint[breakpointTo]}px`
-  );
+  )

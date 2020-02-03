@@ -1,10 +1,10 @@
-import PropTypes from 'prop-types';
-import { useState } from 'react';
-import cx from 'classnames';
-import { useTheme } from 'emotion-theming';
+import PropTypes from 'prop-types'
+import { useState } from 'react'
+import cx from 'classnames'
+import { useTheme } from 'emotion-theming'
 
-import Icon from './Icon';
-import { misc } from '../assets/styles/utility';
+import Icon from './Icon'
+import { misc } from '../assets/styles/utility'
 
 export const StylesAvatarVariables = theme => ({
   background: theme.color.panel.base,
@@ -12,10 +12,10 @@ export const StylesAvatarVariables = theme => ({
   size: {
     base: theme.height.base,
     get large() {
-      return this.base * 2;
+      return this.base * 2
     },
   },
-});
+})
 
 const StylesAvatarBase = (theme, props = {}) => [
   // 1. Fix issue with alignment of inlined avatars
@@ -34,13 +34,13 @@ const StylesAvatarBase = (theme, props = {}) => [
     width: StylesAvatarVariables(theme).size[props.size],
     height: StylesAvatarVariables(theme).size[props.size],
   },
-];
+]
 
 const Avatar = ({ className, image, name, size, ...opts }) => {
-  const theme = useTheme();
-  const [error, setError] = useState(false);
+  const theme = useTheme()
+  const [error, setError] = useState(false)
 
-  const nameProp = name ? name.trim() : '';
+  const nameProp = name ? name.trim() : ''
 
   // If image exists, use image for background
   if (image && !error) {
@@ -62,7 +62,7 @@ const Avatar = ({ className, image, name, size, ...opts }) => {
           src={image}
         />
       </figure>
-    );
+    )
   }
 
   // If no image and no name, use icon
@@ -92,15 +92,15 @@ const Avatar = ({ className, image, name, size, ...opts }) => {
           }}
         />
       </figure>
-    );
+    )
   }
 
-  let splitName = null;
-  let initials = null;
+  let splitName = null
+  let initials = null
 
   if (nameProp) {
-    splitName = name.split(' ');
-    initials = splitName[0][0] + splitName[splitName.length - 1][0];
+    splitName = name.split(' ')
+    initials = splitName[0][0] + splitName[splitName.length - 1][0]
   }
 
   // https://stackoverflow.com/a/48841447/1026742
@@ -136,8 +136,8 @@ const Avatar = ({ className, image, name, size, ...opts }) => {
         {initials}
       </text>
     </svg>
-  );
-};
+  )
+}
 
 Avatar.propTypes = {
   className: PropTypes.string,
@@ -145,10 +145,10 @@ Avatar.propTypes = {
   name: PropTypes.string,
   size: PropTypes.oneOf(['base', 'large']),
   src: PropTypes.string,
-};
+}
 
 Avatar.defaultProps = {
   size: 'base',
-};
+}
 
-export default Avatar;
+export default Avatar

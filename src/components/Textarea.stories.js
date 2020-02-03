@@ -1,12 +1,12 @@
-import { boolean, text } from '@storybook/addon-knobs';
+import { boolean, text } from '@storybook/addon-knobs'
 
-import Textarea from './Textarea';
-import ContrastWrapper from '../../.storybook/components/ContrastWrapper';
+import Textarea from './Textarea'
+import ContrastWrapper from '../../.storybook/components/ContrastWrapper'
 
 export default {
   title: 'Forms/Textarea',
   component: Textarea,
-};
+}
 
 const params = {
   disabled: () => boolean('Disabled', false),
@@ -15,7 +15,7 @@ const params = {
   validationMessage: () => text('Validation Message', ''),
   noContrast: () => boolean('No contrast', false),
   required: () => boolean('Required', false),
-};
+}
 
 export const Overview = () => (
   <Textarea
@@ -26,7 +26,7 @@ export const Overview = () => (
     validationMessage={params.validationMessage()}
     required={params.required()}
   />
-);
+)
 
 // @TODO For docs
 // Automatically adapts to parent containers containing \`.u-contrast\`.
@@ -44,4 +44,4 @@ export const Contrast = () => (
       noContrast={params.noContrast()}
     />
   </ContrastWrapper>
-);
+)

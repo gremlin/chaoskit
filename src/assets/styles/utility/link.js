@@ -1,4 +1,4 @@
-import { underline } from './text';
+import { underline } from './text'
 
 export const baseDefault = theme => ({
   color: theme.color.primary.base,
@@ -6,7 +6,7 @@ export const baseDefault = theme => ({
   '&:hover, &:focus': {
     color: theme.color.primary.dark,
   },
-});
+})
 
 export const base = theme => ({
   color: `${theme.color.primary.base} !important`,
@@ -14,7 +14,7 @@ export const base = theme => ({
   '&:hover, &:focus': {
     color: `${theme.color.primary.dark} !important`,
   },
-});
+})
 
 export const reset = theme => ({
   color: `${theme.fontColor.base} !important`,
@@ -22,7 +22,7 @@ export const reset = theme => ({
   '&:hover, &:focus': {
     color: `${theme.fontColor.dark} !important`,
   },
-});
+})
 
 export const muted = theme => ({
   color: `${theme.fontColor.muted} !important`,
@@ -30,7 +30,7 @@ export const muted = theme => ({
   '&:hover, &:focus': {
     color: `${theme.fontColor.mutedDark} !important`,
   },
-});
+})
 
 export const heading = theme => ({
   color: `${theme.fontColor.heading} !important`,
@@ -38,7 +38,7 @@ export const heading = theme => ({
   '&:hover, &:focus': {
     color: `${theme.fontColor.headingDark} !important`,
   },
-});
+})
 
 export const contrast = theme => ({
   color: `${theme.contrast.base} !important`,
@@ -46,10 +46,10 @@ export const contrast = theme => ({
   '&:hover, &:focus': {
     color: `${theme.contrast.base} !important`,
   },
-});
+})
 
 export const linkUnderline = {
   '&:hover, &:focus': {
     ...underline,
   },
-};
+}

@@ -1,16 +1,16 @@
-import { boolean, text } from '@storybook/addon-knobs';
-import { action } from '@storybook/addon-actions';
+import { boolean, text } from '@storybook/addon-knobs'
+import { action } from '@storybook/addon-actions'
 
-import Checkbox from './Checkbox';
-import FormControlWrapper from './FormControlWrapper';
-import List from './List';
-import ListItem from './ListItem';
-import ContrastWrapper from '../../.storybook/components/ContrastWrapper';
+import Checkbox from './Checkbox'
+import FormControlWrapper from './FormControlWrapper'
+import List from './List'
+import ListItem from './ListItem'
+import ContrastWrapper from '../../.storybook/components/ContrastWrapper'
 
 export default {
   title: 'Forms/Checkbox',
   component: Checkbox,
-};
+}
 
 const params = {
   firstCheckbox: {
@@ -32,7 +32,7 @@ const params = {
     required: () => boolean('Required', false),
     noContrast: () => boolean('No contrast', false),
   },
-};
+}
 
 // @TODO For docs
 // Automatically adapts to parent containers containing \`.u-contrast\`.
@@ -72,7 +72,7 @@ export const Overview = () => (
       </ListItem>
     </List>
   </FormControlWrapper>
-);
+)
 
 export const Contrast = () => (
   <ContrastWrapper>
@@ -112,4 +112,4 @@ export const Contrast = () => (
       </List>
     </FormControlWrapper>
   </ContrastWrapper>
-);
+)

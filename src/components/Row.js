@@ -1,18 +1,11 @@
-import PropTypes from 'prop-types';
-import cx from 'classnames';
-import { useTheme } from 'emotion-theming';
+import PropTypes from 'prop-types'
+import cx from 'classnames'
+import { useTheme } from 'emotion-theming'
 
-const gutterOptions = [
-  'collapse',
-  'small',
-  'base',
-  'medium',
-  'large',
-  'xlarge',
-];
+const gutterOptions = ['collapse', 'small', 'base', 'medium', 'large', 'xlarge']
 
 const Row = ({ className, gutter, ...opts }) => {
-  const theme = useTheme();
+  const theme = useTheme()
 
   const gutterCalc = size => [
     gutter[size] && {
@@ -30,7 +23,7 @@ const Row = ({ className, gutter, ...opts }) => {
         },
       },
     },
-  ];
+  ]
 
   return (
     <div
@@ -68,8 +61,8 @@ const Row = ({ className, gutter, ...opts }) => {
       className={cx(`CK__Row ${theme.settings.classes.trim}`, className)}
       {...opts}
     />
-  );
-};
+  )
+}
 
 Row.propTypes = {
   className: PropTypes.string,
@@ -80,10 +73,10 @@ Row.propTypes = {
     large: PropTypes.oneOf(gutterOptions),
     xlarge: PropTypes.oneOf(gutterOptions),
   }),
-};
+}
 
 Row.defaultProps = {
   gutter: { base: 'base' },
-};
+}
 
-export default Row;
+export default Row

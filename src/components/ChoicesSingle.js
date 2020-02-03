@@ -1,18 +1,18 @@
-import { useMemo, useState } from 'react';
-import cx from 'classnames';
-import PropTypes from 'prop-types';
-import Downshift from 'downshift';
-import matchSorter from 'match-sorter';
-import { ellipsis, rgba } from 'polished';
-import { useTheme } from 'emotion-theming';
+import { useMemo, useState } from 'react'
+import cx from 'classnames'
+import PropTypes from 'prop-types'
+import Downshift from 'downshift'
+import matchSorter from 'match-sorter'
+import { ellipsis, rgba } from 'polished'
+import { useTheme } from 'emotion-theming'
 
-import Button from './Button';
-import FormControlWrapper from './FormControlWrapper';
-import Icon from './Icon';
-import Input from './Input';
-import { form } from '../assets/styles/utility';
-import { StylesSelectVariables } from './Select';
-import { generateUUID } from '../helpers/utility';
+import Button from './Button'
+import FormControlWrapper from './FormControlWrapper'
+import Icon from './Icon'
+import Input from './Input'
+import { form } from '../assets/styles/utility'
+import { StylesSelectVariables } from './Select'
+import { generateUUID } from '../helpers/utility'
 
 const ChoicesSingle = ({
   className,
@@ -30,38 +30,38 @@ const ChoicesSingle = ({
   selected,
   ...opts
 }) => {
-  const theme = useTheme();
-  const [value, setValue] = useState('');
+  const theme = useTheme()
+  const [value, setValue] = useState('')
 
   // Only regenerate this if the name prop changes
-  const id = useMemo(() => `${name}-${generateUUID()}`, [name]);
+  const id = useMemo(() => `${name}-${generateUUID()}`, [name])
 
-  const itemToString = item => (item ? item.label : '');
+  const itemToString = item => (item ? item.label : '')
 
   const handleKeyDown = e => {
     if (selected.length && !value.length && e.keyCode === 8) {
-      onChange(selected.slice(0, selected.length - 1));
+      onChange(selected.slice(0, selected.length - 1))
     }
-  };
+  }
 
   const handleInputChange = e => {
-    setValue(e.target.value);
-  };
+    setValue(e.target.value)
+  }
 
   const handleChange = item => {
-    onChange(name, item);
+    onChange(name, item)
 
     // Clear out any typed values
-    setValue('');
-  };
+    setValue('')
+  }
 
   const optionsList = value.length
     ? matchSorter(options, value, {
         keys: ['label'],
       })
-    : options;
+    : options
   const selectedOption =
-    selected !== -1 ? optionsList.find(x => x.value === selected) : -1;
+    selected !== -1 ? optionsList.find(x => x.value === selected) : -1
 
   return (
     <Downshift
@@ -274,11 +274,11 @@ const ChoicesSingle = ({
               </div>
             </div>
           </FormControlWrapper>
-        );
+        )
       }}
     </Downshift>
-  );
-};
+  )
+}
 
 ChoicesSingle.propTypes = {
   className: PropTypes.string,
@@ -295,12 +295,12 @@ ChoicesSingle.propTypes = {
   searchPlaceholder: PropTypes.string,
   selected: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   wrapperProps: PropTypes.object,
-};
+}
 
 ChoicesSingle.defaultProps = {
   placeholder: 'Select',
   searchPlaceholder: 'Search',
   selected: -1,
-};
+}
 
-export default ChoicesSingle;
+export default ChoicesSingle

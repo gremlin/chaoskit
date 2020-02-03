@@ -1,12 +1,12 @@
-import cx from 'classnames';
-import PropTypes from 'prop-types';
-import { useTheme } from 'emotion-theming';
+import cx from 'classnames'
+import PropTypes from 'prop-types'
+import { useTheme } from 'emotion-theming'
 
-import Close, { StylesCloseVariables } from './Close';
-import { StylesModalVariables } from './Modal';
+import Close, { StylesCloseVariables } from './Close'
+import { StylesModalVariables } from './Modal'
 
 const ModalHeader = ({ centered, className, onCloseClick, title, ...opts }) => {
-  const theme = useTheme();
+  const theme = useTheme()
 
   return (
     <div
@@ -48,14 +48,14 @@ const ModalHeader = ({ centered, className, onCloseClick, title, ...opts }) => {
         ]}
       />
     </div>
-  );
-};
+  )
+}
 
 ModalHeader.propTypes = {
   centered: PropTypes.bool,
   className: PropTypes.string,
   onCloseClick: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
-};
+}
 
-export default ModalHeader;
+export default ModalHeader

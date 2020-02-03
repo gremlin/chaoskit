@@ -1,14 +1,14 @@
-import PropTypes from 'prop-types';
-import cx from 'classnames';
-import { useTheme } from 'emotion-theming';
+import PropTypes from 'prop-types'
+import cx from 'classnames'
+import { useTheme } from 'emotion-theming'
 
-import Container from './Container';
-import { misc, text } from '../assets/styles/utility';
-import { generateGradient } from '../assets/styles/utility/gradient';
+import Container from './Container'
+import { misc, text } from '../assets/styles/utility'
+import { generateGradient } from '../assets/styles/utility/gradient'
 
 const StylesSubnavVariables = theme => ({
   height: theme.height.large,
-});
+})
 
 export const SubnavMenuItemStyles = theme => [
   text.heading(theme),
@@ -47,10 +47,10 @@ export const SubnavMenuItemStyles = theme => [
       },
     },
   },
-];
+]
 
 const Subnav = ({ children, className, ...opts }) => {
-  const theme = useTheme();
+  const theme = useTheme()
 
   return (
     <div
@@ -79,12 +79,12 @@ const Subnav = ({ children, className, ...opts }) => {
         {children}
       </Container>
     </div>
-  );
-};
+  )
+}
 
 Subnav.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-};
+}
 
-export default Subnav;
+export default Subnav

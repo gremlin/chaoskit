@@ -1,11 +1,11 @@
-import { tint } from 'polished';
+import { tint } from 'polished'
 
 export const reset = {
   listStyle: 'none',
   paddingLeft: 0,
   display: 'grid',
   gridTemplateColumns: 'minmax(0, 1fr)',
-};
+}
 
 export const numbers = ({
   theme = {},
@@ -14,7 +14,7 @@ export const numbers = ({
   border = false,
   fill = theme.color.primary.base,
 }) => {
-  const circleSize = theme.height.xxsmall;
+  const circleSize = theme.height.xxsmall
 
   return {
     counterReset: 'list-counter',
@@ -49,8 +49,8 @@ export const numbers = ({
           (border && space)}px`,
       },
     },
-  };
-};
+  }
+}
 
 export const circles = ({
   theme = {},
@@ -96,4 +96,4 @@ export const circles = ({
       },
     },
   ],
-});
+})

@@ -1,11 +1,11 @@
-import Inline from './Inline';
-import ListItem from './ListItem';
-import Subnav, { SubnavMenuItemStyles } from './Subnav';
+import Inline from './Inline'
+import ListItem from './ListItem'
+import Subnav, { SubnavMenuItemStyles } from './Subnav'
 
 export default {
   title: 'Components/Subnav',
   component: Subnav,
-};
+}
 
 export const Overview = () => (
   <Subnav>
@@ -61,4 +61,4 @@ export const Overview = () => (
       </ListItem>
     </Inline>
   </Subnav>
-);
+)

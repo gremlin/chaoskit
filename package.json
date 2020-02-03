@@ -78,7 +78,8 @@
     "build": "yarn && yarn run icons && build-storybook -c .storybook",
     "develop": "yarn && yarn run icons && start-storybook -p 9001 -c .storybook",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prefixerInfo": "autoprefixer --info"
+    "prefixerInfo": "autoprefixer --info",
+    "lint:fix": "eslint ./src --fix"
   },
   "repository": {
     "type": "git",

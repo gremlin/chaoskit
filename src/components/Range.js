@@ -1,10 +1,10 @@
-import { useMemo } from 'react';
-import cx from 'classnames';
-import PropTypes from 'prop-types';
-import { useTheme } from 'emotion-theming';
+import { useMemo } from 'react'
+import cx from 'classnames'
+import PropTypes from 'prop-types'
+import { useTheme } from 'emotion-theming'
 
-import FormControlWrapper from './FormControlWrapper';
-import { generateUUID } from '../helpers/utility';
+import FormControlWrapper from './FormControlWrapper'
+import { generateUUID } from '../helpers/utility'
 
 const StylesRangeVariables = theme => ({
   thumb: {
@@ -13,14 +13,14 @@ const StylesRangeVariables = theme => ({
   track: {
     height: theme.height.xxxsmall / 3,
   },
-});
+})
 
 const generateProgressGradient = (theme, { value = 0, min = 0, max = 0 }) => {
-  const val = (value - min) / (max - min);
-  const percentage = val * 100;
+  const val = (value - min) / (max - min)
+  const percentage = val * 100
 
-  return `linear-gradient(to right, ${theme.color.primary.base} 0%, ${theme.color.primary.dark} ${percentage}%, ${theme.color.border.base} ${percentage}%)`;
-};
+  return `linear-gradient(to right, ${theme.color.primary.base} 0%, ${theme.color.primary.dark} ${percentage}%, ${theme.color.border.base} ${percentage}%)`
+}
 
 const Range = ({
   className,
@@ -36,9 +36,9 @@ const Range = ({
   value,
   ...props
 }) => {
-  const theme = useTheme();
+  const theme = useTheme()
   // Only regenerate this if the name prop changes
-  const id = useMemo(() => `${name}-${generateUUID()}`, [name]);
+  const id = useMemo(() => `${name}-${generateUUID()}`, [name])
 
   return (
     <FormControlWrapper
@@ -184,8 +184,8 @@ const Range = ({
         {...props}
       />
     </FormControlWrapper>
-  );
-};
+  )
+}
 
 Range.propTypes = {
   className: PropTypes.string,
@@ -199,6 +199,6 @@ Range.propTypes = {
   max: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   wrapperProps: PropTypes.object,
-};
+}
 
-export default Range;
+export default Range

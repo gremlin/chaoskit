@@ -1,25 +1,18 @@
-import PropTypes from 'prop-types';
-import cx from 'classnames';
-import { useTheme } from 'emotion-theming';
+import PropTypes from 'prop-types'
+import cx from 'classnames'
+import { useTheme } from 'emotion-theming'
 
-const columnOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-const gutterOptions = [
-  'collapse',
-  'small',
-  'base',
-  'medium',
-  'large',
-  'xlarge',
-];
+const columnOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+const gutterOptions = ['collapse', 'small', 'base', 'medium', 'large', 'xlarge']
 
 const BlockGrid = ({ className, gutter, size, ...opts }) => {
-  const theme = useTheme();
+  const theme = useTheme()
 
   const percentWidth = columnSize => {
-    const calc = 100 / columnSize;
+    const calc = 100 / columnSize
 
-    return `${calc}%`;
-  };
+    return `${calc}%`
+  }
 
   const gutterCalc = gutterSize => [
     gutter[gutterSize] && {
@@ -46,7 +39,7 @@ const BlockGrid = ({ className, gutter, size, ...opts }) => {
         },
       },
     },
-  ];
+  ]
 
   return (
     <ul
@@ -138,8 +131,8 @@ const BlockGrid = ({ className, gutter, size, ...opts }) => {
       className={cx('CK__BlockGrid', className)}
       {...opts}
     />
-  );
-};
+  )
+}
 
 BlockGrid.propTypes = {
   className: PropTypes.string,
@@ -157,11 +150,11 @@ BlockGrid.propTypes = {
     large: PropTypes.oneOf(columnOptions),
     xlarge: PropTypes.oneOf(columnOptions),
   }),
-};
+}
 
 BlockGrid.defaultProps = {
   gutter: { base: 'base' },
   size: {},
-};
+}
 
-export default BlockGrid;
+export default BlockGrid

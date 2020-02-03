@@ -1,30 +1,30 @@
-import PropTypes from 'prop-types';
-import cx from 'classnames';
-import { useTheme } from 'emotion-theming';
+import PropTypes from 'prop-types'
+import cx from 'classnames'
+import { useTheme } from 'emotion-theming'
 import {
   Tabs as ReactTabs,
   TabList as ReactTabList,
   Tab as ReactTab,
   TabPanel as ReactTabPanel,
-} from 'react-tabs';
+} from 'react-tabs'
 
-import { flex, misc, text } from '../assets/styles/utility';
+import { flex, misc, text } from '../assets/styles/utility'
 
 const Tabs = ({ className, customCss, ...rest }) => (
   <ReactTabs css={customCss} className={cx('CK__Tabs', className)} {...rest} />
-);
+)
 
 Tabs.propTypes = {
   className: PropTypes.string,
   customCss: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
-};
+}
 
 Tabs.defaultProps = {
   customCss: {},
-};
+}
 
 const TabList = ({ className, reset, customCss, ...rest }) => {
-  const theme = useTheme();
+  const theme = useTheme()
 
   return (
     <ReactTabList
@@ -48,23 +48,23 @@ const TabList = ({ className, reset, customCss, ...rest }) => {
       className={cx('CK__TabList', className)}
       {...rest}
     />
-  );
-};
+  )
+}
 
 TabList.propTypes = {
   className: PropTypes.string,
   reset: PropTypes.bool,
   customCss: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
-};
+}
 
 TabList.defaultProps = {
   customCss: {},
-};
+}
 
-TabList.tabsRole = 'TabList';
+TabList.tabsRole = 'TabList'
 
 const Tab = ({ className, disabled, selected, reset, customCss, ...rest }) => {
-  const theme = useTheme();
+  const theme = useTheme()
 
   return (
     <ReactTab
@@ -123,12 +123,12 @@ const Tab = ({ className, disabled, selected, reset, customCss, ...rest }) => {
       selected={selected}
       {...rest}
     />
-  );
-};
+  )
+}
 
 Tab.defaultProps = {
   customCss: {},
-};
+}
 
 Tab.propTypes = {
   className: PropTypes.string,
@@ -136,12 +136,12 @@ Tab.propTypes = {
   selected: PropTypes.bool,
   reset: PropTypes.bool,
   customCss: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
-};
+}
 
-Tab.tabsRole = 'Tab';
+Tab.tabsRole = 'Tab'
 
 const TabPanel = ({ className, selected, customCss, ...rest }) => {
-  const theme = useTheme();
+  const theme = useTheme()
 
   return (
     <ReactTabPanel
@@ -151,19 +151,19 @@ const TabPanel = ({ className, selected, customCss, ...rest }) => {
       className={cx(`CK__TabsPanel ${theme.settings.classes.trim}`, className)}
       {...rest}
     />
-  );
-};
+  )
+}
 
 TabPanel.propTypes = {
   className: PropTypes.string,
   selected: PropTypes.bool,
   customCss: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
-};
+}
 
 TabPanel.defaultProps = {
   customCss: {},
-};
+}
 
-TabPanel.tabsRole = 'TabPanel';
+TabPanel.tabsRole = 'TabPanel'
 
-export { Tabs, TabList, Tab, TabPanel };
+export { Tabs, TabList, Tab, TabPanel }

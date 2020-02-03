@@ -1,14 +1,14 @@
-import cx from 'classnames';
-import PropTypes from 'prop-types';
-import { useRef, useState, useEffect } from 'react';
-import useUpdateEffect from 'react-use/lib/useUpdateEffect';
-import useLockBodyScroll from 'react-use/lib/useLockBodyScroll';
-import useClickAway from 'react-use/lib/useClickAway';
-import { createPortal } from 'react-dom';
-import gsap from 'gsap';
-import { useTheme } from 'emotion-theming';
+import cx from 'classnames'
+import PropTypes from 'prop-types'
+import { useRef, useState, useEffect } from 'react'
+import useUpdateEffect from 'react-use/lib/useUpdateEffect'
+import useLockBodyScroll from 'react-use/lib/useLockBodyScroll'
+import useClickAway from 'react-use/lib/useClickAway'
+import { createPortal } from 'react-dom'
+import gsap from 'gsap'
+import { useTheme } from 'emotion-theming'
 
-import { misc } from '../assets/styles/utility';
+import { misc } from '../assets/styles/utility'
 
 export const StylesModalVariables = theme => ({
   padding: theme.space.large,
@@ -17,7 +17,7 @@ export const StylesModalVariables = theme => ({
     small: 400,
     large: 800,
   },
-});
+})
 
 const MODAL_ANIMATE_PROPERTIES = {
   bottom: {
@@ -28,7 +28,7 @@ const MODAL_ANIMATE_PROPERTIES = {
     label: 'center top',
     transform: 'translateY(-25%)',
   },
-};
+}
 
 const Modal = ({
   animateFrom,
@@ -43,53 +43,53 @@ const Modal = ({
   onStart,
   ...opts
 }) => {
-  const theme = useTheme();
+  const theme = useTheme()
 
-  const modalRef = useRef();
-  const modalDialogRef = useRef();
+  const modalRef = useRef()
+  const modalDialogRef = useRef()
 
-  const [renderModal, setRenderModal] = useState(open);
+  const [renderModal, setRenderModal] = useState(open)
 
   const openModal = () => {
-    const $modal = modalRef.current;
+    const $modal = modalRef.current
 
-    if ($modal && $modal.timeline) $modal.timeline.play();
-  };
+    if ($modal && $modal.timeline) $modal.timeline.play()
+  }
 
   const closeModal = () => {
-    const $modal = modalRef.current;
+    const $modal = modalRef.current
 
     if ($modal && $modal.timeline) {
-      $modal.timeline.reverse();
+      $modal.timeline.reverse()
 
-      onReverseStart();
+      onReverseStart()
     }
-  };
+  }
 
   const handleOnReverseComplete = () => {
-    setRenderModal(false);
-  };
+    setRenderModal(false)
+  }
 
   const attachTimeline = () => {
-    const $modal = modalRef.current;
-    const $modalDialog = modalDialogRef.current;
+    const $modal = modalRef.current
+    const $modalDialog = modalDialogRef.current
 
     // Attach timeline to each instance
     $modal.timeline = gsap.timeline({
       paused: !open,
       onStart: () => {
-        onStart();
+        onStart()
       },
       onComplete: () => {
         // Focus on active modal for screen readers
-        $modal.focus();
+        $modal.focus()
 
-        onComplete();
+        onComplete()
       },
       onReverseComplete: () => {
-        handleOnReverseComplete();
+        handleOnReverseComplete()
       },
-    });
+    })
 
     $modal.timeline
       .set($modal, {
@@ -113,37 +113,37 @@ const Modal = ({
           ease: theme.gsap.transition.bounce,
         },
         'modal'
-      );
-  };
+      )
+  }
 
   useEffect(() => {
     if (open) {
-      setRenderModal(true);
+      setRenderModal(true)
     }
-  }, [open]);
+  }, [open])
 
   useUpdateEffect(() => {
     if (renderModal) {
-      attachTimeline();
+      attachTimeline()
 
-      openModal();
+      openModal()
     } else {
-      onReverseComplete();
+      onReverseComplete()
     }
-  }, [renderModal]);
+  }, [renderModal])
 
   useUpdateEffect(() => {
     if (!open) {
-      closeModal();
+      closeModal()
     }
-  }, [open]);
+  }, [open])
 
-  useClickAway(modalDialogRef, () => onOutsideModalClick());
+  useClickAway(modalDialogRef, () => onOutsideModalClick())
 
   // If not explicitly a boolean, the body lock will not release
-  useLockBodyScroll(Boolean(renderModal));
+  useLockBodyScroll(Boolean(renderModal))
 
-  if (!renderModal) return null;
+  if (!renderModal) return null
 
   return createPortal(
     <div
@@ -205,8 +205,8 @@ const Modal = ({
       </div>
     </div>,
     document.body
-  );
-};
+  )
+}
 
 Modal.propTypes = {
   /** Change entrance direction */
@@ -224,7 +224,7 @@ Modal.propTypes = {
   onReverseStart: PropTypes.func,
   /** GSAP callback */
   onStart: PropTypes.func,
-};
+}
 
 Modal.defaultProps = {
   animateFrom: 'bottom',
@@ -234,6 +234,6 @@ Modal.defaultProps = {
   onReverseStart: () => {},
   onStart: () => {},
   size: 'base',
-};
+}
 
-export default Modal;
+export default Modal

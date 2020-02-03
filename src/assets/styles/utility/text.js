@@ -4,9 +4,9 @@ export const heading = (theme, lineHeight = 'small') => ({
   textTransform: 'none',
   letterSpacing: theme.letterSpacing.negative,
   lineHeight: theme.lineHeight[lineHeight],
-});
+})
 
 export const underline = {
   textDecoration: 'underline !important',
   textDecorationSkipInk: 'auto',
-};
+}

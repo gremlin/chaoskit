@@ -1,12 +1,12 @@
-import { useMemo } from 'react';
-import cx from 'classnames';
-import PropTypes from 'prop-types';
-import { useTheme } from 'emotion-theming';
+import { useMemo } from 'react'
+import cx from 'classnames'
+import PropTypes from 'prop-types'
+import { useTheme } from 'emotion-theming'
 
-import FormControlWrapper from './FormControlWrapper';
-import { form } from '../assets/styles/utility';
-import { generateUUID } from '../helpers/utility';
-import caretDown from '../assets/icons/caret-down.svg';
+import FormControlWrapper from './FormControlWrapper'
+import { form } from '../assets/styles/utility'
+import { generateUUID } from '../helpers/utility'
+import caretDown from '../assets/icons/caret-down.svg'
 
 export const StylesSelectVariables = (theme, props = {}) => ({
   iconSize: theme.fontSize.xsmall,
@@ -26,12 +26,12 @@ export const StylesSelectVariables = (theme, props = {}) => ({
       pointerEvents: 'none',
       opacity: props.disabled && theme.opacity.base,
       zIndex: '2',
-    };
+    }
   },
   get arrowOffset() {
-    return this.iconSize + form.variables(theme).padding + theme.space.small;
+    return this.iconSize + form.variables(theme).padding + theme.space.small
   },
-});
+})
 
 const Select = ({
   className,
@@ -48,10 +48,10 @@ const Select = ({
   wrapperProps,
   ...opts
 }) => {
-  const theme = useTheme();
+  const theme = useTheme()
 
   // Only regenerate this if the name prop changes
-  const id = useMemo(() => `${name}-${generateUUID()}`, [name]);
+  const id = useMemo(() => `${name}-${generateUUID()}`, [name])
 
   const renderOpts = option => {
     // If the option has options as well we're in an `<optgroup>`
@@ -64,7 +64,7 @@ const Select = ({
             </option>
           ))}
         </optgroup>
-      );
+      )
     }
 
     // We're in a default single-level `<option>`
@@ -72,8 +72,8 @@ const Select = ({
       <option key={option.value} value={option.value}>
         {option.label}
       </option>
-    );
-  };
+    )
+  }
 
   return (
     <FormControlWrapper
@@ -170,8 +170,8 @@ const Select = ({
         </select>
       </div>
     </FormControlWrapper>
-  );
-};
+  )
+}
 
 Select.propTypes = {
   className: PropTypes.string,
@@ -186,6 +186,6 @@ Select.propTypes = {
   required: PropTypes.bool,
   validationMessage: PropTypes.string,
   wrapperProps: PropTypes.object,
-};
+}
 
-export default Select;
+export default Select

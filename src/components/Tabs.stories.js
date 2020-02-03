@@ -1,11 +1,11 @@
-import List from './List';
-import ListItem from './ListItem';
-import { Tabs, TabPanel, TabList, Tab } from './Tabs';
+import List from './List'
+import ListItem from './ListItem'
+import { Tabs, TabPanel, TabList, Tab } from './Tabs'
 
 export default {
   title: 'Components/Tabs',
   component: Tabs,
-};
+}
 
 export const Overview = () => (
   <Tabs>
@@ -91,4 +91,4 @@ export const Overview = () => (
       </List>
     </TabPanel>
   </Tabs>
-);
+)

@@ -26,7 +26,7 @@ export const styles = (theme, StylesGlobalVariables) => {
           atrule: '#c678dd',
           function: '#61afef',
           regex: '#c678dd',
-        };
+        }
 
   return [
     {
@@ -155,5 +155,5 @@ export const styles = (theme, StylesGlobalVariables) => {
         color: '#98c379',
       },
     },
-  ];
-};
+  ]
+}

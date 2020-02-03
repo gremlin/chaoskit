@@ -1,13 +1,13 @@
-import { useState } from 'react';
-import { action } from '@storybook/addon-actions';
-import { boolean, text } from '@storybook/addon-knobs';
+import { useState } from 'react'
+import { action } from '@storybook/addon-actions'
+import { boolean, text } from '@storybook/addon-knobs'
 
-import Range from './Range';
+import Range from './Range'
 
 export default {
   title: 'Forms/Range',
   component: Range,
-};
+}
 
 const params = {
   disabled: () => boolean('Disabled', false),
@@ -15,10 +15,10 @@ const params = {
   explanationMessage: () => text('Explanation Message', 'Explanation message'),
   validationMessage: () => text('Validation Message', 'Validation message'),
   required: () => boolean('Required', false),
-};
+}
 
 const RangeExample = ({ ...props }) => {
-  const [value, setValue] = useState(2);
+  const [value, setValue] = useState(2)
 
   return (
     <Range
@@ -29,14 +29,14 @@ const RangeExample = ({ ...props }) => {
       min={1}
       max={10}
       onChange={({ target: { value: rangeValue } }) => {
-        action('Current value')(rangeValue);
+        action('Current value')(rangeValue)
 
-        setValue(rangeValue);
+        setValue(rangeValue)
       }}
       {...props}
     />
-  );
-};
+  )
+}
 
 export const Overview = () => (
   <RangeExample
@@ -46,4 +46,4 @@ export const Overview = () => (
     validationMessage={params.validationMessage()}
     required={params.required()}
   />
-);
+)

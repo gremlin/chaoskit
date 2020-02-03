@@ -1,35 +1,35 @@
-import { useState, useEffect } from 'react';
-import { boolean } from '@storybook/addon-knobs';
-import { action } from '@storybook/addon-actions';
+import { useState, useEffect } from 'react'
+import { boolean } from '@storybook/addon-knobs'
+import { action } from '@storybook/addon-actions'
 
-import ChoicesSingle from './ChoicesSingle';
+import ChoicesSingle from './ChoicesSingle'
 
 export default {
   title: 'Forms/Choices (Single)',
   component: ChoicesSingle,
-};
+}
 
 const ChoicesSingleExample = () => {
-  const [selected, setSelected] = useState(-1);
+  const [selected, setSelected] = useState(-1)
 
   const handleChange = (name, selectedColor) => {
-    setSelected(selectedColor.value);
-  };
+    setSelected(selectedColor.value)
+  }
 
   const handleRemoveItem = () => {
-    setSelected(-1);
-  };
+    setSelected(-1)
+  }
 
   useEffect(() => {
-    action('Selected')({ selected });
-  }, [selected]);
+    action('Selected')({ selected })
+  }, [selected])
 
   const selectOpts = [
     { value: 1, label: 'Option One' },
     { value: 'test-string', label: 'Option Two' },
     { value: 3, label: 'Option Three' },
     { value: 4, label: 'Option Four' },
-  ];
+  ]
 
   return (
     <ChoicesSingle
@@ -42,7 +42,7 @@ const ChoicesSingleExample = () => {
       onChange={handleChange}
       removeItem={handleRemoveItem}
     />
-  );
-};
+  )
+}
 
-export const Overview = () => <ChoicesSingleExample />;
+export const Overview = () => <ChoicesSingleExample />

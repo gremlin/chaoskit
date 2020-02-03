@@ -1,17 +1,17 @@
-import PropTypes from 'prop-types';
-import cx from 'classnames';
-import { useTheme } from 'emotion-theming';
+import PropTypes from 'prop-types'
+import cx from 'classnames'
+import { useTheme } from 'emotion-theming'
 
-const columnOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+const columnOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
 const RowColumn = ({ className, offset, order, size, ...opts }) => {
-  const theme = useTheme();
+  const theme = useTheme()
 
   const percentWidth = columnSize => {
-    const calc = (100 / columnOptions.length) * columnSize;
+    const calc = (100 / columnOptions.length) * columnSize
 
-    return `${calc}%`;
-  };
+    return `${calc}%`
+  }
 
   return (
     <div
@@ -126,8 +126,8 @@ const RowColumn = ({ className, offset, order, size, ...opts }) => {
       className={cx('CK__RowColumn', className)}
       {...opts}
     />
-  );
-};
+  )
+}
 
 RowColumn.propTypes = {
   className: PropTypes.string,
@@ -152,12 +152,12 @@ RowColumn.propTypes = {
     large: PropTypes.oneOf(['first', 'last']),
     xlarge: PropTypes.oneOf(['first', 'last']),
   }),
-};
+}
 
 RowColumn.defaultProps = {
   size: {},
   offset: {},
   order: {},
-};
+}
 
-export default RowColumn;
+export default RowColumn

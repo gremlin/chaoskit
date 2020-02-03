@@ -1,15 +1,15 @@
 /* eslint-disable jsx-a11y/label-has-associated-control, jsx-a11y/label-has-for */
-import cx from 'classnames';
-import PropTypes from 'prop-types';
-import { useTheme } from 'emotion-theming';
+import cx from 'classnames'
+import PropTypes from 'prop-types'
+import { useTheme } from 'emotion-theming'
 
-import check from '../assets/icons/check.svg';
-import { form } from '../assets/styles/utility';
+import check from '../assets/icons/check.svg'
+import { form } from '../assets/styles/utility'
 
 export const StylesCheckboxVariables = {
   size: 22,
   iconSize: 12,
-};
+}
 
 const Checkbox = ({
   className,
@@ -21,7 +21,7 @@ const Checkbox = ({
   wrapperProps,
   ...opts
 }) => {
-  const theme = useTheme();
+  const theme = useTheme()
 
   return (
     <label
@@ -120,8 +120,8 @@ const Checkbox = ({
       />
       {label && <span css={{ marginLeft: theme.space.small }}>{label}</span>}
     </label>
-  );
-};
+  )
+}
 
 Checkbox.propTypes = {
   className: PropTypes.string,
@@ -131,6 +131,6 @@ Checkbox.propTypes = {
   noContrast: PropTypes.bool,
   value: PropTypes.string,
   wrapperProps: PropTypes.object,
-};
+}
 
-export default Checkbox;
+export default Checkbox

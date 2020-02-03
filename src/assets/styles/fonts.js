@@ -1,11 +1,11 @@
-import { css } from '@emotion/core';
+import { css } from '@emotion/core'
 
-import GiraLight from '../fonts/gira-sans-light.woff';
-import GiraMedium from '../fonts/gira-sans-regular.woff';
-import GiraBold from '../fonts/gira-sans-bold.woff';
-import CircularBook from '../fonts/lineto-circular-book.woff';
-import CircularMedium from '../fonts/lineto-circular-medium.woff';
-import CircularBlack from '../fonts/lineto-circular-black.woff';
+import GiraLight from '../fonts/gira-sans-light.woff'
+import GiraMedium from '../fonts/gira-sans-regular.woff'
+import GiraBold from '../fonts/gira-sans-bold.woff'
+import CircularBook from '../fonts/lineto-circular-book.woff'
+import CircularMedium from '../fonts/lineto-circular-medium.woff'
+import CircularBlack from '../fonts/lineto-circular-black.woff'
 
 export const fonts = theme => css`
   @font-face {
@@ -49,4 +49,4 @@ export const fonts = theme => css`
     font-weight: ${theme.fontWeight.bold};
     font-style: normal;
   }
-`;
+`

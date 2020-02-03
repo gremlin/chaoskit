@@ -1,11 +1,11 @@
-import BlockGrid from './BlockGrid';
-import ListItem from './ListItem';
-import ExampleFill from '../../.storybook/components/ExampleFill';
+import BlockGrid from './BlockGrid'
+import ListItem from './ListItem'
+import ExampleFill from '../../.storybook/components/ExampleFill'
 
 export default {
   title: 'Components/Block Grid',
   component: BlockGrid,
-};
+}
 
 // @TODO For docs
 // Block Grids allow us to evenly split list items within a grid by specifying the number of items per row. Block Grids inherently add a negative left and right offset so it is flush with the edge of the column it is in.
@@ -35,7 +35,7 @@ export const Overview = () => (
       <ExampleFill />
     </ListItem>
   </BlockGrid>
-);
+)
 
 export const GutterSpacing = () => (
   <BlockGrid
@@ -55,7 +55,7 @@ export const GutterSpacing = () => (
       <ExampleFill />
     </ListItem>
   </BlockGrid>
-);
+)
 
 export const AlignmentModifiers = () => (
   <BlockGrid
@@ -69,4 +69,4 @@ export const AlignmentModifiers = () => (
       <ExampleFill />
     </ListItem>
   </BlockGrid>
-);
+)

@@ -1,9 +1,9 @@
-import cx from 'classnames';
-import PropTypes from 'prop-types';
-import { useTheme } from 'emotion-theming';
+import cx from 'classnames'
+import PropTypes from 'prop-types'
+import { useTheme } from 'emotion-theming'
 
 const ListItem = ({ className, ...opts }) => {
-  const theme = useTheme();
+  const theme = useTheme()
 
   return (
     <li
@@ -22,11 +22,11 @@ const ListItem = ({ className, ...opts }) => {
       className={cx(`CK__ListItem ${theme.settings.classes.trim}`, className)}
       {...opts}
     />
-  );
-};
+  )
+}
 
 ListItem.propTypes = {
   className: PropTypes.string,
-};
+}
 
-export default ListItem;
+export default ListItem

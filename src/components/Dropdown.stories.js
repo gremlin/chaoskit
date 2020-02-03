@@ -1,16 +1,16 @@
-import { boolean, select } from '@storybook/addon-knobs';
-import { action } from '@storybook/addon-actions';
+import { boolean, select } from '@storybook/addon-knobs'
+import { action } from '@storybook/addon-actions'
 
-import Dropdown, { DropdownMenuItemStyles } from './Dropdown';
-import DropdownHeader from './DropdownHeader';
-import List from './List';
-import ListItem from './ListItem';
-import { params as buttonParams } from './Button.stories';
+import Dropdown, { DropdownMenuItemStyles } from './Dropdown'
+import DropdownHeader from './DropdownHeader'
+import List from './List'
+import ListItem from './ListItem'
+import { params as buttonParams } from './Button.stories'
 
 export default {
   title: 'Components/Dropdown',
   component: Dropdown,
-};
+}
 
 const params = {
   position: () =>
@@ -23,7 +23,7 @@ const params = {
   trigger: {
     ...buttonParams,
   },
-};
+}
 
 export const Overview = () => (
   <Dropdown
@@ -44,7 +44,7 @@ export const Overview = () => (
   >
     <p>Hello from the dropdown!</p>
   </Dropdown>
-);
+)
 
 export const Menu = () => (
   <Dropdown
@@ -79,4 +79,4 @@ export const Menu = () => (
       </ListItem>
     </List>
   </Dropdown>
-);
+)

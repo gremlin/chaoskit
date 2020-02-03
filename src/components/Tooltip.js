@@ -1,10 +1,10 @@
-import { Children, cloneElement, Fragment, useRef, useState } from 'react';
-import cx from 'classnames';
-import PropTypes from 'prop-types';
-import { keyframes } from '@emotion/core';
-import { useTheme } from 'emotion-theming';
-import { createPortal } from 'react-dom';
-import useUpdateEffect from 'react-use/lib/useUpdateEffect';
+import { Children, cloneElement, Fragment, useRef, useState } from 'react'
+import cx from 'classnames'
+import PropTypes from 'prop-types'
+import { keyframes } from '@emotion/core'
+import { useTheme } from 'emotion-theming'
+import { createPortal } from 'react-dom'
+import useUpdateEffect from 'react-use/lib/useUpdateEffect'
 
 const StylesTooltipVariables = (theme, variation) => ({
   arrowSize: 10,
@@ -13,7 +13,7 @@ const StylesTooltipVariables = (theme, variation) => ({
   border: variation === 'light' ? theme.border.base : theme.color.dark.base,
   borderRadius: theme.settings.ui.radius && theme.borderRadius.base,
   color: variation === 'light' ? theme.fontColor.base : theme.contrast.base,
-});
+})
 
 const tooltipKeyframes = keyframes({
   from: {
@@ -25,39 +25,39 @@ const tooltipKeyframes = keyframes({
     transform: 'scale(1)',
     opacity: 1,
   },
-});
+})
 
 const Tooltip = ({ children, className, content, placement, variation }) => {
-  const theme = useTheme();
+  const theme = useTheme()
 
-  const tooltipRef = useRef();
-  const tooltipTriggerRef = useRef();
-  const [isHovered, setHover] = useState(false);
+  const tooltipRef = useRef()
+  const tooltipTriggerRef = useRef()
+  const [isHovered, setHover] = useState(false)
 
   const handleMouseEnter = () => {
-    setHover(true);
-  };
+    setHover(true)
+  }
 
   const handleMouseLeave = () => {
     setTimeout(() => {
-      setHover(false);
-    }, 250);
-  };
+      setHover(false)
+    }, 250)
+  }
 
   const renderTooltip = () => {
-    const $tooltip = tooltipRef.current;
-    const $tooltipTrigger = tooltipTriggerRef.current;
+    const $tooltip = tooltipRef.current
+    const $tooltipTrigger = tooltipTriggerRef.current
 
-    const rect = $tooltipTrigger.getBoundingClientRect();
+    const rect = $tooltipTrigger.getBoundingClientRect()
 
     // Grab dimensions of link
-    const linkDim = { w: rect.width, h: rect.height };
+    const linkDim = { w: rect.width, h: rect.height }
 
     // Tooltip dimensions
-    const tooltipDim = { w: $tooltip.offsetWidth, h: $tooltip.offsetHeight };
+    const tooltipDim = { w: $tooltip.offsetWidth, h: $tooltip.offsetHeight }
 
-    const scrollYOffset = window.pageYOffset;
-    const scrollXOffset = window.pageXOffset;
+    const scrollYOffset = window.pageYOffset
+    const scrollXOffset = window.pageXOffset
 
     // Apply styling
     // eslint-disable-next-line default-case
@@ -65,35 +65,35 @@ const Tooltip = ({ children, className, content, placement, variation }) => {
       placement // eslint-disable-line default-case
     ) {
       case 'top':
-        $tooltip.style.top = `${rect.top + scrollYOffset - tooltipDim.h}px`;
+        $tooltip.style.top = `${rect.top + scrollYOffset - tooltipDim.h}px`
         $tooltip.style.left = `${rect.left +
           scrollXOffset +
           linkDim.w / 2 -
-          tooltipDim.w / 2}px`;
-        break;
+          tooltipDim.w / 2}px`
+        break
       case 'bottom':
-        $tooltip.style.top = `${rect.top + scrollYOffset + linkDim.h}px`;
+        $tooltip.style.top = `${rect.top + scrollYOffset + linkDim.h}px`
         $tooltip.style.left = `${rect.left +
           scrollXOffset +
           linkDim.w / 2 -
-          tooltipDim.w / 2}px`;
-        break;
+          tooltipDim.w / 2}px`
+        break
       case 'left':
         $tooltip.style.top = `${rect.top +
           scrollYOffset +
           linkDim.h / 2 -
-          tooltipDim.h / 2}px`;
-        $tooltip.style.left = `${rect.left + scrollXOffset - tooltipDim.w}px`;
-        break;
+          tooltipDim.h / 2}px`
+        $tooltip.style.left = `${rect.left + scrollXOffset - tooltipDim.w}px`
+        break
       case 'right':
         $tooltip.style.top = `${rect.top +
           scrollYOffset +
           linkDim.h / 2 -
-          tooltipDim.h / 2}px`;
-        $tooltip.style.left = `${rect.left + scrollXOffset + linkDim.w}px`;
-        break;
+          tooltipDim.h / 2}px`
+        $tooltip.style.left = `${rect.left + scrollXOffset + linkDim.w}px`
+        break
     }
-  };
+  }
 
   const renderChildren = Children.map(children, child =>
     cloneElement(child, {
@@ -101,13 +101,13 @@ const Tooltip = ({ children, className, content, placement, variation }) => {
       onMouseEnter: handleMouseEnter,
       onMouseLeave: handleMouseLeave,
     })
-  );
+  )
 
   useUpdateEffect(() => {
     if (isHovered) {
-      renderTooltip();
+      renderTooltip()
     }
-  }, [isHovered]);
+  }, [isHovered])
 
   return (
     <Fragment>
@@ -224,8 +224,8 @@ const Tooltip = ({ children, className, content, placement, variation }) => {
           document.body
         )}
     </Fragment>
-  );
-};
+  )
+}
 
 Tooltip.propTypes = {
   children: PropTypes.node.isRequired,
@@ -233,11 +233,11 @@ Tooltip.propTypes = {
   content: PropTypes.any.isRequired,
   placement: PropTypes.oneOf(['top', 'bottom', 'left', 'right']),
   variation: PropTypes.oneOf(['light', 'dark']),
-};
+}
 
 Tooltip.defaultProps = {
   placement: 'top',
   variation: 'light',
-};
+}
 
-export default Tooltip;
+export default Tooltip

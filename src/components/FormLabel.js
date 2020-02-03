@@ -1,10 +1,10 @@
-import { forwardRef } from 'react';
-import PropTypes from 'prop-types';
-import cx from 'classnames';
-import { useTheme } from 'emotion-theming';
+import { forwardRef } from 'react'
+import PropTypes from 'prop-types'
+import cx from 'classnames'
+import { useTheme } from 'emotion-theming'
 
-import asterisk from '../assets/icons/asterisk.svg';
-import close from '../assets/icons/close.svg';
+import asterisk from '../assets/icons/asterisk.svg'
+import close from '../assets/icons/close.svg'
 
 export const StylesFormLabelBase = (theme, props = {}) => [
   {
@@ -56,11 +56,11 @@ export const StylesFormLabelBase = (theme, props = {}) => [
         },
       ],
     },
-];
+]
 
 const FormLabel = forwardRef(
   ({ as: Component, children, className, required, error, ...opts }, ref) => {
-    const theme = useTheme();
+    const theme = useTheme()
 
     return children ? (
       <Component
@@ -71,9 +71,9 @@ const FormLabel = forwardRef(
       >
         {children}
       </Component>
-    ) : null;
+    ) : null
   }
-);
+)
 
 FormLabel.propTypes = {
   as: PropTypes.string,
@@ -81,10 +81,10 @@ FormLabel.propTypes = {
   className: PropTypes.string,
   required: PropTypes.bool,
   error: PropTypes.bool,
-};
+}
 
 FormLabel.defaultProps = {
   as: 'label',
-};
+}
 
-export default FormLabel;
+export default FormLabel

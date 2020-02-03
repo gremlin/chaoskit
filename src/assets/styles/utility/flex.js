@@ -3,4 +3,4 @@ export const base = {
   listStyle: 'none',
   padding: 0,
   margin: 0,
-};
+}

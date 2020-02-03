@@ -1,14 +1,14 @@
-import { useContext } from 'react';
-import PropTypes from 'prop-types';
+import { useContext } from 'react'
+import PropTypes from 'prop-types'
 
-import { RadioGroupContext } from './RadioGroup';
+import { RadioGroupContext } from './RadioGroup'
 
-import Radio from './Radio';
+import Radio from './Radio'
 
 const RadioWithContext = ({ value, ...props }) => {
   const { selectedValue, name, onChange, noContrast } = useContext(
     RadioGroupContext
-  );
+  )
 
   return (
     <Radio
@@ -19,11 +19,11 @@ const RadioWithContext = ({ value, ...props }) => {
       checked={value === selectedValue}
       {...props}
     />
-  );
-};
+  )
+}
 
 RadioWithContext.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-};
+}
 
-export default RadioWithContext;
+export default RadioWithContext

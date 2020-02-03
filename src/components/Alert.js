@@ -1,13 +1,13 @@
-import { useEffect, useRef, useState } from 'react';
-import cx from 'classnames';
-import PropTypes from 'prop-types';
-import useUpdateEffect from 'react-use/lib/useUpdateEffect';
-import gsap from 'gsap';
-import { kebabCase, toLower } from 'lodash-es';
-import { useTheme } from 'emotion-theming';
+import { useEffect, useRef, useState } from 'react'
+import cx from 'classnames'
+import PropTypes from 'prop-types'
+import useUpdateEffect from 'react-use/lib/useUpdateEffect'
+import gsap from 'gsap'
+import { kebabCase, toLower } from 'lodash-es'
+import { useTheme } from 'emotion-theming'
 
-import { misc, text } from '../assets/styles/utility';
-import Close from './Close';
+import { misc, text } from '../assets/styles/utility'
+import Close from './Close'
 
 export const StylesAlertBase = theme => ({
   display: 'flex',
@@ -33,22 +33,22 @@ export const StylesAlertBase = theme => ({
       },
     },
   ],
-});
+})
 
 export const StylesAlertDefault = theme => ({
   borderColor: theme.border.base,
   background: theme.color.panel.base,
-});
+})
 
 export const StylesAlertPrimary = theme => ({
   borderColor: theme.color.primary.base,
   background: theme.color.primary.light,
-});
+})
 
 export const StylesAlertWarning = theme => ({
   borderColor: theme.color.warning.base,
   background: theme.color.warning.light,
-});
+})
 
 export const StylesAlertDanger = theme => ({
   borderColor: theme.color.danger.base,
@@ -57,7 +57,7 @@ export const StylesAlertDanger = theme => ({
   '.CK__Alert__Title, .CK__Alert__Close': {
     color: theme.color.danger.base,
   },
-});
+})
 
 const Alert = ({
   children,
@@ -72,56 +72,56 @@ const Alert = ({
   type,
   ...opts
 }) => {
-  const theme = useTheme();
+  const theme = useTheme()
 
-  const alertRef = useRef();
-  const [hidden, setHidden] = useState(false);
+  const alertRef = useRef()
+  const [hidden, setHidden] = useState(false)
 
   const handleOnComplete = () => {
-    setHidden(true);
+    setHidden(true)
 
-    onComplete();
-  };
+    onComplete()
+  }
 
   const handleOnReverseStart = () => {
-    setHidden(false);
+    setHidden(false)
 
-    onReverseStart();
-  };
+    onReverseStart()
+  }
 
   const attachTimeline = () => {
-    const $alert = alertRef.current;
+    const $alert = alertRef.current
 
-    let forward = true;
-    let lastTime = 0;
+    let forward = true
+    let lastTime = 0
 
     // Attach GSAP
     $alert.timeline = gsap.timeline({
       paused: true,
       onStart: () => {
-        onStart();
+        onStart()
       },
       onUpdate: () => {
-        const newTime = $alert.timeline.time();
+        const newTime = $alert.timeline.time()
 
         if (
           (forward && newTime < lastTime) ||
           (!forward && newTime > lastTime)
         ) {
-          forward = !forward;
+          forward = !forward
           if (!forward) {
-            handleOnReverseStart();
+            handleOnReverseStart()
           }
         }
-        lastTime = newTime;
+        lastTime = newTime
       },
       onComplete: () => {
-        handleOnComplete();
+        handleOnComplete()
       },
       onReverseComplete: () => {
-        onReverseComplete();
+        onReverseComplete()
       },
-    });
+    })
 
     $alert.timeline.to($alert, {
       duration: theme.gsap.timing.long,
@@ -130,36 +130,36 @@ const Alert = ({
       y: '50%',
       opacity: 0,
       ease: theme.gsap.transition.base,
-    });
+    })
 
     if (collapse) {
-      $alert.timeline.progress(1);
+      $alert.timeline.progress(1)
     }
-  };
+  }
 
   const collapseAlert = () => {
-    const $alert = alertRef.current;
+    const $alert = alertRef.current
 
-    if ($alert && $alert.timeline) $alert.timeline.play();
-  };
+    if ($alert && $alert.timeline) $alert.timeline.play()
+  }
 
   const openAlert = () => {
-    const $alert = alertRef.current;
+    const $alert = alertRef.current
 
-    if ($alert && $alert.timeline) $alert.timeline.reverse();
-  };
+    if ($alert && $alert.timeline) $alert.timeline.reverse()
+  }
 
   useEffect(() => {
-    attachTimeline();
-  }, []);
+    attachTimeline()
+  }, [])
 
   useUpdateEffect(() => {
     if (collapse) {
-      collapseAlert();
+      collapseAlert()
     } else {
-      openAlert();
+      openAlert()
     }
-  }, [collapse]);
+  }, [collapse])
 
   return (
     <div
@@ -203,8 +203,8 @@ const Alert = ({
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
 Alert.propTypes = {
   children: PropTypes.node.isRequired,
@@ -221,7 +221,7 @@ Alert.propTypes = {
   close: PropTypes.bool,
   title: PropTypes.string,
   type: PropTypes.oneOf(['default', 'primary', 'warning', 'danger']),
-};
+}
 
 Alert.defaultProps = {
   onComplete: () => {},
@@ -230,6 +230,6 @@ Alert.defaultProps = {
   onStart: () => {},
   collapse: false,
   type: 'default',
-};
+}
 
-export default Alert;
+export default Alert

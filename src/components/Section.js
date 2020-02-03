@@ -1,18 +1,18 @@
-import { forwardRef } from 'react';
-import PropTypes from 'prop-types';
-import cx from 'classnames';
-import { rgba } from 'polished';
-import { useTheme } from 'emotion-theming';
+import { forwardRef } from 'react'
+import PropTypes from 'prop-types'
+import cx from 'classnames'
+import { rgba } from 'polished'
+import { useTheme } from 'emotion-theming'
 
-import { misc } from '../assets/styles/utility';
+import { misc } from '../assets/styles/utility'
 
 const StylesSectionVariables = {
   slantOffset: 2.5,
-};
+}
 
 const Section = forwardRef(
   ({ as: Component, space, slant, className, ...opts }, ref) => {
-    const theme = useTheme();
+    const theme = useTheme()
 
     return (
       <Component
@@ -71,9 +71,9 @@ const Section = forwardRef(
         ]}
         {...opts}
       />
-    );
+    )
   }
-);
+)
 
 Section.propTypes = {
   space: PropTypes.oneOf([
@@ -86,11 +86,11 @@ Section.propTypes = {
   ]),
   slant: PropTypes.oneOf(['top', 'bottom', 'bottom-shadow']),
   className: PropTypes.string,
-};
+}
 
 Section.defaultProps = {
   as: 'section',
   space: 'large',
-};
+}
 
-export default Section;
+export default Section

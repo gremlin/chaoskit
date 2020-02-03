@@ -1,11 +1,11 @@
-import { text, link, misc, contrast, prism, table, form } from './utility';
+import { text, link, misc, contrast, prism, table, form } from './utility'
 
 export const StylesGlobalVariables = theme => ({
   code: {
     color: theme.color.danger.base,
     background: theme.color.panel.base,
   },
-});
+})
 
 export const globalStyles = theme => [
   {
@@ -428,4 +428,4 @@ export const globalStyles = theme => [
   theme.settings.prism.enable &&
     prism.styles(theme, StylesGlobalVariables(theme)),
   theme.settings.contrast.enable && contrast.styles(theme),
-];
+]

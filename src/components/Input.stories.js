@@ -1,13 +1,13 @@
-import { boolean, select, text } from '@storybook/addon-knobs';
+import { boolean, select, text } from '@storybook/addon-knobs'
 
-import Input from './Input';
-import ContrastWrapper from '../../.storybook/components/ContrastWrapper';
-import icons from '../assets/icons/icons.json';
+import Input from './Input'
+import ContrastWrapper from '../../.storybook/components/ContrastWrapper'
+import icons from '../assets/icons/icons.json'
 
 export default {
   title: 'Forms/Input',
   component: Input,
-};
+}
 
 const params = {
   disabled: () => boolean('Disabled', false),
@@ -17,7 +17,7 @@ const params = {
   noContrast: () => boolean('No contrast', false),
   prefixIcon: () => select('Icon', Object.keys(icons), 'user'),
   required: () => boolean('Required', false),
-};
+}
 
 export const Overview = () => (
   <Input
@@ -28,7 +28,7 @@ export const Overview = () => (
     validationMessage={params.validationMessage()}
     required={params.required()}
   />
-);
+)
 
 export const PrefixIcon = () => (
   <Input
@@ -40,7 +40,7 @@ export const PrefixIcon = () => (
     prefixIcon={params.prefixIcon()}
     required={params.required()}
   />
-);
+)
 
 export const Contrast = () => (
   <ContrastWrapper>
@@ -54,4 +54,4 @@ export const Contrast = () => (
       noContrast={params.noContrast()}
     />
   </ContrastWrapper>
-);
+)

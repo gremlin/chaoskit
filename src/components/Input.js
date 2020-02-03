@@ -1,13 +1,13 @@
-import { forwardRef, useMemo } from 'react';
-import PropTypes from 'prop-types';
-import cx from 'classnames';
-import { useTheme } from 'emotion-theming';
-import MaskedInput from 'react-text-mask';
+import { forwardRef, useMemo } from 'react'
+import PropTypes from 'prop-types'
+import cx from 'classnames'
+import { useTheme } from 'emotion-theming'
+import MaskedInput from 'react-text-mask'
 
-import FormControlWrapper from './FormControlWrapper';
-import Icon, { StylesIconVariables } from './Icon';
-import { form } from '../assets/styles/utility';
-import { generateUUID } from '../helpers/utility';
+import FormControlWrapper from './FormControlWrapper'
+import Icon, { StylesIconVariables } from './Icon'
+import { form } from '../assets/styles/utility'
+import { generateUUID } from '../helpers/utility'
 
 export const StylesInputBase = (theme, props = {}) => [
   form.base(theme),
@@ -59,7 +59,7 @@ export const StylesInputBase = (theme, props = {}) => [
     paddingLeft: `calc(${form.variables(theme).padding +
       theme.space.small}px + ${StylesIconVariables.base})`,
   },
-];
+]
 
 const Input = forwardRef(
   (
@@ -81,9 +81,9 @@ const Input = forwardRef(
     },
     ref
   ) => {
-    const theme = useTheme();
+    const theme = useTheme()
     // Only regenerate this if the name prop changes
-    const id = useMemo(() => `${name}-${generateUUID()}`, [name]);
+    const id = useMemo(() => `${name}-${generateUUID()}`, [name])
 
     const inputRender = () => {
       const defaultProps = {
@@ -93,7 +93,7 @@ const Input = forwardRef(
         ref,
         disabled,
         ...opts,
-      };
+      }
 
       // `react-text-mask` does not support 'email' or 'number' input types
       if (mask && !['email', 'number'].includes(type)) {
@@ -116,7 +116,7 @@ const Input = forwardRef(
               />
             )}
           />
-        );
+        )
       }
 
       return (
@@ -130,8 +130,8 @@ const Input = forwardRef(
           className={cx('CK__Input', className)}
           {...defaultProps}
         />
-      );
-    };
+      )
+    }
 
     return (
       <FormControlWrapper
@@ -173,9 +173,9 @@ const Input = forwardRef(
           inputRender()
         )}
       </FormControlWrapper>
-    );
+    )
   }
-);
+)
 
 Input.propTypes = {
   className: PropTypes.string,
@@ -191,11 +191,11 @@ Input.propTypes = {
   name: PropTypes.string.isRequired,
   type: PropTypes.string,
   wrapperProps: PropTypes.object,
-};
+}
 
 Input.defaultProps = {
   type: 'text',
   guide: false,
-};
+}
 
-export default Input;
+export default Input

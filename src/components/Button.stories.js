@@ -1,14 +1,14 @@
-import { boolean, select, text } from '@storybook/addon-knobs';
+import { boolean, select, text } from '@storybook/addon-knobs'
 
-import { Button, Icon } from '.';
-import ContrastWrapper from '../../.storybook/components/ContrastWrapper';
-import icons from '../assets/icons/icons.json';
+import { Button, Icon } from '.'
+import ContrastWrapper from '../../.storybook/components/ContrastWrapper'
+import icons from '../assets/icons/icons.json'
 
 export default {
   title: 'Components/Button',
   component: Button,
   includeStories: ['Overview', 'IconOnly', 'Contrast'],
-};
+}
 
 export const params = {
   disabled: () => boolean('Disabled', false),
@@ -24,7 +24,7 @@ export const params = {
     ),
   url: () => text('URL', ''),
   size: () => select('Size', ['base', 'xsmall', 'small'], 'base'),
-};
+}
 
 // @TODO For docs
 // When aligning buttons next to each other, consider using the Inline component for proper horizontal and vertical spacing
@@ -39,7 +39,7 @@ export const Overview = () => (
   >
     {params.label()}
   </Button>
-);
+)
 
 // @TODO For docs
 // Icon buttons only contain a single icon and can be used to indicate shortcuts.
@@ -56,7 +56,7 @@ export const IconOnly = () => (
   >
     <Icon icon={params.icon()} />
   </Button>
-);
+)
 
 // @TODO For docs
 // Automatically adapts to parent containers containing \`.u-contrast\`.
@@ -75,4 +75,4 @@ export const Contrast = () => (
       {params.label()}
     </Button>
   </ContrastWrapper>
-);
+)

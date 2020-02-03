@@ -6,16 +6,16 @@
  * @return {function}
  */
 export function throttleScroll(action) {
-  let isRunning = false;
+  let isRunning = false
   // eslint-disable-next-line func-names
   return function() {
-    if (isRunning) return;
-    isRunning = true;
+    if (isRunning) return
+    isRunning = true
     window.requestAnimationFrame(() => {
-      action();
-      isRunning = false;
-    });
-  };
+      action()
+      isRunning = false
+    })
+  }
 }
 
 /**
@@ -37,5 +37,5 @@ export function generateUUID(a) {
  * @return {Boolean} [description]
  */
 export function isTouchDevice() {
-  return 'ontouchstart' in document.documentElement;
+  return 'ontouchstart' in document.documentElement
 }

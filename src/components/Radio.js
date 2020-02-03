@@ -1,14 +1,14 @@
 /* eslint-disable jsx-a11y/label-has-associated-control, jsx-a11y/label-has-for */
-import cx from 'classnames';
-import PropTypes from 'prop-types';
-import { useTheme } from 'emotion-theming';
+import cx from 'classnames'
+import PropTypes from 'prop-types'
+import { useTheme } from 'emotion-theming'
 
-import { form } from '../assets/styles/utility';
+import { form } from '../assets/styles/utility'
 
 export const StylesRadioVariables = {
   size: 22,
   iconSize: 10,
-};
+}
 
 const Radio = ({
   checked,
@@ -22,7 +22,7 @@ const Radio = ({
   wrapperProps,
   ...opts
 }) => {
-  const theme = useTheme();
+  const theme = useTheme()
 
   return (
     <label
@@ -126,8 +126,8 @@ const Radio = ({
       />
       {label && <span css={{ marginLeft: theme.space.small }}>{label}</span>}
     </label>
-  );
-};
+  )
+}
 
 Radio.propTypes = {
   checked: PropTypes.bool,
@@ -139,6 +139,6 @@ Radio.propTypes = {
   onChange: PropTypes.func.isRequired,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   wrapperProps: PropTypes.object,
-};
+}
 
-export default Radio;
+export default Radio

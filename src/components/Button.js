@@ -1,12 +1,12 @@
-import PropTypes from 'prop-types';
-import { forwardRef } from 'react';
-import cx from 'classnames';
-import { shade, rgba } from 'polished';
-import { useTheme } from 'emotion-theming';
+import PropTypes from 'prop-types'
+import { forwardRef } from 'react'
+import cx from 'classnames'
+import { shade, rgba } from 'polished'
+import { useTheme } from 'emotion-theming'
 
-import { gradient, misc } from '../assets/styles/utility';
-import { StylesIconVariables } from './Icon';
-import Loader from './Loader';
+import { gradient, misc } from '../assets/styles/utility'
+import { StylesIconVariables } from './Icon'
+import Loader from './Loader'
 
 const buttonBorderGradient = (start, stop) => ({
   borderColor: 'transparent',
@@ -16,17 +16,17 @@ const buttonBorderGradient = (start, stop) => ({
   })}, ${gradient.generateGradient({ start, stop })}`,
   backgroundOrigin: 'border-box',
   backgroundClip: 'content-box, border-box',
-});
+})
 
 const StylesButtonVariables = theme => ({
   borderWidth: 2,
   color: {
     base: theme.fontColor.base,
     get dark() {
-      return shade(0.1, this.base);
+      return shade(0.1, this.base)
     },
   },
-});
+})
 
 export const StylesButtonBase = (theme, props = {}) => [
   {
@@ -116,7 +116,7 @@ export const StylesButtonBase = (theme, props = {}) => [
         },
       },
     },
-];
+]
 
 export const StylesButtonSmall = theme => ({
   padding: `0 ${
@@ -127,7 +127,7 @@ export const StylesButtonSmall = theme => ({
   height: theme.height.small,
   lineHeight: `${theme.height.small -
     StylesButtonVariables(theme).borderWidth * 2}px`,
-});
+})
 
 export const StylesButtonXsmall = theme => ({
   padding: `0 ${
@@ -137,7 +137,7 @@ export const StylesButtonXsmall = theme => ({
   height: theme.height.xsmall,
   lineHeight: `${theme.height.xsmall -
     StylesButtonVariables(theme).borderWidth * 2}px`,
-});
+})
 
 export const StylesButtonDefault = (theme, props = {}) => [
   {
@@ -163,13 +163,13 @@ export const StylesButtonDefault = (theme, props = {}) => [
         },
       },
     },
-];
+]
 
 export const StylesButtonOutlinePrimary = (theme, props = {}) => {
   const interactiveStyles = {
     color: StylesButtonVariables(theme).color.base,
     borderColor: theme.color.primary.dark,
-  };
+  }
 
   return [
     {
@@ -199,8 +199,8 @@ export const StylesButtonOutlinePrimary = (theme, props = {}) => {
           props.active && interactiveStyles,
         ],
       },
-  ];
-};
+  ]
+}
 
 export const StylesButtonPrimary = (theme, props = {}) => {
   const interactiveStyles = [
@@ -212,11 +212,11 @@ export const StylesButtonPrimary = (theme, props = {}) => {
 
     theme.settings.button.gradient.enable &&
       buttonBorderGradient(theme.brand.teal, theme.color.primary.base),
-  ];
+  ]
 
   const interactiveStylesContrast = {
     color: theme.color.primary.dark,
-  };
+  }
 
   return [
     {
@@ -254,8 +254,8 @@ export const StylesButtonPrimary = (theme, props = {}) => {
           props.active && interactiveStylesContrast,
         ],
       },
-  ];
-};
+  ]
+}
 
 export const StylesButtonSecondary = (theme, props = {}) => [
   {
@@ -280,18 +280,18 @@ export const StylesButtonSecondary = (theme, props = {}) => [
         },
       },
     },
-];
+]
 
 export const StylesButtonDanger = (theme, props = {}) => {
   const interactiveStyles = {
     color: theme.contrast.base,
     background: theme.color.danger.dark,
     borderColor: theme.color.danger.dark,
-  };
+  }
 
   const interactiveStylesContrast = {
     color: theme.color.danger.dark,
-  };
+  }
 
   return [
     {
@@ -323,8 +323,8 @@ export const StylesButtonDanger = (theme, props = {}) => {
           props.active && interactiveStylesContrast,
         ],
       },
-  ];
-};
+  ]
+}
 
 export const StylesButtonIconOnly = (theme, props = {}) => [
   {
@@ -352,7 +352,7 @@ export const StylesButtonIconOnly = (theme, props = {}) => [
       height: StylesIconVariables.base,
     },
   },
-];
+]
 
 //
 // <button> reset
@@ -394,7 +394,7 @@ export const StylesButtonReset = {
     border: 0,
     padding: 0,
   },
-};
+}
 
 const Button = forwardRef(
   (
@@ -416,21 +416,21 @@ const Button = forwardRef(
     },
     ref
   ) => {
-    const theme = useTheme();
+    const theme = useTheme()
 
     const buttonProps = {
       disabled: disabled || loading,
       ref,
       ...opts,
-    };
+    }
 
     if (url) {
-      buttonProps.href = url;
-      Component = 'a';
+      buttonProps.href = url
+      Component = 'a'
     }
 
     if (Component !== 'a') {
-      buttonProps.type = actionType;
+      buttonProps.type = actionType
     }
 
     return (
@@ -473,9 +473,9 @@ const Button = forwardRef(
           />
         )}
       </Component>
-    );
+    )
   }
-);
+)
 
 Button.propTypes = {
   active: PropTypes.bool,
@@ -501,11 +501,11 @@ Button.propTypes = {
     'outlinePrimary',
   ]),
   url: PropTypes.string,
-};
+}
 
 Button.defaultProps = {
   as: 'button',
   actionType: 'button',
-};
+}
 
-export default Button;
+export default Button

@@ -1,4 +1,4 @@
-import { fluidRange, rgba, shade, tint, timingFunctions } from 'polished';
+import { fluidRange, rgba, shade, tint, timingFunctions } from 'polished'
 
 // @NOTE Filter generator https://codepen.io/zslabs/pen/xePEVN
 const brand = {
@@ -41,26 +41,26 @@ const brand = {
   yellow: '#ffcf23',
   yellow__filter:
     'brightness(0) saturate(100%) invert(79%) sepia(82%) saturate(599%) hue-rotate(335deg) brightness(103%) contrast(102%)',
-};
+}
 
 const breakpoint = {
   xlarge: 1200,
   get large__max() {
-    return this.xlarge - 1;
+    return this.xlarge - 1
   },
   large: 960,
   get medium__max() {
-    return this.large - 1;
+    return this.large - 1
   },
   medium: 768,
   get small__max() {
-    return this.medium - 1;
+    return this.medium - 1
   },
   small: 480,
   get xsmall__max() {
-    return this.small - 1;
+    return this.small - 1
   },
-};
+}
 
 const mq = {
   xsmall__max: `@media (max-width: ${breakpoint.xsmall__max}px)`,
@@ -71,12 +71,12 @@ const mq = {
   large: `@media (min-width: ${breakpoint.large}px)`,
   large__max: `@media (max-width: ${breakpoint.large__max}px)`,
   xlarge: `@media (min-width: ${breakpoint.xlarge}px)`,
-};
+}
 
 const opacity = {
   base: 0.5,
   overlay: 0.75,
-};
+}
 
 const color = {
   light: {
@@ -86,47 +86,47 @@ const color = {
   panel: {
     base: '#f8f8f8',
     get light() {
-      return tint(0.5, this.base);
+      return tint(0.5, this.base)
     },
     get dark() {
-      return shade(0.025, this.base);
+      return shade(0.025, this.base)
     },
   },
   dark: {
     base: brand.black,
     light: brand.lightBlack,
     get overlay() {
-      return rgba(this.base, opacity.overlay);
+      return rgba(this.base, opacity.overlay)
     },
     filter: brand.lightBlack__filter,
   },
   primary: {
     base: brand.green,
     get light() {
-      return tint(0.9, this.base);
+      return tint(0.9, this.base)
     },
     get dark() {
-      return shade(0.1, this.base);
+      return shade(0.1, this.base)
     },
     filter: brand.green__filter,
   },
   warning: {
     base: brand.yellow,
     get light() {
-      return tint(0.9, this.base);
+      return tint(0.9, this.base)
     },
     get dark() {
-      return shade(0.1, this.base);
+      return shade(0.1, this.base)
     },
     filter: brand.yellow__filter,
   },
   danger: {
     base: brand.red,
     get light() {
-      return tint(0.925, this.base);
+      return tint(0.925, this.base)
     },
     get dark() {
-      return shade(0.1, this.base);
+      return shade(0.1, this.base)
     },
     filter: brand.red__filter,
   },
@@ -136,59 +136,59 @@ const color = {
   border: {
     base: '#e6e6e6',
   },
-};
+}
 
 const border = {
   base: `1px solid ${color.border.base}`,
   large: `2px solid ${color.border.base}`,
-};
+}
 
 const borderRadius = {
   base: 4,
   large: 8,
-};
+}
 
 const boxShadowColor = {
   base: rgba(color.dark.base, 0.18),
   light: rgba(color.dark.base, 0.14),
   xlight: rgba(color.dark.base, 0.1),
-};
+}
 
 const boxShadowOffset = {
   base: '0 1px 5px -2px',
   neutral: '0 5px 15px',
-};
+}
 
 const boxShadow = {
   base: `${boxShadowOffset.base} ${boxShadowColor.base}`,
   large: `0 15px 35px ${boxShadowColor.xlight}, 0 5px 15px ${boxShadowColor.xlight}`,
   neutral: `${boxShadowOffset.neutral} ${boxShadowColor.xlight}`,
-};
+}
 
 const fontFamily = {
   base: "Gira, 'Helvetica Neue', Arial, sans-serif",
   code: "'Operator Mono', Consolas, monospace, serif",
   heading: "Circular, 'Helvetica Neue', Arial, sans-serif",
-};
+}
 
 const muted = {
   base: 0.6,
-};
+}
 
 const fontColor = {
   base: color.dark.light,
   base__filter: brand.lightBlack__filter,
   get muted() {
-    return rgba(this.base, muted.base);
+    return rgba(this.base, muted.base)
   },
   get mutedDark() {
-    return rgba(shade(0.1, this.muted), muted.base);
+    return rgba(shade(0.1, this.muted), muted.base)
   },
   heading: color.dark.base,
   get headingDark() {
-    return shade(0.1, this.heading);
+    return shade(0.1, this.heading)
   },
-};
+}
 
 const fontSize = {
   xxsmall: 10,
@@ -203,7 +203,7 @@ const fontSize = {
   h3: 34,
   h4: 28,
   get h5() {
-    return this.small;
+    return this.small
   },
   get medium__fluid() {
     return fluidRange(
@@ -214,7 +214,7 @@ const fontSize = {
       },
       `${breakpoint.small}px`,
       `${breakpoint.large}px`
-    );
+    )
   },
   get large__fluid() {
     return fluidRange(
@@ -225,7 +225,7 @@ const fontSize = {
       },
       `${breakpoint.small}px`,
       `${breakpoint.large}px`
-    );
+    )
   },
   get xlarge__fluid() {
     return fluidRange(
@@ -236,7 +236,7 @@ const fontSize = {
       },
       `${breakpoint.small}px`,
       `${breakpoint.large}px`
-    );
+    )
   },
   get h1__fluid() {
     return fluidRange(
@@ -247,7 +247,7 @@ const fontSize = {
       },
       `${breakpoint.small}px`,
       `${breakpoint.large}px`
-    );
+    )
   },
   get h2__fluid() {
     return fluidRange(
@@ -258,7 +258,7 @@ const fontSize = {
       },
       `${breakpoint.small}px`,
       `${breakpoint.large}px`
-    );
+    )
   },
   get h3__fluid() {
     return fluidRange(
@@ -269,15 +269,15 @@ const fontSize = {
       },
       `${breakpoint.small}px`,
       `${breakpoint.large}px`
-    );
+    )
   },
-};
+}
 
 const fontWeight = {
   base: 300,
   medium: 500,
   bold: 600,
-};
+}
 
 const height = {
   large: 64,
@@ -286,24 +286,24 @@ const height = {
   xsmall: 32,
   xxsmall: 28,
   xxxsmall: 24,
-};
+}
 
 const lineHeight = {
   base: 1.65,
   get base__computed() {
-    return fontSize.base * this.base;
+    return fontSize.base * this.base
   },
   small: 1.25,
   get small__computed() {
-    return fontSize.small * this.small;
+    return fontSize.small * this.small
   },
-};
+}
 
 const letterSpacing = {
   base: 'normal',
   negative: '-0.025em',
   small: '0.175em',
-};
+}
 
 const space = {
   xsmall: 4,
@@ -312,7 +312,7 @@ const space = {
   medium: 24,
   large: 32,
   xlarge: 64,
-};
+}
 
 const settings = {
   contrast: {
@@ -347,18 +347,18 @@ const settings = {
     trim: 'use-trimChildren',
     contrast: 'u-contrast',
   },
-};
+}
 
 const transition = {
   base: timingFunctions('easeInOutExpo'),
   bounce: timingFunctions('easeOutBack'),
-};
+}
 
 const timing = {
   short: '0.175s',
   base: '0.25s',
   long: '0.5s',
-};
+}
 
 const gsap = {
   transition: {
@@ -370,21 +370,21 @@ const gsap = {
     base: 0.25,
     long: 0.5,
   },
-};
+}
 
 const contrast = {
   base: color.light.base,
   get muted() {
-    return rgba(this.base, 0.8);
+    return rgba(this.base, 0.8)
   },
   get border() {
-    return rgba(this.base, 0.7);
+    return rgba(this.base, 0.7)
   },
   get hr() {
-    return rgba(this.base, 0.05);
+    return rgba(this.base, 0.05)
   },
   filter: color.light.filter,
-};
+}
 
 export const theme = {
   brand,
@@ -411,4 +411,4 @@ export const theme = {
   gsap,
   contrast,
   settings,
-};
+}

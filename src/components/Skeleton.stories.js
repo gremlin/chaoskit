@@ -1,12 +1,12 @@
-import Inline from './Inline';
-import Skeleton from './Skeleton';
-import ContrastWrapper from '../../.storybook/components/ContrastWrapper';
-import ListItem from './ListItem';
+import Inline from './Inline'
+import Skeleton from './Skeleton'
+import ContrastWrapper from '../../.storybook/components/ContrastWrapper'
+import ListItem from './ListItem'
 
 export default {
   title: 'Components/Skeleton',
   component: Skeleton,
-};
+}
 
 const SkeletonExample = () => (
   <Inline>
@@ -17,12 +17,12 @@ const SkeletonExample = () => (
       <Skeleton css={{ width: 50, height: 50, borderRadius: '50%' }} />
     </ListItem>
   </Inline>
-);
+)
 
-export const Overview = () => <SkeletonExample />;
+export const Overview = () => <SkeletonExample />
 
 export const Contrast = () => (
   <ContrastWrapper>
     <SkeletonExample />
   </ContrastWrapper>
-);
+)

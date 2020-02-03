@@ -1,12 +1,12 @@
-import { boolean, select } from '@storybook/addon-knobs';
-import { action } from '@storybook/addon-actions';
+import { boolean, select } from '@storybook/addon-knobs'
+import { action } from '@storybook/addon-actions'
 
-import Alert from './Alert';
+import Alert from './Alert'
 
 export default {
   title: 'Components/Alert',
   component: Alert,
-};
+}
 
 export const Overview = () => (
   <Alert
@@ -32,4 +32,4 @@ export const Overview = () => (
       </p>
     </div>
   </Alert>
-);
+)

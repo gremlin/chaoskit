@@ -1,18 +1,18 @@
-import { boolean, text, select } from '@storybook/addon-knobs';
-import { action } from '@storybook/addon-actions';
+import { boolean, text, select } from '@storybook/addon-knobs'
+import { action } from '@storybook/addon-actions'
 
-import List from './List';
-import ListItem from './ListItem';
-import RadioGroup from './RadioGroup';
-import Radio from './Radio';
-import RadioWithContext from './RadioWithContext';
+import List from './List'
+import ListItem from './ListItem'
+import RadioGroup from './RadioGroup'
+import Radio from './Radio'
+import RadioWithContext from './RadioWithContext'
 
-import ContrastWrapper from '../../.storybook/components/ContrastWrapper';
+import ContrastWrapper from '../../.storybook/components/ContrastWrapper'
 
 export default {
   title: 'Forms/Radio',
   component: Radio,
-};
+}
 
 const params = {
   overview: {
@@ -39,7 +39,7 @@ const params = {
     required: () => boolean('Required', false),
     noContrast: () => boolean('No contrast', false),
   },
-};
+}
 
 export const Overview = () => (
   <Radio
@@ -52,7 +52,7 @@ export const Overview = () => (
     }
     value="value"
   />
-);
+)
 
 // @TODO For docs
 // Wrap in \`<RadioGroup />\` and use \`<RadioWithContext />\` to handle \`name\`, \`onChange\`, \`selectedValue\`, and \`noContrast\` from the parent component.
@@ -88,7 +88,7 @@ export const WithContext = () => (
       </ListItem>
     </List>
   </RadioGroup>
-);
+)
 
 // @TODO For docs
 // Automatically adapts to parent containers containing \`.u-contrast\`.
@@ -107,4 +107,4 @@ export const Contrast = () => (
       }
     />
   </ContrastWrapper>
-);
+)

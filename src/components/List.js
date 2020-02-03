@@ -1,11 +1,11 @@
-import cx from 'classnames';
-import PropTypes from 'prop-types';
-import { useTheme } from 'emotion-theming';
+import cx from 'classnames'
+import PropTypes from 'prop-types'
+import { useTheme } from 'emotion-theming'
 
-import { list } from '../assets/styles/utility';
+import { list } from '../assets/styles/utility'
 
 const List = ({ as: Component, className, space, type, border, ...opts }) => {
-  const theme = useTheme();
+  const theme = useTheme()
 
   return (
     <Component
@@ -31,8 +31,8 @@ const List = ({ as: Component, className, space, type, border, ...opts }) => {
       className={cx('CK__List', className)}
       {...opts}
     />
-  );
-};
+  )
+}
 
 List.propTypes = {
   as: PropTypes.oneOf(['ul', 'ol']),
@@ -47,10 +47,10 @@ List.propTypes = {
     'xlarge',
   ]),
   type: PropTypes.oneOf(['numbers', 'circles']),
-};
+}
 
 List.defaultProps = {
   as: 'ul',
-};
+}
 
-export default List;
+export default List

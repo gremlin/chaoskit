@@ -1,11 +1,11 @@
-import { Fragment, useEffect, useRef } from 'react';
-import cx from 'classnames';
-import PropTypes from 'prop-types';
-import gsap from 'gsap';
-import useUpdateEffect from 'react-use/lib/useUpdateEffect';
-import { useTheme } from 'emotion-theming';
+import { Fragment, useEffect, useRef } from 'react'
+import cx from 'classnames'
+import PropTypes from 'prop-types'
+import gsap from 'gsap'
+import useUpdateEffect from 'react-use/lib/useUpdateEffect'
+import { useTheme } from 'emotion-theming'
 
-import Button from './Button';
+import Button from './Button'
 
 const Reveal = ({
   onStart,
@@ -18,102 +18,102 @@ const Reveal = ({
   trigger,
   ...opts
 }) => {
-  const theme = useTheme();
+  const theme = useTheme()
 
-  const revealRef = useRef();
-  const triggerRef = useRef();
+  const revealRef = useRef()
+  const triggerRef = useRef()
 
   const attachTimeline = () => {
-    const $reveal = revealRef.current;
-    const $trigger = triggerRef.current;
+    const $reveal = revealRef.current
+    const $trigger = triggerRef.current
 
     // Attach GSAP
     $reveal.timeline = gsap.timeline({
       paused: true,
       onStart: () => {
         // Add active class to trigger
-        $trigger.classList.add(theme.settings.classes.active);
+        $trigger.classList.add(theme.settings.classes.active)
         // Toggle aria state
-        $reveal.setAttribute('aria-hidden', false);
+        $reveal.setAttribute('aria-hidden', false)
 
-        onStart();
+        onStart()
       },
       onComplete: () => {
-        onComplete();
+        onComplete()
       },
       onReverseComplete: () => {
-        onReverseComplete();
+        onReverseComplete()
       },
-    });
+    })
 
     $reveal.timeline.to($reveal, {
       duration: theme.gsap.timing.long,
       height: 'auto',
       opacity: 1,
       ease: theme.gsap.transition.base,
-    });
+    })
 
     if (reveal) {
-      $reveal.timeline.progress(1);
+      $reveal.timeline.progress(1)
     }
-  };
+  }
 
   const handleOnReverseStart = () => {
-    const $reveal = revealRef.current;
-    const $trigger = triggerRef.current;
+    const $reveal = revealRef.current
+    const $trigger = triggerRef.current
 
     if ($trigger) {
       // Remove active class on trigger
-      $trigger.classList.remove(theme.settings.classes.active);
+      $trigger.classList.remove(theme.settings.classes.active)
     }
 
     if ($reveal) {
       // Toggle aria state
-      $reveal.setAttribute('aria-hidden', true);
+      $reveal.setAttribute('aria-hidden', true)
     }
-  };
+  }
 
   const revealOpen = () => {
-    const $reveal = revealRef.current;
+    const $reveal = revealRef.current
 
     if ($reveal && $reveal.timeline) {
-      $reveal.timeline.play();
+      $reveal.timeline.play()
     }
-  };
+  }
 
   const revealClose = () => {
-    const $reveal = revealRef.current;
+    const $reveal = revealRef.current
 
     if ($reveal && $reveal.timeline) {
-      $reveal.timeline.reverse();
+      $reveal.timeline.reverse()
 
-      handleOnReverseStart();
+      handleOnReverseStart()
     }
-  };
+  }
 
   const handleRevealToggle = () => {
-    const $reveal = revealRef.current;
+    const $reveal = revealRef.current
 
     if ($reveal.timeline.progress() === 1) {
-      revealClose();
+      revealClose()
     } else {
-      revealOpen();
+      revealOpen()
     }
-  };
+  }
 
   useUpdateEffect(() => {
-    const $reveal = revealRef.current;
+    const $reveal = revealRef.current
 
     if ($reveal.timeline.progress() === 1) {
-      revealClose();
+      revealClose()
     } else {
-      revealOpen();
+      revealOpen()
     }
-  }, [reveal]);
+  }, [reveal])
 
   useEffect(() => {
-    attachTimeline();
-  }, []);
+    attachTimeline()
+  }, [])
 
   return (
     <Fragment>
@@ -137,8 +137,8 @@ const Reveal = ({
         </div>
       </div>
     </Fragment>
-  );
-};
+  )
+}
 
 Reveal.propTypes = {
   children: PropTypes.node.isRequired,
@@ -156,13 +156,13 @@ Reveal.propTypes = {
     props: PropTypes.object,
     label: PropTypes.any.isRequired,
   }),
-};
+}
 
 Reveal.defaultProps = {
   onComplete: () => {},
   onReverseComplete: () => {},
   onReverseStart: () => {},
   onStart: () => {},
-};
+}
 
-export default Reveal;
+export default Reveal

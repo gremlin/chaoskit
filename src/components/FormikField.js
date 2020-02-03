@@ -1,49 +1,49 @@
-import PropTypes from 'prop-types';
-import { useField } from 'formik';
+import PropTypes from 'prop-types'
+import { useField } from 'formik'
 
-import Input from './Input';
-import Textarea from './Textarea';
-import Select from './Select';
-import Radio from './Radio';
-import Checkbox from './Checkbox';
-import Toggle from './Toggle';
+import Input from './Input'
+import Textarea from './Textarea'
+import Select from './Select'
+import Radio from './Radio'
+import Checkbox from './Checkbox'
+import Toggle from './Toggle'
 
 const FormikField = ({ as, ...props }) => {
-  const [field, meta] = useField(props);
+  const [field, meta] = useField(props)
 
   const getComponent = () => {
     // eslint-disable-next-line default-case
     switch (as) {
       case 'input':
-        return Input;
+        return Input
       case 'textarea':
-        return Textarea;
+        return Textarea
       case 'select':
-        return Select;
+        return Select
       case 'radio':
-        return Radio;
+        return Radio
       case 'checkbox':
-        return Checkbox;
+        return Checkbox
       case 'toggle':
-        return Toggle;
+        return Toggle
     }
-  };
+  }
 
-  const Component = getComponent();
+  const Component = getComponent()
 
-  const errorText = meta.error && meta.touched ? meta.error : '';
+  const errorText = meta.error && meta.touched ? meta.error : ''
 
   const componentProps = {
     validationMessage: errorText,
-  };
+  }
 
   // Remove `errorText` prop from fields that don't support `validationMessage` to avoid DOM warning
   if (['radio', 'checkbox', 'toggle'].includes(as)) {
-    delete componentProps.validationMessage;
+    delete componentProps.validationMessage
   }
 
-  return <Component {...field} {...props} {...componentProps} />;
-};
+  return <Component {...field} {...props} {...componentProps} />
+}
 
 FormikField.propTypes = {
   as: PropTypes.oneOf([
@@ -54,6 +54,6 @@ FormikField.propTypes = {
     'checkbox',
     'toggle',
   ]).isRequired,
-};
+}
 
-export default FormikField;
+export default FormikField

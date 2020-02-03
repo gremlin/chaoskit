@@ -1,18 +1,18 @@
-import PropTypes from 'prop-types';
-import cx from 'classnames';
-import { useTheme } from 'emotion-theming';
+import PropTypes from 'prop-types'
+import cx from 'classnames'
+import { useTheme } from 'emotion-theming'
 
-import { misc } from '../assets/styles/utility';
+import { misc } from '../assets/styles/utility'
 
 export const StylesSectionTitleWrapper = (theme, props) => {
   // Translate "align" prop to work with `justifyItems`
   const getJustify = align => {
-    if (align === 'left') return 'start';
+    if (align === 'left') return 'start'
 
-    if (align === 'right') return 'end';
+    if (align === 'right') return 'end'
 
-    return align;
-  };
+    return align
+  }
 
   return [
     props.space === 'xlarge' &&
@@ -69,8 +69,8 @@ export const StylesSectionTitleWrapper = (theme, props) => {
         justifyItems: getJustify(props.align.xlarge),
       },
     },
-  ];
-};
+  ]
+}
 
 export const StylesSectionTitleSub = theme => [
   {
@@ -82,7 +82,7 @@ export const StylesSectionTitleSub = theme => [
       color: theme.contrast.muted,
     },
   },
-];
+]
 
 const SectionTitle = ({
   title,
@@ -96,7 +96,7 @@ const SectionTitle = ({
   align,
   ...opts
 }) => {
-  const theme = useTheme();
+  const theme = useTheme()
 
   return (
     <div
@@ -131,8 +131,8 @@ const SectionTitle = ({
       )}
       {children}
     </div>
-  );
-};
+  )
+}
 
 SectionTitle.propTypes = {
   children: PropTypes.node,
@@ -150,12 +150,12 @@ SectionTitle.propTypes = {
     large: PropTypes.oneOf(['left', 'center', 'right']),
     xlarge: PropTypes.oneOf(['left', 'center', 'right']),
   }),
-};
+}
 
 SectionTitle.defaultProps = {
   as: 'h3',
   space: 'xlarge',
   align: { base: 'center' },
-};
+}
 
-export default SectionTitle;
+export default SectionTitle

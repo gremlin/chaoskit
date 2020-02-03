@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
-import cx from 'classnames';
-import { useTheme } from 'emotion-theming';
+import PropTypes from 'prop-types'
+import cx from 'classnames'
+import { useTheme } from 'emotion-theming'
 
 const FormFooter = ({
   className,
@@ -8,7 +8,7 @@ const FormFooter = ({
   validationMessage,
   ...opts
 }) => {
-  const theme = useTheme();
+  const theme = useTheme()
 
   return explanationMessage || validationMessage ? (
     <div
@@ -75,13 +75,13 @@ const FormFooter = ({
         </div>
       )}
     </div>
-  ) : null;
-};
+  ) : null
+}
 
 FormFooter.propTypes = {
   className: PropTypes.string,
   explanationMessage: PropTypes.string,
   validationMessage: PropTypes.string,
-};
+}
 
-export default FormFooter;
+export default FormFooter

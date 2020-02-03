@@ -1,12 +1,12 @@
-import PropTypes from 'prop-types';
-import { keyframes } from '@emotion/core';
-import cx from 'classnames';
+import PropTypes from 'prop-types'
+import { keyframes } from '@emotion/core'
+import cx from 'classnames'
 
 const loaderRotateKeyframes = keyframes({
   '100%': {
     transform: 'rotate(360deg)',
   },
-});
+})
 
 const loaderCircleKeyframes = keyframes({
   '0%': {
@@ -23,7 +23,7 @@ const loaderCircleKeyframes = keyframes({
     strokeDasharray: '89, 200',
     strokeDashoffset: '-124px',
   },
-});
+})
 
 const Loader = ({ className, ...opts }) => (
   <span
@@ -74,10 +74,10 @@ const Loader = ({ className, ...opts }) => (
       />
     </svg>
   </span>
-);
+)
 
 Loader.propTypes = {
   className: PropTypes.string,
-};
+}
 
-export default Loader;
+export default Loader

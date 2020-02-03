@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types';
-import { useTheme } from 'emotion-theming';
-import cx from 'classnames';
+import PropTypes from 'prop-types'
+import { useTheme } from 'emotion-theming'
+import cx from 'classnames'
 
 const DropdownHeader = ({ children, className, ...opts }) => {
-  const theme = useTheme();
+  const theme = useTheme()
 
   return (
     <h5
@@ -20,12 +20,12 @@ const DropdownHeader = ({ children, className, ...opts }) => {
     >
       {children}
     </h5>
-  );
-};
+  )
+}
 
 DropdownHeader.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
-};
+}
 
-export default DropdownHeader;
+export default DropdownHeader

@@ -1,12 +1,12 @@
-import { useMemo } from 'react';
-import PropTypes from 'prop-types';
-import cx from 'classnames';
-import { useTheme } from 'emotion-theming';
-import TextareaAutoSize from 'react-textarea-autosize';
+import { useMemo } from 'react'
+import PropTypes from 'prop-types'
+import cx from 'classnames'
+import { useTheme } from 'emotion-theming'
+import TextareaAutoSize from 'react-textarea-autosize'
 
-import FormControlWrapper from './FormControlWrapper';
-import { form } from '../assets/styles/utility';
-import { generateUUID } from '../helpers/utility';
+import FormControlWrapper from './FormControlWrapper'
+import { form } from '../assets/styles/utility'
+import { generateUUID } from '../helpers/utility'
 
 const Textarea = ({
   className,
@@ -19,10 +19,10 @@ const Textarea = ({
   wrapperProps,
   ...opts
 }) => {
-  const theme = useTheme();
+  const theme = useTheme()
 
   // Only regenerate this if the name prop changes
-  const id = useMemo(() => `${name}-${generateUUID()}`, [name]);
+  const id = useMemo(() => `${name}-${generateUUID()}`, [name])
 
   return (
     <FormControlWrapper
@@ -66,8 +66,8 @@ const Textarea = ({
         {...opts}
       />
     </FormControlWrapper>
-  );
-};
+  )
+}
 
 Textarea.propTypes = {
   className: PropTypes.string,
@@ -78,6 +78,6 @@ Textarea.propTypes = {
   name: PropTypes.string.isRequired,
   noContrast: PropTypes.bool,
   wrapperProps: PropTypes.object,
-};
+}
 
-export default Textarea;
+export default Textarea

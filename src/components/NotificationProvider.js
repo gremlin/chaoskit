@@ -6,18 +6,18 @@ import {
   useEffect,
   useReducer,
   useRef,
-} from 'react';
-import PropTypes from 'prop-types';
-import { createPortal } from 'react-dom';
-import { useTheme } from 'emotion-theming';
-import gsap from 'gsap';
+} from 'react'
+import PropTypes from 'prop-types'
+import { createPortal } from 'react-dom'
+import { useTheme } from 'emotion-theming'
+import gsap from 'gsap'
 
-import { generateUUID } from '../helpers/utility';
-import Icon from './Icon';
+import { generateUUID } from '../helpers/utility'
+import Icon from './Icon'
 
-const NotificationContext = createContext();
+const NotificationContext = createContext()
 
-const initialState = [];
+const initialState = []
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -30,20 +30,18 @@ const reducer = (state, action) => {
           status: action.payload.status,
           timeout: action.payload.timeout,
         },
-      ].concat(state);
+      ].concat(state)
     }
     case 'remove': {
-      return state.filter(
-        notification => notification.index !== action.payload
-      );
+      return state.filter(notification => notification.index !== action.payload)
     }
     default:
-      return state;
+      return state
   }
-};
+}
 
 const Notification = forwardRef(({ children, status, title }, ref) => {
-  const theme = useTheme();
+  const theme = useTheme()
 
   return (
     /* eslint-disable-next-line jsx-a11y/click-events-have-key-events */
@@ -75,7 +73,7 @@ const Notification = forwardRef(({ children, status, title }, ref) => {
         visibility: 'hidden',
       }}
       onClick={() => {
-        ref.current.timeline.reverse();
+        ref.current.timeline.reverse()
       }}
       ref={ref}
     >
@@ -113,24 +111,24 @@ const Notification = forwardRef(({ children, status, title }, ref) => {
         <p css={{ marginTop: 0 }}>{children}</p>
       </div>
     </div>
-  );
-});
+  )
+})
 
 Notification.propTypes = {
   children: PropTypes.node.isRequired,
   status: PropTypes.oneOf(['success', 'error']),
   title: PropTypes.string,
-};
+}
 
 Notification.defaultProps = {
   status: 'success',
-};
+}
 
 const NotificationWrapper = ({ notification }) => {
-  const { dispatch } = useContext(NotificationContext);
-  const theme = useTheme();
+  const { dispatch } = useContext(NotificationContext)
+  const theme = useTheme()
 
-  const notificationRef = useRef();
+  const notificationRef = useRef()
 
   useEffect(() => {
     notificationRef.current.timeline = gsap.timeline({
@@ -138,9 +136,9 @@ const NotificationWrapper = ({ notification }) => {
         dispatch({
           type: 'remove',
           payload: notification.index,
-        });
+        })
       },
-    });
+    })
 
     notificationRef.current.timeline
       .set(notificationRef.current, {
@@ -153,17 +151,17 @@ const NotificationWrapper = ({ notification }) => {
         ease: theme.gsap.transition.base,
         opacity: 1,
         marginTop: 0,
-      });
+      })
 
     // Remove notification after timeout
     if (notification.timeout !== -1) {
       setTimeout(() => {
         if (notificationRef.current) {
-          notificationRef.current.timeline.reverse();
+          notificationRef.current.timeline.reverse()
         }
-      }, notification.timeout || 5000);
+      }, notification.timeout || 5000)
     }
-  }, []);
+  }, [])
 
   return (
     <Notification
@@ -173,18 +171,18 @@ const NotificationWrapper = ({ notification }) => {
     >
       {notification.content}
     </Notification>
-  );
-};
+  )
+}
 
 NotificationWrapper.propTypes = {
   notification: PropTypes.object.isRequired,
-};
+}
 
 const NotificationProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
-  const value = { state, dispatch };
+  const [state, dispatch] = useReducer(reducer, initialState)
+  const value = { state, dispatch }
 
-  const theme = useTheme();
+  const theme = useTheme()
 
   return (
     <NotificationContext.Provider value={value}>
@@ -229,11 +227,11 @@ const NotificationProvider = ({ children }) => {
         {children}
       </Fragment>
     </NotificationContext.Provider>
-  );
-};
+  )
+}
 
 NotificationProvider.propTypes = {
   children: PropTypes.node.isRequired,
-};
+}
 
-export { NotificationContext, NotificationProvider };
+export { NotificationContext, NotificationProvider }

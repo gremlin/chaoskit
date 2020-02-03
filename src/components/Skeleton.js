@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types';
-import cx from 'classnames';
-import { useTheme } from 'emotion-theming';
-import { keyframes } from '@emotion/core';
-import { rgba } from 'polished';
+import PropTypes from 'prop-types'
+import cx from 'classnames'
+import { useTheme } from 'emotion-theming'
+import { keyframes } from '@emotion/core'
+import { rgba } from 'polished'
 
 const skeletonKeyframes = keyframes({
   from: {
@@ -12,10 +12,10 @@ const skeletonKeyframes = keyframes({
   to: {
     backgroundPosition: '-100% 0',
   },
-});
+})
 
 const Skeleton = ({ as: Component, className, ...props }) => {
-  const theme = useTheme();
+  const theme = useTheme()
 
   return (
     <Component
@@ -46,16 +46,16 @@ const Skeleton = ({ as: Component, className, ...props }) => {
       className={cx('CK__Skeleton', className)}
       {...props}
     />
-  );
-};
+  )
+}
 
 Skeleton.propTypes = {
   as: PropTypes.any,
   className: PropTypes.string,
-};
+}
 
 Skeleton.defaultProps = {
   as: 'div',
-};
+}
 
-export default Skeleton;
+export default Skeleton

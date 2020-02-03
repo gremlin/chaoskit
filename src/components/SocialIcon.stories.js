@@ -1,11 +1,11 @@
-import Inline from './Inline';
-import ListItem from './ListItem';
-import SocialIcon from './SocialIcon';
+import Inline from './Inline'
+import ListItem from './ListItem'
+import SocialIcon from './SocialIcon'
 
 export default {
   title: 'Components/Social Icon',
   component: SocialIcon,
-};
+}
 
 export const Overview = () => (
   <Inline>
@@ -25,4 +25,4 @@ export const Overview = () => (
       <SocialIcon service="linkedin" url="https://linkedin.com" />
     </ListItem>
   </Inline>
-);
+)

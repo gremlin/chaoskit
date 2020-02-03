@@ -1,19 +1,19 @@
-import cx from 'classnames';
-import PropTypes from 'prop-types';
-import { useState, Fragment } from 'react';
-import Downshift from 'downshift';
-import matchSorter from 'match-sorter';
-import { rgba } from 'polished';
-import { useTheme } from 'emotion-theming';
+import cx from 'classnames'
+import PropTypes from 'prop-types'
+import { useState, Fragment } from 'react'
+import Downshift from 'downshift'
+import matchSorter from 'match-sorter'
+import { rgba } from 'polished'
+import { useTheme } from 'emotion-theming'
 
-import Badge from './Badge';
-import FormControlWrapper from './FormControlWrapper';
-import Icon from './Icon';
-import Input from './Input';
-import Inline from './Inline';
-import { form } from '../assets/styles/utility';
-import { generateUUID } from '../helpers/utility';
-import ListItem from './ListItem';
+import Badge from './Badge'
+import FormControlWrapper from './FormControlWrapper'
+import Icon from './Icon'
+import Input from './Input'
+import Inline from './Inline'
+import { form } from '../assets/styles/utility'
+import { generateUUID } from '../helpers/utility'
+import ListItem from './ListItem'
 
 const ChoicesMulti = ({
   className,
@@ -30,29 +30,29 @@ const ChoicesMulti = ({
   searchPlaceholder,
   ...opts
 }) => {
-  const theme = useTheme();
-  const [value, setValue] = useState('');
+  const theme = useTheme()
+  const [value, setValue] = useState('')
 
-  const id = `${name}-${generateUUID()}`;
+  const id = `${name}-${generateUUID()}`
 
-  const itemToString = item => (item ? item.label : '');
+  const itemToString = item => (item ? item.label : '')
 
   const handleKeyDown = e => {
     if (selected.length && !value.length && e.keyCode === 8) {
-      onChange(selected.slice(0, selected.length - 1));
+      onChange(selected.slice(0, selected.length - 1))
     }
-  };
+  }
 
   const handleInputChange = e => {
-    setValue(e.target.value);
-  };
+    setValue(e.target.value)
+  }
 
   const handleChange = item => {
-    onChange(name, [...selected, item]);
+    onChange(name, [...selected, item])
 
     // Clear out any typed values
-    setValue('');
-  };
+    setValue('')
+  }
 
   // Prevents the menu from being closed when the user selects an item with a keyboard or mouse
   const stateReducer = (state, changes) => {
@@ -63,31 +63,31 @@ const ChoicesMulti = ({
           ...changes,
           isOpen: state.isOpen,
           highlightedIndex: state.highlightedIndex,
-        };
+        }
       default:
-        return changes;
+        return changes
     }
-  };
+  }
 
   const optionsList = value.length
     ? matchSorter(options, value, {
         keys: ['label'],
       })
-    : options;
-  const selectedOptions = [];
+    : options
+  const selectedOptions = []
   // Based on current selection to remove from dropdown
   const filteredOptions = optionsList.filter(
     item => JSON.stringify(selected).indexOf(JSON.stringify(item)) === -1
-  );
+  )
 
   selected.forEach(item => {
     if (typeof item !== 'object') {
-      const selectedOption = optionsList.find(x => x.value === item);
-      selectedOptions.push(selectedOption);
+      const selectedOption = optionsList.find(x => x.value === item)
+      selectedOptions.push(selectedOption)
     } else {
-      selectedOptions.push(item);
+      selectedOptions.push(item)
     }
-  });
+  })
 
   return (
     <Downshift
@@ -101,9 +101,9 @@ const ChoicesMulti = ({
         // Only re-open menu if we didn't click on `x` within a multi-select item
         const handleContainerClick = e => {
           if (!e.target.classList.contains('choices__button')) {
-            downshift.openMenu();
+            downshift.openMenu()
           }
-        };
+        }
 
         return (
           <FormControlWrapper
@@ -175,7 +175,7 @@ const ChoicesMulti = ({
                       }}
                     >
                       {downshift.selectedItem.map((item, i) => {
-                        const key = `${item.label}-${i}`;
+                        const key = `${item.label}-${i}`
 
                         return (
                           <ListItem>
@@ -205,7 +205,7 @@ const ChoicesMulti = ({
                               }
                             />
                           </ListItem>
-                        );
+                        )
                       })}
                     </Inline>
                   )}
@@ -285,11 +285,11 @@ const ChoicesMulti = ({
               </div>
             </div>
           </FormControlWrapper>
-        );
+        )
       }}
     </Downshift>
-  );
-};
+  )
+}
 
 ChoicesMulti.propTypes = {
   className: PropTypes.string,
@@ -305,11 +305,11 @@ ChoicesMulti.propTypes = {
   searchPlaceholder: PropTypes.string,
   selected: PropTypes.array,
   wrapperProps: PropTypes.object,
-};
+}
 
 ChoicesMulti.defaultProps = {
   searchPlaceholder: 'Search',
   selected: [],
-};
+}
 
-export default ChoicesMulti;
+export default ChoicesMulti

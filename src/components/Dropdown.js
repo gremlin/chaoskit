@@ -1,17 +1,17 @@
-import { useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
-import cx from 'classnames';
-import gsap from 'gsap';
-import { useTheme } from 'emotion-theming';
+import { useEffect, useRef } from 'react'
+import PropTypes from 'prop-types'
+import cx from 'classnames'
+import gsap from 'gsap'
+import { useTheme } from 'emotion-theming'
 
-import Button from './Button';
-import Icon from './Icon';
-import { text } from '../assets/styles/utility';
-import { generateGradient } from '../assets/styles/utility/gradient';
+import Button from './Button'
+import Icon from './Icon'
+import { text } from '../assets/styles/utility'
+import { generateGradient } from '../assets/styles/utility/gradient'
 
 const DropdownPanelStylesVariables = theme => ({
   offset: theme.space.base,
-});
+})
 
 export const DropdownMenuItemStyles = (theme, props = {}) => [
   theme.fontSize.medium__fluid,
@@ -40,7 +40,7 @@ export const DropdownMenuItemStyles = (theme, props = {}) => [
   props.active && {
     background: theme.color.panel.dark,
   },
-];
+]
 
 const Dropdown = ({
   children,
@@ -55,46 +55,46 @@ const Dropdown = ({
   showArrow,
   ...opts
 }) => {
-  const theme = useTheme();
+  const theme = useTheme()
 
-  const dropdownRef = useRef();
-  const dropdownPanelRef = useRef();
-  const dropdownTriggerRef = useRef();
+  const dropdownRef = useRef()
+  const dropdownPanelRef = useRef()
+  const dropdownTriggerRef = useRef()
 
   const handleOnReverseStart = () => {
-    const $dropdown = dropdownRef.current;
-    const $trigger = dropdownTriggerRef.current;
+    const $dropdown = dropdownRef.current
+    const $trigger = dropdownTriggerRef.current
 
     if ($trigger) {
       // Remove active class on trigger
-      $trigger.classList.remove(theme.settings.classes.active);
+      $trigger.classList.remove(theme.settings.classes.active)
     }
 
     if ($dropdown) {
       // Toggle aria state
-      $dropdown.setAttribute('aria-expanded', false);
+      $dropdown.setAttribute('aria-expanded', false)
     }
 
-    onReverseStart();
-  };
+    onReverseStart()
+  }
 
   const dropdownOpen = () => {
-    const $dropdown = dropdownRef.current;
+    const $dropdown = dropdownRef.current
 
     if ($dropdown && $dropdown.timeline) {
-      $dropdown.timeline.play();
+      $dropdown.timeline.play()
     }
-  };
+  }
 
   const dropdownClose = () => {
-    const $dropdown = dropdownRef.current;
+    const $dropdown = dropdownRef.current
 
     if ($dropdown && $dropdown.timeline) {
-      $dropdown.timeline.reverse();
+      $dropdown.timeline.reverse()
 
-      handleOnReverseStart();
+      handleOnReverseStart()
     }
-  };
+  }
 
   /**
    * Determine if click originates from outside `.dropdown-panel`
@@ -103,43 +103,43 @@ const Dropdown = ({
    */
   const checkInside = e => {
     if (e.target.closest('.CK__Dropdown__Panel') === null) {
-      dropdownClose();
+      dropdownClose()
 
-      handleOnReverseStart();
+      handleOnReverseStart()
 
-      return;
+      return
     }
 
-    return false;
-  };
+    return false
+  }
 
   const attachTimeline = () => {
-    const $dropdown = dropdownRef.current;
-    const $panel = dropdownPanelRef.current;
-    const $trigger = dropdownTriggerRef.current;
+    const $dropdown = dropdownRef.current
+    const $panel = dropdownPanelRef.current
+    const $trigger = dropdownTriggerRef.current
 
     // Attach GSAP
     $dropdown.timeline = gsap.timeline({
       paused: true,
       onStart: () => {
         // Add active class to trigger
-        $trigger.classList.add(theme.settings.classes.active);
+        $trigger.classList.add(theme.settings.classes.active)
         // Toggle aria state
-        $dropdown.setAttribute('aria-expanded', true);
+        $dropdown.setAttribute('aria-expanded', true)
 
-        onStart();
+        onStart()
       },
       onComplete: () => {
-        onComplete();
+        onComplete()
 
-        document.addEventListener('click', checkInside, false);
+        document.addEventListener('click', checkInside, false)
       },
       onReverseComplete: () => {
-        onReverseComplete();
+        onReverseComplete()
 
-        document.removeEventListener('click', checkInside, false);
+        document.removeEventListener('click', checkInside, false)
       },
-    });
+    })
 
     $dropdown.timeline
       .set($panel, {
@@ -151,24 +151,24 @@ const Dropdown = ({
         scale: 1,
         opacity: 1,
         ease: theme.gsap.transition.bounce,
-      });
-  };
+      })
+  }
 
   useEffect(() => {
-    attachTimeline();
-  }, []);
+    attachTimeline()
+  }, [])
 
   const handleDropdownToggle = () => {
-    const $dropdown = dropdownRef.current;
+    const $dropdown = dropdownRef.current
 
     if ($dropdown.timeline.progress() === 1) {
-      dropdownClose();
+      dropdownClose()
 
-      handleOnReverseStart();
+      handleOnReverseStart()
     } else {
-      dropdownOpen();
+      dropdownOpen()
     }
-  };
+  }
 
   return (
     <div
@@ -293,8 +293,8 @@ const Dropdown = ({
         {children}
       </div>
     </div>
-  );
-};
+  )
+}
 
 Dropdown.propTypes = {
   children: PropTypes.node.isRequired,
@@ -322,7 +322,7 @@ Dropdown.propTypes = {
     label: PropTypes.any.isRequired,
   }),
   showArrow: PropTypes.bool,
-};
+}
 
 Dropdown.defaultProps = {
   onComplete: () => {},
@@ -331,6 +331,6 @@ Dropdown.defaultProps = {
   onStart: () => {},
   panelWidth: 250,
   position: 'left',
-};
+}
 
-export default Dropdown;
+export default Dropdown

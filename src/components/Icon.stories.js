@@ -1,14 +1,14 @@
-import { select } from '@storybook/addon-knobs';
+import { select } from '@storybook/addon-knobs'
 
-import BlockGrid from './BlockGrid';
-import Icon from './Icon';
-import ListItem from './ListItem';
-import icons from '../assets/icons/icons.json';
+import BlockGrid from './BlockGrid'
+import Icon from './Icon'
+import ListItem from './ListItem'
+import icons from '../assets/icons/icons.json'
 
 export default {
   title: 'Components/Icon',
   component: Icon,
-};
+}
 
 // @TODO For docs
 // All UI-orientated icons follow the same \`viewBox\`, \`width/height\`, and \`stroke\` attributes for ease and re-usability. Icons are located within the \`src/assets/icons/\` directory and are optimized, mangled, and sent along via a JSON file that allows us to import and validate references more easily and only bundle what we actually use in our applications.
@@ -44,4 +44,4 @@ export const Overview = () => (
       </ListItem>
     ))}
   </BlockGrid>
-);
+)

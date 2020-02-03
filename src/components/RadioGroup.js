@@ -1,10 +1,10 @@
-import { Children, createContext } from 'react';
-import PropTypes from 'prop-types';
+import { Children, createContext } from 'react'
+import PropTypes from 'prop-types'
 
-import FormControlWrapper from './FormControlWrapper';
+import FormControlWrapper from './FormControlWrapper'
 
-export const RadioGroupContext = createContext();
-export const RadioGroupProvider = RadioGroupContext.Provider;
+export const RadioGroupContext = createContext()
+export const RadioGroupProvider = RadioGroupContext.Provider
 
 const RadioGroup = ({
   children,
@@ -22,8 +22,8 @@ const RadioGroup = ({
   const renderChildren = () =>
     Children.map(children, child => {
       const onChangeFunc = e => {
-        onChange(e);
-      };
+        onChange(e)
+      }
 
       return (
         <RadioGroupProvider
@@ -31,8 +31,8 @@ const RadioGroup = ({
         >
           {child}
         </RadioGroupProvider>
-      );
-    });
+      )
+    })
 
   return (
     <FormControlWrapper
@@ -45,8 +45,8 @@ const RadioGroup = ({
     >
       {renderChildren()}
     </FormControlWrapper>
-  );
-};
+  )
+}
 
 RadioGroup.propTypes = {
   children: PropTypes.node,
@@ -59,6 +59,6 @@ RadioGroup.propTypes = {
   selectedValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   validationMessage: PropTypes.string,
   required: PropTypes.bool,
-};
+}
 
-export default RadioGroup;
+export default RadioGroup

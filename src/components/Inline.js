@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types';
-import cx from 'classnames';
-import { useTheme } from 'emotion-theming';
+import PropTypes from 'prop-types'
+import cx from 'classnames'
+import { useTheme } from 'emotion-theming'
 
 const Inline = ({ className, size, wrap, ...opts }) => {
-  const theme = useTheme();
+  const theme = useTheme()
 
   return (
     <ul
@@ -30,18 +30,18 @@ const Inline = ({ className, size, wrap, ...opts }) => {
       className={cx('CK__Inline', className)}
       {...opts}
     />
-  );
-};
+  )
+}
 
 Inline.propTypes = {
   className: PropTypes.string,
   size: PropTypes.oneOf(['small', 'base', 'medium', 'large', 'xlarge']),
   wrap: PropTypes.bool,
-};
+}
 
 Inline.defaultProps = {
   size: 'base',
   wrap: true,
-};
+}
 
-export default Inline;
+export default Inline

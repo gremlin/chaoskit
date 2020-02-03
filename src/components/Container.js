@@ -1,15 +1,15 @@
-import PropTypes from 'prop-types';
-import { useTheme } from 'emotion-theming';
-import cx from 'classnames';
+import PropTypes from 'prop-types'
+import { useTheme } from 'emotion-theming'
+import cx from 'classnames'
 
 export const StylesContainerVariables = {
   base: 1000,
   small: 800,
   extended: 1400,
-};
+}
 
 const Container = ({ className, size, ...opts }) => {
-  const theme = useTheme();
+  const theme = useTheme()
 
   return (
     <div
@@ -40,16 +40,16 @@ const Container = ({ className, size, ...opts }) => {
       ]}
       {...opts}
     />
-  );
-};
+  )
+}
 
 Container.propTypes = {
   size: PropTypes.oneOf(['base', 'small', 'extended']),
   className: PropTypes.string,
-};
+}
 
 Container.defaultProps = {
   size: 'base',
-};
+}
 
-export default Container;
+export default Container

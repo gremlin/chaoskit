@@ -1,11 +1,11 @@
-import Row from './Row';
-import RowColumn from './RowColumn';
-import ExampleFill from '../../.storybook/components/ExampleFill';
+import Row from './Row'
+import RowColumn from './RowColumn'
+import ExampleFill from '../../.storybook/components/ExampleFill'
 
 export default {
   title: 'Components/Row',
   component: Row,
-};
+}
 
 // @TODO For docs
 // We use a 12-column grid with a default grid-gutter of \`16px\`. Columns that add-up to more than 12 automatically get some space in-between. So you can use grids for dayz 'yo.
@@ -35,7 +35,7 @@ export const Overview = () => (
       <ExampleFill />
     </RowColumn>
   </Row>
-);
+)
 
 export const GutterSpacing = () => (
   <Row gutter={{ base: 'collapse', medium: 'small', large: 'xlarge' }}>
@@ -52,7 +52,7 @@ export const GutterSpacing = () => (
       <ExampleFill />
     </RowColumn>
   </Row>
-);
+)
 
 export const ColumnSizing = () => (
   <Row>
@@ -69,7 +69,7 @@ export const ColumnSizing = () => (
       <ExampleFill />
     </RowColumn>
   </Row>
-);
+)
 
 export const AlignmentModifiers = () => (
   <Row css={{ alignItems: 'center', justifyContent: 'flex-end' }}>
@@ -101,7 +101,7 @@ export const AlignmentModifiers = () => (
       </ExampleFill>
     </RowColumn>
   </Row>
-);
+)
 
 export const SourceOrder = () => (
   <Row>
@@ -116,4 +116,4 @@ export const SourceOrder = () => (
       </ExampleFill>
     </RowColumn>
   </Row>
-);
+)

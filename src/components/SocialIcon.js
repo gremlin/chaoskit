@@ -1,11 +1,11 @@
-import PropTypes from 'prop-types';
-import { useTheme } from 'emotion-theming';
+import PropTypes from 'prop-types'
+import { useTheme } from 'emotion-theming'
 
-import Button from './Button';
-import Icon from './Icon';
+import Button from './Button'
+import Icon from './Icon'
 
 const SocialIcon = ({ className, service, title, url, ...opts }) => {
-  const theme = useTheme();
+  const theme = useTheme()
 
   return (
     <Button
@@ -27,8 +27,8 @@ const SocialIcon = ({ className, service, title, url, ...opts }) => {
     >
       <Icon icon={service} />
     </Button>
-  );
-};
+  )
+}
 
 SocialIcon.propTypes = {
   className: PropTypes.string,
@@ -43,6 +43,6 @@ SocialIcon.propTypes = {
     'rss',
   ]),
   title: PropTypes.string,
-};
+}
 
-export default SocialIcon;
+export default SocialIcon

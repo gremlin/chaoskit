@@ -1,14 +1,14 @@
-import { select } from '@storybook/addon-knobs';
+import { select } from '@storybook/addon-knobs'
 
-import Container from './Container';
-import RowColumn from './RowColumn';
-import Section from './Section';
-import SectionTitle from './SectionTitle';
+import Container from './Container'
+import RowColumn from './RowColumn'
+import Section from './Section'
+import SectionTitle from './SectionTitle'
 
 export default {
   title: 'Components/Section',
   component: Section,
-};
+}
 
 export const Overview = () => (
   <Section
@@ -33,4 +33,4 @@ export const Overview = () => (
       <p>Section content.</p>
     </Container>
   </Section>
-);
+)

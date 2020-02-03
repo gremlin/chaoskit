@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types';
-import cx from 'classnames';
-import { useTheme } from 'emotion-theming';
+import PropTypes from 'prop-types'
+import cx from 'classnames'
+import { useTheme } from 'emotion-theming'
 
-import Button from './Button';
+import Button from './Button'
 
 const Pagination = ({
   className,
@@ -12,7 +12,7 @@ const Pagination = ({
   nextPageProps,
   ...opts
 }) => {
-  const theme = useTheme();
+  const theme = useTheme()
 
   return (
     <div
@@ -44,8 +44,8 @@ const Pagination = ({
         Next
       </Button>
     </div>
-  );
-};
+  )
+}
 
 Pagination.propTypes = {
   className: PropTypes.string,
@@ -53,6 +53,6 @@ Pagination.propTypes = {
   hasNextPage: PropTypes.bool.isRequired,
   prevPageProps: PropTypes.object.isRequired,
   nextPageProps: PropTypes.object.isRequired,
-};
+}
 
-export default Pagination;
+export default Pagination

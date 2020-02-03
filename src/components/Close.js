@@ -1,15 +1,15 @@
-import PropTypes from 'prop-types';
-import { useTheme } from 'emotion-theming';
+import PropTypes from 'prop-types'
+import { useTheme } from 'emotion-theming'
 
-import Button from './Button';
-import Icon from './Icon';
+import Button from './Button'
+import Icon from './Icon'
 
 export const StylesCloseVariables = theme => ({
   size: theme.fontSize.base,
-});
+})
 
 const Close = ({ onClick, noContrast, ...opts }) => {
-  const theme = useTheme();
+  const theme = useTheme()
 
   return (
     <Button
@@ -53,12 +53,12 @@ const Close = ({ onClick, noContrast, ...opts }) => {
         }}
       />
     </Button>
-  );
-};
+  )
+}
 
 Close.propTypes = {
   onClick: PropTypes.func,
   noContrast: PropTypes.bool,
-};
+}
 
-export default Close;
+export default Close
