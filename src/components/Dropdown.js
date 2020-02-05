@@ -4,10 +4,11 @@ import cx from 'classnames'
 import gsap from 'gsap'
 import { useTheme } from 'emotion-theming'
 
-import Button from './Button'
-import Icon from './Icon'
 import { text } from '../assets/styles/utility'
 import { generateGradient } from '../assets/styles/utility/gradient'
+
+import Button from './Button'
+import Icon from './Icon'
 
 const DropdownPanelStylesVariables = theme => ({
   offset: theme.space.base,

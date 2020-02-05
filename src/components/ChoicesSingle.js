@@ -6,13 +6,14 @@ import matchSorter from 'match-sorter'
 import { ellipsis, rgba } from 'polished'
 import { useTheme } from 'emotion-theming'
 
+import { form } from '../assets/styles/utility'
+import { generateUUID } from '../helpers/utility'
+
 import Button from './Button'
 import FormControlWrapper from './FormControlWrapper'
 import Icon from './Icon'
 import Input from './Input'
-import { form } from '../assets/styles/utility'
 import { StylesSelectVariables } from './Select'
-import { generateUUID } from '../helpers/utility'
 
 const ChoicesSingle = ({
   className,

@@ -1,6 +1,7 @@
+import ExampleFill from '../../.storybook/components/ExampleFill'
+
 import BlockGrid from './BlockGrid'
 import ListItem from './ListItem'
-import ExampleFill from '../../.storybook/components/ExampleFill'
 
 export default {
   title: 'Components/Block Grid',

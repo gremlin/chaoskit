@@ -1,7 +1,8 @@
 import { boolean, text } from '@storybook/addon-knobs'
 
-import Textarea from './Textarea'
 import ContrastWrapper from '../../.storybook/components/ContrastWrapper'
+
+import Textarea from './Textarea'
 
 export default {
   title: 'Forms/Textarea',

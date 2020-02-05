@@ -2,9 +2,10 @@ import PropTypes from 'prop-types'
 import cx from 'classnames'
 import { useTheme } from 'emotion-theming'
 
-import Container from './Container'
 import { misc, text } from '../assets/styles/utility'
 import { generateGradient } from '../assets/styles/utility/gradient'
+
+import Container from './Container'
 
 const StylesSubnavVariables = theme => ({
   height: theme.height.large,

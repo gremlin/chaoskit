@@ -3,8 +3,9 @@ import cx from 'classnames'
 import PropTypes from 'prop-types'
 import { useTheme } from 'emotion-theming'
 
-import FormControlWrapper from './FormControlWrapper'
 import { generateUUID } from '../helpers/utility'
+
+import FormControlWrapper from './FormControlWrapper'
 
 const StylesRangeVariables = theme => ({
   thumb: {

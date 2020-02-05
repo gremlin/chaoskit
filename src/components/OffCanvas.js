@@ -9,6 +9,7 @@ import gsap from 'gsap'
 import { useTheme } from 'emotion-theming'
 
 import { misc } from '../assets/styles/utility'
+
 import Close from './Close'
 
 const StylesOffCanvasVariables = theme => ({

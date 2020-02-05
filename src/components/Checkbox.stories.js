@@ -1,11 +1,12 @@
 import { boolean, text } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
 
+import ContrastWrapper from '../../.storybook/components/ContrastWrapper'
+
 import Checkbox from './Checkbox'
 import FormControlWrapper from './FormControlWrapper'
 import List from './List'
 import ListItem from './ListItem'
-import ContrastWrapper from '../../.storybook/components/ContrastWrapper'
 
 export default {
   title: 'Forms/Checkbox',

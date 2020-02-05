@@ -1,5 +1,6 @@
 const fs = require('fs')
 const path = require('path')
+
 const RSVP = require('rsvp')
 const Svgo = require('svgo')
 const parse5 = require('parse5')

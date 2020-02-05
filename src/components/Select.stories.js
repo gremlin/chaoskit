@@ -1,8 +1,9 @@
 import { boolean, text } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
 
-import Select from './Select'
 import ContrastWrapper from '../../.storybook/components/ContrastWrapper'
+
+import Select from './Select'
 
 export default {
   title: 'Forms/Select',

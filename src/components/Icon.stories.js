@@ -1,9 +1,10 @@
 import { select } from '@storybook/addon-knobs'
 
+import icons from '../assets/icons/icons.json'
+
 import BlockGrid from './BlockGrid'
 import Icon from './Icon'
 import ListItem from './ListItem'
-import icons from '../assets/icons/icons.json'
 
 export default {
   title: 'Components/Icon',

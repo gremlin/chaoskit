@@ -2,13 +2,13 @@ import { useMemo, useRef } from 'react'
 import cx from 'classnames'
 import PropTypes from 'prop-types'
 import { useTheme } from 'emotion-theming'
-
 import { tint, shade } from 'polished'
 
-import FormGroup from './FormGroup'
 import { generateGradient } from '../assets/styles/utility/gradient'
 import { misc } from '../assets/styles/utility'
 import { generateUUID } from '../helpers/utility'
+
+import FormGroup from './FormGroup'
 
 const StylesToggleVariables = theme => ({
   height: theme.height.xxsmall,

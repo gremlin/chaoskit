@@ -3,10 +3,11 @@ import cx from 'classnames'
 import PropTypes from 'prop-types'
 import { useTheme } from 'emotion-theming'
 
-import FormControlWrapper from './FormControlWrapper'
 import { form } from '../assets/styles/utility'
 import { generateUUID } from '../helpers/utility'
 import caretDown from '../assets/icons/caret-down.svg'
+
+import FormControlWrapper from './FormControlWrapper'
 
 export const StylesSelectVariables = (theme, props = {}) => ({
   iconSize: theme.fontSize.xsmall,

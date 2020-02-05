@@ -13,6 +13,7 @@ import { useTheme } from 'emotion-theming'
 import gsap from 'gsap'
 
 import { generateUUID } from '../helpers/utility'
+
 import Icon from './Icon'
 
 const NotificationContext = createContext()

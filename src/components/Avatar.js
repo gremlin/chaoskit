@@ -3,8 +3,9 @@ import { useState } from 'react'
 import cx from 'classnames'
 import { useTheme } from 'emotion-theming'
 
-import Icon from './Icon'
 import { misc } from '../assets/styles/utility'
+
+import Icon from './Icon'
 
 export const StylesAvatarVariables = theme => ({
   background: theme.color.panel.base,

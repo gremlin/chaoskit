@@ -1,13 +1,13 @@
 import { boolean, text, select } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
 
+import ContrastWrapper from '../../.storybook/components/ContrastWrapper'
+
 import List from './List'
 import ListItem from './ListItem'
 import RadioGroup from './RadioGroup'
 import Radio from './Radio'
 import RadioWithContext from './RadioWithContext'
-
-import ContrastWrapper from '../../.storybook/components/ContrastWrapper'
 
 export default {
   title: 'Forms/Radio',

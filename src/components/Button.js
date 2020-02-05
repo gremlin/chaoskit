@@ -5,6 +5,7 @@ import { shade, rgba } from 'polished'
 import { useTheme } from 'emotion-theming'
 
 import { gradient, misc } from '../assets/styles/utility'
+
 import { StylesIconVariables } from './Icon'
 import Loader from './Loader'
 

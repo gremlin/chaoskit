@@ -1,6 +1,7 @@
+import ExampleFill from '../../.storybook/components/ExampleFill'
+
 import Row from './Row'
 import RowColumn from './RowColumn'
-import ExampleFill from '../../.storybook/components/ExampleFill'
 
 export default {
   title: 'Components/Row',

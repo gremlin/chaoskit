@@ -6,13 +6,14 @@ import matchSorter from 'match-sorter'
 import { rgba } from 'polished'
 import { useTheme } from 'emotion-theming'
 
+import { form } from '../assets/styles/utility'
+import { generateUUID } from '../helpers/utility'
+
 import Badge from './Badge'
 import FormControlWrapper from './FormControlWrapper'
 import Icon from './Icon'
 import Input from './Input'
 import Inline from './Inline'
-import { form } from '../assets/styles/utility'
-import { generateUUID } from '../helpers/utility'
 import ListItem from './ListItem'
 
 const ChoicesMulti = ({

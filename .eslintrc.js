@@ -1,5 +1,11 @@
 module.exports = {
-  extends: ['airbnb', 'prettier', 'prettier/react'],
+  extends: [
+    'airbnb',
+    'prettier',
+    'prettier/react',
+    'plugin:import/errors',
+    'plugin:import/warnings',
+  ],
   parser: 'babel-eslint',
   parserOptions: {
     ecmaVersion: 2018,
@@ -8,7 +14,14 @@ module.exports = {
       classes: true,
     },
   },
-  plugins: ['react', 'jsx-a11y', 'react-hooks', 'emotion', 'prettier'],
+  plugins: [
+    'react',
+    'jsx-a11y',
+    'react-hooks',
+    'emotion',
+    'prettier',
+    'import',
+  ],
   env: {
     browser: true,
     node: true,
@@ -25,6 +38,8 @@ module.exports = {
     'import/no-extraneous-dependencies': 0,
     'import/no-unresolved': 0,
     'import/extensions': 0,
+    'import/order': ['error', { 'newlines-between': 'always' }],
+    'import/no-named-as-default': 'off',
     'max-len': [0],
     'react/forbid-prop-types': 0,
     'react/jsx-indent': 1,

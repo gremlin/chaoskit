@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+
 import { throttleScroll } from '../helpers/utility'
 
 const useScroll = ref => {

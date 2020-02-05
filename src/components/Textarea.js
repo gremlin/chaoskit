@@ -4,9 +4,10 @@ import cx from 'classnames'
 import { useTheme } from 'emotion-theming'
 import TextareaAutoSize from 'react-textarea-autosize'
 
-import FormControlWrapper from './FormControlWrapper'
 import { form } from '../assets/styles/utility'
 import { generateUUID } from '../helpers/utility'
+
+import FormControlWrapper from './FormControlWrapper'
 
 const Textarea = ({
   className,

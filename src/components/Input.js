@@ -4,10 +4,11 @@ import cx from 'classnames'
 import { useTheme } from 'emotion-theming'
 import MaskedInput from 'react-text-mask'
 
-import FormControlWrapper from './FormControlWrapper'
-import Icon, { StylesIconVariables } from './Icon'
 import { form } from '../assets/styles/utility'
 import { generateUUID } from '../helpers/utility'
+
+import FormControlWrapper from './FormControlWrapper'
+import Icon, { StylesIconVariables } from './Icon'
 
 export const StylesInputBase = (theme, props = {}) => [
   form.base(theme),

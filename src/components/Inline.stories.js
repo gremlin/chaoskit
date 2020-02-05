@@ -1,7 +1,8 @@
 import { boolean, select } from '@storybook/addon-knobs'
 
-import Inline from './Inline'
 import ExampleFill from '../../.storybook/components/ExampleFill'
+
+import Inline from './Inline'
 import ListItem from './ListItem'
 
 export default {

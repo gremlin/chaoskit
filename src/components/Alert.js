@@ -7,6 +7,7 @@ import { kebabCase, toLower } from 'lodash-es'
 import { useTheme } from 'emotion-theming'
 
 import { misc, text } from '../assets/styles/utility'
+
 import Close from './Close'
 
 export const StylesAlertBase = theme => ({

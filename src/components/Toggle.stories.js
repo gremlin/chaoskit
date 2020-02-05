@@ -1,8 +1,9 @@
 import { boolean, text } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
 
-import Toggle from './Toggle'
 import ContrastWrapper from '../../.storybook/components/ContrastWrapper'
+
+import Toggle from './Toggle'
 
 export default {
   title: 'Forms/Toggle',

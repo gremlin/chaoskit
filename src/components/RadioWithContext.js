@@ -2,7 +2,6 @@ import { useContext } from 'react'
 import PropTypes from 'prop-types'
 
 import { RadioGroupContext } from './RadioGroup'
-
 import Radio from './Radio'
 
 const RadioWithContext = ({ value, ...props }) => {
