@@ -1,5 +1,3 @@
-// @create-index
-
 import Alert from './Alert'
 import Avatar from './Avatar'
 import Badge from './Badge'
