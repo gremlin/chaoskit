@@ -1,4 +1,4 @@
-import { text } from '.'
+import { underline } from './text'
 
 export const styles = theme => ({
   '.u-contrast': {
@@ -10,7 +10,7 @@ export const styles = theme => ({
       color: theme.contrast.base,
 
       '&:hover, &:focus, &.is-active': [
-        text.underline,
+        underline,
         {
           color: theme.contrast.base,
         },
