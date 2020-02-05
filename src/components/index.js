@@ -1,47 +1,98 @@
 // @create-index
 
-export { default as Alert } from './Alert'
-export { default as Avatar } from './Avatar'
-export { default as Badge } from './Badge'
-export { default as BlockGrid } from './BlockGrid'
-export { default as Button } from './Button'
-export { default as Checkbox } from './Checkbox'
-export { default as ChoicesMulti } from './ChoicesMulti'
-export { default as ChoicesSingle } from './ChoicesSingle'
-export { default as Close } from './Close'
-export { default as Container } from './Container'
-export { default as Dropdown } from './Dropdown'
-export { default as DropdownHeader } from './DropdownHeader'
-export { default as FormControlWrapper } from './FormControlWrapper'
-export { default as FormFooter } from './FormFooter'
-export { default as FormGroup } from './FormGroup'
-export { default as FormLabel } from './FormLabel'
-export { default as Icon } from './Icon'
-export { default as Inline } from './Inline'
-export { default as Input } from './Input'
-export { default as List } from './List'
-export { default as ListItem } from './ListItem'
-export { default as Loader } from './Loader'
-export { default as Modal } from './Modal'
-export { default as ModalBody } from './ModalBody'
-export { default as ModalFooter } from './ModalFooter'
-export { default as ModalHeader } from './ModalHeader'
-export { default as OffCanvas } from './OffCanvas'
-export { default as Pagination } from './Pagination'
-export { default as Radio } from './Radio'
-export { default as RadioWithContext } from './RadioWithContext'
-export { default as RadioGroup } from './RadioGroup'
-export { default as Range } from './Range'
-export { default as Reveal } from './Reveal'
-export { default as Row } from './Row'
-export { default as RowColumn } from './RowColumn'
-export { default as Section } from './Section'
-export { default as SectionTitle } from './SectionTitle'
-export { default as Select } from './Select'
-export { default as Skeleton } from './Skeleton'
-export { default as SocialIcon } from './SocialIcon'
-export { default as Subnav } from './Subnav'
-export { Tabs, TabList, Tab, TabPanel } from './Tabs'
-export { default as Textarea } from './Textarea'
-export { default as Toggle } from './Toggle'
-export { default as Tooltip } from './Tooltip'
+import Alert from './Alert'
+import Avatar from './Avatar'
+import Badge from './Badge'
+import BlockGrid from './BlockGrid'
+import Button from './Button'
+import Checkbox from './Checkbox'
+import ChoicesMulti from './ChoicesMulti'
+import ChoicesSingle from './ChoicesSingle'
+import Close from './Close'
+import Container from './Container'
+import Dropdown from './Dropdown'
+import DropdownHeader from './DropdownHeader'
+import FormControlWrapper from './FormControlWrapper'
+import FormFooter from './FormFooter'
+import FormGroup from './FormGroup'
+import FormLabel from './FormLabel'
+import Icon from './Icon'
+import Inline from './Inline'
+import Input from './Input'
+import List from './List'
+import ListItem from './ListItem'
+import Loader from './Loader'
+import Modal from './Modal'
+import ModalBody from './ModalBody'
+import ModalFooter from './ModalFooter'
+import ModalHeader from './ModalHeader'
+import OffCanvas from './OffCanvas'
+import Pagination from './Pagination'
+import Radio from './Radio'
+import RadioWithContext from './RadioWithContext'
+import RadioGroup from './RadioGroup'
+import Range from './Range'
+import Reveal from './Reveal'
+import Row from './Row'
+import RowColumn from './RowColumn'
+import Section from './Section'
+import SectionTitle from './SectionTitle'
+import Select from './Select'
+import Skeleton from './Skeleton'
+import SocialIcon from './SocialIcon'
+import Subnav from './Subnav'
+import { Tabs, TabList, Tab, TabPanel } from './Tabs'
+import Textarea from './Textarea'
+import Toggle from './Toggle'
+import Tooltip from './Tooltip'
+
+export {
+  Alert,
+  Avatar,
+  Badge,
+  BlockGrid,
+  Button,
+  Checkbox,
+  ChoicesMulti,
+  ChoicesSingle,
+  Close,
+  Container,
+  Dropdown,
+  DropdownHeader,
+  FormControlWrapper,
+  FormFooter,
+  FormGroup,
+  FormLabel,
+  Icon,
+  Inline,
+  Input,
+  List,
+  ListItem,
+  Loader,
+  Modal,
+  ModalBody,
+  ModalFooter,
+  ModalHeader,
+  OffCanvas,
+  Pagination,
+  Radio,
+  RadioWithContext,
+  RadioGroup,
+  Range,
+  Reveal,
+  Row,
+  RowColumn,
+  Section,
+  SectionTitle,
+  Select,
+  Skeleton,
+  SocialIcon,
+  Subnav,
+  Tabs,
+  TabList,
+  Tab,
+  TabPanel,
+  Textarea,
+  Toggle,
+  Tooltip,
+}
