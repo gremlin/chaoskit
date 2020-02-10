@@ -12,25 +12,26 @@ export default {
 
 const params = {
   disabled: () => boolean('Disabled', false),
+  checked: () => boolean('Checked', false),
   label: () => text('Label', 'Form label'),
   noContrast: () => boolean('No contrast', false),
 }
 
-const ToggleExample = () => {
-  return (
-    <Toggle
-      disabled={params.disabled()}
-      onChange={({ target: { name, value } }) =>
-        action('onChange')({ name }, { value })
-      }
-      name="Toggle"
-      label={params.label()}
-      noContrast={params.noContrast()}
-    />
-  )
+const ToggleExample = props => {
+  return <Toggle name="Toggle" value="field-value1" {...props} />
 }
 
-export const Overview = () => <ToggleExample />
+export const Overview = () => (
+  <ToggleExample
+    disabled={params.disabled()}
+    label={params.label()}
+    checked={params.checked()}
+    noContrast={params.noContrast()}
+    onChange={({ target: { name, value } }) =>
+      action('onChange')({ name }, { value })
+    }
+  />
+)
 
 // @TODO For docs
 // Automatically adapts to parent containers containing \`.u-contrast\`.
@@ -38,6 +39,14 @@ export const Overview = () => <ToggleExample />
 
 export const Contrast = () => (
   <ContrastWrapper>
-    <ToggleExample />
+    <ToggleExample
+      disabled={params.disabled()}
+      label={params.label()}
+      checked={params.checked()}
+      noContrast={params.noContrast()}
+      onChange={({ target: { name, value } }) =>
+        action('onChange')({ name }, { value })
+      }
+    />
   </ContrastWrapper>
 )

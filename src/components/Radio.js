@@ -11,7 +11,6 @@ export const StylesRadioVariables = {
 }
 
 const Radio = ({
-  checked,
   className,
   disabled,
   label,
@@ -20,7 +19,7 @@ const Radio = ({
   noContrast,
   onChange,
   wrapperProps,
-  ...opts
+  ...props
 }) => {
   const theme = useTheme()
 
@@ -28,9 +27,10 @@ const Radio = ({
     <label
       css={[
         {
-          display: 'flex',
-          alignItems: 'center',
-          fontSize: theme.fontSize.base,
+          display: 'grid',
+          gridTemplateColumns: label && 'auto 1fr',
+          gap: label && theme.space.small,
+          alignItems: 'start',
         },
 
         disabled && {
@@ -41,96 +41,97 @@ const Radio = ({
       className={cx('CK__Radio', className)}
       {...wrapperProps}
     >
-      <input
-        type="radio"
-        name={name}
-        disabled={disabled}
-        value={value}
-        checked={checked}
-        onChange={onChange}
-        css={[
-          form.base(theme),
-          // 1. Style
-          // 2. Make box Make box more robust so it clips the child element
-          // 3. Remoe default style
-          // 4. Fix background on iOS
-          // 5. Don't collapse
-          {
-            // 1
-            width: StylesRadioVariables.size,
-            height: StylesRadioVariables.size,
-            verticalAlign: 'middle',
-            borderRadius: '50%',
-            border: theme.border.base,
-            boxShadow: theme.boxShadow.base,
-            position: 'relative',
-            // 2
-            overflow: 'hidden',
-            // 3
-            appearance: 'none',
-            // 4
-            backgroundColor: theme.color.light.base,
-            // 5
-            flex: 'none',
+      {/* Wrapper trick with zero-width space character that provides "centered top alignment" */}
+      <div css={{ display: 'flex', alignItems: 'center' }}>
+        &#8203;
+        <input
+          type="radio"
+          name={name}
+          disabled={disabled}
+          value={value}
+          onChange={onChange}
+          css={[
+            form.base(theme),
+            // 1. Style
+            // 2. Make box Make box more robust so it clips the child element
+            // 3. Remove default style
+            // 4. Fix background on iOS
+            {
+              // 1
+              width: StylesRadioVariables.size,
+              height: StylesRadioVariables.size,
+              borderRadius: '50%',
+              border: theme.border.base,
+              boxShadow: theme.boxShadow.base,
+              position: 'relative',
+              verticalAlign: 'middle',
+              // 2
+              overflow: 'hidden',
+              // 3
+              appearance: 'none',
+              // 4
+              backgroundColor: theme.color.light.base,
 
-            '&:not(:disabled)': {
-              cursor: 'pointer',
-            },
+              '&:not(:disabled)': {
+                cursor: 'pointer',
+              },
 
-            '&:disabled': {
-              backgroundColor: theme.color.panel.base,
-            },
-            '&:checked': {
-              backgroundColor: theme.color.primary.base,
-              color: theme.contrast.base,
-              borderColor: theme.color.primary.dark,
+              '&:disabled': {
+                backgroundColor: theme.color.panel.base,
+              },
 
-              '&::after': {
-                content: "''",
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                width: StylesRadioVariables.iconSize,
-                height: StylesRadioVariables.iconSize,
-                borderRadius: '50%',
-                border: '1px solid',
+              '&:checked': {
+                backgroundColor: theme.color.primary.base,
+                color: theme.contrast.base,
                 borderColor: theme.color.primary.dark,
-                backgroundColor: theme.contrast.base,
+
+                '&::after': {
+                  content: "''",
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  transform: 'translate(-50%, -50%)',
+                  width: StylesRadioVariables.iconSize,
+                  height: StylesRadioVariables.iconSize,
+                  borderRadius: '50%',
+                  border: '1px solid',
+                  borderColor: theme.color.primary.dark,
+                  backgroundColor: theme.contrast.base,
+                  zIndex: 1,
+                },
               },
             },
-          },
 
-          theme.settings.contrast.enable &&
-            theme.settings.contrast.form &&
-            !noContrast && {
-              '.u-contrast &': {
-                borderColor: theme.contrast.base,
-                backgroundColor: 'transparent',
-
-                '&:disabled': {
-                  backgroundColor: form.variables(theme).contrast.background,
-                },
-
-                '&:checked': {
+            theme.settings.contrast.enable &&
+              theme.settings.contrast.form &&
+              !noContrast && {
+                '.u-contrast &': {
+                  borderColor: theme.contrast.base,
                   backgroundColor: 'transparent',
 
-                  '&::after': {
-                    border: 0,
+                  '&:disabled': {
+                    backgroundColor: form.variables(theme).contrast.background,
+                  },
+
+                  '&:checked': {
+                    backgroundColor: 'transparent',
+
+                    '&::after': {
+                      border: 0,
+                    },
                   },
                 },
               },
-            },
-        ]}
-        {...opts}
-      />
-      {label && <span css={{ marginLeft: theme.space.small }}>{label}</span>}
+          ]}
+          {...props}
+        />
+      </div>
+      {label && <span>{label}</span>}
     </label>
   )
 }
 
 Radio.propTypes = {
-  checked: PropTypes.bool,
   className: PropTypes.string,
   disabled: PropTypes.bool,
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
