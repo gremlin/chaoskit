@@ -9,7 +9,6 @@ export const reset = {
 
 export const numbers = ({
   theme = {},
-  fontSize = theme.fontSize.base,
   space = 0,
   border = false,
   fill = theme.color.primary.base,
@@ -41,12 +40,13 @@ export const numbers = ({
       },
 
       '&:first-of-type::before': {
-        top: `${(fontSize * theme.lineHeight.base - circleSize) / 2}px`,
+        top: `calc((1em * ${theme.lineHeight.base} - ${circleSize}px) / 2)`,
       },
 
       '&:not(:first-of-type)::before': {
-        top: `${(fontSize * theme.lineHeight.base - circleSize) / 2 +
-          (border && space)}px`,
+        top: `calc((1em * ${theme.lineHeight.base} - ${circleSize}px) / 2${
+          border ? ` + ${space}px` : ''
+        })`,
       },
     },
   }
@@ -56,7 +56,6 @@ export const circles = ({
   theme = {},
   fill = theme.color.primary.base,
   hoverFill = false,
-  fontSize = theme.fontSize.base,
   space = 0,
   circleSize = 8,
   border = false,
@@ -79,12 +78,13 @@ export const circles = ({
       },
 
       '&:first-of-type::before': {
-        top: `${(fontSize * theme.lineHeight.base - circleSize) / 2}px`,
+        top: `calc((1em * ${theme.lineHeight.base} - ${circleSize}px) / 2)`,
       },
 
       '&:not(:first-of-type)::before': {
-        top: `${(fontSize * theme.lineHeight.base - circleSize) / 2 +
-          (border && space)}px`,
+        top: `calc((1em * ${theme.lineHeight.base} - ${circleSize}px) / 2${
+          border ? ` + ${space}px` : ''
+        })`,
       },
     },
 
