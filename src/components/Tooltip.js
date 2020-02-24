@@ -39,9 +39,7 @@ const Tooltip = ({ children, className, content, placement, variation }) => {
   }
 
   const handleMouseLeave = () => {
-    setTimeout(() => {
-      setHover(false)
-    }, 250)
+    setHover(false)
   }
 
   const renderTooltip = () => {
@@ -122,7 +120,7 @@ const Tooltip = ({ children, className, content, placement, variation }) => {
                 display: 'block',
                 fontSize: theme.fontSize.small,
                 padding: StylesTooltipVariables(theme, variation).arrowSize + 1,
-                animation: `${tooltipKeyframes} 0.25s ${theme.transition.bounce}`,
+                animation: `${tooltipKeyframes} ${theme.timing.base} ${theme.transition.bounce}`,
               },
               placement === 'top' && {
                 transformOrigin: 'center bottom',
