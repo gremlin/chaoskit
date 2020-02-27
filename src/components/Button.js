@@ -69,9 +69,9 @@ export const StylesButtonBase = (theme, props = {}) => [
     backgroundColor: 'transparent',
     verticalAlign: 'middle',
     cursor: 'pointer',
-    borderRadius: theme.settings.ui.radius && theme.height.base / 2,
     transition: `all ${theme.timing.base} ${theme.transition.base}`,
     backgroundSize: '100% 100%',
+    borderRadius: theme.settings.ui.radius && theme.height.base / 2,
     position: 'relative',
     letterSpacing: theme.letterSpacing.small,
     // 8
@@ -126,6 +126,7 @@ export const StylesButtonSmall = theme => ({
       : theme.space.small + theme.space.xsmall
   }px`,
   height: theme.height.small,
+  borderRadius: theme.settings.ui.radius && theme.height.small / 2,
   lineHeight: `${theme.height.small -
     StylesButtonVariables(theme).borderWidth * 2}px`,
 })
@@ -136,6 +137,7 @@ export const StylesButtonXsmall = theme => ({
   }px`,
   fontSize: theme.fontSize.xsmall,
   height: theme.height.xsmall,
+  borderRadius: theme.settings.ui.radius && theme.height.xsmall / 2,
   lineHeight: `${theme.height.xsmall -
     StylesButtonVariables(theme).borderWidth * 2}px`,
 })
