@@ -41,7 +41,7 @@ const Modal = ({
   onReverseComplete,
   onReverseStart,
   onStart,
-  ...opts
+  ...rest
 }) => {
   const theme = useTheme()
 
@@ -166,14 +166,14 @@ const Modal = ({
       ]}
       className={cx('CK__Modal', className)}
       ref={modalRef}
-      {...opts}
+      {...rest}
     >
       <div
         css={[
           {
             // 1. GSAP
             background: theme.color.light.base,
-            borderRadius: theme.settings.ui.radius && theme.borderRadius.base,
+            borderRadius: theme.settings.ui.radius && theme.borderRadius.large,
             margin: theme.space.base,
             zIndex: 5,
             boxShadow: theme.boxShadow.large,

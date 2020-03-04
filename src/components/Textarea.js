@@ -18,7 +18,7 @@ const Textarea = ({
   explanationMessage,
   required,
   wrapperProps,
-  ...opts
+  ...rest
 }) => {
   const theme = useTheme()
 
@@ -64,7 +64,7 @@ const Textarea = ({
         className={cx('CK__Textarea', className)}
         id={id}
         name={name}
-        {...opts}
+        {...rest}
       />
     </FormControlWrapper>
   )

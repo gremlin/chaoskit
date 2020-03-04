@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useTheme } from 'emotion-theming';
 
-const ExampleFill = ({ as: Component, ...opts }) => {
+const ExampleFill = ({ as: Component, ...rest }) => {
   const theme = useTheme();
 
   return (
@@ -14,7 +14,7 @@ const ExampleFill = ({ as: Component, ...opts }) => {
         fontFamily: theme.fontFamily.code,
         fontSize: theme.fontSize.base,
       }}
-      {...opts}
+      {...rest}
     />
   );
 };

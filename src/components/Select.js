@@ -47,7 +47,7 @@ const Select = ({
   required,
   validationMessage,
   wrapperProps,
-  ...opts
+  ...rest
 }) => {
   const theme = useTheme()
 
@@ -165,7 +165,7 @@ const Select = ({
               },
             ],
           ]}
-          {...opts}
+          {...rest}
         >
           {options.map(renderOpts)}
         </select>

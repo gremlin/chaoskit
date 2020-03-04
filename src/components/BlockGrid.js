@@ -5,7 +5,7 @@ import { useTheme } from 'emotion-theming'
 const columnOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 const gutterOptions = ['collapse', 'small', 'base', 'medium', 'large', 'xlarge']
 
-const BlockGrid = ({ className, gutter, size, ...opts }) => {
+const BlockGrid = ({ className, gutter, size, ...rest }) => {
   const theme = useTheme()
 
   const percentWidth = columnSize => {
@@ -129,7 +129,7 @@ const BlockGrid = ({ className, gutter, size, ...opts }) => {
         },
       ]}
       className={cx('CK__BlockGrid', className)}
-      {...opts}
+      {...rest}
     />
   )
 }

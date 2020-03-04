@@ -4,7 +4,7 @@ import { useTheme } from 'emotion-theming'
 
 import { StylesModalVariables } from './Modal'
 
-const ModalBody = ({ className, ...opts }) => {
+const ModalBody = ({ className, ...rest }) => {
   const theme = useTheme()
 
   return (
@@ -13,7 +13,7 @@ const ModalBody = ({ className, ...opts }) => {
         padding: StylesModalVariables(theme).padding,
       }}
       className={cx(`CK__ModalBody ${theme.settings.classes.trim}`, className)}
-      {...opts}
+      {...rest}
     />
   )
 }

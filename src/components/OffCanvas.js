@@ -28,7 +28,7 @@ const OffCanvas = ({
   onReverseStart,
   onStart,
   panelWidth,
-  ...opts
+  ...rest
 }) => {
   const theme = useTheme()
 
@@ -149,7 +149,7 @@ const OffCanvas = ({
       }}
       className={cx('CK__OffCanvas', className)}
       ref={offCanvasRef}
-      {...opts}
+      {...rest}
     >
       <div
         css={[

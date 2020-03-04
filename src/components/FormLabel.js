@@ -4,7 +4,7 @@ import cx from 'classnames'
 import { useTheme } from 'emotion-theming'
 
 import asterisk from '../assets/icons/asterisk.svg'
-import close from '../assets/icons/close.svg'
+import alertCircle from '../assets/icons/alert-circle.svg'
 
 export const StylesFormLabelBase = (theme, props = {}) => [
   {
@@ -21,26 +21,29 @@ export const StylesFormLabelBase = (theme, props = {}) => [
       content: "''",
       display: 'inline-block',
       backgroundRepeat: 'no-repeat',
-      width: theme.fontSize.xxsmall,
-      height: theme.fontSize.xxsmall,
-      backgroundSize: 'contain',
+      backgroundPosition: 'center center',
+      width: theme.fontSize.small,
+      height: theme.fontSize.small,
       marginLeft: theme.space.small,
       position: 'relative',
-      top: '-0.25em',
-    },
-  },
-
-  props.required && {
-    '&::after': {
-      backgroundImage: `url(${asterisk})`,
+      top: 0,
+      transform: 'translateY(-25%)',
       filter: theme.color.danger.filter,
     },
   },
+
+  props.required &&
+    !props.error && {
+      '&::after': {
+        backgroundImage: `url(${asterisk})`,
+        backgroundSize: '80% 80%',
+      },
+    },
 
   props.error && {
     '&::after': {
-      backgroundImage: `url(${close})`,
-      filter: theme.color.danger.filter,
+      backgroundImage: `url(${alertCircle})`,
+      backgroundSize: 'contain',
     },
   },
 
@@ -59,7 +62,7 @@ export const StylesFormLabelBase = (theme, props = {}) => [
 ]
 
 const FormLabel = forwardRef(
-  ({ as: Component, children, className, required, error, ...opts }, ref) => {
+  ({ as: Component, children, className, required, error, ...rest }, ref) => {
     const theme = useTheme()
 
     return children ? (
@@ -67,7 +70,7 @@ const FormLabel = forwardRef(
         css={StylesFormLabelBase(theme, { required, error })}
         className={cx('CK__FormLabel', className)}
         ref={ref}
-        {...opts}
+        {...rest}
       >
         {children}
       </Component>

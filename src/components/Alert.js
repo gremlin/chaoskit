@@ -71,7 +71,7 @@ const Alert = ({
   close,
   title,
   type,
-  ...opts
+  ...rest
 }) => {
   const theme = useTheme()
 
@@ -178,7 +178,7 @@ const Alert = ({
       role="alert"
       ref={alertRef}
       aria-hidden={hidden ? 'true' : 'false'}
-      {...opts}
+      {...rest}
     >
       <div
         css={{

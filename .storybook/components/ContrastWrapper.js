@@ -2,7 +2,7 @@ import { useTheme } from 'emotion-theming';
 
 import { gradient } from '../../src/assets/styles/utility';
 
-const ContrastWrapper = ({ ...opts }) => {
+const ContrastWrapper = ({ ...rest }) => {
   const theme = useTheme();
 
   return (
@@ -16,7 +16,7 @@ const ContrastWrapper = ({ ...opts }) => {
           boxShadow: theme.boxShadow.large,
         },
       ]}
-      {...opts}
+      {...rest}
     />
   );
 };

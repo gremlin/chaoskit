@@ -415,7 +415,7 @@ const Button = forwardRef(
       size,
       type,
       url,
-      ...opts
+      ...rest
     },
     ref
   ) => {
@@ -424,7 +424,7 @@ const Button = forwardRef(
     const buttonProps = {
       disabled: disabled || loading,
       ref,
-      ...opts,
+      ...rest,
     }
 
     if (url) {

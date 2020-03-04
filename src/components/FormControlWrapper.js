@@ -15,11 +15,11 @@ const FormControlWrapper = forwardRef(
       validationMessage,
       labelProps,
       footerProps,
-      ...opts
+      ...rest
     },
     ref
   ) => (
-    <FormGroup ref={ref} {...opts}>
+    <FormGroup ref={ref} {...rest}>
       <FormLabel
         required={required}
         error={!!validationMessage}

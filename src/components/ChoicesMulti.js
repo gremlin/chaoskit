@@ -29,7 +29,7 @@ const ChoicesMulti = ({
   validationMessage,
   selected,
   searchPlaceholder,
-  ...opts
+  ...rest
 }) => {
   const theme = useTheme()
   const [value, setValue] = useState('')
@@ -114,7 +114,7 @@ const ChoicesMulti = ({
             labelProps={{ ...downshift.getLabelProps() }}
             explanationMessage={explanationMessage}
             validationMessage={validationMessage}
-            {...opts}
+            {...rest}
           >
             <div
               css={[

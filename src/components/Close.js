@@ -8,7 +8,7 @@ export const StylesCloseVariables = theme => ({
   size: theme.fontSize.base,
 })
 
-const Close = ({ onClick, noContrast, ...opts }) => {
+const Close = ({ onClick, noContrast, ...rest }) => {
   const theme = useTheme()
 
   return (
@@ -42,7 +42,7 @@ const Close = ({ onClick, noContrast, ...opts }) => {
             },
           },
       ]}
-      {...opts}
+      {...rest}
     >
       <Icon
         icon="close"

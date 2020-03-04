@@ -78,7 +78,7 @@ const Input = forwardRef(
       prefixIcon,
       required,
       wrapperProps,
-      ...opts
+      ...rest
     },
     ref
   ) => {
@@ -93,7 +93,7 @@ const Input = forwardRef(
         type,
         ref,
         disabled,
-        ...opts,
+        ...rest,
       }
 
       // `react-text-mask` does not support 'email' or 'number' input types

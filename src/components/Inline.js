@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import cx from 'classnames'
 import { useTheme } from 'emotion-theming'
 
-const Inline = ({ className, size, wrap, ...opts }) => {
+const Inline = ({ className, size, wrap, ...rest }) => {
   const theme = useTheme()
 
   return (
@@ -28,7 +28,7 @@ const Inline = ({ className, size, wrap, ...opts }) => {
         },
       ]}
       className={cx('CK__Inline', className)}
-      {...opts}
+      {...rest}
     />
   )
 }

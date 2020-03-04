@@ -94,7 +94,7 @@ const SectionTitle = ({
   children,
   className,
   align,
-  ...opts
+  ...rest
 }) => {
   const theme = useTheme()
 
@@ -104,7 +104,7 @@ const SectionTitle = ({
         (cx(`CK__SectionTitle ${theme.settings.classes.trim}`), className)
       }
       css={StylesSectionTitleWrapper(theme, { space, align })}
-      {...opts}
+      {...rest}
     >
       <Component
         css={[

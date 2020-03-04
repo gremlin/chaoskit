@@ -17,7 +17,7 @@ const RadioGroup = ({
   selectedValue,
   validationMessage,
   required,
-  ...opts
+  ...rest
 }) => {
   const renderChildren = () =>
     Children.map(children, child => {
@@ -41,7 +41,7 @@ const RadioGroup = ({
       required={required}
       validationMessage={validationMessage}
       explanationMessage={explanationMessage}
-      {...opts}
+      {...rest}
     >
       {renderChildren()}
     </FormControlWrapper>

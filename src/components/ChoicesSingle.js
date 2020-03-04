@@ -29,7 +29,7 @@ const ChoicesSingle = ({
   validationMessage,
   searchPlaceholder,
   selected,
-  ...opts
+  ...rest
 }) => {
   const theme = useTheme()
   const [value, setValue] = useState('')
@@ -80,7 +80,7 @@ const ChoicesSingle = ({
             labelProps={{ ...downshift.getLabelProps() }}
             explanationMessage={explanationMessage}
             validationMessage={validationMessage}
-            {...opts}
+            {...rest}
           >
             <div
               css={[

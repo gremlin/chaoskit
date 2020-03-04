@@ -4,7 +4,7 @@ import { useTheme } from 'emotion-theming'
 
 import { list } from '../assets/styles/utility'
 
-const List = ({ as: Component, className, space, type, border, ...opts }) => {
+const List = ({ as: Component, className, space, type, border, ...rest }) => {
   const theme = useTheme()
 
   return (
@@ -29,7 +29,7 @@ const List = ({ as: Component, className, space, type, border, ...opts }) => {
           list.circles({ theme, space: space && theme.space[space], border }),
       ]}
       className={cx('CK__List', className)}
-      {...opts}
+      {...rest}
     />
   )
 }

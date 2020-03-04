@@ -50,7 +50,7 @@ export const SubnavMenuItemStyles = theme => [
   },
 ]
 
-const Subnav = ({ children, className, ...opts }) => {
+const Subnav = ({ children, className, ...rest }) => {
   const theme = useTheme()
 
   return (
@@ -64,7 +64,7 @@ const Subnav = ({ children, className, ...opts }) => {
         borderBottom: theme.border.large,
       }}
       className={cx('CK__Subnav', className)}
-      {...opts}
+      {...rest}
     >
       <Container
         css={[

@@ -4,7 +4,7 @@ import { useTheme } from 'emotion-theming'
 
 import { StylesModalVariables } from './Modal'
 
-const ModalFooter = ({ className, ...opts }) => {
+const ModalFooter = ({ className, ...rest }) => {
   const theme = useTheme()
 
   return (
@@ -16,7 +16,7 @@ const ModalFooter = ({ className, ...opts }) => {
         `CK__ModalFooter ${theme.settings.classes.trim}`,
         className
       )}
-      {...opts}
+      {...rest}
     />
   )
 }

@@ -4,7 +4,7 @@ import { useTheme } from 'emotion-theming'
 
 const gutterOptions = ['collapse', 'small', 'base', 'medium', 'large', 'xlarge']
 
-const Row = ({ className, gutter, ...opts }) => {
+const Row = ({ className, gutter, ...rest }) => {
   const theme = useTheme()
 
   const gutterCalc = size => [
@@ -59,7 +59,7 @@ const Row = ({ className, gutter, ...opts }) => {
         gutterCalc('xlarge'),
       ]}
       className={cx(`CK__Row ${theme.settings.classes.trim}`, className)}
-      {...opts}
+      {...rest}
     />
   )
 }

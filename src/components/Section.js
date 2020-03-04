@@ -11,7 +11,7 @@ const StylesSectionVariables = {
 }
 
 const Section = forwardRef(
-  ({ as: Component, space, slant, className, ...opts }, ref) => {
+  ({ as: Component, space, slant, className, ...rest }, ref) => {
     const theme = useTheme()
 
     return (
@@ -69,7 +69,7 @@ const Section = forwardRef(
             },
           ],
         ]}
-        {...opts}
+        {...rest}
       />
     )
   }

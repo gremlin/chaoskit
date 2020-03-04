@@ -6,7 +6,7 @@ const FormFooter = ({
   className,
   explanationMessage,
   validationMessage,
-  ...opts
+  ...rest
 }) => {
   const theme = useTheme()
 
@@ -24,7 +24,7 @@ const FormFooter = ({
         },
       ]}
       className={cx('CK__FormFooter', className)}
-      {...opts}
+      {...rest}
     >
       {explanationMessage && (
         <div

@@ -4,7 +4,7 @@ import { useTheme } from 'emotion-theming'
 import Button from './Button'
 import Icon from './Icon'
 
-const SocialIcon = ({ className, service, title, url, ...opts }) => {
+const SocialIcon = ({ className, service, title, url, ...rest }) => {
   const theme = useTheme()
 
   return (
@@ -23,7 +23,7 @@ const SocialIcon = ({ className, service, title, url, ...opts }) => {
       iconOnly
       size="small"
       type="default"
-      {...opts}
+      {...rest}
     >
       <Icon icon={service} />
     </Button>

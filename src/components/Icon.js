@@ -13,7 +13,7 @@ export const StylesIconVariables = {
 }
 
 const Icon = forwardRef(
-  ({ className, icon, additionalIcons, fallback, size, ...opts }, ref) => {
+  ({ className, icon, additionalIcons, fallback, size, ...rest }, ref) => {
     const getIcon = () => {
       // Merge in base icons with anything additional
       const iconSource = Object.assign(Icons, additionalIcons)
@@ -26,8 +26,8 @@ const Icon = forwardRef(
         return (
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
+            width="1em"
+            height="1em"
             viewBox="0 0 24 24"
             fill="none"
             strokeLinecap="round"
@@ -79,12 +79,13 @@ const Icon = forwardRef(
             className={cx('CK__Icon', className)}
             ref={ref}
             dangerouslySetInnerHTML={{ __html: matchedIcon }}
-            {...opts}
+            {...rest}
           />
         )
       }
 
       console.error('Icon not found') // eslint-disable-line no-console
+
       return false
     }
 

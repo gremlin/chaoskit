@@ -54,7 +54,7 @@ const Dropdown = ({
   position,
   trigger,
   showArrow,
-  ...opts
+  ...rest
 }) => {
   const theme = useTheme()
 
@@ -181,7 +181,7 @@ const Dropdown = ({
       aria-haspopup="true"
       aria-expanded="false"
       ref={dropdownRef}
-      {...opts}
+      {...rest}
     >
       <Button
         onClick={handleDropdownToggle}

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { useTheme } from 'emotion-theming'
 import cx from 'classnames'
 
-const DropdownHeader = ({ children, className, ...opts }) => {
+const DropdownHeader = ({ children, className, ...rest }) => {
   const theme = useTheme()
 
   return (
@@ -16,7 +16,7 @@ const DropdownHeader = ({ children, className, ...opts }) => {
         },
       }}
       className={cx('CK__DropdownHeader', className)}
-      {...opts}
+      {...rest}
     >
       {children}
     </h5>

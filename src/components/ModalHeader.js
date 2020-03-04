@@ -5,7 +5,7 @@ import { useTheme } from 'emotion-theming'
 import Close, { StylesCloseVariables } from './Close'
 import { StylesModalVariables } from './Modal'
 
-const ModalHeader = ({ centered, className, onCloseClick, title, ...opts }) => {
+const ModalHeader = ({ centered, className, onCloseClick, title, ...rest }) => {
   const theme = useTheme()
 
   return (
@@ -23,7 +23,7 @@ const ModalHeader = ({ centered, className, onCloseClick, title, ...opts }) => {
         },
       ]}
       className={cx('CK__ModalHeader', className)}
-      {...opts}
+      {...rest}
     >
       <h4
         css={[

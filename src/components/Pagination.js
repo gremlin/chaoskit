@@ -10,7 +10,7 @@ const Pagination = ({
   hasNextPage,
   prevPageProps,
   nextPageProps,
-  ...opts
+  ...rest
 }) => {
   const theme = useTheme()
 
@@ -23,7 +23,7 @@ const Pagination = ({
         marginTop: theme.space.xlarge,
       }}
       className={cx('CK__Pagination', className)}
-      {...opts}
+      {...rest}
     >
       <Button
         rel={hasPrevPage ? 'prev' : null}

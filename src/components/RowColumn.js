@@ -4,7 +4,7 @@ import { useTheme } from 'emotion-theming'
 
 const columnOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
-const RowColumn = ({ className, offset, order, size, ...opts }) => {
+const RowColumn = ({ className, offset, order, size, ...rest }) => {
   const theme = useTheme()
 
   const percentWidth = columnSize => {
@@ -124,7 +124,7 @@ const RowColumn = ({ className, offset, order, size, ...opts }) => {
         },
       ]}
       className={cx('CK__RowColumn', className)}
-      {...opts}
+      {...rest}
     />
   )
 }

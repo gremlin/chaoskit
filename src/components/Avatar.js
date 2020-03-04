@@ -37,7 +37,7 @@ const StylesAvatarBase = (theme, props = {}) => [
   },
 ]
 
-const Avatar = ({ className, image, name, size, ...opts }) => {
+const Avatar = ({ className, image, name, size, ...rest }) => {
   const theme = useTheme()
   const [error, setError] = useState(false)
 
@@ -54,7 +54,7 @@ const Avatar = ({ className, image, name, size, ...opts }) => {
           },
         ]}
         className={cx('CK__Avatar', className)}
-        {...opts}
+        {...rest}
       >
         <img
           alt={nameProp}
@@ -72,7 +72,7 @@ const Avatar = ({ className, image, name, size, ...opts }) => {
       <figure
         css={[StylesAvatarBase(theme, { size })]}
         className={cx('CK__Avatar', className)}
-        {...opts}
+        {...rest}
       >
         <Icon
           icon="user"
@@ -113,7 +113,7 @@ const Avatar = ({ className, image, name, size, ...opts }) => {
       preserveAspectRatio="none"
       css={[StylesAvatarBase(theme, { size })]}
       className={cx('CK__Avatar', className)}
-      {...opts}
+      {...rest}
     >
       <circle
         cx="50"

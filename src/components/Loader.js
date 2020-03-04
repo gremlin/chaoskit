@@ -25,7 +25,7 @@ const loaderCircleKeyframes = keyframes({
   },
 })
 
-const Loader = ({ className, ...opts }) => (
+const Loader = ({ className, ...rest }) => (
   <span
     css={{
       position: 'relative',
@@ -40,7 +40,7 @@ const Loader = ({ className, ...opts }) => (
       },
     }}
     className={cx('CK__Loader', className)}
-    {...opts}
+    {...rest}
   >
     <svg
       css={{

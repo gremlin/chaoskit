@@ -2,7 +2,7 @@ import cx from 'classnames'
 import PropTypes from 'prop-types'
 import { useTheme } from 'emotion-theming'
 
-const ListItem = ({ className, ...opts }) => {
+const ListItem = ({ className, ...rest }) => {
   const theme = useTheme()
 
   return (
@@ -20,7 +20,7 @@ const ListItem = ({ className, ...opts }) => {
         },
       }}
       className={cx(`CK__ListItem ${theme.settings.classes.trim}`, className)}
-      {...opts}
+      {...rest}
     />
   )
 }

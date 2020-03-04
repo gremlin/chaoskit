@@ -42,7 +42,7 @@ export const StylesBadgeRounded = theme => ({
   borderRadius: StylesBadgeVariables(theme).height / 2,
 })
 
-const Badge = ({ className, label, rounded, type, ...opts }) => {
+const Badge = ({ className, label, rounded, type, ...rest }) => {
   const theme = useTheme()
 
   return (
@@ -54,7 +54,7 @@ const Badge = ({ className, label, rounded, type, ...opts }) => {
         rounded && StylesBadgeRounded(theme),
       ]}
       className={cx('CK__Badge', className)}
-      {...opts}
+      {...rest}
     >
       {label}
     </div>

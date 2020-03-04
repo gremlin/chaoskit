@@ -8,7 +8,7 @@ export const StylesContainerVariables = {
   extended: 1400,
 }
 
-const Container = ({ className, size, ...opts }) => {
+const Container = ({ className, size, ...rest }) => {
   const theme = useTheme()
 
   return (
@@ -38,7 +38,7 @@ const Container = ({ className, size, ...opts }) => {
           maxWidth: StylesContainerVariables.extended,
         },
       ]}
-      {...opts}
+      {...rest}
     />
   )
 }

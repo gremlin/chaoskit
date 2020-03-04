@@ -16,7 +16,7 @@ const Reveal = ({
   children,
   className,
   trigger,
-  ...opts
+  ...rest
 }) => {
   const theme = useTheme()
 
@@ -130,7 +130,7 @@ const Reveal = ({
         className={cx('CK__Reveal', className)}
         ref={revealRef}
         aria-hidden={reveal ? 'false' : 'true'}
-        {...opts}
+        {...rest}
       >
         <div className={`CK__Reveal__Content ${theme.settings.classes.trim}`}>
           {children}
