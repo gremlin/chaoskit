@@ -19,7 +19,7 @@ const params = {
   required: () => boolean('Required', false),
 }
 
-const SelectExample = ({ ...props }) => {
+const SelectExample = props => {
   const selectOpts = [
     { value: 1, label: 'Option One' },
     { value: 'test-string', label: 'Option Two' },

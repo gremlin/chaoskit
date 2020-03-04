@@ -305,7 +305,6 @@ ChoicesMulti.propTypes = {
   validationMessage: PropTypes.string,
   searchPlaceholder: PropTypes.string,
   selected: PropTypes.array,
-  wrapperProps: PropTypes.object,
 }
 
 ChoicesMulti.defaultProps = {

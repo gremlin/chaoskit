@@ -14,7 +14,7 @@ const skeletonKeyframes = keyframes({
   },
 })
 
-const Skeleton = ({ as: Component, className, ...props }) => {
+const Skeleton = ({ as: Component, className, ...rest }) => {
   const theme = useTheme()
 
   return (
@@ -44,7 +44,7 @@ const Skeleton = ({ as: Component, className, ...props }) => {
         },
       ]}
       className={cx('CK__Skeleton', className)}
-      {...props}
+      {...rest}
     />
   )
 }

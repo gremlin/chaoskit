@@ -35,7 +35,7 @@ const Range = ({
   min,
   max,
   value,
-  ...props
+  ...rest
 }) => {
   const theme = useTheme()
   // Only regenerate this if the name prop changes
@@ -182,7 +182,7 @@ const Range = ({
             cursor: 'not-allowed',
           },
         ]}
-        {...props}
+        {...rest}
       />
     </FormControlWrapper>
   )

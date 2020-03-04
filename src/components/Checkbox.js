@@ -6,6 +6,8 @@ import { useTheme } from 'emotion-theming'
 import check from '../assets/icons/check.svg'
 import { form } from '../assets/styles/utility'
 
+import FormChoiceLabel from './FormChoiceLabel'
+
 export const StylesCheckboxVariables = {
   size: 22,
   iconSize: 12,
@@ -19,25 +21,14 @@ const Checkbox = ({
   noContrast,
   value,
   wrapperProps,
-  ...props
+  ...rest
 }) => {
   const theme = useTheme()
 
   return (
-    <label
-      css={[
-        {
-          display: 'grid',
-          gridTemplateColumns: label && 'auto 1fr',
-          gap: label && theme.space.small,
-          alignItems: 'start',
-        },
-
-        disabled && {
-          cursor: 'not-allowed',
-          opacity: theme.opacity.base,
-        },
-      ]}
+    <FormChoiceLabel
+      label={label}
+      disabled={disabled}
       className={cx('CK__Checkbox', className)}
       {...wrapperProps}
     >
@@ -121,11 +112,11 @@ const Checkbox = ({
                 },
               },
           ]}
-          {...props}
+          {...rest}
         />
       </div>
       {label && <span>{label}</span>}
-    </label>
+    </FormChoiceLabel>
   )
 }
 

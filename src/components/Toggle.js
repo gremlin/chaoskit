@@ -37,7 +37,7 @@ const Toggle = ({
   noContrast,
   value,
   wrapperProps,
-  ...props
+  ...rest
 }) => {
   const theme = useTheme()
 
@@ -130,7 +130,7 @@ const Toggle = ({
                   },
                 },
             ]}
-            {...props}
+            {...rest}
           />
         </div>
         {label && <span>{label}</span>}

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { RadioGroupContext } from './RadioGroup'
 import Radio from './Radio'
 
-const RadioWithContext = ({ value, ...props }) => {
+const RadioWithContext = ({ value, ...rest }) => {
   const { selectedValue, name, onChange, noContrast } = useContext(
     RadioGroupContext
   )
@@ -16,7 +16,7 @@ const RadioWithContext = ({ value, ...props }) => {
       noContrast={noContrast}
       value={value}
       checked={value === selectedValue}
-      {...props}
+      {...rest}
     />
   )
 }

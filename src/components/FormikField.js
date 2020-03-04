@@ -8,8 +8,8 @@ import Radio from './Radio'
 import Checkbox from './Checkbox'
 import Toggle from './Toggle'
 
-const FormikField = ({ as, ...props }) => {
-  const [field, meta] = useField(props)
+const FormikField = ({ as, ...rest }) => {
+  const [field, meta] = useField(rest)
 
   const getComponent = () => {
     // eslint-disable-next-line default-case
@@ -42,7 +42,7 @@ const FormikField = ({ as, ...props }) => {
     delete componentProps.validationMessage
   }
 
-  return <Component {...field} {...props} {...componentProps} />
+  return <Component {...field} {...rest} {...componentProps} />
 }
 
 FormikField.propTypes = {

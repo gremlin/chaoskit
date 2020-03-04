@@ -295,7 +295,6 @@ ChoicesSingle.propTypes = {
   validationMessage: PropTypes.string,
   searchPlaceholder: PropTypes.string,
   selected: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  wrapperProps: PropTypes.object,
 }
 
 ChoicesSingle.defaultProps = {
