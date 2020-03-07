@@ -37,7 +37,7 @@ const StylesAvatarBase = (theme, props = {}) => [
   },
 ]
 
-const Avatar = ({ className, image, name, size, ...rest }) => {
+const Avatar = ({ className, fallbackIcon, image, name, size, ...rest }) => {
   const theme = useTheme()
   const [error, setError] = useState(false)
 
@@ -75,7 +75,7 @@ const Avatar = ({ className, image, name, size, ...rest }) => {
         {...rest}
       >
         <Icon
-          icon="user-circle"
+          icon={fallbackIcon}
           css={{
             position: 'absolute',
             top: 0,
@@ -134,6 +134,7 @@ const Avatar = ({ className, image, name, size, ...rest }) => {
 
 Avatar.propTypes = {
   className: PropTypes.string,
+  fallbackIcon: PropTypes.string,
   image: PropTypes.string,
   name: PropTypes.string,
   size: PropTypes.oneOf(['base', 'large']),
@@ -142,6 +143,7 @@ Avatar.propTypes = {
 
 Avatar.defaultProps = {
   size: 'base',
+  fallbackIcon: 'user-circle',
 }
 
 export default Avatar

@@ -11,11 +11,17 @@ const params = {
   image: () => text('image', 'https://source.unsplash.com/random'),
   size: () => select('size', ['base', 'large'], 'base'),
   name: () => text('name', 'Zach Schnackel'),
+  fallbackIcon: () => text('fallback icon', 'user-circle'),
 }
 
 // @TODO For docs
 // Without the `image` prop, Avatars will first attempt to create a monogram version based on the `name` prop; ultimately falling back to a generic user icon.
 
 export const overview = () => (
-  <Avatar image={params.image()} size={params.size()} name={params.name()} />
+  <Avatar
+    fallbackIcon={params.fallbackIcon()}
+    image={params.image()}
+    size={params.size()}
+    name={params.name()}
+  />
 )
