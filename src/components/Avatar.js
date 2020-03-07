@@ -75,21 +75,13 @@ const Avatar = ({ className, image, name, size, ...rest }) => {
         {...rest}
       >
         <Icon
-          icon="user"
+          icon="user-circle"
           css={{
             position: 'absolute',
-            fill: 'currentColor',
-            height: '80%',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            opacity: '0.75',
-            bottom: '-2.5%',
-            width: '80%',
-            top: 'auto',
-
-            '.icon-stroke': {
-              strokeWidth: 0,
-            },
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
           }}
         />
       </figure>
