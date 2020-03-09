@@ -212,7 +212,7 @@ Modal.propTypes = {
   animateFrom: PropTypes.oneOf(['bottom', 'top']),
   children: PropTypes.node,
   className: PropTypes.string,
-  size: PropTypes.oneOf(['base', 'small', 'large']),
+  size: PropTypes.oneOf(['base', 'small', 'large', 'xlarge']),
   open: PropTypes.bool,
   onOutsideModalClick: PropTypes.func,
   /** GSAP callback */
