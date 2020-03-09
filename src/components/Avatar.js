@@ -11,6 +11,7 @@ export const StylesAvatarVariables = theme => ({
   background: theme.color.panel.base,
   color: theme.fontColor.base,
   size: {
+    small: theme.height.small,
     base: theme.height.base,
     get large() {
       return this.base * 2
@@ -137,7 +138,7 @@ Avatar.propTypes = {
   fallbackIcon: PropTypes.string,
   image: PropTypes.string,
   name: PropTypes.string,
-  size: PropTypes.oneOf(['base', 'large']),
+  size: PropTypes.oneOf(['small', 'base', 'large']),
   src: PropTypes.string,
 }
 

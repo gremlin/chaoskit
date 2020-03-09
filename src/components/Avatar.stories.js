@@ -9,7 +9,7 @@ export default {
 
 const params = {
   image: () => text('image', 'https://source.unsplash.com/random'),
-  size: () => select('size', ['base', 'large'], 'base'),
+  size: () => select('size', ['small', 'base', 'large'], 'base'),
   name: () => text('name', 'Zach Schnackel'),
   fallbackIcon: () => text('fallback icon', 'user-circle'),
 }
