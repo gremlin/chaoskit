@@ -13,7 +13,7 @@ export default {
   component: Modal,
 }
 
-const ModalExample = () => {
+const ModalExample = props => {
   const [isOpen, toggleOpen] = useState(false)
 
   const handleToggle = () => {
@@ -22,15 +22,7 @@ const ModalExample = () => {
 
   return (
     <Fragment>
-      <Modal
-        onStart={action('opening')}
-        onComplete={action('opened')}
-        onReverseStart={action('closing')}
-        onReverseComplete={action('closed')}
-        size={select('size', ['base', 'small', 'large'], 'base')}
-        open={isOpen}
-        onOutsideModalClick={handleToggle}
-      >
+      <Modal open={isOpen} onOutsideModalClick={handleToggle} {...props}>
         <ModalHeader title="Hello" onCloseClick={handleToggle} />
         <ModalBody>test</ModalBody>
         <ModalFooter>hello</ModalFooter>
@@ -46,4 +38,12 @@ const ModalExample = () => {
 // @TODO For docs
 // When resetting UI on-close (like form-values), use the `onReverseComplete` prop; which waits until the animation is complete to fire
 
-export const Overview = () => <ModalExample />
+export const Overview = () => (
+  <ModalExample
+    onStart={action('opening')}
+    onComplete={action('opened')}
+    onReverseStart={action('closing')}
+    onReverseComplete={action('closed')}
+    size={select('size', ['base', 'small', 'large', 'xlarge'], 'base')}
+  />
+)

@@ -16,6 +16,7 @@ export const StylesModalVariables = theme => ({
     base: 600,
     small: 400,
     large: 800,
+    xlarge: 1000,
   },
 })
 
@@ -193,6 +194,13 @@ const Modal = ({
 
           size === 'large' && {
             [theme.mq.large]: {
+              maxWidth: StylesModalVariables(theme).size[size],
+              margin: `${theme.space.xlarge}px auto`,
+            },
+          },
+
+          size === 'xlarge' && {
+            [theme.mq.xlarge]: {
               maxWidth: StylesModalVariables(theme).size[size],
               margin: `${theme.space.xlarge}px auto`,
             },
