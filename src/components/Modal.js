@@ -159,6 +159,8 @@ const Modal = ({
           left: 0,
           background: theme.color.dark.overlay,
           zIndex: 10,
+          paddingLeft: theme.space.base,
+          paddingRight: theme.space.base,
 
           // 1
           opacity: 0,
@@ -175,35 +177,24 @@ const Modal = ({
             // 1. GSAP
             background: theme.color.light.base,
             borderRadius: theme.settings.ui.radius && theme.borderRadius.large,
-            margin: theme.space.base,
             zIndex: 5,
             boxShadow: theme.boxShadow.large,
+            marginTop: theme.space.base,
+            marginBottom: theme.space.base,
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            maxWidth: '100%',
+            width: StylesModalVariables(theme).size[size],
+
+            [theme.mq.medium]: {
+              marginTop: theme.space.xlarge,
+              marginBottom: theme.space.xlarge,
+            },
 
             // 1
             opacity: 0,
             transform: MODAL_ANIMATE_PROPERTIES[animateFrom].transform,
             transformOrigin: MODAL_ANIMATE_PROPERTIES[animateFrom].label,
-          },
-
-          ['small', 'base'].includes(size) && {
-            [theme.mq.medium]: {
-              maxWidth: StylesModalVariables(theme).size[size],
-              margin: `${theme.space.xlarge}px auto`,
-            },
-          },
-
-          size === 'large' && {
-            [theme.mq.large]: {
-              maxWidth: StylesModalVariables(theme).size[size],
-              margin: `${theme.space.xlarge}px auto`,
-            },
-          },
-
-          size === 'xlarge' && {
-            [theme.mq.xlarge]: {
-              maxWidth: StylesModalVariables(theme).size[size],
-              margin: `${theme.space.xlarge}px auto`,
-            },
           },
         ]}
         className="CK__Modal__Dialog"

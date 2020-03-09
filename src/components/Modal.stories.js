@@ -24,7 +24,29 @@ const ModalExample = props => {
     <Fragment>
       <Modal open={isOpen} onOutsideModalClick={handleToggle} {...props}>
         <ModalHeader title="Hello" onCloseClick={handleToggle} />
-        <ModalBody>test</ModalBody>
+        <ModalBody>
+          <p>test</p>
+          <p>test</p>
+          <p>test</p>
+          <p>test</p>
+          <p>test</p>
+          <p>test</p>
+          <p>test</p>
+          <p>test</p>
+          <p>test</p>
+          <p>test</p>
+          <p>test</p>
+          <p>test</p>
+
+          <p>test</p>
+          <p>test</p>
+          <p>test</p>
+          <p>test</p>
+          <p>test</p>
+          <p>test</p>
+          <p>test</p>
+          <p>test</p>
+        </ModalBody>
         <ModalFooter>hello</ModalFooter>
       </Modal>
 
