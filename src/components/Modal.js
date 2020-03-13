@@ -20,6 +20,38 @@ export const StylesModalVariables = theme => ({
   },
 })
 
+export const StylesModalWrapper = theme => [
+  misc.overflow,
+  {
+    position: 'fixed',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    background: theme.color.dark.overlay,
+    zIndex: 10,
+    paddingLeft: theme.space.base,
+    paddingRight: theme.space.base,
+  },
+]
+
+export const StylesModalDialog = theme => ({
+  background: theme.color.light.base,
+  borderRadius: theme.settings.ui.radius && theme.borderRadius.large,
+  zIndex: 5,
+  boxShadow: theme.boxShadow.large,
+  marginTop: theme.space.base,
+  marginBottom: theme.space.base,
+  marginLeft: 'auto',
+  marginRight: 'auto',
+  maxWidth: '100%',
+
+  [theme.mq.medium]: {
+    marginTop: theme.space.xlarge,
+    marginBottom: theme.space.xlarge,
+  },
+})
+
 const MODAL_ANIMATE_PROPERTIES = {
   bottom: {
     label: 'center bottom',
@@ -149,20 +181,9 @@ const Modal = ({
   return createPortal(
     <div
       css={[
-        misc.overflow,
+        StylesModalWrapper(theme),
         {
-          // 1. GSAP
-          position: 'fixed',
-          top: 0,
-          right: 0,
-          bottom: 0,
-          left: 0,
-          background: theme.color.dark.overlay,
-          zIndex: 10,
-          paddingLeft: theme.space.base,
-          paddingRight: theme.space.base,
-
-          // 1
+          // GSAP
           opacity: 0,
           display: 'none',
         },
@@ -173,25 +194,11 @@ const Modal = ({
     >
       <div
         css={[
+          StylesModalDialog(theme),
           {
-            // 1. GSAP
-            background: theme.color.light.base,
-            borderRadius: theme.settings.ui.radius && theme.borderRadius.large,
-            zIndex: 5,
-            boxShadow: theme.boxShadow.large,
-            marginTop: theme.space.base,
-            marginBottom: theme.space.base,
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            maxWidth: '100%',
             width: StylesModalVariables(theme).size[size],
 
-            [theme.mq.medium]: {
-              marginTop: theme.space.xlarge,
-              marginBottom: theme.space.xlarge,
-            },
-
-            // 1
+            // GSAP
             opacity: 0,
             transform: MODAL_ANIMATE_PROPERTIES[animateFrom].transform,
             transformOrigin: MODAL_ANIMATE_PROPERTIES[animateFrom].label,
