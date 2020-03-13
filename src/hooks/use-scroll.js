@@ -1,30 +1,40 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useLayoutEffect, useState } from 'react'
 
 import { throttleScroll } from '../helpers/utility'
 
-const useScroll = ref => {
+const useIsomorphicLayoutEffect =
+  typeof window !== 'undefined' &&
+  typeof window.document !== 'undefined' &&
+  typeof window.document.createElement !== 'undefined'
+    ? useLayoutEffect
+    : useEffect
+
+const isBrowser = typeof window !== 'undefined'
+
+const useScroll = (ref = {}) => {
   const [state, setState] = useState({ x: 0, y: 0 })
 
-  useEffect(() => {
-    const handler = throttleScroll(() => {
-      if (!ref.current) return
+  const el = ref.current || isBrowser ? window : {}
 
+  useIsomorphicLayoutEffect(() => {
+    const handler = throttleScroll(() => {
       setState({
-        x: ref.current.scrollLeft,
-        y: ref.current.scrollTop,
+        x: el.scrollLeft || el.pageXOffset,
+        y: el.scrollTop || el.pageYOffset,
       })
     })
 
-    if (ref.current) {
-      ref.current.addEventListener('scroll', handler, {
+    if (el) {
+      el.addEventListener('scroll', handler, {
         capture: false,
         passive: true,
       })
     }
 
     return () => {
-      if (ref.current) {
-        ref.current.removeEventListener('scroll', handler)
+      // Cleanup check to make sure element is still in DOM
+      if (el) {
+        el.removeEventListener('scroll', handler)
       }
     }
   }, [ref])
