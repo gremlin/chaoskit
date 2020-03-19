@@ -10,7 +10,8 @@ export default {
 const params = {
   rounded: () => boolean('Rounded', false),
   label: () => text('Label', 'Badge'),
-  type: () => select('Type', ['default', 'primary', 'danger'], 'default'),
+  type: () =>
+    select('Type', ['default', 'secondary', 'primary', 'danger'], 'default'),
 }
 
 export const Overview = () => (

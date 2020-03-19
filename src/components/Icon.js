@@ -40,6 +40,8 @@ const Icon = forwardRef(
                 top: '-0.1em',
                 maxWidth: '100%',
                 backfaceVisibility: 'hidden', // 1
+                width: StylesIconVariables[size],
+                height: StylesIconVariables[size],
 
                 '.icon-fill': {
                   fill: 'currentColor',
@@ -55,26 +57,6 @@ const Icon = forwardRef(
                   },
                 },
               },
-              size === 'base' && {
-                width: StylesIconVariables.base,
-                height: StylesIconVariables.base,
-              },
-              size === 'small' && {
-                width: StylesIconVariables.small,
-                height: StylesIconVariables.small,
-              },
-              size === 'medium' && {
-                width: StylesIconVariables.medium,
-                height: StylesIconVariables.medium,
-              },
-              size === 'large' && {
-                width: StylesIconVariables.large,
-                height: StylesIconVariables.large,
-              },
-              size === 'xlarge' && {
-                width: StylesIconVariables.xlarge,
-                height: StylesIconVariables.xlarge,
-              },
             ]}
             className={cx('CK__Icon', className)}
             ref={ref}
@@ -86,7 +68,7 @@ const Icon = forwardRef(
 
       console.error('Icon not found') // eslint-disable-line no-console
 
-      return false
+      return null
     }
 
     return getIcon()

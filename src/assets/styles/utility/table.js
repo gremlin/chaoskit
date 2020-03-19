@@ -21,6 +21,7 @@ export const styles = theme => ({
       captionSide: 'bottom',
       border: theme.border.base,
       boxShadow: theme.boxShadow.base,
+      borderRadius: theme.borderRadius.base,
       tableLayout: 'fixed',
       maxWidth: 'max-content',
       display: 'block',
@@ -51,6 +52,14 @@ export const styles = theme => ({
         lineHeight: theme.lineHeight.small,
         fontSize: theme.fontSize.small,
         textAlign: 'left',
+
+        '&:first-of-type': {
+          borderTopLeftRadius: theme.borderRadius.base,
+        },
+
+        '&:last-of-type': {
+          borderTopRightRadius: theme.borderRadius.base,
+        },
       },
 
       theme.settings.contrast.enable &&

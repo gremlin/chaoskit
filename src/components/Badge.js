@@ -26,6 +26,12 @@ export const StylesBadgeBase = theme => ({
   userSelect: 'none',
 })
 
+export const StylesBadgeSecondary = theme => ({
+  borderColor: theme.fontColor.base,
+  background: theme.fontColor.base,
+  color: theme.contrast.base,
+})
+
 export const StylesBadgePrimary = theme => ({
   borderColor: theme.color.primary.base,
   background: theme.color.primary.base,
@@ -51,6 +57,7 @@ const Badge = ({ className, label, rounded, type, ...rest }) => {
         StylesBadgeBase(theme),
         type === 'primary' && StylesBadgePrimary(theme),
         type === 'danger' && StylesBadgeDanger(theme),
+        type === 'secondary' && StylesBadgeSecondary(theme),
         rounded && StylesBadgeRounded(theme),
       ]}
       className={cx('CK__Badge', className)}
@@ -65,7 +72,7 @@ Badge.propTypes = {
   className: PropTypes.string,
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
   rounded: PropTypes.bool,
-  type: PropTypes.oneOf(['default', 'primary', 'danger']),
+  type: PropTypes.oneOf(['default', 'primary', 'danger', 'secondary']),
 }
 
 export default Badge
