@@ -144,15 +144,20 @@ const NotificationWrapper = ({ notification }) => {
     notificationRef.current.timeline
       .set(notificationRef.current, {
         visibility: 'visible',
-        marginTop: -notificationRef.current.offsetHeight,
-        opacity: 0,
       })
-      .to(notificationRef.current, {
-        duration: theme.gsap.timing.base,
-        ease: theme.gsap.transition.base,
-        opacity: 1,
-        marginTop: 0,
-      })
+      .fromTo(
+        notificationRef.current,
+        {
+          marginTop: -notificationRef.current.offsetHeight,
+          opacity: 0,
+        },
+        {
+          duration: theme.gsap.timing.base,
+          ease: theme.gsap.transition.bounce,
+          opacity: 1,
+          marginTop: 0,
+        }
+      )
 
     // Remove notification after timeout
     if (notification.timeout !== -1) {
