@@ -175,13 +175,10 @@ const ChoicesMulti = ({
                         paddingBottom: form.variables(theme).padding,
                       }}
                     >
-                      {downshift.selectedItem.map((item, i) => {
-                        const key = `${item.label}-${i}`
-
+                      {downshift.selectedItem.map(item => {
                         return (
-                          <ListItem>
+                          <ListItem key={item.label}>
                             <Badge
-                              key={key}
                               title="Remove item"
                               type="primary"
                               onClick={() => removeItem(item)}

@@ -18,7 +18,7 @@
     "babel-plugin-emotion": "10.0.29",
     "babel-plugin-polished": "1.1.0",
     "classnames": "2.2.6",
-    "downshift": "4.0.7",
+    "downshift": "5.0.5",
     "emotion-theming": "10.0.27",
     "eslint": "5.16.0",
     "eslint-config-airbnb": "17.1.0",
