@@ -91,6 +91,8 @@ const color = {
     get dark() {
       return shade(0.025, this.base)
     },
+    filter:
+      'brightness(0) saturate(100%) invert(95%) sepia(5%) saturate(576%) hue-rotate(228deg) brightness(117%) contrast(95%)',
   },
   dark: {
     base: brand.black,
@@ -132,9 +134,13 @@ const color = {
   },
   highlight: {
     base: '#ffa',
+    filter:
+      'brightnes(0) saturate(100%) invert(93%) sepia(16%) saturate(799%) hue-rotate(3deg) brightness(106%) contrast(106%)',
   },
   border: {
     base: '#e6e6e6',
+    filter:
+      'brightness(0) saturate(100%) invert(97%) sepia(1%) saturate(135%) hue-rotate(200deg) brightness(110%) contrast(80%)',
   },
 }
 
