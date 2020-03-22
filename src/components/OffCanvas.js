@@ -79,12 +79,10 @@ const OffCanvas = ({
     })
 
     $offCanvas.timeline
-      .set($offCanvas, {
-        display: 'block',
-      })
       .to(
         $offCanvas,
         {
+          display: 'block',
           duration: theme.gsap.timing.long,
           opacity: 1,
           backdropFilter: 'blur(2px)',

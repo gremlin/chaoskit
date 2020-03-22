@@ -142,17 +142,14 @@ const Dropdown = ({
       },
     })
 
-    $dropdown.timeline
-      .set($panel, {
-        display: 'block',
-      })
-      .to($panel, {
-        duration: theme.gsap.timing.short,
-        y: 0,
-        scale: 1,
-        opacity: 1,
-        ease: theme.gsap.transition.bounce,
-      })
+    $dropdown.timeline.to($panel, {
+      display: 'block',
+      duration: theme.gsap.timing.short,
+      y: 0,
+      scale: 1,
+      opacity: 1,
+      ease: theme.gsap.transition.bounce,
+    })
   }
 
   useEffect(() => {

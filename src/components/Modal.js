@@ -125,12 +125,10 @@ const Modal = ({
     })
 
     $modal.timeline
-      .set($modal, {
-        display: 'block',
-      })
       .to(
         $modal,
         {
+          display: 'block',
           duration: theme.gsap.timing.base,
           opacity: 1,
           backdropFilter: 'blur(2px)',
