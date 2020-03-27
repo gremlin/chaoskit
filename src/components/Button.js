@@ -9,9 +9,9 @@ import { gradient, misc } from '../assets/styles/utility'
 import { StylesIconVariables } from './Icon'
 import Loader from './Loader'
 
-export const addButtonGradient = ({ start, stop }) => ({
+export const generateButtonGradient = ({ start, stop }) => ({
   borderColor: 'transparent',
-  backgroundImage: `${gradient.generateGradient({
+  background: `${gradient.generateGradient({
     start,
     stop,
   })}, ${gradient.generateGradient({ start, stop })}`,
@@ -66,7 +66,7 @@ export const StylesButtonBase = (theme, props = {}) => [
     padding: `0 ${
       theme.settings.ui.radius ? theme.space.medium : theme.space.base
     }px`,
-    backgroundColor: 'transparent',
+    background: 'transparent',
     verticalAlign: 'middle',
     cursor: 'pointer',
     transition: `all ${theme.timing.base} ${theme.transition.base}`,
@@ -144,7 +144,7 @@ export const StylesButtonXsmall = theme => ({
 
 export const StylesButtonDefault = (theme, props = {}) => [
   {
-    backgroundColor: theme.color.light.base,
+    background: theme.color.light.base,
     borderColor: StylesButtonVariables(theme).color.base,
     color: StylesButtonVariables(theme).color.base,
 
@@ -157,7 +157,7 @@ export const StylesButtonDefault = (theme, props = {}) => [
     theme.settings.contrast.button &&
     !props.noContrast && {
       '.u-contrast &': {
-        backgroundColor: rgba(theme.contrast.base, 0.15),
+        background: rgba(theme.contrast.base, 0.15),
         color: theme.contrast.base,
         borderColor: theme.contrast.base,
 
@@ -176,7 +176,7 @@ export const StylesButtonOutlinePrimary = (theme, props = {}) => {
 
   return [
     {
-      backgroundColor: theme.color.light.base,
+      background: theme.color.light.base,
       borderColor: theme.color.primary.base,
       color: StylesButtonVariables(theme).color.base,
 
@@ -209,13 +209,13 @@ export const StylesButtonPrimary = (theme, props = {}) => {
   const interactiveStyles = [
     {
       color: theme.contrast.base,
-      backgroundColor: theme.color.primary.dark,
+      background: theme.color.primary.dark,
       borderColor: theme.color.primary.dark,
     },
 
     theme.settings.button.gradient.enable &&
-      addButtonGradient({
-        start: theme.brand.teal,
+      generateButtonGradient({
+        start: theme.settings.button.gradient.primaryStart,
         stop: theme.color.primary.base,
       }),
   ]
@@ -226,7 +226,7 @@ export const StylesButtonPrimary = (theme, props = {}) => {
 
   return [
     {
-      backgroundColor: theme.color.primary.base,
+      background: theme.color.primary.base,
       borderColor: theme.color.primary.base,
       color: theme.contrast.base,
 
@@ -236,7 +236,7 @@ export const StylesButtonPrimary = (theme, props = {}) => {
     },
 
     theme.settings.button.gradient.enable &&
-      addButtonGradient({
+      generateButtonGradient({
         start: theme.settings.button.gradient.primaryStart,
         stop: theme.color.primary.base,
       }),
@@ -248,7 +248,7 @@ export const StylesButtonPrimary = (theme, props = {}) => {
       !props.noContrast && {
         '.u-contrast &': [
           {
-            backgroundColor: theme.contrast.base,
+            background: theme.contrast.base,
             borderColor: theme.contrast.base,
             color: theme.color.primary.base,
 
@@ -265,7 +265,7 @@ export const StylesButtonPrimary = (theme, props = {}) => {
 
 export const StylesButtonSecondary = (theme, props = {}) => [
   {
-    backgroundColor: StylesButtonVariables(theme).color.base,
+    background: StylesButtonVariables(theme).color.base,
     borderColor: StylesButtonVariables(theme).color.base,
     color: theme.contrast.base,
 
@@ -277,7 +277,7 @@ export const StylesButtonSecondary = (theme, props = {}) => [
     theme.settings.contrast.button &&
     !props.noContrast && {
       '.u-contrast &': {
-        backgroundColor: theme.contrast.base,
+        background: theme.contrast.base,
         borderColor: theme.contrast.base,
         color: StylesButtonVariables(theme).color.base,
 
@@ -291,7 +291,7 @@ export const StylesButtonSecondary = (theme, props = {}) => [
 export const StylesButtonDanger = (theme, props = {}) => {
   const interactiveStyles = {
     color: theme.contrast.base,
-    backgroundColor: theme.color.danger.dark,
+    background: theme.color.danger.dark,
     borderColor: theme.color.danger.dark,
   }
 
@@ -301,7 +301,7 @@ export const StylesButtonDanger = (theme, props = {}) => {
 
   return [
     {
-      backgroundColor: theme.color.danger.base,
+      background: theme.color.danger.base,
       borderColor: theme.color.danger.base,
       color: theme.contrast.base,
 
@@ -317,7 +317,7 @@ export const StylesButtonDanger = (theme, props = {}) => {
       !props.noContrast && {
         '.u-contrast &': [
           {
-            backgroundColor: theme.contrast.base,
+            background: theme.contrast.base,
             borderColor: theme.contrast.base,
             color: theme.color.danger.base,
 
@@ -376,7 +376,7 @@ export const StylesButtonReset = {
 
   // 1
   appearance: 'none',
-  backgroundColor: 'none',
+  background: 'none',
   // 2
   padding: 0,
   margin: 0,
