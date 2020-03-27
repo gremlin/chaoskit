@@ -100,9 +100,10 @@ const SectionTitle = ({
 
   return (
     <div
-      className={
-        (cx(`CK__SectionTitle ${theme.settings.classes.trim}`), className)
-      }
+      className={cx(
+        `CK__SectionTitle ${theme.settings.classes.trim}`,
+        className
+      )}
       css={StylesSectionTitleWrapper(theme, { space, align })}
       {...rest}
     >
