@@ -1,16 +1,11 @@
-import { select } from '@storybook/addon-knobs'
 import { Fragment, useState } from 'react'
+import useUpdateEffect from 'react-use/lib/useUpdateEffect'
 
-import Modal from './Modal'
 import Button from './Button'
+import Modal from './Modal'
 import ModalHeader from './ModalHeader'
 import ModalBody from './ModalBody'
 import ModalFooter from './ModalFooter'
-
-export default {
-  title: 'Components/Modal',
-  component: Modal,
-}
 
 const ModalExample = props => {
   const [isOpen, toggleOpen] = useState(false)
@@ -19,19 +14,27 @@ const ModalExample = props => {
     toggleOpen(!isOpen)
   }
 
-  const handleOnComplete = () => {
-    console.log('Open complete!')
-  }
+  useUpdateEffect(() => {
+    if (!isOpen) {
+      console.log('closing')
+    } else {
+      console.log('opening')
+    }
+  }, [])
 
-  const handleReverseComplete = () => {
-    console.log('Closed!')
+  const handleComplete = open => {
+    if (open) {
+      console.log('open')
+    } else {
+      console.log('close')
+    }
   }
 
   return (
     <Fragment>
       <Modal
-        onComplete={handleOnComplete}
-        onReverseComplete={handleReverseComplete}
+        onComplete={handleComplete}
+        onReverseComplete={() => console.log('closed')}
         open={isOpen}
         onOutsideModalClick={handleToggle}
         {...props}
@@ -70,11 +73,4 @@ const ModalExample = props => {
   )
 }
 
-// @TODO For docs
-// When resetting UI on-close (like form-values), use the `onReverseComplete` prop; which waits until the animation is complete to fire
-
-export const Overview = () => (
-  <ModalExample
-    size={select('size', ['base', 'small', 'large', 'xlarge'], 'base')}
-  />
-)
+export default ModalExample

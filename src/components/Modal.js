@@ -1,12 +1,11 @@
-import cx from 'classnames'
+import { useRef } from 'react'
 import PropTypes from 'prop-types'
-import { useRef, useState, useEffect } from 'react'
-import useUpdateEffect from 'react-use/lib/useUpdateEffect'
+import cx from 'classnames'
 import useLockBodyScroll from 'react-use/lib/useLockBodyScroll'
 import useClickAway from 'react-use/lib/useClickAway'
 import { createPortal } from 'react-dom'
-import gsap from 'gsap'
 import { useTheme } from 'emotion-theming'
+import { motion, AnimatePresence } from 'framer-motion'
 
 import { misc } from '../assets/styles/utility'
 
@@ -52,17 +51,6 @@ export const StylesModalDialog = theme => ({
   },
 })
 
-const MODAL_ANIMATE_PROPERTIES = {
-  bottom: {
-    label: 'center bottom',
-    transform: 'translateY(25%)',
-  },
-  top: {
-    label: 'center top',
-    transform: 'translateY(-25%)',
-  },
-}
-
 const Modal = ({
   animateFrom,
   children,
@@ -72,142 +60,55 @@ const Modal = ({
   onOutsideModalClick,
   onComplete,
   onReverseComplete,
-  onReverseStart,
-  onStart,
   ...rest
 }) => {
   const theme = useTheme()
-
-  const modalRef = useRef()
   const modalDialogRef = useRef()
 
-  const [renderModal, setRenderModal] = useState(open)
-
-  const openModal = () => {
-    const $modal = modalRef.current
-
-    if ($modal && $modal.timeline) $modal.timeline.play()
+  const modalVariants = {
+    closed: { opacity: 0, backdropFilter: 'blur(0px)' },
+    open: { opacity: 1, backdropFilter: 'blur(2px)' },
   }
 
-  const closeModal = () => {
-    const $modal = modalRef.current
-
-    if ($modal && $modal.timeline) {
-      $modal.timeline.reverse()
-
-      onReverseStart()
-    }
+  const modalDialogVariants = {
+    open: { opacity: 1, y: 0 },
+    closed: { opacity: 0, y: animateFrom === 'bottom' ? '15%' : '15%' },
   }
 
-  const handleOnReverseComplete = () => {
-    setRenderModal(false)
-  }
-
-  const attachTimeline = () => {
-    const $modal = modalRef.current
-    const $modalDialog = modalDialogRef.current
-
-    // Attach timeline to each instance
-    $modal.timeline = gsap.timeline({
-      paused: !open,
-      onStart: () => {
-        onStart()
-      },
-      onComplete: () => {
-        // Focus on active modal for screen readers
-        $modal.focus()
-
-        onComplete()
-      },
-      onReverseComplete: () => {
-        handleOnReverseComplete()
-      },
-    })
-
-    $modal.timeline
-      .to(
-        $modal,
-        {
-          display: 'block',
-          duration: theme.gsap.timing.base,
-          opacity: 1,
-          backdropFilter: 'blur(2px)',
-        },
-        'modal'
-      )
-      .to(
-        $modalDialog,
-        {
-          duration: theme.gsap.timing.base,
-          opacity: 1,
-          y: 0,
-          ease: theme.gsap.transition.bounce,
-        },
-        'modal'
-      )
-  }
-
-  useEffect(() => {
-    if (open) {
-      setRenderModal(true)
-    }
-  }, [open])
-
-  useUpdateEffect(() => {
-    if (renderModal) {
-      attachTimeline()
-
-      openModal()
-    } else {
-      onReverseComplete()
-    }
-  }, [renderModal])
-
-  useUpdateEffect(() => {
-    if (!open) {
-      closeModal()
-    }
-  }, [open])
-
-  useClickAway(modalDialogRef, () => onOutsideModalClick())
-
-  // If not explicitly a boolean, the body lock will not release
-  useLockBodyScroll(Boolean(renderModal))
-
-  if (!renderModal) return null
+  useClickAway(modalDialogRef, onOutsideModalClick)
+  useLockBodyScroll(!!open)
 
   return createPortal(
-    <div
-      css={[
-        StylesModalWrapper(theme),
-        {
-          // GSAP
-          opacity: 0,
-          display: 'none',
-        },
-      ]}
-      className={cx('CK__Modal', className)}
-      ref={modalRef}
-      {...rest}
-    >
-      <div
-        css={[
-          StylesModalDialog(theme),
-          {
-            width: StylesModalVariables(theme).size[size],
-
-            // GSAP
-            opacity: 0,
-            transform: MODAL_ANIMATE_PROPERTIES[animateFrom].transform,
-            transformOrigin: MODAL_ANIMATE_PROPERTIES[animateFrom].label,
-          },
-        ]}
-        className="CK__Modal__Dialog"
-        ref={modalDialogRef}
-      >
-        {children}
-      </div>
-    </div>,
+    <AnimatePresence onExitComplete={onReverseComplete}>
+      {open && (
+        <motion.div
+          css={[StylesModalWrapper(theme)]}
+          className={cx('CK__Modal', className)}
+          variants={modalVariants}
+          initial="closed"
+          animate="open"
+          exit="closed"
+          {...rest}
+        >
+          <motion.div
+            variants={modalDialogVariants}
+            initial="closed"
+            animate="open"
+            exit="closed"
+            css={[
+              StylesModalDialog(theme),
+              {
+                width: StylesModalVariables(theme).size[size],
+              },
+            ]}
+            className="CK__Modal__Dialog"
+            ref={modalDialogRef}
+          >
+            {children}
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>,
     document.body
   )
 }
@@ -220,14 +121,10 @@ Modal.propTypes = {
   size: PropTypes.oneOf(['base', 'small', 'large', 'xlarge']),
   open: PropTypes.bool,
   onOutsideModalClick: PropTypes.func,
-  /** GSAP callback */
+  /** Framer Motion callback */
   onComplete: PropTypes.func,
-  /** GSAP callback */
+  /** Framer Motion callback */
   onReverseComplete: PropTypes.func,
-  /** GSAP callback */
-  onReverseStart: PropTypes.func,
-  /** GSAP callback */
-  onStart: PropTypes.func,
 }
 
 Modal.defaultProps = {
@@ -235,8 +132,6 @@ Modal.defaultProps = {
   onOutsideModalClick: () => {},
   onComplete: () => {},
   onReverseComplete: () => {},
-  onReverseStart: () => {},
-  onStart: () => {},
   size: 'base',
 }
 

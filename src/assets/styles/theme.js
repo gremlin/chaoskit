@@ -378,6 +378,14 @@ const gsap = {
   },
 }
 
+const motion = {
+  timing: {
+    short: 0.175,
+    base: 0.25,
+    long: 0.5,
+  },
+}
+
 const contrast = {
   base: color.light.base,
   get muted() {
@@ -415,6 +423,7 @@ export const theme = {
   transition,
   timing,
   gsap,
+  motion,
   contrast,
   settings,
 }
