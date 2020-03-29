@@ -159,7 +159,7 @@ const Dropdown = ({
   const handleDropdownToggle = () => {
     const $dropdown = dropdownRef.current
 
-    if ($dropdown.timeline.progress() === 1) {
+    if ($dropdown.timeline.progress() > 0) {
       dropdownClose()
 
       handleOnReverseStart()

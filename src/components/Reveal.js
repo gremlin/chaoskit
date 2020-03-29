@@ -94,7 +94,7 @@ const Reveal = ({
   const handleRevealToggle = () => {
     const $reveal = revealRef.current
 
-    if ($reveal.timeline.progress() === 1) {
+    if ($reveal.timeline.progress() > 0) {
       revealClose()
     } else {
       revealOpen()
@@ -102,13 +102,7 @@ const Reveal = ({
   }
 
   useUpdateEffect(() => {
-    const $reveal = revealRef.current
-
-    if ($reveal.timeline.progress() === 1) {
-      revealClose()
-    } else {
-      revealOpen()
-    }
+    handleRevealToggle()
   }, [reveal])
 
   useEffect(() => {
