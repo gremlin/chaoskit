@@ -41,6 +41,9 @@ const brand = {
   yellow: '#ffcf23',
   yellow__filter:
     'brightness(0) saturate(100%) invert(79%) sepia(82%) saturate(599%) hue-rotate(335deg) brightness(103%) contrast(102%)',
+  orange: '#ffa615',
+  orange__filter:
+    'brightness(0) saturate(100%) invert(83%) sepia(29%) saturate(6359%) hue-rotate(345deg) brightness(102%) contrast(104%)',
 }
 
 const breakpoint = {
