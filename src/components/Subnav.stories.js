@@ -13,7 +13,7 @@ export const Overview = () => (
       <ListItem>
         <a
           href="https://www.google.com"
-          css={theme => SubnavMenuItemStyles(theme)}
+          css={(theme) => SubnavMenuItemStyles(theme)}
         >
           Test
         </a>
@@ -21,7 +21,7 @@ export const Overview = () => (
       <ListItem>
         <a
           href="https://www.google.com"
-          css={theme => SubnavMenuItemStyles(theme)}
+          css={(theme) => SubnavMenuItemStyles(theme)}
         >
           Test
         </a>
@@ -30,7 +30,7 @@ export const Overview = () => (
         <a
           href="https://www.google.com"
           disabled
-          css={theme => SubnavMenuItemStyles(theme)}
+          css={(theme) => SubnavMenuItemStyles(theme)}
         >
           Disabled
         </a>
@@ -38,7 +38,7 @@ export const Overview = () => (
       <ListItem>
         <a
           href="https://www.google.com"
-          css={theme => SubnavMenuItemStyles(theme)}
+          css={(theme) => SubnavMenuItemStyles(theme)}
         >
           Test
         </a>
@@ -46,7 +46,7 @@ export const Overview = () => (
       <ListItem>
         <a
           href="https://www.google.com"
-          css={theme => SubnavMenuItemStyles(theme)}
+          css={(theme) => SubnavMenuItemStyles(theme)}
         >
           Test
         </a>
@@ -54,7 +54,7 @@ export const Overview = () => (
       <ListItem>
         <a
           href="https://www.google.com"
-          css={theme => SubnavMenuItemStyles(theme, { active: true })}
+          css={(theme) => SubnavMenuItemStyles(theme, { active: true })}
         >
           Active
         </a>

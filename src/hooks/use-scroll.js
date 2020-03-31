@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 import { throttleScroll } from '../helpers/utility'
 
-const useScroll = ref => {
+const useScroll = (ref) => {
   const [state, setState] = useState({ x: 0, y: 0 })
 
   useEffect(() => {

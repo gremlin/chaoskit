@@ -17,10 +17,10 @@ export default {
 
 export const Overview = () => (
   <BlockGrid size={{ small: 2, medium: 4 }}>
-    {Object.entries(icons).map(icon => (
+    {Object.entries(icons).map((icon) => (
       <ListItem key={icon[0]}>
         <div
-          css={theme => ({
+          css={(theme) => ({
             border: theme.border.base,
             borderRadius: theme.settings.ui.radius && theme.borderRadius.base,
             boxShadow: theme.boxShadow.base,
@@ -29,7 +29,7 @@ export const Overview = () => (
           })}
         >
           <Icon
-            css={theme => ({
+            css={(theme) => ({
               display: 'block',
               margin: `0 auto ${theme.space.small}px auto`,
             })}

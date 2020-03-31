@@ -64,36 +64,32 @@ const Tooltip = ({ children, className, content, placement, variation }) => {
     ) {
       case 'top':
         $tooltip.style.top = `${rect.top + scrollYOffset - tooltipDim.h}px`
-        $tooltip.style.left = `${rect.left +
-          scrollXOffset +
-          linkDim.w / 2 -
-          tooltipDim.w / 2}px`
+        $tooltip.style.left = `${
+          rect.left + scrollXOffset + linkDim.w / 2 - tooltipDim.w / 2
+        }px`
         break
       case 'bottom':
         $tooltip.style.top = `${rect.top + scrollYOffset + linkDim.h}px`
-        $tooltip.style.left = `${rect.left +
-          scrollXOffset +
-          linkDim.w / 2 -
-          tooltipDim.w / 2}px`
+        $tooltip.style.left = `${
+          rect.left + scrollXOffset + linkDim.w / 2 - tooltipDim.w / 2
+        }px`
         break
       case 'left':
-        $tooltip.style.top = `${rect.top +
-          scrollYOffset +
-          linkDim.h / 2 -
-          tooltipDim.h / 2}px`
+        $tooltip.style.top = `${
+          rect.top + scrollYOffset + linkDim.h / 2 - tooltipDim.h / 2
+        }px`
         $tooltip.style.left = `${rect.left + scrollXOffset - tooltipDim.w}px`
         break
       case 'right':
-        $tooltip.style.top = `${rect.top +
-          scrollYOffset +
-          linkDim.h / 2 -
-          tooltipDim.h / 2}px`
+        $tooltip.style.top = `${
+          rect.top + scrollYOffset + linkDim.h / 2 - tooltipDim.h / 2
+        }px`
         $tooltip.style.left = `${rect.left + scrollXOffset + linkDim.w}px`
         break
     }
   }
 
-  const renderChildren = Children.map(children, child =>
+  const renderChildren = Children.map(children, (child) =>
     cloneElement(child, {
       ref: tooltipTriggerRef,
       onMouseEnter: handleMouseEnter,

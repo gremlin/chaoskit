@@ -10,7 +10,7 @@ import { useTheme } from 'emotion-theming'
 
 import { misc } from '../assets/styles/utility'
 
-export const StylesModalVariables = theme => ({
+export const StylesModalVariables = (theme) => ({
   padding: theme.space.large,
   size: {
     base: 600,
@@ -20,7 +20,7 @@ export const StylesModalVariables = theme => ({
   },
 })
 
-export const StylesModalWrapper = theme => [
+export const StylesModalWrapper = (theme) => [
   misc.overflow,
   {
     position: 'fixed',
@@ -35,7 +35,7 @@ export const StylesModalWrapper = theme => [
   },
 ]
 
-export const StylesModalDialog = theme => ({
+export const StylesModalDialog = (theme) => ({
   background: theme.color.light.base,
   borderRadius: theme.settings.ui.radius && theme.borderRadius.large,
   zIndex: 5,

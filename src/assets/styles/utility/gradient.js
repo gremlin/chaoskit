@@ -26,56 +26,56 @@ export function generateGradient({
 }
 
 // Not using utility due to banding issue
-export const dark = theme => ({
+export const dark = (theme) => ({
   background: `linear-gradient(to right, ${tint(
     0.15,
     theme.color.dark.base
   )}, ${theme.color.dark.base})`,
 })
 
-export const blueGreen = theme => ({
+export const blueGreen = (theme) => ({
   background: generateGradient({
     start: theme.brand.blue,
     stop: theme.brand.green,
   }),
 })
 
-export const tealDarkBlue = theme => ({
+export const tealDarkBlue = (theme) => ({
   background: generateGradient({
     start: theme.brand.teal,
     stop: theme.brand.darkBlue,
   }),
 })
 
-export const tealBrightTeal = theme => ({
+export const tealBrightTeal = (theme) => ({
   background: generateGradient({
     start: theme.brand.teal,
     stop: tint(0.125, theme.brand.teal),
   }),
 })
 
-export const greenTeal = theme => ({
+export const greenTeal = (theme) => ({
   background: generateGradient({
     start: theme.brand.green,
     stop: theme.brand.teal,
   }),
 })
 
-export const tealGreen = theme => ({
+export const tealGreen = (theme) => ({
   background: generateGradient({
     start: theme.brand.teal,
     stop: theme.brand.green,
   }),
 })
 
-export const darkerBlueDarkestBlue = theme => ({
+export const darkerBlueDarkestBlue = (theme) => ({
   background: generateGradient({
     start: theme.brand.darkerBlue,
     stop: theme.brand.darkestBlue,
   }),
 })
 
-export const darkBluePurple = theme => ({
+export const darkBluePurple = (theme) => ({
   background: generateGradient({
     start: theme.brand.darkBlue,
     stop: theme.brand.purple,

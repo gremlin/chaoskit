@@ -62,8 +62,9 @@ const Section = forwardRef(
                 left: 0,
                 bottom: `-${StylesSectionVariables.slantOffset}vw`,
                 zIndex: -1,
-                borderBottom: `${StylesSectionVariables.slantOffset *
-                  2.25}vw solid ${rgba(theme.color.dark.base, 0.03)}`,
+                borderBottom: `${
+                  StylesSectionVariables.slantOffset * 2.25
+                }vw solid ${rgba(theme.color.dark.base, 0.03)}`,
                 filter: 'blur(5px)',
               },
             },

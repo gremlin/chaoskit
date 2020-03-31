@@ -7,7 +7,7 @@ import { misc } from '../assets/styles/utility'
 
 import Icon from './Icon'
 
-export const StylesAvatarVariables = theme => ({
+export const StylesAvatarVariables = (theme) => ({
   background: theme.color.panel.base,
   color: theme.fontColor.base,
   size: {

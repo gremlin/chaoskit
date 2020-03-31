@@ -34,7 +34,9 @@ const reducer = (state, action) => {
       ].concat(state)
     }
     case 'remove': {
-      return state.filter(notification => notification.index !== action.payload)
+      return state.filter(
+        (notification) => notification.index !== action.payload
+      )
     }
     default:
       return state
@@ -221,7 +223,7 @@ const NotificationProvider = ({ children }) => {
               },
             }}
           >
-            {state.map(notification => (
+            {state.map((notification) => (
               <NotificationWrapper
                 key={notification.index}
                 notification={notification}

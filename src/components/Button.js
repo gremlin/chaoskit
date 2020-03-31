@@ -19,7 +19,7 @@ export const generateButtonGradient = ({ start, stop }) => ({
   backgroundClip: 'content-box, border-box',
 })
 
-const StylesButtonVariables = theme => ({
+const StylesButtonVariables = (theme) => ({
   borderWidth: 2,
   color: {
     base: theme.fontColor.base,
@@ -75,8 +75,9 @@ export const StylesButtonBase = (theme, props = {}) => [
     position: 'relative',
     letterSpacing: theme.letterSpacing.small,
     // 8
-    lineHeight: `${theme.height.base -
-      StylesButtonVariables(theme).borderWidth * 2}px`,
+    lineHeight: `${
+      theme.height.base - StylesButtonVariables(theme).borderWidth * 2
+    }px`,
     // 9
     height: theme.height.base,
     // 10
@@ -119,7 +120,7 @@ export const StylesButtonBase = (theme, props = {}) => [
     },
 ]
 
-export const StylesButtonSmall = theme => ({
+export const StylesButtonSmall = (theme) => ({
   padding: `0 ${
     theme.settings.ui.radius
       ? theme.space.base
@@ -127,19 +128,21 @@ export const StylesButtonSmall = theme => ({
   }px`,
   height: theme.height.small,
   borderRadius: theme.settings.ui.radius && theme.height.small / 2,
-  lineHeight: `${theme.height.small -
-    StylesButtonVariables(theme).borderWidth * 2}px`,
+  lineHeight: `${
+    theme.height.small - StylesButtonVariables(theme).borderWidth * 2
+  }px`,
 })
 
-export const StylesButtonXsmall = theme => ({
+export const StylesButtonXsmall = (theme) => ({
   padding: `0 ${
     theme.settings.ui.radius ? theme.space.base : theme.space.small
   }px`,
   fontSize: theme.fontSize.xsmall,
   height: theme.height.xsmall,
   borderRadius: theme.settings.ui.radius && theme.height.xsmall / 2,
-  lineHeight: `${theme.height.xsmall -
-    StylesButtonVariables(theme).borderWidth * 2}px`,
+  lineHeight: `${
+    theme.height.xsmall - StylesButtonVariables(theme).borderWidth * 2
+  }px`,
 })
 
 export const StylesButtonDefault = (theme, props = {}) => [

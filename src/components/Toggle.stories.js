@@ -17,7 +17,7 @@ const params = {
   noContrast: () => boolean('No contrast', false),
 }
 
-const ToggleExample = props => {
+const ToggleExample = (props) => {
   return <Toggle name="Toggle" value="field-value1" {...props} />
 }
 

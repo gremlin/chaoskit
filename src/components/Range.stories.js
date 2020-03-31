@@ -17,7 +17,7 @@ const params = {
   required: () => boolean('Required', false),
 }
 
-const RangeExample = props => {
+const RangeExample = (props) => {
   const [value, setValue] = useState(2)
 
   return (

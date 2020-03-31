@@ -64,7 +64,7 @@ export const Menu = () => (
       <ListItem>
         <a
           href="https://www.gremlin.com"
-          css={theme => DropdownMenuItemStyles(theme)}
+          css={(theme) => DropdownMenuItemStyles(theme)}
         >
           Menu link
         </a>
@@ -72,7 +72,7 @@ export const Menu = () => (
       <ListItem>
         <a
           href="https://www.gremlin.com"
-          css={theme => DropdownMenuItemStyles(theme, { active: true })}
+          css={(theme) => DropdownMenuItemStyles(theme, { active: true })}
         >
           Active Menu link
         </a>

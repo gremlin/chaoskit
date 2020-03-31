@@ -13,7 +13,7 @@ export default {
   component: Modal,
 }
 
-const ModalExample = props => {
+const ModalExample = (props) => {
   const [isOpen, toggleOpen] = useState(false)
 
   const handleToggle = () => {

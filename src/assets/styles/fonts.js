@@ -7,7 +7,7 @@ import CircularBook from '../fonts/lineto-circular-book.woff'
 import CircularMedium from '../fonts/lineto-circular-medium.woff'
 import CircularBlack from '../fonts/lineto-circular-black.woff'
 
-export const fonts = theme => css`
+export const fonts = (theme) => css`
   @font-face {
     font-family: Gira;
     src: local(😜), url(${GiraLight}) format('woff');

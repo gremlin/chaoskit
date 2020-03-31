@@ -7,11 +7,11 @@ import { generateGradient } from '../assets/styles/utility/gradient'
 
 import Container from './Container'
 
-const StylesSubnavVariables = theme => ({
+const StylesSubnavVariables = (theme) => ({
   height: theme.height.large,
 })
 
-export const SubnavMenuItemStyles = theme => [
+export const SubnavMenuItemStyles = (theme) => [
   text.heading(theme),
   {
     color: theme.fontColor.muted,

@@ -4,7 +4,7 @@ import { useTheme } from 'emotion-theming'
 import Button from './Button'
 import Icon from './Icon'
 
-export const StylesCloseVariables = theme => ({
+export const StylesCloseVariables = (theme) => ({
   size: theme.fontSize.base,
 })
 

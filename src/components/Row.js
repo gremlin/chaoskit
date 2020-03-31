@@ -7,7 +7,7 @@ const gutterOptions = ['collapse', 'small', 'base', 'medium', 'large', 'xlarge']
 const Row = ({ className, gutter, ...rest }) => {
   const theme = useTheme()
 
-  const gutterCalc = size => [
+  const gutterCalc = (size) => [
     gutter[size] && {
       [theme.mq[size]]: {
         marginLeft:
