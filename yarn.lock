@@ -1510,11 +1510,6 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^13.0.0"
 
-"@lukeed/uuid@1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@lukeed/uuid/-/uuid-1.0.1.tgz#5446a157272a63ed84026e06b905ca916f049e98"
-  integrity sha512-shtopUGL/WuVicOTppRGDb2he9aGp+OF5EB11Xsbe3K4W6qN7HtK3F+ayNxcfbrG/SSL/Z9B+Xrb0Foz9x83gw==
-
 "@mdx-js/loader@^1.5.1":
   version "1.5.7"
   resolved "https://registry.yarnpkg.com/@mdx-js/loader/-/loader-1.5.7.tgz#7e3ac1cecbf085f2d23ee5aa3431f338fb67fe3b"
