@@ -438,7 +438,7 @@ const Button = forwardRef(
       Component = 'a'
     }
 
-    if (Component !== 'a') {
+    if (Component === 'button') {
       buttonProps.type = actionType
     }
 
@@ -489,8 +489,7 @@ const Button = forwardRef(
 Button.propTypes = {
   active: PropTypes.bool,
   actionType: PropTypes.oneOf(['button', 'submit', 'reset']),
-  /* Useful for frameworks like NextJs */
-  as: PropTypes.oneOf(['button', 'a']),
+  as: PropTypes.any,
   children: PropTypes.node,
   className: PropTypes.string,
   disabled: PropTypes.bool,
