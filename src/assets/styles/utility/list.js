@@ -40,13 +40,11 @@ export const numbers = ({
       },
 
       '&:first-of-type::before': {
-        top: `calc((1em * ${theme.lineHeight.base} - ${circleSize}px) / 2)`,
+        top: 0,
       },
 
       '&:not(:first-of-type)::before': {
-        top: `calc((1em * ${theme.lineHeight.base} - ${circleSize}px) / 2${
-          border ? ` + ${space}px` : ''
-        })`,
+        top: border ? space : null,
       },
     },
   }
