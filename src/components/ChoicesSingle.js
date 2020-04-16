@@ -207,7 +207,8 @@ const ChoicesSingle = ({
                         width: '100%',
                         zIndex: '10',
                         background: form.variables(theme).background,
-                        border: `1px solid ${theme.color.primary.base}`,
+                        border: '1px solid',
+                        borderColor: theme.color.primary.base,
                         borderTop: 0,
                       },
 

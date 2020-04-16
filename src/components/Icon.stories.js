@@ -31,7 +31,9 @@ export const Overview = () => (
           <Icon
             css={(theme) => ({
               display: 'block',
-              margin: `0 auto ${theme.space.small}px auto`,
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              marginBottom: theme.space.small,
             })}
             size={select(
               'Size',

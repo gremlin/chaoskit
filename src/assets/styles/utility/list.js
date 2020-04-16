@@ -72,7 +72,8 @@ export const circles = ({
         width: circleSize,
         height: circleSize,
         borderRadius: '50%',
-        border: `1px solid ${fill}`,
+        border: '1px solid',
+        borderColor: fill,
       },
 
       '&:first-of-type::before': {
