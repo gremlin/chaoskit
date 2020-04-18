@@ -20,8 +20,8 @@ const RadioGroup = ({
   ...rest
 }) => {
   const renderChildren = () =>
-    Children.map(children, child => {
-      const onChangeFunc = e => {
+    Children.map(children, (child) => {
+      const onChangeFunc = (e) => {
         onChange(e)
       }
 

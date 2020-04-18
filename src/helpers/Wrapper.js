@@ -18,7 +18,7 @@ export const createCKCache = () =>
   createCache({
     key: 'ck',
     // Only prefix the following style properties
-    prefix: key => {
+    prefix: (key) => {
       switch (key) {
         case 'appearance':
         case 'backdrop-filter':

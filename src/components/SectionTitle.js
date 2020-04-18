@@ -6,7 +6,7 @@ import { misc } from '../assets/styles/utility'
 
 export const StylesSectionTitleWrapper = (theme, props) => {
   // Translate "align" prop to work with `justifyItems`
-  const getJustify = align => {
+  const getJustify = (align) => {
     if (align === 'left') return 'start'
 
     if (align === 'right') return 'end'
@@ -72,7 +72,7 @@ export const StylesSectionTitleWrapper = (theme, props) => {
   ]
 }
 
-export const StylesSectionTitleSub = theme => [
+export const StylesSectionTitleSub = (theme) => [
   {
     color: theme.fontColor.muted,
     fontSize: theme.fontSize.medium,

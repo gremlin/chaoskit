@@ -54,12 +54,12 @@ const Select = ({
   // Only regenerate this if the name prop changes
   const id = useMemo(() => `${name}-${generateUUID()}`, [name])
 
-  const renderOpts = option => {
+  const renderOpts = (option) => {
     // If the option has options as well we're in an `<optgroup>`
     if (option.options) {
       return (
         <optgroup key={option.value} label={option.label}>
-          {option.options.map(childOption => (
+          {option.options.map((childOption) => (
             <option key={childOption.value} value={childOption.value}>
               {childOption.label}
             </option>

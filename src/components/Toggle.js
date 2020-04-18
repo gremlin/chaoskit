@@ -11,7 +11,7 @@ import { generateUUID } from '../helpers/utility'
 
 import FormGroup from './FormGroup'
 
-const StylesToggleVariables = theme => ({
+const StylesToggleVariables = (theme) => ({
   height: theme.height.xxxsmall,
   get width() {
     return this.height * 2

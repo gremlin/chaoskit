@@ -10,7 +10,7 @@ import { misc, text } from '../assets/styles/utility'
 
 import Close from './Close'
 
-export const StylesAlertBase = theme => ({
+export const StylesAlertBase = (theme) => ({
   display: 'flex',
   padding: theme.space.base,
   borderLeft: '8px solid transparent',
@@ -36,22 +36,22 @@ export const StylesAlertBase = theme => ({
   ],
 })
 
-export const StylesAlertDefault = theme => ({
+export const StylesAlertDefault = (theme) => ({
   borderColor: theme.border.base,
   background: theme.color.panel.base,
 })
 
-export const StylesAlertPrimary = theme => ({
+export const StylesAlertPrimary = (theme) => ({
   borderColor: theme.color.primary.base,
   background: theme.color.primary.light,
 })
 
-export const StylesAlertWarning = theme => ({
+export const StylesAlertWarning = (theme) => ({
   borderColor: theme.color.warning.base,
   background: theme.color.warning.light,
 })
 
-export const StylesAlertDanger = theme => ({
+export const StylesAlertDanger = (theme) => ({
   borderColor: theme.color.danger.base,
   background: theme.color.danger.light,
 

@@ -13,7 +13,7 @@ export default {
 export const Overview = () => (
   <Section
     as={RowColumn}
-    css={theme => ({
+    css={(theme) => ({
       background: theme.color.panel.base,
     })}
     slant={select('Slant', ['', 'top', 'bottom', 'bottom-shadow'], null)}

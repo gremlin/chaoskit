@@ -7,7 +7,7 @@ import { generateUUID } from '../helpers/utility'
 
 import FormControlWrapper from './FormControlWrapper'
 
-const StylesRangeVariables = theme => ({
+const StylesRangeVariables = (theme) => ({
   thumb: {
     size: theme.height.xxxsmall,
   },

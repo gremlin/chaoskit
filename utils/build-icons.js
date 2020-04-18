@@ -50,7 +50,7 @@ function getSvgContent(svg) {
 function buildIconsObject(src) {
   const icons = {}
 
-  src.forEach(value => {
+  src.forEach((value) => {
     // Strip off wildcard (used in gulp watch)
     const cleanPath = path.join(
       '../',
@@ -60,16 +60,16 @@ function buildIconsObject(src) {
     // Gather SVG files
     const svgFiles = recursiveReadSync(
       path.resolve(__dirname, cleanPath)
-    ).filter(file => path.extname(file) === '.svg')
+    ).filter((file) => path.extname(file) === '.svg')
 
-    svgFiles.forEach(svgFile => {
+    svgFiles.forEach((svgFile) => {
       const svg = fs.readFileSync(
         path.resolve(__dirname, cleanPath, svgFile),
         'utf8'
       )
       const key = path.basename(svgFile, '.svg')
 
-      icons[key] = optimizeSvg(svg).then(optimizedSvg =>
+      icons[key] = optimizeSvg(svg).then((optimizedSvg) =>
         getSvgContent(optimizedSvg)
       )
     })
@@ -78,13 +78,13 @@ function buildIconsObject(src) {
   return RSVP.hash(icons)
 }
 
-buildIconsObject(paths.svg.src).then(icons => {
+buildIconsObject(paths.svg.src).then((icons) => {
   const jsonPath = path.join('../', paths.svg.json)
 
   fs.writeFile(
     path.resolve(__dirname, `${jsonPath}/icons.json`),
     JSON.stringify(icons),
-    err => {
+    (err) => {
       if (err) return err
 
       console.log('Icons built successfully 🎉') // eslint-disable-line no-console

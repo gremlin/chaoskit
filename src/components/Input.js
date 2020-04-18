@@ -57,8 +57,9 @@ export const StylesInputBase = (theme, props = {}) => [
   },
 
   props.prefixIcon && {
-    paddingLeft: `calc(${form.variables(theme).padding +
-      theme.space.small}px + ${StylesIconVariables.base})`,
+    paddingLeft: `calc(${
+      form.variables(theme).padding + theme.space.small
+    }px + ${StylesIconVariables.base})`,
   },
 ]
 
@@ -112,7 +113,7 @@ const Input = forwardRef(
                   noContrast,
                 })}
                 className={cx('CK__Input', className)}
-                ref={input => maskRef(input)}
+                ref={(input) => maskRef(input)}
                 {...props}
               />
             )}

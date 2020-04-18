@@ -31,16 +31,19 @@ const brand = {
     'brightness(0) saturate(100%) invert(71%) sepia(8%) saturate(846%) hue-rotate(173deg) brightness(85%) contrast(82%)',
   lightBlack: '#333',
   lightBlack__filter:
-    'invert(16%) sepia(0%) saturate(1335%) hue-rotate(142deg) brightness(86%) contrast(82%)',
+    'brightness(0) saturate(100%) invert(16%) sepia(0%) saturate(1335%) hue-rotate(142deg) brightness(86%) contrast(82%)',
   black: '#131313',
   black__filter:
-    'invert(3%) sepia(8%) saturate(12%) hue-rotate(314deg) brightness(101%) contrast(90%)',
+    'brightness(0) saturate(100%) invert(3%) sepia(8%) saturate(12%) hue-rotate(314deg) brightness(101%) contrast(90%)',
   red: '#d00252',
   red__filter:
     'brightness(0) saturate(100%) invert(13%) sepia(99%) saturate(4118%) hue-rotate(327deg) brightness(85%) contrast(106%)',
   yellow: '#ffcf23',
   yellow__filter:
     'brightness(0) saturate(100%) invert(79%) sepia(82%) saturate(599%) hue-rotate(335deg) brightness(103%) contrast(102%)',
+  orange: '#ffa615',
+  orange__filter:
+    'brightness(0) saturate(100%) invert(83%) sepia(29%) saturate(6359%) hue-rotate(345deg) brightness(102%) contrast(104%)',
 }
 
 const breakpoint = {
@@ -100,7 +103,7 @@ const color = {
     get overlay() {
       return rgba(this.base, opacity.overlay)
     },
-    filter: brand.lightBlack__filter,
+    filter: brand.black__filter,
   },
   primary: {
     base: brand.green,
@@ -135,7 +138,7 @@ const color = {
   highlight: {
     base: '#ffa',
     filter:
-      'brightnes(0) saturate(100%) invert(93%) sepia(16%) saturate(799%) hue-rotate(3deg) brightness(106%) contrast(106%)',
+      'brightness(0) saturate(100%) invert(96%) sepia(37%) saturate(704%) hue-rotate(340deg) brightness(105%) contrast(103%)',
   },
   border: {
     base: '#e6e6e6',

@@ -2,11 +2,11 @@ import PropTypes from 'prop-types'
 import { useTheme } from 'emotion-theming'
 import cx from 'classnames'
 
-export const StylesBadgeVariables = theme => ({
+export const StylesBadgeVariables = (theme) => ({
   height: theme.height.xxxsmall,
 })
 
-export const StylesBadgeBase = theme => ({
+export const StylesBadgeBase = (theme) => ({
   background: theme.color.light.base,
   border: theme.border.base,
   borderRadius: theme.settings.ui.radius && theme.borderRadius.base,
@@ -26,25 +26,25 @@ export const StylesBadgeBase = theme => ({
   userSelect: 'none',
 })
 
-export const StylesBadgeSecondary = theme => ({
+export const StylesBadgeSecondary = (theme) => ({
   borderColor: theme.fontColor.base,
   background: theme.fontColor.base,
   color: theme.contrast.base,
 })
 
-export const StylesBadgePrimary = theme => ({
+export const StylesBadgePrimary = (theme) => ({
   borderColor: theme.color.primary.base,
   background: theme.color.primary.base,
   color: theme.contrast.base,
 })
 
-export const StylesBadgeDanger = theme => ({
+export const StylesBadgeDanger = (theme) => ({
   borderColor: theme.color.danger.base,
   background: theme.color.danger.base,
   color: theme.contrast.base,
 })
 
-export const StylesBadgeRounded = theme => ({
+export const StylesBadgeRounded = (theme) => ({
   borderRadius: StylesBadgeVariables(theme).height / 2,
 })
 

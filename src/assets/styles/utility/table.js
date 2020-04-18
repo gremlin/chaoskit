@@ -1,11 +1,11 @@
 import { rgba } from 'polished'
 
-const StylesTableVariables = theme => ({
+const StylesTableVariables = (theme) => ({
   contrast: {
     emphasis: rgba(theme.contrast.base, 0.15),
   },
 })
-export const styles = theme => ({
+export const styles = (theme) => ({
   // 1. Remove spacing between table cells.
   // 2. Block element behavior
   // 3. Style

@@ -37,19 +37,19 @@ const ChoicesSingle = ({
   // Only regenerate this if the name prop changes
   const id = useMemo(() => `${name}-${generateUUID()}`, [name])
 
-  const itemToString = item => (item ? item.label : '')
+  const itemToString = (item) => (item ? item.label : '')
 
-  const handleKeyDown = e => {
+  const handleKeyDown = (e) => {
     if (selected.length && !value.length && e.keyCode === 8) {
       onChange(selected.slice(0, selected.length - 1))
     }
   }
 
-  const handleInputChange = e => {
+  const handleInputChange = (e) => {
     setValue(e.target.value)
   }
 
-  const handleChange = item => {
+  const handleChange = (item) => {
     onChange(name, item)
 
     // Clear out any typed values
@@ -62,7 +62,7 @@ const ChoicesSingle = ({
       })
     : options
   const selectedOption =
-    selected !== -1 ? optionsList.find(x => x.value === selected) : -1
+    selected !== -1 ? optionsList.find((x) => x.value === selected) : -1
 
   return (
     <Downshift
@@ -71,7 +71,7 @@ const ChoicesSingle = ({
       selectedItem={selectedOption}
       itemToString={itemToString}
     >
-      {downshift => {
+      {(downshift) => {
         return (
           <FormControlWrapper
             {...downshift.getRootProps()}
@@ -207,7 +207,8 @@ const ChoicesSingle = ({
                         width: '100%',
                         zIndex: '10',
                         background: form.variables(theme).background,
-                        border: `1px solid ${theme.color.primary.base}`,
+                        border: '1px solid',
+                        borderColor: theme.color.primary.base,
                         borderTop: 0,
                       },
 

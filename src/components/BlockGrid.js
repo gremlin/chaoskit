@@ -8,13 +8,13 @@ const gutterOptions = ['collapse', 'small', 'base', 'medium', 'large', 'xlarge']
 const BlockGrid = ({ className, gutter, size, ...rest }) => {
   const theme = useTheme()
 
-  const percentWidth = columnSize => {
+  const percentWidth = (columnSize) => {
     const calc = 100 / columnSize
 
     return `${calc}%`
   }
 
-  const gutterCalc = gutterSize => [
+  const gutterCalc = (gutterSize) => [
     gutter[gutterSize] && {
       [theme.mq[gutterSize]]: {
         margin: `${

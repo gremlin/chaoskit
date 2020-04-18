@@ -24,7 +24,7 @@ const ChoicesMultiExample = () => {
     setSelected(selectedColors)
   }
 
-  const handleRemoveItem = item => {
+  const handleRemoveItem = (item) => {
     const newSelected = [...selected]
     const index = newSelected.indexOf(item)
 
@@ -36,8 +36,8 @@ const ChoicesMultiExample = () => {
   useEffect(() => {
     const newSelected = []
 
-    selected.forEach(value => {
-      const validatedOption = selectOpts.find(x => x.value === value)
+    selected.forEach((value) => {
+      const validatedOption = selectOpts.find((x) => x.value === value)
 
       newSelected.push(validatedOption)
     })

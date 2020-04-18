@@ -1,6 +1,6 @@
 import { underline } from './text'
 
-export const styles = theme => ({
+export const styles = (theme) => ({
   '.u-contrast': {
     // Text
     color: theme.contrast.base,

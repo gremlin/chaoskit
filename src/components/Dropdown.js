@@ -10,7 +10,7 @@ import { generateGradient } from '../assets/styles/utility/gradient'
 import Button from './Button'
 import Icon from './Icon'
 
-const DropdownPanelStylesVariables = theme => ({
+const DropdownPanelStylesVariables = (theme) => ({
   offset: theme.space.base,
 })
 
@@ -102,7 +102,7 @@ const Dropdown = ({
    * @param  {event} e
    * @return {false}
    */
-  const checkInside = e => {
+  const checkInside = (e) => {
     if (e.target.closest('.CK__Dropdown__Panel') === null) {
       dropdownClose()
 
@@ -159,7 +159,7 @@ const Dropdown = ({
   const handleDropdownToggle = () => {
     const $dropdown = dropdownRef.current
 
-    if ($dropdown.timeline.progress() === 1) {
+    if ($dropdown.timeline.progress() > 0) {
       dropdownClose()
 
       handleOnReverseStart()

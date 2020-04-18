@@ -1,6 +1,6 @@
 import { rgba } from 'polished'
 
-export const variables = theme => ({
+export const variables = (theme) => ({
   background: theme.color.light.base,
   boxShadow: theme.boxShadow.base,
   height: theme.height.base,
@@ -18,7 +18,7 @@ export const variables = theme => ({
 // 1. Address margins set differently in Firefox/IE and Chrome/Safari/Opera.
 // 2. Remove `border-radius` in iOS.
 // 3. Correct `font` properties and `color` not being inherited.
-export const base = theme => ({
+export const base = (theme) => ({
   // 1
   margin: 0,
   // 2
@@ -119,8 +119,9 @@ export const input = (theme, props = {}) => [
     theme.settings.contrast.form &&
     !props.noContrast && {
       '.u-contrast &': {
-        background: variables(theme).contrast.background,
-        border: `1px solid ${variables(theme).contrast.borderColor}`,
+        background: 'transparent',
+        border: '1px solid',
+        borderColor: variables(theme).contrast.borderColor,
         color: variables(theme).contrast.fontColor,
         boxShadow: 'none',
 
@@ -133,7 +134,7 @@ export const input = (theme, props = {}) => [
         },
 
         '&:disabled': {
-          backgroundColor: 'transparent',
+          backgroundColor: variables(theme).contrast.background,
           borderColor: variables(theme).contrast.borderColor,
           color: variables(theme).contrast.fontColor,
         },
@@ -141,7 +142,7 @@ export const input = (theme, props = {}) => [
     },
 ]
 
-export const styles = theme => [
+export const styles = (theme) => [
   {
     // Define consistent border, margin, and padding.
     fieldset: {

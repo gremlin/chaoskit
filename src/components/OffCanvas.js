@@ -12,7 +12,7 @@ import { misc } from '../assets/styles/utility'
 
 import Close from './Close'
 
-const StylesOffCanvasVariables = theme => ({
+const StylesOffCanvasVariables = (theme) => ({
   size: theme.space.large,
   panelOffset: theme.space.large,
 })

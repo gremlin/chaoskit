@@ -36,19 +36,19 @@ const ChoicesMulti = ({
 
   const id = `${name}-${generateUUID()}`
 
-  const itemToString = item => (item ? item.label : '')
+  const itemToString = (item) => (item ? item.label : '')
 
-  const handleKeyDown = e => {
+  const handleKeyDown = (e) => {
     if (selected.length && !value.length && e.keyCode === 8) {
       onChange(selected.slice(0, selected.length - 1))
     }
   }
 
-  const handleInputChange = e => {
+  const handleInputChange = (e) => {
     setValue(e.target.value)
   }
 
-  const handleChange = item => {
+  const handleChange = (item) => {
     onChange(name, [...selected, item])
 
     // Clear out any typed values
@@ -78,12 +78,12 @@ const ChoicesMulti = ({
   const selectedOptions = []
   // Based on current selection to remove from dropdown
   const filteredOptions = optionsList.filter(
-    item => JSON.stringify(selected).indexOf(JSON.stringify(item)) === -1
+    (item) => JSON.stringify(selected).indexOf(JSON.stringify(item)) === -1
   )
 
-  selected.forEach(item => {
+  selected.forEach((item) => {
     if (typeof item !== 'object') {
-      const selectedOption = optionsList.find(x => x.value === item)
+      const selectedOption = optionsList.find((x) => x.value === item)
       selectedOptions.push(selectedOption)
     } else {
       selectedOptions.push(item)
@@ -98,9 +98,9 @@ const ChoicesMulti = ({
       itemToString={itemToString}
       stateReducer={stateReducer}
     >
-      {downshift => {
+      {(downshift) => {
         // Only re-open menu if we didn't click on `x` within a multi-select item
-        const handleContainerClick = e => {
+        const handleContainerClick = (e) => {
           if (!e.target.classList.contains('choices__button')) {
             downshift.openMenu()
           }
@@ -175,7 +175,7 @@ const ChoicesMulti = ({
                         paddingBottom: form.variables(theme).padding,
                       }}
                     >
-                      {downshift.selectedItem.map(item => {
+                      {downshift.selectedItem.map((item) => {
                         return (
                           <ListItem key={item.label}>
                             <Badge
@@ -237,7 +237,8 @@ const ChoicesMulti = ({
                         width: '100%',
                         zIndex: '10',
                         background: form.variables(theme).background,
-                        border: `1px solid ${theme.color.primary.base}`,
+                        border: '1px solid',
+                        borderColor: theme.color.primary.base,
                         borderTop: 0,
                       },
 

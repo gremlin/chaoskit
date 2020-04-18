@@ -1,13 +1,13 @@
 import { text, link, misc, contrast, prism, table, form } from './utility'
 
-export const StylesGlobalVariables = theme => ({
+export const StylesGlobalVariables = (theme) => ({
   code: {
     color: theme.color.danger.base,
     background: theme.color.panel.base,
   },
 })
 
-export const globalStyles = theme => [
+export const globalStyles = (theme) => [
   {
     // 1. Normalize default `font-family` and set `font-size` to support `rem` units
     // 2. Prevents iOS text size adjust after orientation change, without disabling user zoom
