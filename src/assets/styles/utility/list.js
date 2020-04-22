@@ -12,6 +12,7 @@ export const numbers = ({
   space = 0,
   border = false,
   fill = theme.color.primary.base,
+  noContrast = false,
 }) => {
   const circleSize = theme.height.xxsmall
 
@@ -23,21 +24,31 @@ export const numbers = ({
       paddingLeft: theme.height.xsmall + theme.space.small,
       position: 'relative',
 
-      '&::before': {
-        content: 'counter(list-counter, decimal)',
-        counterIncrement: 'list-counter',
-        fontWeight: theme.fontWeight.bold,
-        background: fill,
-        borderRadius: '50%',
-        width: circleSize,
-        height: circleSize,
-        lineHeight: `${circleSize}px`,
-        textAlign: 'center',
-        fontSize: theme.fontSize.xsmall,
-        color: theme.contrast.base,
-        position: 'absolute',
-        left: 0,
-      },
+      '&::before': [
+        {
+          content: 'counter(list-counter, decimal)',
+          counterIncrement: 'list-counter',
+          fontWeight: theme.fontWeight.bold,
+          background: fill,
+          borderRadius: '50%',
+          width: circleSize,
+          height: circleSize,
+          lineHeight: `${circleSize}px`,
+          textAlign: 'center',
+          fontSize: theme.fontSize.xsmall,
+          color: theme.contrast.base,
+          position: 'absolute',
+          left: 0,
+        },
+
+        theme.settings.contrast.enable &&
+          !noContrast && {
+            '.u-contrast &': {
+              background: theme.contrast.base,
+              color: theme.color.primary.base,
+            },
+          },
+      ],
 
       '&:first-of-type::before': {
         top: 0,
@@ -57,6 +68,7 @@ export const circles = ({
   space = 0,
   circleSize = 8,
   border = false,
+  noContrast = false,
 }) => ({
   '> li': [
     {
@@ -64,17 +76,26 @@ export const circles = ({
       position: 'relative',
       paddingLeft: theme.space.base + circleSize,
 
-      '&::before': {
-        content: "''",
-        position: 'absolute',
-        left: 0,
-        display: 'inline-block',
-        width: circleSize,
-        height: circleSize,
-        borderRadius: '50%',
-        border: '1px solid',
-        borderColor: fill,
-      },
+      '&::before': [
+        {
+          content: "''",
+          position: 'absolute',
+          left: 0,
+          display: 'inline-block',
+          width: circleSize,
+          height: circleSize,
+          borderRadius: '50%',
+          border: '1px solid',
+          borderColor: fill,
+        },
+
+        theme.settings.contrast.enable &&
+          !noContrast && {
+            '.u-contrast &': {
+              borderColor: theme.contrast.border,
+            },
+          },
+      ],
 
       '&:first-of-type::before': {
         top: `calc((1em * ${theme.lineHeight.base} - ${circleSize}px) / 2)`,

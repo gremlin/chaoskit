@@ -4,7 +4,15 @@ import { useTheme } from 'emotion-theming'
 
 import { list } from '../assets/styles/utility'
 
-const List = ({ as: Component, className, space, type, border, ...rest }) => {
+const List = ({
+  as: Component,
+  className,
+  space,
+  type,
+  border,
+  noContrast,
+  ...rest
+}) => {
   const theme = useTheme()
 
   return (
@@ -16,17 +24,36 @@ const List = ({ as: Component, className, space, type, border, ...rest }) => {
         },
 
         border && {
-          '> li:not(:first-of-type)': {
-            paddingTop: space && theme.space[space],
-            borderTop: theme.border.base,
-          },
+          '> li:not(:first-of-type)': [
+            {
+              paddingTop: space && theme.space[space],
+              borderTop: theme.border.base,
+            },
+
+            theme.settings.contrast.enable &&
+              !noContrast && {
+                '.u-contrast &': {
+                  borderColor: theme.contrast.border,
+                },
+              },
+          ],
         },
 
         type === 'numbers' &&
-          list.numbers({ theme, space: space && theme.space[space], border }),
+          list.numbers({
+            theme,
+            space: space && theme.space[space],
+            border,
+            noContrast,
+          }),
 
         type === 'circles' &&
-          list.circles({ theme, space: space && theme.space[space], border }),
+          list.circles({
+            theme,
+            space: space && theme.space[space],
+            border,
+            noContrast,
+          }),
       ]}
       className={cx('CK__List', className)}
       {...rest}
@@ -47,6 +74,7 @@ List.propTypes = {
     'xlarge',
   ]),
   type: PropTypes.oneOf(['numbers', 'circles']),
+  noContrast: PropTypes.bool,
 }
 
 List.defaultProps = {
