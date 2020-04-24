@@ -40,7 +40,7 @@ const FormControlWrapper = forwardRef(
 FormControlWrapper.propTypes = {
   children: PropTypes.node,
   explanationMessage: PropTypes.string,
-  label: PropTypes.string,
+  label: PropTypes.any,
   required: PropTypes.bool,
   validationMessage: PropTypes.string,
   labelProps: PropTypes.object,
