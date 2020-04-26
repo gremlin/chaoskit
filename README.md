@@ -1,6 +1,4 @@
-> ⚠️ **Notice:** Consider using our [feature/emotion](https://github.com/gremlin/chaoskit/tree/feature/emotion) branch. This SCSS version will eventually be deprecated.
-
-# ChaosKit <img src="./src/assets/media/logo-mascot.svg" height="30px;">
+# ChaosKit <img src="https://raw.githubusercontent.com/gremlin/chaoskit/master/src/assets/media/logo-mascot.svg" height="30px;">
 
 [Demo](https://feature-emotion--chaoskit.netlify.com/)
 
