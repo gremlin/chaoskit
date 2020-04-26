@@ -57,7 +57,6 @@ const Tooltip = ({ children, className, content, placement, variation }) => {
     const scrollYOffset = window.pageYOffset
     const scrollXOffset = window.pageXOffset
 
-    // Apply styling
     // eslint-disable-next-line default-case
     switch (
       placement // eslint-disable-line default-case
