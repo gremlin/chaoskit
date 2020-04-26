@@ -8,4 +8,4 @@
   # been specified, include it in the publish directory path.
   publish = "storybook-static/"
   # Environment variables
-  environment = { YARN_VERSION = "1.16.0", NODE_VERSION = "10" }
+  environment = { YARN_VERSION = "1.22.4", NODE_VERSION = "12" }
