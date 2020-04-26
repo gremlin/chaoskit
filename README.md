@@ -1,6 +1,6 @@
 # ChaosKit <img src="https://raw.githubusercontent.com/gremlin/chaoskit/master/src/assets/media/logo-mascot.svg" height="30px;">
 
-[Demo](https://feature-emotion--chaoskit.netlify.com/)
+[Demo](https://chaoskit.netlify.app/)
 
 ChaosKit is a lightweight and modular front-end framework for developing fast and powerful web interfaces within Gremlin.
 
