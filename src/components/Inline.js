@@ -1,27 +1,47 @@
-import cx from 'classnames';
-import PropTypes from 'prop-types';
-import React from 'react';
+import PropTypes from 'prop-types'
+import cx from 'classnames'
+import { useTheme } from 'emotion-theming'
 
-const Inline = ({ className, size, wrap, ...opts }) => {
-  const classes = cx('inline', className, {
-    'inline--small': size === 'small',
-    'inline--medium': size === 'medium',
-    'inline--large': size === 'large',
-    'inline--xlarge': size === 'xlarge',
-    'inline--noWrap': !wrap,
-  });
+const Inline = ({ className, size, wrap, ...rest }) => {
+  const theme = useTheme()
 
-  return <div className={classes} {...opts} />;
-};
+  return (
+    <ul
+      css={[
+        {
+          display: 'flex',
+          flexWrap: 'wrap',
+          alignItems: 'center',
+          listStyle: 'none',
+          padding: 0,
+          margin: `-${theme.space[size]}px 0 0 -${theme.space[size]}px`,
+
+          '> .CK__ListItem': {
+            marginLeft: `${theme.space[size]}px !important`,
+            marginTop: `${theme.space[size]}px !important`,
+          },
+        },
+
+        !wrap && {
+          whiteSpace: 'nowrap',
+          flexWrap: 'nowrap',
+        },
+      ]}
+      className={cx('CK__Inline', className)}
+      {...rest}
+    />
+  )
+}
 
 Inline.propTypes = {
   className: PropTypes.string,
-  size: PropTypes.oneOf(['small', 'default', 'medium', 'large', 'xlarge']),
+  size: PropTypes.oneOf(['small', 'base', 'medium', 'large', 'xlarge']),
   wrap: PropTypes.bool,
-};
+}
 
 Inline.defaultProps = {
+  size: 'base',
   wrap: true,
-};
+}
 
-export default Inline;
+export default Inline

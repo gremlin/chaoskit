@@ -1,11 +1,12 @@
-const fs = require('fs');
-const path = require('path');
-const RSVP = require('rsvp');
-const Svgo = require('svgo');
-const parse5 = require('parse5');
-const recursiveReadSync = require('recursive-readdir-sync');
+const fs = require('fs')
+const path = require('path')
 
-const paths = require('./paths');
+const RSVP = require('rsvp')
+const Svgo = require('svgo')
+const parse5 = require('parse5')
+const recursiveReadSync = require('recursive-readdir-sync')
+
+const paths = require('./paths')
 
 /**
  * Optimize SVG with `svgo`.
@@ -21,11 +22,11 @@ async function optimizeSvg(svg) {
       { moveGroupAttrsToElems: false },
       { removeAttrs: { attrs: '(fill|stroke.*)' } },
     ],
-  });
+  })
 
-  const optimizedSvg = await svgo.optimize(svg);
+  const optimizedSvg = await svgo.optimize(svg)
 
-  return optimizedSvg.data;
+  return optimizedSvg.data
 }
 
 /**
@@ -35,9 +36,9 @@ async function optimizeSvg(svg) {
  * @return {string}
  */
 function getSvgContent(svg) {
-  const fragment = parse5.parseFragment(svg);
-  const content = parse5.serialize(fragment.childNodes[0]);
-  return content;
+  const fragment = parse5.parseFragment(svg)
+  const content = parse5.serialize(fragment.childNodes[0])
+  return content
 }
 
 /**
@@ -47,46 +48,46 @@ function getSvgContent(svg) {
  * @return {RSVP.Promise<Object>}
  */
 function buildIconsObject(src) {
-  const icons = {};
+  const icons = {}
 
-  src.forEach(value => {
+  src.forEach((value) => {
     // Strip off wildcard (used in gulp watch)
     const cleanPath = path.join(
       '../',
       value.replace('**/*.svg', '').replace('/*.svg', '')
-    );
+    )
 
     // Gather SVG files
     const svgFiles = recursiveReadSync(
       path.resolve(__dirname, cleanPath)
-    ).filter(file => path.extname(file) === '.svg');
+    ).filter((file) => path.extname(file) === '.svg')
 
-    svgFiles.forEach(svgFile => {
+    svgFiles.forEach((svgFile) => {
       const svg = fs.readFileSync(
         path.resolve(__dirname, cleanPath, svgFile),
         'utf8'
-      );
-      const key = path.basename(svgFile, '.svg');
+      )
+      const key = path.basename(svgFile, '.svg')
 
-      icons[key] = optimizeSvg(svg).then(optimizedSvg =>
+      icons[key] = optimizeSvg(svg).then((optimizedSvg) =>
         getSvgContent(optimizedSvg)
-      );
-    });
-  });
+      )
+    })
+  })
 
-  return RSVP.hash(icons);
+  return RSVP.hash(icons)
 }
 
-buildIconsObject(paths.svg.src).then(icons => {
-  const jsonPath = path.join('../', paths.svg.json);
+buildIconsObject(paths.svg.src).then((icons) => {
+  const jsonPath = path.join('../', paths.svg.json)
 
   fs.writeFile(
     path.resolve(__dirname, `${jsonPath}/icons.json`),
     JSON.stringify(icons),
-    err => {
-      if (err) return err;
+    (err) => {
+      if (err) return err
 
-      console.log('Icons built successfully 🎉'); // eslint-disable-line no-console
+      console.log('Icons built successfully 🎉') // eslint-disable-line no-console
     }
-  );
-});
+  )
+})

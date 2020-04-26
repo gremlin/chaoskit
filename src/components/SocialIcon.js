@@ -1,24 +1,34 @@
-import cx from 'classnames';
-import PropTypes from 'prop-types';
-import React from 'react';
+import PropTypes from 'prop-types'
+import { useTheme } from 'emotion-theming'
 
-import Icon from './Icon';
+import Button from './Button'
+import Icon from './Icon'
 
-const SocialIcon = ({ className, service, title, url }) => {
-  const classes = cx('socialIcon', className);
+const SocialIcon = ({ className, service, title, url, ...rest }) => {
+  const theme = useTheme()
 
   return (
-    <a
-      href={url}
-      className={classes}
+    <Button
+      url={url}
+      css={{
+        transition: `all ${theme.timing.base} ${theme.transition.bounce}`,
+
+        '&:hover, &:focus': {
+          transform: 'scale(1.1)',
+        },
+      }}
       title={title}
       target="_blank"
       rel="noopener noreferrer"
+      iconOnly
+      size="small"
+      type="default"
+      {...rest}
     >
       <Icon icon={service} />
-    </a>
-  );
-};
+    </Button>
+  )
+}
 
 SocialIcon.propTypes = {
   className: PropTypes.string,
@@ -33,6 +43,6 @@ SocialIcon.propTypes = {
     'rss',
   ]),
   title: PropTypes.string,
-};
+}
 
-export default SocialIcon;
+export default SocialIcon

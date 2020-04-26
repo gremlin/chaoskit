@@ -1,83 +1,64 @@
-import cx from 'classnames';
-import PropTypes from 'prop-types';
-import React, { createContext } from 'react';
+import { Children, createContext } from 'react'
+import PropTypes from 'prop-types'
 
-import FormLabel from './FormLabel';
-import FormFooter from './FormFooter';
-import Inline from './Inline';
-import List from './List';
-import ListItem from './ListItem';
-import { config } from '../helpers/config';
+import FormControlWrapper from './FormControlWrapper'
 
-export const RadioGroupContext = createContext();
-export const RadioGroupProvider = RadioGroupContext.Provider;
+export const RadioGroupContext = createContext()
+export const RadioGroupProvider = RadioGroupContext.Provider
 
 const RadioGroup = ({
   children,
   className,
   explanationMessage,
-  inline,
   label,
   name,
+  noContrast,
   onChange,
   selectedValue,
   validationMessage,
   required,
-  ...opts
+  ...rest
 }) => {
   const renderChildren = () =>
-    React.Children.map(children, child => {
-      const onChangeFunc = () => {
-        onChange(name, child.props.value);
-      };
+    Children.map(children, (child) => {
+      const onChangeFunc = (e) => {
+        onChange(e)
+      }
 
       return (
         <RadioGroupProvider
-          value={{ selectedValue, name, onChange: onChangeFunc }}
+          value={{ selectedValue, name, onChange: onChangeFunc, noContrast }}
         >
-          {inline ? child : <ListItem>{child}</ListItem>}
+          {child}
         </RadioGroupProvider>
-      );
-    });
-
-  const renderItems = () => {
-    if (inline) {
-      return <Inline className="form-inlineCombo">{renderChildren()}</Inline>;
-    }
-
-    return <List type={['space']}>{renderChildren()}</List>;
-  };
-
-  const classes = cx('form-group', className, {
-    [config.classes.notValid]: validationMessage,
-    [config.classes.required]: required,
-  });
+      )
+    })
 
   return (
-    <div className={classes} {...opts}>
-      <FormLabel required={required} id="">
-        {label}
-      </FormLabel>
-      {renderItems()}
-      <FormFooter
-        explanationMessage={explanationMessage}
-        validationMessage={validationMessage}
-      />
-    </div>
-  );
-};
+    <FormControlWrapper
+      label={label}
+      labelProps={{ as: 'div' }}
+      required={required}
+      validationMessage={validationMessage}
+      explanationMessage={explanationMessage}
+      {...rest}
+    >
+      {renderChildren()}
+    </FormControlWrapper>
+  )
+}
 
 RadioGroup.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   explanationMessage: PropTypes.string,
-  inline: PropTypes.bool,
   label: PropTypes.string,
   name: PropTypes.string.isRequired,
-  onChange: PropTypes.func,
+  noContrast: PropTypes.bool,
+  onChange: PropTypes.func.isRequired,
   selectedValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   validationMessage: PropTypes.string,
   required: PropTypes.bool,
-};
+}
 
-export default RadioGroup;
+export default RadioGroup

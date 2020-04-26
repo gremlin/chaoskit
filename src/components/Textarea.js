@@ -1,54 +1,84 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import cx from 'classnames';
-import TextareaAutoSize from 'react-textarea-autosize';
+import { useMemo } from 'react'
+import PropTypes from 'prop-types'
+import cx from 'classnames'
+import { useTheme } from 'emotion-theming'
+import TextareaAutoSize from 'react-textarea-autosize'
 
-import FormLabel from './FormLabel';
-import FormFooter from './FormFooter';
-import { generateUUID } from '../helpers/utility';
-import { config } from '../helpers/config';
+import { form } from '../assets/styles/utility'
+import { generateUUID } from '../helpers/utility'
+
+import FormControlWrapper from './FormControlWrapper'
 
 const Textarea = ({
   className,
   label,
   name,
-  onChange,
+  noContrast,
   validationMessage,
   explanationMessage,
   required,
-  ...opts
+  wrapperProps,
+  ...rest
 }) => {
-  const id = `${name}-${generateUUID()}`;
+  const theme = useTheme()
 
-  const handleChange = ({ target: { name: fieldName, value: fieldValue } }) => {
-    onChange(fieldName, fieldValue);
-  };
-
-  const classes = cx('form-group', className, {
-    [config.classes.notValid]: validationMessage,
-    [config.classes.required]: required,
-  });
+  // Only regenerate this if the name prop changes
+  const id = useMemo(() => `${name}-${generateUUID()}`, [name])
 
   return (
-    <div className={classes}>
-      <FormLabel id={id}>{label}</FormLabel>
-      <TextareaAutoSize id={id} name={name} onChange={handleChange} {...opts} />
-      <FormFooter
-        explanationMessage={explanationMessage}
-        validationMessage={validationMessage}
+    <FormControlWrapper
+      required={required}
+      label={label}
+      labelProps={{
+        htmlFor: id,
+      }}
+      explanationMessage={explanationMessage}
+      validationMessage={validationMessage}
+      {...wrapperProps}
+    >
+      <TextareaAutoSize
+        css={[
+          form.base(theme),
+          form.input(theme, { error: validationMessage, noContrast }),
+          {
+            // Remove default style in browsers that support `appearance`
+            appearance: 'none',
+
+            // Remove default vertical scrollbar in IE 8/9/10/11.
+            overflow: 'auto',
+            // Improve readability and alignment in all browsers.
+            verticalAlign: 'top',
+            // Only allow vertical resizing
+            resize: 'vertical',
+            // Force minimum height
+            minHeight: theme.height.base * 2,
+            // Allow `textarea` to be controlled via [row] more explicitly
+            height: 'auto',
+            // Style
+            padding: `${theme.space.small + theme.space.xsmall}px ${
+              theme.space.base
+            }px`,
+            maxHeight: 300,
+          },
+        ]}
+        className={cx('CK__Textarea', className)}
+        id={id}
+        name={name}
+        {...rest}
       />
-    </div>
-  );
-};
+    </FormControlWrapper>
+  )
+}
 
 Textarea.propTypes = {
   className: PropTypes.string,
   explanationMessage: PropTypes.string,
   validationMessage: PropTypes.string,
-  onChange: PropTypes.func,
   required: PropTypes.bool,
   label: PropTypes.string,
   name: PropTypes.string.isRequired,
-};
+  noContrast: PropTypes.bool,
+  wrapperProps: PropTypes.object,
+}
 
-export default Textarea;
+export default Textarea

@@ -1,10 +1,10 @@
-> ⚠️ **Notice:** Consider using our [feature/emotion](https://github.com/gremlin/chaoskit/tree/feature/emotion) branch. This SCSS version will eventually be deprecated.
+# ChaosKit <img src="https://raw.githubusercontent.com/gremlin/chaoskit/master/src/assets/media/logo-mascot.svg" height="30px;">
 
-# ChaosKit <img src="./src/assets/media/logo-mascot.svg" height="30px;">
+[Demo](https://feature-emotion--chaoskit.netlify.com/)
 
 ChaosKit is a lightweight and modular front-end framework for developing fast and powerful web interfaces within Gremlin.
 
-Emphasis is placed on base-styles that follow our Sass guidelines with the flexibility of overriding portions to your needs with hooks, class modifiers, and variable overrides that make this framework extensible to fit both marketing and application initiatives.
+Emphasis is placed on following a consistent style-guideline with the flexibility of overriding portions to your needs that make this framework extensible to fit both marketing and application initiatives.
 
 ## Installation
 

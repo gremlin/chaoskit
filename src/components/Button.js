@@ -1,16 +1,416 @@
-import cx from 'classnames';
-import PropTypes from 'prop-types';
-import React from 'react';
+import PropTypes from 'prop-types'
+import { forwardRef } from 'react'
+import cx from 'classnames'
+import { shade, rgba } from 'polished'
+import { useTheme } from 'emotion-theming'
 
-import { config } from '../helpers/config';
-import Loader from './Loader';
+import { gradient, misc } from '../assets/styles/utility'
 
-const Button = React.forwardRef(
+import { StylesIconVariables } from './Icon'
+import Loader from './Loader'
+
+export const generateButtonGradient = ({ start, stop }) => ({
+  borderColor: 'transparent',
+  background: `${gradient.generateGradient({
+    start,
+    stop,
+  })}, ${gradient.generateGradient({ start, stop })}`,
+  backgroundOrigin: 'border-box',
+  backgroundClip: 'content-box, border-box',
+})
+
+const StylesButtonVariables = (theme) => ({
+  borderWidth: 2,
+  color: {
+    base: theme.fontColor.base,
+    get dark() {
+      return shade(0.1, this.base)
+    },
+  },
+})
+
+export const StylesButtonBase = (theme, props = {}) => [
+  {
+    // 1. Correct inability to style clickable `input` types in iOS.
+    // 2. Remove margins in Chrome, Safari and Opera.
+    // 3. Normalizes styles for `button`.
+    // 4. Address `overflow` set to `hidden` in IE 8/9/10/11.
+    // 5. Correct `font` properties and `color` not being inherited for `button`.
+    // 6. Address inconsistent `text-transform` inheritance which is only inherit in Firefox and IE
+    // 7. Style
+    // 8. `line-height` is used to create a height
+    // 9. `min-height` is necessary for `input` elements in Firefox and Opera because `line-height` is not working.
+    // 10. Reset button group whitespace hack
+    // 11. Required for `a`.
+    // 12. Do not wrap buttons
+    // 13. Disable `user-select`
+    // 14. Removes inner padding and border in Firefox 4+.
+
+    // 1
+    appearance: 'none',
+    // 2
+    margin: 0,
+    // 3
+    border: `${StylesButtonVariables(theme).borderWidth}px solid transparent`,
+    // 4
+    overflow: 'visible',
+    // 5
+    font: 'inherit',
+    fontWeight: theme.fontWeight.bold,
+    fontFamily: theme.fontFamily.heading,
+    color: StylesButtonVariables(theme).color.base,
+    // 6
+    textTransform: 'uppercase',
+    // 7
+    display: 'inline-block',
+    padding: `0 ${
+      theme.settings.ui.radius ? theme.space.medium : theme.space.base
+    }px`,
+    background: 'transparent',
+    verticalAlign: 'middle',
+    cursor: 'pointer',
+    transition: `all ${theme.timing.base} ${theme.transition.base}`,
+    backgroundSize: '100% 100%',
+    borderRadius: theme.settings.ui.radius && theme.height.base / 2,
+    position: 'relative',
+    letterSpacing: theme.letterSpacing.small,
+    // 8
+    lineHeight: `${
+      theme.height.base - StylesButtonVariables(theme).borderWidth * 2
+    }px`,
+    // 9
+    height: theme.height.base,
+    // 10
+    fontSize: theme.fontSize.small,
+    // 11
+    textDecoration: 'none',
+    textAlign: 'center',
+    // 12
+    whiteSpace: 'nowrap',
+    // 13
+    userSelect: 'none',
+
+    '&:hover, &:focus': {
+      color: StylesButtonVariables(theme).color.base,
+    },
+
+    // 14
+    '&::-moz-focus-inner': {
+      border: 0,
+      padding: 0,
+    },
+
+    '&[disabled]': {
+      opacity: theme.opacity.base,
+      cursor: 'not-allowed',
+      pointerEvents: 'none',
+    },
+  },
+
+  theme.settings.contrast.enable &&
+    theme.settings.contrast.button &&
+    !props.noContrast && {
+      '.u-contrast &': {
+        color: theme.contrast.base,
+
+        '&:hover, &:focus': {
+          color: theme.contrast.base,
+        },
+      },
+    },
+]
+
+export const StylesButtonSmall = (theme) => ({
+  padding: `0 ${
+    theme.settings.ui.radius
+      ? theme.space.base
+      : theme.space.small + theme.space.xsmall
+  }px`,
+  height: theme.height.small,
+  borderRadius: theme.settings.ui.radius && theme.height.small / 2,
+  lineHeight: `${
+    theme.height.small - StylesButtonVariables(theme).borderWidth * 2
+  }px`,
+})
+
+export const StylesButtonXsmall = (theme) => ({
+  padding: `0 ${
+    theme.settings.ui.radius ? theme.space.base : theme.space.small
+  }px`,
+  fontSize: theme.fontSize.xsmall,
+  height: theme.height.xsmall,
+  borderRadius: theme.settings.ui.radius && theme.height.xsmall / 2,
+  lineHeight: `${
+    theme.height.xsmall - StylesButtonVariables(theme).borderWidth * 2
+  }px`,
+})
+
+export const StylesButtonDefault = (theme, props = {}) => [
+  {
+    background: theme.color.light.base,
+    borderColor: StylesButtonVariables(theme).color.base,
+    color: StylesButtonVariables(theme).color.base,
+
+    '&:hover, &:focus': {
+      color: StylesButtonVariables(theme).color.base,
+    },
+  },
+
+  theme.settings.contrast.enable &&
+    theme.settings.contrast.button &&
+    !props.noContrast && {
+      '.u-contrast &': {
+        background: rgba(theme.contrast.base, 0.15),
+        color: theme.contrast.base,
+        borderColor: theme.contrast.base,
+
+        '&:hover, &:focus': {
+          color: theme.contrast.base,
+        },
+      },
+    },
+]
+
+export const StylesButtonOutlinePrimary = (theme, props = {}) => {
+  const interactiveStyles = {
+    color: StylesButtonVariables(theme).color.base,
+    borderColor: theme.color.primary.dark,
+  }
+
+  return [
+    {
+      background: theme.color.light.base,
+      borderColor: theme.color.primary.base,
+      color: StylesButtonVariables(theme).color.base,
+
+      '&:hover, &:focus': interactiveStyles,
+
+      '&.is-active': interactiveStyles,
+    },
+
+    props.active && interactiveStyles,
+
+    theme.settings.contrast.enable &&
+      theme.settings.contrast.button &&
+      !props.noContrast && {
+        '.u-contrast &': [
+          {
+            color: StylesButtonVariables(theme).color.base,
+
+            '&:hover, &:focus': interactiveStyles,
+
+            '&.is-active': interactiveStyles,
+          },
+
+          props.active && interactiveStyles,
+        ],
+      },
+  ]
+}
+
+export const StylesButtonPrimary = (theme, props = {}) => {
+  const interactiveStyles = [
+    {
+      color: theme.contrast.base,
+      background: theme.color.primary.dark,
+      borderColor: theme.color.primary.dark,
+    },
+
+    theme.settings.button.gradient.enable &&
+      generateButtonGradient({
+        start: theme.settings.button.gradient.primaryStart,
+        stop: theme.color.primary.base,
+      }),
+  ]
+
+  const interactiveStylesContrast = {
+    color: theme.color.primary.dark,
+  }
+
+  return [
+    {
+      background: theme.color.primary.base,
+      borderColor: theme.color.primary.base,
+      color: theme.contrast.base,
+
+      '&:hover, &:focus': interactiveStyles,
+
+      '&.is-active': interactiveStyles,
+    },
+
+    theme.settings.button.gradient.enable &&
+      generateButtonGradient({
+        start: theme.settings.button.gradient.primaryStart,
+        stop: theme.color.primary.base,
+      }),
+
+    props.active && interactiveStyles,
+
+    theme.settings.contrast.enable &&
+      theme.settings.contrast.button &&
+      !props.noContrast && {
+        '.u-contrast &': [
+          {
+            background: theme.contrast.base,
+            borderColor: theme.contrast.base,
+            color: theme.color.primary.base,
+
+            '&:hover, &:focus': interactiveStylesContrast,
+
+            '&.is-active': interactiveStylesContrast,
+          },
+
+          props.active && interactiveStylesContrast,
+        ],
+      },
+  ]
+}
+
+export const StylesButtonSecondary = (theme, props = {}) => [
+  {
+    background: StylesButtonVariables(theme).color.base,
+    borderColor: StylesButtonVariables(theme).color.base,
+    color: theme.contrast.base,
+
+    '&:hover, &:focus': {
+      color: theme.contrast.base,
+    },
+  },
+  theme.settings.contrast.enable &&
+    theme.settings.contrast.button &&
+    !props.noContrast && {
+      '.u-contrast &': {
+        background: theme.contrast.base,
+        borderColor: theme.contrast.base,
+        color: StylesButtonVariables(theme).color.base,
+
+        '&:hover, &:focus': {
+          color: StylesButtonVariables(theme).color.base,
+        },
+      },
+    },
+]
+
+export const StylesButtonDanger = (theme, props = {}) => {
+  const interactiveStyles = {
+    color: theme.contrast.base,
+    background: theme.color.danger.dark,
+    borderColor: theme.color.danger.dark,
+  }
+
+  const interactiveStylesContrast = {
+    color: theme.color.danger.dark,
+  }
+
+  return [
+    {
+      background: theme.color.danger.base,
+      borderColor: theme.color.danger.base,
+      color: theme.contrast.base,
+
+      '&:hover, &:focus': interactiveStyles,
+
+      '&.is-active': interactiveStyles,
+    },
+
+    props.active && interactiveStyles,
+
+    theme.settings.contrast.enable &&
+      theme.settings.contrast.button &&
+      !props.noContrast && {
+        '.u-contrast &': [
+          {
+            background: theme.contrast.base,
+            borderColor: theme.contrast.base,
+            color: theme.color.danger.base,
+
+            '&:hover, &:focus': interactiveStylesContrast,
+
+            '&.is-active': interactiveStylesContrast,
+          },
+
+          props.active && interactiveStylesContrast,
+        ],
+      },
+  ]
+}
+
+export const StylesButtonIconOnly = (theme, props = {}) => [
+  {
+    padding: 0,
+    width: theme.height.base,
+
+    svg: {
+      width: StylesIconVariables.large,
+      height: StylesIconVariables.large,
+    },
+  },
+  props.size === 'small' && {
+    width: theme.height.small,
+
+    svg: {
+      width: StylesIconVariables.medium,
+      height: StylesIconVariables.medium,
+    },
+  },
+  props.size === 'xsmall' && {
+    width: theme.height.xsmall,
+
+    svg: {
+      width: StylesIconVariables.base,
+      height: StylesIconVariables.base,
+    },
+  },
+]
+
+//
+// <button> reset
+//
+export const StylesButtonReset = {
+  // 1. Remove default browser appearance for buttons.
+  // 2. Remove margins.
+  // 3. Remove borders for IE.
+  // 4. Normalize font and color  not inherited by `button`.
+  // 5. Address `overflow` in IE
+  // 6. Normalize cursor style
+  // 7. Normalize line-height
+  // 8. Normalize text-align
+  // 9. Remove inner padding and border in Firefox 4+.
+
+  // 1
+  appearance: 'none',
+  background: 'none',
+  // 2
+  padding: 0,
+  margin: 0,
+  // 3
+  borderWidth: 0,
+  // 4
+  font: 'inherit',
+  textDecoration: 'none',
+  color: 'inherit',
+  // 5
+  overflow: 'visible',
+  // 6
+  cursor: 'pointer',
+  // 7
+  lineHeight: 'normal',
+  // 8
+  textAlign: 'inherit',
+
+  // 9
+  '&::-moz-focus-inner': {
+    border: 0,
+    padding: 0,
+  },
+}
+
+const Button = forwardRef(
   (
     {
       active,
       actionType,
-      as,
+      as: Component,
       children,
       className,
       disabled,
@@ -18,65 +418,78 @@ const Button = React.forwardRef(
       iconOnly,
       loading,
       noContrast,
-      noRadius,
       size,
       type,
       url,
-      ...opts
+      ...rest
     },
     ref
   ) => {
-    const classes = cx(className, {
-      button: type !== 'reset',
-      'button--reset': type === 'reset',
-      'button--default': type === 'default',
-      'button--primary': type === 'primary',
-      'button--secondary': type === 'secondary',
-      'button--teal': type === 'teal',
-      'button--danger': type === 'danger',
-      'button--outlinePrimary': type === 'outlinePrimary',
-      'button--small': size === 'small',
-      'button--xsmall': size === 'xsmall',
-      'button--fullWidth': fullWidth,
-      'button--icon': iconOnly,
-      'button--noContrast': noContrast,
-      [config.classes.active]: active,
-      [config.classes.loading]: loading,
-      'u-borderRadius--remove': noRadius,
-    });
-
-    let Component = as;
+    const theme = useTheme()
 
     const buttonProps = {
-      className: classes,
       disabled: disabled || loading,
       ref,
-      ...opts,
-    };
-
-    if (url) {
-      buttonProps.href = url;
-      Component = 'a';
+      ...rest,
     }
 
-    if (Component !== 'a') {
-      buttonProps.type = actionType;
+    if (url) {
+      buttonProps.href = url
+      Component = 'a'
+    }
+
+    if (Component === 'button') {
+      buttonProps.type = actionType
     }
 
     return (
-      <Component {...buttonProps}>
-        {type === 'reset' ? children : <span>{children}</span>}
-        {loading && <Loader />}
+      <Component
+        css={[
+          type !== 'reset' && StylesButtonBase(theme, { noContrast }),
+          type === 'reset' && StylesButtonReset,
+          size === 'small' && StylesButtonSmall(theme),
+          size === 'xsmall' && StylesButtonXsmall(theme),
+          type === 'default' && StylesButtonDefault(theme, { noContrast }),
+          type === 'outlinePrimary' &&
+            StylesButtonOutlinePrimary(theme, { active, noContrast }),
+          type === 'primary' &&
+            StylesButtonPrimary(theme, { active, noContrast }),
+          type === 'secondary' && StylesButtonSecondary(theme, { noContrast }),
+          type === 'danger' && StylesButtonDanger(theme, { noContrast }),
+          iconOnly && StylesButtonIconOnly(theme, { size }),
+          fullWidth && {
+            width: '100%',
+          },
+          theme.settings.button.misc,
+        ]}
+        className={cx(`CK__Button CK__Button--${type || 'blank'}`, className)}
+        {...buttonProps}
+      >
+        {type === 'reset' ? (
+          children
+        ) : (
+          <span css={{ color: loading && 'transparent' }}>{children}</span>
+        )}
+        {loading && type !== 'reset' && (
+          <Loader
+            css={[
+              misc.absoluteCenter,
+              {
+                width: StylesIconVariables.large,
+                height: StylesIconVariables.large,
+              },
+            ]}
+          />
+        )}
       </Component>
-    );
+    )
   }
-);
+)
 
 Button.propTypes = {
   active: PropTypes.bool,
   actionType: PropTypes.oneOf(['button', 'submit', 'reset']),
-  /* Useful for frameworks like NextJs */
-  as: PropTypes.oneOf(['button', 'a']),
+  as: PropTypes.any,
   children: PropTypes.node,
   className: PropTypes.string,
   disabled: PropTypes.bool,
@@ -85,24 +498,22 @@ Button.propTypes = {
   /** Re-uses the Loader component */
   loading: PropTypes.bool,
   noContrast: PropTypes.bool,
-  noRadius: PropTypes.bool,
-  size: PropTypes.oneOf(['default', 'xsmall', 'small']),
+  size: PropTypes.oneOf(['base', 'xsmall', 'small']),
   /** reset is used for elements that have no direct path attached to them; to ensure we keep our markup semantic and accessible. */
   type: PropTypes.oneOf([
     'reset',
     'default',
     'primary',
     'secondary',
-    'teal',
     'danger',
     'outlinePrimary',
   ]),
   url: PropTypes.string,
-};
+}
 
 Button.defaultProps = {
   as: 'button',
   actionType: 'button',
-};
+}
 
-export default Button;
+export default Button

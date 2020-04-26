@@ -1,38 +1,169 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
+import cx from 'classnames'
+import { useTheme } from 'emotion-theming'
 import {
   Tabs as ReactTabs,
   TabList as ReactTabList,
-  Tab,
+  Tab as ReactTab,
   TabPanel as ReactTabPanel,
-} from 'react-tabs';
+} from 'react-tabs'
 
-import { config } from '../helpers/config';
+import { flex, misc, text } from '../assets/styles/utility'
 
-const Tabs = ({ ...rest }) => (
-  <ReactTabs
-    className="tabs"
-    disabledTabClassName={config.classes.disabled}
-    selectedTabClassName={config.classes.active}
-    selectedTabPanelClassName={config.classes.active}
-    {...rest}
-  />
-);
+const Tabs = ({ className, customCss, ...rest }) => (
+  <ReactTabs css={customCss} className={cx('CK__Tabs', className)} {...rest} />
+)
 
-const TabList = ({ ...rest }) => (
-  <ReactTabList className="tabs-list" {...rest} />
-);
+Tabs.propTypes = {
+  className: PropTypes.string,
+  customCss: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+}
 
-TabList.tabsRole = 'TabList';
+Tabs.defaultProps = {
+  customCss: {},
+}
 
-const TabPanel = ({ selected, ...rest }) => (
-  <ReactTabPanel selected={selected} className="tabs-panel" {...rest} />
-);
+const TabList = ({ className, reset, customCss, ...rest }) => {
+  const theme = useTheme()
+
+  return (
+    <ReactTabList
+      css={[
+        !reset && [
+          flex.base,
+          misc.overflow,
+          {
+            marginBottom: theme.space.base,
+            borderBottom: theme.border.large,
+            position: 'relative',
+            zIndex: 2,
+
+            '> .CK__Tab + .CK__Tab': {
+              marginLeft: theme.space.base,
+            },
+          },
+        ],
+        customCss,
+      ]}
+      className={cx('CK__TabList', className)}
+      {...rest}
+    />
+  )
+}
+
+TabList.propTypes = {
+  className: PropTypes.string,
+  reset: PropTypes.bool,
+  customCss: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+}
+
+TabList.defaultProps = {
+  customCss: {},
+}
+
+TabList.tabsRole = 'TabList'
+
+const Tab = ({ className, disabled, selected, reset, customCss, ...rest }) => {
+  const theme = useTheme()
+
+  return (
+    <ReactTab
+      css={[
+        !reset && [
+          text.heading(theme),
+          {
+            display: 'inline-flex',
+            position: 'relative',
+            fontSize: theme.fontSize.base,
+            lineHeight: `${theme.height.base}px`,
+            height: theme.height.base,
+            color: theme.fontColor.base,
+            cursor: 'pointer',
+            transition: `color ${theme.timing.base} ${theme.transition.base}`,
+            whiteSpace: 'nowrap',
+
+            '&::before': {
+              content: "''",
+              height: 3,
+              position: 'absolute',
+              bottom: 0,
+              left: 0,
+              background: theme.color.primary.base,
+              width: '100%',
+              opacity: 0,
+              transition: `opacity ${theme.timing.base} ${theme.transition.base}`,
+            },
+          },
+
+          !disabled && {
+            '&:hover, &:focus': {
+              color: theme.color.primary.base,
+            },
+          },
+
+          disabled && {
+            cursor: 'not-allowed',
+            opacity: theme.opacity.base,
+          },
+
+          selected && {
+            cursor: 'default',
+            color: theme.color.primary.base,
+
+            '&::before': {
+              opacity: 1,
+            },
+          },
+        ],
+        customCss,
+      ]}
+      selectedClassName={theme.settings.classes.active}
+      className={cx('CK__Tab', className)}
+      disabled={disabled}
+      selected={selected}
+      {...rest}
+    />
+  )
+}
+
+Tab.defaultProps = {
+  customCss: {},
+}
+
+Tab.propTypes = {
+  className: PropTypes.string,
+  disabled: PropTypes.bool,
+  selected: PropTypes.bool,
+  reset: PropTypes.bool,
+  customCss: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+}
+
+Tab.tabsRole = 'Tab'
+
+const TabPanel = ({ className, selected, customCss, ...rest }) => {
+  const theme = useTheme()
+
+  return (
+    <ReactTabPanel
+      selected={selected}
+      css={() => [customCss]}
+      selectedClassName={theme.settings.classes.active}
+      className={cx(`CK__TabsPanel ${theme.settings.classes.trim}`, className)}
+      {...rest}
+    />
+  )
+}
 
 TabPanel.propTypes = {
+  className: PropTypes.string,
   selected: PropTypes.bool,
-};
+  customCss: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+}
 
-TabPanel.tabsRole = 'TabPanel';
+TabPanel.defaultProps = {
+  customCss: {},
+}
 
-export { Tabs, TabList, Tab, TabPanel };
+TabPanel.tabsRole = 'TabPanel'
+
+export { Tabs, TabList, Tab, TabPanel }

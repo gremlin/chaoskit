@@ -1,18 +1,28 @@
-import cx from 'classnames';
-import PropTypes from 'prop-types';
-import React from 'react';
+import cx from 'classnames'
+import PropTypes from 'prop-types'
+import { useTheme } from 'emotion-theming'
 
-const ModalFooter = ({ center, className, ...opts }) => {
-  const classes = cx('modal-footer', className, {
-    'modal-footer--center': center,
-  });
+import { StylesModalVariables } from './Modal'
 
-  return <div className={classes} {...opts} />;
-};
+const ModalFooter = ({ className, ...rest }) => {
+  const theme = useTheme()
+
+  return (
+    <div
+      css={{
+        padding: StylesModalVariables(theme).padding,
+      }}
+      className={cx(
+        `CK__ModalFooter ${theme.settings.classes.trim}`,
+        className
+      )}
+      {...rest}
+    />
+  )
+}
 
 ModalFooter.propTypes = {
-  center: PropTypes.bool,
   className: PropTypes.string,
-};
+}
 
-export default ModalFooter;
+export default ModalFooter

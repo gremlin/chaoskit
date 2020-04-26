@@ -3,6 +3,6 @@ const paths = {
     src: ['./src/assets/icons/*.svg'],
     json: './src/assets/icons',
   },
-};
+}
 
-module.exports = paths;
+module.exports = paths

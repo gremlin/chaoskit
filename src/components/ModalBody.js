@@ -1,15 +1,25 @@
-import cx from 'classnames';
-import PropTypes from 'prop-types';
-import React from 'react';
+import cx from 'classnames'
+import PropTypes from 'prop-types'
+import { useTheme } from 'emotion-theming'
 
-const ModalBody = ({ className, ...opts }) => {
-  const classes = cx('modal-body', className);
+import { StylesModalVariables } from './Modal'
 
-  return <div className={classes} {...opts} />;
-};
+const ModalBody = ({ className, ...rest }) => {
+  const theme = useTheme()
+
+  return (
+    <div
+      css={{
+        padding: StylesModalVariables(theme).padding,
+      }}
+      className={cx(`CK__ModalBody ${theme.settings.classes.trim}`, className)}
+      {...rest}
+    />
+  )
+}
 
 ModalBody.propTypes = {
   className: PropTypes.string,
-};
+}
 
-export default ModalBody;
+export default ModalBody

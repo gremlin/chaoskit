@@ -1,16 +1,7 @@
-# Gatsby
-gatsby-browser.js
-gatsby-config.js
-gatsby-node.js
-
-# Styles
-src/assets/styles/modules/**/*
-src/assets/styles/site.scss
+# Storybook
+.storybook/**/*
 
 # Docs
-src/docs/**/*
-src/layouts/**/*
-src/pages/**/*
 src/assets/media/**/*
 
 # Build
