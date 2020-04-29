@@ -24,7 +24,7 @@ export const StylesAlertBase = (theme) => ({
     padding: theme.space.medium,
   },
 
-  'a:not([class]), .u-link': [
+  'a:not([class]), a[class=""], .u-link': [
     text.underline,
     {
       color: 'currentColor',

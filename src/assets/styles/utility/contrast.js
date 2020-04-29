@@ -6,7 +6,7 @@ export const styles = (theme) => ({
     color: theme.contrast.base,
 
     // Links
-    'a:not([class]), .u-link': {
+    'a:not([class]), a[class=""], .u-link': {
       color: theme.contrast.base,
 
       '&:hover, &:focus, &.is-active': [
