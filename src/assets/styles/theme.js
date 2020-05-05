@@ -193,7 +193,7 @@ const fontColor = {
   get mutedDark() {
     return rgba(shade(0.1, this.muted), muted.base)
   },
-  heading: color.dark.base,
+  heading: color.dark.light,
   get headingDark() {
     return shade(0.1, this.heading)
   },
