@@ -1,3 +1,5 @@
+import linkIcon from '../icons/link.svg'
+
 import { text, link, misc, contrast, prism, table, form } from './utility'
 
 export const StylesGlobalVariables = (theme) => ({
@@ -81,6 +83,25 @@ export const globalStyles = (theme) => [
 
         '&:hover, &:focus': {
           textDecoration: 'none',
+        },
+
+        '> code': {
+          position: 'relative',
+
+          '&::after': {
+            content: "''",
+            display: 'inline-block',
+            height: '1em',
+            width: '1em',
+            background: `url(${linkIcon})`,
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center center',
+            filter: theme.fontColor.filter,
+            verticalAlign: 'middle',
+            marginLeft: theme.space.xsmall,
+            position: 'relative',
+            top: '-0.1em',
+          },
         },
       },
     ],
