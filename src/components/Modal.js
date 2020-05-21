@@ -1,8 +1,12 @@
-import cx from 'classnames'
-import PropTypes from 'prop-types'
 import { useRef, useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
+import cx from 'classnames'
+import {
+  disableBodyScroll,
+  enableBodyScroll,
+  clearAllBodyScrollLocks,
+} from 'body-scroll-lock'
 import useUpdateEffect from 'react-use/lib/useUpdateEffect'
-import useLockBodyScroll from 'react-use/lib/useLockBodyScroll'
 import useClickAway from 'react-use/lib/useClickAway'
 import { createPortal } from 'react-dom'
 import gsap from 'gsap'
@@ -147,6 +151,13 @@ const Modal = ({
       )
   }
 
+  // On unmount, clear any/all locks on `<body />`
+  useEffect(() => {
+    return () => {
+      clearAllBodyScrollLocks()
+    }
+  }, [])
+
   useEffect(() => {
     if (open) {
       setRenderModal(true)
@@ -157,6 +168,8 @@ const Modal = ({
     if (renderModal) {
       attachTimeline()
 
+      disableBodyScroll(modalRef.current)
+
       openModal()
     } else {
       onReverseComplete()
@@ -165,14 +178,13 @@ const Modal = ({
 
   useUpdateEffect(() => {
     if (!open) {
+      enableBodyScroll(modalRef.current)
+
       closeModal()
     }
   }, [open])
 
   useClickAway(modalDialogRef, () => onOutsideModalClick())
-
-  // If not explicitly a boolean, the body lock will not release
-  useLockBodyScroll(Boolean(renderModal))
 
   if (!renderModal) return null
 

@@ -26,26 +26,6 @@ const ModalExample = (props) => {
         <ModalHeader title="Hello" onCloseClick={handleToggle} />
         <ModalBody>
           <p>test</p>
-          <p>test</p>
-          <p>test</p>
-          <p>test</p>
-          <p>test</p>
-          <p>test</p>
-          <p>test</p>
-          <p>test</p>
-          <p>test</p>
-          <p>test</p>
-          <p>test</p>
-          <p>test</p>
-
-          <p>test</p>
-          <p>test</p>
-          <p>test</p>
-          <p>test</p>
-          <p>test</p>
-          <p>test</p>
-          <p>test</p>
-          <p>test</p>
         </ModalBody>
         <ModalFooter>hello</ModalFooter>
       </Modal>

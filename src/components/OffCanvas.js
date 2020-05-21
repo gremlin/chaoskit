@@ -1,8 +1,12 @@
-import cx from 'classnames'
-import PropTypes from 'prop-types'
 import { useRef, useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
+import cx from 'classnames'
+import {
+  disableBodyScroll,
+  enableBodyScroll,
+  clearAllBodyScrollLocks,
+} from 'body-scroll-lock'
 import useUpdateEffect from 'react-use/lib/useUpdateEffect'
-import useLockBodyScroll from 'react-use/lib/useLockBodyScroll'
 import useClickAway from 'react-use/lib/useClickAway'
 import { createPortal } from 'react-dom'
 import gsap from 'gsap'
@@ -100,6 +104,13 @@ const OffCanvas = ({
       )
   }
 
+  // On unmount, clear any/all locks on `<body />`
+  useEffect(() => {
+    return () => {
+      clearAllBodyScrollLocks()
+    }
+  }, [])
+
   useEffect(() => {
     if (open) {
       setRenderOffCanvas(true)
@@ -110,6 +121,8 @@ const OffCanvas = ({
     if (renderOffCanvas) {
       attachTimeline()
 
+      disableBodyScroll(offCanvasPanelRef.current)
+
       openOffCanvas()
     } else {
       onReverseComplete()
@@ -118,14 +131,13 @@ const OffCanvas = ({
 
   useUpdateEffect(() => {
     if (!open) {
+      enableBodyScroll(offCanvasPanelRef.current)
+
       closeOffCanvas()
     }
   }, [open])
 
   useClickAway(offCanvasPanelRef, () => onOffCanvasToggle())
-
-  // If not explicitly a boolean, the body lock will not release
-  useLockBodyScroll(Boolean(renderOffCanvas))
 
   if (!renderOffCanvas) return null
 
