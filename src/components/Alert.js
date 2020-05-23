@@ -3,41 +3,44 @@ import cx from 'classnames'
 import PropTypes from 'prop-types'
 import useUpdateEffect from 'react-use/lib/useUpdateEffect'
 import gsap from 'gsap'
-import { kebabCase, toLower } from 'lodash-es'
 import { useTheme } from 'emotion-theming'
 
 import { misc, text } from '../assets/styles/utility'
 
 import Close from './Close'
 
-export const StylesAlertBase = (theme) => ({
-  display: 'flex',
-  padding: theme.space.base,
-  borderLeft: '8px solid transparent',
-  color: theme.fontColor.base,
-
-  '&:not(:last-child)': {
-    marginBottom: theme.space.base,
-  },
-
-  [theme.mq.medium]: {
-    padding: theme.space.medium,
-  },
-
-  'a:not([class]), a[class=""], .u-link': [
-    text.underline,
-    {
-      color: 'currentColor',
-
-      '&:hover, &:focus': {
-        color: 'currentColor',
-      },
+export const StylesAlertBase = (theme, opts) => {
+  const props = {
+    ...{
+      close: false,
     },
-  ],
-})
+    ...opts,
+  }
+
+  return {
+    display: 'grid',
+    gridTemplateColumns: props.close && '1fr auto',
+    gap: props.close && theme.space.small,
+    padding: theme.space.base,
+    borderLeft: '8px solid transparent',
+    color: theme.fontColor.base,
+    borderRadius: theme.borderRadius.base,
+
+    'a:not([class]), a[class=""], .u-link': [
+      text.underline,
+      {
+        color: 'currentColor',
+
+        '&:hover, &:focus': {
+          color: 'currentColor',
+        },
+      },
+    ],
+  }
+}
 
 export const StylesAlertDefault = (theme) => ({
-  borderColor: theme.border.base,
+  borderColor: theme.color.border.base,
   background: theme.color.panel.base,
 })
 
@@ -165,7 +168,9 @@ const Alert = ({
   return (
     <div
       css={[
-        StylesAlertBase(theme),
+        StylesAlertBase(theme, {
+          close,
+        }),
 
         hidden && misc.hide,
 
@@ -180,29 +185,11 @@ const Alert = ({
       aria-hidden={hidden ? 'true' : 'false'}
       {...rest}
     >
-      <div
-        css={{
-          flex: 1,
-        }}
-        className={`CK__Alert__Content ${theme.settings.classes.trim}`}
-      >
-        {title && (
-          <h4 id={kebabCase(toLower(title))} className="CK__Alert__Title">
-            {title}
-          </h4>
-        )}
+      <div className={`CK__Alert__Content ${theme.settings.classes.trim}`}>
+        {title && <h4 className="CK__Alert__Title">{title}</h4>}
         {children}
       </div>
-      {close && (
-        <div
-          css={{
-            flex: 0,
-            paddingLeft: theme.space.small,
-          }}
-        >
-          <Close className="CK__Alert__Close" onClick={collapseAlert} />
-        </div>
-      )}
+      {close && <Close className="CK__Alert__Close" onClick={collapseAlert} />}
     </div>
   )
 }
