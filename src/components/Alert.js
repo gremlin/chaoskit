@@ -17,26 +17,33 @@ export const StylesAlertBase = (theme, opts) => {
     ...opts,
   }
 
-  return {
-    display: 'grid',
-    gridTemplateColumns: props.close && '1fr auto',
-    gap: props.close && theme.space.small,
-    padding: theme.space.base,
-    borderLeft: '8px solid transparent',
-    color: theme.fontColor.base,
-    borderRadius: theme.borderRadius.base,
+  return [
+    misc.fluidSize({
+      theme,
+      property: 'padding',
+      from: theme.space.base,
+      to: theme.space.large,
+    }),
+    {
+      display: 'grid',
+      gridTemplateColumns: props.close && '1fr auto',
+      gap: props.close && theme.space.small,
+      borderLeft: '8px solid transparent',
+      color: theme.fontColor.base,
+      borderRadius: theme.borderRadius.base,
 
-    'a:not([class]), a[class=""], .u-link': [
-      text.underline,
-      {
-        color: 'currentColor',
-
-        '&:hover, &:focus': {
+      'a:not([class]), a[class=""], .u-link': [
+        text.underline,
+        {
           color: 'currentColor',
+
+          '&:hover, &:focus': {
+            color: 'currentColor',
+          },
         },
-      },
-    ],
-  }
+      ],
+    },
+  ]
 }
 
 export const StylesAlertDefault = (theme) => ({
