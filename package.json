@@ -42,7 +42,7 @@
     "prismjs": "1.20.0",
     "react-tabs": "3.1.0",
     "react-text-mask": "5.4.3",
-    "react-textarea-autosize": "7.1.2",
+    "react-textarea-autosize": "8.0.1",
     "react-use": "15.1.0",
     "recursive-readdir-sync": "1.0.6",
     "rsvp": "4.8.5",
