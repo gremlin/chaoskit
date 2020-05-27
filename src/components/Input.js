@@ -1,6 +1,6 @@
 import { forwardRef, useMemo } from 'react'
 import PropTypes from 'prop-types'
-import cx from 'classnames'
+import clsx from 'clsx'
 import { useTheme } from 'emotion-theming'
 import MaskedInput from 'react-text-mask'
 
@@ -112,7 +112,7 @@ const Input = forwardRef(
                   validationMessage,
                   noContrast,
                 })}
-                className={cx('CK__Input', className)}
+                className={clsx('CK__Input', className)}
                 ref={(input) => maskRef(input)}
                 {...props}
               />
@@ -129,7 +129,7 @@ const Input = forwardRef(
             validationMessage,
             noContrast,
           })}
-          className={cx('CK__Input', className)}
+          className={clsx('CK__Input', className)}
           {...defaultProps}
         />
       )

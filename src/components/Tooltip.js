@@ -1,5 +1,5 @@
 import { Children, cloneElement, Fragment, useRef, useState } from 'react'
-import cx from 'classnames'
+import clsx from 'clsx'
 import PropTypes from 'prop-types'
 import { keyframes } from '@emotion/core'
 import { useTheme } from 'emotion-theming'
@@ -130,7 +130,7 @@ const Tooltip = ({ children, className, content, placement, variation }) => {
                 transformOrigin: 'right center',
               },
             ]}
-            className={cx('CK__Tooltip', className)}
+            className={clsx('CK__Tooltip', className)}
             ref={tooltipRef}
             role="tooltip"
           >

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import cx from 'classnames'
+import clsx from 'clsx'
 import PropTypes from 'prop-types'
 import useUpdateEffect from 'react-use/lib/useUpdateEffect'
 import gsap from 'gsap'
@@ -186,7 +186,7 @@ const Alert = ({
         type === 'warning' && StylesAlertWarning(theme),
         type === 'danger' && StylesAlertDanger(theme),
       ]}
-      className={cx('CK__Alert', className)}
+      className={clsx('CK__Alert', className)}
       role="alert"
       ref={alertRef}
       aria-hidden={hidden ? 'true' : 'false'}

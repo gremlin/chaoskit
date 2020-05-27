@@ -1,4 +1,4 @@
-import cx from 'classnames'
+import clsx from 'clsx'
 import PropTypes from 'prop-types'
 import { useTheme } from 'emotion-theming'
 
@@ -12,7 +12,7 @@ const ModalFooter = ({ className, ...rest }) => {
       css={{
         padding: StylesModalVariables(theme).padding,
       }}
-      className={cx(
+      className={clsx(
         `CK__ModalFooter ${theme.settings.classes.trim}`,
         className
       )}

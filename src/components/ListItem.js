@@ -1,4 +1,4 @@
-import cx from 'classnames'
+import clsx from 'clsx'
 import PropTypes from 'prop-types'
 import { useTheme } from 'emotion-theming'
 
@@ -19,7 +19,7 @@ const ListItem = ({ className, ...rest }) => {
           paddingLeft: theme.space.base,
         },
       }}
-      className={cx(`CK__ListItem ${theme.settings.classes.trim}`, className)}
+      className={clsx(`CK__ListItem ${theme.settings.classes.trim}`, className)}
       {...rest}
     />
   )

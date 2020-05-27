@@ -1,6 +1,6 @@
 import { forwardRef } from 'react'
 import PropTypes from 'prop-types'
-import cx from 'classnames'
+import clsx from 'clsx'
 import { rgba } from 'polished'
 import { useTheme } from 'emotion-theming'
 
@@ -17,7 +17,10 @@ const Section = forwardRef(
     return (
       <Component
         ref={ref}
-        className={cx(`CK__Section ${theme.settings.classes.trim}`, className)}
+        className={clsx(
+          `CK__Section ${theme.settings.classes.trim}`,
+          className
+        )}
         css={[
           misc.fluidSize({
             theme,

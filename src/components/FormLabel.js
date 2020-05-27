@@ -1,6 +1,6 @@
 import { forwardRef } from 'react'
 import PropTypes from 'prop-types'
-import cx from 'classnames'
+import clsx from 'clsx'
 import { useTheme } from 'emotion-theming'
 
 import asterisk from '../assets/icons/asterisk.svg'
@@ -68,7 +68,7 @@ const FormLabel = forwardRef(
     return children ? (
       <Component
         css={StylesFormLabelBase(theme, { required, error })}
-        className={cx('CK__FormLabel', className)}
+        className={clsx('CK__FormLabel', className)}
         ref={ref}
         {...rest}
       >

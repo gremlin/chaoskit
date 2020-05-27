@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import cx from 'classnames'
+import clsx from 'clsx'
 import { useTheme } from 'emotion-theming'
 
 import { misc, text } from '../assets/styles/utility'
@@ -63,7 +63,7 @@ const Subnav = ({ children, className, ...rest }) => {
         }),
         borderBottom: theme.border.large,
       }}
-      className={cx('CK__Subnav', className)}
+      className={clsx('CK__Subnav', className)}
       {...rest}
     >
       <Container

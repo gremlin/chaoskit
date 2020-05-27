@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import cx from 'classnames'
+import clsx from 'clsx'
 import { useTheme } from 'emotion-theming'
 
 import Button from './Button'
@@ -22,7 +22,7 @@ const Pagination = ({
         justifyContent: 'space-between',
         marginTop: theme.space.xlarge,
       }}
-      className={cx('CK__Pagination', className)}
+      className={clsx('CK__Pagination', className)}
       {...rest}
     >
       <Button

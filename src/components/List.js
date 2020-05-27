@@ -1,4 +1,4 @@
-import cx from 'classnames'
+import clsx from 'clsx'
 import PropTypes from 'prop-types'
 import { useTheme } from 'emotion-theming'
 
@@ -55,7 +55,7 @@ const List = ({
             noContrast,
           }),
       ]}
-      className={cx('CK__List', className)}
+      className={clsx('CK__List', className)}
       {...rest}
     />
   )

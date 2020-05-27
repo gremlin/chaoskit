@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import { useState } from 'react'
-import cx from 'classnames'
+import clsx from 'clsx'
 import { useTheme } from 'emotion-theming'
 
 import { misc } from '../assets/styles/utility'
@@ -55,7 +55,7 @@ const Avatar = ({ className, fallbackIcon, image, name, size, ...rest }) => {
             backgroundImage: `url(${image})`,
           },
         ]}
-        className={cx('CK__Avatar', className)}
+        className={clsx('CK__Avatar', className)}
         {...rest}
       >
         <img
@@ -73,7 +73,7 @@ const Avatar = ({ className, fallbackIcon, image, name, size, ...rest }) => {
     return (
       <figure
         css={[StylesAvatarBase(theme, { size })]}
-        className={cx('CK__Avatar', className)}
+        className={clsx('CK__Avatar', className)}
         {...rest}
       >
         <Icon
@@ -106,7 +106,7 @@ const Avatar = ({ className, fallbackIcon, image, name, size, ...rest }) => {
       xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="none"
       css={[StylesAvatarBase(theme, { size })]}
-      className={cx('CK__Avatar', className)}
+      className={clsx('CK__Avatar', className)}
       {...rest}
     >
       <circle

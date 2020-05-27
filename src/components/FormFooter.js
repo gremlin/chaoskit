@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import cx from 'classnames'
+import clsx from 'clsx'
 import { useTheme } from 'emotion-theming'
 
 const FormFooter = ({
@@ -23,7 +23,7 @@ const FormFooter = ({
           },
         },
       ]}
-      className={cx('CK__FormFooter', className)}
+      className={clsx('CK__FormFooter', className)}
       {...rest}
     >
       {explanationMessage && (

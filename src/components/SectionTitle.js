@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import cx from 'classnames'
+import clsx from 'clsx'
 import { useTheme } from 'emotion-theming'
 
 import { misc } from '../assets/styles/utility'
@@ -100,7 +100,7 @@ const SectionTitle = ({
 
   return (
     <div
-      className={cx(
+      className={clsx(
         `CK__SectionTitle ${theme.settings.classes.trim}`,
         className
       )}

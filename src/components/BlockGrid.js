@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import cx from 'classnames'
+import clsx from 'clsx'
 import { useTheme } from 'emotion-theming'
 
 const columnOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
@@ -128,7 +128,7 @@ const BlockGrid = ({ className, gutter, size, ...rest }) => {
           },
         },
       ]}
-      className={cx('CK__BlockGrid', className)}
+      className={clsx('CK__BlockGrid', className)}
       {...rest}
     />
   )

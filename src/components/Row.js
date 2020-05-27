@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import cx from 'classnames'
+import clsx from 'clsx'
 import { useTheme } from 'emotion-theming'
 
 const gutterOptions = ['collapse', 'small', 'base', 'medium', 'large', 'xlarge']
@@ -58,7 +58,7 @@ const Row = ({ className, gutter, ...rest }) => {
         gutterCalc('large'),
         gutterCalc('xlarge'),
       ]}
-      className={cx(`CK__Row ${theme.settings.classes.trim}`, className)}
+      className={clsx(`CK__Row ${theme.settings.classes.trim}`, className)}
       {...rest}
     />
   )

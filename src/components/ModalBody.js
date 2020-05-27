@@ -1,4 +1,4 @@
-import cx from 'classnames'
+import clsx from 'clsx'
 import PropTypes from 'prop-types'
 import { useTheme } from 'emotion-theming'
 
@@ -12,7 +12,10 @@ const ModalBody = ({ className, ...rest }) => {
       css={{
         padding: StylesModalVariables(theme).padding,
       }}
-      className={cx(`CK__ModalBody ${theme.settings.classes.trim}`, className)}
+      className={clsx(
+        `CK__ModalBody ${theme.settings.classes.trim}`,
+        className
+      )}
       {...rest}
     />
   )

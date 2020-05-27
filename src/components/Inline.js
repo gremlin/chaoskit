@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import cx from 'classnames'
+import clsx from 'clsx'
 import { useTheme } from 'emotion-theming'
 
 const Inline = ({ className, size, wrap, ...rest }) => {
@@ -27,7 +27,7 @@ const Inline = ({ className, size, wrap, ...rest }) => {
           flexWrap: 'nowrap',
         },
       ]}
-      className={cx('CK__Inline', className)}
+      className={clsx('CK__Inline', className)}
       {...rest}
     />
   )

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import { useTheme } from 'emotion-theming'
-import cx from 'classnames'
+import clsx from 'clsx'
 
 export const StylesContainerVariables = {
   base: 1000,
@@ -13,7 +13,7 @@ const Container = ({ className, size, ...rest }) => {
 
   return (
     <div
-      className={cx('CK__Container', className)}
+      className={clsx('CK__Container', className)}
       css={[
         {
           width: '100%',

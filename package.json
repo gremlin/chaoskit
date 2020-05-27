@@ -18,7 +18,7 @@
     "babel-plugin-emotion": "10.0.33",
     "babel-plugin-polished": "1.1.0",
     "body-scroll-lock": "3.0.2",
-    "classnames": "2.2.6",
+    "clsx": "1.1.0",
     "downshift": "5.4.2",
     "emotion-theming": "10.0.27",
     "eslint": "5.16.0",

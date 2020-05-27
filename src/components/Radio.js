@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control, jsx-a11y/label-has-for */
-import cx from 'classnames'
+import clsx from 'clsx'
 import PropTypes from 'prop-types'
 import { useTheme } from 'emotion-theming'
 
@@ -29,7 +29,7 @@ const Radio = ({
     <FormChoiceLabel
       label={label}
       disabled={disabled}
-      className={cx('CK__Radio', className)}
+      className={clsx('CK__Radio', className)}
       {...wrapperProps}
     >
       {/* Wrapper trick with zero-width space character that provides "centered top alignment" */}

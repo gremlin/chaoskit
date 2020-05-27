@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import cx from 'classnames'
+import clsx from 'clsx'
 import PropTypes from 'prop-types'
 import { useTheme } from 'emotion-theming'
 
@@ -108,7 +108,7 @@ const Select = ({
               },
             },
         ]}
-        className={cx('CK__Select', className)}
+        className={clsx('CK__Select', className)}
       >
         <select
           id={id}

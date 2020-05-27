@@ -1,6 +1,6 @@
 import { forwardRef } from 'react'
 import PropTypes from 'prop-types'
-import cx from 'classnames'
+import clsx from 'clsx'
 import { useTheme } from 'emotion-theming'
 
 const FormGroup = forwardRef(({ className, ...rest }, ref) => {
@@ -13,7 +13,7 @@ const FormGroup = forwardRef(({ className, ...rest }, ref) => {
           marginTop: theme.space.base,
         },
       }}
-      className={cx('CK__FormGroup', className)}
+      className={clsx('CK__FormGroup', className)}
       ref={ref}
       {...rest}
     />

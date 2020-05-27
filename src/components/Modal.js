@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import cx from 'classnames'
+import clsx from 'clsx'
 import {
   disableBodyScroll,
   enableBodyScroll,
@@ -198,7 +198,7 @@ const Modal = ({
           display: 'none',
         },
       ]}
-      className={cx('CK__Modal', className)}
+      className={clsx('CK__Modal', className)}
       ref={modalRef}
       {...rest}
     >

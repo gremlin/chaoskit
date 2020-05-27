@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import { useTheme } from 'emotion-theming'
-import cx from 'classnames'
+import clsx from 'clsx'
 
 export const StylesBadgeVariables = (theme) => ({
   height: theme.height.xxxsmall,
@@ -60,7 +60,7 @@ const Badge = ({ className, label, rounded, type, ...rest }) => {
         type === 'secondary' && StylesBadgeSecondary(theme),
         rounded && StylesBadgeRounded(theme),
       ]}
-      className={cx('CK__Badge', className)}
+      className={clsx('CK__Badge', className)}
       {...rest}
     >
       {label}

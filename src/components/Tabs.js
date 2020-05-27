@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import cx from 'classnames'
+import clsx from 'clsx'
 import { useTheme } from 'emotion-theming'
 import {
   Tabs as ReactTabs,
@@ -11,7 +11,11 @@ import {
 import { flex, misc, text } from '../assets/styles/utility'
 
 const Tabs = ({ className, customCss, ...rest }) => (
-  <ReactTabs css={customCss} className={cx('CK__Tabs', className)} {...rest} />
+  <ReactTabs
+    css={customCss}
+    className={clsx('CK__Tabs', className)}
+    {...rest}
+  />
 )
 
 Tabs.propTypes = {
@@ -45,7 +49,7 @@ const TabList = ({ className, reset, customCss, ...rest }) => {
         ],
         customCss,
       ]}
-      className={cx('CK__TabList', className)}
+      className={clsx('CK__TabList', className)}
       {...rest}
     />
   )
@@ -118,7 +122,7 @@ const Tab = ({ className, disabled, selected, reset, customCss, ...rest }) => {
         customCss,
       ]}
       selectedClassName={theme.settings.classes.active}
-      className={cx('CK__Tab', className)}
+      className={clsx('CK__Tab', className)}
       disabled={disabled}
       selected={selected}
       {...rest}
@@ -148,7 +152,10 @@ const TabPanel = ({ className, selected, customCss, ...rest }) => {
       selected={selected}
       css={() => [customCss]}
       selectedClassName={theme.settings.classes.active}
-      className={cx(`CK__TabsPanel ${theme.settings.classes.trim}`, className)}
+      className={clsx(
+        `CK__TabsPanel ${theme.settings.classes.trim}`,
+        className
+      )}
       {...rest}
     />
   )

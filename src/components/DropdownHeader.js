@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import { useTheme } from 'emotion-theming'
-import cx from 'classnames'
+import clsx from 'clsx'
 
 const DropdownHeader = ({ children, className, ...rest }) => {
   const theme = useTheme()
@@ -15,7 +15,7 @@ const DropdownHeader = ({ children, className, ...rest }) => {
           marginTop: 0,
         },
       }}
-      className={cx('CK__DropdownHeader', className)}
+      className={clsx('CK__DropdownHeader', className)}
       {...rest}
     >
       {children}

@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
-import cx from 'classnames'
+import clsx from 'clsx'
 import gsap from 'gsap'
 import { useTheme } from 'emotion-theming'
 
@@ -174,7 +174,7 @@ const Dropdown = ({
         display: 'inline-block',
         position: 'relative',
       }}
-      className={cx('CK__Dropdown', className)}
+      className={clsx('CK__Dropdown', className)}
       aria-haspopup="true"
       aria-expanded="false"
       ref={dropdownRef}

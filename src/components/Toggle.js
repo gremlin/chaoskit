@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control, jsx-a11y/label-has-for */
 import { useMemo } from 'react'
-import cx from 'classnames'
+import clsx from 'clsx'
 import PropTypes from 'prop-types'
 import { useTheme } from 'emotion-theming'
 import { tint, shade } from 'polished'
@@ -61,7 +61,7 @@ const Toggle = ({
             opacity: theme.opacity.base,
           },
         ]}
-        className={cx('CK__Toggle', className)}
+        className={clsx('CK__Toggle', className)}
       >
         {/* Wrapper trick with zero-width space character that provides "centered top alignment" */}
         <div css={{ display: 'flex', alignItems: 'center' }}>

@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import PropTypes from 'prop-types'
-import cx from 'classnames'
+import clsx from 'clsx'
 import { useTheme } from 'emotion-theming'
 import TextareaAutoSize from 'react-textarea-autosize'
 
@@ -61,7 +61,7 @@ const Textarea = ({
             maxHeight: 300,
           },
         ]}
-        className={cx('CK__Textarea', className)}
+        className={clsx('CK__Textarea', className)}
         id={id}
         name={name}
         {...rest}

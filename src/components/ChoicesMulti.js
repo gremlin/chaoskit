@@ -1,4 +1,4 @@
-import cx from 'classnames'
+import clsx from 'clsx'
 import PropTypes from 'prop-types'
 import { useState, Fragment } from 'react'
 import Downshift from 'downshift'
@@ -131,7 +131,7 @@ const ChoicesMulti = ({
                   pointerEvents: 'none',
                 },
               ]}
-              className={cx('CK__ChoicesMulti', className)}
+              className={clsx('CK__ChoicesMulti', className)}
             >
               <div
                 css={{

@@ -1,6 +1,6 @@
 import { forwardRef } from 'react'
 import PropTypes from 'prop-types'
-import cx from 'classnames'
+import clsx from 'clsx'
 
 import Icons from '../assets/icons/icons.json'
 
@@ -58,7 +58,7 @@ const Icon = forwardRef(
                 },
               },
             ]}
-            className={cx('CK__Icon', className)}
+            className={clsx('CK__Icon', className)}
             ref={ref}
             dangerouslySetInnerHTML={{ __html: matchedIcon }}
             {...rest}

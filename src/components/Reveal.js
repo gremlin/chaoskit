@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useRef } from 'react'
-import cx from 'classnames'
+import clsx from 'clsx'
 import PropTypes from 'prop-types'
 import gsap from 'gsap'
 import useUpdateEffect from 'react-use/lib/useUpdateEffect'
@@ -121,7 +121,7 @@ const Reveal = ({
           opacity: 0,
           height: 0,
         }}
-        className={cx('CK__Reveal', className)}
+        className={clsx('CK__Reveal', className)}
         ref={revealRef}
         aria-hidden={reveal ? 'false' : 'true'}
         {...rest}

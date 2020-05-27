@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import cx from 'classnames'
+import clsx from 'clsx'
 import { useTheme } from 'emotion-theming'
 import { keyframes } from '@emotion/core'
 import { rgba } from 'polished'
@@ -43,7 +43,7 @@ const Skeleton = ({ as: Component, className, ...rest }) => {
           },
         },
       ]}
-      className={cx('CK__Skeleton', className)}
+      className={clsx('CK__Skeleton', className)}
       {...rest}
     />
   )

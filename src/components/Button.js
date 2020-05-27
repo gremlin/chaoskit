@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import { forwardRef } from 'react'
-import cx from 'classnames'
+import clsx from 'clsx'
 import { shade, rgba } from 'polished'
 import { useTheme } from 'emotion-theming'
 
@@ -462,7 +462,7 @@ const Button = forwardRef(
           },
           theme.settings.button.misc,
         ]}
-        className={cx(`CK__Button CK__Button--${type || 'blank'}`, className)}
+        className={clsx(`CK__Button CK__Button--${type || 'blank'}`, className)}
         {...buttonProps}
       >
         {type === 'reset' ? (

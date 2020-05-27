@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import { keyframes } from '@emotion/core'
-import cx from 'classnames'
+import clsx from 'clsx'
 
 const loaderRotateKeyframes = keyframes({
   '100%': {
@@ -39,7 +39,7 @@ const Loader = ({ className, ...rest }) => (
         paddingTop: '100%',
       },
     }}
-    className={cx('CK__Loader', className)}
+    className={clsx('CK__Loader', className)}
     {...rest}
   >
     <svg

@@ -1,4 +1,4 @@
-import cx from 'classnames'
+import clsx from 'clsx'
 import PropTypes from 'prop-types'
 import { useTheme } from 'emotion-theming'
 
@@ -22,7 +22,7 @@ const ModalHeader = ({ centered, className, onCloseClick, title, ...rest }) => {
           padding: StylesModalVariables(theme).padding,
         },
       ]}
-      className={cx('CK__ModalHeader', className)}
+      className={clsx('CK__ModalHeader', className)}
       {...rest}
     >
       <h4

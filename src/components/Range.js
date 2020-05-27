@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import cx from 'classnames'
+import clsx from 'clsx'
 import PropTypes from 'prop-types'
 import { useTheme } from 'emotion-theming'
 
@@ -57,7 +57,7 @@ const Range = ({
         id={id}
         name={name}
         disabled={disabled}
-        className={cx('CK__Range', className)}
+        className={clsx('CK__Range', className)}
         min={min}
         max={max}
         value={value}

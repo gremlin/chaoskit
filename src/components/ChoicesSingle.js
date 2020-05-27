@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import cx from 'classnames'
+import clsx from 'clsx'
 import PropTypes from 'prop-types'
 import Downshift from 'downshift'
 import matchSorter from 'match-sorter'
@@ -97,7 +97,7 @@ const ChoicesSingle = ({
                   pointerEvents: 'none',
                 },
               ]}
-              className={cx('CK__ChoicesSingle', className)}
+              className={clsx('CK__ChoicesSingle', className)}
             >
               <div
                 css={[
