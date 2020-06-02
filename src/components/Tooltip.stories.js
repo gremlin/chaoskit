@@ -19,7 +19,11 @@ const params = {
 // Tooltip content can contain normal strings or other components. Go crazy!
 
 export const Overview = () => (
-  <Tooltip content={params.content()} placement={params.placement()}>
+  <Tooltip
+    content={params.content()}
+    placement={params.placement()}
+    interactive
+  >
     <div css={{ display: 'inline-block' }}>{params.trigger()}</div>
   </Tooltip>
 )

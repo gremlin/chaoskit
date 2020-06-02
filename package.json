@@ -13,6 +13,7 @@
     "@emotion/babel-preset-css-prop": "10.0.27",
     "@emotion/cache": "10.0.29",
     "@emotion/core": "10.0.28",
+    "@tippyjs/react": "4.0.2",
     "autoprefixer": "9.8.0",
     "babel-cli": "6.26.0",
     "babel-plugin-emotion": "10.0.33",
