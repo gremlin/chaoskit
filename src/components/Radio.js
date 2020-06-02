@@ -12,6 +12,80 @@ export const StylesRadioVariables = {
   iconSize: 10,
 }
 
+export const StylesRadioBase = (theme, props = {}) => [
+  form.base(theme),
+  // 1. Style
+  // 2. Make box Make box more robust so it clips the child element
+  // 3. Remove default style
+  // 4. Fix background on iOS
+  {
+    // 1
+    width: StylesRadioVariables.size,
+    height: StylesRadioVariables.size,
+    borderRadius: '50%',
+    border: theme.border.base,
+    boxShadow: theme.boxShadow.base,
+    position: 'relative',
+    verticalAlign: 'middle',
+    // 2
+    overflow: 'hidden',
+    // 3
+    appearance: 'none',
+    // 4
+    backgroundColor: theme.color.light.base,
+
+    '&:not(:disabled)': {
+      cursor: 'pointer',
+    },
+
+    '&:disabled': {
+      backgroundColor: theme.color.panel.base,
+    },
+
+    '&:checked': {
+      backgroundColor: theme.color.primary.base,
+      color: theme.contrast.base,
+      borderColor: theme.color.primary.dark,
+
+      '&::after': {
+        content: "''",
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: StylesRadioVariables.iconSize,
+        height: StylesRadioVariables.iconSize,
+        borderRadius: '50%',
+        border: '1px solid',
+        borderColor: theme.color.primary.dark,
+        backgroundColor: theme.contrast.base,
+        zIndex: 1,
+      },
+    },
+  },
+
+  theme.settings.contrast.enable &&
+    theme.settings.contrast.form &&
+    !props.noContrast && {
+      '.u-contrast &': {
+        borderColor: theme.contrast.base,
+        backgroundColor: 'transparent',
+
+        '&:disabled': {
+          backgroundColor: form.variables(theme).contrast.background,
+        },
+
+        '&:checked': {
+          backgroundColor: 'transparent',
+
+          '&::after': {
+            border: 0,
+          },
+        },
+      },
+    },
+]
+
 const Radio = ({
   className,
   disabled,
@@ -41,79 +115,7 @@ const Radio = ({
           disabled={disabled}
           value={value}
           onChange={onChange}
-          css={[
-            form.base(theme),
-            // 1. Style
-            // 2. Make box Make box more robust so it clips the child element
-            // 3. Remove default style
-            // 4. Fix background on iOS
-            {
-              // 1
-              width: StylesRadioVariables.size,
-              height: StylesRadioVariables.size,
-              borderRadius: '50%',
-              border: theme.border.base,
-              boxShadow: theme.boxShadow.base,
-              position: 'relative',
-              verticalAlign: 'middle',
-              // 2
-              overflow: 'hidden',
-              // 3
-              appearance: 'none',
-              // 4
-              backgroundColor: theme.color.light.base,
-
-              '&:not(:disabled)': {
-                cursor: 'pointer',
-              },
-
-              '&:disabled': {
-                backgroundColor: theme.color.panel.base,
-              },
-
-              '&:checked': {
-                backgroundColor: theme.color.primary.base,
-                color: theme.contrast.base,
-                borderColor: theme.color.primary.dark,
-
-                '&::after': {
-                  content: "''",
-                  position: 'absolute',
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  width: StylesRadioVariables.iconSize,
-                  height: StylesRadioVariables.iconSize,
-                  borderRadius: '50%',
-                  border: '1px solid',
-                  borderColor: theme.color.primary.dark,
-                  backgroundColor: theme.contrast.base,
-                  zIndex: 1,
-                },
-              },
-            },
-
-            theme.settings.contrast.enable &&
-              theme.settings.contrast.form &&
-              !noContrast && {
-                '.u-contrast &': {
-                  borderColor: theme.contrast.base,
-                  backgroundColor: 'transparent',
-
-                  '&:disabled': {
-                    backgroundColor: form.variables(theme).contrast.background,
-                  },
-
-                  '&:checked': {
-                    backgroundColor: 'transparent',
-
-                    '&::after': {
-                      border: 0,
-                    },
-                  },
-                },
-              },
-          ]}
+          css={[StylesRadioBase(theme, { noContrast })]}
           {...rest}
         />
       </div>

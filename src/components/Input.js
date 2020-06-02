@@ -106,12 +106,14 @@ const Input = forwardRef(
             guide={guide}
             render={(maskRef, props) => (
               <input
-                css={StylesInputBase(theme, {
-                  type,
-                  prefixIcon,
-                  validationMessage,
-                  noContrast,
-                })}
+                css={[
+                  StylesInputBase(theme, {
+                    type,
+                    prefixIcon,
+                    validationMessage,
+                    noContrast,
+                  }),
+                ]}
                 className={clsx('CK__Input', className)}
                 ref={(input) => maskRef(input)}
                 {...props}

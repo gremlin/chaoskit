@@ -34,6 +34,81 @@ export const StylesSelectVariables = (theme, props = {}) => ({
   },
 })
 
+export const StylesSelectWrapperBase = (theme, props = {}) => [
+  {
+    position: 'relative',
+  },
+
+  !props.multiple &&
+    !props.size && {
+      '&::after': StylesSelectVariables(theme, { disabled: props.disabled })
+        .arrow,
+    },
+
+  theme.settings.contrast.enable &&
+    theme.settings.contrast.form &&
+    !props.noContrast && {
+      '.u-contrast &': {
+        '&::after': {
+          filter: theme.contrast.filter,
+        },
+      },
+    },
+]
+
+export const StylesSelectBase = (theme, props = {}) => [
+  form.base(theme),
+  form.input(theme, {
+    error: props.validationMessage,
+    noContrast: props.noContrast,
+  }),
+  {
+    // Remove default style in browsers that support `appearance`
+    appearance: 'none',
+    // Remove the inheritance of text transform in Firefox.
+    textTransform: 'none',
+
+    // 1. Change font properties to `inherit` in all browsers
+    // 2. Don't inherit the `font-weight` and use `bold` instead.
+    // @NOTE: Both declarations don't work in Chrome, Safari and Opera.
+
+    optgroup: {
+      font: 'inherit', // 1
+      fontWeight: theme.fontWeight.bold, // 2
+    },
+  },
+
+  !props.multiple &&
+    !props.size && [
+      {
+        padding: `0 ${StylesSelectVariables(theme).arrowOffset}px 0 ${
+          form.variables(theme).padding
+        }px`,
+
+        // Remove select arrows from IE
+        '&::-ms-expand': {
+          display: 'none',
+        },
+
+        option: {
+          fontColor: theme.fontColor.base,
+        },
+      },
+    ],
+
+  (props.multiple || props.size) && [
+    {
+      height: 'auto',
+      padding: 0,
+      maxHeight: 150,
+
+      option: {
+        padding: form.variables(theme).padding,
+      },
+    },
+  ],
+]
+
 const Select = ({
   className,
   disabled,
@@ -89,24 +164,11 @@ const Select = ({
     >
       <div
         css={[
-          {
-            position: 'relative',
-          },
-
-          !multiple &&
-            !size && {
-              '&::after': StylesSelectVariables(theme, { disabled }).arrow,
-            },
-
-          theme.settings.contrast.enable &&
-            theme.settings.contrast.form &&
-            !noContrast && {
-              '.u-contrast &': {
-                '&::after': {
-                  filter: theme.contrast.filter,
-                },
-              },
-            },
+          StylesSelectWrapperBase(theme, {
+            multiple,
+            size,
+            noContrast,
+          }),
         ]}
         className={clsx('CK__Select', className)}
       >
@@ -117,53 +179,12 @@ const Select = ({
           disabled={disabled}
           size={size}
           css={[
-            form.base(theme),
-            form.input(theme, { error: validationMessage, noContrast }),
-            {
-              // Remove default style in browsers that support `appearance`
-              appearance: 'none',
-              // Remove the inheritance of text transform in Firefox.
-              textTransform: 'none',
-
-              // 1. Change font properties to `inherit` in all browsers
-              // 2. Don't inherit the `font-weight` and use `bold` instead.
-              // @NOTE: Both declarations don't work in Chrome, Safari and Opera.
-
-              optgroup: {
-                font: 'inherit', // 1
-                fontWeight: theme.fontWeight.bold, // 2
-              },
-            },
-
-            !multiple &&
-              !size && [
-                {
-                  padding: `0 ${StylesSelectVariables(theme).arrowOffset}px 0 ${
-                    form.variables(theme).padding
-                  }px`,
-
-                  // Remove select arrows from IE
-                  '&::-ms-expand': {
-                    display: 'none',
-                  },
-
-                  option: {
-                    fontColor: theme.fontColor.base,
-                  },
-                },
-              ],
-
-            (multiple || size) && [
-              {
-                height: 'auto',
-                padding: 0,
-                maxHeight: 150,
-
-                option: {
-                  padding: form.variables(theme).padding,
-                },
-              },
-            ],
+            StylesSelectBase(theme, {
+              validationMessage,
+              noContrast,
+              multiple,
+              size,
+            }),
           ]}
           {...rest}
         >

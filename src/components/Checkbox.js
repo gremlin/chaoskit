@@ -13,6 +13,79 @@ export const StylesCheckboxVariables = {
   iconSize: 12,
 }
 
+export const StylesCheckboxBase = (theme, props = {}) => [
+  form.base(theme),
+  // 1. Style
+  // 2. Make box Make box more robust so it clips the child element
+  // 3. Remove default style
+  // 4. Fix background on iOS
+  // 5. Don't collapse
+  {
+    // 1
+    width: StylesCheckboxVariables.size,
+    height: StylesCheckboxVariables.size,
+    verticalAlign: 'middle',
+    borderRadius: theme.settings.ui.radius && theme.borderRadius.base,
+    border: theme.border.base,
+    boxShadow: theme.boxShadow.base,
+    position: 'relative',
+    // 2
+    overflow: 'hidden',
+    // 3
+    appearance: 'none',
+    // 4
+    backgroundColor: theme.color.light.base,
+    // 5
+    flex: 'none',
+
+    '&:not(:disabled)': {
+      cursor: 'pointer',
+    },
+
+    '&:disabled': {
+      backgroundColor: theme.color.panel.base,
+    },
+
+    '&:checked': {
+      backgroundColor: theme.color.primary.base,
+      color: theme.contrast.base,
+      borderColor: theme.color.primary.dark,
+
+      '&::after': {
+        content: "''",
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: StylesCheckboxVariables.iconSize,
+        height: StylesCheckboxVariables.iconSize,
+        backgroundImage: `url(${check})`,
+        filter: theme.contrast.filter,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'contain',
+        zIndex: 1,
+      },
+    },
+  },
+
+  theme.settings.contrast.enable &&
+    theme.settings.contrast.form &&
+    !props.noContrast && {
+      '.u-contrast &': {
+        borderColor: theme.contrast.base,
+        background: 'transparent',
+
+        '&:disabled': {
+          backgroundColor: form.variables(theme).contrast.background,
+        },
+
+        '&:checked': {
+          backgroundColor: 'transparent',
+        },
+      },
+    },
+]
+
 const Checkbox = ({
   className,
   disabled,
@@ -40,78 +113,7 @@ const Checkbox = ({
           disabled={disabled}
           name={name}
           value={value}
-          css={[
-            form.base(theme),
-            // 1. Style
-            // 2. Make box Make box more robust so it clips the child element
-            // 3. Remove default style
-            // 4. Fix background on iOS
-            // 5. Don't collapse
-            {
-              // 1
-              width: StylesCheckboxVariables.size,
-              height: StylesCheckboxVariables.size,
-              verticalAlign: 'middle',
-              borderRadius: theme.settings.ui.radius && theme.borderRadius.base,
-              border: theme.border.base,
-              boxShadow: theme.boxShadow.base,
-              position: 'relative',
-              // 2
-              overflow: 'hidden',
-              // 3
-              appearance: 'none',
-              // 4
-              backgroundColor: theme.color.light.base,
-              // 5
-              flex: 'none',
-
-              '&:not(:disabled)': {
-                cursor: 'pointer',
-              },
-
-              '&:disabled': {
-                backgroundColor: theme.color.panel.base,
-              },
-
-              '&:checked': {
-                backgroundColor: theme.color.primary.base,
-                color: theme.contrast.base,
-                borderColor: theme.color.primary.dark,
-
-                '&::after': {
-                  content: "''",
-                  position: 'absolute',
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  width: StylesCheckboxVariables.iconSize,
-                  height: StylesCheckboxVariables.iconSize,
-                  backgroundImage: `url(${check})`,
-                  filter: theme.contrast.filter,
-                  backgroundRepeat: 'no-repeat',
-                  backgroundSize: 'contain',
-                  zIndex: 1,
-                },
-              },
-            },
-
-            theme.settings.contrast.enable &&
-              theme.settings.contrast.form &&
-              !noContrast && {
-                '.u-contrast &': {
-                  borderColor: theme.contrast.base,
-                  background: 'transparent',
-
-                  '&:disabled': {
-                    backgroundColor: form.variables(theme).contrast.background,
-                  },
-
-                  '&:checked': {
-                    backgroundColor: 'transparent',
-                  },
-                },
-              },
-          ]}
+          css={[StylesCheckboxBase(theme, { noContrast })]}
           {...rest}
         />
       </div>
