@@ -13,9 +13,9 @@ export default {
 }
 
 const params = {
-  position: () =>
+  placement: () =>
     select(
-      'Position',
+      'Placement',
       [
         'top',
         'top-start',
@@ -33,7 +33,7 @@ const params = {
         'auto-start',
         'auto-end',
       ],
-      'left'
+      'bottom'
     ),
   showArrow: () => boolean('showArrow', false),
   trigger: {
@@ -48,7 +48,7 @@ export const Overview = () => (
     onReverseStart={action('closing')}
     onReverseComplete={action('closed')}
     showArrow={params.showArrow()}
-    position={params.position()}
+    placement={params.placement()}
     trigger={{
       label: params.trigger.label(),
       props: {
@@ -65,7 +65,7 @@ export const Overview = () => (
 export const Menu = () => (
   <Dropdown
     showArrow={params.showArrow()}
-    position={params.position()}
+    placement={params.placement()}
     trigger={{
       label: params.trigger.label(),
       props: {

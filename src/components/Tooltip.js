@@ -40,7 +40,7 @@ const Tooltip = ({
     await gsap.to(tooltipRef.current, {
       duration: theme.gsap.timing.short,
       opacity: 0,
-      scale: 0.5,
+      scale: 0.75,
       ease: theme.gsap.transition.bounce,
     })
 
@@ -79,7 +79,7 @@ const Tooltip = ({
 
               // 1. GSAP
               opacity: 0,
-              transform: 'scale(0.5)',
+              transform: 'scale(0.75)',
             }}
             className={clsx('CK__Tooltip', className)}
             ref={tooltipRef}

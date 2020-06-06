@@ -11,7 +11,7 @@ const params = {
   content: () => text('Content', '😜 Hey there!'),
   placement: () =>
     select(
-      'Position',
+      'Placement',
       [
         'top',
         'top-start',
@@ -39,6 +39,16 @@ const params = {
 
 export const Overview = () => (
   <Tooltip content={params.content()} placement={params.placement()}>
+    <div css={{ display: 'inline-block' }}>Hover</div>
+  </Tooltip>
+)
+
+export const DarkTheme = () => (
+  <Tooltip
+    variation="dark"
+    content={params.content()}
+    placement={params.placement()}
+  >
     <div css={{ display: 'inline-block' }}>Hover</div>
   </Tooltip>
 )

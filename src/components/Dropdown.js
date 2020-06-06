@@ -71,7 +71,7 @@ const Dropdown = ({
     await gsap.to(dropdownPanelRef.current, {
       duration: theme.gsap.timing.short,
       opacity: 0,
-      scale: 0.5,
+      scale: 0.75,
       ease: theme.gsap.transition.bounce,
     })
 
@@ -118,7 +118,7 @@ const Dropdown = ({
 
                 // 1
                 opacity: 0,
-                transform: 'scale(0.5)',
+                transform: 'scale(0.75)',
               },
             ]}
             className={`CK__Dropdown__Panel ${theme.settings.classes.trim}`}
