@@ -1,5 +1,4 @@
 import { boolean, select } from '@storybook/addon-knobs'
-import { action } from '@storybook/addon-actions'
 
 import Dropdown, { DropdownMenuItemStyles } from './Dropdown'
 import DropdownHeader from './DropdownHeader'
@@ -43,10 +42,6 @@ const params = {
 
 export const Overview = () => (
   <Dropdown
-    onStart={action('opening')}
-    onComplete={action('opened')}
-    onReverseStart={action('closing')}
-    onReverseComplete={action('closed')}
     showArrow={params.showArrow()}
     placement={params.placement()}
     trigger={{

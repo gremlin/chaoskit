@@ -28,25 +28,22 @@ const Tooltip = ({
   const tooltipRef = useRef()
 
   const handleOnMount = () => {
-    gsap.to(tooltipRef.current, {
+    tooltipRef.current.timeline = gsap.timeline({ paused: true })
+
+    tooltipRef.current.timeline.to(tooltipRef.current, {
       duration: theme.gsap.timing.short,
       opacity: 1,
       scale: 1,
       ease: theme.gsap.transition.bounce,
     })
+
+    tooltipRef.current.timeline.play()
   }
 
   const handleOnHide = async (instance) => {
-    await gsap.to(tooltipRef.current, {
-      duration: theme.gsap.timing.short,
-      opacity: 0,
-      scale: 0.75,
-      ease: theme.gsap.transition.bounce,
-    })
+    await tooltipRef.current.timeline.reverse()
 
-    if (instance) {
-      instance.unmount()
-    }
+    instance.unmount()
   }
 
   return (

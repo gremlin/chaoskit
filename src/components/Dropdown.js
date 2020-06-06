@@ -57,27 +57,24 @@ const Dropdown = ({
   const handleOnMount = () => {
     dropdownTriggerRef.current.classList.add(theme.settings.classes.active)
 
-    gsap.to(dropdownPanelRef.current, {
+    dropdownPanelRef.current.timeline = gsap.timeline({ paused: true })
+
+    dropdownPanelRef.current.timeline.to(dropdownPanelRef.current, {
       duration: theme.gsap.timing.short,
       opacity: 1,
       scale: 1,
       ease: theme.gsap.transition.bounce,
     })
+
+    dropdownPanelRef.current.timeline.play()
   }
 
   const handleOnHide = async (instance) => {
     dropdownTriggerRef.current.classList.remove(theme.settings.classes.active)
 
-    await gsap.to(dropdownPanelRef.current, {
-      duration: theme.gsap.timing.short,
-      opacity: 0,
-      scale: 0.75,
-      ease: theme.gsap.transition.bounce,
-    })
+    await dropdownPanelRef.current.timeline.reverse()
 
-    if (instance) {
-      instance.unmount()
-    }
+    instance.unmount()
   }
 
   return (
