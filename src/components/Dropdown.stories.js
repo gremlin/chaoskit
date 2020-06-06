@@ -16,7 +16,23 @@ const params = {
   position: () =>
     select(
       'Position',
-      ['left', 'center', 'right', 'up-left', 'up-center', 'up-right'],
+      [
+        'top',
+        'top-start',
+        'top-end',
+        'right',
+        'right-start',
+        'right-end',
+        'bottom',
+        'bottom-start',
+        'bottom-end',
+        'left',
+        'left-start',
+        'left-end',
+        'auto',
+        'auto-start',
+        'auto-end',
+      ],
       'left'
     ),
   showArrow: () => boolean('showArrow', false),

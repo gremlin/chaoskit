@@ -39,3 +39,24 @@ export function generateUUID(a) {
 export function isTouchDevice() {
   return 'ontouchstart' in document.documentElement
 }
+
+// Used with Tippy.js to determine transformOrigin
+export function getTransformOrigin(placementOption) {
+  if (placementOption.startsWith('top')) {
+    return 'bottom'
+  }
+
+  if (placementOption.startsWith('bottom')) {
+    return 'top'
+  }
+
+  if (placementOption.startsWith('left')) {
+    return 'right'
+  }
+
+  if (placementOption.startsWith('right')) {
+    return 'left'
+  }
+
+  return null
+}

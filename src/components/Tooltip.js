@@ -1,9 +1,11 @@
+import { useRef } from 'react'
 import PropTypes from 'prop-types'
 import { useTheme } from 'emotion-theming'
 import clsx from 'clsx'
 import Tippy from '@tippyjs/react/headless'
 import gsap from 'gsap'
-import { useRef } from 'react'
+
+import { getTransformOrigin } from '../helpers/utility'
 
 const StylesTooltipVariables = (theme, variation) => ({
   background:
@@ -25,27 +27,7 @@ const Tooltip = ({
 
   const tooltipRef = useRef()
 
-  const getTransformOrigin = (placementOption) => {
-    if (placementOption.startsWith('top')) {
-      return 'bottom'
-    }
-
-    if (placementOption.startsWith('bottom')) {
-      return 'top'
-    }
-
-    if (placementOption.startsWith('left')) {
-      return 'right'
-    }
-
-    if (placementOption.startsWith('right')) {
-      return 'left'
-    }
-
-    return null
-  }
-
-  const onMount = () => {
+  const handleOnMount = () => {
     gsap.to(tooltipRef.current, {
       duration: theme.gsap.timing.short,
       opacity: 1,
@@ -54,7 +36,7 @@ const Tooltip = ({
     })
   }
 
-  const onHide = async (instance) => {
+  const handleOnHide = async (instance) => {
     await gsap.to(tooltipRef.current, {
       duration: theme.gsap.timing.short,
       opacity: 0,
@@ -62,22 +44,19 @@ const Tooltip = ({
       ease: theme.gsap.transition.bounce,
     })
 
-    instance.unmount()
+    if (instance) {
+      instance.unmount()
+    }
   }
 
   return (
     <Tippy
       placement={placement}
       animation
-      onMount={onMount}
-      onHide={onHide}
-      hideOnClick="toggle"
-      arrow
+      onMount={handleOnMount}
+      onHide={handleOnHide}
+      offset={[0, theme.space.small]}
       render={(attrs) => {
-        /*
-        .tippy-box[data-animation=scale-subtle][data-placement^=top]{transform-origin:bottom}.tippy-box[data-animation=scale-subtle][data-placement^=bottom]{transform-origin:top}.tippy-box[data-animation=scale-subtle][data-placement^=left]{transform-origin:right}.tippy-box[data-animation=scale-subtle][data-placement^=right]{transform-origin:left}.tippy-box[data-animation=scale-subtle][data-state=hidden]{transform:scale(.8);opacity:0}
-        */
-
         return (
           <div
             css={{
@@ -93,6 +72,7 @@ const Tooltip = ({
               textAlign: 'center',
               position: 'relative',
               boxShadow: theme.boxShadow.base,
+              zIndex: 10,
               transformOrigin:
                 attrs['data-placement'] &&
                 getTransformOrigin(attrs['data-placement']),
