@@ -10,8 +10,27 @@ export default {
 const params = {
   content: () => text('Content', '😜 Hey there!'),
   placement: () =>
-    select('Position', ['top', 'bottom', 'left', 'right'], 'bottom'),
-  trigger: () => text('Trigger', 'Trigger'),
+    select(
+      'Placement',
+      [
+        'top',
+        'top-start',
+        'top-end',
+        'right',
+        'right-start',
+        'right-end',
+        'bottom',
+        'bottom-start',
+        'bottom-end',
+        'left',
+        'left-start',
+        'left-end',
+        'auto',
+        'auto-start',
+        'auto-end',
+      ],
+      'bottom'
+    ),
 }
 
 // @TODO For docs
@@ -20,6 +39,26 @@ const params = {
 
 export const Overview = () => (
   <Tooltip content={params.content()} placement={params.placement()}>
-    <div css={{ display: 'inline-block' }}>{params.trigger()}</div>
+    <div css={{ display: 'inline-block' }}>Hover</div>
+  </Tooltip>
+)
+
+export const DarkTheme = () => (
+  <Tooltip
+    variation="dark"
+    content={params.content()}
+    placement={params.placement()}
+  >
+    <div css={{ display: 'inline-block' }}>Hover</div>
+  </Tooltip>
+)
+
+export const Interactive = () => (
+  <Tooltip
+    content={params.content()}
+    placement={params.placement()}
+    interactive
+  >
+    <div css={{ display: 'inline-block' }}>Interact with tooltip content!</div>
   </Tooltip>
 )

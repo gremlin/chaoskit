@@ -1,5 +1,4 @@
 import { boolean, select } from '@storybook/addon-knobs'
-import { action } from '@storybook/addon-actions'
 
 import Dropdown, { DropdownMenuItemStyles } from './Dropdown'
 import DropdownHeader from './DropdownHeader'
@@ -13,11 +12,27 @@ export default {
 }
 
 const params = {
-  position: () =>
+  placement: () =>
     select(
-      'Position',
-      ['left', 'center', 'right', 'up-left', 'up-center', 'up-right'],
-      'left'
+      'Placement',
+      [
+        'top',
+        'top-start',
+        'top-end',
+        'right',
+        'right-start',
+        'right-end',
+        'bottom',
+        'bottom-start',
+        'bottom-end',
+        'left',
+        'left-start',
+        'left-end',
+        'auto',
+        'auto-start',
+        'auto-end',
+      ],
+      'bottom'
     ),
   showArrow: () => boolean('showArrow', false),
   trigger: {
@@ -27,12 +42,8 @@ const params = {
 
 export const Overview = () => (
   <Dropdown
-    onStart={action('opening')}
-    onComplete={action('opened')}
-    onReverseStart={action('closing')}
-    onReverseComplete={action('closed')}
     showArrow={params.showArrow()}
-    position={params.position()}
+    placement={params.placement()}
     trigger={{
       label: params.trigger.label(),
       props: {
@@ -49,7 +60,7 @@ export const Overview = () => (
 export const Menu = () => (
   <Dropdown
     showArrow={params.showArrow()}
-    position={params.position()}
+    placement={params.placement()}
     trigger={{
       label: params.trigger.label(),
       props: {
