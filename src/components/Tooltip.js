@@ -50,6 +50,7 @@ const Tooltip = ({
     <Tippy
       placement={placement}
       animation
+      hideOnClick={false}
       onMount={handleOnMount}
       onHide={handleOnHide}
       offset={[0, theme.space.small]}
