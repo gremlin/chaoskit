@@ -86,7 +86,6 @@ const OffCanvas = ({
       .to(
         $offCanvas,
         {
-          display: 'block',
           duration: theme.gsap.timing.long,
           opacity: 1,
           backdropFilter: 'blur(2px)',
@@ -155,7 +154,6 @@ const OffCanvas = ({
 
         // 1
         opacity: 0,
-        display: 'none',
       }}
       className={clsx('CK__OffCanvas', className)}
       ref={offCanvasRef}

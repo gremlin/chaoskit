@@ -132,7 +132,6 @@ const Modal = ({
       .to(
         $modal,
         {
-          display: 'block',
           duration: theme.gsap.timing.base,
           opacity: 1,
           backdropFilter: 'blur(2px)',
@@ -195,7 +194,6 @@ const Modal = ({
         {
           // GSAP
           opacity: 0,
-          display: 'none',
         },
       ]}
       className={clsx('CK__Modal', className)}
