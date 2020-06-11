@@ -205,7 +205,7 @@ const NotificationProvider = ({ children }) => {
               zIndex: 10,
               overflowY: 'auto',
               width: '100%',
-              scrollBarWidth: 'none',
+              scrollbarWidth: 'none',
               msOverflowStyle: 'none',
               WebkitOverflowScrolling: 'touch',
 
