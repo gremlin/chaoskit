@@ -5777,10 +5777,10 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.4
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.3.tgz#4a12ff1b60376ef09862c2093edd908328be8423"
   integrity sha512-a30VEBm4PEdx1dRB7MFK7BejejvCvBronbLjht+sHuGYj8PHs7M/5Z+rt5lw551vZ7yfTCj4Vuyy3mSJytDWRQ==
 
-gsap@3.2.6:
-  version "3.2.6"
-  resolved "https://registry.yarnpkg.com/gsap/-/gsap-3.2.6.tgz#fbaddab30c8c2fb029d61ef56f667b42f99c932f"
-  integrity sha512-QX7WQWZUAooS9tOCYg4kKLcnjBreA4Xyu11EVx6zp4BbKijnMK+NtzkB47las/E0luFE84hGscOZm5vd13KzZA==
+gsap@3.3.2:
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/gsap/-/gsap-3.3.2.tgz#a0e38416f3d2dcacbc8625c8dc7a570b21714305"
+  integrity sha512-e8xA/wWWMOZSkpAw/CFqN+is6RV80oJinj+yPc6vxfYUiZjOR2wbB2XP/xahzxBnAupgg878dosAz9dsaURGjw==
 
 gud@^1.0.0:
   version "1.0.0"
@@ -8200,7 +8200,12 @@ parse-json@^5.0.0:
     json-parse-better-errors "^1.0.1"
     lines-and-columns "^1.1.6"
 
-parse5@5.1.1, parse5@^5.0.0:
+parse5@6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/parse5/-/parse5-6.0.0.tgz#d2ac3448289c84b49947d49a39f7bef6200fa6ba"
+  integrity sha512-lC0A+4DefTdRr+DLQlEwwZqndL9VzEjiuegI5bj3hp4bnzzwQldSqCpHv7+msRpSOHGJyJvkcCa4q15LMUJ8rg==
+
+parse5@^5.0.0:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/parse5/-/parse5-5.1.1.tgz#f68e4e5ba1852ac2cadc00f4555fff6c2abb6178"
   integrity sha512-ugq4DFI0Ptb+WWjAdOK16+u/nHfiIrcE+sh8kZMaM0WllQKLI9rOUq6c2b7cwPkXdzfQESqvoqK6ug7U/Yyzug==
@@ -8386,10 +8391,10 @@ pnp-webpack-plugin@1.5.0:
   dependencies:
     ts-pnp "^1.1.2"
 
-polished@3.6.4:
-  version "3.6.4"
-  resolved "https://registry.yarnpkg.com/polished/-/polished-3.6.4.tgz#cec6bc0fbffc5d6ce5799c85bcc1bca5e63f1dee"
-  integrity sha512-21moJXCm/7EvjeKQz5w89QDDKNPCoimc83CqwZZGJluFdMXsFlMQl9lPA/OMRkoceZ19kU0anKlMgZmY7LJSJw==
+polished@3.6.5:
+  version "3.6.5"
+  resolved "https://registry.yarnpkg.com/polished/-/polished-3.6.5.tgz#dbefdde64c675935ec55119fe2a2ab627ca82e9c"
+  integrity sha512-VwhC9MlhW7O5dg/z7k32dabcAFW1VI2+7fSe8cE/kXcfL7mVdoa5UxciYGW2sJU78ldDLT6+ROEKIZKFNTnUXQ==
   dependencies:
     "@babel/runtime" "^7.9.2"
 
@@ -9188,10 +9193,10 @@ react-universal-interface@^0.6.0:
   dependencies:
     tslib "^1.9.3"
 
-react-use@15.2.1:
-  version "15.2.1"
-  resolved "https://registry.yarnpkg.com/react-use/-/react-use-15.2.1.tgz#37c9d7bf6eeb4c9b5c646bdb7fe6cb64fc0ee644"
-  integrity sha512-sLrX+yOKT+3gjyxAnpvJ4Ds5MTJqDuz6psS0+bdGEIK8qT5WTcoDI8AQRnre66SnOF0+EltD4S1zm0P6wldI2g==
+react-use@15.2.4:
+  version "15.2.4"
+  resolved "https://registry.yarnpkg.com/react-use/-/react-use-15.2.4.tgz#5dd472d24cb4d9822ae0ebb1d2e37ee1696eb54f"
+  integrity sha512-Dt1PFWaND8ZD+8o5CkJrOidoNfNs4b0WzpVlniFkHEKEGDhB+uLa85CzghD1pnnYMJ1JTyGMBWRfdFu+K4tsrQ==
   dependencies:
     "@types/js-cookie" "2.2.6"
     "@xobotyi/scrollbar-width" "1.9.5"
