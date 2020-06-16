@@ -5777,10 +5777,10 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.4
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.3.tgz#4a12ff1b60376ef09862c2093edd908328be8423"
   integrity sha512-a30VEBm4PEdx1dRB7MFK7BejejvCvBronbLjht+sHuGYj8PHs7M/5Z+rt5lw551vZ7yfTCj4Vuyy3mSJytDWRQ==
 
-gsap@3.3.2:
-  version "3.3.2"
-  resolved "https://registry.yarnpkg.com/gsap/-/gsap-3.3.2.tgz#a0e38416f3d2dcacbc8625c8dc7a570b21714305"
-  integrity sha512-e8xA/wWWMOZSkpAw/CFqN+is6RV80oJinj+yPc6vxfYUiZjOR2wbB2XP/xahzxBnAupgg878dosAz9dsaURGjw==
+gsap@3.3.3:
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/gsap/-/gsap-3.3.3.tgz#20121971bf47858cb600798ba9fbf83e3acdc745"
+  integrity sha512-89D0Av+UIajcfzEUeZFl1h87dJc0xVIvbJ05+wVbH3ernHzZiupb7CxWXpxxo652jZfmsjwM3jyc8bh089dKUg==
 
 gud@^1.0.0:
   version "1.0.0"
