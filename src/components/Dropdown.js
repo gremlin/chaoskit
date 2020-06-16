@@ -47,6 +47,7 @@ const Dropdown = ({
   placement,
   trigger,
   showArrow,
+  wrapperStyles,
   ...rest
 }) => {
   const theme = useTheme()
@@ -117,6 +118,8 @@ const Dropdown = ({
                 opacity: 0,
                 transform: 'scale(0.75)',
               },
+
+              wrapperStyles,
             ]}
             className={`CK__Dropdown__Panel ${theme.settings.classes.trim}`}
             ref={dropdownPanelRef}
@@ -176,11 +179,14 @@ Dropdown.propTypes = {
     label: PropTypes.any.isRequired,
   }),
   showArrow: PropTypes.bool,
+  /** Used to pass callbacks/styles directly to tooltip wrapper */
+  wrapperStyles: PropTypes.object,
 }
 
 Dropdown.defaultProps = {
   panelWidth: 250,
   placement: 'bottom',
+  wrapperStyles: {},
 }
 
 export default Dropdown
