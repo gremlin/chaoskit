@@ -19,7 +19,7 @@ export const generateButtonGradient = ({ start, stop }) => ({
   backgroundClip: 'content-box, border-box',
 })
 
-const StylesButtonVariables = (theme) => ({
+export const StylesButtonVariables = (theme) => ({
   borderWidth: 2,
   color: {
     base: theme.fontColor.base,
