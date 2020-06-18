@@ -1012,10 +1012,10 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.9.1":
-  version "7.9.6"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.9.6.tgz#a9102eb5cadedf3f31d08a9ecf294af7827ea29f"
-  integrity sha512-64AF1xY3OAkFHqOb9s4jpgk1Mm5vDZ4L3acHvAml+53nO1XbXLuDodsVpO4OIUsmemlUHMxNdYMNJmsvOwLrvQ==
+"@babel/runtime@^7.9.6":
+  version "7.10.2"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.10.2.tgz#d103f21f2602497d38348a32e008637d506db839"
+  integrity sha512-6sF3uQw2ivImfVIl62RZ7MXhO2tap69WeWK57vAaimT6AZbE4FbqjdEJIN1UqoD6wI6B+1n9UiagafH1sxjOtg==
   dependencies:
     regenerator-runtime "^0.13.4"
 
@@ -4565,12 +4565,12 @@ dotenv@^8.0.0:
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.2.0.tgz#97e619259ada750eea3e4ea3e26bceea5424b16a"
   integrity sha512-8sJ78ElpbDJBHNeBzUbUVLsqKdccaa/BXF1uPTw3GrvQTBgrQrtObr2mUrE38vzYd8cEv+m/JBfDLioYcfXoaw==
 
-downshift@5.4.2:
-  version "5.4.2"
-  resolved "https://registry.yarnpkg.com/downshift/-/downshift-5.4.2.tgz#3f6b7bf4ad7e0ff5503414efe3a398421763ebae"
-  integrity sha512-IVwIc4iw5OF5Bi/MbITarW2E8/5akm++5b6UL7aXyPoZmuVe4ilFGaQaktdFW/IwuzHieIwaWj4AQgI0lQNslQ==
+downshift@5.4.3:
+  version "5.4.3"
+  resolved "https://registry.yarnpkg.com/downshift/-/downshift-5.4.3.tgz#7dda5e5d07aa06d440af4e691e318ec9b4e3e78f"
+  integrity sha512-5RdEBfIfhK4dqoXvLKGrFqY+kE9iBjZJrJoxoWXQzXMCybyr7pbqq4rvXqvzbZtmCuCB8ZN9iGz5V96rv+Q7fw==
   dependencies:
-    "@babel/runtime" "^7.9.1"
+    "@babel/runtime" "^7.9.6"
     compute-scroll-into-view "^1.0.13"
     prop-types "^15.7.2"
     react-is "^16.13.1"
@@ -9186,17 +9186,15 @@ react-transition-group@^4.3.0:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
-react-universal-interface@^0.6.0:
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/react-universal-interface/-/react-universal-interface-0.6.0.tgz#b65cbf7d71a2f3f7dd9705d8e4f06748539bd465"
-  integrity sha512-PzApKKWfd7gvDi1sU/D07jUqnLvFxYqvJi+GEtLvBO5tXJjKr2Sa8ETVHkMA7Jcvdwt7ttbPq7Sed1JpFdNqBQ==
-  dependencies:
-    tslib "^1.9.3"
+react-universal-interface@^0.6.2:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/react-universal-interface/-/react-universal-interface-0.6.2.tgz#5e8d438a01729a4dbbcbeeceb0b86be146fe2b3b"
+  integrity sha512-dg8yXdcQmvgR13RIlZbTRQOoUrDciFVoSBZILwjE2LFISxZZ8loVJKAkuzswl5js8BHda79bIb2b84ehU8IjXw==
 
-react-use@15.2.4:
-  version "15.2.4"
-  resolved "https://registry.yarnpkg.com/react-use/-/react-use-15.2.4.tgz#5dd472d24cb4d9822ae0ebb1d2e37ee1696eb54f"
-  integrity sha512-Dt1PFWaND8ZD+8o5CkJrOidoNfNs4b0WzpVlniFkHEKEGDhB+uLa85CzghD1pnnYMJ1JTyGMBWRfdFu+K4tsrQ==
+react-use@15.2.5:
+  version "15.2.5"
+  resolved "https://registry.yarnpkg.com/react-use/-/react-use-15.2.5.tgz#bf5a9b2383f47286416a0ed50c646716029210c5"
+  integrity sha512-Lhbt5yvJ3hfbShpjbba7onCueyfpmucQr8MzvPjGwgFA6wKVBfVRT8zzPlZIAeXmWa9k+GfpOZ8OcSQqRh2DHQ==
   dependencies:
     "@types/js-cookie" "2.2.6"
     "@xobotyi/scrollbar-width" "1.9.5"
@@ -9205,7 +9203,7 @@ react-use@15.2.4:
     fast-shallow-equal "^1.0.0"
     js-cookie "^2.2.1"
     nano-css "^5.2.1"
-    react-universal-interface "^0.6.0"
+    react-universal-interface "^0.6.2"
     resize-observer-polyfill "^1.5.1"
     screenfull "^5.0.0"
     set-harmonic-interval "^1.0.1"
