@@ -20,9 +20,12 @@ const brand = {
   darkestBlue: '#050d16',
   darkestBlue__filter:
     'brightness(0) saturate(100%) invert(5%) sepia(22%) saturate(1415%) hue-rotate(172deg) brightness(93%) contrast(101%)',
-  purple: '#6544ae',
+  purple: '#503291',
   purple__filter:
-    'brightness(0) saturate(100%) invert(32%) sepia(16%) saturate(3361%) hue-rotate(225deg) brightness(94%) contrast(96%)',
+    'brightness(0) saturate(100%) invert(25%) sepia(45%) saturate(2230%) hue-rotate(237deg) brightness(79%) contrast(96%)',
+  darkPurple: '#1E0C43',
+  darkPurple__filter:
+    'brightness(0) saturate(100%) invert(12%) sepia(58%) saturate(1698%) hue-rotate(237deg) brightness(85%) contrast(111%)',
   gray: '#606672',
   gray__filter:
     'brightness(0) saturate(100%) invert(40%) sepia(10%) saturate(514%) hue-rotate(182deg) brightness(94%) contrast(88%)',
