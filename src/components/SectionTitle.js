@@ -74,12 +74,12 @@ export const StylesSectionTitleWrapper = (theme, props) => {
 
 export const StylesSectionTitleSub = (theme) => [
   {
-    color: theme.fontColor.base,
+    color: theme.fontColor.muted,
     fontSize: theme.fontSize.medium,
     maxWidth: 625,
 
     '.u-contrast &': {
-      color: theme.contrast.base,
+      color: theme.contrast.muted,
     },
   },
 ]

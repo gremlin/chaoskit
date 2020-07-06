@@ -184,7 +184,7 @@ const fontFamily = {
 }
 
 const muted = {
-  base: 0.6,
+  base: 0.65,
 }
 
 const fontColor = {
