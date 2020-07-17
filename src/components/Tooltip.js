@@ -84,10 +84,7 @@ const Tooltip = ({
               opacity: 0,
               transform: 'scale(0.75)',
             }}
-            className={clsx(
-              `CK__Tooltip ${theme.settings.classes.trim}`,
-              className
-            )}
+            className={clsx('CK__Tooltip', className)}
             ref={tooltipRef}
             role="tooltip"
             {...attrs}
