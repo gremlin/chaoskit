@@ -4,7 +4,6 @@ export const reset = {
   listStyle: 'none',
   paddingLeft: 0,
   display: 'grid',
-  gridTemplateColumns: 'minmax(0, 1fr)',
 }
 
 export const numbers = ({

@@ -31,7 +31,6 @@ export const StylesSectionTitleWrapper = (theme, props) => {
       }),
     {
       display: 'grid',
-      gridTemplateColumns: 'minmax(auto, 1fr)',
       justifyItems: 'center',
       textAlign: 'center',
     },
