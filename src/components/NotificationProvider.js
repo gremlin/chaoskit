@@ -43,88 +43,86 @@ const reducer = (state, action) => {
   }
 }
 
-const Notification = forwardRef(({ children, status, title }, ref) => {
-  const theme = useTheme()
+const Notification = forwardRef(
+  ({ children, status = 'success', title }, ref) => {
+    const theme = useTheme()
 
-  return (
-    /* eslint-disable-next-line jsx-a11y/click-events-have-key-events */
-    <div
-      tabIndex="-1"
-      role="button"
-      css={{
-        display: 'grid',
-        background: theme.color.light.base,
-        border: theme.border.base,
-        boxShadow: theme.boxShadow.base,
-        alignItems: 'center',
-        cursor: 'pointer',
-        gap: theme.space.small,
-        gridTemplateColumns: 'auto 1fr',
-        padding: theme.space.small,
-        borderRadius: theme.settings.ui.radius && theme.borderRadius.base,
-        marginBottom: theme.space.small,
-        fontSize: theme.fontSize.small,
-        lineHeight: theme.lineHeight.small,
-        transition: `transform ${theme.timing.base} ${theme.transition.bounce}`,
-        transformOrigin: 'center center',
-
-        '&:hover, &:focus': {
-          transform: 'scale(1.025)',
-        },
-
-        // GSAP
-        visibility: 'hidden',
-      }}
-      onClick={() => {
-        ref.current.timeline.reverse()
-      }}
-      ref={ref}
-    >
+    return (
+      /* eslint-disable-next-line jsx-a11y/click-events-have-key-events */
       <div
+        tabIndex="-1"
+        role="button"
         css={{
-          borderRadius: '50%',
-          background:
-            theme.color[status === 'success' ? 'primary' : 'danger'].base,
-          height: theme.height.xxsmall,
-          width: theme.height.xxsmall,
-          textAlign: 'center',
-          lineHeight: `${theme.height.xxsmall}px`,
+          display: 'grid',
+          background: theme.color.light.base,
+          border: theme.border.base,
+          boxShadow: theme.boxShadow.base,
+          alignItems: 'center',
+          cursor: 'pointer',
+          gap: theme.space.small,
+          gridTemplateColumns: 'auto 1fr',
+          padding: theme.space.small,
+          borderRadius: theme.settings.ui.radius && theme.borderRadius.base,
+          marginBottom: theme.space.small,
+          fontSize: theme.fontSize.small,
+          lineHeight: theme.lineHeight.small,
+          transition: `transform ${theme.timing.base} ${theme.transition.bounce}`,
+          transformOrigin: 'center center',
+
+          '&:hover, &:focus': {
+            transform: 'scale(1.025)',
+          },
+
+          // GSAP
+          visibility: 'hidden',
         }}
+        onClick={() => {
+          ref.current.timeline.reverse()
+        }}
+        ref={ref}
       >
-        <Icon
-          size="small"
-          icon={status === 'success' ? 'check' : 'close'}
+        <div
           css={{
-            color: theme.contrast.base,
-            top: 0, // Reset default top offset
+            borderRadius: '50%',
+            background:
+              theme.color[status === 'success' ? 'primary' : 'danger'].base,
+            height: theme.height.xxsmall,
+            width: theme.height.xxsmall,
+            textAlign: 'center',
+            lineHeight: `${theme.height.xxsmall}px`,
           }}
-        />
-      </div>
-      <div className={theme.settings.classes.trim}>
-        {title && (
-          <h4
+        >
+          <Icon
+            size="small"
+            icon={status === 'success' ? 'check' : 'close'}
             css={{
-              fontSize: theme.fontSize.medium,
-              marginBottom: theme.space.xsmall,
+              color: theme.contrast.base,
+              top: 0, // Reset default top offset
             }}
-          >
-            {title}
-          </h4>
-        )}
-        <p css={{ marginTop: 0 }}>{children}</p>
+          />
+        </div>
+        <div className={theme.settings.classes.trim}>
+          {title && (
+            <h4
+              css={{
+                fontSize: theme.fontSize.medium,
+                marginBottom: theme.space.xsmall,
+              }}
+            >
+              {title}
+            </h4>
+          )}
+          <p css={{ marginTop: 0 }}>{children}</p>
+        </div>
       </div>
-    </div>
-  )
-})
+    )
+  }
+)
 
 Notification.propTypes = {
   children: PropTypes.node.isRequired,
   status: PropTypes.oneOf(['success', 'error']),
   title: PropTypes.string,
-}
-
-Notification.defaultProps = {
-  status: 'success',
 }
 
 const NotificationWrapper = ({ notification }) => {

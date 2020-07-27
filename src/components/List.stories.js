@@ -15,8 +15,8 @@ const params = {
   space: () =>
     select(
       'Space',
-      [0, 'xsmall', 'small', 'base', 'medium', 'large', 'xlarge'],
-      0
+      [null, 'xsmall', 'small', 'base', 'medium', 'large', 'xlarge'],
+      null
     ),
   type: () => select('Type', [null, 'numbers', 'circles'], null),
 }

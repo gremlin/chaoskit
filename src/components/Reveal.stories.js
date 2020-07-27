@@ -20,7 +20,6 @@ export const Overview = () => (
   <Reveal
     onStart={action('opening')}
     onComplete={action('opened')}
-    onReverseStart={action('closing')}
     onReverseComplete={action('closed')}
     reveal={params.reveal()}
     trigger={{

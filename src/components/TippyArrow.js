@@ -10,7 +10,7 @@ const StylesTippyArrowVariables = (theme, variation) => ({
 })
 
 // Used in conjunction with `tippy.js` within the Tooltip component
-const TippyArrow = ({ placement, variation, ...rest }) => {
+const TippyArrow = ({ placement = 'top', variation = 'light', ...rest }) => {
   const theme = useTheme()
 
   return (
@@ -93,11 +93,6 @@ TippyArrow.propTypes = {
     'auto-end',
   ]),
   variation: PropTypes.oneOf(['light', 'dark']),
-}
-
-TippyArrow.defaultProps = {
-  placement: 'top',
-  variation: 'light',
 }
 
 export default TippyArrow

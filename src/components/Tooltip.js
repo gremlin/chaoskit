@@ -23,8 +23,8 @@ const Tooltip = ({
   children,
   className,
   content,
-  placement,
-  variation,
+  placement = 'top',
+  variation = 'light',
   ...rest
 }) => {
   const theme = useTheme()
@@ -126,11 +126,6 @@ Tooltip.propTypes = {
     'auto-end',
   ]),
   variation: PropTypes.oneOf(['light', 'dark']),
-}
-
-Tooltip.defaultProps = {
-  placement: 'top',
-  variation: 'light',
 }
 
 export default Tooltip

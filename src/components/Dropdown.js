@@ -43,11 +43,11 @@ export const DropdownMenuItemStyles = (theme, props = {}) => [
 const Dropdown = ({
   children,
   className,
-  panelWidth,
-  placement,
-  trigger,
+  panelWidth = 250,
+  placement = 'bottom',
   showArrow,
-  wrapperStyles,
+  trigger,
+  wrapperStyles = {},
   ...rest
 }) => {
   const theme = useTheme()
@@ -181,12 +181,6 @@ Dropdown.propTypes = {
   showArrow: PropTypes.bool,
   /** Used to pass callbacks/styles directly to tooltip wrapper */
   wrapperStyles: PropTypes.object,
-}
-
-Dropdown.defaultProps = {
-  panelWidth: 250,
-  placement: 'bottom',
-  wrapperStyles: {},
 }
 
 export default Dropdown

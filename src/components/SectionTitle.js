@@ -84,15 +84,15 @@ export const StylesSectionTitleSub = (theme) => [
 ]
 
 const SectionTitle = ({
-  title,
-  titleProps,
-  as: Component,
-  sub,
-  subProps,
-  space,
+  align = { base: 'center' },
+  as: Component = 'h3',
   children,
   className,
-  align,
+  space = 'xlarge',
+  sub,
+  subProps,
+  title,
+  titleProps,
   ...rest
 }) => {
   const theme = useTheme()
@@ -150,12 +150,6 @@ SectionTitle.propTypes = {
     large: PropTypes.oneOf(['left', 'center', 'right']),
     xlarge: PropTypes.oneOf(['left', 'center', 'right']),
   }),
-}
-
-SectionTitle.defaultProps = {
-  as: 'h3',
-  space: 'xlarge',
-  align: { base: 'center' },
 }
 
 export default SectionTitle

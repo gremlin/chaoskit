@@ -5,7 +5,7 @@ import { useTheme } from 'emotion-theming'
 import { list } from '../assets/styles/utility'
 
 const List = ({
-  as: Component,
+  as: Component = 'ul',
   className,
   space,
   type,
@@ -20,6 +20,7 @@ const List = ({
       css={[
         list.reset,
         {
+          gridTemplateColumns: 'minmax(0, 1fr)', // Fix for `pre` tags thay may occur within
           gap: space && theme.space[space],
         },
 
@@ -75,10 +76,6 @@ List.propTypes = {
   ]),
   type: PropTypes.oneOf(['numbers', 'circles']),
   noContrast: PropTypes.bool,
-}
-
-List.defaultProps = {
-  as: 'ul',
 }
 
 export default List

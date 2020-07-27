@@ -20,15 +20,15 @@ const ChoicesSingle = ({
   disabled,
   explanationMessage,
   label,
-  options,
-  placeholder,
-  onChange,
   name,
-  required,
+  onChange,
+  options,
+  placeholder = 'Select',
   removeItem,
+  required,
+  searchPlaceholder = 'Search',
+  selected = -1,
   validationMessage,
-  searchPlaceholder,
-  selected,
   ...rest
 }) => {
   const theme = useTheme()
@@ -296,12 +296,6 @@ ChoicesSingle.propTypes = {
   validationMessage: PropTypes.string,
   searchPlaceholder: PropTypes.string,
   selected: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-}
-
-ChoicesSingle.defaultProps = {
-  placeholder: 'Select',
-  searchPlaceholder: 'Search',
-  selected: -1,
 }
 
 export default ChoicesSingle

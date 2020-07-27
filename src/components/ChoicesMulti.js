@@ -27,8 +27,8 @@ const ChoicesMulti = ({
   required,
   removeItem,
   validationMessage,
-  selected,
-  searchPlaceholder,
+  searchPlaceholder = 'Search',
+  selected = [],
   ...rest
 }) => {
   const theme = useTheme()
@@ -303,11 +303,6 @@ ChoicesMulti.propTypes = {
   validationMessage: PropTypes.string,
   searchPlaceholder: PropTypes.string,
   selected: PropTypes.array,
-}
-
-ChoicesMulti.defaultProps = {
-  searchPlaceholder: 'Search',
-  selected: [],
 }
 
 export default ChoicesMulti

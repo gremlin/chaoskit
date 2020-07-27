@@ -13,7 +13,10 @@ export const StylesIconVariables = {
 }
 
 const Icon = forwardRef(
-  ({ className, icon, additionalIcons, fallback, size, ...rest }, ref) => {
+  (
+    { className, icon, additionalIcons, fallback, size = 'base', ...rest },
+    ref
+  ) => {
     const getIcon = () => {
       // Merge in base icons with anything additional
       const iconSource = Object.assign(Icons, additionalIcons)
@@ -83,10 +86,6 @@ Icon.propTypes = {
   /** Pass in (and override) additional icon data to search through */
   additionalIcons: PropTypes.object,
   size: PropTypes.oneOf(['base', 'small', 'medium', 'large', 'xlarge']),
-}
-
-Icon.defaultProps = {
-  size: 'base',
 }
 
 export default Icon

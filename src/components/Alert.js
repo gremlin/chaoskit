@@ -73,14 +73,14 @@ export const StylesAlertDanger = (theme) => ({
 const Alert = ({
   children,
   className,
-  collapse,
-  onComplete,
-  onReverseComplete,
-  onReverseStart,
-  onStart,
   close,
+  collapse = false,
+  onComplete = () => {},
+  onReverseComplete = () => {},
+  onReverseStart = () => {},
+  onStart = () => {},
   title,
-  type,
+  type = 'default',
   ...rest
 }) => {
   const theme = useTheme()
@@ -216,15 +216,6 @@ Alert.propTypes = {
   close: PropTypes.bool,
   title: PropTypes.string,
   type: PropTypes.oneOf(['default', 'primary', 'warning', 'danger']),
-}
-
-Alert.defaultProps = {
-  onComplete: () => {},
-  onReverseComplete: () => {},
-  onReverseStart: () => {},
-  onStart: () => {},
-  collapse: false,
-  type: 'default',
 }
 
 export default Alert

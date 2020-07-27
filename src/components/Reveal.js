@@ -8,10 +8,9 @@ import { useTheme } from 'emotion-theming'
 import Button from './Button'
 
 const Reveal = ({
-  onStart,
-  onReverseStart,
-  onComplete,
-  onReverseComplete,
+  onComplete = () => {},
+  onReverseComplete = () => {},
+  onStart = () => {},
   reveal,
   children,
   className,
@@ -143,20 +142,11 @@ Reveal.propTypes = {
   /** GSAP callback */
   onReverseComplete: PropTypes.func,
   /** GSAP callback */
-  onReverseStart: PropTypes.func,
-  /** GSAP callback */
   onStart: PropTypes.func,
   trigger: PropTypes.shape({
     props: PropTypes.object,
     label: PropTypes.any.isRequired,
   }),
-}
-
-Reveal.defaultProps = {
-  onComplete: () => {},
-  onReverseComplete: () => {},
-  onReverseStart: () => {},
-  onStart: () => {},
 }
 
 export default Reveal

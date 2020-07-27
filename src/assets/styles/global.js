@@ -214,8 +214,12 @@ export const globalStyles = (theme) => [
     },
 
     // Hide `alt` text for lazy load images
-    // Selector for background while loading img[data-src*='.jpg'][src*='data:image'] { background: grey; }
+    // 1. Fix lazy loading images if parent element is set to `display: inline` and has `overflow: hidden`.
+    // 2. Selector for background while loading img[data-src*='.jpg'][src*='data:image'] { background: grey; }
     'img:not([src])': {
+      // 1
+      minWidth: 1,
+      // 2
       visibility: 'hidden',
     },
 

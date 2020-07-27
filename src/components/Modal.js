@@ -68,16 +68,16 @@ const MODAL_ANIMATE_PROPERTIES = {
 }
 
 const Modal = ({
-  animateFrom,
+  animateFrom = 'bottom',
   children,
   className,
-  size,
+  onComplete = () => {},
+  onOutsideModalClick = () => {},
+  onReverseComplete = () => {},
+  onReverseStart = () => {},
+  onStart = () => {},
   open,
-  onOutsideModalClick,
-  onComplete,
-  onReverseComplete,
-  onReverseStart,
-  onStart,
+  size = 'base',
   ...rest
 }) => {
   const theme = useTheme()
@@ -238,16 +238,6 @@ Modal.propTypes = {
   onReverseStart: PropTypes.func,
   /** GSAP callback */
   onStart: PropTypes.func,
-}
-
-Modal.defaultProps = {
-  animateFrom: 'bottom',
-  onOutsideModalClick: () => {},
-  onComplete: () => {},
-  onReverseComplete: () => {},
-  onReverseStart: () => {},
-  onStart: () => {},
-  size: 'base',
 }
 
 export default Modal

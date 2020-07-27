@@ -409,8 +409,8 @@ const Button = forwardRef(
   (
     {
       active,
-      actionType,
-      as: Component,
+      actionType = 'button',
+      as: Component = 'button',
       children,
       className,
       disabled,
@@ -509,11 +509,6 @@ Button.propTypes = {
     'outlinePrimary',
   ]),
   url: PropTypes.string,
-}
-
-Button.defaultProps = {
-  as: 'button',
-  actionType: 'button',
 }
 
 export default Button

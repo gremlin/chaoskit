@@ -5,7 +5,12 @@ import { useTheme } from 'emotion-theming'
 const columnOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 const gutterOptions = ['collapse', 'small', 'base', 'medium', 'large', 'xlarge']
 
-const BlockGrid = ({ className, gutter, size, ...rest }) => {
+const BlockGrid = ({
+  className,
+  gutter = { base: 'base' },
+  size = {},
+  ...rest
+}) => {
   const theme = useTheme()
 
   const percentWidth = (columnSize) => {
@@ -150,11 +155,6 @@ BlockGrid.propTypes = {
     large: PropTypes.oneOf(columnOptions),
     xlarge: PropTypes.oneOf(columnOptions),
   }),
-}
-
-BlockGrid.defaultProps = {
-  gutter: { base: 'base' },
-  size: {},
 }
 
 export default BlockGrid

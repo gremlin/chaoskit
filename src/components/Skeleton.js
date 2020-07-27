@@ -14,7 +14,7 @@ const skeletonKeyframes = keyframes({
   },
 })
 
-const Skeleton = ({ as: Component, className, ...rest }) => {
+const Skeleton = ({ as: Component = 'div', className, ...rest }) => {
   const theme = useTheme()
 
   return (
@@ -52,10 +52,6 @@ const Skeleton = ({ as: Component, className, ...rest }) => {
 Skeleton.propTypes = {
   as: PropTypes.any,
   className: PropTypes.string,
-}
-
-Skeleton.defaultProps = {
-  as: 'div',
 }
 
 export default Skeleton

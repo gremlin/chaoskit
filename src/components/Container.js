@@ -8,7 +8,7 @@ export const StylesContainerVariables = {
   extended: 1400,
 }
 
-const Container = ({ className, size, ...rest }) => {
+const Container = ({ className, size = 'base', ...rest }) => {
   const theme = useTheme()
 
   return (
@@ -46,10 +46,6 @@ const Container = ({ className, size, ...rest }) => {
 Container.propTypes = {
   size: PropTypes.oneOf(['base', 'small', 'extended']),
   className: PropTypes.string,
-}
-
-Container.defaultProps = {
-  size: 'base',
 }
 
 export default Container

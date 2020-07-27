@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import { useTheme } from 'emotion-theming'
 
-const Inline = ({ className, size, wrap, ...rest }) => {
+const Inline = ({ className, size = 'base', wrap = true, ...rest }) => {
   const theme = useTheme()
 
   return (
@@ -37,11 +37,6 @@ Inline.propTypes = {
   className: PropTypes.string,
   size: PropTypes.oneOf(['small', 'base', 'medium', 'large', 'xlarge']),
   wrap: PropTypes.bool,
-}
-
-Inline.defaultProps = {
-  size: 'base',
-  wrap: true,
 }
 
 export default Inline

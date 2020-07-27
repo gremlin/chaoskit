@@ -4,7 +4,7 @@ import { useTheme } from 'emotion-theming'
 
 const gutterOptions = ['collapse', 'small', 'base', 'medium', 'large', 'xlarge']
 
-const Row = ({ className, gutter, ...rest }) => {
+const Row = ({ className, gutter = { base: 'base' }, ...rest }) => {
   const theme = useTheme()
 
   const gutterCalc = (size) => [
@@ -73,10 +73,6 @@ Row.propTypes = {
     large: PropTypes.oneOf(gutterOptions),
     xlarge: PropTypes.oneOf(gutterOptions),
   }),
-}
-
-Row.defaultProps = {
-  gutter: { base: 'base' },
 }
 
 export default Row

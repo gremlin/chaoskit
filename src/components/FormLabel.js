@@ -62,7 +62,10 @@ export const StylesFormLabelBase = (theme, props = {}) => [
 ]
 
 const FormLabel = forwardRef(
-  ({ as: Component, children, className, required, error, ...rest }, ref) => {
+  (
+    { as: Component = 'label', children, className, required, error, ...rest },
+    ref
+  ) => {
     const theme = useTheme()
 
     return children ? (
@@ -84,10 +87,6 @@ FormLabel.propTypes = {
   className: PropTypes.string,
   required: PropTypes.bool,
   error: PropTypes.bool,
-}
-
-FormLabel.defaultProps = {
-  as: 'label',
 }
 
 export default FormLabel

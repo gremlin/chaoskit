@@ -22,16 +22,16 @@ const StylesOffCanvasVariables = (theme) => ({
 })
 
 const OffCanvas = ({
+  align = 'left',
   children,
   className,
-  align,
-  open,
+  onComplete = () => {},
   onOffCanvasToggle,
-  onComplete,
-  onReverseComplete,
-  onReverseStart,
-  onStart,
-  panelWidth,
+  onReverseComplete = () => {},
+  onReverseStart = () => {},
+  onStart = () => {},
+  open,
+  panelWidth = 300,
   ...rest
 }) => {
   const theme = useTheme()
@@ -222,15 +222,6 @@ OffCanvas.propTypes = {
   /** GSAP callback */
   onStart: PropTypes.func,
   panelWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-}
-
-OffCanvas.defaultProps = {
-  onComplete: () => {},
-  onReverseComplete: () => {},
-  onReverseStart: () => {},
-  onStart: () => {},
-  panelWidth: 300,
-  align: 'left',
 }
 
 export default OffCanvas

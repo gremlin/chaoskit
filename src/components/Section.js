@@ -11,7 +11,10 @@ const StylesSectionVariables = {
 }
 
 const Section = forwardRef(
-  ({ as: Component, space, slant, className, ...rest }, ref) => {
+  (
+    { as: Component = 'section', space = 'large', slant, className, ...rest },
+    ref
+  ) => {
     const theme = useTheme()
 
     return (
@@ -80,6 +83,7 @@ const Section = forwardRef(
 )
 
 Section.propTypes = {
+  as: PropTypes.any,
   space: PropTypes.oneOf([
     'xsmall',
     'small',
@@ -90,11 +94,6 @@ Section.propTypes = {
   ]),
   slant: PropTypes.oneOf(['top', 'bottom', 'bottom-shadow']),
   className: PropTypes.string,
-}
-
-Section.defaultProps = {
-  as: 'section',
-  space: 'large',
 }
 
 export default Section
