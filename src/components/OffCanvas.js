@@ -16,8 +16,8 @@ import { misc } from '../assets/styles/utility'
 
 import Close from './Close'
 
-const StylesOffCanvasVariables = (theme) => ({
-  size: theme.space.large,
+export const StylesOffCanvasVariables = (theme) => ({
+  padding: theme.space.large,
   panelOffset: theme.space.large,
 })
 
@@ -173,7 +173,7 @@ const OffCanvas = ({
               StylesOffCanvasVariables(theme).panelOffset
             }px)`,
             background: theme.color.light.base,
-            padding: StylesOffCanvasVariables(theme).size,
+            padding: StylesOffCanvasVariables(theme).padding,
             boxShadow:
               align === 'left'
                 ? `7.5px 0 17.5px ${theme.boxShadowColor.xlight}`
@@ -194,8 +194,8 @@ const OffCanvas = ({
           onClick={onOffCanvasToggle}
           css={{
             position: 'absolute',
-            top: StylesOffCanvasVariables(theme).size,
-            right: StylesOffCanvasVariables(theme).size,
+            top: StylesOffCanvasVariables(theme).padding,
+            right: StylesOffCanvasVariables(theme).padding,
             zIndex: 10,
           }}
           className="CK__OffCanvas__Close"
