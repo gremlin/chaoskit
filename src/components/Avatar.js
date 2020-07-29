@@ -3,7 +3,7 @@ import { useState } from 'react'
 import clsx from 'clsx'
 import { useTheme } from 'emotion-theming'
 
-import { misc } from '../assets/styles/utility'
+import { misc, text } from '../assets/styles/utility'
 
 import Icon from './Icon'
 
@@ -129,6 +129,7 @@ const Avatar = ({
         dy="0.35em"
         fontSize="40"
         css={[
+          text.heading(theme),
           {
             fill: StylesAvatarVariables(theme).color,
             textTransform: 'uppercase',

@@ -138,7 +138,7 @@ const Alert = ({
       duration: theme.gsap.timing.long,
       marginTop: -$alert.offsetHeight,
       transformOrigin: 'center center',
-      y: '50%',
+      yPercent: 50,
       opacity: 0,
       ease: theme.gsap.transition.base,
     })
