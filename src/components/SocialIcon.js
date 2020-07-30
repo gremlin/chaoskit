@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types'
+import clsx from 'clsx'
 import { useTheme } from 'emotion-theming'
 
 import Button from './Button'
 import Icon from './Icon'
 
-const SocialIcon = ({ className, service, title, url, ...rest }) => {
+const SocialIcon = ({ className, service, url, type = 'default', ...rest }) => {
   const theme = useTheme()
 
   return (
@@ -12,17 +13,18 @@ const SocialIcon = ({ className, service, title, url, ...rest }) => {
       url={url}
       css={{
         transition: `all ${theme.timing.base} ${theme.transition.bounce}`,
+        transformOrigin: 'center center',
 
         '&:hover, &:focus': {
           transform: 'scale(1.1)',
         },
       }}
-      title={title}
+      className={clsx('CK__SocialIcon', className)}
       target="_blank"
-      rel="noopener noreferrer"
+      rel="noopener noreferrer nofollow"
       iconOnly
       size="small"
-      type="default"
+      type={type}
       {...rest}
     >
       <Icon icon={service} />
@@ -42,7 +44,14 @@ SocialIcon.propTypes = {
     'hacker-news',
     'rss',
   ]),
-  title: PropTypes.string,
+  type: PropTypes.oneOf([
+    'reset',
+    'default',
+    'primary',
+    'secondary',
+    'danger',
+    'outlinePrimary',
+  ]),
 }
 
 export default SocialIcon
