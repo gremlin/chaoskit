@@ -96,6 +96,7 @@ export const globalStyles = (theme) => [
             background: `url(${linkIcon})`,
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center center',
+            backgroundSize: 'contain',
             filter: theme.fontColor.filter,
             verticalAlign: 'middle',
             marginLeft: theme.space.xsmall,
