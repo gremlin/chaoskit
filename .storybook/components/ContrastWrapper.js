@@ -1,15 +1,17 @@
-import { useTheme } from 'emotion-theming';
+import { useTheme } from 'emotion-theming'
+import { addDecorator } from '@storybook/react'
 
-import { gradient } from '../../src/assets/styles/utility';
+import { gradient, misc } from '../../src/assets/styles/utility'
 
 const ContrastWrapper = ({ ...rest }) => {
-  const theme = useTheme();
+  const theme = useTheme()
 
   return (
     <div
       className="u-contrast"
       css={[
         gradient.blueGreen(theme),
+        misc.trimChildren,
         {
           padding: theme.space.large,
           borderRadius: theme.settings.ui.radius && theme.borderRadius.base,
@@ -18,7 +20,7 @@ const ContrastWrapper = ({ ...rest }) => {
       ]}
       {...rest}
     />
-  );
-};
+  )
+}
 
-export default ContrastWrapper;
+export default ContrastWrapper

@@ -1,3 +1,5 @@
-/.storybook
-/node_modules
+node_modules/
 !.eslintrc.js
+!.storybook/main.js
+!.storybook/preview.js
+!.storybook/components/*
