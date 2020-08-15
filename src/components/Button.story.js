@@ -6,9 +6,6 @@ export default {
   args: {
     children: 'Button',
   },
-  parameters: {
-    docs: { description: { component: 'some component **markdown**' } },
-  },
 }
 
 const Story = (args) => <Button {...args} />

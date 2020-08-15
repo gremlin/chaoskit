@@ -14,7 +14,7 @@ const Reveal = ({
   reveal,
   children,
   className,
-  trigger,
+  trigger = { props: {}, label: '' },
   ...rest
 }) => {
   const theme = useTheme()
@@ -143,6 +143,10 @@ Reveal.propTypes = {
   onReverseComplete: PropTypes.func,
   /** GSAP callback */
   onStart: PropTypes.func,
+  /**
+   * `trigger.props` Accepts all `<Button />` props
+   * `trigger.label` acts as `<Button />` child
+   */
   trigger: PropTypes.shape({
     props: PropTypes.object,
     label: PropTypes.any.isRequired,

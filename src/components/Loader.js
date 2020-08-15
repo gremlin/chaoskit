@@ -30,8 +30,7 @@ const Loader = ({ className, ...rest }) => (
     css={{
       position: 'relative',
       width: '1em',
-      display: 'inline-block',
-      verticalAlign: 'bottom',
+      display: 'grid',
 
       '&::before': {
         content: "''",
