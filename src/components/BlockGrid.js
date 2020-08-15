@@ -141,6 +141,7 @@ const BlockGrid = ({
 
 BlockGrid.propTypes = {
   className: PropTypes.string,
+  /** Labels based off of media query breakpoints */
   gutter: PropTypes.shape({
     base: PropTypes.oneOf(gutterOptions),
     small: PropTypes.oneOf(gutterOptions),
@@ -148,6 +149,7 @@ BlockGrid.propTypes = {
     large: PropTypes.oneOf(gutterOptions),
     xlarge: PropTypes.oneOf(gutterOptions),
   }),
+  /** Labels based off of media query breakpoints */
   size: PropTypes.shape({
     base: PropTypes.oneOf(columnOptions),
     small: PropTypes.oneOf(columnOptions),
