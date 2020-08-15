@@ -8,6 +8,7 @@ export default {
   component: Button,
   args: {
     children: 'Button',
+    type: 'default',
   },
 }
 
