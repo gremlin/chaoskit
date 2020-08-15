@@ -16,4 +16,10 @@ export const Overview = Story.bind({})
 
 export const Contrast = Story.bind({})
 
-Contrast.decorators = [(story) => <ContrastWrapper>{story()}</ContrastWrapper>]
+Contrast.decorators = [
+  (Example) => (
+    <ContrastWrapper>
+      <Example />
+    </ContrastWrapper>
+  ),
+]

@@ -33,4 +33,10 @@ IconOnly.argTypes = {
 
 export const Contrast = Story.bind({})
 
-Contrast.decorators = [(story) => <ContrastWrapper>{story()}</ContrastWrapper>]
+Contrast.decorators = [
+  (Example) => (
+    <ContrastWrapper>
+      <Example />
+    </ContrastWrapper>
+  ),
+]
