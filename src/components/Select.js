@@ -118,7 +118,7 @@ const Select = ({
   multiple,
   name,
   noContrast,
-  options,
+  options = [],
   required,
   validationMessage,
   wrapperProps,
