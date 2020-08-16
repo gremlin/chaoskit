@@ -1,3 +1,5 @@
+import ContrastWrapper from '../../.storybook/components/ContrastWrapper'
+
 import Loader from './Loader'
 
 export default {
@@ -14,4 +16,16 @@ export default {
   },
 }
 
-export const Overview = () => <Loader />
+const Story = (args) => <Loader {...args} />
+
+export const Overview = Story.bind({})
+
+export const Contrast = Story.bind({})
+
+Contrast.decorators = [
+  (Example) => (
+    <ContrastWrapper>
+      <Example />
+    </ContrastWrapper>
+  ),
+]

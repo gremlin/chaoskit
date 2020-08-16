@@ -17,7 +17,7 @@ export default {
   argTypes: {
     children: {
       control: {
-        type: null,
+        disable: true,
       },
     },
     onStart: { action: 'Closing' },

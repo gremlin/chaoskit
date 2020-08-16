@@ -26,7 +26,7 @@ IconOnly.args = {
 IconOnly.argTypes = {
   children: {
     control: {
-      type: null,
+      disable: true,
     },
   },
 }

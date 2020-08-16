@@ -6,6 +6,7 @@ import ListItem from './ListItem'
 export default {
   title: 'Components/Block Grid',
   component: BlockGrid,
+  subcomponents: { ListItem },
   args: {
     size: { base: 4 },
     gutter: { base: 'base' },
@@ -13,7 +14,7 @@ export default {
   argTypes: {
     children: {
       control: {
-        type: null,
+        disable: true,
       },
     },
   },
