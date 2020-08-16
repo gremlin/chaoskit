@@ -1,3 +1,5 @@
+import { useTheme } from 'emotion-theming'
+
 import icons from '../assets/icons/icons.json'
 
 import BlockGrid from './BlockGrid'
@@ -33,35 +35,39 @@ Overview.argTypes = {
   },
 }
 
-export const All = (args) => (
-  <BlockGrid size={{ small: 2, medium: 4 }}>
-    {Object.entries(icons).map((icon) => (
-      <ListItem key={icon[0]}>
-        <div
-          css={(theme) => ({
-            border: theme.border.base,
-            borderRadius: theme.settings.ui.radius && theme.borderRadius.base,
-            boxShadow: theme.boxShadow.base,
-            padding: theme.space.base,
-            textAlign: 'center',
-          })}
-        >
-          <Icon
-            css={(theme) => ({
-              display: 'block',
-              marginLeft: 'auto',
-              marginRight: 'auto',
-              marginBottom: theme.space.small,
-            })}
-            icon={icon[0]}
-            {...args}
-          />
-          <code>{icon[0]}</code>
-        </div>
-      </ListItem>
-    ))}
-  </BlockGrid>
-)
+export const All = (args) => {
+  const theme = useTheme()
+
+  return (
+    <BlockGrid size={{ small: 2, medium: 4 }}>
+      {Object.entries(icons).map((icon) => (
+        <ListItem key={icon[0]}>
+          <div
+            css={{
+              border: theme.border.base,
+              borderRadius: theme.settings.ui.radius && theme.borderRadius.base,
+              boxShadow: theme.boxShadow.base,
+              padding: theme.space.base,
+              textAlign: 'center',
+            }}
+          >
+            <Icon
+              css={{
+                display: 'block',
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                marginBottom: theme.space.small,
+              }}
+              icon={icon[0]}
+              {...args}
+            />
+            <code>{icon[0]}</code>
+          </div>
+        </ListItem>
+      ))}
+    </BlockGrid>
+  )
+}
 
 All.argTypes = {
   icon: {
