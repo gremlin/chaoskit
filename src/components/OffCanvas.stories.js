@@ -1,6 +1,4 @@
 import { Fragment, useState } from 'react'
-import { select, number } from '@storybook/addon-knobs'
-import { action } from '@storybook/addon-actions'
 
 import Button from './Button'
 import OffCanvas from './OffCanvas'
@@ -8,9 +6,43 @@ import OffCanvas from './OffCanvas'
 export default {
   title: 'Components/OffCanvas',
   component: OffCanvas,
+  args: {
+    panelWidth: 350,
+    align: 'left',
+  },
+  argTypes: {
+    align: {
+      control: {
+        type: 'select',
+        options: ['left', 'right'],
+      },
+    },
+    children: {
+      control: {
+        disable: true,
+      },
+    },
+    panelWidth: {
+      control: {
+        type: 'number',
+      },
+    },
+    onStart: { action: 'Opening' },
+    onComplete: { action: 'Open' },
+    onReverseStart: { action: 'Closing' },
+    onReverseComplete: { action: 'Closed' },
+  },
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'When resetting UI on-close (like form-values), use the `onReverseComplete` prop; which waits until the animation is complete to fire',
+      },
+    },
+  },
 }
 
-const OffCanvasExample = () => {
+const Story = (args) => {
   const [isOpen, toggleOpen] = useState(false)
 
   const handleToggle = () => {
@@ -19,16 +51,7 @@ const OffCanvasExample = () => {
 
   return (
     <Fragment>
-      <OffCanvas
-        onStart={action('opening')}
-        onComplete={action('opened')}
-        onReverseStart={action('closing')}
-        onReverseComplete={action('closed')}
-        open={isOpen}
-        onOffCanvasToggle={handleToggle}
-        align={select('align', ['left', 'right'], 'left')}
-        panelWidth={number('Panel Width', 300)}
-      >
+      <OffCanvas {...args} open={isOpen} onOffCanvasToggle={handleToggle}>
         Test
       </OffCanvas>
 
@@ -39,7 +62,4 @@ const OffCanvasExample = () => {
   )
 }
 
-// @TODO For docs
-// When resetting UI on-close (like form-values), use the `onReverseComplete` prop; which waits until the animation is complete to fire
-
-export const Overview = () => <OffCanvasExample />
+export const Overview = Story.bind({})

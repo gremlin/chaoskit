@@ -1,5 +1,3 @@
-import { boolean, select } from '@storybook/addon-knobs'
-
 import ExampleFill from '../../.storybook/components/ExampleFill'
 
 import Inline from './Inline'
@@ -8,35 +6,35 @@ import ListItem from './ListItem'
 export default {
   title: 'Components/Inline',
   component: Inline,
+  parameters: {
+    docs: {
+      description: {
+        component: `"Free-form" content that you'd like to have proper spacing horizontally and vertically when they stack can utilize the \`<Inline />\` component. You can modify alignment by using flexbox properties.
+
+\`<ListItem />\` should always be the wrapper of any child component.`,
+      },
+    },
+  },
 }
 
-// @TODO For docs
-// Sometimes your content doesn&apos;t belong in a grid system. So, for when you have more "free-form" content that you'd like proper spacing horizontally and vertically when they stack, we created the Inline component. You can modify alignment by using flexbox properties.
-// Only \`<ListItem />\` should be used as a child component.`,
-
-export const Overview = () => (
-  <Inline
-    size={select(
-      'Size',
-      ['small', 'base', 'medium', 'large', 'xlarge'],
-      'base'
-    )}
-    wrap={boolean('Wrap', true)}
-  >
+const Story = (args) => (
+  <Inline {...args}>
     <ListItem>
-      <ExampleFill />
+      <ExampleFill css={{ width: 100 }} />
     </ListItem>
     <ListItem>
-      <ExampleFill />
+      <ExampleFill css={{ width: 200 }} />
     </ListItem>
     <ListItem>
-      <ExampleFill />
+      <ExampleFill css={{ width: 50 }} />
     </ListItem>
     <ListItem>
-      <ExampleFill />
+      <ExampleFill css={{ width: 250 }} />
     </ListItem>
     <ListItem>
-      <ExampleFill />
+      <ExampleFill css={{ width: 100 }} />
     </ListItem>
   </Inline>
 )
+
+export const Overview = Story.bind({})

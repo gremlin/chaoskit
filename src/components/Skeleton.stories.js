@@ -7,9 +7,12 @@ import ListItem from './ListItem'
 export default {
   title: 'Components/Skeleton',
   component: Skeleton,
+  parameters: {
+    controls: { hideNoControlsWarning: true },
+  },
 }
 
-const SkeletonExample = () => (
+const Story = () => (
   <Inline>
     <ListItem>
       <Skeleton css={{ width: 200, height: 50 }} />
@@ -20,10 +23,14 @@ const SkeletonExample = () => (
   </Inline>
 )
 
-export const Overview = () => <SkeletonExample />
+export const Overview = Story.bind({})
 
-export const Contrast = () => (
-  <ContrastWrapper>
-    <SkeletonExample />
-  </ContrastWrapper>
-)
+export const Contrast = Story.bind({})
+
+Contrast.decorators = [
+  (Example) => (
+    <ContrastWrapper>
+      <Example />
+    </ContrastWrapper>
+  ),
+]

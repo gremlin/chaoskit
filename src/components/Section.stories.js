@@ -1,36 +1,31 @@
-import { select } from '@storybook/addon-knobs'
+import { useTheme } from 'emotion-theming'
 
 import Container from './Container'
-import RowColumn from './RowColumn'
 import Section from './Section'
 import SectionTitle from './SectionTitle'
 
 export default {
   title: 'Components/Section',
   component: Section,
+  subcomponents: { Container, SectionTitle },
 }
 
-export const Overview = () => (
-  <Section
-    as={RowColumn}
-    css={(theme) => ({
-      background: theme.color.panel.base,
-    })}
-    slant={select('Slant', ['', 'top', 'bottom', 'bottom-shadow'], null)}
-    space={select(
-      'Space',
-      ['xsmall', 'small', 'base', 'medium', 'large', 'xlarge'],
-      'large'
-    )}
-  >
-    <Container>
-      <SectionTitle
-        align={{ medium: 'left' }}
-        space="large"
-        title="Title"
-        sub="Subtitle"
-      />
-      <p>Section content.</p>
-    </Container>
-  </Section>
-)
+const Story = (args) => {
+  const theme = useTheme()
+
+  return (
+    <Section css={{ background: theme.color.panel.base }} {...args}>
+      <Container>
+        <SectionTitle
+          align={{ medium: 'left' }}
+          space="large"
+          title="Title"
+          sub="Subtitle"
+        />
+        <p>Section content.</p>
+      </Container>
+    </Section>
+  )
+}
+
+export const Overview = Story.bind({})

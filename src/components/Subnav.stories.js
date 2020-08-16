@@ -1,3 +1,5 @@
+import { useTheme } from 'emotion-theming'
+
 import Inline from './Inline'
 import ListItem from './ListItem'
 import Subnav, { SubnavMenuItemStyles } from './Subnav'
@@ -5,60 +7,43 @@ import Subnav, { SubnavMenuItemStyles } from './Subnav'
 export default {
   title: 'Components/Subnav',
   component: Subnav,
+  subcomponents: { Inline, ListItem },
 }
 
-export const Overview = () => (
-  <Subnav>
+const Link = (props) => {
+  const theme = useTheme()
+
+  // eslint-disable-next-line jsx-a11y/anchor-has-content
+  return <a css={[SubnavMenuItemStyles(theme)]} {...props} />
+}
+
+const Story = (args) => (
+  <Subnav {...args}>
     <Inline size="large" wrap={false}>
       <ListItem>
-        <a
-          href="https://www.google.com"
-          css={(theme) => SubnavMenuItemStyles(theme)}
-        >
+        <Link href="https://www.gremlin.com">Test</Link>
+      </ListItem>
+      <ListItem>
+        <Link href="https://www.gremlin.com">Test</Link>
+      </ListItem>
+      <ListItem>
+        <Link href="https://www.gremlin.com" disabled>
           Test
-        </a>
+        </Link>
       </ListItem>
       <ListItem>
-        <a
-          href="https://www.google.com"
-          css={(theme) => SubnavMenuItemStyles(theme)}
-        >
+        <Link href="https://www.gremlin.com">Test</Link>
+      </ListItem>
+      <ListItem>
+        <Link href="https://www.gremlin.com">Test</Link>
+      </ListItem>
+      <ListItem>
+        <Link href="https://www.gremlin.com" className="is-active">
           Test
-        </a>
-      </ListItem>
-      <ListItem>
-        <a
-          href="https://www.google.com"
-          disabled
-          css={(theme) => SubnavMenuItemStyles(theme)}
-        >
-          Disabled
-        </a>
-      </ListItem>
-      <ListItem>
-        <a
-          href="https://www.google.com"
-          css={(theme) => SubnavMenuItemStyles(theme)}
-        >
-          Test
-        </a>
-      </ListItem>
-      <ListItem>
-        <a
-          href="https://www.google.com"
-          css={(theme) => SubnavMenuItemStyles(theme)}
-        >
-          Test
-        </a>
-      </ListItem>
-      <ListItem>
-        <a
-          href="https://www.google.com"
-          css={(theme) => SubnavMenuItemStyles(theme, { active: true })}
-        >
-          Active
-        </a>
+        </Link>
       </ListItem>
     </Inline>
   </Subnav>
 )
+
+export const Overview = Story.bind({})

@@ -1,6 +1,4 @@
 import { Fragment, useState } from 'react'
-import { select } from '@storybook/addon-knobs'
-import { action } from '@storybook/addon-actions'
 
 import Button from './Button'
 import Modal from './Modal'
@@ -11,18 +9,54 @@ import ModalFooter from './ModalFooter'
 export default {
   title: 'Components/Modal',
   component: Modal,
+  subcomponents: { Button, ModalHeader, ModalBody, ModalFooter },
+  args: {
+    animateFrom: 'bottom',
+    size: 'base',
+  },
+  argTypes: {
+    animateFrom: {
+      control: {
+        type: 'select',
+        options: ['bottom', 'top'],
+      },
+    },
+    children: {
+      control: {
+        disable: true,
+      },
+    },
+    size: {
+      control: {
+        type: 'select',
+        options: ['base', 'small', 'large', 'xlarge'],
+      },
+    },
+    onStart: { action: 'Opening' },
+    onComplete: { action: 'Open' },
+    onReverseStart: { action: 'Closing' },
+    onReverseComplete: { action: 'Closed' },
+  },
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'When resetting UI on-close (like form-values), use the `onReverseComplete` prop; which waits until the animation is complete to fire',
+      },
+    },
+  },
 }
 
-const ModalExample = (props) => {
-  const [isOpen, toggleOpen] = useState(false)
+const Story = (args) => {
+  const [isOpen, setIsOpen] = useState(false)
 
   const handleToggle = () => {
-    toggleOpen(!isOpen)
+    setIsOpen(!isOpen)
   }
 
   return (
     <Fragment>
-      <Modal open={isOpen} onOutsideModalClick={handleToggle} {...props}>
+      <Modal {...args} open={isOpen} onOutsideModalClick={handleToggle}>
         <ModalHeader title="Hello" onCloseClick={handleToggle} />
         <ModalBody>
           <p>test</p>
@@ -30,22 +64,11 @@ const ModalExample = (props) => {
         <ModalFooter>hello</ModalFooter>
       </Modal>
 
-      <Button onClick={handleToggle} type="primary">
+      <Button type="primary" onClick={handleToggle}>
         Open Modal
       </Button>
     </Fragment>
   )
 }
 
-// @TODO For docs
-// When resetting UI on-close (like form-values), use the `onReverseComplete` prop; which waits until the animation is complete to fire
-
-export const Overview = () => (
-  <ModalExample
-    onStart={action('opening')}
-    onComplete={action('opened')}
-    onReverseStart={action('closing')}
-    onReverseComplete={action('closed')}
-    size={select('size', ['base', 'small', 'large', 'xlarge'], 'base')}
-  />
-)
+export const Overview = Story.bind({})

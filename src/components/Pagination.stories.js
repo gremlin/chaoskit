@@ -1,5 +1,3 @@
-import { action } from '@storybook/addon-actions'
-
 import Pagination from './Pagination'
 
 export default {
@@ -7,15 +5,6 @@ export default {
   component: Pagination,
 }
 
-export const Overview = () => (
-  <Pagination
-    hasPrevPage
-    prevPageProps={{
-      onClick: action('Prev page click'),
-    }}
-    hasNextPage
-    nextPageProps={{
-      onClick: action('Next page click'),
-    }}
-  />
-)
+const Story = (args) => <Pagination {...args} />
+
+export const Overview = Story.bind({})

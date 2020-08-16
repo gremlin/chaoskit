@@ -1,15 +1,5 @@
-import { addDecorator } from '@storybook/react';
+import { addDecorator } from '@storybook/react'
 
-import Wrapper from '../src/helpers/Wrapper';
+import Wrapper from '../src/helpers/Wrapper'
 
-addDecorator(storyFn => (
-  <Wrapper>
-    <div
-      css={theme => ({
-        padding: theme.space.base,
-      })}
-    >
-      {storyFn()}
-    </div>
-  </Wrapper>
-));
+export const decorators = [(Story) => <Wrapper><Story /></Wrapper>]

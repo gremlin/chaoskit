@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react'
-import { boolean } from '@storybook/addon-knobs'
-import { action } from '@storybook/addon-actions'
+import { useState } from 'react'
+import useUpdateEffect from 'react-use/lib/useUpdateEffect'
 
 import ChoicesSingle from './ChoicesSingle'
 
@@ -9,7 +8,7 @@ export default {
   component: ChoicesSingle,
 }
 
-const ChoicesSingleExample = () => {
+const Story = (args) => {
   const [selected, setSelected] = useState(-1)
 
   const handleChange = (name, selectedColor) => {
@@ -20,29 +19,53 @@ const ChoicesSingleExample = () => {
     setSelected(-1)
   }
 
-  useEffect(() => {
-    action('Selected')({ selected })
+  useUpdateEffect(() => {
+    console.log({ selected }) // eslint-disable-line no-console
   }, [selected])
-
-  const selectOpts = [
-    { value: 1, label: 'Option One' },
-    { value: 'test-string', label: 'Option Two' },
-    { value: 3, label: 'Option Three' },
-    { value: 4, label: 'Option Four' },
-  ]
 
   return (
     <ChoicesSingle
-      disabled={boolean('Disabled', false)}
+      {...args}
       selected={selected}
-      options={selectOpts}
-      label="Favorite color"
-      placeholder="Choose a color"
-      name="color"
       onChange={handleChange}
       removeItem={handleRemoveItem}
     />
   )
 }
 
-export const Overview = () => <ChoicesSingleExample />
+export const Overview = Story.bind({})
+
+Overview.args = {
+  label: 'Favorite color',
+  placeholder: 'Choose a color',
+  name: 'color',
+  options: [
+    { value: 1, label: 'Option One' },
+    { value: 'test-string', label: 'Option Two' },
+    { value: 3, label: 'Option Three' },
+    { value: 4, label: 'Option Four' },
+  ],
+}
+
+Overview.argTypes = {
+  selected: {
+    control: {
+      disable: true,
+    },
+  },
+  options: {
+    control: {
+      disable: true,
+    },
+  },
+  removeItem: {
+    control: {
+      disable: true,
+    },
+  },
+  onChange: {
+    control: {
+      disable: true,
+    },
+  },
+}

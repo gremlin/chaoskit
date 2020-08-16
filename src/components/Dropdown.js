@@ -173,7 +173,10 @@ Dropdown.propTypes = {
     'auto-start',
     'auto-end',
   ]),
-  /** All available Button props can be passed-in */
+  /**
+   * `trigger.props` Accepts all `<Button />` props
+   * `trigger.label` acts as `<Button />` child
+   */
   trigger: PropTypes.shape({
     props: PropTypes.object,
     label: PropTypes.any.isRequired,

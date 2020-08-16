@@ -1,93 +1,67 @@
-import { boolean, select } from '@storybook/addon-knobs'
+import { useTheme } from 'emotion-theming'
+import { Fragment } from 'react'
 
 import Dropdown, { DropdownMenuItemStyles } from './Dropdown'
 import DropdownHeader from './DropdownHeader'
 import List from './List'
 import ListItem from './ListItem'
-import { params as buttonParams } from './Button.stories'
 
 export default {
   title: 'Components/Dropdown',
   component: Dropdown,
-}
-
-const params = {
-  placement: () =>
-    select(
-      'Placement',
-      [
-        'top',
-        'top-start',
-        'top-end',
-        'right',
-        'right-start',
-        'right-end',
-        'bottom',
-        'bottom-start',
-        'bottom-end',
-        'left',
-        'left-start',
-        'left-end',
-        'auto',
-        'auto-start',
-        'auto-end',
-      ],
-      'bottom'
-    ),
-  showArrow: () => boolean('showArrow', false),
-  trigger: {
-    ...buttonParams,
+  args: {
+    trigger: {
+      label: 'Dropdown',
+      props: {
+        type: 'primary',
+      },
+    },
+  },
+  argTypes: {
+    children: {
+      control: {
+        disable: true,
+      },
+    },
   },
 }
 
-export const Overview = () => (
-  <Dropdown
-    showArrow={params.showArrow()}
-    placement={params.placement()}
-    trigger={{
-      label: params.trigger.label(),
-      props: {
-        disabled: params.trigger.disabled(),
-        type: params.trigger.type(),
-        size: params.trigger.size(),
-      },
-    }}
-  >
-    <p>Hello from the dropdown!</p>
-  </Dropdown>
-)
+const Story = (args) => <Dropdown {...args} />
 
-export const Menu = () => (
-  <Dropdown
-    showArrow={params.showArrow()}
-    placement={params.placement()}
-    trigger={{
-      label: params.trigger.label(),
-      props: {
-        disabled: params.trigger.disabled(),
-        type: params.trigger.type(),
-        size: params.trigger.size(),
-      },
-    }}
-  >
-    <DropdownHeader>Menu Header</DropdownHeader>
-    <List space="small">
-      <ListItem>
-        <a
-          href="https://www.gremlin.com"
-          css={(theme) => DropdownMenuItemStyles(theme)}
-        >
-          Menu link
-        </a>
-      </ListItem>
-      <ListItem>
-        <a
-          href="https://www.gremlin.com"
-          css={(theme) => DropdownMenuItemStyles(theme, { active: true })}
-        >
-          Active Menu link
-        </a>
-      </ListItem>
-    </List>
-  </Dropdown>
-)
+export const Overview = Story.bind({})
+
+Overview.args = {
+  children: <p>Hello from the dropdown!</p>,
+}
+
+const DropdownMenuItem = (props) => {
+  const theme = useTheme()
+
+  // eslint-disable-next-line jsx-a11y/anchor-has-content
+  return <a css={[DropdownMenuItemStyles(theme)]} {...props} />
+}
+
+export const Menu = Story.bind({})
+
+Menu.args = {
+  children: (
+    <Fragment>
+      <DropdownHeader>Menu Header</DropdownHeader>
+      <List space="small">
+        <ListItem>
+          <DropdownMenuItem href="https://www.gremlin.com">
+            Menu link
+          </DropdownMenuItem>
+        </ListItem>
+        <ListItem>
+          <DropdownMenuItem
+            href="https://www.gremlin.com"
+            className="is-active"
+          >
+            Active menu link
+          </DropdownMenuItem>
+        </ListItem>
+      </List>
+    </Fragment>
+  ),
+}

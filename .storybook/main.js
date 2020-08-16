@@ -1,40 +1,28 @@
-const webpack = require('webpack');
+const webpack = require('webpack')
+
+const prettierConfig = require('../prettier.config.js');
 
 module.exports = {
-  stories: ['../src/components/*.stories.(js|mdx)'],
+  stories: ['../src/components/*.stories.js'],
   addons: [
-    '@storybook/addon-docs',
-    '@storybook/addon-knobs',
-    '@storybook/addon-actions',
-    '@storybook/addon-viewport',
+    {
+      name: '@storybook/addon-essentials',
+      backgrounds: false,
+      controls: { expanded: true },
+    },
     '@storybook/addon-a11y',
   ],
-  webpackFinal: async config => {
+  webpackFinal: async (config) => {
     // Provide React by default (since we don't need it with Emotion)
     config.plugins.push(
       new webpack.ProvidePlugin({
         React: 'react',
       })
-    );
+    )
 
-    config.module.rules[0].use[0].options.presets = [
-      require.resolve('@babel/preset-react'),
-      require.resolve('@babel/preset-env'),
-      // Emotion preset must run BEFORE reacts preset to properly convert css-prop.
-      // Babel preset-ordering runs reversed (from last to first). Emotion has to be after React preset.
-      require.resolve('@emotion/babel-preset-css-prop'),
-    ];
-
-    /**
-     * Custom plugins
-     */
-
-    /*
-    config.module.rules[0].use[0].options.plugins = [
-      // use @babel/plugin-proposal-class-properties for class arrow functions
-      require.resolve('@babel/plugin-proposal-class-properties'),
-    ];
-    */
+    config.module.rules[0].use[0].options.presets.push(
+      require.resolve('@emotion/babel-preset-css-prop')
+    )
 
     // Enable eslint
     config.module.rules.push({
@@ -45,7 +33,8 @@ module.exports = {
           loader: 'eslint-loader',
         },
       ],
-    });
+      enforce: 'pre',
+    })
 
     config.node = {
       module: 'empty',
@@ -55,9 +44,9 @@ module.exports = {
       net: 'empty',
       tls: 'empty',
       child_process: 'empty',
-    };
+    }
 
     // Return the altered config
-    return config;
+    return config
   },
-};
+}

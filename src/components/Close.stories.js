@@ -1,5 +1,3 @@
-import { action } from '@storybook/addon-actions'
-
 import ContrastWrapper from '../../.storybook/components/ContrastWrapper'
 
 import Close from './Close'
@@ -7,12 +5,21 @@ import Close from './Close'
 export default {
   title: 'Components/Close',
   component: Close,
+  argTypes: {
+    onClick: { action: 'Clicked' },
+  },
 }
 
-export const Overview = () => <Close onClick={action('Clicked')} />
+const Story = (args) => <Close {...args} />
 
-export const Contrast = () => (
-  <ContrastWrapper>
-    <Close onClick={action('Clicked')} />
-  </ContrastWrapper>
-)
+export const Overview = Story.bind({})
+
+export const Contrast = Story.bind({})
+
+Contrast.decorators = [
+  (Example) => (
+    <ContrastWrapper>
+      <Example />
+    </ContrastWrapper>
+  ),
+]

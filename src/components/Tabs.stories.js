@@ -5,10 +5,11 @@ import { Tabs, TabPanel, TabList, Tab } from './Tabs'
 export default {
   title: 'Components/Tabs',
   component: Tabs,
+  subcomponents: { TabList, Tab, TabPanel },
 }
 
-export const Overview = () => (
-  <Tabs>
+const Story = (args) => (
+  <Tabs {...args}>
     <TabList>
       <Tab>Philip J. Fry</Tab>
       <Tab disabled>Turanga Leela</Tab>
@@ -92,3 +93,5 @@ export const Overview = () => (
     </TabPanel>
   </Tabs>
 )
+
+export const Overview = Story.bind({})

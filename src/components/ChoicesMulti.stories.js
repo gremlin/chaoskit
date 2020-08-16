@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react'
 import useUpdateEffect from 'react-use/lib/useUpdateEffect'
-import { boolean } from '@storybook/addon-knobs'
-import { action } from '@storybook/addon-actions'
 
 import ChoicesMulti from './ChoicesMulti'
 
@@ -10,7 +8,7 @@ export default {
   component: ChoicesMulti,
 }
 
-const ChoicesMultiExample = () => {
+const Story = (args) => {
   const [selected, setSelected] = useState([])
 
   const selectOpts = [
@@ -46,21 +44,52 @@ const ChoicesMultiExample = () => {
   }, [])
 
   useUpdateEffect(() => {
-    action('Selected')({ selected })
+    console.log({ selected }) // eslint-disable-line no-console
   }, [selected])
 
   return (
     <ChoicesMulti
-      disabled={boolean('Disabled', false)}
+      {...args}
       selected={selected}
-      options={selectOpts}
-      name="colors"
-      label="Favorite colors"
-      placeholder="Choose your favorite colors"
       onChange={handleChange}
       removeItem={handleRemoveItem}
     />
   )
 }
 
-export const Overview = () => <ChoicesMultiExample />
+export const Overview = Story.bind({})
+
+Overview.args = {
+  label: 'Favorite colors',
+  searchPlaceholder: 'Choose your favorite colors',
+  name: 'colors',
+  options: [
+    { value: 1, label: 'Option One' },
+    { value: 'test-string', label: 'Option Two' },
+    { value: 3, label: 'Option Three' },
+    { value: 4, label: 'Option Four' },
+  ],
+}
+
+Overview.argTypes = {
+  selected: {
+    control: {
+      disable: true,
+    },
+  },
+  options: {
+    control: {
+      disable: true,
+    },
+  },
+  removeItem: {
+    control: {
+      disable: true,
+    },
+  },
+  onChange: {
+    control: {
+      disable: true,
+    },
+  },
+}
