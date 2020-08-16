@@ -57,8 +57,4 @@ const Story = (args) => (
   </BlockGrid>
 )
 
-// @TODO For docs
-//
-//
-
 export const Overview = Story.bind({})
