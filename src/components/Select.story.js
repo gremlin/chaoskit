@@ -18,7 +18,14 @@ export default {
     explanationMessage: 'Explanation message',
     validationMessage: 'Validation message',
   },
-  argTypes: { onChange: { action: 'Changed' } },
+  argTypes: {
+    onChange: { action: 'Changed' },
+    options: {
+      control: {
+        disable: true,
+      },
+    },
+  },
 }
 
 const Story = (args) => <Select {...args} />
