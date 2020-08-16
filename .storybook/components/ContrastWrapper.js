@@ -1,14 +1,16 @@
+import PropTypes from "prop-types";
+import clsx from 'clsx'
 import { useTheme } from 'emotion-theming'
 import { addDecorator } from '@storybook/react'
 
 import { gradient, misc } from '../../src/assets/styles/utility'
 
-const ContrastWrapper = ({ ...rest }) => {
+const ContrastWrapper = ({ className, ...rest }) => {
   const theme = useTheme()
 
   return (
     <div
-      className="u-contrast"
+      className={clsx(theme.settings.classes.contrast, className)}
       css={[
         gradient.blueGreen(theme),
         misc.trimChildren,
@@ -21,6 +23,10 @@ const ContrastWrapper = ({ ...rest }) => {
       {...rest}
     />
   )
+}
+
+ContrastWrapper.propTypes = {
+  className: PropTypes.string
 }
 
 export default ContrastWrapper
