@@ -3,7 +3,7 @@ const webpack = require('webpack')
 const prettierConfig = require('../prettier.config.js');
 
 module.exports = {
-  stories: ['../src/components/*.story.js'],
+  stories: ['../src/components/*.stories.js'],
   addons: [
     {
       name: '@storybook/addon-essentials',
