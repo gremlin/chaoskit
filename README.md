@@ -6,21 +6,9 @@ ChaosKit is a lightweight and modular front-end framework for developing fast an
 
 Emphasis is placed on following a consistent style-guideline with the flexibility of overriding portions to your needs that make this framework extensible to fit both marketing and application initiatives.
 
-## Installation
+## Documentation
 
-```bash
-yarn add chaoskit
-```
-
-## Setup
-
-- Make sure you have the following installed on their latest stable versions:
-  - [NodeJS](http://nodejs.org)
-  - [yarn](https://www.npmjs.com/)
-
-## Development Workflow
-
-- `yarn develop` Installs all dependencies, starts a Storybook instance, watches for file changes, and automatically reloads your browser.
+Check out our [documentation](https://chaoskit.netlify.app/?path=/story/installation--page) to get started!
 
 ## Versioning
 
