@@ -1,0 +1,114 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Installation" />
+
+# Installation
+
+```shell
+yarn add chaoskit
+```
+
+_ChaosKit is currently not transpiled to ES5_
+
+## ES Lint
+
+```js
+// .eslintrc.js
+module.exports = {
+  extends: './node_modules/chaoskit/.eslintrc.js',
+}
+```
+
+## Prettier
+
+```js
+// prettier.config.js
+module.exports = require('./node_modules/chaoskit/prettier.config.js')
+```
+
+## Gatsby integration
+
+```shell
+yarn add gatsby-plugin-compile-es6-packages
+```
+
+```js
+// gatsby.config.js
+
+module.exports = {
+  ...
+  plugins: [
+    ...
+    {
+      resolve: 'gatsby-plugin-compile-es6-packages',
+      options: {
+        modules: ['chaoskit'],
+      },
+    }
+    ...
+  ]
+  ...
+}
+```
+
+## CRA integration
+
+```shell
+yarn add customize-cra react-app-rewired --dev
+```
+
+```js
+// config-overrides.js
+const path = require('path')
+
+const webpack = require('webpack')
+const {
+  override,
+  useEslintRc,
+  addBabelPlugins,
+  addBabelPresets,
+  babelInclude,
+  addWebpackPlugin,
+} = require('customize-cra')
+const { addReactRefresh } = require('customize-cra-react-refresh')
+
+module.exports = override(
+  useEslintRc(),
+  ...addBabelPlugins('@wzuo/babel-plugin-polished'),
+  ...addBabelPresets([
+    '@emotion/babel-preset-css-prop',
+    {
+      sourceMap: false, // Local dev perf improvement
+    },
+  ]),
+  babelInclude([
+    path.resolve('src'),
+    path.resolve('node_modules/chaoskit'),
+    path.resolve('node_modules/gsap'),
+  ]),
+  addWebpackPlugin(
+    new webpack.ProvidePlugin({
+      React: 'react',
+    })
+  ),
+  addReactRefresh()
+)
+```
+
+```jsonp
+// package.json
+{
+  "scripts": {
+    "dev": "react-app-rewired start",
+    "build": "react-app-rewired build"
+  }
+}
+```
+
+## Local development
+
+- `yarn develop` Installs all dependencies, starts a Storybook instance, watches for file changes, and automatically reloads your browser.
+
+```
+
+```
