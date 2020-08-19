@@ -10,6 +10,9 @@ import ListItem from './ListItem'
 
 export default {
   title: 'Components/Notification',
+  parameters: {
+    controls: { hideNoControlsWarning: true },
+  },
 }
 
 const NotificationExample = () => {
