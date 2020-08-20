@@ -88,8 +88,8 @@ const Notification = forwardRef(
               theme.color[status === 'success' ? 'primary' : 'danger'].base,
             height: theme.height.xxsmall,
             width: theme.height.xxsmall,
-            textAlign: 'center',
-            lineHeight: `${theme.height.xxsmall}px`,
+            display: 'grid',
+            placeItems: 'center',
           }}
         >
           <Icon
@@ -97,7 +97,7 @@ const Notification = forwardRef(
             icon={status === 'success' ? 'check' : 'close'}
             css={{
               color: theme.contrast.base,
-              top: 0, // Reset default top offset
+              top: 'auto', // Reset default top offset
             }}
           />
         </div>
