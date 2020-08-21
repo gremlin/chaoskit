@@ -1,4 +1,5 @@
 import { useTheme } from 'emotion-theming'
+import { Fragment } from 'react'
 
 import Dropdown, { DropdownMenuItemStyles } from './Dropdown'
 import DropdownHeader from './DropdownHeader'
@@ -44,7 +45,7 @@ export const Menu = Story.bind({})
 
 Menu.args = {
   children: (
-    <>
+    <Fragment>
       <DropdownHeader>Menu Header</DropdownHeader>
       <List space="small">
         <ListItem>
@@ -61,6 +62,6 @@ Menu.args = {
           </DropdownMenuItem>
         </ListItem>
       </List>
-    </>
+    </Fragment>
   ),
 }

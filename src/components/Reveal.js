@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { Fragment, useEffect, useRef } from 'react'
 import clsx from 'clsx'
 import PropTypes from 'prop-types'
 import gsap from 'gsap'
@@ -109,7 +109,7 @@ const Reveal = ({
   }, [])
 
   return (
-    <>
+    <Fragment>
       <Button ref={triggerRef} onClick={handleRevealToggle} {...trigger.props}>
         {trigger.label}
       </Button>
@@ -129,7 +129,7 @@ const Reveal = ({
           {children}
         </div>
       </div>
-    </>
+    </Fragment>
   )
 }
 

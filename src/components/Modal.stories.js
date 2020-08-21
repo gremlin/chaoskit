@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 
 import Button from './Button'
 import Modal from './Modal'
@@ -55,7 +55,7 @@ const Story = (args) => {
   }
 
   return (
-    <>
+    <Fragment>
       <Modal {...args} open={isOpen} onOutsideModalClick={handleToggle}>
         <ModalHeader title="Hello" onCloseClick={handleToggle} />
         <ModalBody>
@@ -67,7 +67,7 @@ const Story = (args) => {
       <Button type="primary" onClick={handleToggle}>
         Open Modal
       </Button>
-    </>
+    </Fragment>
   )
 }
 

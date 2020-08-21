@@ -50,7 +50,6 @@ module.exports = {
     'react/prefer-stateless-function': 1,
     'react/require-default-props': 0,
     'react/jsx-one-expression-per-line': 0,
-    'react/jsx-props-no-spreading': 0,
     'react/react-in-jsx-scope': 'off',
     'react/forbid-foreign-prop-types': 0,
     'react/no-unescaped-entities': 0,

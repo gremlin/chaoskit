@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 
 import Button from './Button'
 import OffCanvas from './OffCanvas'
@@ -50,7 +50,7 @@ const Story = (args) => {
   }
 
   return (
-    <>
+    <Fragment>
       <OffCanvas {...args} open={isOpen} onOffCanvasToggle={handleToggle}>
         Test
       </OffCanvas>
@@ -58,7 +58,7 @@ const Story = (args) => {
       <Button onClick={handleToggle} type="primary">
         Open OffCanvas
       </Button>
-    </>
+    </Fragment>
   )
 }
 
