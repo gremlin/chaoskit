@@ -1,5 +1,4 @@
 import {
-  Fragment,
   forwardRef,
   createContext,
   useContext,
@@ -192,7 +191,7 @@ const NotificationProvider = ({ children }) => {
 
   return (
     <NotificationContext.Provider value={value}>
-      <Fragment>
+      <>
         {createPortal(
           <div
             css={{
@@ -231,7 +230,7 @@ const NotificationProvider = ({ children }) => {
           document.body
         )}
         {children}
-      </Fragment>
+      </>
     </NotificationContext.Provider>
   )
 }
