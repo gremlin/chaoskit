@@ -22,7 +22,7 @@ export default {
     },
     onStart: { action: 'Closing' },
     onComplete: { action: 'Closed' },
-    onReverseStaart: { action: 'Opening' },
+    onReverseStart: { action: 'Opening' },
     onReverseComplete: { action: 'Open' },
   },
 }
