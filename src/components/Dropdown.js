@@ -60,12 +60,16 @@ const Dropdown = ({
 
     dropdownPanelRef.current.timeline = gsap.timeline({ paused: true })
 
-    dropdownPanelRef.current.timeline.to(dropdownPanelRef.current, {
-      duration: theme.gsap.timing.short,
-      opacity: 1,
-      scale: 1,
-      ease: theme.gsap.transition.bounce,
-    })
+    dropdownPanelRef.current.timeline
+      .set(dropdownPanelRef.current, {
+        scale: 0.75,
+      })
+      .to(dropdownPanelRef.current, {
+        duration: theme.gsap.timing.short,
+        autoAlpha: 1,
+        scale: 1,
+        ease: theme.gsap.transition.bounce,
+      })
 
     dropdownPanelRef.current.timeline.play()
   }
@@ -115,8 +119,7 @@ const Dropdown = ({
                   getTransformOrigin(attrs['data-placement']),
 
                 // 1
-                opacity: 0,
-                transform: 'scale(0.75)',
+                visibility: 'hidden',
               },
 
               wrapperStyles,

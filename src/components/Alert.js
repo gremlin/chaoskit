@@ -139,7 +139,7 @@ const Alert = ({
       marginTop: -$alert.offsetHeight,
       transformOrigin: 'center center',
       yPercent: 50,
-      opacity: 0,
+      autoAlpha: 0,
       ease: theme.gsap.transition.base,
     })
 

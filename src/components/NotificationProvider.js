@@ -149,12 +149,12 @@ const NotificationWrapper = ({ notification }) => {
         notificationRef.current,
         {
           marginTop: -notificationRef.current.offsetHeight,
-          opacity: 0,
+          autoAlpha: 0,
         },
         {
           duration: theme.gsap.timing.base,
           ease: theme.gsap.transition.bounce,
-          opacity: 1,
+          autoAlpha: 1,
           marginTop: 0,
         }
       )

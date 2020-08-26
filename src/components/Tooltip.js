@@ -34,12 +34,16 @@ const Tooltip = ({
   const handleOnMount = () => {
     tooltipRef.current.timeline = gsap.timeline({ paused: true })
 
-    tooltipRef.current.timeline.to(tooltipRef.current, {
-      duration: theme.gsap.timing.short,
-      opacity: 1,
-      scale: 1,
-      ease: theme.gsap.transition.bounce,
-    })
+    tooltipRef.current.timeline
+      .set(tooltipRef.current, {
+        scale: 0.75,
+      })
+      .to(tooltipRef.current, {
+        duration: theme.gsap.timing.short,
+        autoAlpha: 1,
+        scale: 1,
+        ease: theme.gsap.transition.bounce,
+      })
 
     tooltipRef.current.timeline.play()
   }
@@ -81,8 +85,7 @@ const Tooltip = ({
                 getTransformOrigin(attrs['data-placement']),
 
               // 1. GSAP
-              opacity: 0,
-              transform: 'scale(0.75)',
+              visibility: 'hidden',
             }}
             className={clsx('CK__Tooltip', className)}
             ref={tooltipRef}

@@ -83,11 +83,14 @@ const OffCanvas = ({
     })
 
     $offCanvas.timeline
+      .set($panel, {
+        xPercent: align === 'left' ? -100 : 100,
+      })
       .to(
         $offCanvas,
         {
           duration: theme.gsap.timing.long,
-          opacity: 1,
+          autoAlpha: 1,
           backdropFilter: 'blur(2px)',
         },
         'offCanvas'
@@ -96,7 +99,7 @@ const OffCanvas = ({
         $panel,
         {
           duration: theme.gsap.timing.long,
-          x: 0,
+          xPercent: 0,
           ease: theme.gsap.transition.base,
         },
         'offCanvas'
@@ -153,7 +156,7 @@ const OffCanvas = ({
         zIndex: 10,
 
         // 1
-        opacity: 0,
+        visibility: 'hidden',
       }}
       className={clsx('CK__OffCanvas', className)}
       ref={offCanvasRef}
@@ -163,7 +166,6 @@ const OffCanvas = ({
         css={[
           misc.overflow,
           {
-            // 1. GSAP
             position: 'absolute',
             top: 0,
             [align]: 0,
@@ -178,9 +180,6 @@ const OffCanvas = ({
               align === 'left'
                 ? `7.5px 0 17.5px ${theme.boxShadowColor.xlight}`
                 : `-7.5px 0 17.5px ${theme.boxShadowColor.xlight}`,
-            // 1
-            transform:
-              align === 'left' ? 'translateX(-100%)' : 'translateX(100%)',
 
             [theme.mq.small]: {
               width: panelWidth,

@@ -48,7 +48,7 @@ const Reveal = ({
     $reveal.timeline.to($reveal, {
       duration: theme.gsap.timing.long,
       height: 'auto',
-      opacity: 1,
+      autoAlpha: 1,
       ease: theme.gsap.transition.base,
     })
 
@@ -117,7 +117,7 @@ const Reveal = ({
         css={{
           // Take care of overflowing content
           overflow: 'hidden',
-          opacity: 0,
+          visibility: 'hidden',
           height: 0,
         }}
         className={clsx('CK__Reveal', className)}

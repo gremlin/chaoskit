@@ -59,11 +59,11 @@ export const StylesModalDialog = (theme) => ({
 const MODAL_ANIMATE_PROPERTIES = {
   bottom: {
     label: 'center bottom',
-    transform: 'translateY(25%)',
+    yPercent: 25,
   },
   top: {
     label: 'center top',
-    transform: 'translateY(-25%)',
+    yPercent: -25,
   },
 }
 
@@ -128,12 +128,15 @@ const Modal = ({
       },
     })
 
+    $modal.timeline.set($modalDialog, {
+      yPercent: MODAL_ANIMATE_PROPERTIES[animateFrom].yPercent,
+    })
     $modal.timeline
       .to(
         $modal,
         {
           duration: theme.gsap.timing.base,
-          opacity: 1,
+          autoAlpha: 1,
           backdropFilter: 'blur(2px)',
         },
         'modal'
@@ -142,8 +145,8 @@ const Modal = ({
         $modalDialog,
         {
           duration: theme.gsap.timing.base,
-          opacity: 1,
-          y: 0,
+          autoAlpha: 1,
+          yPercent: 0,
           ease: theme.gsap.transition.bounce,
         },
         'modal'
@@ -193,7 +196,7 @@ const Modal = ({
         StylesModalWrapper(theme),
         {
           // GSAP
-          opacity: 0,
+          visibility: 'hidden',
         },
       ]}
       className={clsx('CK__Modal', className)}
@@ -207,8 +210,7 @@ const Modal = ({
             width: StylesModalVariables(theme).size[size],
 
             // GSAP
-            opacity: 0,
-            transform: MODAL_ANIMATE_PROPERTIES[animateFrom].transform,
+            visibility: 'hidden',
             transformOrigin: MODAL_ANIMATE_PROPERTIES[animateFrom].label,
           },
         ]}
