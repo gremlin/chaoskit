@@ -8,7 +8,7 @@ import {
   TabPanel as ReactTabPanel,
 } from 'react-tabs'
 
-import { flex, misc, text } from '../assets/styles/utility'
+import { misc, text } from '../assets/styles/utility'
 
 const Tabs = ({ className, customCss = {}, ...rest }) => (
   <ReactTabs
@@ -30,17 +30,19 @@ const TabList = ({ className, reset, customCss = {}, ...rest }) => {
     <ReactTabList
       css={[
         !reset && [
-          flex.base,
           misc.overflow,
           {
+            listStyle: 'none',
+            padding: 0,
+            margin: 0,
+            display: 'grid',
+            gridAutoColumns: 'max-content',
+            gridAutoFlow: 'column',
+            gap: theme.space.base,
             marginBottom: theme.space.base,
             borderBottom: theme.border.large,
             position: 'relative',
             zIndex: 2,
-
-            '> .CK__Tab + .CK__Tab': {
-              marginLeft: theme.space.base,
-            },
           },
         ],
         customCss,
@@ -75,7 +77,6 @@ const Tab = ({
         !reset && [
           text.heading(theme),
           {
-            display: 'inline-flex',
             position: 'relative',
             fontSize: theme.fontSize.base,
             lineHeight: `${theme.height.base}px`,
