@@ -41,22 +41,22 @@ const useGSAPInteraction = ({
   }, [ref.current])
 
   return {
-    onMouseEnter: () => {
+    onPointerEnter: () => {
       if (ref.current) {
         ref.current.timelineHover.play()
       }
     },
-    onMouseLeave: () => {
+    onPointerLeave: () => {
       if (ref.current) {
         ref.current.timelineHover.reverse()
       }
     },
-    onMouseDown: () => {
+    onPointerDown: () => {
       if (ref.current) {
         ref.current.timelineClick.play()
       }
     },
-    onMouseUp: () => {
+    onPointerUp: () => {
       if (ref.current) {
         ref.current.timelineClick.reverse()
       }
