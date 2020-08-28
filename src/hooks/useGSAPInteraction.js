@@ -2,16 +2,18 @@ import { useEffect } from 'react'
 import { useTheme } from 'emotion-theming'
 import gsap from 'gsap'
 
-const useInteraction = ({ ref, initial, hover, click }) => {
-  const theme = useTheme()
-  const hoverArgs = hover || {
+const useGSAPInteraction = ({
+  ref,
+  initial,
+  hover = {
     autoAlpha: 1,
     scale: 1.15,
-  }
-
-  const clickArgs = click || {
-    scale: 1,
-  }
+  },
+  click = {
+    scale: 0.85,
+  },
+}) => {
+  const theme = useTheme()
 
   useEffect(() => {
     if (ref.current) {
@@ -22,7 +24,7 @@ const useInteraction = ({ ref, initial, hover, click }) => {
       ref.current.timelineHover.to(ref.current, {
         duration: theme.gsap.timing.short,
         ease: theme.gsap.transition.bounce,
-        ...hoverArgs,
+        ...hover,
       })
 
       ref.current.timelineClick = gsap.timeline({ paused: true })
@@ -30,7 +32,7 @@ const useInteraction = ({ ref, initial, hover, click }) => {
       ref.current.timelineClick.to(ref.current, {
         duration: theme.gsap.timing.short,
         ease: theme.gsap.transition.bounce,
-        ...clickArgs,
+        ...click,
       })
     }
   }, [ref.current])
@@ -59,4 +61,4 @@ const useInteraction = ({ ref, initial, hover, click }) => {
   }
 }
 
-export default useInteraction
+export default useGSAPInteraction

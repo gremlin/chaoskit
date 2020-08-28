@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { useTheme } from 'emotion-theming'
 import { useRef } from 'react'
 
-import useInteraction from '../hooks/useInteraction'
+import useGSAPInteraction from '../hooks/useGSAPInteraction'
 
 import Button from './Button'
 import Icon from './Icon'
@@ -15,7 +15,7 @@ const Close = ({ onClick, noContrast, ...rest }) => {
   const theme = useTheme()
   const ref = useRef()
 
-  const interactions = useInteraction({
+  const interactions = useGSAPInteraction({
     ref,
     initial: {
       autoAlpha: theme.opacity.base,
@@ -35,7 +35,6 @@ const Close = ({ onClick, noContrast, ...rest }) => {
           lineHeight: theme.lineHeight.small, // 1
           width: StylesCloseVariables(theme).size,
           height: StylesCloseVariables(theme).size,
-          transition: `opacity ${theme.timing.base} ${theme.transition.base}`,
 
           // GSAP
           visibility: 'hidden',
