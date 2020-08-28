@@ -5,9 +5,6 @@ import Close from './Close'
 export default {
   title: 'Components/Close',
   component: Close,
-  argTypes: {
-    onClick: { action: 'Clicked' },
-  },
 }
 
 const Story = (args) => <Close {...args} />
