@@ -1,5 +1,8 @@
 import PropTypes from 'prop-types'
 import { useTheme } from 'emotion-theming'
+import { useRef } from 'react'
+
+import useGSAPInteraction from '../hooks/useGSAPInteraction'
 
 import Button from './Button'
 import Icon from './Icon'
@@ -10,12 +13,21 @@ export const StylesCloseVariables = (theme) => ({
 
 const Close = ({ onClick, noContrast, ...rest }) => {
   const theme = useTheme()
+  const ref = useRef()
+
+  const interactions = useGSAPInteraction({
+    ref,
+    initial: {
+      autoAlpha: theme.opacity.base,
+    },
+  })
 
   return (
     <Button
       type="reset"
       title="Close"
       onClick={onClick}
+      ref={ref}
       css={[
         {
           // 1. To align better with headers
@@ -23,16 +35,9 @@ const Close = ({ onClick, noContrast, ...rest }) => {
           lineHeight: theme.lineHeight.small, // 1
           width: StylesCloseVariables(theme).size,
           height: StylesCloseVariables(theme).size,
-          opacity: theme.opacity.base,
-          transition: `opacity ${theme.timing.base} ${theme.transition.base}`,
 
-          '&:hover, &:focus': {
-            opacity: 1,
-
-            '.CK__Close__Icon': {
-              transform: 'scale(1.15)',
-            },
-          },
+          // GSAP
+          visibility: 'hidden',
         },
 
         theme.settings.contrast.enable &&
@@ -42,6 +47,7 @@ const Close = ({ onClick, noContrast, ...rest }) => {
             },
           },
       ]}
+      {...interactions}
       {...rest}
     >
       <Icon
