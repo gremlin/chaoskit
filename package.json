@@ -34,7 +34,7 @@
     "eslint-plugin-react-hooks": "4.1.0",
     "formik": "2.1.5",
     "fstream": "1.0.12",
-    "gsap": "3.5.0",
+    "gsap": "3.5.1",
     "lodash-es": "4.17.15",
     "match-sorter": "4.2.0",
     "parse5": "6.0.1",
