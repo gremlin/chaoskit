@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { useTheme } from 'emotion-theming'
 import gsap from 'gsap'
 
@@ -15,6 +15,9 @@ const useGSAPInteraction = ({
 }) => {
   const theme = useTheme()
 
+  const hoverTimeline = useRef()
+  const clickTimeline = useRef()
+
   useEffect(() => {
     if (ref.current) {
       gsap.set(ref.current, {
@@ -22,17 +25,17 @@ const useGSAPInteraction = ({
         ...initial,
       })
 
-      ref.current.timelineHover = gsap.timeline({ paused: true })
+      hoverTimeline.current = gsap.timeline({ paused: true })
 
-      ref.current.timelineHover.to(ref.current, {
+      hoverTimeline.current.to(ref.current, {
         duration: theme.gsap.timing.short,
         ease: theme.gsap.transition.bounce,
         ...hover,
       })
 
-      ref.current.timelineClick = gsap.timeline({ paused: true })
+      clickTimeline.current = gsap.timeline({ paused: true })
 
-      ref.current.timelineClick.to(ref.current, {
+      clickTimeline.current.to(ref.current, {
         duration: theme.gsap.timing.short,
         ease: theme.gsap.transition.bounce,
         ...click,
@@ -43,22 +46,22 @@ const useGSAPInteraction = ({
   return {
     onPointerEnter: () => {
       if (ref.current) {
-        ref.current.timelineHover.play()
+        hoverTimeline.current.play()
       }
     },
     onPointerLeave: () => {
       if (ref.current) {
-        ref.current.timelineHover.reverse()
+        hoverTimeline.current.reverse()
       }
     },
     onPointerDown: () => {
       if (ref.current) {
-        ref.current.timelineClick.play()
+        clickTimeline.current.play()
       }
     },
     onPointerUp: () => {
       if (ref.current) {
-        ref.current.timelineClick.reverse()
+        clickTimeline.current.reverse()
       }
     },
   }

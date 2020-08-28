@@ -10,7 +10,12 @@ import Icon from './Icon'
 const SocialIcon = ({ className, service, url, type = 'default', ...rest }) => {
   const ref = useRef()
 
-  const interactions = useGSAPInteraction({ ref })
+  const interactions = useGSAPInteraction({
+    ref,
+    click: {
+      scale: 1,
+    },
+  })
 
   return (
     <Button
