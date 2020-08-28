@@ -4,20 +4,23 @@ import gsap from 'gsap'
 
 const useGSAPInteraction = ({
   ref,
-  initial,
+  initial = {},
   hover = {
     autoAlpha: 1,
     scale: 1.15,
   },
   click = {
-    scale: 0.85,
+    scale: 0.925,
   },
 }) => {
   const theme = useTheme()
 
   useEffect(() => {
     if (ref.current) {
-      gsap.set(ref.current, initial)
+      gsap.set(ref.current, {
+        transformOrigin: 'center center',
+        ...initial,
+      })
 
       ref.current.timelineHover = gsap.timeline({ paused: true })
 
