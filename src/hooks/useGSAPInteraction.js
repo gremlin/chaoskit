@@ -2,6 +2,9 @@ import { useEffect, useRef } from 'react'
 import { useTheme } from 'emotion-theming'
 import gsap from 'gsap'
 
+/**
+ * @NOTE Not currently in-use due to cancellable pointer events not responding correctly. Will be re-evaluated
+ */
 const useGSAPInteraction = ({
   ref,
   initial = {},

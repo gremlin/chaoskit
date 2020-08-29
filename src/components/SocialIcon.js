@@ -1,28 +1,23 @@
 import PropTypes from 'prop-types'
-import { useRef } from 'react'
 import clsx from 'clsx'
-
-import useGSAPInteraction from '../hooks/useGSAPInteraction'
+import { useTheme } from 'emotion-theming'
 
 import Button from './Button'
 import Icon from './Icon'
 
 const SocialIcon = ({ className, service, url, type = 'default', ...rest }) => {
-  const ref = useRef()
-
-  const interactions = useGSAPInteraction({
-    ref,
-    click: {
-      scale: 1,
-    },
-  })
+  const theme = useTheme()
 
   return (
     <Button
-      ref={ref}
       url={url}
       css={{
-        transition: 'auto', // Reset to avoid conflict with GSAP animations
+        transition: `all ${theme.timing.base} ${theme.transition.bounce}`,
+        transformOrigin: 'center center',
+
+        '&:hover, &:focus': {
+          transform: 'scale(1.1)',
+        },
       }}
       className={clsx('CK__SocialIcon', className)}
       target="_blank"
@@ -30,7 +25,6 @@ const SocialIcon = ({ className, service, url, type = 'default', ...rest }) => {
       iconOnly
       size="small"
       type={type}
-      {...interactions}
       {...rest}
     >
       <Icon icon={service} />

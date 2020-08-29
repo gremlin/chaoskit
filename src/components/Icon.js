@@ -37,10 +37,12 @@ const Icon = forwardRef(
             strokeLinejoin="round"
             css={[
               {
+                // 1. Help against rendering bug when scaling
                 lineHeight: '1',
                 position: 'relative',
                 top: '-0.1em',
                 maxWidth: '100%',
+                backfaceVisibility: 'hidden', // 1
                 width: StylesIconVariables[size],
                 height: StylesIconVariables[size],
 
