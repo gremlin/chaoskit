@@ -35,6 +35,7 @@ const Close = ({ onClick, noContrast, ...rest }) => {
           lineHeight: theme.lineHeight.small, // 1
           width: StylesCloseVariables(theme).size,
           height: StylesCloseVariables(theme).size,
+          transition: 'auto',
 
           // GSAP
           visibility: 'hidden',
@@ -50,14 +51,7 @@ const Close = ({ onClick, noContrast, ...rest }) => {
       {...interactions}
       {...rest}
     >
-      <Icon
-        icon="close"
-        className="CK__Close__Icon"
-        css={{
-          transition: `transform ${theme.timing.base} ${theme.transition.base}`,
-          transformOrigin: 'center center',
-        }}
-      />
+      <Icon icon="close" className="CK__Close__Icon" />
     </Button>
   )
 }
