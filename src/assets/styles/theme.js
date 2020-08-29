@@ -375,7 +375,7 @@ const timing = {
 const gsap = {
   transition: {
     base: 'expo.inOut',
-    bounce: 'back.out(1)',
+    bounce: 'back.out(1.5)',
   },
   timing: {
     short: 0.175,
