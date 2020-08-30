@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react'
+import { useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import {
@@ -9,8 +9,8 @@ import {
 import useUpdateEffect from 'react-use/lib/useUpdateEffect'
 import useClickAway from 'react-use/lib/useClickAway'
 import { createPortal } from 'react-dom'
-import gsap from 'gsap'
 import { useTheme } from 'emotion-theming'
+import { motion, AnimatePresence } from 'framer-motion'
 
 import { misc } from '../assets/styles/utility'
 
@@ -26,11 +26,9 @@ const OffCanvas = ({
   children,
   className,
   onComplete = () => {},
-  onOffCanvasToggle,
   onReverseComplete = () => {},
-  onReverseStart = () => {},
-  onStart = () => {},
   open,
+  setIsOpen,
   panelWidth = 300,
   ...rest
 }) => {
@@ -39,71 +37,26 @@ const OffCanvas = ({
   const offCanvasRef = useRef()
   const offCanvasPanelRef = useRef()
 
-  const [renderOffCanvas, setRenderOffCanvas] = useState(open)
+  const direction = useRef('forward')
 
-  const openOffCanvas = () => {
-    const $offCanvas = offCanvasRef.current
-
-    if ($offCanvas && $offCanvas.timeline) $offCanvas.timeline.play()
+  const offCanvasVariants = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+    },
   }
 
-  const closeOffCanvas = () => {
-    const $offCanvas = offCanvasRef.current
-
-    if ($offCanvas && $offCanvas.timeline) {
-      $offCanvas.timeline.reverse()
-
-      onReverseStart()
-    }
-  }
-
-  const handleOnReverseComplete = () => {
-    setRenderOffCanvas(false)
-  }
-
-  const attachTimeline = () => {
-    const $offCanvas = offCanvasRef.current
-    const $panel = offCanvasPanelRef.current
-
-    // Attach timeline to each instance
-    $offCanvas.timeline = gsap.timeline({
-      paused: !open,
-      onStart: () => {
-        onStart()
-      },
-      onComplete: () => {
-        // Focus on active offCanvas for screen readers
-        $panel.focus()
-
-        onComplete()
-      },
-      onReverseComplete: () => {
-        handleOnReverseComplete()
-      },
-    })
-
-    $offCanvas.timeline
-      .set($panel, {
-        xPercent: align === 'left' ? -100 : 100,
-      })
-      .to(
-        $offCanvas,
-        {
-          duration: theme.gsap.timing.long,
-          autoAlpha: 1,
-          backdropFilter: 'blur(2px)',
-        },
-        'offCanvas'
-      )
-      .to(
-        $panel,
-        {
-          duration: theme.gsap.timing.long,
-          xPercent: 0,
-          ease: theme.gsap.transition.base,
-        },
-        'offCanvas'
-      )
+  const offCanvasDialogVariants = {
+    hidden: {
+      opacity: 0,
+      x: align === 'left' ? '-100%' : '100%',
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+    },
   }
 
   // On unmount, clear any/all locks on `<body />`
@@ -113,95 +66,85 @@ const OffCanvas = ({
     }
   }, [])
 
-  useEffect(() => {
+  useUpdateEffect(() => {
     if (open) {
-      setRenderOffCanvas(true)
-    }
-  }, [open])
-
-  useUpdateEffect(() => {
-    if (renderOffCanvas) {
-      attachTimeline()
-
-      disableBodyScroll(offCanvasPanelRef.current)
-
-      openOffCanvas()
+      disableBodyScroll(offCanvasRef.current)
+      direction.current = 'forward'
     } else {
-      onReverseComplete()
-    }
-  }, [renderOffCanvas])
-
-  useUpdateEffect(() => {
-    if (!open) {
-      enableBodyScroll(offCanvasPanelRef.current)
-
-      closeOffCanvas()
+      enableBodyScroll(offCanvasRef.current)
+      direction.current = 'reverse'
     }
   }, [open])
 
-  useClickAway(offCanvasPanelRef, () => onOffCanvasToggle())
-
-  if (!renderOffCanvas) return null
+  useClickAway(offCanvasPanelRef, () => setIsOpen(false))
 
   return createPortal(
-    <div
-      css={{
-        // 1. GSAP
-        position: 'fixed',
-        top: 0,
-        right: 0,
-        bottom: 0,
-        left: 0,
-        background: theme.color.dark.overlay,
-        zIndex: 10,
-
-        // 1
-        visibility: 'hidden',
-      }}
-      className={clsx('CK__OffCanvas', className)}
-      ref={offCanvasRef}
-      {...rest}
-    >
-      <div
-        css={[
-          misc.overflow,
-          {
-            position: 'absolute',
-            top: 0,
-            [align]: 0,
-            zIndex: 5,
-            height: '100%',
-            width: `calc(100% - ${
-              StylesOffCanvasVariables(theme).panelOffset
-            }px)`,
-            background: theme.color.light.base,
-            padding: StylesOffCanvasVariables(theme).padding,
-            boxShadow:
-              align === 'left'
-                ? `7.5px 0 17.5px ${theme.boxShadowColor.xlight}`
-                : `-7.5px 0 17.5px ${theme.boxShadowColor.xlight}`,
-
-            [theme.mq.small]: {
-              width: panelWidth,
-            },
-          },
-        ]}
-        className={`CK__OffCanvas__Panel ${theme.settings.classes.trim}`}
-        ref={offCanvasPanelRef}
-      >
-        <Close
-          onClick={onOffCanvasToggle}
+    <AnimatePresence onExitComplete={onReverseComplete}>
+      {open && (
+        <motion.div
           css={{
-            position: 'absolute',
-            top: StylesOffCanvasVariables(theme).padding,
-            right: StylesOffCanvasVariables(theme).padding,
+            position: 'fixed',
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0,
+            background: theme.color.dark.overlay,
             zIndex: 10,
           }}
-          className="CK__OffCanvas__Close"
-        />
-        {children}
-      </div>
-    </div>,
+          className={clsx('CK__OffCanvas', className)}
+          ref={offCanvasRef}
+          variants={offCanvasVariants}
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          onAnimationComplete={() =>
+            direction.current === 'forward' && onComplete()
+          }
+          {...rest}
+        >
+          <motion.aside
+            css={[
+              misc.overflow,
+              {
+                position: 'absolute',
+                top: 0,
+                [align]: 0,
+                zIndex: 5,
+                height: `calc(100% - ${theme.space.base * 2}px)`,
+                width: `calc(100% - ${theme.space.base * 2}px)`,
+                margin: theme.space.base,
+                borderRadius: theme.borderRadius.large,
+                background: theme.color.light.base,
+                padding: StylesOffCanvasVariables(theme).padding,
+                boxShadow: theme.boxShadow.neutral,
+
+                [theme.mq.small]: {
+                  width: panelWidth,
+                },
+              },
+            ]}
+            className={`CK__OffCanvas__Panel ${theme.settings.classes.trim}`}
+            ref={offCanvasPanelRef}
+            variants={offCanvasDialogVariants}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+          >
+            <Close
+              onClick={() => setIsOpen(false)}
+              css={{
+                position: 'absolute',
+                top: StylesOffCanvasVariables(theme).padding,
+                right: StylesOffCanvasVariables(theme).padding,
+                zIndex: 10,
+              }}
+              className="CK__OffCanvas__Close"
+            />
+            {children}
+          </motion.aside>
+        </motion.div>
+      )}
+    </AnimatePresence>,
     document.body
   )
 }
@@ -211,16 +154,12 @@ OffCanvas.propTypes = {
   className: PropTypes.string,
   align: PropTypes.oneOf(['left', 'right']),
   open: PropTypes.bool,
-  onOffCanvasToggle: PropTypes.func.isRequired,
-  /** GSAP callback */
+  /** Animation callback */
   onComplete: PropTypes.func,
-  /** GSAP callback */
+  /** Animation callback */
   onReverseComplete: PropTypes.func,
-  /** GSAP callback */
-  onReverseStart: PropTypes.func,
-  /** GSAP callback */
-  onStart: PropTypes.func,
   panelWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  setIsOpen: PropTypes.func.isRequired,
 }
 
 export default OffCanvas

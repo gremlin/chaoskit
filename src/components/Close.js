@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import { useTheme } from 'emotion-theming'
+import { motion } from 'framer-motion'
 
 import Button from './Button'
 import Icon from './Icon'
@@ -13,6 +14,7 @@ const Close = ({ onClick, noContrast, ...rest }) => {
 
   return (
     <Button
+      as={motion.button}
       type="reset"
       title="Close"
       onClick={onClick}
@@ -23,13 +25,7 @@ const Close = ({ onClick, noContrast, ...rest }) => {
           lineHeight: theme.lineHeight.small, // 1
           width: StylesCloseVariables(theme).size,
           height: StylesCloseVariables(theme).size,
-          opacity: theme.opacity.base,
-          transition: `opacity ${theme.timing.base} ${theme.transition.bounce}, transform ${theme.timing.base} ${theme.transition.bounce}`,
-
-          '&:hover, &:focus': {
-            opacity: 1,
-            transform: 'scale(1.15)',
-          },
+          transition: 'auto',
         },
 
         theme.settings.contrast.enable &&
@@ -39,6 +35,16 @@ const Close = ({ onClick, noContrast, ...rest }) => {
             },
           },
       ]}
+      style={{
+        opacity: theme.opacity.base,
+      }}
+      whileHover={{
+        scale: 1.15,
+        opacity: 1,
+      }}
+      whileTap={{
+        scale: 1,
+      }}
       {...rest}
     >
       <Icon icon="close" className="CK__Close__Icon" />

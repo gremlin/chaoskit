@@ -1,134 +1,85 @@
-import { Fragment, useEffect, useRef } from 'react'
-import clsx from 'clsx'
+import { Fragment, useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import gsap from 'gsap'
-import useUpdateEffect from 'react-use/lib/useUpdateEffect'
 import { useTheme } from 'emotion-theming'
+import { motion, useAnimation } from 'framer-motion'
+import clsx from 'clsx'
 
 import Button from './Button'
 
 const Reveal = ({
-  onComplete = () => {},
-  onReverseComplete = () => {},
-  onStart = () => {},
   reveal,
+  setReveal,
   children,
   className,
+  onComplete = () => {},
+  onReverseComplete = () => {},
   trigger = { props: {}, label: '' },
   ...rest
 }) => {
   const theme = useTheme()
 
-  const revealRef = useRef()
   const triggerRef = useRef()
 
-  const attachTimeline = () => {
-    const $reveal = revealRef.current
-    const $trigger = triggerRef.current
+  const direction = useRef('forward')
 
-    // Attach GSAP
-    $reveal.timeline = gsap.timeline({
-      paused: true,
-      onStart: () => {
-        // Add active class to trigger
-        $trigger.classList.add(theme.settings.classes.active)
-        // Toggle aria state
-        $reveal.setAttribute('aria-hidden', false)
+  const controls = useAnimation()
 
-        onStart()
-      },
-      onComplete: () => {
-        onComplete()
-      },
-      onReverseComplete: () => {
-        onReverseComplete()
-      },
-    })
-
-    $reveal.timeline.to($reveal, {
-      duration: theme.gsap.timing.long,
+  const variants = {
+    hidden: {
+      height: 0,
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
       height: 'auto',
-      autoAlpha: 1,
-      ease: theme.gsap.transition.base,
-    })
-
-    if (reveal) {
-      $reveal.timeline.progress(1)
-    }
+    },
   }
-
-  const handleOnReverseStart = () => {
-    const $reveal = revealRef.current
-    const $trigger = triggerRef.current
-
-    if ($trigger) {
-      // Remove active class on trigger
-      $trigger.classList.remove(theme.settings.classes.active)
-    }
-
-    if ($reveal) {
-      // Toggle aria state
-      $reveal.setAttribute('aria-hidden', true)
-    }
-  }
-
-  const revealOpen = () => {
-    const $reveal = revealRef.current
-
-    if ($reveal && $reveal.timeline) {
-      $reveal.timeline.play()
-    }
-  }
-
-  const revealClose = () => {
-    const $reveal = revealRef.current
-
-    if ($reveal && $reveal.timeline) {
-      $reveal.timeline.reverse()
-
-      handleOnReverseStart()
-    }
-  }
-
-  const handleRevealToggle = () => {
-    const $reveal = revealRef.current
-
-    if ($reveal.timeline.progress() > 0) {
-      revealClose()
-    } else {
-      revealOpen()
-    }
-  }
-
-  useUpdateEffect(() => {
-    handleRevealToggle()
-  }, [reveal])
 
   useEffect(() => {
-    attachTimeline()
-  }, [])
+    if (reveal) {
+      controls.start('visible')
+      direction.current = 'forward'
+    } else {
+      controls.start('hidden')
+      direction.current = 'reverse'
+    }
+  }, [reveal])
 
   return (
     <Fragment>
-      <Button ref={triggerRef} onClick={handleRevealToggle} {...trigger.props}>
+      <Button
+        ref={triggerRef}
+        onClick={() => setReveal(!reveal)}
+        className={clsx({
+          [theme.settings.classes.active]: reveal,
+        })}
+        {...trigger.props}
+      >
         {trigger.label}
       </Button>
-      <div
+      <motion.div
+        className={clsx('CK__Reveal', className)}
         css={{
           // Take care of overflowing content
           overflow: 'hidden',
-          visibility: 'hidden',
           height: 0,
         }}
-        className={clsx('CK__Reveal', className)}
-        ref={revealRef}
         aria-hidden={reveal ? 'false' : 'true'}
+        variants={variants}
+        animate={controls}
+        initial="hidden"
+        transition={{
+          duration: theme.gsap.timing.base,
+        }}
+        onAnimationComplete={() =>
+          direction.current === 'forward' ? onComplete() : onReverseComplete()
+        }
         {...rest}
       >
         <div className={`CK__Reveal__Content ${theme.settings.classes.trim}`}>
           {children}
         </div>
-      </div>
+      </motion.div>
     </Fragment>
   )
 }
@@ -137,16 +88,11 @@ Reveal.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   reveal: PropTypes.bool,
-  /** GSAP callback */
+  setReveal: PropTypes.func.isRequired,
+  /** Animation callback */
   onComplete: PropTypes.func,
-  /** GSAP callback */
+  /** Animation callback */
   onReverseComplete: PropTypes.func,
-  /** GSAP callback */
-  onStart: PropTypes.func,
-  /**
-   * `trigger.props` Accepts all `<Button />` props
-   * `trigger.label` acts as `<Button />` child
-   */
   trigger: PropTypes.shape({
     props: PropTypes.object,
     label: PropTypes.any.isRequired,
