@@ -2,7 +2,7 @@ import { useRef } from 'react'
 import PropTypes from 'prop-types'
 import { useTheme } from 'emotion-theming'
 import Tippy from '@tippyjs/react/headless'
-import gsap from 'gsap'
+import { motion, useAnimation } from 'framer-motion'
 
 import { text } from '../assets/styles/utility'
 import { generateGradient } from '../assets/styles/utility/gradient'
@@ -55,29 +55,29 @@ const Dropdown = ({
   const dropdownPanelRef = useRef()
   const dropdownTriggerRef = useRef()
 
+  const controls = useAnimation()
+
+  const variants = {
+    hidden: {
+      opacity: 0,
+      scale: 0.75,
+    },
+    visible: {
+      opacity: 1,
+      scale: 1,
+    },
+  }
+
   const handleOnMount = () => {
     dropdownTriggerRef.current.classList.add(theme.settings.classes.active)
 
-    dropdownPanelRef.current.timeline = gsap.timeline({ paused: true })
-
-    dropdownPanelRef.current.timeline
-      .set(dropdownPanelRef.current, {
-        scale: 0.75,
-      })
-      .to(dropdownPanelRef.current, {
-        duration: theme.gsap.timing.short,
-        autoAlpha: 1,
-        scale: 1,
-        ease: theme.gsap.transition.bounce,
-      })
-
-    dropdownPanelRef.current.timeline.play()
+    controls.start('visible')
   }
 
   const handleOnHide = async (instance) => {
     dropdownTriggerRef.current.classList.remove(theme.settings.classes.active)
 
-    await dropdownPanelRef.current.timeline.reverse()
+    await controls.start('hidden')
 
     instance.unmount()
   }
@@ -94,10 +94,9 @@ const Dropdown = ({
       offset={[0, theme.space.base]}
       render={(attrs) => {
         return (
-          <div
+          <motion.div
             css={[
               {
-                // 1. GSAP
                 background: generateGradient({
                   start: theme.color.light.base,
                   stop: theme.color.panel.light,
@@ -117,19 +116,19 @@ const Dropdown = ({
                 transformOrigin:
                   attrs['data-placement'] &&
                   getTransformOrigin(attrs['data-placement']),
-
-                // 1
-                visibility: 'hidden',
               },
 
               wrapperStyles,
             ]}
             className={`CK__Dropdown__Panel ${theme.settings.classes.trim}`}
             ref={dropdownPanelRef}
+            variants={variants}
+            animate={controls}
+            initial="hidden"
             {...attrs}
           >
             {children}
-          </div>
+          </motion.div>
         )
       }}
       {...rest}

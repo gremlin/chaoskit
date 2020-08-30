@@ -1,9 +1,8 @@
-import { useRef } from 'react'
 import PropTypes from 'prop-types'
 import { useTheme } from 'emotion-theming'
 import clsx from 'clsx'
 import Tippy from '@tippyjs/react/headless'
-import gsap from 'gsap'
+import { motion, useAnimation } from 'framer-motion'
 
 import { getTransformOrigin } from '../helpers/utility'
 
@@ -29,27 +28,25 @@ const Tooltip = ({
 }) => {
   const theme = useTheme()
 
-  const tooltipRef = useRef()
+  const controls = useAnimation()
+
+  const variants = {
+    hidden: {
+      opacity: 0,
+      scale: 0.5,
+    },
+    visible: {
+      opacity: 1,
+      scale: 1,
+    },
+  }
 
   const handleOnMount = () => {
-    tooltipRef.current.timeline = gsap.timeline({ paused: true })
-
-    tooltipRef.current.timeline
-      .set(tooltipRef.current, {
-        scale: 0.75,
-      })
-      .to(tooltipRef.current, {
-        duration: theme.gsap.timing.short,
-        autoAlpha: 1,
-        scale: 1,
-        ease: theme.gsap.transition.bounce,
-      })
-
-    tooltipRef.current.timeline.play()
+    controls.start('visible')
   }
 
   const handleOnHide = async (instance) => {
-    await tooltipRef.current.timeline.reverse()
+    await controls.start('hidden')
 
     instance.unmount()
   }
@@ -64,7 +61,7 @@ const Tooltip = ({
       offset={[0, theme.space.small]}
       render={(attrs) => {
         return (
-          <div
+          <motion.div
             css={{
               fontSize: theme.fontSize.small,
               color: StylesTooltipVariables(theme, variation).color,
@@ -83,13 +80,12 @@ const Tooltip = ({
               transformOrigin:
                 attrs['data-placement'] &&
                 getTransformOrigin(attrs['data-placement']),
-
-              // 1. GSAP
-              visibility: 'hidden',
             }}
             className={clsx('CK__Tooltip', className)}
-            ref={tooltipRef}
             role="tooltip"
+            variants={variants}
+            animate={controls}
+            initial="hidden"
             {...attrs}
           >
             <TippyArrow
@@ -97,7 +93,7 @@ const Tooltip = ({
               variation={variation}
             />
             {content}
-          </div>
+          </motion.div>
         )
       }}
       {...rest}
