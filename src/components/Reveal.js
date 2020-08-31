@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { useTheme } from 'emotion-theming'
 import { motion, useAnimation } from 'framer-motion'
 import clsx from 'clsx'
+import useUpdateEffect from 'react-use/lib/useUpdateEffect'
 
 import Button from './Button'
 
@@ -36,6 +37,12 @@ const Reveal = ({
   }
 
   useEffect(() => {
+    if (reveal) {
+      controls.set('visible')
+    }
+  }, [])
+
+  useUpdateEffect(() => {
     if (reveal) {
       controls.start('visible')
       direction.current = 'forward'
