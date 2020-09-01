@@ -39,6 +39,7 @@ const Reveal = ({
   useEffect(() => {
     if (reveal) {
       controls.set('visible')
+      direction.current = 'forward'
     }
   }, [])
 

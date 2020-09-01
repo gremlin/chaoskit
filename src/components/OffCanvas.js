@@ -110,10 +110,8 @@ const OffCanvas = ({
                 top: 0,
                 [align]: 0,
                 zIndex: 5,
-                height: `calc(100% - ${theme.space.base * 2}px)`,
-                width: `calc(100% - ${theme.space.base * 2}px)`,
-                margin: theme.space.base,
-                borderRadius: theme.borderRadius.large,
+                height: '100%',
+                width: `calc(100% - ${theme.space.base}px)`,
                 background: theme.color.light.base,
                 padding: StylesOffCanvasVariables(theme).padding,
                 boxShadow: theme.boxShadow.neutral,
@@ -129,6 +127,7 @@ const OffCanvas = ({
             initial="hidden"
             animate="visible"
             exit="hidden"
+            transition={{ ease: 'easeInOut' }}
           >
             <Close
               onClick={() => setIsOpen(false)}

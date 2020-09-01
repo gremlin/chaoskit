@@ -384,6 +384,14 @@ const gsap = {
   },
 }
 
+const motion = {
+  spring: {
+    type: 'spring',
+    stiffness: 700,
+    damping: 30,
+  },
+}
+
 const contrast = {
   base: color.light.base,
   get muted() {
@@ -421,6 +429,7 @@ export const theme = {
   transition,
   timing,
   gsap,
+  motion,
   contrast,
   settings,
 }

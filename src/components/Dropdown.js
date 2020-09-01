@@ -125,6 +125,7 @@ const Dropdown = ({
             variants={variants}
             animate={controls}
             initial="hidden"
+            transition={theme.motion.spring}
             {...attrs}
           >
             {children}
