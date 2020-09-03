@@ -212,13 +212,13 @@ OffCanvas.propTypes = {
   align: PropTypes.oneOf(['left', 'right']),
   open: PropTypes.bool,
   onOffCanvasToggle: PropTypes.func.isRequired,
-  /** GSAP callback */
+  /** Animation callback */
   onComplete: PropTypes.func,
-  /** GSAP callback */
+  /** Animation callback */
   onReverseComplete: PropTypes.func,
-  /** GSAP callback */
+  /** Animation callback */
   onReverseStart: PropTypes.func,
-  /** GSAP callback */
+  /** Animation callback */
   onStart: PropTypes.func,
   panelWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 }

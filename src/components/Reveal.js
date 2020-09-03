@@ -137,11 +137,11 @@ Reveal.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   reveal: PropTypes.bool,
-  /** GSAP callback */
+  /** Animation callback */
   onComplete: PropTypes.func,
-  /** GSAP callback */
+  /** Animation callback */
   onReverseComplete: PropTypes.func,
-  /** GSAP callback */
+  /** Animation callback */
   onStart: PropTypes.func,
   /**
    * `trigger.props` Accepts all `<Button />` props

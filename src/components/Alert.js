@@ -9,42 +9,30 @@ import { misc, text } from '../assets/styles/utility'
 
 import Close from './Close'
 
-export const StylesAlertBase = (theme, opts) => {
-  const props = {
-    ...{
-      close: false,
-    },
-    ...opts,
-  }
+export const StylesAlertBase = (theme) => [
+  misc.fluidSize({
+    theme,
+    property: 'padding',
+    from: theme.space.base,
+    to: theme.space.large,
+  }),
+  {
+    borderLeft: '8px solid transparent',
+    color: theme.fontColor.base,
+    borderRadius: theme.borderRadius.base,
 
-  return [
-    misc.fluidSize({
-      theme,
-      property: 'padding',
-      from: theme.space.base,
-      to: theme.space.large,
-    }),
-    {
-      display: 'grid',
-      gridTemplateColumns: props.close && '1fr auto',
-      gap: props.close && theme.space.small,
-      borderLeft: '8px solid transparent',
-      color: theme.fontColor.base,
-      borderRadius: theme.borderRadius.base,
+    'a:not([class]), a[class=""], .u-link': [
+      text.underline,
+      {
+        color: 'currentColor',
 
-      'a:not([class]), a[class=""], .u-link': [
-        text.underline,
-        {
+        '&:hover, &:focus': {
           color: 'currentColor',
-
-          '&:hover, &:focus': {
-            color: 'currentColor',
-          },
         },
-      ],
-    },
-  ]
-}
+      },
+    ],
+  },
+]
 
 export const StylesAlertDefault = (theme) => ({
   borderColor: theme.color.border.base,
@@ -181,6 +169,12 @@ const Alert = ({
 
         hidden && misc.hide,
 
+        close && {
+          display: 'grid',
+          gridTemplateColumns: '1fr auto',
+          gap: theme.space.small,
+        },
+
         type === 'default' && StylesAlertDefault(theme),
         type === 'primary' && StylesAlertPrimary(theme),
         type === 'warning' && StylesAlertWarning(theme),
@@ -205,13 +199,13 @@ Alert.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   collapse: PropTypes.bool,
-  /** GSAP callback */
+  /** Animation callback */
   onComplete: PropTypes.func,
-  /** GSAP callback */
+  /** Animation callback */
   onReverseComplete: PropTypes.func,
-  /** GSAP callback */
+  /** Animation callback */
   onReverseStart: PropTypes.func,
-  /** GSAP callback */
+  /** Animation callback */
   onStart: PropTypes.func,
   close: PropTypes.bool,
   title: PropTypes.string,
