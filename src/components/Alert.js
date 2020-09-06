@@ -1,9 +1,7 @@
-import { useEffect, useRef } from 'react'
-import clsx from 'clsx'
+import { useRef } from 'react'
 import PropTypes from 'prop-types'
-import useUpdateEffect from 'react-use/lib/useUpdateEffect'
-import { motion, useAnimation, AnimatePresence } from 'framer-motion'
 import { useTheme } from 'emotion-theming'
+import clsx from 'clsx'
 
 import { misc, text } from '../assets/styles/utility'
 
@@ -63,8 +61,6 @@ const Alert = ({
   className,
   reveal,
   setReveal,
-  onComplete = () => {},
-  onReverseComplete = () => {},
   title,
   type = 'default',
   ...rest
@@ -73,84 +69,37 @@ const Alert = ({
 
   const ref = useRef()
 
-  const direction = useRef('reverse')
-
-  const controls = useAnimation()
-
-  const variants = {
-    hidden: {
-      opacity: 0,
-      y: '-100%',
-      height: 0,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      height: 'auto',
-    },
-  }
-
-  useEffect(() => {
-    if (reveal) {
-      controls.set('visible')
-      direction.current = 'forward'
-    }
-  }, [])
-
-  useUpdateEffect(() => {
-    if (reveal) {
-      controls.start('visible')
-      direction.current = 'forward'
-    } else {
-      controls.start('hidden')
-      direction.current = 'reverse'
-    }
-  }, [reveal])
+  if (!reveal) return null
 
   return (
-    <AnimatePresence onExitComplete={onReverseComplete} initial={false}>
-      {reveal && (
-        <motion.div
-          css={[
-            StylesAlertBase(theme),
+    <div
+      css={[
+        StylesAlertBase(theme),
 
-            typeof setReveal === 'function' && {
-              display: 'grid',
-              gridTemplateColumns: '1fr auto',
-              gap: theme.space.small,
-            },
+        typeof setReveal === 'function' && {
+          display: 'grid',
+          gridTemplateColumns: '1fr auto',
+          gap: theme.space.small,
+        },
 
-            type === 'default' && StylesAlertDefault(theme),
-            type === 'primary' && StylesAlertPrimary(theme),
-            type === 'warning' && StylesAlertWarning(theme),
-            type === 'danger' && StylesAlertDanger(theme),
-          ]}
-          className={clsx('CK__Alert', className)}
-          role="alert"
-          ref={ref}
-          variants={variants}
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
-          transition={{ ease: 'easeInOut' }}
-          onAnimationComplete={() =>
-            direction.current === 'forward' && onComplete()
-          }
-          {...rest}
-        >
-          <div className={`CK__Alert__Content ${theme.settings.classes.trim}`}>
-            {title && <h4 className="CK__Alert__Title">{title}</h4>}
-            {children}
-          </div>
-          {typeof setReveal === 'function' && (
-            <Close
-              className="CK__Alert__Close"
-              onClick={() => setReveal(false)}
-            />
-          )}
-        </motion.div>
+        type === 'default' && StylesAlertDefault(theme),
+        type === 'primary' && StylesAlertPrimary(theme),
+        type === 'warning' && StylesAlertWarning(theme),
+        type === 'danger' && StylesAlertDanger(theme),
+      ]}
+      className={clsx('CK__Alert', className)}
+      role="alert"
+      ref={ref}
+      {...rest}
+    >
+      <div className={`CK__Alert__Content ${theme.settings.classes.trim}`}>
+        {title && <h4 className="CK__Alert__Title">{title}</h4>}
+        {children}
+      </div>
+      {typeof setReveal === 'function' && (
+        <Close className="CK__Alert__Close" onClick={() => setReveal(false)} />
       )}
-    </AnimatePresence>
+    </div>
   )
 }
 
