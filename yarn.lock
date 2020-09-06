@@ -11219,6 +11219,11 @@ yaml@^1.7.2:
   resolved "https://registry.yarnpkg.com/yaml/-/yaml-1.10.0.tgz#3b593add944876077d4d683fee01081bd9fff31e"
   integrity sha512-yr2icI4glYaNG+KWONODapy2/jDdMSDnrONSjblABjD9B4Z5LgiircSt8m8sRZFNi08kG9Sm0uSHtEmP3zaEGg==
 
+zustand@3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/zustand/-/zustand-3.1.0.tgz#8b8ca50c53c9ee44a197a71930274f97d64365b6"
+  integrity sha512-9LYlcbAeQ6TjfltbjgX0XAa6MEruREIbynU1rV0SZzbklKhDqX1cmAX2P476BQ2EoIRpkxakCctzpK3XoqHeaA==
+
 zwitch@^1.0.0:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/zwitch/-/zwitch-1.0.5.tgz#d11d7381ffed16b742f6af7b3f223d5cd9fe9920"

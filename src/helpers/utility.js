@@ -40,6 +40,18 @@ export function isTouchDevice() {
   return 'ontouchstart' in document.documentElement
 }
 
+// Remove item from array
+export const remove = (arr: number[], item: number) => {
+  const newArr = [...arr]
+
+  newArr.splice(
+    newArr.findIndex((i) => i === item),
+    1
+  )
+
+  return newArr
+}
+
 // Used with Tippy.js to determine transformOrigin
 export function getTransformOrigin(placementOption) {
   if (placementOption.startsWith('top')) {

@@ -1,12 +1,11 @@
-import { useContext } from 'react'
+import { Fragment } from 'react'
+
+import useNotificationsState from '../hooks/useNotifications'
 
 import Button from './Button'
-import {
-  NotificationContext,
-  NotificationProvider,
-} from './NotificationProvider'
 import Inline from './Inline'
 import ListItem from './ListItem'
+import Notifications from './Notifications'
 
 export default {
   title: 'Components/Notification',
@@ -16,50 +15,29 @@ export default {
 }
 
 const NotificationExample = () => {
-  const { dispatch } = useContext(NotificationContext)
+  const add = useNotificationsState((state) => state.add)
 
   return (
-    <Inline>
-      <ListItem>
-        <Button
-          type="primary"
-          onClick={() => {
-            dispatch({
-              type: 'add',
-              payload: {
-                content: 'Hello from the success toast! 🎉',
-                timeout: -1,
-              },
-            })
-          }}
-        >
-          Add Success
-        </Button>
-      </ListItem>
-      <ListItem>
-        <Button
-          type="danger"
-          onClick={() => {
-            dispatch({
-              type: 'add',
-              payload: {
-                status: 'error',
-                title: 'Ruh-roh!',
-                content: 'Hello from the error toast!',
-                timeout: 10000,
-              },
-            })
-          }}
-        >
-          Add Error
-        </Button>
-      </ListItem>
-    </Inline>
+    <Fragment>
+      <Notifications />
+      <Inline>
+        <ListItem>
+          <Button
+            type="primary"
+            onClick={() => {
+              add({
+                title: 'Yep yep!',
+                body: `Hello ${Math.random(1, 5)}`,
+                status: 'success',
+              })
+            }}
+          >
+            Add Success
+          </Button>
+        </ListItem>
+      </Inline>
+    </Fragment>
   )
 }
 
-export const Overview = () => (
-  <NotificationProvider>
-    <NotificationExample />
-  </NotificationProvider>
-)
+export const Overview = () => <NotificationExample />
