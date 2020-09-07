@@ -77,7 +77,7 @@ const Reveal = ({
         animate={controls}
         initial="hidden"
         transition={{
-          duration: theme.gsap.timing.base,
+          duration: theme.motion.timing.base,
         }}
         onAnimationComplete={() =>
           direction.current === 'forward' ? onComplete() : onReverseComplete()

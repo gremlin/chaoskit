@@ -140,7 +140,7 @@ const Modal = ({
             initial="hidden"
             animate="visible"
             exit="hidden"
-            transition={theme.motion.spring}
+            transition={theme.motion.transition.spring}
             className="CK__Modal__Dialog"
             ref={modalDialogRef}
           >

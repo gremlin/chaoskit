@@ -372,23 +372,18 @@ const timing = {
   long: '0.5s',
 }
 
-const gsap = {
+const motion = {
   transition: {
-    base: 'expo.inOut',
-    bounce: 'back.out(1.5)',
+    spring: {
+      type: 'spring',
+      stiffness: 700,
+      damping: 30,
+    },
   },
   timing: {
     short: 0.175,
     base: 0.25,
     long: 0.5,
-  },
-}
-
-const motion = {
-  spring: {
-    type: 'spring',
-    stiffness: 700,
-    damping: 30,
   },
 }
 
@@ -428,7 +423,6 @@ export const theme = {
   letterSpacing,
   transition,
   timing,
-  gsap,
   motion,
   contrast,
   settings,
