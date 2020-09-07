@@ -10,8 +10,9 @@ const useNotificationsState = create((set) => ({
         {
           index: generateUUID(),
           title: payload.title,
-          content: payload.content,
+          body: payload.body,
           status: payload.status,
+          timeout: payload.timeout || 5000,
         },
       ].concat(state.notifications),
     })),

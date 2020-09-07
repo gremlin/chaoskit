@@ -26,13 +26,28 @@ const NotificationExample = () => {
             type="primary"
             onClick={() => {
               add({
-                title: 'Yep yep!',
-                body: `Hello ${Math.random(1, 5)}`,
+                title: 'Success!',
+                body: 'Your request has been submitted',
                 status: 'success',
               })
             }}
           >
             Add Success
+          </Button>
+        </ListItem>
+        <ListItem>
+          <Button
+            type="danger"
+            onClick={() => {
+              add({
+                title: 'Error!',
+                body:
+                  'There was a problem with your submission. Please try again later.',
+                status: 'danger',
+              })
+            }}
+          >
+            Add Danger
           </Button>
         </ListItem>
       </Inline>
