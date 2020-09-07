@@ -2,7 +2,6 @@ import { forwardRef, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import { useTheme } from 'emotion-theming'
-import MaskedInput from 'react-text-mask'
 
 import { form } from '../assets/styles/utility'
 import { generateUUID } from '../helpers/utility'
@@ -69,8 +68,6 @@ const Input = forwardRef(
       className,
       disabled,
       label,
-      guide,
-      mask,
       name,
       noContrast,
       type,
@@ -87,56 +84,6 @@ const Input = forwardRef(
     // Only regenerate this if the name prop changes
     const id = useMemo(() => `${name}-${generateUUID()}`, [name])
 
-    const inputRender = () => {
-      const defaultProps = {
-        id,
-        name,
-        type,
-        ref,
-        disabled,
-        ...rest,
-      }
-
-      // `react-text-mask` does not support 'email' or 'number' input types
-      if (mask && !['email', 'number'].includes(type)) {
-        return (
-          <MaskedInput
-            {...defaultProps}
-            mask={mask}
-            guide={guide}
-            render={(maskRef, props) => (
-              <input
-                css={[
-                  StylesInputBase(theme, {
-                    type,
-                    prefixIcon,
-                    validationMessage,
-                    noContrast,
-                  }),
-                ]}
-                className={clsx('CK__Input', className)}
-                ref={(input) => maskRef(input)}
-                {...props}
-              />
-            )}
-          />
-        )
-      }
-
-      return (
-        <input
-          css={StylesInputBase(theme, {
-            type,
-            prefixIcon,
-            validationMessage,
-            noContrast,
-          })}
-          className={clsx('CK__Input', className)}
-          {...defaultProps}
-        />
-      )
-    }
-
     return (
       <FormControlWrapper
         required={required}
@@ -146,8 +93,12 @@ const Input = forwardRef(
         validationMessage={validationMessage}
         {...wrapperProps}
       >
-        {prefixIcon ? (
-          <div css={{ position: 'relative' }}>
+        <div
+          css={{
+            position: 'relative',
+          }}
+        >
+          {prefixIcon && (
             <div
               css={[
                 {
@@ -158,6 +109,7 @@ const Input = forwardRef(
                   left: form.variables(theme).padding,
                   zIndex: 2,
                   opacity: disabled && theme.opacity.base,
+                  pointerEvents: 'none',
                 },
 
                 theme.settings.contrast.enable &&
@@ -171,11 +123,23 @@ const Input = forwardRef(
             >
               <Icon icon={prefixIcon} />
             </div>
-            {inputRender()}
-          </div>
-        ) : (
-          inputRender()
-        )}
+          )}
+          <input
+            css={StylesInputBase(theme, {
+              type,
+              prefixIcon,
+              validationMessage,
+              noContrast,
+            })}
+            className={clsx('CK__Input', className)}
+            name={name}
+            id={id}
+            ref={ref}
+            type={type}
+            disabled={disabled}
+            {...rest}
+          />
+        </div>
       </FormControlWrapper>
     )
   }
@@ -186,12 +150,10 @@ Input.propTypes = {
   disabled: PropTypes.bool,
   explanationMessage: PropTypes.string,
   validationMessage: PropTypes.string,
-  guide: PropTypes.bool,
   noContrast: PropTypes.bool,
   prefixIcon: PropTypes.string,
   required: PropTypes.bool,
   label: PropTypes.string,
-  mask: PropTypes.oneOfType([PropTypes.array, PropTypes.func]),
   name: PropTypes.string.isRequired,
   type: PropTypes.string,
   wrapperProps: PropTypes.object,
@@ -199,7 +161,6 @@ Input.propTypes = {
 
 Input.defaultProps = {
   type: 'text',
-  guide: false,
 }
 
 export default Input

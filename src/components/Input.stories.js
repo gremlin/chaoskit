@@ -5,7 +5,7 @@ export default {
   component: Input,
   args: {
     label: 'Form label',
-    name: 'textarea',
+    name: 'input',
     validationMessage: 'Validation message',
     explanationMessage: 'Explanation message',
   },
