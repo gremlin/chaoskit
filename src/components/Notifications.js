@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import { createPortal } from 'react-dom'
 import { useTheme } from 'emotion-theming'
 import { motion, AnimatePresence } from 'framer-motion'
+import useTimeoutFn from 'react-use/lib/useTimeoutFn'
 
 import useNotificationsState from '../hooks/useNotifications'
 import { misc } from '../assets/styles/utility'
@@ -13,6 +14,12 @@ const Notification = ({ notification }) => {
 
   const remove = useNotificationsState((state) => state.remove)
 
+  function fn() {
+    remove(notification.index)
+  }
+
+  const [, cancel] = useTimeoutFn(fn, notification.timeout)
+
   return (
     <motion.li
       tabIndex="-1"
@@ -21,7 +28,11 @@ const Notification = ({ notification }) => {
       initial={{ opacity: 0, y: 50, scale: 0.3 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.2 } }}
-      onClick={() => remove(notification.index)}
+      onClick={() => {
+        cancel() // Remove pending timeout
+
+        remove(notification.index)
+      }}
       css={{
         display: 'grid',
         background: theme.color.light.base,
