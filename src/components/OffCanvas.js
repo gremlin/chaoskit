@@ -127,7 +127,7 @@ const OffCanvas = ({
             initial="hidden"
             animate="visible"
             exit="hidden"
-            transition={{ ease: 'easeInOut' }}
+            transition={{ x: { stiffness: 1000 } }}
           >
             <Close
               onClick={() => setIsOpen(false)}

@@ -86,7 +86,7 @@ const Modal = ({
   const modalDialogVariants = {
     hidden: {
       opacity: 0,
-      y: animateFrom === 'bottom' ? '25%' : '-25%',
+      y: animateFrom === 'bottom' ? theme.space.xlarge : -theme.space.xlarge,
     },
     visible: {
       opacity: 1,
