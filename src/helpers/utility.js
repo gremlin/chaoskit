@@ -41,7 +41,7 @@ export function isTouchDevice() {
 }
 
 // Remove item from array
-export const remove = (arr: number[], item: number) => {
+export const remove = (arr, item) => {
   const newArr = [...arr]
 
   newArr.splice(
