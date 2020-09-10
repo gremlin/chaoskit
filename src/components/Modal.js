@@ -49,6 +49,7 @@ export const StylesModalDialog = (theme) => ({
   marginLeft: 'auto',
   marginRight: 'auto',
   maxWidth: '100%',
+  position: 'relative',
 
   [theme.mq.medium]: {
     marginTop: theme.space.xlarge,
