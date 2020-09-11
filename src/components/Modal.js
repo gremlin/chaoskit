@@ -151,7 +151,7 @@ const Modal = ({
         </motion.div>
       )}
     </AnimatePresence>,
-    isBrowser ? window.document.body : null
+    isBrowser() ? document.body : null
   )
 }
 
