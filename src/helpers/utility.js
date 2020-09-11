@@ -72,3 +72,5 @@ export function getTransformOrigin(placementOption) {
 
   return null
 }
+
+export const isBrowser = () => typeof window !== 'undefined'

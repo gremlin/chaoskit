@@ -6,6 +6,7 @@ import useTimeoutFn from 'react-use/lib/useTimeoutFn'
 
 import useNotificationsState from '../hooks/useNotifications'
 import { misc } from '../assets/styles/utility'
+import { isBrowser } from '../helpers/utility'
 
 import Icon from './Icon'
 
@@ -129,7 +130,7 @@ const Notifications = () => {
         ))}
       </AnimatePresence>
     </ul>,
-    document.body
+    isBrowser ? document.body : null
   )
 }
 

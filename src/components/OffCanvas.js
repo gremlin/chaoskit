@@ -13,6 +13,7 @@ import { useTheme } from 'emotion-theming'
 import { motion, AnimatePresence } from 'framer-motion'
 
 import { misc } from '../assets/styles/utility'
+import { isBrowser } from '../helpers/utility'
 
 import Close from './Close'
 
@@ -144,7 +145,7 @@ const OffCanvas = ({
         </motion.div>
       )}
     </AnimatePresence>,
-    document.body
+    isBrowser ? document.body : null
   )
 }
 

@@ -13,6 +13,7 @@ import { useTheme } from 'emotion-theming'
 import { motion, AnimatePresence } from 'framer-motion'
 
 import { misc } from '../assets/styles/utility'
+import { isBrowser } from '../helpers/utility'
 
 export const StylesModalVariables = (theme) => ({
   padding: theme.space.large,
@@ -150,7 +151,7 @@ const Modal = ({
         </motion.div>
       )}
     </AnimatePresence>,
-    document.body
+    isBrowser ? document.body : null
   )
 }
 

@@ -22,8 +22,6 @@ export default {
         disable: true,
       },
     },
-    onComplete: { action: 'Closed' },
-    onReverseComplete: { action: 'Open' },
   },
 }
 
