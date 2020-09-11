@@ -130,7 +130,7 @@ const Notifications = () => {
         ))}
       </AnimatePresence>
     </ul>,
-    isBrowser ? document.body : null
+    isBrowser ? window.document.body : null
   )
 }
 
