@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, Fragment } from 'react'
 
 import Reveal from './Reveal'
 import Button from './Button'
@@ -30,10 +30,13 @@ const Story = (args) => {
   const [reveal, setReveal] = useState(false)
 
   return (
-    <Reveal {...args} reveal={reveal} setReveal={setReveal}>
-      Then we will go with that data file! Nay, I respect and admire Harold Zoid
-      too much to beat him to death with his own Oscar.
-    </Reveal>
+    <Fragment>
+      <Reveal {...args} reveal={reveal} setReveal={setReveal}>
+        Then we will go with that data file! Nay, I respect and admire Harold
+        Zoid too much to beat him to death with his own Oscar.
+      </Reveal>
+      <p>test</p>
+    </Fragment>
   )
 }
 

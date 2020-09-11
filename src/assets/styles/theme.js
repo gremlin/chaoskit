@@ -376,18 +376,16 @@ const motion = {
   transition: {
     base: {
       type: 'spring',
-      stiffness: '1000',
+      stiffness: 700,
       damping: 30,
     },
     spring: {
       type: 'spring',
-      stiffness: 700,
-      damping: 30,
+      stiffness: 350,
     },
     springX: {
       type: 'spring',
-      stiffness: 150,
-      damping: 30,
+      stiffness: 125,
     },
   },
   timing: {

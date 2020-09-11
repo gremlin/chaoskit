@@ -86,7 +86,7 @@ const Tooltip = ({
             variants={variants}
             animate={controls}
             initial="hidden"
-            transition={theme.motion.transition.spring}
+            transition={theme.motion.transition.base}
             {...attrs}
           >
             <TippyArrow

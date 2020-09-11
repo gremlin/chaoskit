@@ -77,6 +77,7 @@ const Reveal = ({
         animate={controls}
         initial="hidden"
         transition={{
+          type: 'tween',
           duration: theme.motion.timing.base,
         }}
         onAnimationComplete={() =>

@@ -25,7 +25,7 @@ const Notification = ({ notification }) => {
       tabIndex="-1"
       role="button"
       layout
-      initial={{ opacity: 0, y: 50, scale: 0.3 }}
+      initial={{ opacity: 0, y: theme.space.large, scale: 0.5 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.2 } }}
       onClick={() => {

@@ -60,7 +60,7 @@ const Dropdown = ({
   const variants = {
     hidden: {
       opacity: 0,
-      scale: 0.75,
+      scale: 0.5,
     },
     visible: {
       opacity: 1,
@@ -125,7 +125,7 @@ const Dropdown = ({
             variants={variants}
             animate={controls}
             initial="hidden"
-            transition={theme.motion.transition.spring}
+            transition={theme.motion.transition.base}
             {...attrs}
           >
             {children}
