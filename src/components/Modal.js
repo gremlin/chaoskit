@@ -8,12 +8,12 @@ import {
 } from 'body-scroll-lock'
 import useUpdateEffect from 'react-use/lib/useUpdateEffect'
 import useClickAway from 'react-use/lib/useClickAway'
-import { createPortal } from 'react-dom'
 import { useTheme } from 'emotion-theming'
 import { motion, AnimatePresence } from 'framer-motion'
 
 import { misc } from '../assets/styles/utility'
-import { isBrowser } from '../helpers/utility'
+
+import ClientOnlyPortal from './ClientOnlyPortal'
 
 export const StylesModalVariables = (theme) => ({
   padding: theme.space.large,
@@ -115,43 +115,44 @@ const Modal = ({
 
   useClickAway(modalDialogRef, () => setIsOpen(false))
 
-  return createPortal(
-    <AnimatePresence onExitComplete={onReverseComplete}>
-      {open && (
-        <motion.div
-          css={[StylesModalWrapper(theme)]}
-          className={clsx('CK__Modal', className)}
-          variants={modalVariants}
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
-          ref={modalRef}
-          onAnimationComplete={() =>
-            direction.current === 'forward' && onComplete()
-          }
-          {...rest}
-        >
+  return (
+    <ClientOnlyPortal>
+      <AnimatePresence onExitComplete={onReverseComplete}>
+        {open && (
           <motion.div
-            css={[
-              StylesModalDialog(theme),
-              {
-                width: StylesModalVariables(theme).size[size],
-              },
-            ]}
-            variants={modalDialogVariants}
+            css={[StylesModalWrapper(theme)]}
+            className={clsx('CK__Modal', className)}
+            variants={modalVariants}
             initial="hidden"
             animate="visible"
             exit="hidden"
-            transition={theme.motion.transition.base}
-            className="CK__Modal__Dialog"
-            ref={modalDialogRef}
+            ref={modalRef}
+            onAnimationComplete={() =>
+              direction.current === 'forward' && onComplete()
+            }
+            {...rest}
           >
-            {children}
+            <motion.div
+              css={[
+                StylesModalDialog(theme),
+                {
+                  width: StylesModalVariables(theme).size[size],
+                },
+              ]}
+              variants={modalDialogVariants}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              transition={theme.motion.transition.base}
+              className="CK__Modal__Dialog"
+              ref={modalDialogRef}
+            >
+              {children}
+            </motion.div>
           </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>,
-    isBrowser() ? document.body : null
+        )}
+      </AnimatePresence>
+    </ClientOnlyPortal>
   )
 }
 

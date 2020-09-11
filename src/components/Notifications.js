@@ -1,14 +1,13 @@
 import PropTypes from 'prop-types'
-import { createPortal } from 'react-dom'
 import { useTheme } from 'emotion-theming'
 import { motion, AnimatePresence } from 'framer-motion'
 import useTimeoutFn from 'react-use/lib/useTimeoutFn'
 
 import useNotificationsState from '../hooks/useNotifications'
 import { misc } from '../assets/styles/utility'
-import { isBrowser } from '../helpers/utility'
 
 import Icon from './Icon'
+import ClientOnlyPortal from './ClientOnlyPortal'
 
 const Notification = ({ notification }) => {
   const theme = useTheme()
@@ -101,36 +100,40 @@ const Notifications = () => {
 
   const theme = useTheme()
 
-  return createPortal(
-    <ul
-      css={{
-        margin: 0,
-        position: 'fixed',
-        top: 0,
-        right: 0,
-        padding: theme.space.small,
-        zIndex: 10,
-        overflowY: 'auto',
-        height: '100%',
-        width: 300,
-        scrollbarWidth: 'none',
-        msOverflowStyle: 'none',
-        WebkitOverflowScrolling: 'touch',
+  return (
+    <ClientOnlyPortal>
+      <ul
+        css={{
+          margin: 0,
+          position: 'fixed',
+          top: 0,
+          right: 0,
+          padding: theme.space.small,
+          zIndex: 10,
+          overflowY: 'auto',
+          height: '100%',
+          width: 300,
+          scrollbarWidth: 'none',
+          msOverflowStyle: 'none',
+          WebkitOverflowScrolling: 'touch',
 
-        '&::-webkit-scrollbar': {
-          width: 0,
-        },
+          '&::-webkit-scrollbar': {
+            width: 0,
+          },
 
-        '&:empty': [misc.hide],
-      }}
-    >
-      <AnimatePresence initial={false}>
-        {notifications.map((notification) => (
-          <Notification key={notification.index} notification={notification} />
-        ))}
-      </AnimatePresence>
-    </ul>,
-    isBrowser() ? document.body : null
+          '&:empty': [misc.hide],
+        }}
+      >
+        <AnimatePresence initial={false}>
+          {notifications.map((notification) => (
+            <Notification
+              key={notification.index}
+              notification={notification}
+            />
+          ))}
+        </AnimatePresence>
+      </ul>
+    </ClientOnlyPortal>
   )
 }
 
