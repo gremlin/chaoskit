@@ -24,6 +24,7 @@ const NotificationExample = () => {
         <ListItem>
           <Button
             type="primary"
+            size="small"
             onClick={() => {
               add({
                 title: 'Success!',
@@ -37,7 +38,23 @@ const NotificationExample = () => {
         </ListItem>
         <ListItem>
           <Button
+            type="secondary"
+            size="small"
+            onClick={() => {
+              add({
+                body: 'Your request has been submitted',
+                status: 'success',
+                timeout: 1000000,
+              })
+            }}
+          >
+            No title
+          </Button>
+        </ListItem>
+        <ListItem>
+          <Button
             type="danger"
+            size="small"
             onClick={() => {
               add({
                 title: 'Error!',

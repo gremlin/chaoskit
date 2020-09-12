@@ -38,7 +38,7 @@ const Notification = ({ notification }) => {
         background: theme.color.light.base,
         border: theme.border.base,
         boxShadow: theme.boxShadow.base,
-        alignItems: 'start',
+        alignItems: 'center',
         cursor: 'pointer',
         gap: theme.space.small,
         gridTemplateColumns: 'auto 1fr',
