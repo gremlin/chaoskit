@@ -24,6 +24,7 @@ import Modal from './Modal'
 import ModalBody from './ModalBody'
 import ModalFooter from './ModalFooter'
 import ModalHeader from './ModalHeader'
+import Notifications from './Notifications'
 import OffCanvas from './OffCanvas'
 import Pagination from './Pagination'
 import Radio from './Radio'
@@ -71,6 +72,7 @@ export {
   ModalBody,
   ModalFooter,
   ModalHeader,
+  Notifications,
   OffCanvas,
   Pagination,
   Radio,
