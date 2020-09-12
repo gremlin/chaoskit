@@ -39,6 +39,12 @@ const OffCanvas = ({
 
   const direction = useRef('forward')
 
+  const handleOnComplete = () => {
+    offCanvasPanelRef.current.focus()
+
+    onComplete()
+  }
+
   const offCanvasVariants = {
     hidden: {
       opacity: 0,
@@ -68,10 +74,10 @@ const OffCanvas = ({
 
   useUpdateEffect(() => {
     if (open) {
-      disableBodyScroll(offCanvasRef.current)
+      disableBodyScroll(offCanvasPanelRef.current)
       direction.current = 'forward'
     } else {
-      enableBodyScroll(offCanvasRef.current)
+      enableBodyScroll(offCanvasPanelRef.current)
       direction.current = 'reverse'
     }
   }, [open])
@@ -99,7 +105,7 @@ const OffCanvas = ({
             animate="visible"
             exit="hidden"
             onAnimationComplete={() =>
-              direction.current === 'forward' && onComplete()
+              direction.current === 'forward' && handleOnComplete()
             }
             {...rest}
           >
