@@ -1,9 +1,10 @@
-import { Fragment, useRef, useEffect } from 'react'
+import { Fragment, useRef } from 'react'
 import PropTypes from 'prop-types'
 import { useTheme } from 'emotion-theming'
 import { motion, useAnimation } from 'framer-motion'
 import clsx from 'clsx'
 import useUpdateEffect from 'react-use/lib/useUpdateEffect'
+import useMount from 'react-use/lib/useMount'
 
 import Button from './Button'
 
@@ -36,12 +37,12 @@ const Reveal = ({
     },
   }
 
-  useEffect(() => {
+  useMount(() => {
     if (reveal) {
       controls.set('visible')
       direction.current = 'forward'
     }
-  }, [])
+  })
 
   useUpdateEffect(() => {
     if (reveal) {
