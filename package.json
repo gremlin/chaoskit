@@ -33,7 +33,7 @@
     "eslint-plugin-react": "7.20.6",
     "eslint-plugin-react-hooks": "4.1.2",
     "formik": "2.1.5",
-    "framer-motion": "2.6.15",
+    "framer-motion": "2.7.1",
     "fstream": "1.0.12",
     "lodash-es": "4.17.15",
     "match-sorter": "4.2.1",
