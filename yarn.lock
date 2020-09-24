@@ -5715,10 +5715,10 @@ fragment-cache@^0.2.1:
   dependencies:
     map-cache "^0.2.2"
 
-framer-motion@2.7.1:
-  version "2.7.1"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-2.7.1.tgz#65bbfa1547eab8f896571779bd09702af50e4fc2"
-  integrity sha512-LVsM59b/01eFENudzbaJP5wU8iFCy5ftsbeJ8ELG5ydZVq99PlRukhzPn1RLEWGpn8cADMKHT893/ps0Zi1wjw==
+framer-motion@2.7.2:
+  version "2.7.2"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-2.7.2.tgz#9971ea4ee8565243e57ff25c1f1b058e7f28933d"
+  integrity sha512-ELGzshfzpmiA1ITv4Rl9NYtiLKB2rwI661yK1tuxyRiE9SHEg4f/XHZFvXYJAiaKmzI/XXfPclNrP4hUw7Sj2Q==
   dependencies:
     framesync "^4.1.0"
     hey-listen "^1.0.8"
@@ -8532,10 +8532,10 @@ pnp-webpack-plugin@1.6.4:
   dependencies:
     ts-pnp "^1.1.6"
 
-polished@3.6.6:
-  version "3.6.6"
-  resolved "https://registry.yarnpkg.com/polished/-/polished-3.6.6.tgz#91ef9eface9be5366c07672b63b736f50c151185"
-  integrity sha512-yiB2ims2DZPem0kCD6V0wnhcVGFEhNh0Iw0axNpKU+oSAgFt6yx6HxIT23Qg0WWvgS379cS35zT4AOyZZRzpQQ==
+polished@3.6.7:
+  version "3.6.7"
+  resolved "https://registry.yarnpkg.com/polished/-/polished-3.6.7.tgz#44cbd0047f3187d83db0c479ef0c7d5583af5fb6"
+  integrity sha512-b4OViUOihwV0icb9PHmWbR+vPqaSzSAEbgLskvb7ANPATVXGiYv/TQFHQo65S53WU9i5EQ1I03YDOJW7K0bmYg==
   dependencies:
     "@babel/runtime" "^7.9.2"
 
@@ -11207,10 +11207,10 @@ yaml@^1.7.2:
   resolved "https://registry.yarnpkg.com/yaml/-/yaml-1.10.0.tgz#3b593add944876077d4d683fee01081bd9fff31e"
   integrity sha512-yr2icI4glYaNG+KWONODapy2/jDdMSDnrONSjblABjD9B4Z5LgiircSt8m8sRZFNi08kG9Sm0uSHtEmP3zaEGg==
 
-zustand@3.1.2:
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/zustand/-/zustand-3.1.2.tgz#0dcb9197e38d82746ae2a22097d80009cd0efa4f"
-  integrity sha512-b9pbR29m/KYicTE33dF+SPQ3DoDnMT4ZHOS00QnzZ/SWArK7rn/3EVeSWWk3G2A9bexEHqj75Ob2w+GN547o/w==
+zustand@3.1.3:
+  version "3.1.3"
+  resolved "https://registry.yarnpkg.com/zustand/-/zustand-3.1.3.tgz#33df7f56ec11b3003458b60606addc94225b282c"
+  integrity sha512-Otuzh3r0GsatvsUWeXEwdYjZEw1TItWcAXwDGEHdXE4/k6WbAdVDxC21t/Poq4ZMB+2VaQNKICWu7eCBUJ65tQ==
 
 zwitch@^1.0.0:
   version "1.0.5"
