@@ -5,7 +5,6 @@ module.exports = {
     'prettier/react',
     'plugin:import/errors',
     'plugin:import/warnings',
-    'plugin:react-hooks/recommended',
   ],
   parser: 'babel-eslint',
   parserOptions: {
@@ -55,6 +54,8 @@ module.exports = {
     'react/forbid-foreign-prop-types': 0,
     'react/no-unescaped-entities': 0,
     'react/no-access-state-in-setstate': 0,
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
     'jsx-a11y/accessible-emoji': 0,
     'jsx-a11y/anchor-is-valid': [
       'error',
