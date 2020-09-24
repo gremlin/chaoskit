@@ -111,7 +111,7 @@ Alert.propTypes = {
   /** Animation callback */
   onReverseComplete: PropTypes.func,
   reveal: PropTypes.bool,
-  setReveal: PropTypes.func.isRequired,
+  setReveal: PropTypes.func,
   title: PropTypes.string,
   type: PropTypes.oneOf(['default', 'primary', 'warning', 'danger']),
 }
