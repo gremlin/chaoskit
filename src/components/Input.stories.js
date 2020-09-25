@@ -8,6 +8,7 @@ export default {
     name: 'input',
     validationMessage: 'Validation message',
     explanationMessage: 'Explanation message',
+    placeholder: 'Placeholder',
   },
 }
 
