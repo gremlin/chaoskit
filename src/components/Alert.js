@@ -69,7 +69,7 @@ const Alert = ({
 
   const ref = useRef()
 
-  if (!reveal) return null
+  if (!reveal && typeof setReveal === 'function') return null
 
   return (
     <div
