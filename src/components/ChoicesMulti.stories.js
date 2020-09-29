@@ -8,15 +8,15 @@ export default {
   component: ChoicesMulti,
 }
 
+const selectOpts = [
+  { value: 1, label: 'Option One' },
+  { value: 'test-string', label: 'Option Two' },
+  { value: 3, label: 'Option Three' },
+  { value: 4, label: 'Option Four' },
+]
+
 const Story = (args) => {
   const [selected, setSelected] = useState([])
-
-  const selectOpts = [
-    { value: 1, label: 'Option One' },
-    { value: 'test-string', label: 'Option Two' },
-    { value: 3, label: 'Option Three' },
-    { value: 4, label: 'Option Four' },
-  ]
 
   const handleChange = (name, selectedColors) => {
     setSelected(selectedColors)
@@ -41,7 +41,7 @@ const Story = (args) => {
     })
 
     setSelected(newSelected)
-  }, [])
+  }, [selected])
 
   useUpdateEffect(() => {
     console.log({ selected }) // eslint-disable-line no-console

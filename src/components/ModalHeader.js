@@ -5,7 +5,7 @@ import { useTheme } from 'emotion-theming'
 import Close, { StylesCloseVariables } from './Close'
 import { StylesModalVariables } from './Modal'
 
-const ModalHeader = ({ centered, className, onCloseClick, title, ...rest }) => {
+const ModalHeader = ({ centered, className, setIsOpen, title, ...rest }) => {
   const theme = useTheme()
 
   return (
@@ -40,7 +40,7 @@ const ModalHeader = ({ centered, className, onCloseClick, title, ...rest }) => {
         {title}
       </h4>
       <Close
-        onClick={onCloseClick}
+        onClick={() => setIsOpen(false)}
         css={[
           centered && {
             gridColumn: 3,
@@ -54,7 +54,7 @@ const ModalHeader = ({ centered, className, onCloseClick, title, ...rest }) => {
 ModalHeader.propTypes = {
   centered: PropTypes.bool,
   className: PropTypes.string,
-  onCloseClick: PropTypes.func.isRequired,
+  setIsOpen: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
 }
 

@@ -27,9 +27,7 @@ export default {
         type: 'number',
       },
     },
-    onStart: { action: 'Opening' },
     onComplete: { action: 'Open' },
-    onReverseStart: { action: 'Closing' },
     onReverseComplete: { action: 'Closed' },
   },
   parameters: {
@@ -51,7 +49,7 @@ const Story = (args) => {
 
   return (
     <Fragment>
-      <OffCanvas {...args} open={isOpen} onOffCanvasToggle={handleToggle}>
+      <OffCanvas {...args} open={isOpen} setIsOpen={toggleOpen}>
         Test
       </OffCanvas>
 

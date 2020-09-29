@@ -1,9 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
-import clsx from 'clsx'
+import { useRef } from 'react'
 import PropTypes from 'prop-types'
-import useUpdateEffect from 'react-use/lib/useUpdateEffect'
-import gsap from 'gsap'
 import { useTheme } from 'emotion-theming'
+import clsx from 'clsx'
 
 import { misc, text } from '../assets/styles/utility'
 
@@ -61,115 +59,24 @@ export const StylesAlertDanger = (theme) => ({
 const Alert = ({
   children,
   className,
-  close,
-  collapse = false,
-  onComplete = () => {},
-  onReverseComplete = () => {},
-  onReverseStart = () => {},
-  onStart = () => {},
+  reveal,
+  setReveal,
   title,
   type = 'default',
   ...rest
 }) => {
   const theme = useTheme()
 
-  const alertRef = useRef()
-  const [hidden, setHidden] = useState(false)
+  const ref = useRef()
 
-  const handleOnComplete = () => {
-    setHidden(true)
-
-    onComplete()
-  }
-
-  const handleOnReverseStart = () => {
-    setHidden(false)
-
-    onReverseStart()
-  }
-
-  const attachTimeline = () => {
-    const $alert = alertRef.current
-
-    let forward = true
-    let lastTime = 0
-
-    // Attach GSAP
-    $alert.timeline = gsap.timeline({
-      paused: true,
-      onStart: () => {
-        onStart()
-      },
-      onUpdate: () => {
-        const newTime = $alert.timeline.time()
-
-        if (
-          (forward && newTime < lastTime) ||
-          (!forward && newTime > lastTime)
-        ) {
-          forward = !forward
-          if (!forward) {
-            handleOnReverseStart()
-          }
-        }
-        lastTime = newTime
-      },
-      onComplete: () => {
-        handleOnComplete()
-      },
-      onReverseComplete: () => {
-        onReverseComplete()
-      },
-    })
-
-    $alert.timeline.to($alert, {
-      duration: theme.gsap.timing.long,
-      marginTop: -$alert.offsetHeight,
-      transformOrigin: 'center center',
-      yPercent: 50,
-      autoAlpha: 0,
-      ease: theme.gsap.transition.base,
-    })
-
-    if (collapse) {
-      $alert.timeline.progress(1)
-    }
-  }
-
-  const collapseAlert = () => {
-    const $alert = alertRef.current
-
-    if ($alert && $alert.timeline) $alert.timeline.play()
-  }
-
-  const openAlert = () => {
-    const $alert = alertRef.current
-
-    if ($alert && $alert.timeline) $alert.timeline.reverse()
-  }
-
-  useEffect(() => {
-    attachTimeline()
-  }, [])
-
-  useUpdateEffect(() => {
-    if (collapse) {
-      collapseAlert()
-    } else {
-      openAlert()
-    }
-  }, [collapse])
+  if (!reveal && typeof setReveal === 'function') return null
 
   return (
     <div
       css={[
-        StylesAlertBase(theme, {
-          close,
-        }),
+        StylesAlertBase(theme),
 
-        hidden && misc.hide,
-
-        close && {
+        typeof setReveal === 'function' && {
           display: 'grid',
           gridTemplateColumns: '1fr auto',
           gap: theme.space.small,
@@ -182,15 +89,16 @@ const Alert = ({
       ]}
       className={clsx('CK__Alert', className)}
       role="alert"
-      ref={alertRef}
-      aria-hidden={hidden ? 'true' : 'false'}
+      ref={ref}
       {...rest}
     >
       <div className={`CK__Alert__Content ${theme.settings.classes.trim}`}>
         {title && <h4 className="CK__Alert__Title">{title}</h4>}
         {children}
       </div>
-      {close && <Close className="CK__Alert__Close" onClick={collapseAlert} />}
+      {typeof setReveal === 'function' && (
+        <Close className="CK__Alert__Close" onClick={() => setReveal(false)} />
+      )}
     </div>
   )
 }
@@ -198,16 +106,12 @@ const Alert = ({
 Alert.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
-  collapse: PropTypes.bool,
   /** Animation callback */
   onComplete: PropTypes.func,
   /** Animation callback */
   onReverseComplete: PropTypes.func,
-  /** Animation callback */
-  onReverseStart: PropTypes.func,
-  /** Animation callback */
-  onStart: PropTypes.func,
-  close: PropTypes.bool,
+  reveal: PropTypes.bool,
+  setReveal: PropTypes.func,
   title: PropTypes.string,
   type: PropTypes.oneOf(['default', 'primary', 'warning', 'danger']),
 }

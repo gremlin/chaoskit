@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import { rgba } from 'polished'
 import { useTheme } from 'emotion-theming'
+import { motion } from 'framer-motion'
 
 import { misc } from '../assets/styles/utility'
 
@@ -11,14 +12,11 @@ const StylesSectionVariables = {
 }
 
 const Section = forwardRef(
-  (
-    { as: Component = 'section', space = 'large', slant, className, ...rest },
-    ref
-  ) => {
+  ({ space = 'large', slant, className, ...rest }, ref) => {
     const theme = useTheme()
 
     return (
-      <Component
+      <motion.section
         ref={ref}
         className={clsx(
           `CK__Section ${theme.settings.classes.trim}`,
@@ -83,7 +81,6 @@ const Section = forwardRef(
 )
 
 Section.propTypes = {
-  as: PropTypes.any,
   space: PropTypes.oneOf([
     'xsmall',
     'small',

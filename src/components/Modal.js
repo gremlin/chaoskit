@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react'
+import { useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import {
@@ -8,11 +8,12 @@ import {
 } from 'body-scroll-lock'
 import useUpdateEffect from 'react-use/lib/useUpdateEffect'
 import useClickAway from 'react-use/lib/useClickAway'
-import { createPortal } from 'react-dom'
-import gsap from 'gsap'
 import { useTheme } from 'emotion-theming'
+import { motion, AnimatePresence } from 'framer-motion'
 
 import { misc } from '../assets/styles/utility'
+
+import ClientOnlyPortal from './ClientOnlyPortal'
 
 export const StylesModalVariables = (theme) => ({
   padding: theme.space.large,
@@ -49,6 +50,7 @@ export const StylesModalDialog = (theme) => ({
   marginLeft: 'auto',
   marginRight: 'auto',
   maxWidth: '100%',
+  position: 'relative',
 
   [theme.mq.medium]: {
     marginTop: theme.space.xlarge,
@@ -56,27 +58,14 @@ export const StylesModalDialog = (theme) => ({
   },
 })
 
-const MODAL_ANIMATE_PROPERTIES = {
-  bottom: {
-    label: 'center bottom',
-    yPercent: 25,
-  },
-  top: {
-    label: 'center top',
-    yPercent: -25,
-  },
-}
-
 const Modal = ({
   animateFrom = 'bottom',
   children,
   className,
-  onComplete = () => {},
-  onOutsideModalClick = () => {},
-  onReverseComplete = () => {},
-  onReverseStart = () => {},
-  onStart = () => {},
   open,
+  setIsOpen,
+  onComplete = () => {},
+  onReverseComplete = () => {},
   size = 'base',
   ...rest
 }) => {
@@ -85,72 +74,26 @@ const Modal = ({
   const modalRef = useRef()
   const modalDialogRef = useRef()
 
-  const [renderModal, setRenderModal] = useState(open)
+  const direction = useRef('forward')
 
-  const openModal = () => {
-    const $modal = modalRef.current
-
-    if ($modal && $modal.timeline) $modal.timeline.play()
+  const modalVariants = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+    },
   }
 
-  const closeModal = () => {
-    const $modal = modalRef.current
-
-    if ($modal && $modal.timeline) {
-      $modal.timeline.reverse()
-
-      onReverseStart()
-    }
-  }
-
-  const handleOnReverseComplete = () => {
-    setRenderModal(false)
-  }
-
-  const attachTimeline = () => {
-    const $modal = modalRef.current
-    const $modalDialog = modalDialogRef.current
-
-    // Attach timeline to each instance
-    $modal.timeline = gsap.timeline({
-      paused: !open,
-      onStart: () => {
-        onStart()
-      },
-      onComplete: () => {
-        // Focus on active modal for screen readers
-        $modal.focus()
-
-        onComplete()
-      },
-      onReverseComplete: () => {
-        handleOnReverseComplete()
-      },
-    })
-
-    $modal.timeline.set($modalDialog, {
-      yPercent: MODAL_ANIMATE_PROPERTIES[animateFrom].yPercent,
-    })
-    $modal.timeline
-      .to(
-        $modal,
-        {
-          duration: theme.gsap.timing.base,
-          autoAlpha: 1,
-          backdropFilter: 'blur(2px)',
-        },
-        'modal'
-      )
-      .to(
-        $modalDialog,
-        {
-          duration: theme.gsap.timing.base,
-          autoAlpha: 1,
-          yPercent: 0,
-          ease: theme.gsap.transition.bounce,
-        },
-        'modal'
-      )
+  const modalDialogVariants = {
+    hidden: {
+      opacity: 0,
+      y: animateFrom === 'bottom' ? theme.space.xlarge : -theme.space.xlarge,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+    },
   }
 
   // On unmount, clear any/all locks on `<body />`
@@ -160,86 +103,70 @@ const Modal = ({
     }
   }, [])
 
-  useEffect(() => {
+  useUpdateEffect(() => {
     if (open) {
-      setRenderModal(true)
-    }
-  }, [open])
-
-  useUpdateEffect(() => {
-    if (renderModal) {
-      attachTimeline()
-
       disableBodyScroll(modalRef.current)
-
-      openModal()
+      direction.current = 'forward'
     } else {
-      onReverseComplete()
-    }
-  }, [renderModal])
-
-  useUpdateEffect(() => {
-    if (!open) {
       enableBodyScroll(modalRef.current)
-
-      closeModal()
+      direction.current = 'reverse'
     }
   }, [open])
 
-  useClickAway(modalDialogRef, () => onOutsideModalClick())
+  useClickAway(modalDialogRef, () => setIsOpen(false))
 
-  if (!renderModal) return null
-
-  return createPortal(
-    <div
-      css={[
-        StylesModalWrapper(theme),
-        {
-          // GSAP
-          visibility: 'hidden',
-        },
-      ]}
-      className={clsx('CK__Modal', className)}
-      ref={modalRef}
-      {...rest}
-    >
-      <div
-        css={[
-          StylesModalDialog(theme),
-          {
-            width: StylesModalVariables(theme).size[size],
-
-            // GSAP
-            visibility: 'hidden',
-            transformOrigin: MODAL_ANIMATE_PROPERTIES[animateFrom].label,
-          },
-        ]}
-        className="CK__Modal__Dialog"
-        ref={modalDialogRef}
-      >
-        {children}
-      </div>
-    </div>,
-    document.body
+  return (
+    <ClientOnlyPortal>
+      <AnimatePresence onExitComplete={onReverseComplete}>
+        {open && (
+          <motion.div
+            css={[StylesModalWrapper(theme)]}
+            className={clsx('CK__Modal', className)}
+            variants={modalVariants}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            ref={modalRef}
+            onAnimationComplete={() =>
+              direction.current === 'forward' && onComplete()
+            }
+            {...rest}
+          >
+            <motion.div
+              css={[
+                StylesModalDialog(theme),
+                {
+                  width: StylesModalVariables(theme).size[size],
+                },
+              ]}
+              variants={modalDialogVariants}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              transition={theme.motion.transition.base}
+              className="CK__Modal__Dialog"
+              ref={modalDialogRef}
+            >
+              {children}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </ClientOnlyPortal>
   )
 }
 
 Modal.propTypes = {
-  /** Change entrance direction */
-  animateFrom: PropTypes.oneOf(['bottom', 'top']),
+  animateFrom: PropTypes.string,
   children: PropTypes.node,
   className: PropTypes.string,
   size: PropTypes.oneOf(['base', 'small', 'large', 'xlarge']),
   open: PropTypes.bool,
-  onOutsideModalClick: PropTypes.func,
-  /** GSAP callback */
+  /** Animation callback */
   onComplete: PropTypes.func,
-  /** GSAP callback */
+  /** Animation callback */
   onReverseComplete: PropTypes.func,
-  /** GSAP callback */
-  onReverseStart: PropTypes.func,
-  /** GSAP callback */
-  onStart: PropTypes.func,
+  setIsOpen: PropTypes.func.isRequired,
 }
 
 export default Modal

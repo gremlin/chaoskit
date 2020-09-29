@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import Alert from './Alert'
 
 export default {
@@ -20,13 +22,13 @@ export default {
         disable: true,
       },
     },
-    onStart: { action: 'Closing' },
-    onComplete: { action: 'Closed' },
-    onReverseStart: { action: 'Opening' },
-    onReverseComplete: { action: 'Open' },
   },
 }
 
-const Story = (args) => <Alert {...args} />
+const Story = (args) => {
+  const [reveal, setReveal] = useState(true)
+
+  return <Alert {...args} reveal={reveal} setReveal={setReveal} />
+}
 
 export const Overview = Story.bind({})

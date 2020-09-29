@@ -6,6 +6,7 @@ import Button from './Button'
 import Checkbox from './Checkbox'
 import ChoicesMulti from './ChoicesMulti'
 import ChoicesSingle from './ChoicesSingle'
+import ClientOnlyPortal from './ClientOnlyPortal'
 import Close from './Close'
 import Container from './Container'
 import Dropdown from './Dropdown'
@@ -24,6 +25,7 @@ import Modal from './Modal'
 import ModalBody from './ModalBody'
 import ModalFooter from './ModalFooter'
 import ModalHeader from './ModalHeader'
+import Notifications from './Notifications'
 import OffCanvas from './OffCanvas'
 import Pagination from './Pagination'
 import Radio from './Radio'
@@ -53,6 +55,7 @@ export {
   Checkbox,
   ChoicesMulti,
   ChoicesSingle,
+  ClientOnlyPortal,
   Close,
   Container,
   Dropdown,
@@ -71,6 +74,7 @@ export {
   ModalBody,
   ModalFooter,
   ModalHeader,
+  Notifications,
   OffCanvas,
   Pagination,
   Radio,

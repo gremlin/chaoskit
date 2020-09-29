@@ -1,12 +1,11 @@
-import { useContext } from 'react'
+import { Fragment } from 'react'
+
+import useNotificationsState from '../hooks/useNotifications'
 
 import Button from './Button'
-import {
-  NotificationContext,
-  NotificationProvider,
-} from './NotificationProvider'
 import Inline from './Inline'
 import ListItem from './ListItem'
+import Notifications from './Notifications'
 
 export default {
   title: 'Components/Notification',
@@ -16,50 +15,61 @@ export default {
 }
 
 const NotificationExample = () => {
-  const { dispatch } = useContext(NotificationContext)
+  const add = useNotificationsState((state) => state.add)
 
   return (
-    <Inline>
-      <ListItem>
-        <Button
-          type="primary"
-          onClick={() => {
-            dispatch({
-              type: 'add',
-              payload: {
-                content: 'Hello from the success toast! 🎉',
-                timeout: -1,
-              },
-            })
-          }}
-        >
-          Add Success
-        </Button>
-      </ListItem>
-      <ListItem>
-        <Button
-          type="danger"
-          onClick={() => {
-            dispatch({
-              type: 'add',
-              payload: {
-                status: 'error',
-                title: 'Ruh-roh!',
-                content: 'Hello from the error toast!',
-                timeout: 10000,
-              },
-            })
-          }}
-        >
-          Add Error
-        </Button>
-      </ListItem>
-    </Inline>
+    <Fragment>
+      <Notifications />
+      <Inline>
+        <ListItem>
+          <Button
+            type="primary"
+            size="small"
+            onClick={() => {
+              add({
+                title: 'Success!',
+                body: 'Your request has been submitted',
+                status: 'success',
+              })
+            }}
+          >
+            Add Success
+          </Button>
+        </ListItem>
+        <ListItem>
+          <Button
+            type="secondary"
+            size="small"
+            onClick={() => {
+              add({
+                body: 'Your request has been submitted',
+                status: 'success',
+                timeout: 1000000,
+              })
+            }}
+          >
+            No title
+          </Button>
+        </ListItem>
+        <ListItem>
+          <Button
+            type="danger"
+            size="small"
+            onClick={() => {
+              add({
+                title: 'Error!',
+                body:
+                  'There was a problem with your submission. Please try again later.',
+                status: 'danger',
+              })
+            }}
+          >
+            Add Danger
+          </Button>
+        </ListItem>
+      </Inline>
+    </Fragment>
   )
 }
 
-export const Overview = () => (
-  <NotificationProvider>
-    <NotificationExample />
-  </NotificationProvider>
-)
+export const Overview = () => <NotificationExample />

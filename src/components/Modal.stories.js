@@ -32,9 +32,7 @@ export default {
         options: ['base', 'small', 'large', 'xlarge'],
       },
     },
-    onStart: { action: 'Opening' },
     onComplete: { action: 'Open' },
-    onReverseStart: { action: 'Closing' },
     onReverseComplete: { action: 'Closed' },
   },
   parameters: {
@@ -50,21 +48,17 @@ export default {
 const Story = (args) => {
   const [isOpen, setIsOpen] = useState(false)
 
-  const handleToggle = () => {
-    setIsOpen(!isOpen)
-  }
-
   return (
     <Fragment>
-      <Modal {...args} open={isOpen} onOutsideModalClick={handleToggle}>
-        <ModalHeader title="Hello" onCloseClick={handleToggle} />
+      <Modal {...args} open={isOpen} setIsOpen={setIsOpen}>
+        <ModalHeader title="Hello" setIsOpen={setIsOpen} />
         <ModalBody>
           <p>test</p>
         </ModalBody>
         <ModalFooter>hello</ModalFooter>
       </Modal>
 
-      <Button type="primary" onClick={handleToggle}>
+      <Button type="primary" onClick={() => setIsOpen(true)}>
         Open Modal
       </Button>
     </Fragment>
