@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useMemo, forwardRef } from 'react'
 import clsx from 'clsx'
 import PropTypes from 'prop-types'
 import { useTheme } from 'emotion-theming'
@@ -109,91 +109,97 @@ export const StylesSelectBase = (theme, props = {}) => [
   ],
 ]
 
-const Select = ({
-  className,
-  disabled,
-  explanationMessage,
-  label,
-  size,
-  multiple,
-  name,
-  noContrast,
-  options = [],
-  required,
-  validationMessage,
-  wrapperProps,
-  ...rest
-}) => {
-  const theme = useTheme()
+const Select = forwardRef(
+  (
+    {
+      className,
+      disabled,
+      explanationMessage,
+      label,
+      size,
+      multiple,
+      name,
+      noContrast,
+      options = [],
+      required,
+      validationMessage,
+      wrapperProps,
+      ...rest
+    },
+    ref
+  ) => {
+    const theme = useTheme()
 
-  // Only regenerate this if the name prop changes
-  const id = useMemo(() => `${name}-${generateUUID()}`, [name])
+    // Only regenerate this if the name prop changes
+    const id = useMemo(() => `${name}-${generateUUID()}`, [name])
 
-  const renderOpts = (option) => {
-    // If the option has options as well we're in an `<optgroup>`
-    if (option.options) {
+    const renderOpts = (option) => {
+      // If the option has options as well we're in an `<optgroup>`
+      if (option.options) {
+        return (
+          <optgroup key={option.value} label={option.label}>
+            {option.options.map((childOption) => (
+              <option key={childOption.value} value={childOption.value}>
+                {childOption.label}
+              </option>
+            ))}
+          </optgroup>
+        )
+      }
+
+      // We're in a default single-level `<option>`
       return (
-        <optgroup key={option.value} label={option.label}>
-          {option.options.map((childOption) => (
-            <option key={childOption.value} value={childOption.value}>
-              {childOption.label}
-            </option>
-          ))}
-        </optgroup>
+        <option key={option.value} value={option.value}>
+          {option.label}
+        </option>
       )
     }
 
-    // We're in a default single-level `<option>`
     return (
-      <option key={option.value} value={option.value}>
-        {option.label}
-      </option>
-    )
-  }
-
-  return (
-    <FormControlWrapper
-      required={required}
-      label={label}
-      labelProps={{
-        htmlFor: id,
-      }}
-      explanationMessage={explanationMessage}
-      validationMessage={validationMessage}
-      {...wrapperProps}
-    >
-      <div
-        css={[
-          StylesSelectWrapperBase(theme, {
-            multiple,
-            size,
-            noContrast,
-          }),
-        ]}
-        className={clsx('CK__Select', className)}
+      <FormControlWrapper
+        required={required}
+        label={label}
+        labelProps={{
+          htmlFor: id,
+        }}
+        explanationMessage={explanationMessage}
+        validationMessage={validationMessage}
+        {...wrapperProps}
       >
-        <select
-          id={id}
-          name={name}
-          multiple={multiple}
-          disabled={disabled}
-          size={size}
+        <div
           css={[
-            StylesSelectBase(theme, {
-              validationMessage,
-              noContrast,
+            StylesSelectWrapperBase(theme, {
               multiple,
               size,
+              noContrast,
             }),
           ]}
-          {...rest}
+          className={clsx('CK__Select', className)}
         >
-          {options.map(renderOpts)}
-        </select>
-      </div>
-    </FormControlWrapper>
-  )
-}
+          <select
+            ref={ref}
+            id={id}
+            name={name}
+            multiple={multiple}
+            disabled={disabled}
+            size={size}
+            css={[
+              StylesSelectBase(theme, {
+                validationMessage,
+                noContrast,
+                multiple,
+                size,
+              }),
+            ]}
+            {...rest}
+          >
+            {options.map(renderOpts)}
+          </select>
+        </div>
+      </FormControlWrapper>
+    )
+  }
+)
 
 Select.propTypes = {
   className: PropTypes.string,

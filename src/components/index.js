@@ -29,8 +29,6 @@ import Notifications from './Notifications'
 import OffCanvas from './OffCanvas'
 import Pagination from './Pagination'
 import Radio from './Radio'
-import RadioWithContext from './RadioWithContext'
-import RadioGroup from './RadioGroup'
 import Range from './Range'
 import Reveal from './Reveal'
 import Row from './Row'
@@ -78,8 +76,6 @@ export {
   OffCanvas,
   Pagination,
   Radio,
-  RadioWithContext,
-  RadioGroup,
   Range,
   Reveal,
   Row,

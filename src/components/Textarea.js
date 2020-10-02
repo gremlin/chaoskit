@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useMemo, forwardRef } from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import { useTheme } from 'emotion-theming'
@@ -37,48 +37,54 @@ export const StylesTextareaBase = (theme, props = {}) => [
   },
 ]
 
-const Textarea = ({
-  className,
-  label,
-  name,
-  noContrast,
-  validationMessage,
-  explanationMessage,
-  required,
-  wrapperProps,
-  ...rest
-}) => {
-  const theme = useTheme()
+const Textarea = forwardRef(
+  (
+    {
+      className,
+      label,
+      name,
+      noContrast,
+      validationMessage,
+      explanationMessage,
+      required,
+      wrapperProps,
+      ...rest
+    },
+    ref
+  ) => {
+    const theme = useTheme()
 
-  // Only regenerate this if the name prop changes
-  const id = useMemo(() => `${name}-${generateUUID()}`, [name])
+    // Only regenerate this if the name prop changes
+    const id = useMemo(() => `${name}-${generateUUID()}`, [name])
 
-  return (
-    <FormControlWrapper
-      required={required}
-      label={label}
-      labelProps={{
-        htmlFor: id,
-      }}
-      explanationMessage={explanationMessage}
-      validationMessage={validationMessage}
-      {...wrapperProps}
-    >
-      <TextareaAutoSize
-        css={[
-          StylesTextareaBase(theme, {
-            validationMessage,
-            noContrast,
-          }),
-        ]}
-        className={clsx('CK__Textarea', className)}
-        id={id}
-        name={name}
-        {...rest}
-      />
-    </FormControlWrapper>
-  )
-}
+    return (
+      <FormControlWrapper
+        required={required}
+        label={label}
+        labelProps={{
+          htmlFor: id,
+        }}
+        explanationMessage={explanationMessage}
+        validationMessage={validationMessage}
+        {...wrapperProps}
+      >
+        <TextareaAutoSize
+          css={[
+            StylesTextareaBase(theme, {
+              validationMessage,
+              noContrast,
+            }),
+          ]}
+          className={clsx('CK__Textarea', className)}
+          id={id}
+          name={name}
+          ref={ref}
+          {...rest}
+        />
+      </FormControlWrapper>
+    )
+  }
+)
 
 Textarea.propTypes = {
   className: PropTypes.string,

@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control, jsx-a11y/label-has-for */
-import clsx from 'clsx'
+import { forwardRef } from 'react'
 import PropTypes from 'prop-types'
+import clsx from 'clsx'
 import { useTheme } from 'emotion-theming'
 
 import check from '../assets/icons/check.svg'
@@ -86,41 +87,47 @@ export const StylesCheckboxBase = (theme, props = {}) => [
     },
 ]
 
-const Checkbox = ({
-  className,
-  disabled,
-  label,
-  name,
-  noContrast,
-  value,
-  wrapperProps,
-  ...rest
-}) => {
-  const theme = useTheme()
+const Checkbox = forwardRef(
+  (
+    {
+      className,
+      disabled,
+      label,
+      name,
+      noContrast,
+      value,
+      wrapperProps,
+      ...rest
+    },
+    ref
+  ) => {
+    const theme = useTheme()
 
-  return (
-    <FormChoiceLabel
-      label={label}
-      disabled={disabled}
-      className={clsx('CK__Checkbox', className)}
-      {...wrapperProps}
-    >
-      {/* Wrapper trick with zero-width space character that provides "centered top alignment" */}
-      <div css={{ display: 'flex', alignItems: 'center' }}>
-        &#8203;
-        <input
-          type="checkbox"
-          disabled={disabled}
-          name={name}
-          value={value}
-          css={[StylesCheckboxBase(theme, { noContrast })]}
-          {...rest}
-        />
-      </div>
-      {label && <span>{label}</span>}
-    </FormChoiceLabel>
-  )
-}
+    return (
+      <FormChoiceLabel
+        label={label}
+        disabled={disabled}
+        className={clsx('CK__Checkbox', className)}
+        {...wrapperProps}
+      >
+        {/* Wrapper trick with zero-width space character that provides "centered top alignment" */}
+        <div css={{ display: 'flex', alignItems: 'center' }}>
+          &#8203;
+          <input
+            type="checkbox"
+            disabled={disabled}
+            name={name}
+            value={value}
+            ref={ref}
+            css={[StylesCheckboxBase(theme, { noContrast })]}
+            {...rest}
+          />
+        </div>
+        {label && <span>{label}</span>}
+      </FormChoiceLabel>
+    )
+  }
+)
 
 Checkbox.propTypes = {
   className: PropTypes.string,
