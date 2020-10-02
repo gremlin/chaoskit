@@ -32,7 +32,7 @@
     "eslint-plugin-prettier": "3.1.4",
     "eslint-plugin-react": "7.21.2",
     "eslint-plugin-react-hooks": "4.1.2",
-    "formik": "2.1.7",
+    "formik": "2.1.5",
     "framer-motion": "2.7.7",
     "fstream": "1.0.12",
     "lodash-es": "4.17.15",
