@@ -52,7 +52,7 @@ FormikField.propTypes = {
     'radio',
     'checkbox',
     'toggle',
-  ]).isRequired,
+  ]),
 }
 
 export default FormikField
