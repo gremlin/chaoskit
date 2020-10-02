@@ -13,7 +13,6 @@ const FormikField = ({ as = 'input', ...rest }) => {
   const [field, meta] = useField(rest)
 
   const Component = useMemo(() => {
-    console.log('choose')
     // eslint-disable-next-line default-case
     switch (as) {
       case 'input':
