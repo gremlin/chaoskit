@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import { useField } from 'formik'
+import { useMemo } from 'react'
 
 import Input from './Input'
 import Textarea from './Textarea'
@@ -8,10 +9,11 @@ import Radio from './Radio'
 import Checkbox from './Checkbox'
 import Toggle from './Toggle'
 
-const FormikField = ({ as, ...rest }) => {
+const FormikField = ({ as = 'input', ...rest }) => {
   const [field, meta] = useField(rest)
 
-  const getComponent = () => {
+  const Component = useMemo(() => {
+    console.log('choose')
     // eslint-disable-next-line default-case
     switch (as) {
       case 'input':
@@ -27,9 +29,7 @@ const FormikField = ({ as, ...rest }) => {
       case 'toggle':
         return Toggle
     }
-  }
-
-  const Component = getComponent()
+  }, [as])
 
   const errorText = meta.error && meta.touched ? meta.error : ''
 
