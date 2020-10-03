@@ -12,6 +12,7 @@ import Container from './Container'
 import Dropdown from './Dropdown'
 import DropdownHeader from './DropdownHeader'
 import FormControlWrapper from './FormControlWrapper'
+import Form from './Form'
 import FormFooter from './FormFooter'
 import FormGroup from './FormGroup'
 import FormLabel from './FormLabel'
@@ -58,6 +59,7 @@ export {
   Container,
   Dropdown,
   DropdownHeader,
+  Form,
   FormControlWrapper,
   FormFooter,
   FormGroup,

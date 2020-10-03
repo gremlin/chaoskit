@@ -5,6 +5,7 @@ import * as yup from 'yup'
 import Button from './Button'
 import FormGroup from './FormGroup'
 import FormField from './FormField'
+import Form from './Form'
 
 export default {
   title: 'Forms/Hook Form',
@@ -35,7 +36,7 @@ const Story = () => {
 
   return (
     <FormProvider {...methods}>
-      <form onSubmit={methods.handleSubmit(handleSubmit)} noValidate>
+      <Form onSubmit={methods.handleSubmit(handleSubmit)} noValidate>
         <FormField name="name" label="Name" required />
         <FormField type="email" name="email" label="Email" required />
         <FormField as="textarea" name="message" label="Message" required />
@@ -44,7 +45,7 @@ const Story = () => {
             Submit
           </Button>
         </FormGroup>
-      </form>
+      </Form>
     </FormProvider>
   )
 }
