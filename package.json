@@ -52,7 +52,7 @@
   "devDependencies": {
     "@babel/preset-env": "7.11.5",
     "@babel/preset-react": "7.10.4",
-    "@hookform/resolvers": "0.1.1",
+    "@hookform/resolvers": "1.0.0",
     "@storybook/addon-a11y": "6.0.22",
     "@storybook/addon-essentials": "6.0.22",
     "@storybook/addons": "6.0.22",
@@ -61,9 +61,9 @@
     "babel-eslint": "10.1.0",
     "babel-loader": "8.1.0",
     "formik": "2.1.5",
+    "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-hook-form": "6.9.0",
-    "react": "16.13.1",
     "yup": "0.29.3"
   },
   "peerDependencies": {
@@ -71,9 +71,9 @@
     "react-dom": ">=16.13.1"
   },
   "optionalDependencies": {
-    "@hookform/resolvers": ">=0.1.1",
-    "react-hook-form": ">=6.9.0",
+    "@hookform/resolvers": ">=1.0.0",
     "formik": ">=2.1.5",
+    "react-hook-form": ">=6.9.0",
     "yup": ">=0.29.3"
   },
   "license": "MIT",
