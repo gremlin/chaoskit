@@ -1,12 +1,14 @@
-import { Form, Formik } from 'formik'
+import { useForm, FormProvider } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 
 import Button from './Button'
 import FormGroup from './FormGroup'
-import FormikField from './FormikField'
+import FormField from './FormField'
+import Form from './Form'
 
 export default {
-  title: 'Forms/Formik',
+  title: 'Forms/Hook Form',
   parameters: {
     controls: { hideNoControlsWarning: true },
   },
@@ -19,31 +21,32 @@ const schema = yup.object().shape({
 })
 
 const Story = () => {
+  const methods = useForm({
+    defaultValues: {
+      name: '',
+      email: '',
+      message: '',
+    },
+    resolver: yupResolver(schema),
+  })
+
   const handleSubmit = (values) => {
     console.log(values) // eslint-disable-line no-console
   }
 
   return (
-    <Formik
-      initialValues={{
-        name: '',
-        email: '',
-        message: '',
-      }}
-      validationSchema={schema}
-      onSubmit={handleSubmit}
-    >
-      <Form>
-        <FormikField name="name" label="Name" required />
-        <FormikField type="email" name="email" label="Email" required />
-        <FormikField as="textarea" name="message" label="Message" required />
+    <FormProvider {...methods}>
+      <Form onSubmit={methods.handleSubmit(handleSubmit)} noValidate>
+        <FormField name="name" label="Name" required />
+        <FormField type="email" name="email" label="Email" required />
+        <FormField as="textarea" name="message" label="Message" required />
         <FormGroup>
           <Button type="primary" actionType="submit">
             Submit
           </Button>
         </FormGroup>
       </Form>
-    </Formik>
+    </FormProvider>
   )
 }
 
