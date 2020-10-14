@@ -79,6 +79,8 @@ const ChoicesSingle = ({
       switch (type) {
         case useCombobox.stateChangeTypes.InputKeyDownEnter:
         case useCombobox.stateChangeTypes.ItemClick:
+        case useCombobox.stateChangeTypes.InputBlur:
+          return {
             ...changes,
             inputValue: '', // Don't add the item string as input value at selection.
           }
