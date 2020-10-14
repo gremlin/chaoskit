@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import useUpdateEffect from 'react-use/lib/useUpdateEffect'
 
 import ChoicesSingle from './ChoicesSingle'
 
@@ -9,26 +8,19 @@ export default {
 }
 
 const Story = (args) => {
-  const [selected, setSelected] = useState(-1)
+  const [selectedItem, setSelectedItem] = useState({})
 
-  const handleChange = (name, selectedColor) => {
-    setSelected(selectedColor.value)
+  function handleSelectedItemChange({ selectedItem: selected }) {
+    console.log(selected)
+
+    setSelectedItem(selected)
   }
-
-  const handleRemoveItem = () => {
-    setSelected(-1)
-  }
-
-  useUpdateEffect(() => {
-    console.log({ selected }) // eslint-disable-line no-console
-  }, [selected])
 
   return (
     <ChoicesSingle
+      selectedItem={selectedItem}
+      handleSelectedItemChange={handleSelectedItemChange}
       {...args}
-      selected={selected}
-      onChange={handleChange}
-      removeItem={handleRemoveItem}
     />
   )
 }
@@ -58,12 +50,12 @@ Overview.argTypes = {
       disable: true,
     },
   },
-  removeItem: {
+  selectedItem: {
     control: {
       disable: true,
     },
   },
-  onChange: {
+  handleSelectedItem: {
     control: {
       disable: true,
     },
