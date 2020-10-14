@@ -1,66 +1,73 @@
 import clsx from 'clsx'
 import PropTypes from 'prop-types'
 import { useTheme } from 'emotion-theming'
+import { forwardRef } from 'react'
 
 import { list } from '../assets/styles/utility'
 
-const List = ({
-  as: Component = 'ul',
-  className,
-  space,
-  type,
-  border,
-  noContrast,
-  ...rest
-}) => {
-  const theme = useTheme()
+const List = forwardRef(
+  (
+    {
+      as: Component = 'ul',
+      className,
+      space,
+      type,
+      border,
+      noContrast,
+      ...rest
+    },
+    ref
+  ) => {
+    const theme = useTheme()
 
-  return (
-    <Component
-      css={[
-        list.reset,
-        {
-          gridTemplateColumns: 'minmax(0, 1fr)', // Fix for `pre` tags thay may occur within
-          gap: space && theme.space[space],
-        },
+    return (
+      <Component
+        ref={ref}
+        css={[
+          list.reset,
+          {
+            gridTemplateColumns: 'minmax(0, 1fr)', // Fix for `pre` tags thay may occur within
+            gap: space && theme.space[space],
+          },
 
-        border && {
-          '> li:not(:first-of-type)': [
-            {
-              paddingTop: space && theme.space[space],
-              borderTop: theme.border.base,
-            },
-
-            theme.settings.contrast.enable &&
-              !noContrast && {
-                '.u-contrast &': {
-                  borderColor: theme.contrast.border,
-                },
+          border && {
+            '> li:not(:first-of-type)': [
+              {
+                paddingTop: space && theme.space[space],
+                borderTop: theme.border.base,
               },
-          ],
-        },
 
-        type === 'numbers' &&
-          list.numbers({
-            theme,
-            space: space && theme.space[space],
-            border,
-            noContrast,
-          }),
+              theme.settings.contrast.enable &&
+                !noContrast && {
+                  '.u-contrast &': {
+                    borderColor: theme.contrast.border,
+                  },
+                },
+            ],
+          },
 
-        type === 'circles' &&
-          list.circles({
-            theme,
-            space: space && theme.space[space],
-            border,
-            noContrast,
-          }),
-      ]}
-      className={clsx('CK__List', className)}
-      {...rest}
-    />
-  )
-}
+          type === 'numbers' &&
+            list.numbers({
+              theme,
+              space: space && theme.space[space],
+              border,
+              noContrast,
+            }),
+
+          type === 'circles' &&
+            list.circles({
+              theme,
+              space: space && theme.space[space],
+              border,
+              noContrast,
+            }),
+        ]}
+        className={clsx('CK__List', className)}
+        {...rest}
+      />
+    )
+  }
+)
 
 List.propTypes = {
   as: PropTypes.oneOf(['ul', 'ol']),

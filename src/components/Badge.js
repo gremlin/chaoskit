@@ -48,7 +48,7 @@ export const StylesBadgeRounded = (theme) => ({
   borderRadius: StylesBadgeVariables(theme).height / 2,
 })
 
-const Badge = ({ className, label, rounded, type, ...rest }) => {
+const Badge = ({ className, children, rounded, type, ...rest }) => {
   const theme = useTheme()
 
   return (
@@ -63,14 +63,14 @@ const Badge = ({ className, label, rounded, type, ...rest }) => {
       className={clsx('CK__Badge', className)}
       {...rest}
     >
-      {label}
+      {children}
     </div>
   )
 }
 
 Badge.propTypes = {
   className: PropTypes.string,
-  label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+  children: PropTypes.node,
   rounded: PropTypes.bool,
   type: PropTypes.oneOf(['default', 'primary', 'danger', 'secondary']),
 }

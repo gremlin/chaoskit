@@ -4,7 +4,7 @@ export default {
   title: 'Components/Badge',
   component: Badge,
   args: {
-    label: 'Badge',
+    children: 'Badge',
   },
 }
 

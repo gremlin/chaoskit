@@ -1,19 +1,15 @@
 import clsx from 'clsx'
 import PropTypes from 'prop-types'
 import { useTheme } from 'emotion-theming'
+import { forwardRef } from 'react'
 
-const ListItem = ({ className, ...rest }) => {
+const ListItem = forwardRef(({ className, ...rest }, ref) => {
   const theme = useTheme()
 
   return (
     <li
+      ref={ref}
       css={{
-        /*
-        '>:last-of-type': {
-          marginBottom: 0,
-        },
-        */
-
         'ul:not(.CK__Inline), ol': {
           marginTop: theme.space.base,
           paddingLeft: theme.space.base,
@@ -23,7 +19,7 @@ const ListItem = ({ className, ...rest }) => {
       {...rest}
     />
   )
-}
+})
 
 ListItem.propTypes = {
   className: PropTypes.string,
