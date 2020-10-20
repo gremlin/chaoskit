@@ -30,9 +30,9 @@
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-jsx-a11y": "6.3.1",
     "eslint-plugin-prettier": "3.1.4",
-    "eslint-plugin-react": "7.21.4",
+    "eslint-plugin-react": "7.21.5",
     "eslint-plugin-react-hooks": "4.1.2",
-    "framer-motion": "2.7.8",
+    "framer-motion": "2.9.3",
     "fstream": "1.0.12",
     "lodash-es": "4.17.15",
     "match-sorter": "4.2.1",
@@ -63,7 +63,7 @@
     "formik": "2.1.5",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-hook-form": "6.9.4",
+    "react-hook-form": "6.9.5",
     "yup": "0.29.3"
   },
   "peerDependencies": {
@@ -73,7 +73,7 @@
   "optionalDependencies": {
     "@hookform/resolvers": ">=1.0.0",
     "formik": "2.1.5",
-    "react-hook-form": ">=6.9.4",
+    "react-hook-form": ">=6.9.5",
     "yup": ">=0.29.3"
   },
   "license": "MIT",
