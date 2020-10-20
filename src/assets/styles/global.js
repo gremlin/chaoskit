@@ -21,7 +21,7 @@ export const globalStyles = (theme) => [
     // 8. Suppress focus outline on elements that are triggered via a mouse. Possible by bundling `what-input` library
     html: {
       // 1
-      fontFamily: theme.fontFamily.base,
+      fontFamily: 'var(--fontFamily__base)',
       fontSize: theme.fontSize.base,
       fontWeight: theme.fontWeight.base,
       lineHeight: theme.lineHeight.base,

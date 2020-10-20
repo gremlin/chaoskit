@@ -1,5 +1,18 @@
 import { fluidRange, hideVisually } from 'polished'
 
+export const lighten = {
+  filter: 'brightness(120%) saturate(120%)',
+}
+
+export const darken = {
+  filter: 'brightness(80%) saturate(00%)',
+}
+
+export const disabled = {
+  opacity: 'var(--opacity__base)',
+  filter: 'grayscale(100%)',
+}
+
 // Avoid using this in SSR applications as they have trouble matching against universal selectors
 // Use `.use-trimChildren` utility class instead
 export const trimChildren = {

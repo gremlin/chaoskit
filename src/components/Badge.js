@@ -33,8 +33,8 @@ export const StylesBadgeSecondary = (theme) => ({
 })
 
 export const StylesBadgePrimary = (theme) => ({
-  borderColor: theme.color.primary.base,
-  background: theme.color.primary.base,
+  borderColor: 'var(--color__primary)',
+  background: 'var(--color__primary)',
   color: theme.contrast.base,
 })
 
