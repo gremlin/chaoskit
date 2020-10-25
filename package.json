@@ -7,7 +7,7 @@
     "not dead",
     "not op_mini all"
   ],
-  "version": "3.2.6",
+  "version": "3.2.7",
   "author": "Zach Schnackel <zach@gremlin.com>",
   "dependencies": {
     "@emotion/babel-preset-css-prop": "10.0.27",
