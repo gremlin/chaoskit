@@ -9,7 +9,7 @@ export default {
     label: 'Form label',
     name: 'textarea',
     placeholder: 'Message',
-    validationMessage: 'Validation message',
+    required: true,
     explanationMessage: 'Explanation message',
   },
 }

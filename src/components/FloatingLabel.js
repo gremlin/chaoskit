@@ -13,6 +13,7 @@ const FloatingLabel = ({
   noContrast,
   validationMessage,
   required,
+  validationPosition = 'center',
   ...rest
 }) => {
   const theme = useTheme()
@@ -50,27 +51,29 @@ const FloatingLabel = ({
         <span
           css={[
             {
-              display: 'grid',
-              placeContent: 'center',
-              padding: theme.space.xsmall,
-              background: theme.color.danger.base,
-              borderRadius: '50%',
               position: 'absolute',
-              color: theme.contrast.base,
+              color: theme.color.danger.base,
               fontSize: theme.fontSize.xsmall,
-              top: 0,
-              right: 0,
+              right: form.variables(theme).padding,
               zIndex: 2,
               pointerEvents: 'none',
-              transform: 'translate(50%, -50%)',
+            },
+
+            validationPosition === 'center' && {
+              top: '50%',
+              transform: 'translateY(-50%)',
+            },
+
+            validationPosition === 'top' && {
+              top: theme.space.xsmall,
+              right: theme.space.small,
             },
 
             theme.settings.contrast.enable &&
               theme.settings.contrast.form &&
               !noContrast && {
                 '.u-contrast &': {
-                  background: theme.contrast.base,
-                  color: theme.color.danger.base,
+                  color: theme.contrast.base,
                 },
               },
           ]}
@@ -80,7 +83,7 @@ const FloatingLabel = ({
               top: 0,
 
               '.icon-stroke': {
-                strokeWidth: 1.25, // Adjust stroke width specifically for these icons to help legibility
+                strokeWidth: 1, // Adjust stroke width specifically for these icons to help legibility
               },
             }}
             icon={!validationMessage ? 'asterisk' : 'alert-circle'}
@@ -95,6 +98,7 @@ FloatingLabel.propTypes = {
   className: PropTypes.string,
   noContrast: PropTypes.bool,
   validationMessage: PropTypes.string,
+  validationPosition: PropTypes.oneOf(['center', 'top']),
   required: PropTypes.bool,
 }
 

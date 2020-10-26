@@ -14,6 +14,7 @@ export const StylesTextareaBase = (theme, props = {}) => [
   form.base(theme),
   form.input(theme, {
     error: props.validationMessage,
+    required: props.required,
     noContrast: props.noContrast,
   }),
   {
@@ -87,6 +88,7 @@ const Textarea = forwardRef(
               StylesTextareaBase(theme, {
                 validationMessage,
                 noContrast,
+                required,
                 placeholder: floatingLabel && placeholder,
               }),
             ]}
@@ -102,6 +104,7 @@ const Textarea = forwardRef(
               required={required}
               validationMessage={validationMessage}
               noContrast={noContrast}
+              validationPosition="top"
             >
               {placeholder}
             </FloatingLabel>

@@ -21,6 +21,7 @@ export const StylesInputBase = (theme, props = {}) => [
   !['file', 'submit', 'reset', 'button', 'image'].includes(props.type) &&
     form.input(theme, {
       error: props.validationMessage,
+      required: props.required,
       noContrast: props.noContrast,
       placeholder: props.placeholder,
     }),
@@ -134,6 +135,7 @@ const Input = forwardRef(
               prefixIcon,
               validationMessage,
               noContrast,
+              required,
               placeholder: floatingLabel && placeholder,
             })}
             className={clsx('CK__Input', className)}

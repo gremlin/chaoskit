@@ -37,8 +37,14 @@ const Story = () => {
   return (
     <FormProvider {...methods}>
       <Form onSubmit={methods.handleSubmit(handleSubmit)} noValidate>
-        <FormField name="name" label="Name" placeholder="Name" required />
-        <FormField type="email" name="email" label="Email" required />
+        <FormField name="name" placeholder="Name" required floatingLabel />
+        <FormField
+          type="email"
+          name="email"
+          placeholder="Email"
+          floatingLabel
+          required
+        />
         <FormField
           as="textarea"
           name="message"

@@ -1,5 +1,9 @@
 import { rgba } from 'polished'
 
+import { StylesIconVariables } from '../../../components/Icon'
+
+import { form } from '.'
+
 export const variables = (theme) => ({
   background: theme.color.light.base,
   boxShadow: theme.boxShadow.base,
@@ -107,15 +111,23 @@ export const input = (theme, props = {}) => [
     ],
   },
 
-  props.placeholder && {
-    '&:not(:placeholder-shown)': {
-      paddingTop: theme.space.small + theme.space.xsmall,
+  props.placeholder && [
+    {
+      '&:not(:placeholder-shown)': {
+        paddingTop: theme.space.small + theme.space.xsmall,
 
-      '+ .CK__FloatingLabel': {
-        opacity: 1,
+        '+ .CK__FloatingLabel': {
+          opacity: 1,
+        },
       },
     },
-  },
+
+    (props.required || props.error) && {
+      paddingRight: `calc(${
+        form.variables(theme).padding + theme.space.small
+      }px + ${StylesIconVariables.base})`,
+    },
+  ],
 
   props.error && {
     borderColor: theme.color.danger.base,
