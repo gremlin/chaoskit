@@ -69,7 +69,7 @@ const Icon = forwardRef(
         )
       }
 
-      console.error('Icon not found') // eslint-disable-line no-console
+      console.error(`Icon ${icon} not found`) // eslint-disable-line no-console
 
       return null
     }

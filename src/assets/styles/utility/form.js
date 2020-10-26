@@ -107,6 +107,16 @@ export const input = (theme, props = {}) => [
     ],
   },
 
+  props.placeholder && {
+    '&:not(:placeholder-shown)': {
+      paddingTop: theme.space.small + theme.space.xsmall,
+
+      '+ .CK__FloatingLabel': {
+        opacity: 1,
+      },
+    },
+  },
+
   props.error && {
     borderColor: theme.color.danger.base,
     boxShadow: `${theme.boxShadowOffset.base} ${rgba(

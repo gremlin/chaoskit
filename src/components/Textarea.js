@@ -8,6 +8,7 @@ import { form } from '../assets/styles/utility'
 import { generateUUID } from '../helpers/utility'
 
 import FormControlWrapper from './FormControlWrapper'
+import FloatingLabel from './FloatingLabel'
 
 export const StylesTextareaBase = (theme, props = {}) => [
   form.base(theme),
@@ -35,6 +36,16 @@ export const StylesTextareaBase = (theme, props = {}) => [
     }px`,
     maxHeight: 300,
   },
+
+  props.placeholder && {
+    '&:not(:placeholder-shown)': {
+      paddingTop: theme.space.base,
+
+      '+ .CK__FloatingLabel': {
+        opacity: 1,
+      },
+    },
+  },
 ]
 
 const Textarea = forwardRef(
@@ -44,6 +55,8 @@ const Textarea = forwardRef(
       label,
       name,
       noContrast,
+      placeholder,
+      floatingLabel,
       validationMessage,
       explanationMessage,
       required,
@@ -68,19 +81,32 @@ const Textarea = forwardRef(
         validationMessage={validationMessage}
         {...wrapperProps}
       >
-        <TextareaAutoSize
-          css={[
-            StylesTextareaBase(theme, {
-              validationMessage,
-              noContrast,
-            }),
-          ]}
-          className={clsx('CK__Textarea', className)}
-          id={id}
-          name={name}
-          ref={ref}
-          {...rest}
-        />
+        <div css={{ position: 'relative' }}>
+          <TextareaAutoSize
+            css={[
+              StylesTextareaBase(theme, {
+                validationMessage,
+                noContrast,
+                placeholder: floatingLabel && placeholder,
+              }),
+            ]}
+            className={clsx('CK__Textarea', className)}
+            id={id}
+            name={name}
+            ref={ref}
+            placeholder={placeholder}
+            {...rest}
+          />
+          {placeholder && floatingLabel && (
+            <FloatingLabel
+              required={required}
+              validationMessage={validationMessage}
+              noContrast={noContrast}
+            >
+              {placeholder}
+            </FloatingLabel>
+          )}
+        </div>
       </FormControlWrapper>
     )
   }
@@ -90,6 +116,8 @@ Textarea.propTypes = {
   className: PropTypes.string,
   explanationMessage: PropTypes.string,
   validationMessage: PropTypes.string,
+  floatingLabel: PropTypes.bool,
+  placeholder: PropTypes.string,
   required: PropTypes.bool,
   label: PropTypes.string,
   name: PropTypes.string.isRequired,

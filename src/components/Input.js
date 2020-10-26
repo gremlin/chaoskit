@@ -8,6 +8,7 @@ import { generateUUID } from '../helpers/utility'
 
 import FormControlWrapper from './FormControlWrapper'
 import Icon, { StylesIconVariables } from './Icon'
+import FloatingLabel from './FloatingLabel'
 
 export const StylesInputBase = (theme, props = {}) => [
   form.base(theme),
@@ -21,6 +22,7 @@ export const StylesInputBase = (theme, props = {}) => [
     form.input(theme, {
       error: props.validationMessage,
       noContrast: props.noContrast,
+      placeholder: props.placeholder,
     }),
 
   // Fix the cursor style for Chrome's increment/decrement buttons. For certain `font-size` values of the `input`, it causes the cursor style of the decrement button to change from `default` to `text`.
@@ -70,9 +72,11 @@ const Input = forwardRef(
       label,
       name,
       noContrast,
-      type,
+      type = 'text',
       validationMessage,
       explanationMessage,
+      floatingLabel,
+      placeholder,
       prefixIcon,
       required,
       wrapperProps,
@@ -130,15 +134,26 @@ const Input = forwardRef(
               prefixIcon,
               validationMessage,
               noContrast,
+              placeholder: floatingLabel && placeholder,
             })}
             className={clsx('CK__Input', className)}
             name={name}
             id={id}
             ref={ref}
             type={type}
+            placeholder={placeholder}
             disabled={disabled}
             {...rest}
           />
+          {placeholder && floatingLabel && (
+            <FloatingLabel
+              required={required}
+              validationMessage={validationMessage}
+              noContrast={noContrast}
+            >
+              {placeholder}
+            </FloatingLabel>
+          )}
         </div>
       </FormControlWrapper>
     )
@@ -148,19 +163,18 @@ const Input = forwardRef(
 Input.propTypes = {
   className: PropTypes.string,
   disabled: PropTypes.bool,
+  floatingLabel: PropTypes.bool,
   explanationMessage: PropTypes.string,
   validationMessage: PropTypes.string,
   noContrast: PropTypes.bool,
+  placeholder: PropTypes.string,
   prefixIcon: PropTypes.string,
   required: PropTypes.bool,
   label: PropTypes.string,
   name: PropTypes.string.isRequired,
   type: PropTypes.string,
+  value: PropTypes.string,
   wrapperProps: PropTypes.object,
-}
-
-Input.defaultProps = {
-  type: 'text',
 }
 
 export default Input
