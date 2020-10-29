@@ -127,6 +127,14 @@ const OffCanvas = ({
                     width: panelWidth,
                   },
                 },
+
+                align === 'left' && {
+                  borderTopRightRadius: theme.borderRadius.xlarge,
+                },
+
+                align === 'right' && {
+                  borderTopLeftRadius: theme.borderRadius.xlarge,
+                },
               ]}
               className={`CK__OffCanvas__Panel ${theme.settings.classes.trim}`}
               ref={offCanvasPanelRef}

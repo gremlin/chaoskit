@@ -158,6 +158,7 @@ const border = {
 const borderRadius = {
   base: 4,
   large: 8,
+  xlarge: 16,
 }
 
 const boxShadowColor = {
