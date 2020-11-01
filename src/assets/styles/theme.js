@@ -298,17 +298,17 @@ const fontSize = {
 
 // eslint-disable-next-line camelcase
 const BETA__fontSize = {
-  '2xsmall': 10,
+  xsmall2: 10,
   xsmall: 12,
   small: 14,
   base: 16,
   medium: 18,
   large: 20,
   xlarge: 26,
-  '2xlarge': 28,
-  '3xlarge': 34,
-  '4xlarge': 44,
-  '5xlarge': 50,
+  xlarge2: 28,
+  xlarge3: 34,
+  xlarge4: 44,
+  xlarge5: 50,
   get medium__fluid() {
     return fluidRange(
       {
@@ -347,7 +347,7 @@ const BETA__fontSize = {
       {
         prop: 'fontSize',
         fromSize: `${this.xlarge}px`,
-        toSize: `${this['2xlarge']}px`,
+        toSize: `${this.xlarge2}px`,
       },
       `${breakpoint.small}px`,
       `${breakpoint.large}px`
@@ -357,8 +357,8 @@ const BETA__fontSize = {
     return fluidRange(
       {
         prop: 'fontSize',
-        fromSize: `${this['2xlarge']}px`,
-        toSize: `${this['3xlarge']}px`,
+        fromSize: `${this.xlarge2}px`,
+        toSize: `${this.xlarge3}px`,
       },
       `${breakpoint.small}px`,
       `${breakpoint.large}px`
@@ -368,8 +368,8 @@ const BETA__fontSize = {
     return fluidRange(
       {
         prop: 'fontSize',
-        fromSize: `${this['3xlarge']}px`,
-        toSize: `${this['4xlarge']}px`,
+        fromSize: `${this.xlarge3}px`,
+        toSize: `${this.xlarge4}px`,
       },
       `${breakpoint.small}px`,
       `${breakpoint.large}px`
@@ -379,8 +379,8 @@ const BETA__fontSize = {
     return fluidRange(
       {
         prop: 'fontSize',
-        fromSize: `${this['4xlarge']}px`,
-        toSize: `${this['5xlarge']}px`,
+        fromSize: `${this.xlarge4}px`,
+        toSize: `${this.xlarge5}px`,
       },
       `${breakpoint.small}px`,
       `${breakpoint.large}px`
