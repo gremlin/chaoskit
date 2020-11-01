@@ -100,7 +100,7 @@ const Toggle = forwardRef(
                       stop: shade(0.075, theme.color.light.base),
                       position: 'to bottom right',
                     }),
-                    borderRadius: '50%',
+                    borderRadius: theme.borderRadius.rounded,
                     width: StylesToggleVariables(theme).buttonSize,
                     height: StylesToggleVariables(theme).buttonSize,
                     top: '50%',

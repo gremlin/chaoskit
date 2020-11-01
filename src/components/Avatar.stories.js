@@ -1,4 +1,5 @@
 import Avatar from './Avatar'
+import AvatarGroup from './AvatarGroup'
 
 export default {
   title: 'Components/Avatar',
@@ -21,3 +22,15 @@ export default {
 const Story = (args) => <Avatar {...args} />
 
 export const Overview = Story.bind({})
+
+export const Group = Story.bind({})
+
+Group.decorators = [
+  (Example) => (
+    <AvatarGroup>
+      <Example />
+      <Example />
+      <Example />
+    </AvatarGroup>
+  ),
+]

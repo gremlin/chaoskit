@@ -54,7 +54,7 @@ const Notification = ({ notification }) => {
     >
       <div
         css={{
-          borderRadius: '50%',
+          borderRadius: theme.borderRadius.rounded,
           background:
             theme.color[
               notification.status === 'success' ? 'primary' : 'danger'

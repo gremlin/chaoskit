@@ -16,7 +16,6 @@ export default {
     label: 'Form label',
     required: true,
     explanationMessage: 'Explanation message',
-    validationMessage: 'Validation message',
   },
   argTypes: {
     onChange: { action: 'Changed' },

@@ -8,7 +8,6 @@ export default {
   args: {
     label: 'Form label',
     name: 'input',
-    validationMessage: 'Validation message',
     explanationMessage: 'Explanation message',
     placeholder: 'Placeholder',
   },
