@@ -46,7 +46,7 @@ export const All = (args) => {
             css={{
               border: theme.border.base,
               borderRadius: theme.borderRadius.base,
-              boxShadow: theme.boxShadow.base,
+              boxShadow: theme.BETA__boxShadow.base,
               padding: theme.space.base,
               textAlign: 'center',
             }}

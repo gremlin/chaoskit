@@ -2,7 +2,7 @@ import { rgba } from 'polished'
 
 export const variables = (theme) => ({
   background: theme.color.light.base,
-  boxShadow: theme.boxShadow.base,
+  boxShadow: theme.BETA__boxShadow.base,
   height: theme.height.base,
   padding: theme.space.base,
   fontColor: theme.fontColor.base,

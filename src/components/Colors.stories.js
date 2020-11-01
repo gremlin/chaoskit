@@ -17,7 +17,7 @@ const ColorBlock = ({ title, ...rest }) => {
       css={{
         borderRadius: theme.borderRadius.large,
         border: theme.border.base,
-        boxShadow: theme.boxShadow.base,
+        boxShadow: theme.BETA__boxShadow.base,
         padding: theme.space.xsmall,
       }}
     >

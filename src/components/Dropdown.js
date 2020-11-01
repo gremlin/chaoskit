@@ -111,7 +111,7 @@ const Dropdown = ({
                 borderRadius: theme.borderRadius.base,
                 textAlign: 'left',
                 zIndex: 10,
-                boxShadow: theme.boxShadow.neutral,
+                boxShadow: theme.BETA__boxShadow.large,
                 transformOrigin:
                   attrs['data-placement'] &&
                   getTransformOrigin(attrs['data-placement']),

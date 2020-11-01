@@ -44,7 +44,7 @@ export const StylesModalDialog = (theme) => ({
   background: theme.color.light.base,
   borderRadius: theme.borderRadius.large,
   zIndex: 5,
-  boxShadow: theme.boxShadow.large,
+  boxShadow: theme.BETA__boxShadow.xlarge,
   marginTop: theme.space.base,
   marginBottom: theme.space.base,
   marginLeft: 'auto',

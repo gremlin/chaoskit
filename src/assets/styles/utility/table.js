@@ -20,7 +20,7 @@ export const styles = (theme) => ({
       marginBottom: theme.space.base,
       captionSide: 'bottom',
       border: theme.border.base,
-      boxShadow: theme.boxShadow.base,
+      boxShadow: theme.BETA__boxShadow.base,
       borderRadius: theme.borderRadius.base,
       tableLayout: 'fixed',
       maxWidth: 'max-content',

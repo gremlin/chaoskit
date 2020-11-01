@@ -75,7 +75,7 @@ const Tooltip = ({
               wordWrap: 'break-word',
               textAlign: 'center',
               position: 'relative',
-              boxShadow: theme.boxShadow.base,
+              boxShadow: theme.BETA__boxShadow.base,
               zIndex: 10,
               transformOrigin:
                 attrs['data-placement'] &&

@@ -9,7 +9,7 @@ import caretDouble from '../assets/icons/caret-double.svg'
 
 import FormControlWrapper from './FormControlWrapper'
 
-export const StylesSelectVariables = (theme, props = {}) => ({
+export const StylesSelectVariables = (theme) => ({
   iconSize: theme.fontSize.small,
   get arrow() {
     return {
@@ -25,7 +25,7 @@ export const StylesSelectVariables = (theme, props = {}) => ({
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'contain',
       pointerEvents: 'none',
-      opacity: props.disabled && theme.opacity.base,
+      opacity: theme.opacity.base,
       zIndex: '2',
     }
   },
@@ -41,8 +41,7 @@ export const StylesSelectWrapperBase = (theme, props = {}) => [
 
   !props.multiple &&
     !props.size && {
-      '&::after': StylesSelectVariables(theme, { disabled: props.disabled })
-        .arrow,
+      '&::after': StylesSelectVariables(theme).arrow,
     },
 
   theme.settings.contrast.enable &&

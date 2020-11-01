@@ -106,7 +106,7 @@ const Toggle = forwardRef(
                     top: '50%',
                     zIndex: 1,
                     transition: StylesToggleVariables(theme).transition,
-                    boxShadow: theme.boxShadow.base,
+                    boxShadow: theme.BETA__boxShadow.base,
                   },
 
                   '&:checked': {
