@@ -17,7 +17,7 @@ const ContrastWrapper = ({ className, ...rest }) => {
         {
           padding: theme.space.large,
           borderRadius: theme.borderRadius.base,
-          boxShadow: theme.boxShadow.large,
+          boxShadow: theme.BETA__boxShadow.large,
         },
       ]}
       {...rest}

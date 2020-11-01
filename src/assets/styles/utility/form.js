@@ -57,10 +57,6 @@ export const input = (theme, props = {}) => [
       borderColor: theme.color.primary.base,
       outline: 0,
       background: variables(theme).background,
-      boxShadow: `${theme.boxShadowOffset.base} ${rgba(
-        theme.color.primary.base,
-        0.75
-      )}`,
       color: variables(theme).fontColor,
       zIndex: 1,
     },
@@ -109,10 +105,6 @@ export const input = (theme, props = {}) => [
 
   props.error && {
     borderColor: theme.color.danger.base,
-    boxShadow: `${theme.boxShadowOffset.base} ${rgba(
-      theme.color.danger.base,
-      0.75
-    )}`,
   },
 
   theme.settings.contrast.enable &&
@@ -123,14 +115,10 @@ export const input = (theme, props = {}) => [
         border: '1px solid',
         borderColor: variables(theme).contrast.borderColor,
         color: variables(theme).contrast.fontColor,
-        boxShadow: 'none',
 
         '&:focus': {
           borderColor: variables(theme).contrast.borderColor,
           background: 'transparent',
-          boxShadow: `${theme.boxShadowOffset.base} ${
-            variables(theme).contrast.background
-          }`,
         },
 
         '&:disabled': {

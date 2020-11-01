@@ -1,3 +1,5 @@
+import ContrastWrapper from '../../.storybook/components/ContrastWrapper'
+
 import Input from './Input'
 
 export default {
@@ -17,3 +19,11 @@ const Story = (args) => <Input {...args} />
 export const Overview = Story.bind({})
 
 export const Contrast = Story.bind({})
+
+Contrast.decorators = [
+  (Example) => (
+    <ContrastWrapper>
+      <Example />
+    </ContrastWrapper>
+  ),
+]
