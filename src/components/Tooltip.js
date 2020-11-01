@@ -13,7 +13,7 @@ const StylesTooltipVariables = (theme, variation) => ({
     variation === 'light' ? theme.color.light.base : theme.color.dark.base,
   borderColor:
     variation === 'light' ? theme.color.border.base : theme.color.dark.base,
-  borderRadius: theme.settings.ui.radius && theme.borderRadius.base,
+  borderRadius: theme.borderRadius.base,
   color: variation === 'light' ? theme.fontColor.base : theme.contrast.base,
   padding: theme.space.small,
 })

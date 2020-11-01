@@ -84,7 +84,7 @@ const Toggle = forwardRef(
                   position: 'relative',
                   width: StylesToggleVariables(theme).width,
                   height: StylesToggleVariables(theme).height,
-                  borderRadius: StylesToggleVariables(theme).height / 2,
+                  borderRadius: theme.borderRadius.rounded,
                   background: StylesToggleVariables(theme).background.default,
                   cursor: 'pointer',
                   transition: StylesToggleVariables(theme).transition,

@@ -16,7 +16,7 @@ const ContrastWrapper = ({ className, ...rest }) => {
         misc.trimChildren,
         {
           padding: theme.space.large,
-          borderRadius: theme.settings.ui.radius && theme.borderRadius.base,
+          borderRadius: theme.borderRadius.base,
           boxShadow: theme.boxShadow.large,
         },
       ]}

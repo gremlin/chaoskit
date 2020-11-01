@@ -84,7 +84,7 @@ const Range = forwardRef(
               margin: 0,
               verticalAlign: 'middle',
               appearance: 'none',
-              borderRadius: StylesRangeVariables(theme).track.height / 2,
+              borderRadius: theme.borderRadius.rounded,
               height: StylesRangeVariables(theme).track.height,
               padding: 0,
               // 2

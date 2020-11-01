@@ -45,7 +45,7 @@ export const All = (args) => {
           <div
             css={{
               border: theme.border.base,
-              borderRadius: theme.settings.ui.radius && theme.borderRadius.base,
+              borderRadius: theme.borderRadius.base,
               boxShadow: theme.boxShadow.base,
               padding: theme.space.base,
               textAlign: 'center',

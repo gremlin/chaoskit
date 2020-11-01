@@ -159,6 +159,7 @@ const borderRadius = {
   base: 4,
   large: 8,
   xlarge: 16,
+  rounded: 9999,
 }
 
 // eslint-disable-next-line camelcase
@@ -456,9 +457,6 @@ const settings = {
     button: true,
     form: true,
     table: true,
-  },
-  ui: {
-    radius: true,
   },
   button: {
     gradient: {

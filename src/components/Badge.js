@@ -9,7 +9,7 @@ export const StylesBadgeVariables = (theme) => ({
 export const StylesBadgeBase = (theme) => ({
   background: theme.color.light.base,
   border: theme.border.base,
-  borderRadius: theme.settings.ui.radius && theme.borderRadius.base,
+  borderRadius: theme.borderRadius.base,
   color: theme.fontColor.muted,
   cursor: 'default',
   display: 'inline-flex',
@@ -45,7 +45,7 @@ export const StylesBadgeDanger = (theme) => ({
 })
 
 export const StylesBadgeRounded = (theme) => ({
-  borderRadius: StylesBadgeVariables(theme).height / 2,
+  borderRadius: theme.borderRadius.rounded,
 })
 
 const Badge = ({ className, children, rounded, type, ...rest }) => {

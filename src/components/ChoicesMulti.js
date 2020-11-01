@@ -226,24 +226,19 @@ const ChoicesMulti = ({
                 </div>
                 {downshift.isOpen && (
                   <div
-                    css={[
-                      {
-                        position: 'absolute',
-                        top: '100%',
-                        left: 0,
-                        width: '100%',
-                        zIndex: '10',
-                        background: form.variables(theme).background,
-                        border: '1px solid',
-                        borderColor: theme.color.primary.base,
-                        borderTop: 0,
-                      },
-
-                      theme.settings.ui.radius && {
-                        borderBottomRightRadius: theme.borderRadius.base,
-                        borderBottomLeftRadius: theme.borderRadius.base,
-                      },
-                    ]}
+                    css={{
+                      position: 'absolute',
+                      top: '100%',
+                      left: 0,
+                      width: '100%',
+                      zIndex: '10',
+                      background: form.variables(theme).background,
+                      border: '1px solid',
+                      borderColor: theme.color.primary.base,
+                      borderTop: 0,
+                      borderBottomRightRadius: theme.borderRadius.base,
+                      borderBottomLeftRadius: theme.borderRadius.base,
+                    }}
                   >
                     <div {...downshift.getMenuProps()}>
                       {filteredOptions.length > 0 ? (
