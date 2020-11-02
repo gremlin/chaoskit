@@ -63,7 +63,7 @@ export const StylesButtonBase = (theme, props = {}) => [
     textTransform: 'uppercase',
     // 7
     display: 'inline-block',
-    padingTop: 0,
+    paddingTop: 0,
     paddingBottom: 0,
     paddingLeft: theme.space.medium,
     paddingRight: theme.space.medium,
