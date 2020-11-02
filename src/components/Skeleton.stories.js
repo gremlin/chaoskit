@@ -1,3 +1,5 @@
+import { useTheme } from 'emotion-theming'
+
 import ContrastWrapper from '../../.storybook/components/ContrastWrapper'
 
 import Inline from './Inline'
@@ -12,16 +14,26 @@ export default {
   },
 }
 
-const Story = () => (
-  <Inline>
-    <ListItem>
-      <Skeleton css={{ width: 200, height: 50 }} />
-    </ListItem>
-    <ListItem>
-      <Skeleton css={{ width: 50, height: 50, borderRadius: '50%' }} />
-    </ListItem>
-  </Inline>
-)
+const Story = () => {
+  const theme = useTheme()
+
+  return (
+    <Inline>
+      <ListItem>
+        <Skeleton css={{ width: 200, height: 50 }} />
+      </ListItem>
+      <ListItem>
+        <Skeleton
+          css={{
+            width: 50,
+            height: 50,
+            borderRadius: theme.borderRadius.rounded,
+          }}
+        />
+      </ListItem>
+    </Inline>
+  )
+}
 
 export const Overview = Story.bind({})
 

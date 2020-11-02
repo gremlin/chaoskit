@@ -8,7 +8,6 @@ export default {
   args: {
     label: 'Form label',
     name: 'textarea',
-    validationMessage: 'Validation message',
     explanationMessage: 'Explanation message',
   },
 }

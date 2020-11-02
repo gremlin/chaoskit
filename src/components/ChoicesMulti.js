@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { useState } from 'react'
 import Downshift from 'downshift'
 import matchSorter from 'match-sorter'
-import { rgba } from 'polished'
 import { useTheme } from 'emotion-theming'
 
 import { form } from '../assets/styles/utility'
@@ -156,10 +155,6 @@ const ChoicesMulti = ({
 
                     downshift.isOpen && {
                       borderColor: theme.color.primary.base,
-                      boxShadow: `${theme.boxShadowOffset.base} ${rgba(
-                        theme.color.primary.base,
-                        0.75
-                      )}`,
                       borderBottomLeftRadius: 0,
                       borderBottomRightRadius: 0,
                       borderBottomColor: theme.color.border.base,
@@ -226,24 +221,19 @@ const ChoicesMulti = ({
                 </div>
                 {downshift.isOpen && (
                   <div
-                    css={[
-                      {
-                        position: 'absolute',
-                        top: '100%',
-                        left: 0,
-                        width: '100%',
-                        zIndex: '10',
-                        background: form.variables(theme).background,
-                        border: '1px solid',
-                        borderColor: theme.color.primary.base,
-                        borderTop: 0,
-                      },
-
-                      theme.settings.ui.radius && {
-                        borderBottomRightRadius: theme.borderRadius.base,
-                        borderBottomLeftRadius: theme.borderRadius.base,
-                      },
-                    ]}
+                    css={{
+                      position: 'absolute',
+                      top: '100%',
+                      left: 0,
+                      width: '100%',
+                      zIndex: '10',
+                      background: form.variables(theme).background,
+                      border: '1px solid',
+                      borderColor: theme.color.primary.base,
+                      borderTop: 0,
+                      borderBottomRightRadius: theme.borderRadius.base,
+                      borderBottomLeftRadius: theme.borderRadius.base,
+                    }}
                   >
                     <div {...downshift.getMenuProps()}>
                       {filteredOptions.length > 0 ? (

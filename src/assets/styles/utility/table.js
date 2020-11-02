@@ -37,7 +37,6 @@ export const styles = (theme) => ({
     theme.settings.contrast.enable &&
       theme.settings.contrast.table && {
         '.u-contrast &': {
-          boxShadow: 'none',
           borderColor: theme.contrast.base,
         },
       },

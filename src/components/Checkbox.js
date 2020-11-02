@@ -26,7 +26,7 @@ export const StylesCheckboxBase = (theme, props = {}) => [
     width: StylesCheckboxVariables.size,
     height: StylesCheckboxVariables.size,
     verticalAlign: 'middle',
-    borderRadius: theme.settings.ui.radius && theme.borderRadius.base,
+    borderRadius: theme.borderRadius.base,
     border: theme.border.base,
     boxShadow: theme.boxShadow.base,
     position: 'relative',
@@ -38,6 +38,24 @@ export const StylesCheckboxBase = (theme, props = {}) => [
     backgroundColor: theme.color.light.base,
     // 5
     flex: 'none',
+    transition: `border-color ${theme.timing.base} ${theme.transition.base}, background ${theme.timing.base} ${theme.transition.base}`,
+
+    '&::after': {
+      content: "''",
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      width: StylesCheckboxVariables.iconSize,
+      height: StylesCheckboxVariables.iconSize,
+      backgroundImage: `url(${check})`,
+      filter: theme.contrast.filter,
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'contain',
+      zIndex: 1,
+      opacity: 0,
+      transition: `opacity ${theme.timing.base} ${theme.transition.base}`,
+    },
 
     '&:not(:disabled)': {
       cursor: 'pointer',
@@ -53,18 +71,7 @@ export const StylesCheckboxBase = (theme, props = {}) => [
       borderColor: theme.color.primary.dark,
 
       '&::after': {
-        content: "''",
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: StylesCheckboxVariables.iconSize,
-        height: StylesCheckboxVariables.iconSize,
-        backgroundImage: `url(${check})`,
-        filter: theme.contrast.filter,
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'contain',
-        zIndex: 1,
+        opacity: 1,
       },
     },
   },

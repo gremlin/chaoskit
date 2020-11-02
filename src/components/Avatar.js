@@ -3,7 +3,7 @@ import { useState } from 'react'
 import clsx from 'clsx'
 import { useTheme } from 'emotion-theming'
 
-import { misc, text } from '../assets/styles/utility'
+import { text } from '../assets/styles/utility'
 
 import Icon from './Icon'
 
@@ -24,16 +24,13 @@ const StylesAvatarBase = (theme, props = {}) => [
   // 1. Fix issue with alignment of inlined avatars
   {
     backgroundColor: StylesAvatarVariables(theme).background,
-    backgroundPosition: 'center center',
-    backgroundSize: 'cover',
-    borderRadius: '50%',
+    borderRadius: theme.borderRadius.rounded,
     color: StylesAvatarVariables(theme).color,
     display: 'inline-flex',
     marginBottom: 0,
     overflow: 'hidden',
     pointerEvents: 'none',
     position: 'relative',
-    verticalAlign: 'bottom', // 1
     width: StylesAvatarVariables(theme).size[props.size],
     height: StylesAvatarVariables(theme).size[props.size],
   },
@@ -56,20 +53,18 @@ const Avatar = ({
   if (image && !error) {
     return (
       <figure
-        css={[
-          StylesAvatarBase(theme, { size }),
-          {
-            backgroundImage: `url(${image})`,
-          },
-        ]}
+        css={[StylesAvatarBase(theme, { size })]}
         className={clsx('CK__Avatar', className)}
         {...rest}
       >
         <img
+          loading="lazy"
           alt={nameProp}
           onError={() => setError(true)}
-          css={misc.hide}
           src={image}
+          css={{
+            objectFit: 'cover',
+          }}
         />
       </figure>
     )

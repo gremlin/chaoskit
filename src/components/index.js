@@ -1,5 +1,6 @@
 import Alert from './Alert'
 import Avatar from './Avatar'
+import AvatarGroup from './AvatarGroup'
 import Badge from './Badge'
 import BlockGrid from './BlockGrid'
 import Button from './Button'
@@ -48,6 +49,7 @@ import Tooltip from './Tooltip'
 export {
   Alert,
   Avatar,
+  AvatarGroup,
   Badge,
   BlockGrid,
   Button,

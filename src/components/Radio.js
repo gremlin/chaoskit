@@ -22,17 +22,36 @@ export const StylesRadioBase = (theme, props = {}) => [
     // 1
     width: StylesRadioVariables.size,
     height: StylesRadioVariables.size,
-    borderRadius: '50%',
+    borderRadius: theme.borderRadius.rounded,
     border: theme.border.base,
     boxShadow: theme.boxShadow.base,
     position: 'relative',
     verticalAlign: 'middle',
+    transition: `border-color ${theme.timing.base} ${theme.transition.base}, background ${theme.timing.base} ${theme.transition.base}`,
+
     // 2
     overflow: 'hidden',
     // 3
     appearance: 'none',
     // 4
     backgroundColor: theme.color.light.base,
+
+    '&::after': {
+      content: "''",
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      width: StylesRadioVariables.iconSize,
+      height: StylesRadioVariables.iconSize,
+      borderRadius: theme.borderRadius.rounded,
+      border: '1px solid',
+      borderColor: theme.color.primary.dark,
+      backgroundColor: theme.contrast.base,
+      zIndex: 1,
+      opacity: 0,
+      transition: `opacity ${theme.timing.base} ${theme.transition.base}`,
+    },
 
     '&:not(:disabled)': {
       cursor: 'pointer',
@@ -48,18 +67,7 @@ export const StylesRadioBase = (theme, props = {}) => [
       borderColor: theme.color.primary.dark,
 
       '&::after': {
-        content: "''",
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: StylesRadioVariables.iconSize,
-        height: StylesRadioVariables.iconSize,
-        borderRadius: '50%',
-        border: '1px solid',
-        borderColor: theme.color.primary.dark,
-        backgroundColor: theme.contrast.base,
-        zIndex: 1,
+        opacity: 1,
       },
     },
   },

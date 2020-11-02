@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import PropTypes from 'prop-types'
 import Downshift from 'downshift'
 import matchSorter from 'match-sorter'
-import { ellipsis, rgba } from 'polished'
+import { ellipsis } from 'polished'
 import { useTheme } from 'emotion-theming'
 
 import { form } from '../assets/styles/utility'
@@ -129,10 +129,6 @@ const ChoicesSingle = ({
 
                     downshift.isOpen && {
                       borderColor: theme.color.primary.base,
-                      boxShadow: `${theme.boxShadowOffset.base} ${rgba(
-                        theme.color.primary.base,
-                        0.75
-                      )}`,
                       borderBottomLeftRadius: 0,
                       borderBottomRightRadius: 0,
                       borderBottomColor: theme.color.border.base,
@@ -199,24 +195,19 @@ const ChoicesSingle = ({
                 </div>
                 {downshift.isOpen && (
                   <div
-                    css={[
-                      {
-                        position: 'absolute',
-                        top: '100%',
-                        left: 0,
-                        width: '100%',
-                        zIndex: '10',
-                        background: form.variables(theme).background,
-                        border: '1px solid',
-                        borderColor: theme.color.primary.base,
-                        borderTop: 0,
-                      },
-
-                      theme.settings.ui.radius && {
-                        borderBottomRightRadius: theme.borderRadius.base,
-                        borderBottomLeftRadius: theme.borderRadius.base,
-                      },
-                    ]}
+                    css={{
+                      position: 'absolute',
+                      top: '100%',
+                      left: 0,
+                      width: '100%',
+                      zIndex: '10',
+                      background: form.variables(theme).background,
+                      border: '1px solid',
+                      borderColor: theme.color.primary.base,
+                      borderTop: 0,
+                      borderBottomRightRadius: theme.borderRadius.base,
+                      borderBottomLeftRadius: theme.borderRadius.base,
+                    }}
                   >
                     <Input
                       prefixIcon="search"

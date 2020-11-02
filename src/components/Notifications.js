@@ -43,7 +43,7 @@ const Notification = ({ notification }) => {
         gap: theme.space.small,
         gridTemplateColumns: 'auto 1fr',
         padding: theme.space.base,
-        borderRadius: theme.settings.ui.radius && theme.borderRadius.large,
+        borderRadius: theme.borderRadius.large,
         fontSize: theme.fontSize.small,
         lineHeight: theme.lineHeight.small,
 
@@ -54,7 +54,7 @@ const Notification = ({ notification }) => {
     >
       <div
         css={{
-          borderRadius: '50%',
+          borderRadius: theme.borderRadius.rounded,
           background:
             theme.color[
               notification.status === 'success' ? 'primary' : 'danger'

@@ -63,15 +63,16 @@ export const StylesButtonBase = (theme, props = {}) => [
     textTransform: 'uppercase',
     // 7
     display: 'inline-block',
-    padding: `0 ${
-      theme.settings.ui.radius ? theme.space.medium : theme.space.base
-    }px`,
+    padingTop: 0,
+    paddingBottom: 0,
+    paddingLeft: theme.space.medium,
+    paddingRight: theme.space.medium,
     background: 'transparent',
     verticalAlign: 'middle',
     cursor: 'pointer',
     transition: `all ${theme.timing.base} ${theme.transition.base}`,
     backgroundSize: '100% 100%',
-    borderRadius: theme.settings.ui.radius && theme.height.base / 2,
+    borderRadius: theme.borderRadius.rounded,
     position: 'relative',
     letterSpacing: theme.letterSpacing.small,
     // 8
@@ -121,25 +122,19 @@ export const StylesButtonBase = (theme, props = {}) => [
 ]
 
 export const StylesButtonSmall = (theme) => ({
-  padding: `0 ${
-    theme.settings.ui.radius
-      ? theme.space.base
-      : theme.space.small + theme.space.xsmall
-  }px`,
+  paddingLeft: theme.space.base,
+  paddingRight: theme.space.base,
   height: theme.height.small,
-  borderRadius: theme.settings.ui.radius && theme.height.small / 2,
   lineHeight: `${
     theme.height.small - StylesButtonVariables(theme).borderWidth * 2
   }px`,
 })
 
 export const StylesButtonXsmall = (theme) => ({
-  padding: `0 ${
-    theme.settings.ui.radius ? theme.space.base : theme.space.small
-  }px`,
+  paddingLeft: theme.space.base,
+  paddingRight: theme.space.base,
   fontSize: theme.fontSize.xsmall,
   height: theme.height.xsmall,
-  borderRadius: theme.settings.ui.radius && theme.height.xsmall / 2,
   lineHeight: `${
     theme.height.xsmall - StylesButtonVariables(theme).borderWidth * 2
   }px`,

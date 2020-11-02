@@ -22,7 +22,7 @@ export const DropdownMenuItemStyles = (theme, props = {}) => [
     paddingLeft: theme.space.small,
     paddingRight: theme.space.small,
     display: 'block',
-    borderRadius: theme.settings.ui.radius && theme.borderRadius.base,
+    borderRadius: theme.borderRadius.base,
     lineHeight: theme.lineHeight.base,
 
     '&:hover, &:focus': {
@@ -108,11 +108,10 @@ const Dropdown = ({
                 overflowY: 'auto',
                 color: theme.fontColor.base,
                 border: theme.border.base,
-                borderRadius:
-                  theme.settings.ui.radius && theme.borderRadius.base,
+                borderRadius: theme.borderRadius.base,
                 textAlign: 'left',
                 zIndex: 10,
-                boxShadow: theme.boxShadow.neutral,
+                boxShadow: theme.boxShadow.large,
                 transformOrigin:
                   attrs['data-placement'] &&
                   getTransformOrigin(attrs['data-placement']),

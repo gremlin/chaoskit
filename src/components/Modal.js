@@ -42,9 +42,9 @@ export const StylesModalWrapper = (theme) => [
 
 export const StylesModalDialog = (theme) => ({
   background: theme.color.light.base,
-  borderRadius: theme.settings.ui.radius && theme.borderRadius.large,
+  borderRadius: theme.borderRadius.large,
   zIndex: 5,
-  boxShadow: theme.boxShadow.large,
+  boxShadow: theme.boxShadow.xlarge,
   marginTop: theme.space.base,
   marginBottom: theme.space.base,
   marginLeft: 'auto',

@@ -159,23 +159,15 @@ const borderRadius = {
   base: 4,
   large: 8,
   xlarge: 16,
-}
-
-const boxShadowColor = {
-  base: rgba(color.dark.base, 0.18),
-  light: rgba(color.dark.base, 0.14),
-  xlight: rgba(color.dark.base, 0.1),
-}
-
-const boxShadowOffset = {
-  base: '0 1px 5px -2px',
-  neutral: '0 5px 15px',
+  rounded: 9999,
 }
 
 const boxShadow = {
-  base: `${boxShadowOffset.base} ${boxShadowColor.base}`,
-  large: `0 15px 35px ${boxShadowColor.xlight}, 0 5px 15px ${boxShadowColor.xlight}`,
-  neutral: `${boxShadowOffset.neutral} ${boxShadowColor.xlight}`,
+  base: 'rgba(0,0,0,0.14) 0px 1px 5px -2px',
+  medium: '0 4px 6px -1px rgba(0,0,0,.08), 0 2px 4px -1px rgba(0,0,0,.04)',
+  large: '0 10px 15px -3px rgba(0,0,0,.08), 0 4px 6px -2px rgba(0,0,0,.04)',
+  xlarge: '0 20px 25px -5px rgba(0,0,0,.08), 0 10px 10px -5px rgba(0,0,0,.04)',
+  xlarge2: '0 25px 50px -12px rgba(0,0,0,.25)',
 }
 
 const fontFamily = {
@@ -334,9 +326,6 @@ const settings = {
     form: true,
     table: true,
   },
-  ui: {
-    radius: true,
-  },
   button: {
     gradient: {
       enable: true,
@@ -417,8 +406,6 @@ export const theme = {
   borderRadius,
   breakpoint,
   mq,
-  boxShadowColor,
-  boxShadowOffset,
   boxShadow,
   fontFamily,
   muted,
