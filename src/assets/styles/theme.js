@@ -164,7 +164,7 @@ const borderRadius = {
 
 // eslint-disable-next-line camelcase
 const boxShadow = {
-  base: 'rgba(0,0,0,0.16) 0px 1px 5px -2px',
+  base: 'rgba(0,0,0,0.14) 0px 1px 5px -2px',
   medium: '0 4px 6px -1px rgba(0,0,0,.08), 0 2px 4px -1px rgba(0,0,0,.04)',
   large: '0 10px 15px -3px rgba(0,0,0,.08), 0 4px 6px -2px rgba(0,0,0,.04)',
   xlarge: '0 20px 25px -5px rgba(0,0,0,.08), 0 10px 10px -5px rgba(0,0,0,.04)',
