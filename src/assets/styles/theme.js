@@ -163,29 +163,12 @@ const borderRadius = {
 }
 
 // eslint-disable-next-line camelcase
-const BETA__boxShadow = {
+const boxShadow = {
   base: 'rgba(0,0,0,0.16) 0px 1px 5px -2px',
   medium: '0 4px 6px -1px rgba(0,0,0,.08), 0 2px 4px -1px rgba(0,0,0,.04)',
   large: '0 10px 15px -3px rgba(0,0,0,.08), 0 4px 6px -2px rgba(0,0,0,.04)',
   xlarge: '0 20px 25px -5px rgba(0,0,0,.08), 0 10px 10px -5px rgba(0,0,0,.04)',
-  '2xlarge': '0 25px 50px -12px rgba(0,0,0,.25)',
-}
-
-const boxShadowColor = {
-  base: rgba(color.dark.base, 0.18),
-  light: rgba(color.dark.base, 0.14),
-  xlight: rgba(color.dark.base, 0.1),
-}
-
-const boxShadowOffset = {
-  base: '0 1px 5px -2px',
-  neutral: '0 5px 15px',
-}
-
-const boxShadow = {
-  base: `${boxShadowOffset.base} ${boxShadowColor.base}`,
-  large: `0 15px 35px ${boxShadowColor.xlight}, 0 5px 15px ${boxShadowColor.xlight}`,
-  neutral: `${boxShadowOffset.neutral} ${boxShadowColor.xlight}`,
+  xlarge2: '0 25px 50px -12px rgba(0,0,0,.25)',
 }
 
 const fontFamily = {
@@ -296,98 +279,6 @@ const fontSize = {
   },
 }
 
-// eslint-disable-next-line camelcase
-const BETA__fontSize = {
-  xsmall2: 10,
-  xsmall: 12,
-  small: 14,
-  base: 16,
-  medium: 18,
-  large: 20,
-  xlarge: 26,
-  xlarge2: 28,
-  xlarge3: 34,
-  xlarge4: 44,
-  xlarge5: 50,
-  get medium__fluid() {
-    return fluidRange(
-      {
-        prop: 'fontSize',
-        fromSize: `${this.base}px`,
-        toSize: `${this.medium}px`,
-      },
-      `${breakpoint.small}px`,
-      `${breakpoint.large}px`
-    )
-  },
-  get large__fluid() {
-    return fluidRange(
-      {
-        prop: 'fontSize',
-        fromSize: `${this.medium}px`,
-        toSize: `${this.large}px`,
-      },
-      `${breakpoint.small}px`,
-      `${breakpoint.large}px`
-    )
-  },
-  get xlarge__fluid() {
-    return fluidRange(
-      {
-        prop: 'fontSize',
-        fromSize: `${this.large}px`,
-        toSize: `${this.xlarge}px`,
-      },
-      `${breakpoint.small}px`,
-      `${breakpoint.large}px`
-    )
-  },
-  get '2xlarge__fluid'() {
-    return fluidRange(
-      {
-        prop: 'fontSize',
-        fromSize: `${this.xlarge}px`,
-        toSize: `${this.xlarge2}px`,
-      },
-      `${breakpoint.small}px`,
-      `${breakpoint.large}px`
-    )
-  },
-  get '3xlarge__fluid'() {
-    return fluidRange(
-      {
-        prop: 'fontSize',
-        fromSize: `${this.xlarge2}px`,
-        toSize: `${this.xlarge3}px`,
-      },
-      `${breakpoint.small}px`,
-      `${breakpoint.large}px`
-    )
-  },
-  get '4xlarge__fluid'() {
-    return fluidRange(
-      {
-        prop: 'fontSize',
-        fromSize: `${this.xlarge3}px`,
-        toSize: `${this.xlarge4}px`,
-      },
-      `${breakpoint.small}px`,
-      `${breakpoint.large}px`
-    )
-  },
-  get '5xlarge__fluid'() {
-    return fluidRange(
-      {
-        prop: 'fontSize',
-        fromSize: `${this.xlarge4}px`,
-        toSize: `${this.xlarge5}px`,
-      },
-      `${breakpoint.small}px`,
-      `${breakpoint.large}px`
-    )
-  },
-}
-
 const fontWeight = {
   base: 300,
   medium: 500,
@@ -427,28 +318,6 @@ const space = {
   medium: 24,
   large: 32,
   xlarge: 64,
-}
-
-// Used for padding, margin, and height
-// eslint-disable-next-line camelcase
-const BETA__space = {
-  m1: 4,
-  m2: 8,
-  m3: 12,
-  m4: 16,
-  m5: 20,
-  m6: 24,
-  m8: 32,
-  m10: 40,
-  m12: 48,
-  m16: 64,
-  m20: 80,
-  m24: 96,
-  m32: 128,
-  m40: 160,
-  m48: 192,
-  m56: 224,
-  m64: 256,
 }
 
 const settings = {
@@ -532,17 +401,12 @@ const contrast = {
 }
 
 export const theme = {
-  BETA__boxShadow,
-  BETA__fontSize,
-  BETA__space,
   brand,
   color,
   border,
   borderRadius,
   breakpoint,
   mq,
-  boxShadowColor,
-  boxShadowOffset,
   boxShadow,
   fontFamily,
   muted,

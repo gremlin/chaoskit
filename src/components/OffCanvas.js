@@ -121,7 +121,7 @@ const OffCanvas = ({
                   width: `calc(100% - ${theme.space.base}px)`,
                   background: theme.color.light.base,
                   padding: StylesOffCanvasVariables(theme).padding,
-                  boxShadow: theme.BETA__boxShadow.xlarge,
+                  boxShadow: theme.boxShadow.xlarge,
 
                   [theme.mq.small]: {
                     width: panelWidth,

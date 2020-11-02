@@ -24,7 +24,7 @@ export const StylesRadioBase = (theme, props = {}) => [
     height: StylesRadioVariables.size,
     borderRadius: theme.borderRadius.rounded,
     border: theme.border.base,
-    boxShadow: theme.BETA__boxShadow.base,
+    boxShadow: theme.boxShadow.base,
     position: 'relative',
     verticalAlign: 'middle',
     transition: `border-color ${theme.timing.base} ${theme.transition.base}, background ${theme.timing.base} ${theme.transition.base}`,

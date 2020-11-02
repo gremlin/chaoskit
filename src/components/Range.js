@@ -103,17 +103,17 @@ const Range = forwardRef(
               // @NOTE These styles cannot be combined similarly to how highlight selectors work in CSS
               '&:hover, &:focus': {
                 '&::-webkit-slider-thumb': {
-                  boxShadow: theme.BETA__boxShadow.base,
+                  boxShadow: theme.boxShadow.base,
                   transform: 'scale(1.15)',
                 },
 
                 '&::-moz-range-thumb': {
-                  boxShadow: theme.BETA__boxShadow.base,
+                  boxShadow: theme.boxShadow.base,
                   transform: 'scale(1.15)',
                 },
 
                 '&::-ms-thumb': {
-                  boxShadow: theme.BETA__boxShadow.base,
+                  boxShadow: theme.boxShadow.base,
                   transform: 'scale(1.15)',
                 },
               },

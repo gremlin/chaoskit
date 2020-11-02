@@ -28,7 +28,7 @@ export const StylesCheckboxBase = (theme, props = {}) => [
     verticalAlign: 'middle',
     borderRadius: theme.borderRadius.base,
     border: theme.border.base,
-    boxShadow: theme.BETA__boxShadow.base,
+    boxShadow: theme.boxShadow.base,
     position: 'relative',
     // 2
     overflow: 'hidden',

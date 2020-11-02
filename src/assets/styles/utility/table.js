@@ -20,7 +20,7 @@ export const styles = (theme) => ({
       marginBottom: theme.space.base,
       captionSide: 'bottom',
       border: theme.border.base,
-      boxShadow: theme.BETA__boxShadow.base,
+      boxShadow: theme.boxShadow.base,
       borderRadius: theme.borderRadius.base,
       tableLayout: 'fixed',
       maxWidth: 'max-content',
@@ -37,7 +37,6 @@ export const styles = (theme) => ({
     theme.settings.contrast.enable &&
       theme.settings.contrast.table && {
         '.u-contrast &': {
-          boxShadow: 'none',
           borderColor: theme.contrast.base,
         },
       },
