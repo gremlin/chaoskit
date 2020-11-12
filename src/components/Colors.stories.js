@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types'
-import { useTheme } from 'emotion-theming'
 import { Fragment } from 'react'
+import PropTypes from 'prop-types'
+import { useTheme } from '@emotion/react'
 
 import ListItem from './ListItem'
 import Inline from './Inline'

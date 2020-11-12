@@ -63,6 +63,7 @@ const Icon = forwardRef(
             ]}
             className={clsx('CK__Icon', className)}
             ref={ref}
+            /* eslint-disable-next-line react/no-danger */
             dangerouslySetInnerHTML={{ __html: matchedIcon }}
             {...rest}
           />

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { ThemeProvider } from 'emotion-theming'
+import { ThemeProvider } from '@emotion/react'
 import { CacheProvider, Global } from '@emotion/core'
 import createCache from '@emotion/cache'
 import { merge } from 'lodash-es'

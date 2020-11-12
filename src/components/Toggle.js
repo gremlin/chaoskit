@@ -2,7 +2,7 @@
 import { forwardRef, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
-import { useTheme } from 'emotion-theming'
+import { useTheme } from '@emotion/react'
 import { tint, shade } from 'polished'
 
 import { generateGradient } from '../assets/styles/utility/gradient'

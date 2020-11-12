@@ -5,8 +5,6 @@ import Badge from './Badge'
 import BlockGrid from './BlockGrid'
 import Button from './Button'
 import Checkbox from './Checkbox'
-import ChoicesMulti from './ChoicesMulti'
-import ChoicesSingle from './ChoicesSingle'
 import ClientOnlyPortal from './ClientOnlyPortal'
 import Close from './Close'
 import Container from './Container'
@@ -29,7 +27,6 @@ import ModalFooter from './ModalFooter'
 import ModalHeader from './ModalHeader'
 import Notifications from './Notifications'
 import OffCanvas from './OffCanvas'
-import Pagination from './Pagination'
 import Radio from './Radio'
 import Range from './Range'
 import Reveal from './Reveal'
@@ -54,8 +51,6 @@ export {
   BlockGrid,
   Button,
   Checkbox,
-  ChoicesMulti,
-  ChoicesSingle,
   ClientOnlyPortal,
   Close,
   Container,
@@ -78,7 +73,6 @@ export {
   ModalHeader,
   Notifications,
   OffCanvas,
-  Pagination,
   Radio,
   Range,
   Reveal,

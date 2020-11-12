@@ -11,6 +11,14 @@ const Story = (args) => <Close {...args} />
 
 export const Overview = Story.bind({})
 
+Overview.decorators = [
+  (Example) => (
+    <>
+      <Example />
+    </>
+  ),
+]
+
 export const Contrast = Story.bind({})
 
 Contrast.decorators = [

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
-import { useTheme } from 'emotion-theming'
+import { useTheme } from '@emotion/react'
 
 const columnOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 

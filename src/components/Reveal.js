@@ -1,6 +1,6 @@
-import { Fragment, useRef } from 'react'
+import { useRef } from 'react'
 import PropTypes from 'prop-types'
-import { useTheme } from 'emotion-theming'
+import { useTheme } from '@emotion/react'
 import { motion, useAnimation } from 'framer-motion'
 import clsx from 'clsx'
 import useUpdateEffect from 'react-use/lib/useUpdateEffect'
@@ -55,7 +55,7 @@ const Reveal = ({
   }, [reveal])
 
   return (
-    <Fragment>
+    <>
       <Button
         ref={triggerRef}
         onClick={() => setReveal(!reveal)}
@@ -90,7 +90,7 @@ const Reveal = ({
           {children}
         </div>
       </motion.div>
-    </Fragment>
+    </>
   )
 }
 

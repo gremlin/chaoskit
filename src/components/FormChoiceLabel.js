@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control, jsx-a11y/label-has-for */
 import PropTypes from 'prop-types'
-import { useTheme } from 'emotion-theming'
+import { useTheme } from '@emotion/react'
 
 // @NOTE This is an internal-only component used for both `<Radio />` and `<Checkbox />`
 const FormChoiceLabel = ({ disabled, label, ...rest }) => {
