@@ -2,30 +2,40 @@ import { forwardRef, useMemo } from 'react'
 import clsx from 'clsx'
 import PropTypes from 'prop-types'
 import { useTheme } from 'emotion-theming'
+import { rgba } from 'polished'
 
 import { generateUUID } from '../helpers/utility'
+import { generateGradient } from '../assets/styles/utility/gradient'
 
 import FormControlWrapper from './FormControlWrapper'
 
 const StylesRangeVariables = (theme) => ({
   thumb: {
-    size: theme.height.xxxsmall,
+    size: theme.height.xxxxsmall,
   },
   track: {
-    height: theme.height.xxxsmall / 3,
+    height: theme.height.xxxxsmall / 3,
   },
 })
 
-const generateProgressGradient = (theme, { value = 0, min = 0, max = 0 }) => {
+const generateProgressGradient = (
+  theme,
+  { value = 0, min = 0, max = 0, contrast }
+) => {
   const val = (value - min) / (max - min)
   const percentage = val * 100
 
-  return `linear-gradient(to right, ${theme.color.primary.base} 0%, ${theme.color.primary.dark} ${percentage}%, ${theme.color.border.base} ${percentage}%)`
+  const baseBackground = contrast
+    ? rgba(theme.color.light.base, theme.opacity.less)
+    : theme.color.border.base
+
+  return `linear-gradient(to right, ${theme.color.primary.base} 0%, ${theme.color.primary.dark} ${percentage}%, ${baseBackground} ${percentage}%)`
 }
 
 const Range = forwardRef(
   (
     {
+      contrast,
       className,
       disabled,
       explanationMessage,
@@ -71,6 +81,7 @@ const Range = forwardRef(
               value,
               min,
               max,
+              contrast,
             }),
           }}
           css={[
@@ -103,32 +114,15 @@ const Range = forwardRef(
               // @NOTE These styles cannot be combined similarly to how highlight selectors work in CSS
               '&:hover, &:focus': {
                 '&::-webkit-slider-thumb': {
-                  boxShadow: theme.boxShadow.base,
-                  transform: 'scale(1.15)',
+                  transform: 'scale(1.05)',
                 },
 
                 '&::-moz-range-thumb': {
-                  boxShadow: theme.boxShadow.base,
-                  transform: 'scale(1.15)',
+                  transform: 'scale(1.05)',
                 },
 
                 '&::-ms-thumb': {
-                  boxShadow: theme.boxShadow.base,
-                  transform: 'scale(1.15)',
-                },
-              },
-
-              '&:focus': {
-                '&::-webkit-slider-thumb': {
-                  borderColor: theme.color.primary.base,
-                },
-
-                '&::-moz-range-thumb': {
-                  borderColor: theme.color.primary.base,
-                },
-
-                '&::-ms-thumb': {
-                  borderColor: theme.color.primary.base,
+                  transform: 'scale(1.05)',
                 },
               },
 
@@ -138,10 +132,14 @@ const Range = forwardRef(
                 height: StylesRangeVariables(theme).thumb.size,
                 width: StylesRangeVariables(theme).thumb.size,
                 borderRadius: theme.borderRadius.rounded,
-                background: theme.color.light.base,
-                border: theme.border.base,
+                background: generateGradient({
+                  start: theme.color.primary.dark,
+                  stop: theme.color.primary.base,
+                }),
+                border: 0,
                 transition: `transform ${theme.timing.base} ${theme.transition.base}`,
                 transformOrigin: 'center center',
+                boxShadow: theme.boxShadow.base,
               },
 
               // Firefox
@@ -149,10 +147,14 @@ const Range = forwardRef(
                 height: StylesRangeVariables(theme).thumb.size,
                 width: StylesRangeVariables(theme).thumb.size,
                 borderRadius: theme.borderRadius.rounded,
-                background: theme.color.light.base,
-                border: theme.border.base,
+                background: generateGradient({
+                  start: theme.color.primary.dark,
+                  stop: theme.color.primary.base,
+                }),
+                border: 0,
                 transition: `transform ${theme.timing.base} ${theme.transition.base}`,
                 transformOrigin: 'center center',
+                boxShadow: theme.boxShadow.small,
               },
 
               // Edge
@@ -161,10 +163,14 @@ const Range = forwardRef(
                 height: StylesRangeVariables(theme).thumb.size,
                 width: StylesRangeVariables(theme).thumb.size,
                 borderRadius: theme.borderRadius.rounded,
-                background: theme.color.light.base,
-                border: theme.border.base,
+                background: generateGradient({
+                  start: theme.color.primary.dark,
+                  stop: theme.color.primary.base,
+                }),
+                border: 0,
                 transition: `transform ${theme.timing.base} ${theme.transition.base}`,
                 transformOrigin: 'center center',
+                boxShadow: theme.boxShadow.small,
               },
 
               '&::-ms-tooltip': {
@@ -195,6 +201,7 @@ const Range = forwardRef(
 )
 
 Range.propTypes = {
+  contrast: PropTypes.bool,
   className: PropTypes.string,
   disabled: PropTypes.bool,
   explanationMessage: PropTypes.string,

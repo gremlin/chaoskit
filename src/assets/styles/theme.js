@@ -80,6 +80,7 @@ const mq = {
 }
 
 const opacity = {
+  less: 0.25,
   base: 0.5,
   overlay: 0.75,
 }
@@ -291,6 +292,7 @@ const height = {
   xsmall: 32,
   xxsmall: 28,
   xxxsmall: 24,
+  xxxxsmall: 20,
 }
 
 const lineHeight = {

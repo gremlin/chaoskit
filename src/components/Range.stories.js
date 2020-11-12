@@ -40,9 +40,13 @@ export const Overview = Story.bind({})
 
 export const Contrast = Story.bind({})
 
+Contrast.args = {
+  contrast: true,
+}
+
 Contrast.decorators = [
   (Example) => (
-    <ContrastWrapper>
+    <ContrastWrapper variation="dark">
       <Example />
     </ContrastWrapper>
   ),

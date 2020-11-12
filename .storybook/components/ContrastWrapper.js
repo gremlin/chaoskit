@@ -1,18 +1,19 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import { useTheme } from 'emotion-theming'
-import { addDecorator } from '@storybook/react'
 
 import { gradient, misc } from '../../src/assets/styles/utility'
 
-const ContrastWrapper = ({ className, ...rest }) => {
+const ContrastWrapper = ({ className, variation = 'greenBlue', ...rest }) => {
   const theme = useTheme()
 
   return (
     <div
       className={clsx(theme.settings.classes.contrast, className)}
       css={[
-        gradient.blueGreen(theme),
+        variation === 'greenBlue' && gradient.blueGreen(theme),
+        variation === 'dark' && gradient.dark(theme),
+
         misc.trimChildren,
         {
           padding: theme.space.large,
@@ -26,7 +27,8 @@ const ContrastWrapper = ({ className, ...rest }) => {
 }
 
 ContrastWrapper.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
+  variation: PropTypes.oneOf(['greenBlue', 'dark']),
 }
 
 export default ContrastWrapper

@@ -5,8 +5,6 @@ import Badge from './Badge'
 import BlockGrid from './BlockGrid'
 import Button from './Button'
 import Checkbox from './Checkbox'
-import ChoicesMulti from './ChoicesMulti'
-import ChoicesSingle from './ChoicesSingle'
 import ClientOnlyPortal from './ClientOnlyPortal'
 import Close from './Close'
 import Container from './Container'
@@ -54,8 +52,6 @@ export {
   BlockGrid,
   Button,
   Checkbox,
-  ChoicesMulti,
-  ChoicesSingle,
   ClientOnlyPortal,
   Close,
   Container,
