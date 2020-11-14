@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { keyframes } from '@emotion/core'
+import { keyframes } from '@emotion/react'
 import clsx from 'clsx'
 
 const loaderRotateKeyframes = keyframes({

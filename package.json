@@ -60,10 +60,10 @@
     "yup": "0.29.3"
   },
   "peerDependencies": {
-    "react": ">=16.13.1",
-    "react-dom": ">=16.13.1",
     "@hookform/resolvers": ">=1.0.1",
     "formik": "2.2.5",
+    "react": ">=16.13.1",
+    "react-dom": ">=16.13.1",
     "react-hook-form": ">=6.11.1",
     "yup": ">=0.29.3"
   },

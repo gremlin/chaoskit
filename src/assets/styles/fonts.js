@@ -1,4 +1,4 @@
-import { css } from '@emotion/core'
+import { css } from '@emotion/react'
 
 import GiraLight from '../fonts/gira-sans-light.woff'
 import GiraMedium from '../fonts/gira-sans-regular.woff'
