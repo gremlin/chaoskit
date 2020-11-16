@@ -49,7 +49,7 @@
   "devDependencies": {
     "@babel/core": "7.12.3",
     "@babel/preset-env": "7.12.1",
-    "@babel/preset-react": "7.12.1",
+    "@babel/preset-react": "7.12.5",
     "@hookform/resolvers": "1.0.1",
     "@storybook/addon-a11y": "6.0.28",
     "@storybook/addon-essentials": "6.0.28",
@@ -61,7 +61,7 @@
     "formik": "2.2.5",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-hook-form": "6.11.0",
+    "react-hook-form": "6.11.2",
     "yup": "0.29.3"
   },
   "peerDependencies": {

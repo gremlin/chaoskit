@@ -9,7 +9,7 @@ import { generateGradient } from '../assets/styles/utility/gradient'
 
 import FormControlWrapper from './FormControlWrapper'
 
-const StylesRangeVariables = (theme) => ({
+export const StylesRangeVariables = (theme) => ({
   thumb: {
     size: theme.height.xxxxsmall,
   },
