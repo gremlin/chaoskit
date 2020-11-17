@@ -1,4 +1,4 @@
-import { useTheme } from 'emotion-theming'
+import { useTheme } from '@emotion/react'
 
 import icons from '../assets/icons/icons.json'
 

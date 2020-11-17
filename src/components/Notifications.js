@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { useTheme } from 'emotion-theming'
+import { useTheme } from '@emotion/react'
 import { motion, AnimatePresence } from 'framer-motion'
 import useTimeoutFn from 'react-use/lib/useTimeoutFn'
 

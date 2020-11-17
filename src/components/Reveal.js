@@ -1,6 +1,6 @@
 import { Fragment, useRef } from 'react'
 import PropTypes from 'prop-types'
-import { useTheme } from 'emotion-theming'
+import { useTheme } from '@emotion/react'
 import { motion, useAnimation } from 'framer-motion'
 import clsx from 'clsx'
 import useUpdateEffect from 'react-use/lib/useUpdateEffect'

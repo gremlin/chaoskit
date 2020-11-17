@@ -18,7 +18,7 @@ module.exports = {
     'react',
     'jsx-a11y',
     'react-hooks',
-    'emotion',
+    '@emotion',
     'prettier',
     'import',
   ],

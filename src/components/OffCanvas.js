@@ -8,7 +8,7 @@ import {
 } from 'body-scroll-lock'
 import useUpdateEffect from 'react-use/lib/useUpdateEffect'
 import useClickAway from 'react-use/lib/useClickAway'
-import { useTheme } from 'emotion-theming'
+import { useTheme } from '@emotion/react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 import { misc } from '../assets/styles/utility'

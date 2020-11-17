@@ -1,4 +1,4 @@
-import { useTheme } from 'emotion-theming'
+import { useTheme } from '@emotion/react'
 
 import Container from './Container'
 import Section from './Section'

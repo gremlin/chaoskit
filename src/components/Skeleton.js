@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
-import { useTheme } from 'emotion-theming'
-import { keyframes } from '@emotion/core'
+import { useTheme, keyframes } from '@emotion/react'
 import { rgba } from 'polished'
 
 const skeletonKeyframes = keyframes({

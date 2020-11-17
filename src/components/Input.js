@@ -1,7 +1,7 @@
 import { forwardRef, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
-import { useTheme } from 'emotion-theming'
+import { useTheme } from '@emotion/react'
 
 import { form } from '../assets/styles/utility'
 import { generateUUID } from '../helpers/utility'
