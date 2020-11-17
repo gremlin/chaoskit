@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { forwardRef } from 'react'
 import clsx from 'clsx'
 import { shade, rgba } from 'polished'
-import { useTheme } from 'emotion-theming'
+import { useTheme } from '@emotion/react'
 
 import { gradient, misc } from '../assets/styles/utility'
 

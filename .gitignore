@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+# this project uses yarn
+package-lock.json
 
 # testing
 /coverage
@@ -19,3 +21,6 @@ yarn-error.log*
 .cache
 public
 storybook-static
+
+# editor
+.idea

@@ -2,7 +2,7 @@ import { forwardRef } from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import { rgba } from 'polished'
-import { useTheme } from 'emotion-theming'
+import { useTheme } from '@emotion/react'
 import { motion } from 'framer-motion'
 
 import { misc } from '../assets/styles/utility'

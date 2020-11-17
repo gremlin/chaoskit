@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
-import { useTheme } from 'emotion-theming'
+import { useTheme } from '@emotion/react'
 
 import Button from './Button'
 

@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control, jsx-a11y/label-has-for */
 import clsx from 'clsx'
 import PropTypes from 'prop-types'
-import { useTheme } from 'emotion-theming'
+import { useTheme } from '@emotion/react'
 
 import { form } from '../assets/styles/utility'
 

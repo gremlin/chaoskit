@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { useTheme } from 'emotion-theming'
+import { useTheme } from '@emotion/react'
 
 const StylesTippyArrowVariables = (theme, variation) => ({
   size: 10,

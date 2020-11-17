@@ -2,7 +2,7 @@
 import { forwardRef } from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
-import { useTheme } from 'emotion-theming'
+import { useTheme } from '@emotion/react'
 
 import check from '../assets/icons/check.svg'
 import { form } from '../assets/styles/utility'
