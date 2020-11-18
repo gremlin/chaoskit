@@ -49,7 +49,7 @@ const Story = (args) => {
   const [isOpen, setIsOpen] = React.useState(false)
 
   return (
-    <>
+    <React.Fragment>
       <Modal {...args} open={isOpen} setIsOpen={setIsOpen}>
         <ModalHeader title="Hello" setIsOpen={setIsOpen} />
         <ModalBody>
@@ -61,7 +61,7 @@ const Story = (args) => {
       <Button type="primary" onClick={() => setIsOpen(true)}>
         Open Modal
       </Button>
-    </>
+    </React.Fragment>
   )
 }
 

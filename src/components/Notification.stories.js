@@ -18,7 +18,7 @@ const NotificationExample = () => {
   const add = useNotificationsState((state) => state.add)
 
   return (
-    <>
+    <React.Fragment>
       <Notifications />
       <Inline>
         <ListItem>
@@ -68,7 +68,7 @@ const NotificationExample = () => {
           </Button>
         </ListItem>
       </Inline>
-    </>
+    </React.Fragment>
   )
 }
 

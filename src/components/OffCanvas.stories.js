@@ -48,7 +48,7 @@ const Story = (args) => {
   }
 
   return (
-    <>
+    <React.Fragment>
       <OffCanvas {...args} open={isOpen} setIsOpen={toggleOpen}>
         Test
       </OffCanvas>
@@ -56,7 +56,7 @@ const Story = (args) => {
       <Button onClick={handleToggle} type="primary">
         Open OffCanvas
       </Button>
-    </>
+    </React.Fragment>
   )
 }
 

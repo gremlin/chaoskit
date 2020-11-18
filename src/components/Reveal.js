@@ -55,7 +55,7 @@ const Reveal = ({
   }, [reveal])
 
   return (
-    <>
+    <React.Fragment>
       <Button
         ref={triggerRef}
         onClick={() => setReveal(!reveal)}
@@ -90,7 +90,7 @@ const Reveal = ({
           {children}
         </div>
       </motion.div>
-    </>
+    </React.Fragment>
   )
 }
 

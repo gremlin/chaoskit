@@ -45,7 +45,7 @@ export const Menu = Story.bind({})
 
 Menu.args = {
   children: (
-    <>
+    <React.Fragment>
       <DropdownHeader>Menu Header</DropdownHeader>
       <List space="small">
         <ListItem>
@@ -62,6 +62,6 @@ Menu.args = {
           </DropdownMenuItem>
         </ListItem>
       </List>
-    </>
+    </React.Fragment>
   ),
 }

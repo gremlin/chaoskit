@@ -31,6 +31,7 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn',
     'react-hooks/rules-of-hooks': 'error',
     'react/no-danger': 0,
+    'react/jsx-fragments': [1, 'element'],
     'react/forbid-prop-types': 0,
     'react/jsx-filename-extension': 0,
     'react/jsx-one-expression-per-line': 0,
