@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import * as React from 'react'
 
 import Reveal from './Reveal'
 import Button from './Button'
@@ -27,7 +27,7 @@ export default {
 }
 
 const Story = (args) => {
-  const [reveal, setReveal] = useState(false)
+  const [reveal, setReveal] = React.useState(false)
 
   return (
     <Reveal {...args} reveal={reveal} setReveal={setReveal}>

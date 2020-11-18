@@ -27,7 +27,6 @@ import ModalFooter from './ModalFooter'
 import ModalHeader from './ModalHeader'
 import Notifications from './Notifications'
 import OffCanvas from './OffCanvas'
-import Pagination from './Pagination'
 import Radio from './Radio'
 import Range from './Range'
 import Reveal from './Reveal'
@@ -74,7 +73,6 @@ export {
   ModalHeader,
   Notifications,
   OffCanvas,
-  Pagination,
   Radio,
   Range,
   Reveal,

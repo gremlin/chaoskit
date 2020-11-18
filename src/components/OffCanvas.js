@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react'
+import * as React from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import {
@@ -34,10 +34,10 @@ const OffCanvas = ({
 }) => {
   const theme = useTheme()
 
-  const offCanvasRef = useRef()
-  const offCanvasPanelRef = useRef()
+  const offCanvasRef = React.useRef()
+  const offCanvasPanelRef = React.useRef()
 
-  const direction = useRef('forward')
+  const direction = React.useRef('forward')
 
   const handleOnComplete = () => {
     offCanvasPanelRef.current.focus()
@@ -66,7 +66,7 @@ const OffCanvas = ({
   }
 
   // On unmount, clear any/all locks on `<body />`
-  useEffect(() => {
+  React.useEffect(() => {
     return () => {
       clearAllBodyScrollLocks()
     }

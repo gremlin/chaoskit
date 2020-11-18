@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { useState } from 'react'
+import * as React from 'react'
 import clsx from 'clsx'
 import { useTheme } from '@emotion/react'
 
@@ -45,7 +45,7 @@ const Avatar = ({
   ...rest
 }) => {
   const theme = useTheme()
-  const [error, setError] = useState(false)
+  const [error, setError] = React.useState(false)
 
   const nameProp = name ? name.trim() : ''
 

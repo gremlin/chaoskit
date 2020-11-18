@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import * as React from 'react'
 
 import ContrastWrapper from '../../.storybook/components/ContrastWrapper'
 
@@ -23,7 +23,7 @@ export default {
 }
 
 const Story = (args) => {
-  const [value, setValue] = useState(2)
+  const [value, setValue] = React.useState(2)
 
   return (
     <Range

@@ -1,11 +1,11 @@
+import * as React from 'react'
 import clsx from 'clsx'
 import PropTypes from 'prop-types'
 import { useTheme } from '@emotion/react'
-import { forwardRef } from 'react'
 
 import { list } from '../assets/styles/utility'
 
-const List = forwardRef(
+const List = React.forwardRef(
   (
     {
       as: Component = 'ul',

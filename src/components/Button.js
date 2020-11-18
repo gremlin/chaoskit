@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { forwardRef } from 'react'
+import * as React from 'react'
 import clsx from 'clsx'
 import { shade, rgba } from 'polished'
 import { useTheme } from '@emotion/react'
@@ -400,7 +400,7 @@ export const StylesButtonReset = {
   },
 }
 
-const Button = forwardRef(
+const Button = React.forwardRef(
   (
     {
       active,

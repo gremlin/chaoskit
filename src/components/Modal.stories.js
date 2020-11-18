@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react'
+import * as React from 'react'
 
 import Button from './Button'
 import Modal from './Modal'
@@ -46,10 +46,10 @@ export default {
 }
 
 const Story = (args) => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = React.useState(false)
 
   return (
-    <Fragment>
+    <>
       <Modal {...args} open={isOpen} setIsOpen={setIsOpen}>
         <ModalHeader title="Hello" setIsOpen={setIsOpen} />
         <ModalBody>
@@ -61,7 +61,7 @@ const Story = (args) => {
       <Button type="primary" onClick={() => setIsOpen(true)}>
         Open Modal
       </Button>
-    </Fragment>
+    </>
   )
 }
 

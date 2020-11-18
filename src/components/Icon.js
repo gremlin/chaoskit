@@ -1,4 +1,4 @@
-import { forwardRef } from 'react'
+import * as React from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
 
@@ -12,7 +12,7 @@ export const StylesIconVariables = {
   xlarge: '3em',
 }
 
-const Icon = forwardRef(
+const Icon = React.forwardRef(
   (
     { className, icon, additionalIcons, fallback, size = 'base', ...rest },
     ref

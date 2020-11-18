@@ -1,4 +1,4 @@
-import { forwardRef, useMemo } from 'react'
+import * as React from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import { useTheme } from '@emotion/react'
@@ -62,7 +62,7 @@ export const StylesInputBase = (theme, props = {}) => [
   },
 ]
 
-const Input = forwardRef(
+const Input = React.forwardRef(
   (
     {
       className,
@@ -82,7 +82,7 @@ const Input = forwardRef(
   ) => {
     const theme = useTheme()
     // Only regenerate this if the name prop changes
-    const id = useMemo(() => `${name}-${generateUUID()}`, [name])
+    const id = React.useMemo(() => `${name}-${generateUUID()}`, [name])
 
     return (
       <FormControlWrapper

@@ -1,4 +1,4 @@
-import { forwardRef } from 'react'
+import * as React from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import { useTheme } from '@emotion/react'
@@ -61,7 +61,7 @@ export const StylesFormLabelBase = (theme, props = {}) => [
     },
 ]
 
-const FormLabel = forwardRef(
+const FormLabel = React.forwardRef(
   (
     { as: Component = 'label', children, className, required, error, ...rest },
     ref

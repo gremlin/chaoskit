@@ -1,11 +1,11 @@
-import { forwardRef } from 'react'
+import * as React from 'react'
 import PropTypes from 'prop-types'
 
 import FormGroup from './FormGroup'
 import FormLabel from './FormLabel'
 import FormFooter from './FormFooter'
 
-const FormControlWrapper = forwardRef(
+const FormControlWrapper = React.forwardRef(
   (
     {
       children,

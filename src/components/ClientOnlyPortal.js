@@ -1,11 +1,11 @@
-import { useRef, useEffect, useState } from 'react'
+import * as React from 'react'
 import { createPortal } from 'react-dom'
 
 const ClientOnlyPortal = ({ children }) => {
-  const ref = useRef()
-  const [mounted, setMounted] = useState(false)
+  const ref = React.useRef()
+  const [mounted, setMounted] = React.useState(false)
 
-  useEffect(() => {
+  React.useEffect(() => {
     ref.current = document.body
 
     setMounted(true)

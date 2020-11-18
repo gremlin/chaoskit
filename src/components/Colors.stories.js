@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import { useTheme } from '@emotion/react'
-import { Fragment } from 'react'
+import * as React from 'react'
 
 import ListItem from './ListItem'
 import Inline from './Inline'
@@ -49,7 +49,7 @@ const Story = () => {
 
   return Object.entries(theme.color).map(([label, value]) => {
     return (
-      <Fragment key={label}>
+      <React.Fragment key={label}>
         <h5>{label}</h5>
         <Inline>
           {Object.entries(value).map(([colorLabel, colorValue]) => {
@@ -72,7 +72,7 @@ const Story = () => {
             )
           })}
         </Inline>
-      </Fragment>
+      </React.Fragment>
     )
   })
 }
