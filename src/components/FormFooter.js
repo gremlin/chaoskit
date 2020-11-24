@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import { useTheme } from '@emotion/react'
-import { forwardRef } from 'react'
+import * as React from 'react'
 
-const FormFooter = forwardRef(
+const FormFooter = React.forwardRef(
   ({ className, explanationMessage, validationMessage, ...rest }, ref) => {
     const theme = useTheme()
 

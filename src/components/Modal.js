@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react'
+import * as React from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import {
@@ -71,10 +71,10 @@ const Modal = ({
 }) => {
   const theme = useTheme()
 
-  const modalRef = useRef()
-  const modalDialogRef = useRef()
+  const modalRef = React.useRef()
+  const modalDialogRef = React.useRef()
 
-  const direction = useRef('forward')
+  const direction = React.useRef('forward')
 
   const modalVariants = {
     hidden: {
@@ -97,7 +97,7 @@ const Modal = ({
   }
 
   // On unmount, clear any/all locks on `<body />`
-  useEffect(() => {
+  React.useEffect(() => {
     return () => {
       clearAllBodyScrollLocks()
     }

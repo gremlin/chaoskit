@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control, jsx-a11y/label-has-for */
-import { forwardRef, useMemo } from 'react'
+import * as React from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import { useTheme } from '@emotion/react'
@@ -29,7 +29,7 @@ const StylesToggleVariables = (theme) => ({
   transition: `all ${theme.timing.base} ${theme.transition.base}`,
 })
 
-const Toggle = forwardRef(
+const Toggle = React.forwardRef(
   (
     {
       name,
@@ -46,7 +46,7 @@ const Toggle = forwardRef(
     const theme = useTheme()
 
     // Only regenerate this if the name prop changes
-    const id = useMemo(() => `${name}-${generateUUID()}`, [name])
+    const id = React.useMemo(() => `${name}-${generateUUID()}`, [name])
 
     return (
       <FormGroup {...wrapperProps}>

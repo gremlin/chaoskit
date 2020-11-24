@@ -1,4 +1,4 @@
-import { forwardRef } from 'react'
+import * as React from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import { rgba } from 'polished'
@@ -11,7 +11,7 @@ const StylesSectionVariables = {
   slantOffset: 2.5,
 }
 
-const Section = forwardRef(
+const Section = React.forwardRef(
   ({ space = 'large', slant, className, ...rest }, ref) => {
     const theme = useTheme()
 

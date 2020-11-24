@@ -1,9 +1,9 @@
+import * as React from 'react'
 import clsx from 'clsx'
 import PropTypes from 'prop-types'
 import { useTheme } from '@emotion/react'
-import { forwardRef } from 'react'
 
-const ListItem = forwardRef(({ className, ...rest }, ref) => {
+const ListItem = React.forwardRef(({ className, ...rest }, ref) => {
   const theme = useTheme()
 
   return (

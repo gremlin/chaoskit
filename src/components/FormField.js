@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import * as React from 'react'
 import PropTypes from 'prop-types'
 import { useFormContext } from 'react-hook-form'
 
@@ -15,7 +15,7 @@ const FormField = ({ as = 'input', name, ...rest }) => {
     formState: { errors },
   } = useFormContext()
 
-  const Component = useMemo(() => {
+  const Component = React.useMemo(() => {
     // eslint-disable-next-line default-case
     switch (as) {
       case 'input':

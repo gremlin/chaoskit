@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control, jsx-a11y/label-has-for */
-import { forwardRef } from 'react'
+import * as React from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import { useTheme } from '@emotion/react'
@@ -94,7 +94,7 @@ export const StylesCheckboxBase = (theme, props = {}) => [
     },
 ]
 
-const Checkbox = forwardRef(
+const Checkbox = React.forwardRef(
   (
     {
       className,

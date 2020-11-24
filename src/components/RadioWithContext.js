@@ -1,11 +1,11 @@
-import { useContext } from 'react'
+import * as React from 'react'
 import PropTypes from 'prop-types'
 
 import { RadioGroupContext } from './RadioGroup'
 import Radio from './Radio'
 
 const RadioWithContext = ({ value, ...rest }) => {
-  const { selectedValue, name, onChange, noContrast } = useContext(
+  const { selectedValue, name, onChange, noContrast } = React.useContext(
     RadioGroupContext
   )
 

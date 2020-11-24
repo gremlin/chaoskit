@@ -1,9 +1,9 @@
-import { Children, createContext } from 'react'
+import * as React from 'react'
 import PropTypes from 'prop-types'
 
 import FormControlWrapper from './FormControlWrapper'
 
-export const RadioGroupContext = createContext()
+export const RadioGroupContext = React.createContext()
 export const RadioGroupProvider = RadioGroupContext.Provider
 
 const RadioGroup = ({
@@ -20,7 +20,7 @@ const RadioGroup = ({
   ...rest
 }) => {
   const renderChildren = () =>
-    Children.map(children, (child) => {
+    React.Children.map(children, (child) => {
       const onChangeFunc = (e) => {
         onChange(e)
       }

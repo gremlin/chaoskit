@@ -1,4 +1,4 @@
-import { useMemo, forwardRef } from 'react'
+import * as React from 'react'
 import clsx from 'clsx'
 import PropTypes from 'prop-types'
 import { useTheme } from '@emotion/react'
@@ -109,7 +109,7 @@ export const StylesSelectBase = (theme, props = {}) => [
   ],
 ]
 
-const Select = forwardRef(
+const Select = React.forwardRef(
   (
     {
       className,
@@ -131,7 +131,7 @@ const Select = forwardRef(
     const theme = useTheme()
 
     // Only regenerate this if the name prop changes
-    const id = useMemo(() => `${name}-${generateUUID()}`, [name])
+    const id = React.useMemo(() => `${name}-${generateUUID()}`, [name])
 
     const renderOpts = (option) => {
       // If the option has options as well we're in an `<optgroup>`

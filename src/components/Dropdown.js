@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import * as React from 'react'
 import PropTypes from 'prop-types'
 import { useTheme } from '@emotion/react'
 import Tippy from '@tippyjs/react/headless'
@@ -52,8 +52,8 @@ const Dropdown = ({
 }) => {
   const theme = useTheme()
 
-  const dropdownPanelRef = useRef()
-  const dropdownTriggerRef = useRef()
+  const dropdownPanelRef = React.useRef()
+  const dropdownTriggerRef = React.useRef()
 
   const controls = useAnimation()
 

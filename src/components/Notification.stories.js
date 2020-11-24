@@ -1,4 +1,4 @@
-import { Fragment } from 'react'
+import * as React from 'react'
 
 import useNotificationsState from '../hooks/useNotifications'
 
@@ -18,7 +18,7 @@ const NotificationExample = () => {
   const add = useNotificationsState((state) => state.add)
 
   return (
-    <Fragment>
+    <React.Fragment>
       <Notifications />
       <Inline>
         <ListItem>
@@ -68,7 +68,7 @@ const NotificationExample = () => {
           </Button>
         </ListItem>
       </Inline>
-    </Fragment>
+    </React.Fragment>
   )
 }
 

@@ -1,4 +1,4 @@
-import { useMemo, forwardRef } from 'react'
+import * as React from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import { useTheme } from '@emotion/react'
@@ -37,7 +37,7 @@ export const StylesTextareaBase = (theme, props = {}) => [
   },
 ]
 
-const Textarea = forwardRef(
+const Textarea = React.forwardRef(
   (
     {
       className,
@@ -55,7 +55,7 @@ const Textarea = forwardRef(
     const theme = useTheme()
 
     // Only regenerate this if the name prop changes
-    const id = useMemo(() => `${name}-${generateUUID()}`, [name])
+    const id = React.useMemo(() => `${name}-${generateUUID()}`, [name])
 
     return (
       <FormControlWrapper

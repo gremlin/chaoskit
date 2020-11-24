@@ -1,4 +1,4 @@
-import { forwardRef, useMemo } from 'react'
+import * as React from 'react'
 import clsx from 'clsx'
 import PropTypes from 'prop-types'
 import { useTheme } from '@emotion/react'
@@ -32,7 +32,7 @@ const generateProgressGradient = (
   return `linear-gradient(to right, ${theme.color.primary.base} 0%, ${theme.color.primary.dark} ${percentage}%, ${baseBackground} ${percentage}%)`
 }
 
-const Range = forwardRef(
+const Range = React.forwardRef(
   (
     {
       contrast,
@@ -53,7 +53,7 @@ const Range = forwardRef(
   ) => {
     const theme = useTheme()
     // Only regenerate this if the name prop changes
-    const id = useMemo(() => `${name}-${generateUUID()}`, [name])
+    const id = React.useMemo(() => `${name}-${generateUUID()}`, [name])
 
     return (
       <FormControlWrapper

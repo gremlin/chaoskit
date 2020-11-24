@@ -1,4 +1,4 @@
-import { Fragment, useRef } from 'react'
+import * as React from 'react'
 import PropTypes from 'prop-types'
 import { useTheme } from '@emotion/react'
 import { motion, useAnimation } from 'framer-motion'
@@ -20,9 +20,9 @@ const Reveal = ({
 }) => {
   const theme = useTheme()
 
-  const triggerRef = useRef()
+  const triggerRef = React.useRef()
 
-  const direction = useRef('forward')
+  const direction = React.useRef('forward')
 
   const controls = useAnimation()
 
@@ -55,7 +55,7 @@ const Reveal = ({
   }, [reveal])
 
   return (
-    <Fragment>
+    <React.Fragment>
       <Button
         ref={triggerRef}
         onClick={() => setReveal(!reveal)}
@@ -90,7 +90,7 @@ const Reveal = ({
           {children}
         </div>
       </motion.div>
-    </Fragment>
+    </React.Fragment>
   )
 }
 
