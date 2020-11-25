@@ -1,4 +1,6 @@
-import { Check } from '../assets/icons'
+import { useTheme } from '@emotion/react'
+
+import { Check, Search } from '../assets/icons'
 
 export default {
   title: 'Components/Icon',
@@ -14,3 +16,13 @@ Icons are just as maluable as any piece of text; with both their size and color 
 }
 
 export const Overview = (args) => <Check {...args} />
+
+export const IconWithText = () => {
+  const theme = useTheme()
+
+  return (
+    <div css={{ display: 'inline-flex', alignItems: 'center' }}>
+      <div>Inline text</div> <Search css={{ marginLeft: theme.space.small }} />
+    </div>
+  )
+}
