@@ -1,6 +1,5 @@
 import { ReactComponent as PlusCircle } from './plus-circle.svg'
 import { ReactComponent as AlertCircle } from './alert-circle.svg'
-import { ReactComponent as Anchor } from './anchor.svg'
 import { ReactComponent as ArrowDown } from './arrow-down.svg'
 import { ReactComponent as ArrowLeft } from './arrow-left.svg'
 import { ReactComponent as ArrowRight } from './arrow-right.svg'
@@ -22,6 +21,7 @@ import { ReactComponent as Facebook } from './facebook.svg'
 import { ReactComponent as GitHub } from './github.svg'
 import { ReactComponent as Google } from './google.svg'
 import { ReactComponent as HackerNews } from './hacker-news.svg'
+import { ReactComponent as Hash } from './hash.svg'
 import { ReactComponent as Home } from './home.svg'
 import { ReactComponent as Instagram } from './instagram.svg'
 import { ReactComponent as Link } from './link.svg'
@@ -44,7 +44,6 @@ import { ReactComponent as YouTube } from './youtube.svg'
 export {
   PlusCircle,
   AlertCircle,
-  Anchor,
   ArrowDown,
   ArrowLeft,
   ArrowRight,
@@ -66,6 +65,7 @@ export {
   GitHub,
   Google,
   HackerNews,
+  Hash,
   Home,
   Instagram,
   Link,
