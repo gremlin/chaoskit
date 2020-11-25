@@ -1,5 +1,3 @@
-import { Fragment } from 'react'
-
 import Avatar from './Avatar'
 import AvatarGroup from './AvatarGroup'
 
@@ -28,12 +26,10 @@ export const Group = Story.bind({})
 
 Group.decorators = [
   (Example) => (
-    <Fragment>
-      <AvatarGroup>
-        <Example />
-        <Example />
-        <Example />
-      </AvatarGroup>
-    </Fragment>
+    <AvatarGroup>
+      <Example />
+      <Example />
+      <Example />
+    </AvatarGroup>
   ),
 ]
