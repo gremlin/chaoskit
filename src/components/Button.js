@@ -468,7 +468,11 @@ const Button = React.forwardRef(
               display: 'grid',
               placeItems: 'center',
               height: '100%',
+              gridAutoFlow: 'column',
+              gridAutoColumns: 'auto',
+              gap: theme.space.small,
             }}
+            className="CK__Button__Span"
           >
             {children}
           </span>
@@ -478,8 +482,8 @@ const Button = React.forwardRef(
             css={[
               misc.absoluteCenter,
               {
-                width: 1.5,
-                height: 1.5,
+                width: theme.fontSizeRelative.large,
+                height: theme.fontSizeRelative.large,
               },
             ]}
           />

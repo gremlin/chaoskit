@@ -134,11 +134,10 @@ const Dropdown = ({
       {...rest}
     >
       <Button {...trigger.props} ref={dropdownTriggerRef}>
-        {trigger.label}
+        <span>{trigger.label}</span>
         {showArrow && (
           <CaretDownSvg
             css={{
-              marginLeft: theme.space.small,
               transition: `transform ${theme.timing.base} ${theme.transition.bounce}`,
 
               '.is-active &': {
