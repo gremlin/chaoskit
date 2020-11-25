@@ -285,6 +285,14 @@ const fontWeight = {
   bold: 600,
 }
 
+const fontSizeRelative = {
+  small: '0.65em',
+  base: '1em',
+  medium: '1.5em',
+  large: '1.65em',
+  xlarge: '3em',
+}
+
 const height = {
   large: 64,
   base: 48,
@@ -410,6 +418,7 @@ export const theme = {
   mq,
   boxShadow,
   fontFamily,
+  fontSizeRelative,
   muted,
   fontColor,
   fontSize,

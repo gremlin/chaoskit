@@ -10,7 +10,7 @@ import caretDown from '../assets/icons/caret-down.svg'
 import FormControlWrapper from './FormControlWrapper'
 
 export const StylesSelectVariables = (theme, props = {}) => ({
-  iconSize: theme.fontSize.small,
+  iconSize: theme.fontSize.base,
   get arrow() {
     return {
       content: "''",

@@ -48,6 +48,7 @@
     "@storybook/addon-a11y": "6.1.5",
     "@storybook/addon-essentials": "6.1.5",
     "@storybook/addons": "6.1.5",
+    "@storybook/preset-create-react-app": "3.1.5",
     "@storybook/react": "6.1.5",
     "@storybook/theming": "6.1.5",
     "@svgr/webpack": "5.5.0",
@@ -60,9 +61,9 @@
     "yup": "0.31.0"
   },
   "peerDependencies": {
+    "@svgr/webpack": ">=5.5.0",
     "react": ">=17.0.1",
-    "react-dom": ">=17.0.1",
-    "@svgr/webpack": ">=5.5.0"
+    "react-dom": ">=17.0.1"
   },
   "license": "MIT",
   "scripts": {

@@ -1,4 +1,4 @@
-import { ReactComponent as CheckSvg } from '../assets/icons/check.svg'
+import { Check } from '../assets/icons'
 
 export default {
   title: 'Components/Icon',
@@ -13,4 +13,4 @@ Icons are just as maluable as any piece of text; with both their size and color 
   },
 }
 
-export const Overview = (args) => <CheckSvg {...args} />
+export const Overview = (args) => <Check {...args} />

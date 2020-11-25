@@ -11,7 +11,6 @@ export default {
   args: {
     image: 'https://source.unsplash.com/random',
     name: 'Zach Schnackel',
-    fallbackIcon: 'user-circle',
   },
   parameters: {
     docs: {

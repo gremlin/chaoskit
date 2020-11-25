@@ -333,12 +333,27 @@ export const StylesButtonIconOnly = (theme, props = {}) => [
   {
     padding: 0,
     width: theme.height.base,
+
+    svg: {
+      width: theme.fontSizeRelative.large,
+      height: theme.fontSizeRelative.large,
+    },
   },
   props.size === 'small' && {
     width: theme.height.small,
+
+    svg: {
+      width: theme.fontSizeRelative.medium,
+      height: theme.fontSizeRelative.medium,
+    },
   },
   props.size === 'xsmall' && {
     width: theme.height.xsmall,
+
+    svg: {
+      width: theme.fontSizeRelative.base,
+      height: theme.fontSizeRelative.base,
+    },
   },
 ]
 
@@ -447,7 +462,16 @@ const Button = React.forwardRef(
         {type === 'reset' ? (
           children
         ) : (
-          <span css={{ color: loading && 'transparent' }}>{children}</span>
+          <span
+            css={{
+              color: loading && 'transparent',
+              display: 'grid',
+              placeItems: 'center',
+              height: '100%',
+            }}
+          >
+            {children}
+          </span>
         )}
         {loading && type !== 'reset' && (
           <Loader

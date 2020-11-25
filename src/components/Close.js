@@ -6,7 +6,7 @@ import { ReactComponent as CloseSvg } from '../assets/icons/close.svg'
 import Button from './Button'
 
 export const StylesCloseVariables = (theme) => ({
-  size: theme.fontSize.base,
+  size: theme.fontSize.medium,
 })
 
 const Close = ({ onClick, noContrast, ...rest }) => {
@@ -24,6 +24,7 @@ const Close = ({ onClick, noContrast, ...rest }) => {
           lineHeight: 1,
           width: StylesCloseVariables(theme).size,
           height: StylesCloseVariables(theme).size,
+          fontSize: StylesCloseVariables(theme).size,
           opacity: theme.opacity.base,
           transition: `opacity ${theme.timing.short} linear, transform ${theme.timing.short} linear`,
 
