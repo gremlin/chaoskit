@@ -5,7 +5,7 @@ import { useTheme } from '@emotion/react'
 
 import { form } from '../assets/styles/utility'
 import { generateUUID } from '../helpers/utility'
-import caretDouble from '../assets/icons/caret-double.svg'
+import caretDown from '../assets/icons/caret-down.svg'
 
 import FormControlWrapper from './FormControlWrapper'
 
@@ -18,7 +18,7 @@ export const StylesSelectVariables = (theme, props = {}) => ({
       top: '50%',
       transform: 'translateY(-50%)',
       right: form.variables(theme).padding,
-      backgroundImage: `url(${caretDouble})`,
+      backgroundImage: `url(${caretDown})`,
       filter: theme.fontColor.base__filter,
       width: this.iconSize,
       height: this.iconSize,

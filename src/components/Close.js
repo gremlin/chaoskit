@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types'
 import { useTheme } from '@emotion/react'
 
+import { ReactComponent as CloseSvg } from '../assets/icons/close.svg'
+
 import Button from './Button'
-import Icon from './Icon'
 
 export const StylesCloseVariables = (theme) => ({
   size: theme.fontSize.base,
@@ -20,7 +21,7 @@ const Close = ({ onClick, noContrast, ...rest }) => {
         {
           // 1. To align better with headers
           color: theme.fontColor.base,
-          lineHeight: theme.lineHeight.small, // 1
+          lineHeight: 1,
           width: StylesCloseVariables(theme).size,
           height: StylesCloseVariables(theme).size,
           opacity: theme.opacity.base,
@@ -41,7 +42,7 @@ const Close = ({ onClick, noContrast, ...rest }) => {
       ]}
       {...rest}
     >
-      <Icon icon="close" className="CK__Close__Icon" />
+      <CloseSvg className="CK__Close__Icon" />
     </Button>
   )
 }

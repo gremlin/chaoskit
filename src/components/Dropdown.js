@@ -7,9 +7,9 @@ import { motion, useAnimation } from 'framer-motion'
 import { text } from '../assets/styles/utility'
 import { generateGradient } from '../assets/styles/utility/gradient'
 import { getTransformOrigin } from '../helpers/utility'
+import { ReactComponent as CaretDownSvg } from '../assets/icons/caret-down.svg'
 
 import Button from './Button'
-import Icon from './Icon'
 
 export const DropdownMenuItemStyles = (theme, props = {}) => [
   theme.fontSize.medium__fluid,
@@ -136,7 +136,7 @@ const Dropdown = ({
       <Button {...trigger.props} ref={dropdownTriggerRef}>
         {trigger.label}
         {showArrow && (
-          <Icon
+          <CaretDownSvg
             css={{
               marginLeft: theme.space.small,
               transition: `transform ${theme.timing.base} ${theme.transition.bounce}`,
@@ -145,8 +145,6 @@ const Dropdown = ({
                 transform: 'rotate(180deg)',
               },
             }}
-            size="small"
-            icon="caret-down"
           />
         )}
       </Button>

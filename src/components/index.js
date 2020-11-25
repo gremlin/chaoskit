@@ -15,7 +15,6 @@ import Form from './Form'
 import FormFooter from './FormFooter'
 import FormGroup from './FormGroup'
 import FormLabel from './FormLabel'
-import Icon from './Icon'
 import Inline from './Inline'
 import Input from './Input'
 import List from './List'
@@ -61,7 +60,6 @@ export {
   FormFooter,
   FormGroup,
   FormLabel,
-  Icon,
   Inline,
   Input,
   List,

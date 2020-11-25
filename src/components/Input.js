@@ -7,7 +7,6 @@ import { form } from '../assets/styles/utility'
 import { generateUUID } from '../helpers/utility'
 
 import FormControlWrapper from './FormControlWrapper'
-import Icon, { StylesIconVariables } from './Icon'
 
 export const StylesInputBase = (theme, props = {}) => [
   form.base(theme),
@@ -58,7 +57,7 @@ export const StylesInputBase = (theme, props = {}) => [
   props.prefixIcon && {
     paddingLeft: `calc(${
       form.variables(theme).padding + theme.space.small
-    }px + ${StylesIconVariables.base})`,
+    }px + 1em)`,
   },
 ]
 
@@ -98,7 +97,7 @@ const Input = React.forwardRef(
             position: 'relative',
           }}
         >
-          {prefixIcon && (
+          {Boolean(prefixIcon) && (
             <div
               css={[
                 {
@@ -121,13 +120,13 @@ const Input = React.forwardRef(
                   },
               ]}
             >
-              <Icon icon={prefixIcon} />
+              {prefixIcon}
             </div>
           )}
           <input
             css={StylesInputBase(theme, {
               type,
-              prefixIcon,
+              prefixIcon: Boolean(prefixIcon),
               validationMessage,
               noContrast,
             })}
@@ -151,7 +150,7 @@ Input.propTypes = {
   explanationMessage: PropTypes.string,
   validationMessage: PropTypes.string,
   noContrast: PropTypes.bool,
-  prefixIcon: PropTypes.string,
+  prefixIcon: PropTypes.node,
   required: PropTypes.bool,
   label: PropTypes.string,
   name: PropTypes.string.isRequired,

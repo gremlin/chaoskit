@@ -189,7 +189,9 @@ export const globalStyles = (theme) => [
     //
 
     // Remove the gap between audio, canvas, iframes, images, videos and the bottom of their containers.
-    'audio, canvas, iframe, img, svg, video': {
+    // Make replaced elements `display: block` by default as that's the behavior you want almost all of the time.
+    'img, svg, video, canvas, audio, iframe, embed, object': {
+      display: 'block',
       verticalAlign: 'middle',
     },
 

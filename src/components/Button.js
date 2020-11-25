@@ -6,7 +6,6 @@ import { useTheme } from '@emotion/react'
 
 import { gradient, misc } from '../assets/styles/utility'
 
-import { StylesIconVariables } from './Icon'
 import Loader from './Loader'
 
 export const generateButtonGradient = ({ start, stop }) => ({
@@ -334,27 +333,12 @@ export const StylesButtonIconOnly = (theme, props = {}) => [
   {
     padding: 0,
     width: theme.height.base,
-
-    svg: {
-      width: StylesIconVariables.large,
-      height: StylesIconVariables.large,
-    },
   },
   props.size === 'small' && {
     width: theme.height.small,
-
-    svg: {
-      width: StylesIconVariables.medium,
-      height: StylesIconVariables.medium,
-    },
   },
   props.size === 'xsmall' && {
     width: theme.height.xsmall,
-
-    svg: {
-      width: StylesIconVariables.base,
-      height: StylesIconVariables.base,
-    },
   },
 ]
 
@@ -470,8 +454,8 @@ const Button = React.forwardRef(
             css={[
               misc.absoluteCenter,
               {
-                width: StylesIconVariables.large,
-                height: StylesIconVariables.large,
+                width: 1.5,
+                height: 1.5,
               },
             ]}
           />

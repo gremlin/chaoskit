@@ -1,6 +1,6 @@
 const webpack = require('webpack')
 
-const prettierConfig = require('../prettier.config.js');
+const prettierConfig = require('../prettier.config.js')
 
 module.exports = {
   stories: ['../src/components/*.stories.@(js|mdx)'],
@@ -34,6 +34,30 @@ module.exports = {
         },
       ],
       enforce: 'pre',
+    })
+
+    // Add SVGR Loader
+    // ========================================================
+    const assetRule = config.module.rules.find(({ test }) => test.test('.svg'))
+
+    const assetLoader = {
+      loader: assetRule.loader,
+      options: assetRule.options || assetRule.query,
+    }
+
+    // Merge our rule with existing assetLoader rules
+    config.module.rules.unshift({
+      test: /\.svg$/,
+      use: [
+        {
+          loader: '@svgr/webpack',
+          options: {
+            ref: true,
+            icon: true
+          },
+        },
+        assetLoader,
+      ],
     })
 
     config.node = {

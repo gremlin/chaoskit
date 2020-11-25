@@ -1,7 +1,7 @@
 import ContrastWrapper from '../../.storybook/components/ContrastWrapper'
+import { ReactComponent as CheckSvg } from '../assets/icons/check.svg'
 
 import Button from './Button'
-import Icon from './Icon'
 
 export default {
   title: 'Components/Button',
@@ -20,7 +20,7 @@ export const IconOnly = Story.bind({})
 
 IconOnly.args = {
   iconOnly: true,
-  children: <Icon icon="check" />,
+  children: <CheckSvg />,
 }
 
 IconOnly.argTypes = {

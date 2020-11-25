@@ -5,8 +5,9 @@ import useTimeoutFn from 'react-use/lib/useTimeoutFn'
 
 import useNotificationsState from '../hooks/useNotifications'
 import { misc } from '../assets/styles/utility'
+import { ReactComponent as CheckSvg } from '../assets/icons/check.svg'
+import { ReactComponent as CloseSvg } from '../assets/icons/close.svg'
 
-import Icon from './Icon'
 import ClientOnlyPortal from './ClientOnlyPortal'
 
 const Notification = ({ notification }) => {
@@ -65,14 +66,19 @@ const Notification = ({ notification }) => {
           placeItems: 'center',
         }}
       >
-        <Icon
-          size="small"
-          icon={notification.status === 'success' ? 'check' : 'close'}
-          css={{
-            color: theme.contrast.base,
-            top: 'auto', // Reset default top offset
-          }}
-        />
+        {notification.status === 'success' ? (
+          <CheckSvg
+            css={{
+              color: theme.contrast.base,
+            }}
+          />
+        ) : (
+          <CloseSvg
+            css={{
+              color: theme.contrast.base,
+            }}
+          />
+        )}
       </div>
       <div className={theme.settings.classes.trim}>
         {notification.title && (
