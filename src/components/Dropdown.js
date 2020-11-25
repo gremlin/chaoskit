@@ -7,7 +7,7 @@ import { motion, useAnimation } from 'framer-motion'
 import { text } from '../assets/styles/utility'
 import { generateGradient } from '../assets/styles/utility/gradient'
 import { getTransformOrigin } from '../helpers/utility'
-import { ReactComponent as CaretDownSvg } from '../assets/icons/caret-down.svg'
+import { CaretDown } from '../assets/icons'
 
 import Button from './Button'
 
@@ -136,7 +136,7 @@ const Dropdown = ({
       <Button {...trigger.props} ref={dropdownTriggerRef}>
         <span>{trigger.label}</span>
         {showArrow && (
-          <CaretDownSvg
+          <CaretDown
             css={{
               transition: `transform ${theme.timing.base} ${theme.transition.bounce}`,
 

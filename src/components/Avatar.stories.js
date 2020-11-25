@@ -1,7 +1,5 @@
 import { Fragment } from 'react'
 
-import { ReactComponent as CheckSvg } from '../assets/icons/check.svg'
-
 import Avatar from './Avatar'
 import AvatarGroup from './AvatarGroup'
 
@@ -36,16 +34,6 @@ Group.decorators = [
         <Example />
         <Example />
       </AvatarGroup>
-      <div
-        style={{
-          fontSize: 30,
-          display: 'flex',
-          alignItems: 'center',
-        }}
-      >
-        <div style={{ fontFamily: 'Circular' }}>hello</div>
-        <CheckSvg />
-      </div>
     </Fragment>
   ),
 ]

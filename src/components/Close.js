@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import { useTheme } from '@emotion/react'
 
-import { ReactComponent as CloseSvg } from '../assets/icons/close.svg'
+import { Close as CloseSvg } from '../assets/icons'
 
 import Button from './Button'
 
