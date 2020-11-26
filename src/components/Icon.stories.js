@@ -51,9 +51,11 @@ export const AllIcons = () => {
               display: 'grid',
               gap: theme.space.small,
               placeItems: 'center',
+              borderRadius: theme.borderRadius.base,
+              boxShadow: theme.boxShadow.base,
             }}
           >
-            <IconComponent css={{ fontSize: theme.fontSize.large }} />
+            <IconComponent css={{ fontSize: theme.fontSize.xlarge }} />
             <div
               css={{
                 fontSize: theme.fontSize.small,
