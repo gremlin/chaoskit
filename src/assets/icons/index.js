@@ -14,6 +14,7 @@ import { ReactComponent as Chat } from './chat.svg'
 import { ReactComponent as Check } from './check.svg'
 import { ReactComponent as Close } from './close.svg'
 import { ReactComponent as CloseCircle } from './close-circle.svg'
+import { ReactComponent as CloseCircleOutline } from './close-circle-outline.svg'
 import { ReactComponent as Code } from './code.svg'
 import { ReactComponent as Cog } from './cog.svg'
 import { ReactComponent as Collection } from './collection.svg'
@@ -67,6 +68,7 @@ export {
   Check,
   Close,
   CloseCircle,
+  CloseCircleOutline,
   Code,
   Cog,
   Collection,

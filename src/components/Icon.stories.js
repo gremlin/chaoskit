@@ -35,7 +35,7 @@ export const AllIcons = () => {
     <div
       css={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, 120px)',
+        gridTemplateColumns: 'repeat(auto-fill, 150px)',
         gap: theme.space.small,
       }}
     >
@@ -47,7 +47,7 @@ export const AllIcons = () => {
             key={icon.render.name}
             css={{
               border: theme.border.base,
-              height: 120,
+              height: 150,
               display: 'grid',
               gap: theme.space.small,
               placeItems: 'center',
