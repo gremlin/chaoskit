@@ -47,7 +47,8 @@ export const AllIcons = () => {
             key={icon.render.name}
             css={{
               border: theme.border.base,
-              height: 150,
+              paddingTop: theme.space.base,
+              paddingBottom: theme.space.base,
               display: 'grid',
               gap: theme.space.small,
               placeItems: 'center',

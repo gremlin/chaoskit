@@ -35,14 +35,22 @@ import { ReactComponent as Instagram } from './instagram.svg'
 import { ReactComponent as Link } from './link.svg'
 import { ReactComponent as LinkedIn } from './linkedin.svg'
 import { ReactComponent as Menu } from './menu.svg'
+import { ReactComponent as Minus } from './minus.svg'
 import { ReactComponent as Plus } from './plus.svg'
 import { ReactComponent as PlusCircle } from './plus-circle.svg'
 import { ReactComponent as QuestionCircle } from './question-circle.svg'
 import { ReactComponent as RSS } from './rss.svg'
+import { ReactComponent as Save } from './save.svg'
 import { ReactComponent as Search } from './search.svg'
 import { ReactComponent as Selector } from './selector.svg'
 import { ReactComponent as Share } from './share.svg'
+import { ReactComponent as SortAscending } from './sort-ascending.svg'
+import { ReactComponent as SortDescending } from './sort-descending.svg'
+import { ReactComponent as Support } from './support.svg'
 import { ReactComponent as Terminal } from './terminal.svg'
+import { ReactComponent as Trash } from './trash.svg'
+import { ReactComponent as TrendingDown } from './trending-down.svg'
+import { ReactComponent as TrendingUp } from './trending-up.svg'
 import { ReactComponent as Twitter } from './twitter.svg'
 import { ReactComponent as Upload } from './upload.svg'
 import { ReactComponent as User } from './user.svg'
@@ -89,14 +97,22 @@ export {
   Link,
   LinkedIn,
   Menu,
+  Minus,
   Plus,
   PlusCircle,
   QuestionCircle,
   RSS,
+  Save,
   Search,
   Selector,
   Share,
+  SortAscending,
+  SortDescending,
+  Support,
   Terminal,
+  Trash,
+  TrendingDown,
+  TrendingUp,
   Twitter,
   Upload,
   User,
