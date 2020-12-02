@@ -5,7 +5,8 @@ import useTimeoutFn from 'react-use/lib/useTimeoutFn'
 
 import useNotificationsState from '../hooks/useNotifications'
 import { misc } from '../assets/styles/utility'
-import { Check, Close } from '../assets/icons'
+import { ReactComponent as CheckSvg } from '../assets/icons/check.svg'
+import { ReactComponent as CloseSvg } from '../assets/icons/close.svg'
 
 import ClientOnlyPortal from './ClientOnlyPortal'
 
@@ -66,13 +67,13 @@ const Notification = ({ notification }) => {
         }}
       >
         {notification.status === 'success' ? (
-          <Check
+          <CheckSvg
             css={{
               color: theme.contrast.base,
             }}
           />
         ) : (
-          <Close
+          <CloseSvg
             css={{
               color: theme.contrast.base,
             }}

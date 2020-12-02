@@ -1,3 +1,4 @@
+import { ReactComponent as Adjustments } from './adjustments.svg'
 import { ReactComponent as AlertCircle } from './alert-circle.svg'
 import { ReactComponent as Anchor } from './anchor.svg'
 import { ReactComponent as ArrowDown } from './arrow-down.svg'
@@ -5,6 +6,7 @@ import { ReactComponent as ArrowLeft } from './arrow-left.svg'
 import { ReactComponent as ArrowRight } from './arrow-right.svg'
 import { ReactComponent as ArrowUp } from './arrow-up.svg'
 import { ReactComponent as Asterisk } from './asterisk.svg'
+import { ReactComponent as Building } from './building.svg'
 import { ReactComponent as Calendar } from './calendar.svg'
 import { ReactComponent as CaretDown } from './caret-down.svg'
 import { ReactComponent as CaretLeft } from './caret-left.svg'
@@ -60,6 +62,7 @@ import { ReactComponent as UserGroupCircle } from './user-group-circle.svg'
 import { ReactComponent as YouTube } from './youtube.svg'
 
 export {
+  Adjustments,
   AlertCircle,
   Anchor,
   ArrowDown,
@@ -67,6 +70,7 @@ export {
   ArrowRight,
   ArrowUp,
   Asterisk,
+  Building,
   Calendar,
   CaretDown,
   CaretLeft,
