@@ -29,7 +29,7 @@
     "eslint-plugin-prettier": "3.1.4",
     "eslint-plugin-react": "7.21.5",
     "eslint-plugin-react-hooks": "4.2.0",
-    "framer-motion": "2.9.4",
+    "framer-motion": "2.9.5",
     "fstream": "1.0.12",
     "lodash-es": "4.17.15",
     "parse5": "6.0.1",
@@ -48,7 +48,7 @@
     "@babel/core": "7.12.9",
     "@babel/preset-env": "7.12.7",
     "@babel/preset-react": "7.12.7",
-    "@hookform/resolvers": "1.1.0",
+    "@hookform/resolvers": "1.1.1",
     "@storybook/addon-a11y": "6.1.9",
     "@storybook/addon-essentials": "6.1.9",
     "@storybook/addons": "6.1.9",
@@ -59,8 +59,8 @@
     "formik": "2.2.5",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "react-hook-form": "6.12.1",
-    "yup": "0.31.0"
+    "react-hook-form": "6.12.2",
+    "yup": "0.31.1"
   },
   "peerDependencies": {
     "react": ">=17.0.1",
