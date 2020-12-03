@@ -1,6 +1,7 @@
 import { ReactComponent as Adjustments } from './adjustments.svg'
 import { ReactComponent as AlertCircle } from './alert-circle.svg'
 import { ReactComponent as Anchor } from './anchor.svg'
+import { ReactComponent as Archive } from './archive.svg'
 import { ReactComponent as ArrowDown } from './arrow-down.svg'
 import { ReactComponent as ArrowLeft } from './arrow-left.svg'
 import { ReactComponent as ArrowRight } from './arrow-right.svg'
@@ -21,6 +22,7 @@ import { ReactComponent as Code } from './code.svg'
 import { ReactComponent as Cog } from './cog.svg'
 import { ReactComponent as Collection } from './collection.svg'
 import { ReactComponent as Copy } from './copy.svg'
+import { ReactComponent as CopyCheck } from './copy-check.svg'
 import { ReactComponent as Delete } from './delete.svg'
 import { ReactComponent as DotsHorizontal } from './dots-horizontal.svg'
 import { ReactComponent as DotsVertical } from './dots-vertical.svg'
@@ -65,6 +67,7 @@ export {
   Adjustments,
   AlertCircle,
   Anchor,
+  Archive,
   ArrowDown,
   ArrowLeft,
   ArrowRight,
@@ -85,6 +88,7 @@ export {
   Cog,
   Collection,
   Copy,
+  CopyCheck,
   Delete,
   DotsHorizontal,
   DotsVertical,
