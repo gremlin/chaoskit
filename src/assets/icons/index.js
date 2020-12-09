@@ -16,6 +16,8 @@ import { ReactComponent as CaretRight } from './caret-right.svg'
 import { ReactComponent as CaretUp } from './caret-up.svg'
 import { ReactComponent as Chat } from './chat.svg'
 import { ReactComponent as Check } from './check.svg'
+import { ReactComponent as CheckCircle } from './check-circle.svg'
+import { ReactComponent as CheckSquare } from './check-square.svg'
 import { ReactComponent as Close } from './close.svg'
 import { ReactComponent as CloseCircle } from './close-circle.svg'
 import { ReactComponent as Code } from './code.svg'
@@ -83,6 +85,8 @@ export {
   CaretUp,
   Chat,
   Check,
+  CheckCircle,
+  CheckSquare,
   Close,
   CloseCircle,
   Code,
