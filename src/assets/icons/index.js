@@ -7,6 +7,7 @@ import { ReactComponent as ArrowLeft } from './arrow-left.svg'
 import { ReactComponent as ArrowRight } from './arrow-right.svg'
 import { ReactComponent as ArrowUp } from './arrow-up.svg'
 import { ReactComponent as Asterisk } from './asterisk.svg'
+import { ReactComponent as Ban } from './ban.svg'
 import { ReactComponent as Building } from './building.svg'
 import { ReactComponent as Calendar } from './calendar.svg'
 import { ReactComponent as CaretDown } from './caret-down.svg'
@@ -17,7 +18,6 @@ import { ReactComponent as Chat } from './chat.svg'
 import { ReactComponent as Check } from './check.svg'
 import { ReactComponent as Close } from './close.svg'
 import { ReactComponent as CloseCircle } from './close-circle.svg'
-import { ReactComponent as CloseCircleOutline } from './close-circle-outline.svg'
 import { ReactComponent as Code } from './code.svg'
 import { ReactComponent as Cog } from './cog.svg'
 import { ReactComponent as Collection } from './collection.svg'
@@ -38,8 +38,10 @@ import { ReactComponent as Home } from './home.svg'
 import { ReactComponent as Instagram } from './instagram.svg'
 import { ReactComponent as Link } from './link.svg'
 import { ReactComponent as LinkedIn } from './linkedin.svg'
+import { ReactComponent as MapPin } from './map-pin.svg'
 import { ReactComponent as Menu } from './menu.svg'
 import { ReactComponent as Minus } from './minus.svg'
+import { ReactComponent as Moon } from './moon.svg'
 import { ReactComponent as Plus } from './plus.svg'
 import { ReactComponent as PlusCircle } from './plus-circle.svg'
 import { ReactComponent as QuestionCircle } from './question-circle.svg'
@@ -51,6 +53,7 @@ import { ReactComponent as Share } from './share.svg'
 import { ReactComponent as SortAscending } from './sort-ascending.svg'
 import { ReactComponent as SortDescending } from './sort-descending.svg'
 import { ReactComponent as Support } from './support.svg'
+import { ReactComponent as Sun } from './sun.svg'
 import { ReactComponent as Terminal } from './terminal.svg'
 import { ReactComponent as Trash } from './trash.svg'
 import { ReactComponent as TrendingDown } from './trending-down.svg'
@@ -58,9 +61,7 @@ import { ReactComponent as TrendingUp } from './trending-up.svg'
 import { ReactComponent as Twitter } from './twitter.svg'
 import { ReactComponent as Upload } from './upload.svg'
 import { ReactComponent as User } from './user.svg'
-import { ReactComponent as UserCircle } from './user-circle.svg'
-import { ReactComponent as UserGroup } from './user-group.svg'
-import { ReactComponent as UserGroupCircle } from './user-group-circle.svg'
+import { ReactComponent as Users } from './users.svg'
 import { ReactComponent as YouTube } from './youtube.svg'
 
 export {
@@ -73,6 +74,7 @@ export {
   ArrowRight,
   ArrowUp,
   Asterisk,
+  Ban,
   Building,
   Calendar,
   CaretDown,
@@ -83,7 +85,6 @@ export {
   Check,
   Close,
   CloseCircle,
-  CloseCircleOutline,
   Code,
   Cog,
   Collection,
@@ -104,8 +105,10 @@ export {
   Instagram,
   Link,
   LinkedIn,
+  MapPin,
   Menu,
   Minus,
+  Moon,
   Plus,
   PlusCircle,
   QuestionCircle,
@@ -116,6 +119,7 @@ export {
   Share,
   SortAscending,
   SortDescending,
+  Sun,
   Support,
   Terminal,
   Trash,
@@ -124,8 +128,6 @@ export {
   Twitter,
   Upload,
   User,
-  UserCircle,
-  UserGroup,
-  UserGroupCircle,
+  Users,
   YouTube,
 }
