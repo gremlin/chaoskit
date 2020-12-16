@@ -216,6 +216,11 @@ export const globalStyles = (theme) => [
       overflow: 'hidden',
     },
 
+    // Optimize rendering of SVGs
+    svg: {
+      shapeRendering: 'geometricPrecision',
+    },
+
     // Hide `alt` text for lazy load images
     // 1. Fix lazy loading images if parent element is set to `display: inline` and has `overflow: hidden`.
     // 2. Selector for background while loading img[data-src*='.jpg'][src*='data:image'] { background: grey; }
