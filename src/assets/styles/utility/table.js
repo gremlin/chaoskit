@@ -26,10 +26,8 @@ export const styles = (theme) => ({
       maxWidth: 'max-content',
       display: 'block',
       overflowX: 'auto',
-    },
 
-    {
-      '*:first-child tr:first-of-type': {
+      'tr:first-of-type': {
         borderTop: 0,
       },
     },
@@ -38,27 +36,18 @@ export const styles = (theme) => ({
       theme.settings.contrast.table && {
         '.u-contrast &': {
           borderColor: theme.contrast.base,
+
+          'tr:first-of-type': {
+            borderColor: theme.contrast.base,
+          },
         },
       },
   ],
 
   thead: {
-    th: [
+    tr: [
       {
-        verticalAlign: 'bottom',
-        fontWeight: theme.fontWeight.bold,
         background: theme.color.panel.base,
-        lineHeight: theme.lineHeight.small,
-        fontSize: theme.fontSize.small,
-        textAlign: 'left',
-
-        '&:first-of-type': {
-          borderTopLeftRadius: theme.borderRadius.base,
-        },
-
-        '&:last-of-type': {
-          borderTopRightRadius: theme.borderRadius.base,
-        },
       },
 
       theme.settings.contrast.enable &&
@@ -69,9 +58,24 @@ export const styles = (theme) => ({
         },
     ],
 
-    '+ tbody tr:first-of-type': {
-      borderTopWidth: 2,
-    },
+    th: [
+      {
+        verticalAlign: 'bottom',
+        fontWeight: theme.fontWeight.bold,
+        lineHeight: theme.lineHeight.small,
+        fontSize: theme.fontSize.small,
+        textAlign: 'left',
+        borderBottom: theme.border.base,
+
+        '&:first-of-type': {
+          borderTopLeftRadius: theme.borderRadius.base,
+        },
+
+        '&:last-of-type': {
+          borderTopRightRadius: theme.borderRadius.base,
+        },
+      },
+    ],
   },
 
   tr: [
@@ -121,12 +125,20 @@ export const styles = (theme) => ({
       padding: theme.space.small,
       fontSize: theme.fontSize.small,
       color: theme.fontColor.muted,
+
+      'tr:first-of-type': {
+        borderTop: theme.border.base,
+      },
     },
 
     theme.settings.contrast.enable &&
       theme.settings.contrast.table && {
         '.u-contrast &': {
           color: theme.contrast.muted,
+
+          'tr:first-of-type': {
+            borderColor: theme.contrast.base,
+          },
         },
       },
   ],
