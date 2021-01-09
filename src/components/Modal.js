@@ -10,10 +10,9 @@ import useUpdateEffect from 'react-use/lib/useUpdateEffect'
 import useClickAway from 'react-use/lib/useClickAway'
 import { useTheme } from '@emotion/react'
 import { motion, AnimatePresence } from 'framer-motion'
+import Portal from '@reach/portal'
 
 import { misc } from '../assets/styles/utility'
-
-import ClientOnlyPortal from './ClientOnlyPortal'
 
 export const StylesModalVariables = (theme) => ({
   padding: theme.space.large,
@@ -116,7 +115,7 @@ const Modal = ({
   useClickAway(modalDialogRef, () => setIsOpen(false))
 
   return (
-    <ClientOnlyPortal>
+    <Portal>
       <AnimatePresence onExitComplete={onReverseComplete}>
         {open && (
           <motion.div
@@ -152,7 +151,7 @@ const Modal = ({
           </motion.div>
         )}
       </AnimatePresence>
-    </ClientOnlyPortal>
+    </Portal>
   )
 }
 

@@ -15,6 +15,7 @@
     "@emotion/eslint-plugin": "11.0.0",
     "@emotion/jest": "11.1.0",
     "@emotion/react": "11.1.4",
+    "@reach/portal": "0.12.1",
     "@tippyjs/react": "4.2.0",
     "babel-cli": "6.26.0",
     "babel-plugin-polished": "1.1.0",
