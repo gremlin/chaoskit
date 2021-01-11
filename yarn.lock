@@ -5676,10 +5676,10 @@ fragment-cache@^0.2.1:
   dependencies:
     map-cache "^0.2.2"
 
-framer-motion@3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-3.2.0.tgz#ed81d7998152ec7545f7e29bd8241d36d1e1d15d"
-  integrity sha512-1yTtCIsm5FV/E1aMj4/JYsKhC07n4Gy90XSl0+JKhY6WX8Dsu6YtQvIZMxKpGH4dcJNnT2GZdeLzhJ/2xkNR9A==
+framer-motion@3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-3.2.1.tgz#66eeb883a0b5c425dd7767ecacdeac451c184cdb"
+  integrity sha512-5AWrh4JElgFAXWLqk0u8lVcdkigyuofyEy2LSsjuCxKbAb1hHqRn3PPdrV0KgPrysTHq95QO1bHFTLA7/Q8g+Q==
   dependencies:
     framesync "^5.0.0"
     hey-listen "^1.0.8"
@@ -9080,10 +9080,10 @@ react-universal-interface@^0.6.2:
   resolved "https://registry.yarnpkg.com/react-universal-interface/-/react-universal-interface-0.6.2.tgz#5e8d438a01729a4dbbcbeeceb0b86be146fe2b3b"
   integrity sha512-dg8yXdcQmvgR13RIlZbTRQOoUrDciFVoSBZILwjE2LFISxZZ8loVJKAkuzswl5js8BHda79bIb2b84ehU8IjXw==
 
-react-use@15.3.7:
-  version "15.3.7"
-  resolved "https://registry.yarnpkg.com/react-use/-/react-use-15.3.7.tgz#837cbd6906737622abba6e760fec937f5276e040"
-  integrity sha512-BYNmbonqefQE/kIqzwCH/PCyhv+xcTpf8bYB6n/OILGUEy+LeWB5Ehp+Hs4INMxAqHsvcrSE1EuMHv1lU/zP8g==
+react-use@15.3.8:
+  version "15.3.8"
+  resolved "https://registry.yarnpkg.com/react-use/-/react-use-15.3.8.tgz#ca839ac7fb3d696e5ccbeabbc8dadc2698969d30"
+  integrity sha512-GeGcrmGuUvZrY5wER3Lnph9DSYhZt5nEjped4eKDq8BRGr2CnLf9bDQWG9RFc7oCPphnscUUdOovzq0E5F2c6Q==
   dependencies:
     "@types/js-cookie" "2.2.6"
     "@xobotyi/scrollbar-width" "1.9.5"
@@ -11144,10 +11144,10 @@ yup@0.32.8:
     property-expr "^2.0.4"
     toposort "^2.0.2"
 
-zustand@3.3.0:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/zustand/-/zustand-3.3.0.tgz#dc029b8e0ea710a36dda05f5ca147246969a9104"
-  integrity sha512-oTOoJa70tYisd+fRmoIjZKlF21JEmGQ8oC+dJ7pf/wdS4qJPcCS/W9blzKAnyyLMrIYsIl6Mlq5cmili7mpJPw==
+zustand@3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/zustand/-/zustand-3.3.1.tgz#de5c4b51112b84e0f819d8b3f336fbfbc087d758"
+  integrity sha512-o0rgrBsi29nCkPHdhtkAHisCIlmRUoXOV+1AmDMeCgkGG0i5edFSpGU0KiZYBvFmBYycnck4Z07JsLYDjSET9g==
 
 zwitch@^1.0.0:
   version "1.0.5"
