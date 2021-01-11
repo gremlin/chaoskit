@@ -11,6 +11,11 @@ export const StylesGlobalVariables = (theme) => ({
 
 export const globalStyles = (theme) => [
   {
+    ':root': {
+      '--reach-portal': 1,
+      '--reach-tabs': 1,
+    },
+
     // 1. Normalize default `font-family` and set `font-size` to support `rem` units
     // 2. Prevents iOS text size adjust after orientation change, without disabling user zoom
     // 3. Setting @viewport causes scrollbars to overlap content in IE11 and Edge, so we force a non-overlapping, non-auto-hiding scrollbar to counteract.
