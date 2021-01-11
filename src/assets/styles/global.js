@@ -11,6 +11,7 @@ export const StylesGlobalVariables = (theme) => ({
 
 export const globalStyles = (theme) => [
   {
+    // Disables warnings for @reach components since we provide our own
     ':root': {
       '--reach-portal': 1,
       '--reach-tabs': 1,
