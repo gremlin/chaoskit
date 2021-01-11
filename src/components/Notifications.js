@@ -2,13 +2,12 @@ import PropTypes from 'prop-types'
 import { useTheme } from '@emotion/react'
 import { motion, AnimatePresence } from 'framer-motion'
 import useTimeoutFn from 'react-use/lib/useTimeoutFn'
+import Portal from '@reach/portal'
 
 import useNotificationsState from '../hooks/useNotifications'
 import { misc } from '../assets/styles/utility'
 import { ReactComponent as CheckSvg } from '../assets/icons/check.svg'
 import { ReactComponent as CloseSvg } from '../assets/icons/close.svg'
-
-import ClientOnlyPortal from './ClientOnlyPortal'
 
 const Notification = ({ notification }) => {
   const theme = useTheme()
@@ -107,7 +106,7 @@ const Notifications = () => {
   const theme = useTheme()
 
   return (
-    <ClientOnlyPortal>
+    <Portal>
       <ul
         css={{
           margin: 0,
@@ -139,7 +138,7 @@ const Notifications = () => {
           ))}
         </AnimatePresence>
       </ul>
-    </ClientOnlyPortal>
+    </Portal>
   )
 }
 
