@@ -36,7 +36,7 @@ import Select from './Select'
 import Skeleton from './Skeleton'
 import SocialIcon from './SocialIcon'
 import Subnav from './Subnav'
-import { Tabs, TabList, Tab, TabPanel } from './Tabs'
+import { Tabs, TabList, Tab, TabPanels, TabPanel } from './Tabs'
 import Textarea from './Textarea'
 import Toggle from './Toggle'
 import Tooltip from './Tooltip'
@@ -83,6 +83,7 @@ export {
   Tabs,
   TabList,
   Tab,
+  TabPanels,
   TabPanel,
   Textarea,
   Toggle,
