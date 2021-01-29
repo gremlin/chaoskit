@@ -134,7 +134,7 @@ const Dropdown = ({
       {...rest}
     >
       <Button {...trigger.props} ref={dropdownTriggerRef}>
-        <span>{trigger.label}</span>
+        {trigger.label}
         {showArrow && (
           <CaretDownSvg
             css={{
