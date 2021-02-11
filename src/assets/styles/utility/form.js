@@ -6,6 +6,7 @@ export const variables = (theme) => ({
   height: theme.height.base,
   padding: theme.space.base,
   fontColor: theme.fontColor.base,
+  controlOffset: theme.space.xsmall + theme.space.small,
   contrast: {
     background: rgba(theme.contrast.base, 0.1),
     fontColor: theme.contrast.base,
@@ -35,36 +36,32 @@ export const base = (theme) => ({
 // 2. Responsiveness: Sets a maximum width relative to the parent to scale on narrower viewports
 // 3. Vertical `padding` needed for `select` elements in Firefox
 // 4. Style
-export const input = (theme, props = {}) => [
+export const input = (theme) => [
   {
     // 1
     height: variables(theme).height,
     // 2
     maxWidth: '100%',
     // 3
-    padding: `0 ${variables(theme).padding}px`,
+    paddingTop: variables(theme).controlOffset,
+    paddingRight: variables(theme).controlOffset,
+    paddingBottom: 0,
+    paddingLeft: variables(theme).controlOffset,
     // 4
-    border: theme.border.base,
-    background: variables(theme).background,
+    border: 0,
+    background: 'transparent',
     color: variables(theme).fontColor,
-    transition: `border-color ${theme.timing.base} ${theme.transition.base}`,
-    borderRadius: theme.borderRadius.base,
     width: '100%',
-    position: 'relative',
-    boxShadow: variables(theme).boxShadow,
 
     '&:focus': {
-      borderColor: theme.color.primary.base,
       outline: 0,
-      background: variables(theme).background,
+      borderColor: theme.color.border.base,
       color: variables(theme).fontColor,
       zIndex: 1,
     },
 
     '&:disabled': {
-      opacity: theme.opacity.base,
       borderColor: theme.color.border.base,
-      backgroundColor: theme.color.panel.base,
       color: variables(theme).fontColor,
       cursor: 'not-allowed',
       userSelect: 'none',
@@ -88,46 +85,8 @@ export const input = (theme, props = {}) => [
           color: theme.fontColor.base,
         },
       },
-
-      theme.settings.contrast.enable &&
-        theme.settings.contrast.form &&
-        !props.noContrast && {
-          '.u-contrast &': {
-            color: theme.contrast.muted,
-
-            '&:disabled': {
-              color: theme.contrast.base,
-            },
-          },
-        },
     ],
   },
-
-  props.error && {
-    borderColor: theme.color.danger.base,
-  },
-
-  theme.settings.contrast.enable &&
-    theme.settings.contrast.form &&
-    !props.noContrast && {
-      '.u-contrast &': {
-        background: 'transparent',
-        border: '1px solid',
-        borderColor: variables(theme).contrast.borderColor,
-        color: variables(theme).contrast.fontColor,
-
-        '&:focus': {
-          borderColor: variables(theme).contrast.borderColor,
-          background: 'transparent',
-        },
-
-        '&:disabled': {
-          backgroundColor: variables(theme).contrast.background,
-          borderColor: variables(theme).contrast.borderColor,
-          color: variables(theme).contrast.fontColor,
-        },
-      },
-    },
 ]
 
 export const styles = (theme) => [

@@ -9,16 +9,12 @@ import { generateUUID } from '../helpers/utility'
 
 import FormControlWrapper from './FormControlWrapper'
 
-export const StylesTextareaBase = (theme, props = {}) => [
+export const StylesTextareaBase = (theme) => [
   form.base(theme),
-  form.input(theme, {
-    error: props.validationMessage,
-    noContrast: props.noContrast,
-  }),
+  form.input(theme),
   {
     // Remove default style in browsers that support `appearance`
     appearance: 'none',
-
     // Remove default vertical scrollbar in IE 8/9/10/11.
     overflow: 'auto',
     // Improve readability and alignment in all browsers.

@@ -3,6 +3,8 @@ import clsx from 'clsx'
 import { useTheme } from '@emotion/react'
 import * as React from 'react'
 
+import { form } from '../assets/styles/utility'
+
 const FormFooter = React.forwardRef(
   ({ className, explanationMessage, validationMessage, ...rest }, ref) => {
     const theme = useTheme()
@@ -12,13 +14,15 @@ const FormFooter = React.forwardRef(
         ref={ref}
         css={[
           {
-            fontSize: theme.fontSize.small,
-            lineHeight: theme.lineHeight.small,
-
-            [theme.mq.medium]: {
-              display: 'flex',
-              width: '100%',
-            },
+            fontSize: theme.fontSize.xxsmall,
+            display: 'grid',
+            gridAutoColumns: '1fr',
+            gridAutoFlow: 'column',
+            gap: theme.space.small,
+            marginTop: theme.space.xsmall,
+            paddingLeft: form.variables(theme).controlOffset,
+            paddingRight: form.variables(theme).controlOffset,
+            fontWeight: theme.fontWeight.medium,
           },
         ]}
         className={clsx('CK__FormFooter', className)}
@@ -29,21 +33,13 @@ const FormFooter = React.forwardRef(
             css={[
               {
                 color: theme.fontColor.muted,
-                marginTop: theme.space.xsmall,
-
-                [theme.mq.medium]: {
-                  '&:not(:only-child)': {
-                    marginRight: theme.space.small,
-                  },
-                },
               },
 
-              theme.settings.contrast.enable &&
-                theme.settings.contrast.form && {
-                  '.u-contrast &': {
-                    color: theme.contrast.base,
-                  },
+              theme.settings.contrast.enable && {
+                '.u-contrast &': {
+                  color: theme.contrast.base,
                 },
+              },
             ]}
           >
             {explanationMessage}
@@ -54,19 +50,13 @@ const FormFooter = React.forwardRef(
             css={[
               {
                 color: theme.color.danger.base,
-                marginTop: theme.space.xsmall,
-
-                [theme.mq.medium]: {
-                  marginLeft: 'auto',
-                },
               },
 
-              theme.settings.contrast.enable &&
-                theme.settings.contrast.form && {
-                  '.u-contrast &': {
-                    color: theme.contrast.base,
-                  },
+              theme.settings.contrast.enable && {
+                '.u-contrast &': {
+                  color: theme.contrast.base,
                 },
+              },
             ]}
           >
             {validationMessage}

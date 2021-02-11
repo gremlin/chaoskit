@@ -6,8 +6,11 @@ import { useTheme } from '@emotion/react'
 import { form } from '../assets/styles/utility'
 import { generateUUID } from '../helpers/utility'
 
-import FormControlWrapper from './FormControlWrapper'
 import Icon, { StylesIconVariables } from './Icon'
+import ControlWrapper from './ControlWrapper'
+import FormGroup from './FormGroup'
+import FormFooter from './FormFooter'
+import ControlLabel from './ControlLabel'
 
 export const StylesInputBase = (theme, props = {}) => [
   form.base(theme),
@@ -18,10 +21,7 @@ export const StylesInputBase = (theme, props = {}) => [
 
   // Apply default form styling, except for `file`, `submit`, `reset`, `button` and `image`
   !['file', 'submit', 'reset', 'button', 'image'].includes(props.type) &&
-    form.input(theme, {
-      error: props.validationMessage,
-      noContrast: props.noContrast,
-    }),
+    form.input(theme),
 
   // Fix the cursor style for Chrome's increment/decrement buttons. For certain `font-size` values of the `input`, it causes the cursor style of the decrement button to change from `default` to `text`.
   props.type === 'number' && {
@@ -57,7 +57,7 @@ export const StylesInputBase = (theme, props = {}) => [
 
   props.prefixIcon && {
     paddingLeft: `calc(${
-      form.variables(theme).padding + theme.space.small
+      form.variables(theme).controlOffset + theme.space.small
     }px + ${StylesIconVariables.base})`,
   },
 ]
@@ -69,7 +69,6 @@ const Input = React.forwardRef(
       disabled,
       label,
       name,
-      noContrast,
       type,
       validationMessage,
       explanationMessage,
@@ -85,62 +84,51 @@ const Input = React.forwardRef(
     const id = React.useMemo(() => `${name}-${generateUUID()}`, [name])
 
     return (
-      <FormControlWrapper
-        required={required}
-        label={label}
-        labelProps={{ htmlFor: id }}
-        explanationMessage={explanationMessage}
-        validationMessage={validationMessage}
-        {...wrapperProps}
-      >
-        <div
-          css={{
-            position: 'relative',
-          }}
-        >
-          {prefixIcon && (
-            <div
-              css={[
-                {
-                  color: theme.fontColor.muted,
-                  position: 'absolute',
-                  top: '50%',
-                  transform: 'translateY(-50%)',
-                  left: form.variables(theme).padding,
-                  zIndex: 2,
-                  opacity: disabled && theme.opacity.base,
-                  pointerEvents: 'none',
-                },
-
-                theme.settings.contrast.enable &&
-                  theme.settings.contrast.form &&
-                  !noContrast && {
-                    '.u-contrast &': {
-                      color: theme.contrast.muted,
-                    },
+      <FormGroup>
+        <ControlWrapper {...wrapperProps}>
+          {label && <ControlLabel>{label}</ControlLabel>}
+          <div
+            css={{
+              position: 'relative',
+            }}
+          >
+            {prefixIcon && (
+              <div
+                css={[
+                  {
+                    color: theme.fontColor.muted,
+                    position: 'absolute',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    left: form.variables(theme).controlOffset,
+                    zIndex: 2,
+                    pointerEvents: 'none',
                   },
-              ]}
-            >
-              <Icon icon={prefixIcon} />
-            </div>
-          )}
-          <input
-            css={StylesInputBase(theme, {
-              type,
-              prefixIcon,
-              validationMessage,
-              noContrast,
-            })}
-            className={clsx('CK__Input', className)}
-            name={name}
-            id={id}
-            ref={ref}
-            type={type}
-            disabled={disabled}
-            {...rest}
-          />
-        </div>
-      </FormControlWrapper>
+                ]}
+              >
+                <Icon icon={prefixIcon} />
+              </div>
+            )}
+            <input
+              css={StylesInputBase(theme, {
+                type,
+                prefixIcon,
+              })}
+              className={clsx('CK__Input', className)}
+              name={name}
+              id={id}
+              ref={ref}
+              type={type}
+              disabled={disabled}
+              {...rest}
+            />
+          </div>
+        </ControlWrapper>
+        <FormFooter
+          explanationMessage={explanationMessage}
+          validationMessage={validationMessage}
+        />
+      </FormGroup>
     )
   }
 )
@@ -150,7 +138,6 @@ Input.propTypes = {
   disabled: PropTypes.bool,
   explanationMessage: PropTypes.string,
   validationMessage: PropTypes.string,
-  noContrast: PropTypes.bool,
   prefixIcon: PropTypes.string,
   required: PropTypes.bool,
   label: PropTypes.string,
