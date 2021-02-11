@@ -6,6 +6,10 @@ import { form } from '../assets/styles/utility'
 
 // @NOTE These are separated out so we can plug into Marketo styles more cleanly
 
+export const StylesControlWrapperVariables = (theme) => ({
+  iconSize: theme.fontSize.xxsmall,
+})
+
 export const StylesControlWrapperRequired = (theme) => ({
   '&::after': {
     content: "''",
@@ -17,8 +21,8 @@ export const StylesControlWrapperRequired = (theme) => ({
     top: '50%',
     transform: 'translateY(-50%)',
     right: form.variables(theme).controlOffset,
-    width: theme.fontSize.xxsmall,
-    height: theme.fontSize.xxsmall,
+    width: StylesControlWrapperVariables(theme).iconSize,
+    height: StylesControlWrapperVariables(theme).iconSize,
     opacity: theme.opacity.base,
     pointerEvents: 'none',
   },

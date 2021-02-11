@@ -6,12 +6,6 @@ export default {
   title: 'Forms/Select',
   component: Select,
   args: {
-    options: [
-      { value: 1, label: 'Option One' },
-      { value: 'test-string', label: 'Option Two' },
-      { value: 3, label: 'Option Three' },
-      { value: 4, label: 'Option Four' },
-    ],
     name: 'select',
     label: 'Form label',
     required: true,
@@ -27,7 +21,14 @@ export default {
   },
 }
 
-const Story = (args) => <Select {...args} />
+const Story = (args) => (
+  <Select {...args}>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+    <option value="3">Option 3</option>
+    <option value="4">Option 4</option>
+  </Select>
+)
 
 export const Overview = Story.bind({})
 

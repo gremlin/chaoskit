@@ -6,7 +6,6 @@ import { useTheme } from '@emotion/react'
 import { form } from '../assets/styles/utility'
 import { generateUUID } from '../helpers/utility'
 
-import Icon from './Icon'
 import ControlWrapper from './ControlWrapper'
 import FormGroup from './FormGroup'
 import FormFooter from './FormFooter'
@@ -54,6 +53,14 @@ export const StylesInputBase = (theme, props = {}) => [
       boxShadow: 'none',
     },
   },
+
+  // Provides enough offset for normal offset, required icon, and a small spacer
+  props.required && {
+    paddingRight:
+      form.variables(theme).controlOffset +
+      theme.fontSize.xxsmall +
+      theme.space.small,
+  },
 ]
 
 const Input = React.forwardRef(
@@ -66,7 +73,6 @@ const Input = React.forwardRef(
       type,
       validationMessage,
       explanationMessage,
-      prefixIcon,
       required,
       wrapperProps,
       ...rest
@@ -86,52 +92,19 @@ const Input = React.forwardRef(
           {...wrapperProps}
         >
           {label && <ControlLabel>{label}</ControlLabel>}
-          <div
-            css={{
-              position: 'relative',
-            }}
-          >
-            {prefixIcon && (
-              <div
-                css={[
-                  {
-                    color: theme.fontColor.muted,
-                    position: 'absolute',
-                    top: '50%',
-                    transform: 'translateY(-50%)',
-                    left: form.variables(theme).controlOffset,
-                    zIndex: 2,
-                    pointerEvents: 'none',
-                  },
-                ]}
-              >
-                <Icon icon={prefixIcon} />
-              </div>
-            )}
-            <input
-              css={[
-                StylesInputBase(theme, {
-                  type,
-                  prefixIcon,
-                }),
-
-                // Provides enough offset for normal offset, required icon, and a small spacer
-                required && {
-                  paddingRight:
-                    form.variables(theme).controlOffset +
-                    theme.fontSize.xxsmall +
-                    theme.space.small,
-                },
-              ]}
-              className={clsx('CK__Input', className)}
-              name={name}
-              id={id}
-              ref={ref}
-              type={type}
-              disabled={disabled}
-              {...rest}
-            />
-          </div>
+          <input
+            css={StylesInputBase(theme, {
+              type,
+              required,
+            })}
+            className={clsx('CK__Input', className)}
+            name={name}
+            id={id}
+            ref={ref}
+            type={type}
+            disabled={disabled}
+            {...rest}
+          />
         </ControlWrapper>
         <FormFooter
           explanationMessage={explanationMessage}
@@ -147,7 +120,6 @@ Input.propTypes = {
   disabled: PropTypes.bool,
   explanationMessage: PropTypes.string,
   validationMessage: PropTypes.string,
-  prefixIcon: PropTypes.string,
   required: PropTypes.bool,
   label: PropTypes.string,
   name: PropTypes.string.isRequired,
