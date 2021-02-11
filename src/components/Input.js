@@ -6,7 +6,7 @@ import { useTheme } from '@emotion/react'
 import { form } from '../assets/styles/utility'
 import { generateUUID } from '../helpers/utility'
 
-import Icon, { StylesIconVariables } from './Icon'
+import Icon from './Icon'
 import ControlWrapper from './ControlWrapper'
 import FormGroup from './FormGroup'
 import FormFooter from './FormFooter'
@@ -54,12 +54,6 @@ export const StylesInputBase = (theme, props = {}) => [
       boxShadow: 'none',
     },
   },
-
-  props.prefixIcon && {
-    paddingLeft: `calc(${
-      form.variables(theme).controlOffset + theme.space.small
-    }px + ${StylesIconVariables.base})`,
-  },
 ]
 
 const Input = React.forwardRef(
@@ -85,7 +79,12 @@ const Input = React.forwardRef(
 
     return (
       <FormGroup>
-        <ControlWrapper {...wrapperProps}>
+        <ControlWrapper
+          required={required}
+          error={Boolean(validationMessage)}
+          disabled={disabled}
+          {...wrapperProps}
+        >
           {label && <ControlLabel>{label}</ControlLabel>}
           <div
             css={{
@@ -110,10 +109,20 @@ const Input = React.forwardRef(
               </div>
             )}
             <input
-              css={StylesInputBase(theme, {
-                type,
-                prefixIcon,
-              })}
+              css={[
+                StylesInputBase(theme, {
+                  type,
+                  prefixIcon,
+                }),
+
+                // Provides enough offset for normal offset, required icon, and a small spacer
+                required && {
+                  paddingRight:
+                    form.variables(theme).controlOffset +
+                    theme.fontSize.xxsmall +
+                    theme.space.small,
+                },
+              ]}
               className={clsx('CK__Input', className)}
               name={name}
               id={id}

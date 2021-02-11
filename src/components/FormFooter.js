@@ -50,6 +50,11 @@ const FormFooter = React.forwardRef(
             css={[
               {
                 color: theme.color.danger.base,
+                textAlign: 'right',
+
+                '&:only-child': {
+                  textAlign: 'left',
+                },
               },
 
               theme.settings.contrast.enable && {

@@ -52,6 +52,7 @@ export const input = (theme) => [
     background: 'transparent',
     color: variables(theme).fontColor,
     width: '100%',
+    fontWeight: theme.fontWeight.medium,
 
     '&:focus': {
       outline: 0,

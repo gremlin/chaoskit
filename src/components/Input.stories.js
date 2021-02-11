@@ -10,6 +10,7 @@ export default {
     name: 'input',
     explanationMessage: 'Explanation message',
     placeholder: 'Placeholder',
+    required: true,
   },
 }
 

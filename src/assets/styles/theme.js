@@ -38,9 +38,9 @@ const brand = {
   black: '#131313',
   black__filter:
     'brightness(0) saturate(100%) invert(3%) sepia(8%) saturate(12%) hue-rotate(314deg) brightness(101%) contrast(90%)',
-  red: '#d00252',
+  red: '#C52C4E',
   red__filter:
-    'brightness(0) saturate(100%) invert(13%) sepia(99%) saturate(4118%) hue-rotate(327deg) brightness(85%) contrast(106%)',
+    'brightness(0) saturate(100%) invert(26%) sepia(50%) saturate(2464%) hue-rotate(320deg) brightness(93%) contrast(98%)',
   yellow: '#ffcf23',
   yellow__filter:
     'brightness(0) saturate(100%) invert(79%) sepia(82%) saturate(599%) hue-rotate(335deg) brightness(103%) contrast(102%)',
