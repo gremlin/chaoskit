@@ -7,7 +7,10 @@ import TextareaAutoSize from 'react-textarea-autosize'
 import { form } from '../assets/styles/utility'
 import { generateUUID } from '../helpers/utility'
 
-import FormControlWrapper from './FormControlWrapper'
+import FormFooter from './FormFooter'
+import ControlWrapper from './ControlWrapper'
+import FormGroup from './FormGroup'
+import ControlLabel from './ControlLabel'
 
 export const StylesTextareaBase = (theme) => [
   form.base(theme),
@@ -26,10 +29,9 @@ export const StylesTextareaBase = (theme) => [
     // Allow `textarea` to be controlled via [row] more explicitly
     height: 'auto',
     // Style
-    padding: `${theme.space.small + theme.space.xsmall}px ${
-      theme.space.base
-    }px`,
     maxHeight: 300,
+    // Slightly larger top padding than input
+    paddingTop: form.variables(theme).controlOffset + theme.space.xsmall,
   },
 ]
 
@@ -37,9 +39,9 @@ const Textarea = React.forwardRef(
   (
     {
       className,
+      disabled,
       label,
       name,
-      noContrast,
       validationMessage,
       explanationMessage,
       required,
@@ -54,42 +56,43 @@ const Textarea = React.forwardRef(
     const id = React.useMemo(() => `${name}-${generateUUID()}`, [name])
 
     return (
-      <FormControlWrapper
-        required={required}
-        label={label}
-        labelProps={{
-          htmlFor: id,
-        }}
-        explanationMessage={explanationMessage}
-        validationMessage={validationMessage}
-        {...wrapperProps}
-      >
-        <TextareaAutoSize
-          css={[
-            StylesTextareaBase(theme, {
-              validationMessage,
-              noContrast,
-            }),
-          ]}
-          className={clsx('CK__Textarea', className)}
-          id={id}
-          name={name}
-          ref={ref}
-          {...rest}
+      <FormGroup>
+        <ControlWrapper
+          required={required}
+          error={Boolean(validationMessage)}
+          disabled={disabled}
+          iconAlignment="top"
+          {...wrapperProps}
+        >
+          {label && <ControlLabel>{label}</ControlLabel>}
+          <TextareaAutoSize
+            css={StylesTextareaBase(theme, {
+              required,
+            })}
+            className={clsx('CK__Textarea', className)}
+            id={id}
+            name={name}
+            ref={ref}
+            {...rest}
+          />
+        </ControlWrapper>
+        <FormFooter
+          explanationMessage={explanationMessage}
+          validationMessage={validationMessage}
         />
-      </FormControlWrapper>
+      </FormGroup>
     )
   }
 )
 
 Textarea.propTypes = {
   className: PropTypes.string,
+  disabled: PropTypes.bool,
   explanationMessage: PropTypes.string,
   validationMessage: PropTypes.string,
   required: PropTypes.bool,
   label: PropTypes.string,
   name: PropTypes.string.isRequired,
-  noContrast: PropTypes.bool,
   wrapperProps: PropTypes.object,
 }
 

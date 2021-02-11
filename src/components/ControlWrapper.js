@@ -10,22 +10,31 @@ export const StylesControlWrapperVariables = (theme) => ({
   iconSize: theme.fontSize.xxsmall,
 })
 
-export const StylesControlWrapperRequired = (theme) => ({
-  '&::after': {
-    content: "''",
-    backgroundImage: `url(${asterisk})`,
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center center',
-    position: 'absolute',
-    top: '50%',
-    transform: 'translateY(-50%)',
-    right: form.variables(theme).controlOffset,
-    width: StylesControlWrapperVariables(theme).iconSize,
-    height: StylesControlWrapperVariables(theme).iconSize,
-    opacity: theme.opacity.base,
-    pointerEvents: 'none',
-  },
+export const StylesControlWrapperRequired = (theme, props = {}) => ({
+  '&::after': [
+    {
+      content: "''",
+      backgroundImage: `url(${asterisk})`,
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center center',
+      position: 'absolute',
+      right: form.variables(theme).controlOffset,
+      width: StylesControlWrapperVariables(theme).iconSize,
+      height: StylesControlWrapperVariables(theme).iconSize,
+      opacity: theme.opacity.base,
+      pointerEvents: 'none',
+    },
+
+    props.iconAlignment === 'center' && {
+      top: '50%',
+      transform: 'translateY(-50%)',
+    },
+
+    props.iconAlignment === 'top' && {
+      top: form.variables(theme).controlOffset,
+    },
+  ],
 })
 
 export const StylesControlWrapperError = (theme) => ({
@@ -47,17 +56,29 @@ export const StylesControlWrapper = (theme, props = {}) => [
     border: theme.border.base,
   },
 
-  props.required && StylesControlWrapperRequired(theme),
+  props.required &&
+    StylesControlWrapperRequired(theme, { iconAlignment: props.iconAlignment }),
   props.error && StylesControlWrapperError(theme),
   props.disabled && StylesControlWrapperDisabled(theme),
 ]
 
-const ControlWrapper = ({ required, error, disabled, ...rest }) => {
+const ControlWrapper = ({
+  required,
+  iconAlignment = 'center',
+  error,
+  disabled,
+  ...rest
+}) => {
   const theme = useTheme()
 
   return (
     <div
-      css={StylesControlWrapper(theme, { required, error, disabled })}
+      css={StylesControlWrapper(theme, {
+        required,
+        error,
+        disabled,
+        iconAlignment,
+      })}
       {...rest}
     />
   )
@@ -65,6 +86,7 @@ const ControlWrapper = ({ required, error, disabled, ...rest }) => {
 
 ControlWrapper.propTypes = {
   error: PropTypes.bool,
+  iconAlignment: PropTypes.oneOf(['top', 'center']),
   required: PropTypes.bool,
   disabled: PropTypes.bool,
 }
