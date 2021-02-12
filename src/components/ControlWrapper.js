@@ -52,7 +52,7 @@ export const StylesControlWrapper = (theme, props = {}) => [
     borderRadius: theme.borderRadius.base,
     boxShadow: theme.boxShadow.inset,
     background: theme.color.light.base,
-    color: theme.fontColor.muted,
+    color: theme.fontColor.base,
     border: theme.border.base,
 
     '&:focus-within': {

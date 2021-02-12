@@ -32,7 +32,7 @@ const FormFooter = React.forwardRef(
           <div
             css={[
               {
-                color: theme.fontColor.muted,
+                color: theme.fontColor.base,
               },
 
               theme.settings.contrast.enable && {
