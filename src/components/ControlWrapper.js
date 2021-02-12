@@ -54,6 +54,10 @@ export const StylesControlWrapper = (theme, props = {}) => [
     background: theme.color.light.base,
     color: theme.fontColor.muted,
     border: theme.border.base,
+
+    '&:focus-within': {
+      borderColor: theme.color.primary.base,
+    },
   },
 
   props.required &&
