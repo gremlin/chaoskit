@@ -21,7 +21,7 @@ export const StylesTextareaBase = (theme) => [
     // Remove default vertical scrollbar in IE 8/9/10/11.
     overflow: 'auto',
     // Improve readability and alignment in all browsers.
-    verticalAlign: 'top',
+    verticalAlign: 'text-top',
     // Only allow vertical resizing
     resize: 'vertical',
     // Force minimum height

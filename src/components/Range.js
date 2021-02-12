@@ -7,7 +7,8 @@ import { rgba } from 'polished'
 import { generateUUID } from '../helpers/utility'
 import { generateGradient } from '../assets/styles/utility/gradient'
 
-import FormControlWrapper from './FormControlWrapper'
+import FormGroup from './FormGroup'
+import FormFooter from './FormFooter'
 
 export const StylesRangeVariables = (theme) => ({
   thumb: {
@@ -39,7 +40,6 @@ const Range = React.forwardRef(
       className,
       disabled,
       explanationMessage,
-      label,
       name,
       required,
       validationMessage,
@@ -56,16 +56,7 @@ const Range = React.forwardRef(
     const id = React.useMemo(() => `${name}-${generateUUID()}`, [name])
 
     return (
-      <FormControlWrapper
-        required={required}
-        label={label}
-        labelProps={{
-          htmlFor: id,
-        }}
-        explanationMessage={explanationMessage}
-        validationMessage={validationMessage}
-        {...wrapperProps}
-      >
+      <FormGroup {...wrapperProps}>
         <input
           type="range"
           ref={ref}
@@ -195,7 +186,11 @@ const Range = React.forwardRef(
           ]}
           {...rest}
         />
-      </FormControlWrapper>
+        <FormFooter
+          explanationMessage={explanationMessage}
+          validationMessage={validationMessage}
+        />
+      </FormGroup>
     )
   }
 )
@@ -205,7 +200,6 @@ Range.propTypes = {
   className: PropTypes.string,
   disabled: PropTypes.bool,
   explanationMessage: PropTypes.string,
-  label: PropTypes.string,
   name: PropTypes.string.isRequired,
   required: PropTypes.bool,
   validationMessage: PropTypes.string,

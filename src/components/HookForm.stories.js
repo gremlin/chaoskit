@@ -1,9 +1,9 @@
 import { useForm, FormProvider } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
+import { useTheme } from '@emotion/react'
 
 import Button from './Button'
-import FormGroup from './FormGroup'
 import FormField from './FormField'
 import Form from './Form'
 
@@ -21,6 +21,8 @@ const schema = yup.object().shape({
 })
 
 const Story = () => {
+  const theme = useTheme()
+
   const methods = useForm({
     defaultValues: {
       name: '',
@@ -37,14 +39,22 @@ const Story = () => {
   return (
     <FormProvider {...methods}>
       <Form onSubmit={methods.handleSubmit(handleSubmit)} noValidate>
-        <FormField name="name" label="Name" required />
-        <FormField type="email" name="email" label="Email" required />
-        <FormField as="textarea" name="message" label="Message" required />
-        <FormGroup>
-          <Button type="primary" actionType="submit">
-            Submit
-          </Button>
-        </FormGroup>
+        <div
+          css={{
+            display: 'grid',
+            gridTemplateColumns: 'minmax(0, 1fr)',
+            gap: theme.space.base,
+          }}
+        >
+          <FormField name="name" label="Name" required />
+          <FormField type="email" name="email" label="Email" required />
+          <FormField as="textarea" name="message" label="Message" required />
+          <div>
+            <Button type="primary" actionType="submit">
+              Submit
+            </Button>
+          </div>
+        </div>
       </Form>
     </FormProvider>
   )
