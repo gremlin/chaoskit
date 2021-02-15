@@ -1,4 +1,6 @@
+import PropTypes from 'prop-types'
 import { useTheme } from '@emotion/react'
+import clsx from 'clsx'
 
 import { form } from '../assets/styles/utility'
 
@@ -17,10 +19,20 @@ export const StylesControlLabel = (theme) => ({
   textOverflow: 'ellipsis',
 })
 
-const ControlLabel = (props) => {
+const ControlLabel = ({ className, ...rest }) => {
   const theme = useTheme()
 
-  return <div css={StylesControlLabel(theme)} {...props} />
+  return (
+    <div
+      className={clsx('CK__ControlWrapper', className)}
+      css={StylesControlLabel(theme)}
+      {...rest}
+    />
+  )
+}
+
+ControlLabel.propTypes = {
+  className: PropTypes.string,
 }
 
 export default ControlLabel

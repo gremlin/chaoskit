@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import { useTheme } from '@emotion/react'
+import clsx from 'clsx'
 
 import asterisk from '../assets/icons/asterisk.svg'
 import { form } from '../assets/styles/utility'
@@ -67,6 +68,7 @@ export const StylesControlWrapper = (theme, props = {}) => [
 ]
 
 const ControlWrapper = ({
+  className,
   required,
   iconAlignment = 'center',
   error,
@@ -77,6 +79,7 @@ const ControlWrapper = ({
 
   return (
     <div
+      className={clsx('CK__ControlWrapper', className)}
       css={StylesControlWrapper(theme, {
         required,
         error,
@@ -89,6 +92,7 @@ const ControlWrapper = ({
 }
 
 ControlWrapper.propTypes = {
+  className: PropTypes.string,
   error: PropTypes.bool,
   iconAlignment: PropTypes.oneOf(['top', 'center']),
   required: PropTypes.bool,
