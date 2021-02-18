@@ -43,7 +43,7 @@ export const input = (theme) => [
     // 2
     maxWidth: '100%',
     // 3
-    paddingTop: variables(theme).controlOffset,
+    paddingTop: variables(theme).controlOffset + theme.space.xsmall / 2,
     paddingRight: variables(theme).controlOffset,
     paddingBottom: 0,
     paddingLeft: variables(theme).controlOffset,
@@ -52,7 +52,6 @@ export const input = (theme) => [
     background: 'transparent',
     color: variables(theme).fontColor,
     width: '100%',
-    fontWeight: theme.fontWeight.medium,
 
     '&:focus': {
       outline: 0,

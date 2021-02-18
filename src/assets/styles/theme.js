@@ -173,9 +173,9 @@ const boxShadow = {
 }
 
 const fontFamily = {
-  base: "Gira, 'Helvetica Neue', Arial, sans-serif",
-  code: "'Operator Mono', Consolas, monospace, serif",
-  heading: "Circular, 'Helvetica Neue', Arial, sans-serif",
+  base:
+    'Sohne VF, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+  mono: "'Sohne Mono', Consolas, monospace, serif",
 }
 
 const muted = {
@@ -206,7 +206,7 @@ const fontSize = {
   large: 20,
   xlarge: 26,
   h1: 50,
-  h2: 44,
+  h2: 42,
   h3: 34,
   h4: 28,
   get h5() {
@@ -281,8 +281,7 @@ const fontSize = {
 }
 
 const fontWeight = {
-  base: 300,
-  medium: 500,
+  base: 400,
   bold: 600,
 }
 
@@ -298,19 +297,12 @@ const height = {
 
 const lineHeight = {
   base: 1.65,
-  get base__computed() {
-    return fontSize.base * this.base
-  },
   small: 1.25,
-  get small__computed() {
-    return fontSize.small * this.small
-  },
 }
 
 const letterSpacing = {
   base: 'normal',
-  negative: '-0.025em',
-  small: '0.125em',
+  extended: '0.125em',
 }
 
 const space = {

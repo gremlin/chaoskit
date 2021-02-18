@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import { useTheme } from '@emotion/react'
 
-import { misc, text } from '../assets/styles/utility'
+import { misc } from '../assets/styles/utility'
 import { generateGradient } from '../assets/styles/utility/gradient'
 
 import Container from './Container'
@@ -12,7 +12,6 @@ const StylesSubnavVariables = (theme) => ({
 })
 
 export const SubnavMenuItemStyles = (theme) => [
-  text.heading(theme),
   {
     color: theme.fontColor.muted,
     display: 'block',
@@ -20,7 +19,8 @@ export const SubnavMenuItemStyles = (theme) => [
     lineHeight: `${StylesSubnavVariables(theme).height}px`,
     position: 'relative',
     fontSize: theme.fontSize.small,
-    letterSpacing: theme.letterSpacing.small,
+    fontWeight: theme.fontWeight.bold,
+    letterSpacing: theme.letterSpacing.extended,
     textTransform: 'uppercase',
     transition: `color ${theme.timing.base} ${theme.transition.base}`,
 

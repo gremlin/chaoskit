@@ -32,7 +32,7 @@ export const styles = (theme, StylesGlobalVariables) => {
     {
       'code[class*="language-"], pre[class*="language-"], pre[contenteditable]': {
         color: colors.base,
-        fontFamily: theme.fontFamily.code,
+        fontFamily: theme.fontFamily.mono,
         textAlign: 'left',
         whiteSpace: 'pre',
         wordSpacing: 'normal',
@@ -122,7 +122,6 @@ export const styles = (theme, StylesGlobalVariables) => {
         fontSize: '100%',
         left: '-3.8em',
         width: '3em ', // Works for line-numbers below 1000 lines
-        letterSpacing: '-1px',
         borderRight: `1px solid ${
           theme.settings.prism.theme === 'light'
             ? theme.fontColor.muted

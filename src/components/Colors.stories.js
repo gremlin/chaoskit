@@ -31,7 +31,7 @@ const ColorBlock = ({ title, ...rest }) => {
       <div
         css={{
           marginTop: theme.space.small,
-          fontFamily: theme.fontFamily.code,
+          fontFamily: theme.fontFamily.mono,
         }}
       >
         {title}

@@ -4,7 +4,6 @@ import { useTheme } from '@emotion/react'
 import Tippy from '@tippyjs/react/headless'
 import { motion, useAnimation } from 'framer-motion'
 
-import { text } from '../assets/styles/utility'
 import { generateGradient } from '../assets/styles/utility/gradient'
 import { getTransformOrigin } from '../helpers/utility'
 
@@ -13,7 +12,6 @@ import Icon from './Icon'
 
 export const DropdownMenuItemStyles = (theme, props = {}) => [
   theme.fontSize.medium__fluid,
-  text.heading(theme, 'base'),
   {
     margin: `0 -${theme.space.small}px`,
     color: theme.fontColor.base,
@@ -24,6 +22,7 @@ export const DropdownMenuItemStyles = (theme, props = {}) => [
     display: 'block',
     borderRadius: theme.borderRadius.base,
     lineHeight: theme.lineHeight.base,
+    fontWeight: theme.fontWeight.base,
 
     '&:hover, &:focus': {
       color: theme.fontColor.base,

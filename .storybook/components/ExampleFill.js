@@ -11,7 +11,7 @@ const ExampleFill = ({ as: Component = 'div', ...rest }) => {
         background: theme.color.primary.base,
         borderRadius: theme.borderRadius.base,
         color: theme.contrast.base,
-        fontFamily: theme.fontFamily.code,
+        fontFamily: theme.fontFamily.mono,
         fontSize: theme.fontSize.base,
       }}
       {...rest}

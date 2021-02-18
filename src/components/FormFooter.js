@@ -14,7 +14,7 @@ const FormFooter = React.forwardRef(
         ref={ref}
         css={[
           {
-            fontSize: theme.fontSize.xxsmall,
+            fontSize: theme.fontSize.xsmall,
             display: 'grid',
             gridAutoColumns: '1fr',
             gridAutoFlow: 'column',
@@ -22,7 +22,6 @@ const FormFooter = React.forwardRef(
             marginTop: theme.space.xsmall,
             paddingLeft: form.variables(theme).controlOffset,
             paddingRight: form.variables(theme).controlOffset,
-            fontWeight: theme.fontWeight.medium,
           },
         ]}
         className={clsx('CK__FormFooter', className)}

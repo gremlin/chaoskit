@@ -23,6 +23,9 @@ export const overflow = {
 
 export const hide = { ...hideVisually() }
 
+export const getComputedLineHeight = ({ fontSize, lineHeight }) =>
+  fontSize * lineHeight
+
 export const absoluteCenter = {
   position: 'absolute',
   left: '50%',
