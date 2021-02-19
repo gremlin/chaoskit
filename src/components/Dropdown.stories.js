@@ -54,6 +54,7 @@ Menu.args = {
           </DropdownMenuItem>
         </ListItem>
         <ListItem>
+          <code>hello there</code>
           <DropdownMenuItem
             href="https://www.gremlin.com"
             className="is-active"

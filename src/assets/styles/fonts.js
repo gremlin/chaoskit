@@ -1,7 +1,7 @@
 import { css } from '@emotion/react'
 
 import SohneVF from '../fonts/SohneVF-web.woff2'
-import SohneMono from '../fonts/SohneMono-regular.woff2'
+import SohneMono from '../fonts/SohneMono-light.woff2'
 
 export const fonts = (theme) => css`
   @font-face {
@@ -15,7 +15,7 @@ export const fonts = (theme) => css`
   @font-face {
     font-family: 'Sohne Mono';
     src: local(😜), url(${SohneMono}) format('woff2');
-    font-weight: ${theme.fontWeight.base};
+    font-weight: ${theme.fontWeight.light};
     font-style: normal;
   }
 `
