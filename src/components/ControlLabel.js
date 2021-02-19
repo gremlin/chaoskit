@@ -6,7 +6,7 @@ import { form } from '../assets/styles/utility'
 
 export const StylesControlLabel = (theme) => ({
   position: 'absolute',
-  top: theme.space.xsmall,
+  top: theme.space.small,
   left: 0,
   paddingLeft: form.variables(theme).controlOffset,
   paddingRight: form.variables(theme).controlOffset,
@@ -16,6 +16,7 @@ export const StylesControlLabel = (theme) => ({
   whiteSpace: 'nowrap',
   overflow: 'hidden',
   textOverflow: 'ellipsis',
+  lineHeight: 1,
 })
 
 const ControlLabel = ({ className, ...rest }) => {

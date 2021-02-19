@@ -43,7 +43,7 @@ export const input = (theme) => [
     // 2
     maxWidth: '100%',
     // 3
-    paddingTop: variables(theme).controlOffset + theme.space.xsmall / 2,
+    paddingTop: variables(theme).controlOffset + theme.space.xsmall,
     paddingRight: variables(theme).controlOffset,
     paddingBottom: 0,
     paddingLeft: variables(theme).controlOffset,
