@@ -254,6 +254,7 @@ export const globalStyles = (theme) => [
         lineHeight: theme.lineHeight.small,
         color: theme.fontColor.heading,
         margin: `0 0 ${theme.space.base}px`,
+        fontWeight: theme.fontWeight.xbold,
 
         '* + &': {
           marginTop: theme.space.large,
@@ -267,6 +268,7 @@ export const globalStyles = (theme) => [
         lineHeight: theme.lineHeight.small,
         color: theme.fontColor.heading,
         margin: `0 0 ${theme.space.base}px`,
+        fontWeight: theme.fontWeight.bold,
 
         '* + &': {
           marginTop: theme.space.large,
@@ -280,6 +282,7 @@ export const globalStyles = (theme) => [
         lineHeight: theme.lineHeight.small,
         color: theme.fontColor.heading,
         margin: `0 0 ${theme.space.base}px`,
+        fontWeight: theme.fontWeight.bold,
 
         '* + &': {
           marginTop: theme.space.large,
@@ -292,6 +295,7 @@ export const globalStyles = (theme) => [
         color: theme.fontColor.heading,
         fontSize: theme.fontSize.h4,
         margin: `0 0 ${theme.space.base}px`,
+        fontWeight: theme.fontWeight.bold,
 
         '* + &': {
           marginTop: theme.space.large,
@@ -306,6 +310,7 @@ export const globalStyles = (theme) => [
         letterSpacing: theme.letterSpacing.extended,
         textTransform: 'uppercase',
         margin: `0 0 ${theme.space.base}px`,
+        fontWeight: theme.fontWeight.bold,
 
         '* + &': {
           marginTop: theme.space.large,
@@ -318,6 +323,7 @@ export const globalStyles = (theme) => [
         color: theme.fontColor.heading,
         fontSize: theme.fontSize.base,
         margin: `0 0 ${theme.space.base}px`,
+        fontWeight: theme.fontWeight.bold,
 
         '* + &': {
           marginTop: theme.space.large,

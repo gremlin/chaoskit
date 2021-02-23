@@ -9,7 +9,7 @@ export const fonts = (theme) => css`
     src: local(😜), url(${SohneVF}) format('woff2');
     font-style: normal;
     font-variation-ligatures: normal;
-    font-weight: ${theme.fontWeight.base} ${theme.fontWeight.bold};
+    font-weight: ${theme.fontWeight.base} ${theme.fontWeight.xbold};
   }
 
   @font-face {

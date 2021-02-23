@@ -284,6 +284,7 @@ const fontWeight = {
   light: 300,
   base: 400,
   bold: 600,
+  xbold: 700,
 }
 
 const height = {
