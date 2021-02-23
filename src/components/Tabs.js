@@ -10,7 +10,7 @@ import {
   TabPanel as ReactTabPanel,
 } from '@reach/tabs'
 
-import { misc, text } from '../assets/styles/utility'
+import { misc } from '../assets/styles/utility'
 
 import Button from './Button'
 
@@ -65,10 +65,10 @@ const Tab = ({ className, disabled, isSelected, type, ...rest }) => {
       as={ButtonReset}
       actionType={type}
       css={[
-        text.heading(theme),
         {
           position: 'relative',
           fontSize: theme.fontSize.base,
+          fontWeight: theme.fontWeight.bold,
           lineHeight: `${theme.height.base}px`,
           height: theme.height.base,
           color: theme.fontColor.base,

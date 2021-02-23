@@ -2,8 +2,6 @@ import PropTypes from 'prop-types'
 import { useTheme } from '@emotion/react'
 import clsx from 'clsx'
 
-import { text } from '../assets/styles/utility'
-
 export default {
   title: 'General/Typography',
 }
@@ -24,16 +22,16 @@ const TypographyColumn = ({ className, title, children, ...rest }) => {
       <header
         className="u-contrast"
         css={[
-          text.heading(theme),
           {
             background: theme.color.dark.base,
             borderTopLeftRadius: theme.borderRadius.large,
             borderTopRightRadius: theme.borderRadius.large,
             padding: theme.space.xsmall,
             textAlign: 'center',
+            fontWeight: theme.fontWeight.bold,
             textTransform: 'uppercase',
             fontSize: theme.fontSize.small,
-            letterSpacing: theme.letterSpacing.small,
+            letterSpacing: theme.letterSpacing.extended,
           },
         ]}
       >

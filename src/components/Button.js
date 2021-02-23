@@ -74,7 +74,7 @@ export const StylesButtonBase = (theme, props = {}) => [
     backgroundSize: '100% 100%',
     borderRadius: theme.borderRadius.rounded,
     position: 'relative',
-    letterSpacing: theme.letterSpacing.small,
+    letterSpacing: theme.letterSpacing.extended,
     // 8
     lineHeight: `${
       theme.height.base - StylesButtonVariables(theme).borderWidth * 2

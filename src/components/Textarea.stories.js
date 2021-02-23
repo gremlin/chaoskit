@@ -9,6 +9,7 @@ export default {
     label: 'Form label',
     name: 'textarea',
     explanationMessage: 'Explanation message',
+    placeholder: 'Test placeholder',
   },
 }
 

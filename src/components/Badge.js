@@ -19,7 +19,7 @@ export const StylesBadgeBase = (theme) => ({
   fontSize: theme.fontSize.xsmall,
   fontFamily: theme.fontFamily.heading,
   fontWeight: theme.fontWeight.bold,
-  letterSpacing: theme.letterSpacing.small,
+  letterSpacing: theme.letterSpacing.extended,
   height: StylesBadgeVariables(theme).height,
   textAlign: 'center',
   textTransform: 'uppercase',

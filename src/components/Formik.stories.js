@@ -1,8 +1,8 @@
+import { useTheme } from '@emotion/react'
 import { Form, Formik } from 'formik'
 import * as yup from 'yup'
 
 import Button from './Button'
-import FormGroup from './FormGroup'
 import FormikField from './FormikField'
 
 export default {
@@ -19,6 +19,8 @@ const schema = yup.object().shape({
 })
 
 const Story = () => {
+  const theme = useTheme()
+
   const handleSubmit = (values) => {
     console.log(values) // eslint-disable-line no-console
   }
@@ -34,14 +36,22 @@ const Story = () => {
       onSubmit={handleSubmit}
     >
       <Form>
-        <FormikField name="name" label="Name" required />
-        <FormikField type="email" name="email" label="Email" required />
-        <FormikField as="textarea" name="message" label="Message" required />
-        <FormGroup>
-          <Button type="primary" actionType="submit">
-            Submit
-          </Button>
-        </FormGroup>
+        <div
+          css={{
+            display: 'grid',
+            gridTemplateColumns: 'minmax(0, 1fr)',
+            gap: theme.space.base,
+          }}
+        >
+          <FormikField name="name" label="Name" required />
+          <FormikField type="email" name="email" label="Email" required />
+          <FormikField as="textarea" name="message" label="Message" required />
+          <div>
+            <Button type="primary" actionType="submit">
+              Submit
+            </Button>
+          </div>
+        </div>
       </Form>
     </Formik>
   )
