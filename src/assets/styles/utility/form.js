@@ -77,8 +77,8 @@ export const input = (theme) => [
     // 1. Removes placeholder transparency in Firefox
     '::placeholder': [
       {
-        opacity: 1, // 1
-        color: theme.fontColor.muted,
+        opacity: theme.opacity.base, // 1
+        color: theme.fontColor.base,
         textOverflow: 'hidden',
 
         '&:disabled': {
