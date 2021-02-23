@@ -24,6 +24,7 @@ export const StylesControlWrapperRequired = (theme, props = {}) => ({
       width: StylesControlWrapperVariables(theme).iconSize,
       height: StylesControlWrapperVariables(theme).iconSize,
       opacity: theme.opacity.base,
+      filter: theme.fontColor.base__filter,
       pointerEvents: 'none',
     },
 
@@ -41,6 +42,10 @@ export const StylesControlWrapperRequired = (theme, props = {}) => ({
 export const StylesControlWrapperError = (theme) => ({
   borderColor: theme.color.danger.base,
   color: theme.color.danger.base,
+
+  '&::after': {
+    filter: theme.color.danger.filter,
+  },
 })
 
 export const StylesControlWrapperDisabled = (theme) => ({
