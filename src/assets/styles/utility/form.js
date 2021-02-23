@@ -78,7 +78,7 @@ export const input = (theme) => [
     '::placeholder': [
       {
         opacity: theme.opacity.base, // 1
-        color: theme.fontColor.base,
+        color: 'currentColor',
         textOverflow: 'hidden',
 
         '&:disabled': {
