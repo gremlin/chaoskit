@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import { useTheme } from '@emotion/react'
 import clsx from 'clsx'
 import Tippy from '@tippyjs/react/headless'
+import { followCursor } from 'tippy.js'
 import { motion, useAnimation } from 'framer-motion'
 
 import { getTransformOrigin } from '../helpers/utility'
@@ -24,6 +25,7 @@ const Tooltip = ({
   content,
   placement = 'top',
   variation = 'light',
+  enableFollowCursor = false,
   ...rest
 }) => {
   const theme = useTheme()
@@ -58,7 +60,9 @@ const Tooltip = ({
       hideOnClick={false}
       onMount={handleOnMount}
       onHide={handleOnHide}
+      followCursor={enableFollowCursor}
       offset={[0, theme.space.small]}
+      plugins={enableFollowCursor ? [followCursor] : []}
       render={(attrs) => {
         return (
           <motion.div
@@ -108,6 +112,7 @@ Tooltip.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   content: PropTypes.any.isRequired,
+  enableFollowCursor: PropTypes.bool,
   placement: PropTypes.oneOf([
     'top',
     'top-start',

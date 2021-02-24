@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { CacheProvider, Global, ThemeProvider } from '@emotion/react'
 import createCache from '@emotion/cache'
 import { prefixer } from 'stylis'
-import { merge } from 'lodash-es'
+import { merge } from 'lodash'
 import 'what-input'
 
 import { theme } from '../assets/styles/theme'
