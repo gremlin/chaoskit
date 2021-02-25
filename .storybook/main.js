@@ -1,4 +1,5 @@
 const webpack = require('webpack')
+const ESLintPlugin = require('eslint-webpack-plugin')
 
 const prettierConfig = require('../prettier.config.js');
 
@@ -25,16 +26,11 @@ module.exports = {
     )
 
     // Enable eslint
-    config.module.rules.push({
-      test: /\.jsx?$/,
-      exclude: /(node_modules|cache)/,
-      use: [
-        {
-          loader: 'eslint-loader',
-        },
-      ],
-      enforce: 'pre',
-    })
+    config.plugins.push(
+      new ESLintPlugin({
+        extensions: ['js', 'jsx', 'ts', 'tsx'],
+      })
+    )
 
     config.node = {
       module: 'empty',
