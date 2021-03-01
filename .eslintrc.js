@@ -7,6 +7,7 @@ module.exports = {
     'plugin:import/errors',
     'plugin:import/warnings',
   ],
+  parser: 'babel-eslint',
   plugins: [
     'react',
     'jsx-a11y',
