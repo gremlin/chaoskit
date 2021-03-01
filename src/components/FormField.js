@@ -34,7 +34,7 @@ const FormField = ({ as = 'input', name, ...rest }) => {
   }, [as])
 
   const componentProps = {
-    validationMessage: errors[name]?.message ?? '',
+    validationMessage: errors[name] ? errors[name].message : '',
   }
 
   // Remove `errorText` prop from fields that don't support `validationMessage` to avoid DOM warning
