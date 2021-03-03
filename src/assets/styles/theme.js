@@ -205,12 +205,23 @@ const fontSize = {
   medium: 18,
   large: 20,
   xlarge: 26,
-  h1: 50,
-  h2: 42,
-  h3: 34,
-  h4: 28,
+  xxlarge: 34,
+  xxxlarge: 42,
+  xxxxlarge: 50,
+  get h1() {
+    return this.xxxxlarge
+  },
+  get h2() {
+    return this.xxxlarge
+  },
+  get h3() {
+    return this.xxlarge
+  },
+  get h4() {
+    return this.xlarge
+  },
   get h5() {
-    return this.small
+    return this.large
   },
   get medium__fluid() {
     return fluidRange(

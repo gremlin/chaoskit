@@ -291,9 +291,9 @@ export const globalStyles = (theme) => [
     ],
 
     h4: [
+      theme.fontSize.xlarge__fluid,
       {
         color: theme.fontColor.heading,
-        fontSize: theme.fontSize.h4,
         margin: `0 0 ${theme.space.base}px`,
         fontWeight: theme.fontWeight.bold,
 
@@ -307,8 +307,6 @@ export const globalStyles = (theme) => [
       {
         color: theme.fontColor.heading,
         fontSize: theme.fontSize.h5,
-        letterSpacing: theme.letterSpacing.extended,
-        textTransform: 'uppercase',
         margin: `0 0 ${theme.space.base}px`,
         fontWeight: theme.fontWeight.bold,
 

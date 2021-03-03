@@ -60,7 +60,7 @@ export const StylesButtonBase = (theme, props = {}) => [
     fontFamily: theme.fontFamily.heading,
     color: StylesButtonVariables(theme).color.base,
     // 6
-    textTransform: 'uppercase',
+    textTransform: 'none',
     // 7
     display: 'inline-block',
     paddingTop: 0,
@@ -74,7 +74,6 @@ export const StylesButtonBase = (theme, props = {}) => [
     backgroundSize: '100% 100%',
     borderRadius: theme.borderRadius.rounded,
     position: 'relative',
-    letterSpacing: theme.letterSpacing.extended,
     // 8
     lineHeight: `${
       theme.height.base - StylesButtonVariables(theme).borderWidth * 2
@@ -82,7 +81,7 @@ export const StylesButtonBase = (theme, props = {}) => [
     // 9
     height: theme.height.base,
     // 10
-    fontSize: theme.fontSize.small,
+    fontSize: theme.fontSize.base,
     // 11
     textDecoration: 'none',
     textAlign: 'center',
@@ -133,7 +132,7 @@ export const StylesButtonSmall = (theme) => ({
 export const StylesButtonXsmall = (theme) => ({
   paddingLeft: theme.space.base,
   paddingRight: theme.space.base,
-  fontSize: theme.fontSize.xsmall,
+  fontSize: theme.fontSize.small,
   height: theme.height.xsmall,
   lineHeight: `${
     theme.height.xsmall - StylesButtonVariables(theme).borderWidth * 2
