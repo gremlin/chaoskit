@@ -306,6 +306,7 @@ export const globalStyles = (theme) => [
 
     h5: [
       {
+        lineHeight: theme.lineHeight.small,
         color: theme.fontColor.heading,
         fontSize: theme.fontSize.h5,
         margin: `0 0 ${theme.space.base}px`,
