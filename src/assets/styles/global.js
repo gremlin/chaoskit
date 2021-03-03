@@ -293,6 +293,7 @@ export const globalStyles = (theme) => [
     h4: [
       theme.fontSize.xlarge__fluid,
       {
+        lineHeight: theme.lineHeight.small,
         color: theme.fontColor.heading,
         margin: `0 0 ${theme.space.base}px`,
         fontWeight: theme.fontWeight.bold,
