@@ -333,6 +333,7 @@ export const StylesButtonIconOnly = (theme, props = {}) => [
   {
     padding: 0,
     width: theme.height.base,
+    fontSize: theme.fontSize.small,
 
     svg: {
       width: StylesIconVariables.large,
@@ -341,6 +342,7 @@ export const StylesButtonIconOnly = (theme, props = {}) => [
   },
   props.size === 'small' && {
     width: theme.height.small,
+    fontSize: theme.fontSize.small,
 
     svg: {
       width: StylesIconVariables.medium,
@@ -349,6 +351,7 @@ export const StylesButtonIconOnly = (theme, props = {}) => [
   },
   props.size === 'xsmall' && {
     width: theme.height.xsmall,
+    fontSize: theme.fontSize.xsmall,
 
     svg: {
       width: StylesIconVariables.base,
