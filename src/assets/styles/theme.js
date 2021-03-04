@@ -302,6 +302,18 @@ const text = {
     fontSize: fontSize.base,
     lineHeight: lineHeight.base,
   },
+  base__fluid: {
+    lineHeight: lineHeight.base,
+    ...fluidRange(
+      {
+        prop: 'fontSize',
+        fromSize: `${fontSize.small}px`,
+        toSize: `${fontSize.base}px`,
+      },
+      `${breakpoint.small}px`,
+      `${breakpoint.large}px`
+    ),
+  },
   medium: {
     fontSize: fontSize.medium,
     lineHeight: lineHeight.base,
@@ -323,20 +335,17 @@ const text = {
     lineHeight: lineHeight.small,
   },
   large__fluid: {
+    lineHeight: lineHeight.base,
+
+    [mq.large]: {
+      lineHeight: lineHeight.small,
+    },
+
     ...fluidRange(
       {
         prop: 'fontSize',
         fromSize: `${fontSize.medium}px`,
         toSize: `${fontSize.large}px`,
-      },
-      `${breakpoint.small}px`,
-      `${breakpoint.large}px`
-    ),
-    ...fluidRange(
-      {
-        prop: 'lineHeight',
-        fromSize: lineHeight.base,
-        toSize: lineHeight.small,
       },
       `${breakpoint.small}px`,
       `${breakpoint.large}px`
