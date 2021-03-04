@@ -2,6 +2,8 @@ import PropTypes from 'prop-types'
 import { useTheme } from '@emotion/react'
 import clsx from 'clsx'
 
+import { text } from '../assets/styles/utility'
+
 export const StylesBadgeVariables = (theme) => ({
   height: theme.height.xxxsmall,
 })
@@ -15,14 +17,11 @@ export const StylesBadgeBase = (theme) => ({
   display: 'inline-flex',
   alignItems: 'center',
   padding: `0 ${theme.space.small}px`,
-  lineHeight: '1',
-  fontSize: theme.fontSize.xsmall,
-  fontFamily: theme.fontFamily.heading,
+  ...theme.text.xsmall,
+  ...text.expanded(theme),
   fontWeight: theme.fontWeight.bold,
-  letterSpacing: theme.letterSpacing.extended,
   height: StylesBadgeVariables(theme).height,
   textAlign: 'center',
-  textTransform: 'uppercase',
   userSelect: 'none',
 })
 

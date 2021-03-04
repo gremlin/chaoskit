@@ -3,21 +3,21 @@ import PropTypes from 'prop-types'
 import { useTheme } from '@emotion/react'
 import clsx from 'clsx'
 
-import { misc, text } from '../assets/styles/utility'
+import { text } from '../assets/styles/utility'
 
 import Close from './Close'
 
 export const StylesAlertBase = (theme) => [
-  misc.fluidSize({
-    theme,
-    property: 'padding',
-    from: theme.space.base,
-    to: theme.space.large,
-  }),
   {
     borderLeft: '8px solid transparent',
     color: theme.fontColor.base,
     borderRadius: theme.borderRadius.base,
+    padding: theme.space.base,
+    position: 'relative',
+
+    [theme.mq.medium]: {
+      padding: theme.space.large,
+    },
 
     'a:not([class]), a[class=""], .u-link': [
       text.underline,
@@ -76,12 +76,6 @@ const Alert = ({
       css={[
         StylesAlertBase(theme),
 
-        typeof setReveal === 'function' && {
-          display: 'grid',
-          gridTemplateColumns: '1fr auto',
-          gap: theme.space.small,
-        },
-
         type === 'default' && StylesAlertDefault(theme),
         type === 'primary' && StylesAlertPrimary(theme),
         type === 'warning' && StylesAlertWarning(theme),
@@ -93,11 +87,35 @@ const Alert = ({
       {...rest}
     >
       <div className={`CK__Alert__Content ${theme.settings.classes.trim}`}>
-        {title && <h4 className="CK__Alert__Title">{title}</h4>}
+        {title && (
+          <div
+            css={{
+              ...theme.text.xlarge__fluid,
+              fontWeight: theme.fontWeight.bold,
+            }}
+            className="CK__Alert__Title"
+          >
+            {title}
+          </div>
+        )}
         {children}
       </div>
       {typeof setReveal === 'function' && (
-        <Close className="CK__Alert__Close" onClick={() => setReveal(false)} />
+        <Close
+          css={{
+            position: 'absolute',
+            top: theme.space.small,
+            right: theme.space.small,
+            zIndex: 1,
+
+            [theme.mq.medium]: {
+              top: theme.space.base,
+              right: theme.space.base,
+            },
+          }}
+          className="CK__Alert__Close"
+          onClick={() => setReveal(false)}
+        />
       )}
     </div>
   )

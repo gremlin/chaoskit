@@ -67,7 +67,7 @@ const Tooltip = ({
         return (
           <motion.div
             css={{
-              fontSize: theme.fontSize.small,
+              ...theme.text.small,
               color: StylesTooltipVariables(theme, variation).color,
               maxWidth: 250,
               padding: StylesTooltipVariables(theme, variation).padding,

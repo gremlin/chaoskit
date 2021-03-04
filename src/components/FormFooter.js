@@ -14,7 +14,7 @@ const FormFooter = React.forwardRef(
         ref={ref}
         css={[
           {
-            fontSize: theme.fontSize.xsmall,
+            ...theme.text.xsmall,
             display: 'grid',
             gridAutoColumns: '1fr',
             gridAutoFlow: 'column',

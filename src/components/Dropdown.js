@@ -10,35 +10,6 @@ import { getTransformOrigin } from '../helpers/utility'
 import Button from './Button'
 import Icon from './Icon'
 
-export const DropdownMenuItemStyles = (theme, props = {}) => [
-  theme.fontSize.medium__fluid,
-  {
-    margin: `0 -${theme.space.small}px`,
-    color: theme.fontColor.base,
-    paddingTop: theme.space.xsmall,
-    paddingBottom: theme.space.xsmall,
-    paddingLeft: theme.space.small,
-    paddingRight: theme.space.small,
-    display: 'block',
-    borderRadius: theme.borderRadius.base,
-    lineHeight: theme.lineHeight.base,
-    fontWeight: theme.fontWeight.base,
-
-    '&:hover, &:focus': {
-      color: theme.fontColor.base,
-      background: theme.color.panel.dark,
-    },
-
-    '&.is-active': {
-      background: theme.color.panel.dark,
-    },
-  },
-
-  props.active && {
-    background: theme.color.panel.dark,
-  },
-]
-
 const Dropdown = ({
   children,
   className,

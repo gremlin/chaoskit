@@ -1,4 +1,4 @@
-import { fluidRange, rgba, shade, tint, timingFunctions } from 'polished'
+import { rgba, shade, tint, timingFunctions } from 'polished'
 
 // @NOTE Filter generator https://codepen.io/zslabs/pen/xePEVN
 const brand = {
@@ -191,12 +191,10 @@ const fontColor = {
   get mutedDark() {
     return rgba(shade(0.1, this.muted), muted.base)
   },
-  heading: color.dark.light,
-  get headingDark() {
-    return shade(0.1, this.heading)
-  },
 }
 
+// Raw font-size values
+// @NOTE These normally won't be used as `text` is the better usage that includes line-heights
 const fontSize = {
   xxsmall: 10,
   xsmall: 12,
@@ -205,79 +203,9 @@ const fontSize = {
   medium: 18,
   large: 20,
   xlarge: 26,
-  h1: 50,
-  h2: 42,
-  h3: 34,
-  h4: 28,
-  get h5() {
-    return this.small
-  },
-  get medium__fluid() {
-    return fluidRange(
-      {
-        prop: 'fontSize',
-        fromSize: `${this.base}px`,
-        toSize: `${this.medium}px`,
-      },
-      `${breakpoint.small}px`,
-      `${breakpoint.large}px`
-    )
-  },
-  get large__fluid() {
-    return fluidRange(
-      {
-        prop: 'fontSize',
-        fromSize: `${this.medium}px`,
-        toSize: `${this.large}px`,
-      },
-      `${breakpoint.small}px`,
-      `${breakpoint.large}px`
-    )
-  },
-  get xlarge__fluid() {
-    return fluidRange(
-      {
-        prop: 'fontSize',
-        fromSize: `${this.large}px`,
-        toSize: `${this.xlarge}px`,
-      },
-      `${breakpoint.small}px`,
-      `${breakpoint.large}px`
-    )
-  },
-  get h1__fluid() {
-    return fluidRange(
-      {
-        prop: 'fontSize',
-        fromSize: `${this.h2}px`,
-        toSize: `${this.h1}px`,
-      },
-      `${breakpoint.small}px`,
-      `${breakpoint.large}px`
-    )
-  },
-  get h2__fluid() {
-    return fluidRange(
-      {
-        prop: 'fontSize',
-        fromSize: `${this.h3}px`,
-        toSize: `${this.h2}px`,
-      },
-      `${breakpoint.small}px`,
-      `${breakpoint.large}px`
-    )
-  },
-  get h3__fluid() {
-    return fluidRange(
-      {
-        prop: 'fontSize',
-        fromSize: `${this.h4}px`,
-        toSize: `${this.h3}px`,
-      },
-      `${breakpoint.small}px`,
-      `${breakpoint.large}px`
-    )
-  },
+  xxlarge: 34,
+  xxxlarge: 42,
+  xxxxlarge: 50,
 }
 
 const fontWeight = {
@@ -324,10 +252,6 @@ const settings = {
     table: true,
   },
   button: {
-    gradient: {
-      enable: true,
-      primaryStart: brand.teal,
-    },
     misc: {},
   },
   prism: {
@@ -351,6 +275,108 @@ const settings = {
 const transition = {
   base: timingFunctions('easeInOutExpo'),
   bounce: timingFunctions('easeOutBack'),
+}
+
+// Utility that combines raw font-sizes with responsive and line-height utilities in one-go
+const text = {
+  xxsmall: {
+    fontSize: fontSize.xxsmall,
+    lineHeight: 1,
+  },
+  xsmall: {
+    fontSize: fontSize.xsmall,
+    lineHeight: 1,
+  },
+  small: {
+    fontSize: fontSize.small,
+    lineHeight: lineHeight.small,
+  },
+  base: {
+    fontSize: fontSize.base,
+    lineHeight: lineHeight.base,
+  },
+  medium: {
+    fontSize: fontSize.medium,
+    lineHeight: lineHeight.base,
+  },
+  medium__fluid: {
+    fontSize: fontSize.base,
+    lineHeight: lineHeight.base,
+
+    [mq.medium]: {
+      fontSize: fontSize.medium,
+    },
+  },
+  large: {
+    fontSize: fontSize.large,
+    lineHeight: lineHeight.small,
+  },
+  large__fluid: {
+    fontSize: fontSize.medium,
+    lineHeight: lineHeight.base,
+
+    [mq.medium]: {
+      fontSize: fontSize.large,
+      lineHeight: lineHeight.small,
+    },
+  },
+  xlarge: {
+    fontSize: fontSize.xlarge,
+    lineHeight: lineHeight.small,
+  },
+  xlarge__fluid: {
+    fontSize: fontSize.large,
+    lineHeight: lineHeight.small,
+
+    [mq.medium]: {
+      fontSize: fontSize.xlarge,
+    },
+  },
+  xxlarge: {
+    fontSize: fontSize.xxlarge,
+    lineHeight: lineHeight.small,
+  },
+  xxlarge__fluid: {
+    fontSize: fontSize.xlarge,
+    lineHeight: lineHeight.small,
+
+    [mq.medium]: {
+      fontSize: fontSize.xxlarge,
+    },
+  },
+  xxxlarge: {
+    fontSize: fontSize.xxxlarge,
+    lineHeight: lineHeight.small,
+  },
+  xxxlarge__fluid: {
+    fontSize: fontSize.xxlarge,
+    lineHeight: lineHeight.small,
+
+    [mq.medium]: {
+      fontSize: fontSize.xxxlarge,
+    },
+  },
+  xxxxlarge: {
+    fontXize: fontSize.xxxxlarge,
+    lineHeight: lineHeight.small,
+  },
+  xxxxlarge__fluid: {
+    fontSize: fontSize.xxxlarge,
+    lineHeight: lineHeight.small,
+
+    [mq.medium]: {
+      fontSize: fontSize.xxxxlarge,
+    },
+  },
+}
+
+// Quick references to emulated heading styles when not using the element
+const headingPreset = {
+  h1: { ...text.xxxxlarge__fluid, fontWeight: fontWeight.bold },
+  h2: { ...text.xxxlarge__fluid, fontWeight: fontWeight.bold },
+  h3: { ...text.xxlarge__fluid, fontWeight: fontWeight.bold },
+  h4: { ...text.xlarge__fluid, fontWeight: fontWeight.bold },
+  h5: { ...text.large__fluid, fontWeight: fontWeight.bold },
 }
 
 const timing = {
@@ -419,4 +445,6 @@ export const theme = {
   motion,
   contrast,
   settings,
+  text,
+  headingPreset,
 }

@@ -4,10 +4,6 @@ import { useTheme } from '@emotion/react'
 import Button from './Button'
 import Icon from './Icon'
 
-export const StylesCloseVariables = (theme) => ({
-  size: theme.fontSize.base,
-})
-
 const Close = ({ onClick, noContrast, ...rest }) => {
   const theme = useTheme()
 
@@ -20,10 +16,9 @@ const Close = ({ onClick, noContrast, ...rest }) => {
         {
           // 1. To align better with headers
           color: theme.fontColor.base,
-          lineHeight: theme.lineHeight.small, // 1
-          width: StylesCloseVariables(theme).size,
-          height: StylesCloseVariables(theme).size,
           opacity: theme.opacity.base,
+          width: '1em',
+          height: '1em',
           transition: `opacity ${theme.timing.short} linear, transform ${theme.timing.short} linear`,
 
           '&:hover, &:focus': {

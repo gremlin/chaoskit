@@ -26,7 +26,7 @@ export const base = (theme) => ({
   borderRadius: 0,
   // 3
   font: 'inherit',
-  fontSize: variables(theme).fontSize,
+  ...theme.text.base,
   color: 'inherit',
 })
 
@@ -106,7 +106,7 @@ export const styles = (theme) => [
       padding: 0,
       // `margin-bottom` is not working in Safari and Opera. Using `padding` and :after instead to create the border
       paddingBottom: theme.space.small,
-      fontSize: theme.fontSize.base,
+      ...theme.text.base,
       fontWeight: theme.fontWeight.bold,
       color: theme.fontColor.muted,
       position: 'relative',

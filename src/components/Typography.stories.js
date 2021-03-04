@@ -2,6 +2,8 @@ import PropTypes from 'prop-types'
 import { useTheme } from '@emotion/react'
 import clsx from 'clsx'
 
+import { text } from '../assets/styles/utility'
+
 export default {
   title: 'General/Typography',
 }
@@ -29,9 +31,8 @@ const TypographyColumn = ({ className, title, children, ...rest }) => {
             padding: theme.space.xsmall,
             textAlign: 'center',
             fontWeight: theme.fontWeight.bold,
-            textTransform: 'uppercase',
-            fontSize: theme.fontSize.small,
-            letterSpacing: theme.letterSpacing.extended,
+            ...text.expanded(theme),
+            ...theme.text.small,
           },
         ]}
       >
@@ -116,6 +117,29 @@ const Story = () => {
             </p>
           )
         })}
+      </TypographyColumn>
+      <TypographyColumn title="Content">
+        <h2>Heading 2</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis
+          reprehenderit corporis magnam atque praesentium et, ab tempore eveniet
+          non, delectus vel, odit ipsa nulla fugiat reiciendis ullam laudantium
+          consequatur quidem!
+        </p>
+        <h3>Heading 3</h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis
+          reprehenderit corporis magnam atque praesentium et, ab tempore eveniet
+          non, delectus vel, odit ipsa nulla fugiat reiciendis ullam laudantium
+          consequatur quidem!
+        </p>
+        <h4>Heading 4</h4>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis
+          reprehenderit corporis magnam atque praesentium et, ab tempore eveniet
+          non, delectus vel, odit ipsa nulla fugiat reiciendis ullam laudantium
+          consequatur quidem!
+        </p>
       </TypographyColumn>
     </div>
   )
