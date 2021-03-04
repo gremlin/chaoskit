@@ -20,7 +20,7 @@ export const reset = (theme) => ({
   color: `${theme.fontColor.base} !important`,
 
   '&:hover, &:focus': {
-    color: `${theme.fontColor.dark} !important`,
+    color: `${theme.fontColor.base} !important`,
   },
 })
 
@@ -29,14 +29,6 @@ export const muted = (theme) => ({
 
   '&:hover, &:focus': {
     color: `${theme.fontColor.mutedDark} !important`,
-  },
-})
-
-export const heading = (theme) => ({
-  color: `${theme.fontColor.heading} !important`,
-
-  '&:hover, &:focus': {
-    color: `${theme.fontColor.headingDark} !important`,
   },
 })
 
