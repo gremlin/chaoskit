@@ -1,4 +1,4 @@
-import { rgba, shade, tint, timingFunctions } from 'polished'
+import { fluidRange, rgba, shade, tint, timingFunctions } from 'polished'
 
 // @NOTE Filter generator https://codepen.io/zslabs/pen/xePEVN
 const brand = {
@@ -243,6 +243,8 @@ const space = {
   medium: 24,
   large: 32,
   xlarge: 64,
+  '2xlarge': 96,
+  '3xlarge': 128,
 }
 
 const settings = {
@@ -301,73 +303,104 @@ const text = {
     lineHeight: lineHeight.base,
   },
   medium__fluid: {
-    fontSize: fontSize.base,
     lineHeight: lineHeight.base,
-
-    [mq.medium]: {
-      fontSize: fontSize.medium,
-    },
+    ...fluidRange(
+      {
+        prop: 'fontSize',
+        fromSize: `${fontSize.base}px`,
+        toSize: `${fontSize.medium}px`,
+      },
+      `${breakpoint.small}px`,
+      `${breakpoint.large}px`
+    ),
   },
   large: {
     fontSize: fontSize.large,
     lineHeight: lineHeight.small,
   },
   large__fluid: {
-    fontSize: fontSize.medium,
-    lineHeight: lineHeight.base,
-
-    [mq.medium]: {
-      fontSize: fontSize.large,
-      lineHeight: lineHeight.small,
-    },
+    ...fluidRange(
+      {
+        prop: 'fontSize',
+        fromSize: `${fontSize.medium}px`,
+        toSize: `${fontSize.large}px`,
+      },
+      `${breakpoint.small}px`,
+      `${breakpoint.large}px`
+    ),
+    ...fluidRange(
+      {
+        prop: 'lineHeight',
+        fromSize: lineHeight.base,
+        toSize: lineHeight.small,
+      },
+      `${breakpoint.small}px`,
+      `${breakpoint.large}px`
+    ),
   },
   xlarge: {
     fontSize: fontSize.xlarge,
     lineHeight: lineHeight.small,
   },
   xlarge__fluid: {
-    fontSize: fontSize.large,
+    ...fluidRange(
+      {
+        prop: 'fontSize',
+        fromSize: `${fontSize.large}px`,
+        toSize: `${fontSize.xlarge}px`,
+      },
+      `${breakpoint.small}px`,
+      `${breakpoint.large}px`
+    ),
     lineHeight: lineHeight.small,
-
-    [mq.medium]: {
-      fontSize: fontSize.xlarge,
-    },
   },
   '2xlarge': {
     fontSize: fontSize['2xlarge'],
     lineHeight: lineHeight.small,
   },
   '2xlarge__fluid': {
-    fontSize: fontSize.xlarge,
+    ...fluidRange(
+      {
+        prop: 'fontSize',
+        fromSize: `${fontSize.xlarge}px`,
+        toSize: `${fontSize['2xlarge']}px`,
+      },
+      `${breakpoint.small}px`,
+      `${breakpoint.large}px`
+    ),
     lineHeight: lineHeight.small,
-
-    [mq.medium]: {
-      fontSize: fontSize['2xlarge'],
-    },
   },
   '3xlarge': {
     fontSize: fontSize['3xlarge'],
     lineHeight: lineHeight.small,
   },
   '3xlarge__fluid': {
-    fontSize: fontSize['2xlarge'],
+    ...fluidRange(
+      {
+        prop: 'fontSize',
+        fromSize: `${fontSize['2xlarge']}px`,
+        toSize: `${fontSize['3xlarge']}px`,
+      },
+      `${breakpoint.small}px`,
+      `${breakpoint.large}px`
+    ),
     lineHeight: lineHeight.small,
-
-    [mq.medium]: {
-      fontSize: fontSize['3xlarge'],
-    },
   },
   '4xlarge': {
     fontXize: fontSize['4xlarge'],
     lineHeight: lineHeight.small,
   },
   '4xlarge__fluid': {
-    fontSize: fontSize['3xlarge'],
+    ...fluidRange(
+      {
+        prop: 'fontSize',
+        fromSize: `${fontSize['3xlarge']}px`,
+        toSize: `${fontSize['4xlarge']}px`,
+      },
+      `${breakpoint.small}px`,
+      `${breakpoint.large}px`
+    ),
     lineHeight: lineHeight.small,
-
-    [mq.medium]: {
-      fontSize: fontSize['4xlarge'],
-    },
   },
 }
 
