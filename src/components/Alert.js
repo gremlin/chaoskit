@@ -92,6 +92,7 @@ const Alert = ({
             css={{
               ...theme.text.xlarge__fluid,
               fontWeight: theme.fontWeight.bold,
+              marginBottom: theme.space.base,
             }}
             className="CK__Alert__Title"
           >

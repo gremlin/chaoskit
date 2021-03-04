@@ -401,7 +401,7 @@ const text = {
   },
   '4xlarge': {
     fontSize: fontSize['4xlarge'],
-    lineHeight: 1,
+    lineHeight: lineHeight.small,
   },
   '4xlarge__fluid': {
     ...fluidRange(
@@ -413,7 +413,7 @@ const text = {
       `${breakpoint.small}px`,
       `${breakpoint.large}px`
     ),
-    lineHeight: 1,
+    lineHeight: lineHeight.small,
   },
   '5xlarge': {
     fontSize: fontSize['5xlarge'],
