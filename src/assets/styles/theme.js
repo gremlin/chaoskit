@@ -206,6 +206,7 @@ const fontSize = {
   '2xlarge': 34,
   '3xlarge': 42,
   '4xlarge': 50,
+  '5xlarge': 75,
 }
 
 const fontWeight = {
