@@ -210,10 +210,12 @@ export const StylesButtonPrimary = (theme, props = {}) => {
       background: theme.color.primary.dark,
       borderColor: theme.color.primary.dark,
     },
-    generateButtonGradient({
-      start: theme.brand.teal,
-      stop: theme.color.primary.base,
-    }),
+
+    theme.settings.button.gradient.enable &&
+      generateButtonGradient({
+        start: theme.settings.button.gradient.primaryStart,
+        stop: theme.color.primary.base,
+      }),
   ]
 
   const interactiveStylesContrast = {
@@ -231,10 +233,11 @@ export const StylesButtonPrimary = (theme, props = {}) => {
       '&.is-active': interactiveStyles,
     },
 
-    generateButtonGradient({
-      start: theme.brand.teal,
-      stop: theme.color.primary.base,
-    }),
+    theme.settings.button.gradient.enable &&
+      generateButtonGradient({
+        start: theme.settings.button.gradient.primaryStart,
+        stop: theme.color.primary.base,
+      }),
 
     props.active && interactiveStyles,
 

@@ -255,6 +255,10 @@ const settings = {
     table: true,
   },
   button: {
+    gradient: {
+      enable: true,
+      primaryStart: brand.teal,
+    },
     misc: {},
   },
   prism: {
