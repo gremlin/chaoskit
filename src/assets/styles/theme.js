@@ -387,8 +387,8 @@ const text = {
     lineHeight: lineHeight.small,
   },
   '4xlarge': {
-    fontXize: fontSize['4xlarge'],
-    lineHeight: lineHeight.small,
+    fontSize: fontSize['4xlarge'],
+    lineHeight: 1,
   },
   '4xlarge__fluid': {
     ...fluidRange(
@@ -400,7 +400,23 @@ const text = {
       `${breakpoint.small}px`,
       `${breakpoint.large}px`
     ),
-    lineHeight: lineHeight.small,
+    lineHeight: 1,
+  },
+  '5xlarge': {
+    fontSize: fontSize['5xlarge'],
+    lineHeight: 1,
+  },
+  '5xlarge__fluid': {
+    ...fluidRange(
+      {
+        prop: 'fontSize',
+        fromSize: `${fontSize['4xlarge']}px`,
+        toSize: `${fontSize['5xlarge']}px`,
+      },
+      `${breakpoint.small}px`,
+      `${breakpoint.large}px`
+    ),
+    lineHeight: 1,
   },
 }
 
