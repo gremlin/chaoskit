@@ -196,16 +196,16 @@ const fontColor = {
 // Raw font-size values
 // @NOTE These normally won't be used as `text` is the better usage that includes line-heights
 const fontSize = {
-  xxsmall: 10,
+  '2xsmall': 10,
   xsmall: 12,
   small: 14,
   base: 16,
   medium: 18,
   large: 20,
   xlarge: 26,
-  xxlarge: 34,
-  xxxlarge: 42,
-  xxxxlarge: 50,
+  '2xlarge': 34,
+  '3xlarge': 42,
+  '4xlarge': 50,
 }
 
 const fontWeight = {
@@ -220,9 +220,9 @@ const height = {
   base: 48,
   small: 40,
   xsmall: 32,
-  xxsmall: 28,
-  xxxsmall: 24,
-  xxxxsmall: 20,
+  '2xsmall': 28,
+  '3xsmall': 24,
+  '4xsmall': 20,
 }
 
 const lineHeight = {
@@ -279,8 +279,8 @@ const transition = {
 
 // Utility that combines raw font-sizes with responsive and line-height utilities in one-go
 const text = {
-  xxsmall: {
-    fontSize: fontSize.xxsmall,
+  '2xsmall': {
+    fontSize: fontSize['2xsmall'],
     lineHeight: 1,
   },
   xsmall: {
@@ -332,49 +332,49 @@ const text = {
       fontSize: fontSize.xlarge,
     },
   },
-  xxlarge: {
-    fontSize: fontSize.xxlarge,
+  '2xlarge': {
+    fontSize: fontSize['2xlarge'],
     lineHeight: lineHeight.small,
   },
-  xxlarge__fluid: {
+  '2xlarge__fluid': {
     fontSize: fontSize.xlarge,
     lineHeight: lineHeight.small,
 
     [mq.medium]: {
-      fontSize: fontSize.xxlarge,
+      fontSize: fontSize['2xlarge'],
     },
   },
-  xxxlarge: {
-    fontSize: fontSize.xxxlarge,
+  '3xlarge': {
+    fontSize: fontSize['3xlarge'],
     lineHeight: lineHeight.small,
   },
-  xxxlarge__fluid: {
-    fontSize: fontSize.xxlarge,
+  '3xlarge__fluid': {
+    fontSize: fontSize['2xlarge'],
     lineHeight: lineHeight.small,
 
     [mq.medium]: {
-      fontSize: fontSize.xxxlarge,
+      fontSize: fontSize['3xlarge'],
     },
   },
-  xxxxlarge: {
-    fontXize: fontSize.xxxxlarge,
+  '4xlarge': {
+    fontXize: fontSize['4xlarge'],
     lineHeight: lineHeight.small,
   },
-  xxxxlarge__fluid: {
-    fontSize: fontSize.xxxlarge,
+  '4xlarge__fluid': {
+    fontSize: fontSize['3xlarge'],
     lineHeight: lineHeight.small,
 
     [mq.medium]: {
-      fontSize: fontSize.xxxxlarge,
+      fontSize: fontSize['4xlarge'],
     },
   },
 }
 
 // Quick references to emulated heading styles when not using the element
 const headingPreset = {
-  h1: { ...text.xxxxlarge__fluid, fontWeight: fontWeight.bold },
-  h2: { ...text.xxxlarge__fluid, fontWeight: fontWeight.bold },
-  h3: { ...text.xxlarge__fluid, fontWeight: fontWeight.bold },
+  h1: { ...text['4xlarge__fluid'], fontWeight: fontWeight.bold },
+  h2: { ...text['3xlarge__fluid'], fontWeight: fontWeight.bold },
+  h3: { ...text['2xlarge__fluid'], fontWeight: fontWeight.bold },
   h4: { ...text.xlarge__fluid, fontWeight: fontWeight.bold },
   h5: { ...text.large__fluid, fontWeight: fontWeight.bold },
 }

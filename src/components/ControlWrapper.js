@@ -8,7 +8,7 @@ import { form } from '../assets/styles/utility'
 // @NOTE These are separated out so we can plug into Marketo styles more cleanly
 
 export const StylesControlWrapperVariables = (theme) => ({
-  iconSize: theme.fontSize.xxsmall,
+  iconSize: theme.fontSize['2xsmall'],
 })
 
 export const StylesControlWrapperRequired = (theme, props = {}) => ({

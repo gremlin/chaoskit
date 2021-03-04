@@ -58,8 +58,8 @@ const Notification = ({ notification }) => {
             theme.color[
               notification.status === 'success' ? 'primary' : 'danger'
             ].base,
-          height: theme.height.xxsmall,
-          width: theme.height.xxsmall,
+          height: theme.height['2xsmall'],
+          width: theme.height['2xsmall'],
           display: 'grid',
           placeItems: 'center',
         }}

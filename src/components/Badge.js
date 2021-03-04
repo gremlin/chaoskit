@@ -5,7 +5,7 @@ import clsx from 'clsx'
 import { text } from '../assets/styles/utility'
 
 export const StylesBadgeVariables = (theme) => ({
-  height: theme.height.xxxsmall,
+  height: theme.height['3xsmall'],
 })
 
 export const StylesBadgeBase = (theme) => ({

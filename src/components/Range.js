@@ -12,10 +12,10 @@ import FormFooter from './FormFooter'
 
 export const StylesRangeVariables = (theme) => ({
   thumb: {
-    size: theme.height.xxxxsmall,
+    size: theme.height['4xsmall'],
   },
   track: {
-    height: theme.height.xxxxsmall / 3,
+    height: theme.height['4xsmall'] / 3,
   },
 })
 
