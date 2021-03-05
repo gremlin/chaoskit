@@ -289,11 +289,11 @@ const transition = {
 const text = {
   '2xsmall': {
     fontSize: fontSize['2xsmall'],
-    lineHeight: 1,
+    lineHeight: lineHeight.small,
   },
   xsmall: {
     fontSize: fontSize.xsmall,
-    lineHeight: 1,
+    lineHeight: lineHeight.small,
   },
   small: {
     fontSize: fontSize.small,
