@@ -12,11 +12,10 @@ export const StylesControlLabel = (theme) => ({
   paddingRight: form.variables(theme).controlOffset,
   width: '100%',
   pointerEvents: 'none',
-  fontSize: theme.fontSize.xsmall,
+  ...theme.text.xsmall,
   whiteSpace: 'nowrap',
   overflow: 'hidden',
   textOverflow: 'ellipsis',
-  lineHeight: 1,
 })
 
 const ControlLabel = ({ className, ...rest }) => {

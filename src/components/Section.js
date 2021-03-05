@@ -5,8 +5,6 @@ import { rgba } from 'polished'
 import { useTheme } from '@emotion/react'
 import { motion } from 'framer-motion'
 
-import { misc } from '../assets/styles/utility'
-
 const StylesSectionVariables = {
   slantOffset: 2.5,
 }
@@ -23,19 +21,15 @@ const Section = React.forwardRef(
           className
         )}
         css={[
-          misc.fluidSize({
-            theme,
-            property: 'paddingTop',
-            from: theme.space[space],
-            to: theme.space[space] * 2,
-          }),
-          misc.fluidSize({
-            theme,
-            property: 'paddingBottom',
-            from: theme.space[space],
-            to: theme.space[space] * 2,
-          }),
+          {
+            paddingTop: theme.space[space],
+            paddingBottom: theme.space[space],
 
+            [theme.mq.medium]: {
+              paddingTop: theme.space[space] * 2,
+              paddingBottom: theme.space[space] * 2,
+            },
+          },
           slant === 'top' && {
             clipPath: `polygon(
             0 0,

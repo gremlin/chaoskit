@@ -28,9 +28,8 @@ export const globalStyles = (theme) => [
     html: {
       // 1
       fontFamily: theme.fontFamily.base,
-      fontSize: theme.fontSize.base,
       fontWeight: theme.fontWeight.base,
-      lineHeight: theme.lineHeight.base,
+      ...theme.text.base,
       // 2
       textSizeAdjust: '100%',
       // 3
@@ -249,12 +248,10 @@ export const globalStyles = (theme) => [
     },
 
     h1: [
-      theme.fontSize.h1__fluid,
+      theme.headingPreset.h1,
       {
-        lineHeight: theme.lineHeight.small,
-        color: theme.fontColor.heading,
+        color: theme.fontColor.base,
         margin: `0 0 ${theme.space.base}px`,
-        fontWeight: theme.fontWeight.xbold,
 
         '* + &': {
           marginTop: theme.space.large,
@@ -263,12 +260,10 @@ export const globalStyles = (theme) => [
     ],
 
     h2: [
-      theme.fontSize.h2__fluid,
+      theme.headingPreset.h2,
       {
-        lineHeight: theme.lineHeight.small,
-        color: theme.fontColor.heading,
+        color: theme.fontColor.base,
         margin: `0 0 ${theme.space.base}px`,
-        fontWeight: theme.fontWeight.bold,
 
         '* + &': {
           marginTop: theme.space.large,
@@ -277,12 +272,10 @@ export const globalStyles = (theme) => [
     ],
 
     h3: [
-      theme.fontSize.h3__fluid,
+      theme.headingPreset.h3,
       {
-        lineHeight: theme.lineHeight.small,
-        color: theme.fontColor.heading,
+        color: theme.fontColor.base,
         margin: `0 0 ${theme.space.base}px`,
-        fontWeight: theme.fontWeight.bold,
 
         '* + &': {
           marginTop: theme.space.large,
@@ -291,11 +284,10 @@ export const globalStyles = (theme) => [
     ],
 
     h4: [
+      theme.headingPreset.h4,
       {
-        color: theme.fontColor.heading,
-        fontSize: theme.fontSize.h4,
+        color: theme.fontColor.base,
         margin: `0 0 ${theme.space.base}px`,
-        fontWeight: theme.fontWeight.bold,
 
         '* + &': {
           marginTop: theme.space.large,
@@ -304,13 +296,10 @@ export const globalStyles = (theme) => [
     ],
 
     h5: [
+      theme.headingPreset.h5,
       {
-        color: theme.fontColor.heading,
-        fontSize: theme.fontSize.h5,
-        letterSpacing: theme.letterSpacing.extended,
-        textTransform: 'uppercase',
+        color: theme.fontColor.base,
         margin: `0 0 ${theme.space.base}px`,
-        fontWeight: theme.fontWeight.bold,
 
         '* + &': {
           marginTop: theme.space.large,
@@ -320,8 +309,8 @@ export const globalStyles = (theme) => [
 
     h6: [
       {
-        color: theme.fontColor.heading,
-        fontSize: theme.fontSize.base,
+        color: theme.fontColor.base,
+        ...theme.text.base,
         margin: `0 0 ${theme.space.base}px`,
         fontWeight: theme.fontWeight.bold,
 
@@ -387,8 +376,7 @@ export const globalStyles = (theme) => [
     blockquote: {
       paddingLeft: theme.space.base,
       borderLeft: `5px solid ${theme.color.border.base}`,
-      fontSize: theme.fontSize.base,
-      lineHeight: theme.lineHeight.base,
+      ...theme.text.base,
       fontStyle: 'normal',
     },
 

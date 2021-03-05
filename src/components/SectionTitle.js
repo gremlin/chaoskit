@@ -2,8 +2,6 @@ import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import { useTheme } from '@emotion/react'
 
-import { misc } from '../assets/styles/utility'
-
 export const StylesSectionTitleWrapper = (theme, props) => {
   // Translate "align" prop to work with `justifyItems`
   const getJustify = (align) => {
@@ -15,20 +13,22 @@ export const StylesSectionTitleWrapper = (theme, props) => {
   }
 
   return [
-    props.space === 'xlarge' &&
-      misc.fluidSize({
-        theme,
-        property: 'marginBottom',
-        from: theme.space.large,
-        to: theme.space.xlarge,
-      }),
-    props.space === 'large' &&
-      misc.fluidSize({
-        theme,
-        property: 'marginBottom',
-        from: theme.space.medium,
-        to: theme.space.large,
-      }),
+    props.space === 'xlarge' && {
+      marginBottom: theme.space.large,
+
+      [theme.mq.medium]: {
+        marginBottom: theme.space.xlarge,
+      },
+    },
+
+    props.space === 'large' && {
+      marginBottom: theme.space.medium,
+
+      [theme.mq.medium]: {
+        marginBottom: theme.space.large,
+      },
+    },
+
     {
       display: 'grid',
       justifyItems: 'center',
@@ -74,7 +74,7 @@ export const StylesSectionTitleWrapper = (theme, props) => {
 export const StylesSectionTitleSub = (theme) => [
   {
     color: theme.fontColor.base,
-    fontSize: theme.fontSize.medium,
+    ...theme.text.medium,
     maxWidth: 750,
 
     '.u-contrast &': {
@@ -107,14 +107,13 @@ const SectionTitle = ({
       {...rest}
     >
       <Component
-        css={[
-          misc.fluidSize({
-            theme,
-            property: 'marginBottom',
-            from: theme.space.small,
-            to: theme.space.base,
-          }),
-        ]}
+        css={{
+          marginBottom: theme.space.small,
+
+          [theme.mq.medium]: {
+            marginBottom: theme.space.base,
+          },
+        }}
         className="CK__SectionTitle__Header"
         {...titleProps}
       >

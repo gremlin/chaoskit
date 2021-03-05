@@ -13,7 +13,7 @@ export const numbers = ({
   fill = theme.color.primary.base,
   noContrast = false,
 }) => {
-  const circleSize = theme.height.xxsmall
+  const circleSize = theme.height['2xsmall']
 
   return {
     counterReset: 'list-counter',

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import { useTheme } from '@emotion/react'
 
-import { misc } from '../assets/styles/utility'
+import { misc, text } from '../assets/styles/utility'
 import { generateGradient } from '../assets/styles/utility/gradient'
 
 import Container from './Container'
@@ -20,8 +20,7 @@ export const SubnavMenuItemStyles = (theme) => [
     position: 'relative',
     fontSize: theme.fontSize.small,
     fontWeight: theme.fontWeight.bold,
-    letterSpacing: theme.letterSpacing.extended,
-    textTransform: 'uppercase',
+    ...text.expanded(theme),
     transition: `color ${theme.timing.base} ${theme.transition.base}`,
 
     '&:hover, &:focus': {

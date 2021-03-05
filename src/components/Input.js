@@ -58,7 +58,7 @@ export const StylesInputBase = (theme, props = {}) => [
   props.required && {
     paddingRight:
       form.variables(theme).controlOffset +
-      theme.fontSize.xxsmall +
+      theme.fontSize['2xsmall'] +
       theme.space.small,
   },
 ]

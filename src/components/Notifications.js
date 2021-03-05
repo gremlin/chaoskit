@@ -44,8 +44,7 @@ const Notification = ({ notification }) => {
         gridTemplateColumns: 'auto 1fr',
         padding: theme.space.base,
         borderRadius: theme.borderRadius.large,
-        fontSize: theme.fontSize.small,
-        lineHeight: theme.lineHeight.small,
+        ...theme.text.small,
 
         '&:not(:last-of-type)': {
           marginBottom: theme.space.small,
@@ -59,8 +58,8 @@ const Notification = ({ notification }) => {
             theme.color[
               notification.status === 'success' ? 'primary' : 'danger'
             ].base,
-          height: theme.height.xxsmall,
-          width: theme.height.xxsmall,
+          height: theme.height['2xsmall'],
+          width: theme.height['2xsmall'],
           display: 'grid',
           placeItems: 'center',
         }}
@@ -76,14 +75,15 @@ const Notification = ({ notification }) => {
       </div>
       <div className={theme.settings.classes.trim}>
         {notification.title && (
-          <h4
+          <div
             css={{
-              fontSize: theme.fontSize.medium,
+              ...theme.text.medium,
+              fontWeight: theme.fontWeight.bold,
               marginBottom: theme.space.xsmall,
             }}
           >
             {notification.title}
-          </h4>
+          </div>
         )}
         <p css={{ marginTop: 0 }}>{notification.body}</p>
       </div>

@@ -8,7 +8,6 @@ import Checkbox from './Checkbox'
 import Close from './Close'
 import Container from './Container'
 import Dropdown from './Dropdown'
-import DropdownHeader from './DropdownHeader'
 import FormControlWrapper from './FormControlWrapper'
 import Form from './Form'
 import FormFooter from './FormFooter'
@@ -53,7 +52,6 @@ export {
   Close,
   Container,
   Dropdown,
-  DropdownHeader,
   Form,
   FormControlWrapper,
   FormFooter,

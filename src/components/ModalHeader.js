@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import PropTypes from 'prop-types'
 import { useTheme } from '@emotion/react'
 
-import Close, { StylesCloseVariables } from './Close'
+import Close from './Close'
 import { StylesModalVariables } from './Modal'
 
 const ModalHeader = ({ centered, className, setIsOpen, title, ...rest }) => {
@@ -13,39 +13,29 @@ const ModalHeader = ({ centered, className, setIsOpen, title, ...rest }) => {
       css={[
         {
           display: 'grid',
-          gridTemplateColumns: centered
-            ? `${StylesCloseVariables(theme).size}px 1fr ${
-                StylesCloseVariables(theme).size
-              }px`
-            : `1fr ${StylesCloseVariables(theme).size}px`,
-          gap: theme.space.small,
           padding: StylesModalVariables(theme).padding,
         },
       ]}
       className={clsx('CK__ModalHeader', className)}
       {...rest}
     >
-      <h4
-        css={[
-          {
-            marginBottom: 0,
-          },
-
-          centered && {
-            gridColumn: 2,
-            textAlign: 'center',
-          },
-        ]}
+      <div
+        css={{
+          ...theme.text.xlarge,
+          fontWeight: theme.fontWeight.bold,
+          textAlign: 'center',
+        }}
       >
         {title}
-      </h4>
+      </div>
       <Close
         onClick={() => setIsOpen(false)}
-        css={[
-          centered && {
-            gridColumn: 3,
-          },
-        ]}
+        css={{
+          position: 'absolute',
+          top: theme.space.base,
+          right: theme.space.base,
+          zIndex: 1,
+        }}
       />
     </div>
   )
