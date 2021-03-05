@@ -228,6 +228,7 @@ const height = {
 
 const lineHeight = {
   base: 1.65,
+  medium: 1.5,
   small: 1.25,
 }
 
@@ -296,7 +297,7 @@ const text = {
   },
   small: {
     fontSize: fontSize.small,
-    lineHeight: lineHeight.small,
+    lineHeight: lineHeight.medium,
   },
   base: {
     fontSize: fontSize.base,
