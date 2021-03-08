@@ -10,11 +10,6 @@
   "version": "4.6.1",
   "author": "Zach Schnackel <zach@gremlin.com>",
   "dependencies": {
-    "@emotion/babel-plugin": "11.2.0",
-    "@emotion/babel-preset-css-prop": "11.2.0",
-    "@emotion/eslint-plugin": "11.2.0",
-    "@emotion/jest": "11.2.0",
-    "@emotion/react": "11.1.5",
     "@reach/portal": "0.13.2",
     "@reach/tabs": "0.13.2",
     "@tippyjs/react": "4.2.1",
@@ -46,6 +41,11 @@
     "zustand": "3.3.2"
   },
   "devDependencies": {
+    "@emotion/babel-plugin": "11.2.0",
+    "@emotion/babel-preset-css-prop": "11.2.0",
+    "@emotion/eslint-plugin": "11.2.0",
+    "@emotion/jest": "11.2.0",
+    "@emotion/react": "11.1.5",
     "@babel/core": "7.12.17",
     "@babel/preset-env": "7.12.17",
     "@babel/preset-react": "7.12.13",
@@ -65,7 +65,12 @@
   },
   "peerDependencies": {
     "react": ">=17.0.1",
-    "react-dom": ">=17.0.1"
+    "react-dom": ">=17.0.1",
+    "@emotion/babel-plugin": "11.2.0",
+    "@emotion/babel-preset-css-prop": "11.2.0",
+    "@emotion/eslint-plugin": "11.2.0",
+    "@emotion/jest": "11.2.0",
+    "@emotion/react": "11.1.5"
   },
   "license": "MIT",
   "scripts": {
