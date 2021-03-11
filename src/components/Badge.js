@@ -9,10 +9,9 @@ export const StylesBadgeVariables = (theme) => ({
 })
 
 export const StylesBadgeBase = (theme) => ({
-  background: theme.color.light.base,
-  border: theme.border.base,
+  background: theme.color.panel.dark,
   borderRadius: theme.borderRadius.base,
-  color: theme.fontColor.muted,
+  color: theme.fontColor.base,
   cursor: 'default',
   display: 'inline-flex',
   alignItems: 'center',
@@ -26,31 +25,26 @@ export const StylesBadgeBase = (theme) => ({
 })
 
 export const StylesBadgeSecondary = (theme) => ({
-  borderColor: theme.fontColor.base,
   background: theme.fontColor.base,
   color: theme.contrast.base,
 })
 
 export const StylesBadgePrimary = (theme) => ({
-  borderColor: theme.color.primary.light,
   background: theme.color.primary.light,
   color: theme.color.primary.base,
 })
 
 export const StylesBadgeDanger = (theme) => ({
-  borderColor: theme.color.danger.light,
   background: theme.color.danger.light,
   color: theme.color.danger.base,
 })
 
 export const StylesBadgeWarning = (theme) => ({
-  borderColor: theme.color.warning.light,
   background: theme.color.warning.light,
   color: theme.color.warning.base,
 })
 
 export const StylesBadgeInfo = (theme) => ({
-  borderColor: theme.color.info.light,
   background: theme.color.info.light,
   color: theme.color.info.base,
 })
