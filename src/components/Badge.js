@@ -32,15 +32,27 @@ export const StylesBadgeSecondary = (theme) => ({
 })
 
 export const StylesBadgePrimary = (theme) => ({
-  borderColor: theme.color.primary.base,
-  background: theme.color.primary.base,
-  color: theme.contrast.base,
+  borderColor: theme.color.primary.light,
+  background: theme.color.primary.light,
+  color: theme.color.primary.base,
 })
 
 export const StylesBadgeDanger = (theme) => ({
-  borderColor: theme.color.danger.base,
-  background: theme.color.danger.base,
-  color: theme.contrast.base,
+  borderColor: theme.color.danger.light,
+  background: theme.color.danger.light,
+  color: theme.color.danger.base,
+})
+
+export const StylesBadgeWarning = (theme) => ({
+  borderColor: theme.color.warning.light,
+  background: theme.color.warning.light,
+  color: theme.color.warning.base,
+})
+
+export const StylesBadgeInfo = (theme) => ({
+  borderColor: theme.color.info.light,
+  background: theme.color.info.light,
+  color: theme.color.info.base,
 })
 
 export const StylesBadgeRounded = (theme) => ({
@@ -57,6 +69,8 @@ const Badge = ({ className, children, rounded, type, ...rest }) => {
         type === 'primary' && StylesBadgePrimary(theme),
         type === 'danger' && StylesBadgeDanger(theme),
         type === 'secondary' && StylesBadgeSecondary(theme),
+        type === 'warning' && StylesBadgeWarning(theme),
+        type === 'info' && StylesBadgeInfo(theme),
         rounded && StylesBadgeRounded(theme),
       ]}
       className={clsx('CK__Badge', className)}
@@ -71,7 +85,14 @@ Badge.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
   rounded: PropTypes.bool,
-  type: PropTypes.oneOf(['default', 'primary', 'danger', 'secondary']),
+  type: PropTypes.oneOf([
+    'default',
+    'primary',
+    'danger',
+    'secondary',
+    'warning',
+    'info',
+  ]),
 }
 
 export default Badge

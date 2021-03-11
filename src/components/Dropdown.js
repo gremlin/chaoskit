@@ -62,45 +62,43 @@ const Dropdown = ({
       trigger="click"
       interactive
       offset={[0, theme.space.base]}
-      render={(attrs) => {
-        return (
-          <motion.div
-            css={[
-              {
-                background: generateGradient({
-                  start: theme.color.light.base,
-                  stop: theme.color.panel.light,
-                  position: 'to bottom',
-                }),
-                padding: theme.space.large,
-                width: panelWidth,
-                maxHeight: 500,
-                overflowY: 'auto',
-                color: theme.fontColor.base,
-                border: theme.border.base,
-                borderRadius: theme.borderRadius.base,
-                textAlign: 'left',
-                zIndex: 10,
-                boxShadow: theme.boxShadow.large,
-                transformOrigin:
-                  attrs['data-placement'] &&
-                  getTransformOrigin(attrs['data-placement']),
-              },
+      render={(attrs) => (
+        <motion.div
+          css={[
+            {
+              background: generateGradient({
+                start: theme.color.light.base,
+                stop: theme.color.panel.light,
+                position: 'to bottom',
+              }),
+              padding: theme.space.large,
+              width: panelWidth,
+              maxHeight: 500,
+              overflowY: 'auto',
+              color: theme.fontColor.base,
+              border: theme.border.base,
+              borderRadius: theme.borderRadius.base,
+              textAlign: 'left',
+              zIndex: 10,
+              boxShadow: theme.boxShadow.large,
+              transformOrigin:
+                attrs['data-placement'] &&
+                getTransformOrigin(attrs['data-placement']),
+            },
 
-              wrapperStyles,
-            ]}
-            className={`CK__Dropdown__Panel ${theme.settings.classes.trim}`}
-            ref={dropdownPanelRef}
-            variants={variants}
-            animate={controls}
-            initial="hidden"
-            transition={theme.motion.transition.base}
-            {...attrs}
-          >
-            {children}
-          </motion.div>
-        )
-      }}
+            wrapperStyles,
+          ]}
+          className={`CK__Dropdown__Panel ${theme.settings.classes.trim}`}
+          ref={dropdownPanelRef}
+          variants={variants}
+          animate={controls}
+          initial="hidden"
+          transition={theme.motion.transition.base}
+          {...attrs}
+        >
+          {children}
+        </motion.div>
+      )}
       {...rest}
     >
       <Button {...trigger.props} ref={dropdownTriggerRef}>

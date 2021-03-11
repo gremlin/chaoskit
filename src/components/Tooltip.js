@@ -63,44 +63,41 @@ const Tooltip = ({
       followCursor={enableFollowCursor}
       offset={[0, theme.space.small]}
       plugins={enableFollowCursor ? [followCursor] : []}
-      render={(attrs) => {
-        return (
-          <motion.div
-            css={{
-              ...theme.text.small,
-              color: StylesTooltipVariables(theme, variation).color,
-              maxWidth: 250,
-              padding: StylesTooltipVariables(theme, variation).padding,
-              background: StylesTooltipVariables(theme, variation).background,
-              border: '1px solid',
-              borderColor: StylesTooltipVariables(theme, variation).borderColor,
-              borderRadius: StylesTooltipVariables(theme, variation)
-                .borderRadius,
-              wordWrap: 'break-word',
-              textAlign: 'center',
-              position: 'relative',
-              boxShadow: theme.boxShadow.base,
-              zIndex: 10,
-              transformOrigin:
-                attrs['data-placement'] &&
-                getTransformOrigin(attrs['data-placement']),
-            }}
-            className={clsx('CK__Tooltip', className)}
-            role="tooltip"
-            variants={variants}
-            animate={controls}
-            initial="hidden"
-            transition={theme.motion.transition.base}
-            {...attrs}
-          >
-            <TippyArrow
-              placement={attrs['data-placement']}
-              variation={variation}
-            />
-            {content}
-          </motion.div>
-        )
-      }}
+      render={(attrs) => (
+        <motion.div
+          css={{
+            ...theme.text.small,
+            color: StylesTooltipVariables(theme, variation).color,
+            maxWidth: 250,
+            padding: StylesTooltipVariables(theme, variation).padding,
+            background: StylesTooltipVariables(theme, variation).background,
+            border: '1px solid',
+            borderColor: StylesTooltipVariables(theme, variation).borderColor,
+            borderRadius: StylesTooltipVariables(theme, variation).borderRadius,
+            wordWrap: 'break-word',
+            textAlign: 'center',
+            position: 'relative',
+            boxShadow: theme.boxShadow.base,
+            zIndex: 10,
+            transformOrigin:
+              attrs['data-placement'] &&
+              getTransformOrigin(attrs['data-placement']),
+          }}
+          className={clsx('CK__Tooltip', className)}
+          role="tooltip"
+          variants={variants}
+          animate={controls}
+          initial="hidden"
+          transition={theme.motion.transition.base}
+          {...attrs}
+        >
+          <TippyArrow
+            placement={attrs['data-placement']}
+            variation={variation}
+          />
+          {content}
+        </motion.div>
+      )}
       {...rest}
     >
       {children}

@@ -120,14 +120,14 @@ const color = {
     filter: brand.green__filter,
   },
   warning: {
-    base: brand.yellow,
+    base: brand.orange,
     get light() {
-      return tint(0.9, this.base)
+      return tint(0.925, this.base)
     },
     get dark() {
       return shade(0.1, this.base)
     },
-    filter: brand.yellow__filter,
+    filter: brand.orange__filter,
   },
   danger: {
     base: brand.red,
@@ -138,6 +138,16 @@ const color = {
       return shade(0.1, this.base)
     },
     filter: brand.red__filter,
+  },
+  info: {
+    base: brand.blue,
+    get light() {
+      return tint(0.925, this.base)
+    },
+    get dark() {
+      return shade(0.1, this.base)
+    },
+    filter: brand.blue__filter,
   },
   highlight: {
     base: '#ffa',
@@ -233,6 +243,7 @@ const lineHeight = {
 }
 
 const letterSpacing = {
+  negative: '-0.125em',
   base: 'normal',
   extended: '0.125em',
 }

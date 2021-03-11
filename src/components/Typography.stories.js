@@ -77,46 +77,42 @@ const Story = () => {
         })}
       </TypographyColumn>
       <TypographyColumn title="Font sizes">
-        {Object.entries(theme.fontSize).map(([label, value]) => {
-          return (
-            <p
-              key={label}
-              css={[
-                typeof value === 'object' && [value],
+        {Object.entries(theme.fontSize).map(([label, value]) => (
+          <p
+            key={label}
+            css={[
+              typeof value === 'object' && [value],
 
-                typeof value !== 'object' && {
-                  fontSize: value,
-                },
-              ]}
-            >
-              {label}
-            </p>
-          )
-        })}
+              typeof value !== 'object' && {
+                fontSize: value,
+              },
+            ]}
+          >
+            {label}
+          </p>
+        ))}
       </TypographyColumn>
       <TypographyColumn title="Font colors">
-        {Object.entries(theme.fontColor).map(([label, value]) => {
-          return (
-            <p
-              key={label}
-              css={[
-                typeof value === 'object' && [value],
+        {Object.entries(theme.fontColor).map(([label, value]) => (
+          <p
+            key={label}
+            css={[
+              typeof value === 'object' && [value],
 
-                typeof value !== 'object' && [
-                  label.includes('filter') && {
-                    filter: value,
-                  },
+              typeof value !== 'object' && [
+                label.includes('filter') && {
+                  filter: value,
+                },
 
-                  !label.includes('filter') && {
-                    color: value,
-                  },
-                ],
-              ]}
-            >
-              {label}
-            </p>
-          )
-        })}
+                !label.includes('filter') && {
+                  color: value,
+                },
+              ],
+            ]}
+          >
+            {label}
+          </p>
+        ))}
       </TypographyColumn>
       <TypographyColumn title="Content">
         <h2>Heading 2</h2>
