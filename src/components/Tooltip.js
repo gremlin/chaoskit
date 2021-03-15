@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import { useTheme } from '@emotion/react'
 import clsx from 'clsx'
 import Tippy from '@tippyjs/react/headless'
+import { followCursor } from 'tippy.js'
 import { motion, useAnimation } from 'framer-motion'
 
 import { getTransformOrigin } from '../helpers/utility'
@@ -24,6 +25,7 @@ const Tooltip = ({
   content,
   placement = 'top',
   variation = 'light',
+  enableFollowCursor = false,
   ...rest
 }) => {
   const theme = useTheme()
@@ -58,45 +60,44 @@ const Tooltip = ({
       hideOnClick={false}
       onMount={handleOnMount}
       onHide={handleOnHide}
+      followCursor={enableFollowCursor}
       offset={[0, theme.space.small]}
-      render={(attrs) => {
-        return (
-          <motion.div
-            css={{
-              fontSize: theme.fontSize.small,
-              color: StylesTooltipVariables(theme, variation).color,
-              maxWidth: 250,
-              padding: StylesTooltipVariables(theme, variation).padding,
-              background: StylesTooltipVariables(theme, variation).background,
-              border: '1px solid',
-              borderColor: StylesTooltipVariables(theme, variation).borderColor,
-              borderRadius: StylesTooltipVariables(theme, variation)
-                .borderRadius,
-              wordWrap: 'break-word',
-              textAlign: 'center',
-              position: 'relative',
-              boxShadow: theme.boxShadow.base,
-              zIndex: 10,
-              transformOrigin:
-                attrs['data-placement'] &&
-                getTransformOrigin(attrs['data-placement']),
-            }}
-            className={clsx('CK__Tooltip', className)}
-            role="tooltip"
-            variants={variants}
-            animate={controls}
-            initial="hidden"
-            transition={theme.motion.transition.base}
-            {...attrs}
-          >
-            <TippyArrow
-              placement={attrs['data-placement']}
-              variation={variation}
-            />
-            {content}
-          </motion.div>
-        )
-      }}
+      plugins={enableFollowCursor ? [followCursor] : []}
+      render={(attrs) => (
+        <motion.div
+          css={{
+            ...theme.text.small,
+            color: StylesTooltipVariables(theme, variation).color,
+            maxWidth: 250,
+            padding: StylesTooltipVariables(theme, variation).padding,
+            background: StylesTooltipVariables(theme, variation).background,
+            border: '1px solid',
+            borderColor: StylesTooltipVariables(theme, variation).borderColor,
+            borderRadius: StylesTooltipVariables(theme, variation).borderRadius,
+            wordWrap: 'break-word',
+            textAlign: 'center',
+            position: 'relative',
+            boxShadow: theme.boxShadow.base,
+            zIndex: 10,
+            transformOrigin:
+              attrs['data-placement'] &&
+              getTransformOrigin(attrs['data-placement']),
+          }}
+          className={clsx('CK__Tooltip', className)}
+          role="tooltip"
+          variants={variants}
+          animate={controls}
+          initial="hidden"
+          transition={theme.motion.transition.base}
+          {...attrs}
+        >
+          <TippyArrow
+            placement={attrs['data-placement']}
+            variation={variation}
+          />
+          {content}
+        </motion.div>
+      )}
       {...rest}
     >
       {children}
@@ -108,6 +109,7 @@ Tooltip.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   content: PropTypes.any.isRequired,
+  enableFollowCursor: PropTypes.bool,
   placement: PropTypes.oneOf([
     'top',
     'top-start',

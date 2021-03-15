@@ -24,16 +24,15 @@ const TypographyColumn = ({ className, title, children, ...rest }) => {
       <header
         className="u-contrast"
         css={[
-          text.heading(theme),
           {
             background: theme.color.dark.base,
             borderTopLeftRadius: theme.borderRadius.large,
             borderTopRightRadius: theme.borderRadius.large,
             padding: theme.space.xsmall,
             textAlign: 'center',
-            textTransform: 'uppercase',
-            fontSize: theme.fontSize.small,
-            letterSpacing: theme.letterSpacing.small,
+            fontWeight: theme.fontWeight.bold,
+            ...text.expanded(theme),
+            ...theme.text.small,
           },
         ]}
       >
@@ -78,46 +77,65 @@ const Story = () => {
         })}
       </TypographyColumn>
       <TypographyColumn title="Font sizes">
-        {Object.entries(theme.fontSize).map(([label, value]) => {
-          return (
-            <p
-              key={label}
-              css={[
-                typeof value === 'object' && [value],
+        {Object.entries(theme.fontSize).map(([label, value]) => (
+          <p
+            key={label}
+            css={[
+              typeof value === 'object' && [value],
 
-                typeof value !== 'object' && {
-                  fontSize: value,
-                },
-              ]}
-            >
-              {label}
-            </p>
-          )
-        })}
+              typeof value !== 'object' && {
+                fontSize: value,
+              },
+            ]}
+          >
+            {label}
+          </p>
+        ))}
       </TypographyColumn>
       <TypographyColumn title="Font colors">
-        {Object.entries(theme.fontColor).map(([label, value]) => {
-          return (
-            <p
-              key={label}
-              css={[
-                typeof value === 'object' && [value],
+        {Object.entries(theme.fontColor).map(([label, value]) => (
+          <p
+            key={label}
+            css={[
+              typeof value === 'object' && [value],
 
-                typeof value !== 'object' && [
-                  label.includes('filter') && {
-                    filter: value,
-                  },
+              typeof value !== 'object' && [
+                label.includes('filter') && {
+                  filter: value,
+                },
 
-                  !label.includes('filter') && {
-                    color: value,
-                  },
-                ],
-              ]}
-            >
-              {label}
-            </p>
-          )
-        })}
+                !label.includes('filter') && {
+                  color: value,
+                },
+              ],
+            ]}
+          >
+            {label}
+          </p>
+        ))}
+      </TypographyColumn>
+      <TypographyColumn title="Content">
+        <h2>Heading 2</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis
+          reprehenderit corporis magnam atque praesentium et, ab tempore eveniet
+          non, delectus vel, odit ipsa nulla fugiat reiciendis ullam laudantium
+          consequatur quidem!
+        </p>
+        <h3>Heading 3</h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis
+          reprehenderit corporis magnam atque praesentium et, ab tempore eveniet
+          non, delectus vel, odit ipsa nulla fugiat reiciendis ullam laudantium
+          consequatur quidem!
+        </p>
+        <h4>Heading 4</h4>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis
+          reprehenderit corporis magnam atque praesentium et, ab tempore eveniet
+          non, delectus vel, odit ipsa nulla fugiat reiciendis ullam laudantium
+          consequatur quidem!
+        </p>
       </TypographyColumn>
     </div>
   )

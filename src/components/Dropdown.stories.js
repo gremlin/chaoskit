@@ -1,10 +1,6 @@
 import * as React from 'react'
-import { useTheme } from '@emotion/react'
 
-import Dropdown, { DropdownMenuItemStyles } from './Dropdown'
-import DropdownHeader from './DropdownHeader'
-import List from './List'
-import ListItem from './ListItem'
+import Dropdown from './Dropdown'
 
 export default {
   title: 'Components/Dropdown',
@@ -32,36 +28,4 @@ export const Overview = Story.bind({})
 
 Overview.args = {
   children: <p>Hello from the dropdown!</p>,
-}
-
-const DropdownMenuItem = (props) => {
-  const theme = useTheme()
-
-  // eslint-disable-next-line jsx-a11y/anchor-has-content
-  return <a css={[DropdownMenuItemStyles(theme)]} {...props} />
-}
-
-export const Menu = Story.bind({})
-
-Menu.args = {
-  children: (
-    <React.Fragment>
-      <DropdownHeader>Menu Header</DropdownHeader>
-      <List space="small">
-        <ListItem>
-          <DropdownMenuItem href="https://www.gremlin.com">
-            Menu link
-          </DropdownMenuItem>
-        </ListItem>
-        <ListItem>
-          <DropdownMenuItem
-            href="https://www.gremlin.com"
-            className="is-active"
-          >
-            Active menu link
-          </DropdownMenuItem>
-        </ListItem>
-      </List>
-    </React.Fragment>
-  ),
 }

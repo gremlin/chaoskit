@@ -1,52 +1,21 @@
 import { css } from '@emotion/react'
 
-import GiraLight from '../fonts/gira-sans-light.woff'
-import GiraMedium from '../fonts/gira-sans-regular.woff'
-import GiraBold from '../fonts/gira-sans-bold.woff'
-import CircularBook from '../fonts/lineto-circular-book.woff'
-import CircularMedium from '../fonts/lineto-circular-medium.woff'
-import CircularBlack from '../fonts/lineto-circular-black.woff'
+import SohneVF from '../fonts/SohneVF-web.woff2'
+import SohneMono from '../fonts/SohneMono-light.woff2'
 
 export const fonts = (theme) => css`
   @font-face {
-    font-family: Gira;
-    src: local(😜), url(${GiraLight}) format('woff');
-    font-weight: ${theme.fontWeight.base};
+    font-family: 'Sohne VF';
+    src: local(😜), url(${SohneVF}) format('woff2');
     font-style: normal;
+    font-variation-ligatures: normal;
+    font-weight: ${theme.fontWeight.base} ${theme.fontWeight.xbold};
   }
 
   @font-face {
-    font-family: Gira;
-    src: local(😜), url(${GiraMedium}) format('woff');
-    font-weight: ${theme.fontWeight.medium};
-    font-style: normal;
-  }
-
-  @font-face {
-    font-family: Gira;
-    src: local(😜), url(${GiraBold}) format('woff');
-    font-weight: ${theme.fontWeight.bold};
-    font-style: normal;
-  }
-
-  @font-face {
-    font-family: Circular;
-    src: local(😜), url(${CircularBook}) format('woff');
-    font-weight: ${theme.fontWeight.base};
-    font-style: normal;
-  }
-
-  @font-face {
-    font-family: Circular;
-    src: local(😜), url(${CircularMedium}) format('woff');
-    font-weight: ${theme.fontWeight.medium};
-    font-style: normal;
-  }
-
-  @font-face {
-    font-family: Circular;
-    src: local(😜), url(${CircularBlack}) format('woff');
-    font-weight: ${theme.fontWeight.bold};
+    font-family: 'Sohne Mono';
+    src: local(😜), url(${SohneMono}) format('woff2');
+    font-weight: ${theme.fontWeight.light};
     font-style: normal;
   }
 `

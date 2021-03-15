@@ -93,9 +93,9 @@ const Avatar = ({ className, image, name, size = 'base', ...rest }) => {
         dy="0.35em"
         fontSize="40"
         css={[
-          text.heading(theme),
           {
             fill: StylesAvatarVariables(theme).color,
+            fontWeight: theme.fontWeight.base,
             textTransform: 'uppercase',
           },
         ]}

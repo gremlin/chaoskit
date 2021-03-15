@@ -12,7 +12,6 @@ const StylesSubnavVariables = (theme) => ({
 })
 
 export const SubnavMenuItemStyles = (theme) => [
-  text.heading(theme),
   {
     color: theme.fontColor.muted,
     display: 'block',
@@ -20,8 +19,8 @@ export const SubnavMenuItemStyles = (theme) => [
     lineHeight: `${StylesSubnavVariables(theme).height}px`,
     position: 'relative',
     fontSize: theme.fontSize.small,
-    letterSpacing: theme.letterSpacing.small,
-    textTransform: 'uppercase',
+    fontWeight: theme.fontWeight.bold,
+    ...text.expanded(theme),
     transition: `color ${theme.timing.base} ${theme.transition.base}`,
 
     '&:hover, &:focus': {

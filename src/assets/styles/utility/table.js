@@ -62,8 +62,7 @@ export const styles = (theme) => ({
       {
         verticalAlign: 'bottom',
         fontWeight: theme.fontWeight.bold,
-        lineHeight: theme.lineHeight.small,
-        fontSize: theme.fontSize.small,
+        ...theme.text.small,
         textAlign: 'left',
         borderBottom: theme.border.base,
 
@@ -123,7 +122,7 @@ export const styles = (theme) => ({
   'caption, tfoot': [
     {
       padding: theme.space.small,
-      fontSize: theme.fontSize.small,
+      ...theme.text.small,
       color: theme.fontColor.muted,
 
       'tr:first-of-type': {

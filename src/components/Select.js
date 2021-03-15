@@ -5,32 +5,43 @@ import { useTheme } from '@emotion/react'
 
 import { form } from '../assets/styles/utility'
 import { generateUUID } from '../helpers/utility'
-import selector from '../assets/icons/selector.svg'
+import caretDouble from '../assets/icons/caret-double.svg'
 
-import FormControlWrapper from './FormControlWrapper'
+import FormFooter from './FormFooter'
+import FormGroup from './FormGroup'
+import ControlLabel from './ControlLabel'
+import ControlWrapper, { StylesControlWrapperVariables } from './ControlWrapper'
 
 export const StylesSelectVariables = (theme, props = {}) => ({
-  iconSize: theme.fontSize.medium,
+  iconSize: theme.fontSize.small,
   get arrow() {
     return {
       content: "''",
       position: 'absolute',
       top: '50%',
       transform: 'translateY(-50%)',
-      right: form.variables(theme).padding,
-      backgroundImage: `url(${selector})`,
+      right:
+        form.variables(theme).controlOffset +
+        (props.required ? this.iconSize : 0),
+      backgroundImage: `url(${caretDouble})`,
       filter: theme.fontColor.base__filter,
       width: this.iconSize,
       height: this.iconSize,
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'contain',
       pointerEvents: 'none',
-      opacity: props.disabled && theme.opacity.base,
       zIndex: '2',
     }
   },
   get arrowOffset() {
-    return this.iconSize + form.variables(theme).padding + theme.space.small
+    return (
+      form.variables(theme).controlOffset +
+      (props.required
+        ? this.iconSize +
+          StylesControlWrapperVariables(theme).iconSize +
+          theme.space.small
+        : 0)
+    )
   },
 })
 
@@ -41,32 +52,28 @@ export const StylesSelectWrapperBase = (theme, props = {}) => [
 
   !props.multiple &&
     !props.size && {
-      '&::after': StylesSelectVariables(theme, { disabled: props.disabled })
+      '&::after': StylesSelectVariables(theme, { required: props.required })
         .arrow,
-    },
-
-  theme.settings.contrast.enable &&
-    theme.settings.contrast.form &&
-    !props.noContrast && {
-      '.u-contrast &': {
-        '&::after': {
-          filter: theme.contrast.filter,
-        },
-      },
     },
 ]
 
 export const StylesSelectBase = (theme, props = {}) => [
   form.base(theme),
-  form.input(theme, {
-    error: props.validationMessage,
-    noContrast: props.noContrast,
-  }),
+  form.input(theme),
   {
     // Remove default style in browsers that support `appearance`
     appearance: 'none',
     // Remove the inheritance of text transform in Firefox.
     textTransform: 'none',
+
+    // Remove select arrows from IE
+    '&::-ms-expand': {
+      display: 'none',
+    },
+
+    option: {
+      fontColor: theme.fontColor.base,
+    },
 
     // 1. Change font properties to `inherit` in all browsers
     // 2. Don't inherit the `font-weight` and use `bold` instead.
@@ -79,22 +86,10 @@ export const StylesSelectBase = (theme, props = {}) => [
   },
 
   !props.multiple &&
-    !props.size && [
-      {
-        padding: `0 ${StylesSelectVariables(theme).arrowOffset}px 0 ${
-          form.variables(theme).padding
-        }px`,
-
-        // Remove select arrows from IE
-        '&::-ms-expand': {
-          display: 'none',
-        },
-
-        option: {
-          fontColor: theme.fontColor.base,
-        },
-      },
-    ],
+    !props.size && {
+      paddingRight: StylesSelectVariables(theme, { required: props.required })
+        .arrowOffset,
+    },
 
   (props.multiple || props.size) && [
     {
@@ -119,8 +114,6 @@ const Select = React.forwardRef(
       size,
       multiple,
       name,
-      noContrast,
-      options = [],
       required,
       validationMessage,
       wrapperProps,
@@ -133,70 +126,48 @@ const Select = React.forwardRef(
     // Only regenerate this if the name prop changes
     const id = React.useMemo(() => `${name}-${generateUUID()}`, [name])
 
-    const renderOpts = (option) => {
-      // If the option has options as well we're in an `<optgroup>`
-      if (option.options) {
-        return (
-          <optgroup key={option.value} label={option.label}>
-            {option.options.map((childOption) => (
-              <option key={childOption.value} value={childOption.value}>
-                {childOption.label}
-              </option>
-            ))}
-          </optgroup>
-        )
-      }
-
-      // We're in a default single-level `<option>`
-      return (
-        <option key={option.value} value={option.value}>
-          {option.label}
-        </option>
-      )
-    }
-
     return (
-      <FormControlWrapper
-        required={required}
-        label={label}
-        labelProps={{
-          htmlFor: id,
-        }}
-        explanationMessage={explanationMessage}
-        validationMessage={validationMessage}
-        {...wrapperProps}
-      >
-        <div
-          css={[
-            StylesSelectWrapperBase(theme, {
-              multiple,
-              size,
-              noContrast,
-            }),
-          ]}
-          className={clsx('CK__Select', className)}
+      <FormGroup>
+        <ControlWrapper
+          required={required}
+          error={Boolean(validationMessage)}
+          disabled={disabled}
+          {...wrapperProps}
         >
-          <select
-            ref={ref}
-            id={id}
-            name={name}
-            multiple={multiple}
-            disabled={disabled}
-            size={size}
+          {label && <ControlLabel>{label}</ControlLabel>}
+          <div
             css={[
-              StylesSelectBase(theme, {
-                validationMessage,
-                noContrast,
+              StylesSelectWrapperBase(theme, {
                 multiple,
                 size,
+                required,
               }),
             ]}
-            {...rest}
+            className={clsx('CK__Select', className)}
           >
-            {options.map(renderOpts)}
-          </select>
-        </div>
-      </FormControlWrapper>
+            <select
+              ref={ref}
+              id={id}
+              name={name}
+              multiple={multiple}
+              disabled={disabled}
+              size={size}
+              css={[
+                StylesSelectBase(theme, {
+                  multiple,
+                  size,
+                  required,
+                }),
+              ]}
+              {...rest}
+            />
+          </div>
+        </ControlWrapper>
+        <FormFooter
+          explanationMessage={explanationMessage}
+          validationMessage={validationMessage}
+        />
+      </FormGroup>
     )
   }
 )
@@ -209,8 +180,6 @@ Select.propTypes = {
   multiple: PropTypes.bool,
   size: PropTypes.number,
   name: PropTypes.string.isRequired,
-  noContrast: PropTypes.bool,
-  options: PropTypes.array.isRequired,
   required: PropTypes.bool,
   validationMessage: PropTypes.string,
   wrapperProps: PropTypes.object,

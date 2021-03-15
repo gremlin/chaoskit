@@ -96,11 +96,12 @@ const Modal = ({
   }
 
   // On unmount, clear any/all locks on `<body />`
-  React.useEffect(() => {
-    return () => {
+  React.useEffect(
+    () => () => {
       clearAllBodyScrollLocks()
-    }
-  }, [])
+    },
+    []
+  )
 
   useUpdateEffect(() => {
     if (open) {

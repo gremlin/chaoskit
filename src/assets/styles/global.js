@@ -1,6 +1,6 @@
 import linkIcon from '../icons/link.svg'
 
-import { text, link, misc, contrast, prism, table, form } from './utility'
+import { link, misc, contrast, prism, table, form } from './utility'
 
 export const StylesGlobalVariables = (theme) => ({
   code: {
@@ -28,9 +28,8 @@ export const globalStyles = (theme) => [
     html: {
       // 1
       fontFamily: theme.fontFamily.base,
-      fontSize: theme.fontSize.base,
       fontWeight: theme.fontWeight.base,
-      lineHeight: theme.lineHeight.base,
+      ...theme.text.base,
       // 2
       textSizeAdjust: '100%',
       // 3
@@ -138,7 +137,7 @@ export const globalStyles = (theme) => [
     // 1. Address odd `em`-unit font size rendering in all browsers.
     ':not(pre) > code, :not(pre) > kbd, :not(pre) > samp': {
       fontSize: '1em', // 1
-      fontFamily: theme.fontFamily.code, // 2
+      fontFamily: theme.fontFamily.mono, // 2
       // 3
       color: StylesGlobalVariables(theme).code.color,
       whiteSpace: 'pre-wrap',
@@ -256,10 +255,9 @@ export const globalStyles = (theme) => [
     },
 
     h1: [
-      text.heading(theme),
-      theme.fontSize.h1__fluid,
+      theme.headingPreset.h1,
       {
-        color: theme.fontColor.heading,
+        color: theme.fontColor.base,
         margin: `0 0 ${theme.space.base}px`,
 
         '* + &': {
@@ -269,10 +267,9 @@ export const globalStyles = (theme) => [
     ],
 
     h2: [
-      text.heading(theme),
-      theme.fontSize.h2__fluid,
+      theme.headingPreset.h2,
       {
-        color: theme.fontColor.heading,
+        color: theme.fontColor.base,
         margin: `0 0 ${theme.space.base}px`,
 
         '* + &': {
@@ -282,10 +279,9 @@ export const globalStyles = (theme) => [
     ],
 
     h3: [
-      text.heading(theme),
-      theme.fontSize.h3__fluid,
+      theme.headingPreset.h3,
       {
-        color: theme.fontColor.heading,
+        color: theme.fontColor.base,
         margin: `0 0 ${theme.space.base}px`,
 
         '* + &': {
@@ -295,10 +291,9 @@ export const globalStyles = (theme) => [
     ],
 
     h4: [
-      text.heading(theme),
+      theme.headingPreset.h4,
       {
-        color: theme.fontColor.heading,
-        fontSize: theme.fontSize.h4,
+        color: theme.fontColor.base,
         margin: `0 0 ${theme.space.base}px`,
 
         '* + &': {
@@ -308,12 +303,9 @@ export const globalStyles = (theme) => [
     ],
 
     h5: [
-      text.heading(theme),
+      theme.headingPreset.h5,
       {
-        color: theme.fontColor.heading,
-        fontSize: theme.fontSize.h5,
-        letterSpacing: theme.letterSpacing.small,
-        textTransform: 'uppercase',
+        color: theme.fontColor.base,
         margin: `0 0 ${theme.space.base}px`,
 
         '* + &': {
@@ -323,11 +315,11 @@ export const globalStyles = (theme) => [
     ],
 
     h6: [
-      text.heading(theme),
       {
-        color: theme.fontColor.heading,
-        fontSize: theme.fontSize.base,
+        color: theme.fontColor.base,
+        ...theme.text.base,
         margin: `0 0 ${theme.space.base}px`,
+        fontWeight: theme.fontWeight.bold,
 
         '* + &': {
           marginTop: theme.space.large,
@@ -391,8 +383,7 @@ export const globalStyles = (theme) => [
     blockquote: {
       paddingLeft: theme.space.base,
       borderLeft: `5px solid ${theme.color.border.base}`,
-      fontSize: theme.fontSize.base,
-      lineHeight: theme.lineHeight.base,
+      ...theme.text.base,
       fontStyle: 'normal',
     },
 
@@ -403,7 +394,7 @@ export const globalStyles = (theme) => [
       {
         padding: theme.space.base,
         background: StylesGlobalVariables(theme).code.background,
-        font: `1em/${theme.lineHeight.base} ${theme.fontFamily.code}`,
+        font: `1em/${theme.lineHeight.base} ${theme.fontFamily.mono}`,
         color: theme.fontColor.base,
         tabSize: '4',
         border: theme.border.base,

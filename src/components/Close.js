@@ -5,10 +5,6 @@ import { ReactComponent as CloseSvg } from '../assets/icons/close.svg'
 
 import Button from './Button'
 
-export const StylesCloseVariables = (theme) => ({
-  size: theme.fontSize.medium,
-})
-
 const Close = ({ onClick, noContrast, ...rest }) => {
   const theme = useTheme()
 
@@ -21,11 +17,9 @@ const Close = ({ onClick, noContrast, ...rest }) => {
         {
           // 1. To align better with headers
           color: theme.fontColor.base,
-          lineHeight: 1,
-          width: StylesCloseVariables(theme).size,
-          height: StylesCloseVariables(theme).size,
-          fontSize: StylesCloseVariables(theme).size,
           opacity: theme.opacity.base,
+          width: '1em',
+          height: '1em',
           transition: `opacity ${theme.timing.short} linear, transform ${theme.timing.short} linear`,
 
           '&:hover, &:focus': {

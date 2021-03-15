@@ -31,7 +31,7 @@ const ColorBlock = ({ title, ...rest }) => {
       <div
         css={{
           marginTop: theme.space.small,
-          fontFamily: theme.fontFamily.code,
+          fontFamily: theme.fontFamily.mono,
         }}
       >
         {title}
@@ -47,34 +47,30 @@ ColorBlock.propTypes = {
 const Story = () => {
   const theme = useTheme()
 
-  return Object.entries(theme.color).map(([label, value]) => {
-    return (
-      <React.Fragment key={label}>
-        <h5>{label}</h5>
-        <Inline>
-          {Object.entries(value).map(([colorLabel, colorValue]) => {
-            return (
-              <ListItem key={colorValue}>
-                <ColorBlock
-                  title={colorLabel}
-                  css={[
-                    colorLabel.includes('filter') && {
-                      background: '#000',
-                      filter: theme.color[label][colorLabel],
-                    },
+  return Object.entries(theme.color).map(([label, value]) => (
+    <React.Fragment key={label}>
+      <h5>{label}</h5>
+      <Inline>
+        {Object.entries(value).map(([colorLabel, colorValue]) => (
+          <ListItem key={colorValue}>
+            <ColorBlock
+              title={colorLabel}
+              css={[
+                colorLabel.includes('filter') && {
+                  background: '#000',
+                  filter: theme.color[label][colorLabel],
+                },
 
-                    !colorLabel.includes('filter') && {
-                      background: theme.color[label][colorLabel],
-                    },
-                  ]}
-                />
-              </ListItem>
-            )
-          })}
-        </Inline>
-      </React.Fragment>
-    )
-  })
+                !colorLabel.includes('filter') && {
+                  background: theme.color[label][colorLabel],
+                },
+              ]}
+            />
+          </ListItem>
+        ))}
+      </Inline>
+    </React.Fragment>
+  ))
 }
 
 export const Overview = Story.bind({})
