@@ -152,6 +152,7 @@ const OffCanvas = ({
                   top: StylesOffCanvasVariables(theme).padding,
                   right: StylesOffCanvasVariables(theme).padding,
                   zIndex: 10,
+                  ...theme.text.large,
                 }}
                 className="CK__OffCanvas__Close"
               />
