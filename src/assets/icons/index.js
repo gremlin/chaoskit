@@ -11,6 +11,7 @@ import { ReactComponent as Ban } from './ban.svg'
 import { ReactComponent as Building } from './building.svg'
 import { ReactComponent as Calendar } from './calendar.svg'
 import { ReactComponent as CaretDown } from './caret-down.svg'
+import { ReactComponent as CaretDouble } from './caret-double.svg'
 import { ReactComponent as CaretLeft } from './caret-left.svg'
 import { ReactComponent as CaretRight } from './caret-right.svg'
 import { ReactComponent as CaretUp } from './caret-up.svg'
@@ -80,6 +81,7 @@ export {
   Building,
   Calendar,
   CaretDown,
+  CaretDouble,
   CaretLeft,
   CaretRight,
   CaretUp,
