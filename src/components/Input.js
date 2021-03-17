@@ -16,6 +16,10 @@ export const StylesInputBase = (theme, props = {}) => [
   {
     //  Remove default style in browsers that support `appearance`
     appearance: 'none',
+
+    // Placement for floating labels
+    gridRow: 1,
+    gridColumn: 1,
   },
 
   // Apply default form styling, except for `file`, `submit`, `reset`, `button` and `image`

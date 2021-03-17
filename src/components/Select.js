@@ -48,6 +48,10 @@ export const StylesSelectVariables = (theme, props = {}) => ({
 export const StylesSelectWrapperBase = (theme, props = {}) => [
   {
     position: 'relative',
+
+    // Placement for floating labels
+    gridRow: 1,
+    gridColumn: 1,
   },
 
   !props.multiple &&

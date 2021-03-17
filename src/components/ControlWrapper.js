@@ -26,6 +26,7 @@ export const StylesControlWrapperRequired = (theme, props = {}) => ({
       opacity: theme.opacity.base,
       filter: theme.fontColor.base__filter,
       pointerEvents: 'none',
+      zIndex: 2,
     },
 
     props.iconAlignment === 'center' && {
@@ -55,8 +56,9 @@ export const StylesControlWrapperDisabled = (theme) => ({
 export const StylesControlWrapper = (theme, props = {}) => [
   {
     position: 'relative',
+    display: 'grid',
+    gridTemplateColumns: 'minmax(auto, 1fr)',
     borderRadius: theme.borderRadius.base,
-    boxShadow: theme.boxShadow.inset,
     background: theme.color.light.base,
     color: theme.fontColor.base,
     border: theme.border.base,

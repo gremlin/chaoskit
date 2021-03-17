@@ -31,7 +31,10 @@ export const StylesTextareaBase = (theme) => [
     // Style
     maxHeight: 300,
     // Slightly larger top padding than input
-    paddingTop: form.variables(theme).controlOffset + theme.space.xsmall,
+    paddingTop: form.variables(theme).controlOffset + theme.space.small,
+    // Placement for floating labels
+    gridRow: 1,
+    gridColumn: 1,
   },
 ]
 
