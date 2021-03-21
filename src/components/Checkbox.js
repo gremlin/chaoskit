@@ -10,8 +10,7 @@ import { form } from '../assets/styles/utility'
 import FormChoiceLabel from './FormChoiceLabel'
 
 export const StylesCheckboxVariables = {
-  size: 22,
-  iconSize: 12,
+  size: 24,
 }
 
 export const StylesCheckboxBase = (theme, props = {}) => [
@@ -46,8 +45,8 @@ export const StylesCheckboxBase = (theme, props = {}) => [
       top: '50%',
       left: '50%',
       transform: 'translate(-50%, -50%)',
-      width: StylesCheckboxVariables.iconSize,
-      height: StylesCheckboxVariables.iconSize,
+      width: theme.fontSize.base,
+      height: theme.fontSize.base,
       backgroundImage: `url(${check})`,
       filter: theme.contrast.filter,
       backgroundRepeat: 'no-repeat',

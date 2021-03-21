@@ -35,6 +35,7 @@ const ModalHeader = ({ centered, className, setIsOpen, title, ...rest }) => {
           top: theme.space.base,
           right: theme.space.base,
           zIndex: 1,
+          ...theme.text.large,
         }}
       />
     </div>

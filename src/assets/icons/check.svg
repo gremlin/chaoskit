@@ -1,3 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-  <polyline class="icon-stroke" stroke="#000000" fill="none" stroke-width="2" transform="translate(1 4)" stroke-linecap="round" stroke-linejoin="round" points="22 0 6.875 15.125 0 8.25" />
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></svg>

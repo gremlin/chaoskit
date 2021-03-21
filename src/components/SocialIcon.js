@@ -3,9 +3,14 @@ import clsx from 'clsx'
 import { useTheme } from '@emotion/react'
 
 import Button from './Button'
-import Icon from './Icon'
 
-const SocialIcon = ({ className, service, url, type = 'default', ...rest }) => {
+const SocialIcon = ({
+  className,
+  children,
+  url,
+  type = 'default',
+  ...rest
+}) => {
   const theme = useTheme()
 
   return (
@@ -27,23 +32,15 @@ const SocialIcon = ({ className, service, url, type = 'default', ...rest }) => {
       type={type}
       {...rest}
     >
-      <Icon icon={service} />
+      {children}
     </Button>
   )
 }
 
 SocialIcon.propTypes = {
   className: PropTypes.string,
+  children: PropTypes.node.isRequired,
   url: PropTypes.string.isRequired,
-  service: PropTypes.oneOf([
-    'twitter',
-    'facebook',
-    'instagram',
-    'youtube',
-    'linkedin',
-    'hacker-news',
-    'rss',
-  ]),
   type: PropTypes.oneOf([
     'reset',
     'default',

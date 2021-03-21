@@ -194,7 +194,9 @@ export const globalStyles = (theme) => [
     //
 
     // Remove the gap between audio, canvas, iframes, images, videos and the bottom of their containers.
-    'audio, canvas, iframe, img, svg, video': {
+    // Make replaced elements `display: block` by default as that's the behavior you want almost all of the time.
+    'img, svg, video, canvas, audio, iframe, embed, object': {
+      display: 'block',
       verticalAlign: 'middle',
     },
 
@@ -217,6 +219,11 @@ export const globalStyles = (theme) => [
     // Correct overflow not hidden in IE 9/10/11.
     'svg:not(:root)': {
       overflow: 'hidden',
+    },
+
+    // Optimize rendering of SVGs
+    svg: {
+      shapeRendering: 'geometricPrecision',
     },
 
     // Hide `alt` text for lazy load images

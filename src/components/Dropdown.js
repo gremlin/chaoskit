@@ -6,9 +6,9 @@ import { motion, useAnimation } from 'framer-motion'
 
 import { generateGradient } from '../assets/styles/utility/gradient'
 import { getTransformOrigin } from '../helpers/utility'
+import { ReactComponent as CaretDownSvg } from '../assets/icons/caret-down.svg'
 
 import Button from './Button'
-import Icon from './Icon'
 
 const Dropdown = ({
   children,
@@ -104,17 +104,14 @@ const Dropdown = ({
       <Button {...trigger.props} ref={dropdownTriggerRef}>
         {trigger.label}
         {showArrow && (
-          <Icon
+          <CaretDownSvg
             css={{
-              marginLeft: theme.space.small,
               transition: `transform ${theme.timing.base} ${theme.transition.bounce}`,
 
               '.is-active &': {
                 transform: 'rotate(180deg)',
               },
             }}
-            size="small"
-            icon="caret-down"
           />
         )}
       </Button>

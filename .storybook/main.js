@@ -1,8 +1,6 @@
 const webpack = require('webpack')
 const ESLintPlugin = require('eslint-webpack-plugin')
 
-const prettierConfig = require('../prettier.config.js');
-
 module.exports = {
   stories: ['../src/components/*.stories.@(js|mdx)'],
   addons: [
@@ -24,6 +22,33 @@ module.exports = {
     config.module.rules[0].use[0].options.presets.push(
       require.resolve('@emotion/babel-preset-css-prop')
     )
+
+    //
+    // SVGR
+    //
+
+    // Remove .svgs from default loader
+    const fileLoaderRule = config.module.rules.find(
+      (rule) => rule.test && rule.test.test('.svg')
+    )
+
+    fileLoaderRule.exclude = /\.svg$/
+
+    // Target svgs with fallback to file-loader
+    config.module.rules.push({
+      test: /\.svg$/,
+      enforce: 'pre',
+      use: [
+        {
+          loader: '@svgr/webpack',
+          options: {
+            ref: true,
+            icon: true,
+          },
+        },
+        'file-loader',
+      ],
+    })
 
     // Enable eslint
     config.plugins.push(

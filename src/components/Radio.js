@@ -8,8 +8,8 @@ import { form } from '../assets/styles/utility'
 import FormChoiceLabel from './FormChoiceLabel'
 
 export const StylesRadioVariables = {
-  size: 22,
-  iconSize: 10,
+  size: 24,
+  iconSize: 12,
 }
 
 export const StylesRadioBase = (theme, props = {}) => [

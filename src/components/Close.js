@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types'
 import { useTheme } from '@emotion/react'
 
+import { ReactComponent as CloseSvg } from '../assets/icons/close.svg'
+
 import Button from './Button'
-import Icon from './Icon'
 
 const Close = ({ onClick, noContrast, ...rest }) => {
   const theme = useTheme()
@@ -36,7 +37,7 @@ const Close = ({ onClick, noContrast, ...rest }) => {
       ]}
       {...rest}
     >
-      <Icon icon="close" className="CK__Close__Icon" />
+      <CloseSvg className="CK__Close__Icon" />
     </Button>
   )
 }

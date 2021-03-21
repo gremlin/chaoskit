@@ -5,8 +5,6 @@ import { useTheme } from '@emotion/react'
 
 import { text } from '../assets/styles/utility'
 
-import Icon from './Icon'
-
 export const StylesAvatarVariables = (theme) => ({
   background: theme.color.panel.base,
   color: theme.fontColor.base,
@@ -36,14 +34,7 @@ const StylesAvatarBase = (theme, props = {}) => [
   },
 ]
 
-const Avatar = ({
-  className,
-  fallbackIcon = 'user-circle',
-  image,
-  name,
-  size = 'base',
-  ...rest
-}) => {
+const Avatar = ({ className, image, name, size = 'base', ...rest }) => {
   const theme = useTheme()
   const [error, setError] = React.useState(false)
 
@@ -70,33 +61,11 @@ const Avatar = ({
     )
   }
 
-  // If no image and no name, use icon
-  if (!image && !nameProp) {
-    return (
-      <figure
-        css={[StylesAvatarBase(theme, { size })]}
-        className={clsx('CK__Avatar', className)}
-        {...rest}
-      >
-        <Icon
-          icon={fallbackIcon}
-          css={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-          }}
-        />
-      </figure>
-    )
-  }
-
-  let splitName = null
-  let initials = null
+  let initials = 'US'
 
   if (nameProp) {
-    splitName = name.split(' ')
+    const splitName = name.split(' ')
+
     initials = splitName[0][0] + splitName[splitName.length - 1][0]
   }
 
@@ -139,7 +108,6 @@ const Avatar = ({
 
 Avatar.propTypes = {
   className: PropTypes.string,
-  fallbackIcon: PropTypes.string,
   image: PropTypes.string,
   name: PropTypes.string,
   size: PropTypes.oneOf(['xsmall', 'small', 'base', 'large']),

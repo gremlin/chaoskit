@@ -6,7 +6,6 @@ import { useTheme } from '@emotion/react'
 
 import { gradient, misc } from '../assets/styles/utility'
 
-import { StylesIconVariables } from './Icon'
 import Loader from './Loader'
 
 export const generateButtonGradient = ({ start, stop }) => ({
@@ -336,24 +335,24 @@ export const StylesButtonIconOnly = (theme, props = {}) => [
     width: theme.height.base,
 
     svg: {
-      width: StylesIconVariables.large,
-      height: StylesIconVariables.large,
+      width: theme.fontSizeRelative.large,
+      height: theme.fontSizeRelative.large,
     },
   },
   props.size === 'small' && {
     width: theme.height.small,
 
     svg: {
-      width: StylesIconVariables.medium,
-      height: StylesIconVariables.medium,
+      width: theme.fontSizeRelative.medium,
+      height: theme.fontSizeRelative.medium,
     },
   },
   props.size === 'xsmall' && {
     width: theme.height.xsmall,
 
     svg: {
-      width: StylesIconVariables.base,
-      height: StylesIconVariables.base,
+      width: theme.fontSizeRelative.base,
+      height: theme.fontSizeRelative.base,
     },
   },
 ]
@@ -463,15 +462,28 @@ const Button = React.forwardRef(
         {type === 'reset' ? (
           children
         ) : (
-          <span css={{ color: loading && 'transparent' }}>{children}</span>
+          <span
+            css={{
+              color: loading && 'transparent',
+              display: 'grid',
+              placeItems: 'center',
+              height: '100%',
+              gridAutoFlow: 'column',
+              gridAutoColumns: 'auto',
+              gap: theme.space.small,
+            }}
+            className="CK__Button__Span"
+          >
+            {children}
+          </span>
         )}
         {loading && type !== 'reset' && (
           <Loader
             css={[
               misc.absoluteCenter,
               {
-                width: StylesIconVariables.large,
-                height: StylesIconVariables.large,
+                width: theme.fontSizeRelative.large,
+                height: theme.fontSizeRelative.large,
               },
             ]}
           />
