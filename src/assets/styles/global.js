@@ -243,7 +243,7 @@ export const globalStyles = (theme) => [
       margin: `0 0 ${theme.space.base}px`,
     },
 
-    '*:not(style) + p, *:not(style) + ul, *:not(style) + ol, *:not(style) + dl, *:not(style) + blockquote, *:not(style) + pre, *:not(style) + address, *:not(style) + fieldset, *:not(style) + figure': {
+    '* + p, * + ul, * + ol, * + dl, * + blockquote, * + pre, * + address, * + fieldset, * + figure': {
       marginTop: theme.space.base,
     },
 
@@ -253,7 +253,7 @@ export const globalStyles = (theme) => [
         color: theme.fontColor.base,
         margin: `0 0 ${theme.space.base}px`,
 
-        '*:not(style) + &': {
+        '* + &': {
           marginTop: theme.space.large,
         },
       },
@@ -265,7 +265,7 @@ export const globalStyles = (theme) => [
         color: theme.fontColor.base,
         margin: `0 0 ${theme.space.base}px`,
 
-        '*:not(style) + &': {
+        '* + &': {
           marginTop: theme.space.large,
         },
       },
@@ -277,7 +277,7 @@ export const globalStyles = (theme) => [
         color: theme.fontColor.base,
         margin: `0 0 ${theme.space.base}px`,
 
-        '*:not(style) + &': {
+        '* + &': {
           marginTop: theme.space.large,
         },
       },
@@ -289,7 +289,7 @@ export const globalStyles = (theme) => [
         color: theme.fontColor.base,
         margin: `0 0 ${theme.space.base}px`,
 
-        '*:not(style) + &': {
+        '* + &': {
           marginTop: theme.space.large,
         },
       },
@@ -301,7 +301,7 @@ export const globalStyles = (theme) => [
         color: theme.fontColor.base,
         margin: `0 0 ${theme.space.base}px`,
 
-        '*:not(style) + &': {
+        '* + &': {
           marginTop: theme.space.large,
         },
       },
@@ -314,7 +314,7 @@ export const globalStyles = (theme) => [
         margin: `0 0 ${theme.space.base}px`,
         fontWeight: theme.fontWeight.bold,
 
-        '*:not(style) + &': {
+        '* + &': {
           marginTop: theme.space.large,
         },
       },
@@ -362,7 +362,7 @@ export const globalStyles = (theme) => [
       border: 0,
       borderTop: theme.border.large,
 
-      '*:not(style) + &': {
+      '* + &': {
         marginTop: theme.space.base,
       },
     },
