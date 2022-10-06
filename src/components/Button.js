@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import * as React from 'react'
 import clsx from 'clsx'
-import { shade, rgba } from 'polished'
+import { shade } from 'polished'
 import { useTheme } from '@emotion/react'
 
 import { gradient, misc } from '../assets/styles/utility'
@@ -57,7 +57,7 @@ export const StylesButtonBase = (theme, props = {}) => [
     // 5
     font: 'inherit',
     fontWeight: theme.fontWeight.bold,
-    fontFamily: theme.fontFamily.heading,
+    fontFamily: theme.fontFamily.base,
     color: StylesButtonVariables(theme).color.base,
     // 6
     textTransform: 'uppercase',
@@ -143,7 +143,7 @@ export const StylesButtonXsmall = (theme) => ({
 export const StylesButtonDefault = (theme, props = {}) => [
   {
     background: theme.color.light.base,
-    borderColor: StylesButtonVariables(theme).color.base,
+    borderColor: theme.brand.violet,
     color: StylesButtonVariables(theme).color.base,
 
     '&:hover, &:focus': {
@@ -155,7 +155,7 @@ export const StylesButtonDefault = (theme, props = {}) => [
     theme.settings.contrast.button &&
     !props.noContrast && {
       '.u-contrast &': {
-        background: rgba(theme.contrast.base, 0.15),
+        background: theme.brand.violet,
         color: theme.contrast.base,
         borderColor: theme.contrast.base,
 
@@ -207,25 +207,25 @@ export const StylesButtonPrimary = (theme, props = {}) => {
   const interactiveStyles = [
     {
       color: theme.contrast.base,
-      background: theme.color.primary.dark,
-      borderColor: theme.color.primary.dark,
+      background: theme.brand.violet,
+      borderColor: theme.brand.violet,
     },
 
     theme.settings.button.gradient.enable &&
       generateButtonGradient({
-        start: theme.settings.button.gradient.primaryStart,
-        stop: theme.color.primary.base,
+        start: theme.brand.violet,
+        stop: theme.brand.secondaryBlue,
       }),
   ]
 
   const interactiveStylesContrast = {
-    color: theme.color.primary.dark,
+    color: theme.brand.violet,
   }
 
   return [
     {
-      background: theme.color.primary.base,
-      borderColor: theme.color.primary.base,
+      background: theme.brand.violet,
+      borderColor: theme.brand.violet,
       color: theme.contrast.base,
 
       '&:hover, &:focus': interactiveStyles,
@@ -235,8 +235,8 @@ export const StylesButtonPrimary = (theme, props = {}) => {
 
     theme.settings.button.gradient.enable &&
       generateButtonGradient({
-        start: theme.settings.button.gradient.primaryStart,
-        stop: theme.color.primary.base,
+        start: theme.brand.violet,
+        stop: theme.brand.secondaryBlue,
       }),
 
     props.active && interactiveStyles,
@@ -248,7 +248,7 @@ export const StylesButtonPrimary = (theme, props = {}) => {
           {
             background: theme.contrast.base,
             borderColor: theme.contrast.base,
-            color: theme.color.primary.base,
+            color: theme.brand.violet,
 
             '&:hover, &:focus': interactiveStylesContrast,
 
@@ -329,6 +329,32 @@ export const StylesButtonDanger = (theme, props = {}) => {
       },
   ]
 }
+
+export const StylesButtonOutlineMint = (theme, props = {}) => [
+  {
+    background: 'transparent',
+    borderColor: theme.brand.mint,
+    color: theme.contrast.base,
+
+    '&:hover, &:focus': {
+      color: theme.contrast.base,
+    },
+  },
+
+  theme.settings.contrast.enable &&
+    theme.settings.contrast.button &&
+    !props.noContrast && {
+      '.u-contrast &': {
+        background: 'transparent',
+        color: StylesButtonVariables(theme).color.base,
+        borderColor: theme.brand.mint,
+
+        '&:hover, &:focus': {
+          color: StylesButtonVariables(theme).color.base,
+        },
+      },
+    },
+]
 
 export const StylesButtonIconOnly = (theme, props = {}) => [
   {
@@ -451,6 +477,8 @@ const Button = React.forwardRef(
             StylesButtonPrimary(theme, { active, noContrast }),
           type === 'secondary' && StylesButtonSecondary(theme, { noContrast }),
           type === 'danger' && StylesButtonDanger(theme, { noContrast }),
+          type === 'outlineMint' &&
+            StylesButtonOutlineMint(theme, { noContrast }),
           iconOnly && StylesButtonIconOnly(theme, { size }),
           fullWidth && {
             width: '100%',
@@ -502,6 +530,7 @@ Button.propTypes = {
     'secondary',
     'danger',
     'outlinePrimary',
+    'outlineMint',
   ]),
   url: PropTypes.string,
 }

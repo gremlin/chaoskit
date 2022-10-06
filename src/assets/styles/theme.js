@@ -47,6 +47,36 @@ const brand = {
   orange: '#ffa615',
   orange__filter:
     'brightness(0) saturate(100%) invert(83%) sepia(29%) saturate(6359%) hue-rotate(345deg) brightness(102%) contrast(104%)',
+  violet: '#6633CC',
+  violet__filter:
+    'brightness(0) saturate(100%) invert(26%) sepia(72%) saturate(2407%) hue-rotate(248deg) brightness(79%) contrast(103%)',
+  lightViolet: '#CCC0FD',
+  lightViolet__filter:
+    'brightness(0) saturate(100%) invert(72%) sepia(79%) saturate(991%) hue-rotate(195deg) brightness(108%) contrast(98%)',
+  darkViolet: '#2F2256',
+  darkViolet__filter:
+    'brightness(0) saturate(100%) invert(13%) sepia(22%) saturate(3646%) hue-rotate(230deg) brightness(95%) contrast(95%)',
+  secondaryBlue: '#3399FF',
+  secondaryBlue__filter:
+    'brightness(0) saturate(100%) filter: invert(47%) sepia(93%) saturate(1306%) hue-rotate(189deg) brightness(98%) contrast(108%)',
+  mint: '#00FFCC',
+  mint__filter:
+    'brightness(0) saturate(100%) invert(87%) sepia(76%) saturate(4796%) hue-rotate(85deg) brightness(102%) contrast(103%)',
+  neon: '#CCFF66',
+  neon__filter:
+    'brightness(0) saturate(100%) invert(83%) sepia(27%) saturate(811%) hue-rotate(32deg) brightness(110%) contrast(101%)',
+  stone250: '#D0D1C8',
+  stone250__filter:
+    'brightness(0) saturate(100%) invert(100%) sepia(2%) saturate(1256%) hue-rotate(346deg) brightness(89%) contrast(82%)',
+  stone200: '#E7E8DE',
+  stone200__filter:
+    'brightness(0) saturate(100%) invert(98%) sepia(3%) saturate(1499%) hue-rotate(318deg) brightness(106%) contrast(82%)',
+  stone100: '#F2F2ED',
+  stone100__filter:
+    'brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(4567%) hue-rotate(307deg) brightness(101%) contrast(104%)',
+  stone50: '#FAFAFA',
+  stone50__filter:
+    'brightness(0) saturate(100%) invert(99%) sepia(7%) saturate(138%) hue-rotate(54deg) brightness(112%) contrast(96%)',
 }
 
 const breakpoint = {
@@ -110,14 +140,14 @@ const color = {
     filter: brand.black__filter,
   },
   primary: {
-    base: brand.green,
+    base: brand.violet,
     get light() {
       return tint(0.9, this.base)
     },
     get dark() {
       return shade(0.1, this.base)
     },
-    filter: brand.green__filter,
+    filter: brand.violet__filter,
   },
   warning: {
     base: brand.orange,
@@ -155,7 +185,7 @@ const color = {
       'brightness(0) saturate(100%) invert(96%) sepia(37%) saturate(704%) hue-rotate(340deg) brightness(105%) contrast(103%)',
   },
   border: {
-    base: '#e6e6e6',
+    base: brand.violet,
     filter:
       'brightness(0) saturate(100%) invert(97%) sepia(1%) saturate(135%) hue-rotate(200deg) brightness(110%) contrast(80%)',
   },
@@ -183,9 +213,12 @@ const boxShadow = {
 }
 
 const fontFamily = {
-  base:
+  priorBase:
     'Sohne VF, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
   mono: "'Sohne Mono', Consolas, monospace, serif",
+  base:
+    '"FreightSans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+  heading: '"FreightDisp Pro", ui-monospace, monospace, serif',
 }
 
 const muted = {
@@ -193,8 +226,8 @@ const muted = {
 }
 
 const fontColor = {
-  base: color.dark.light,
-  base__filter: brand.lightBlack__filter,
+  base: brand.darkViolet,
+  base__filter: brand.darkViolet__filter,
   get muted() {
     return rgba(this.base, muted.base)
   },
@@ -447,11 +480,31 @@ const text = {
 
 // Quick references to emulated heading styles when not using the element
 const headingPreset = {
-  h1: { ...text['4xlarge__fluid'], fontWeight: fontWeight.bold },
-  h2: { ...text['3xlarge__fluid'], fontWeight: fontWeight.bold },
-  h3: { ...text['2xlarge__fluid'], fontWeight: fontWeight.bold },
-  h4: { ...text.xlarge__fluid, fontWeight: fontWeight.bold },
-  h5: { ...text.large__fluid, fontWeight: fontWeight.bold },
+  h1: {
+    ...text['4xlarge__fluid'],
+    fontWeight: fontWeight.bold,
+    fontFamily: fontFamily.heading,
+  },
+  h2: {
+    ...text['3xlarge__fluid'],
+    fontWeight: fontWeight.bold,
+    fontFamily: fontFamily.heading,
+  },
+  h3: {
+    ...text['2xlarge__fluid'],
+    fontWeight: fontWeight.bold,
+    fontFamily: fontFamily.heading,
+  },
+  h4: {
+    ...text.xlarge__fluid,
+    fontWeight: fontWeight.bold,
+    fontFamily: fontFamily.heading,
+  },
+  h5: {
+    ...text.large__fluid,
+    fontWeight: fontWeight.bold,
+    fontFamily: fontFamily.heading,
+  },
 }
 
 const timing = {
@@ -492,7 +545,7 @@ const contrast = {
     return rgba(this.base, 0.7)
   },
   get hr() {
-    return rgba(this.base, 0.05)
+    return brand.mint
   },
   filter: color.light.filter,
 }

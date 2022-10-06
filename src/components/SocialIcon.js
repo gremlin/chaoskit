@@ -14,6 +14,8 @@ const SocialIcon = ({ className, service, url, type = 'default', ...rest }) => {
       css={{
         transition: `all ${theme.timing.base} ${theme.transition.bounce}`,
         transformOrigin: 'center center',
+        borderColor: 'transparent !important',
+        backgroundColor: 'transparent',
 
         '&:hover, &:focus': {
           transform: 'scale(1.1)',
