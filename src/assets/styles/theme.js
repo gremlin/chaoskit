@@ -2,15 +2,15 @@ import { fluidRange, rgba, shade, tint, timingFunctions } from 'polished'
 
 // @NOTE Filter generator https://codepen.io/zslabs/pen/xePEVN
 const brand = {
-  green: '#23c386',
+  green: '#2E7D32',
   green__filter:
-    'brightness(0) saturate(100%) invert(60%) sepia(71%) saturate(494%) hue-rotate(105deg) brightness(92%) contrast(80%)',
+    'brightness(0) saturate(100%) invert(42%) sepia(10%) saturate(2988%) hue-rotate(73deg) brightness(89%) contrast(85%)',
   teal: '#009580',
   teal__filter:
     'brightness(0) saturate(100%) invert(35%) sepia(90%) saturate(1053%) hue-rotate(140deg) brightness(94%) contrast(104%)',
-  blue: '#2265c0',
+  blue: '#0288D1',
   blue__filter:
-    'brightness(0) saturate(100%) invert(33%) sepia(28%) saturate(2523%) hue-rotate(188deg) brightness(97%) contrast(97%)',
+    'brightness(0) saturate(100%) invert(32%) sepia(99%) saturate(752%) hue-rotate(167deg) brightness(109%) contrast(106%)',
   darkBlue: '#00458a',
   darkBlue__filter:
     'brightness(0) saturate(100%) invert(19%) sepia(93%) saturate(1468%) hue-rotate(190deg) brightness(90%) contrast(108%)',
@@ -38,15 +38,15 @@ const brand = {
   black: '#131313',
   black__filter:
     'brightness(0) saturate(100%) invert(3%) sepia(8%) saturate(12%) hue-rotate(314deg) brightness(101%) contrast(90%)',
-  red: '#C52C4E',
+  red: '#D32F2F',
   red__filter:
-    'brightness(0) saturate(100%) invert(26%) sepia(50%) saturate(2464%) hue-rotate(320deg) brightness(93%) contrast(98%)',
+    'brightness(0) saturate(100%) invert(23%) sepia(95%) saturate(1719%) hue-rotate(339deg) brightness(95%) contrast(99%)',
   yellow: '#ffcf23',
   yellow__filter:
     'brightness(0) saturate(100%) invert(79%) sepia(82%) saturate(599%) hue-rotate(335deg) brightness(103%) contrast(102%)',
-  orange: '#ffa615',
+  orange: '#ED6C02',
   orange__filter:
-    'brightness(0) saturate(100%) invert(83%) sepia(29%) saturate(6359%) hue-rotate(345deg) brightness(102%) contrast(104%)',
+    'brightness(0) saturate(100%) invert(47%) sepia(96%) saturate(2809%) hue-rotate(6deg) brightness(99%) contrast(98%)',
   violet: '#6633CC',
   violet__filter:
     'brightness(0) saturate(100%) invert(26%) sepia(72%) saturate(2407%) hue-rotate(248deg) brightness(79%) contrast(103%)',
@@ -56,6 +56,12 @@ const brand = {
   darkViolet: '#2F2256',
   darkViolet__filter:
     'brightness(0) saturate(100%) invert(13%) sepia(22%) saturate(3646%) hue-rotate(230deg) brightness(95%) contrast(95%)',
+  orchid100: '#F2CCFF',
+  orchid100__filter:
+    'brightness(0) saturate(100%) invert(85%) sepia(86%) saturate(7500%) hue-rotate(205deg) brightness(106%) contrast(105%)',
+  orchid400: '#CC33FF',
+  orchid400__filter:
+    'brightness(0) saturate(100%) invert(30%) sepia(78%) saturate(2215%) hue-rotate(267deg) brightness(96%) contrast(111%)',
   secondaryBlue: '#3399FF',
   secondaryBlue__filter:
     'brightness(0) saturate(100%) filter: invert(47%) sepia(93%) saturate(1306%) hue-rotate(189deg) brightness(98%) contrast(108%)',
@@ -244,12 +250,12 @@ const fontSize = {
   small: 14,
   base: 16,
   medium: 18,
-  large: 20,
-  xlarge: 26,
-  '2xlarge': 34,
-  '3xlarge': 42,
-  '4xlarge': 50,
-  '5xlarge': 75,
+  large: 21,
+  xlarge: 28,
+  '2xlarge': 37,
+  '3xlarge': 50,
+  '4xlarge': 67,
+  '5xlarge': 89,
 }
 
 const fontWeight = {
@@ -270,15 +276,16 @@ const height = {
 }
 
 const lineHeight = {
-  base: 1.65,
-  medium: 1.5,
-  small: 1.25,
+  large: 1.6,
+  base: 1.4,
+  medium: 1.2,
+  small: 1.1,
 }
 
 const letterSpacing = {
-  negative: '-0.125em',
+  negative: '-0.1em',
   base: 'normal',
-  extended: '0.125em',
+  extended: '0.1em',
 }
 
 const space = {
@@ -458,7 +465,7 @@ const text = {
       `${breakpoint.small}px`,
       `${breakpoint.large}px`
     ),
-    lineHeight: lineHeight.small,
+    lineHeight: 1,
   },
   '5xlarge': {
     fontSize: fontSize['5xlarge'],
@@ -481,29 +488,34 @@ const text = {
 // Quick references to emulated heading styles when not using the element
 const headingPreset = {
   h1: {
-    ...text['4xlarge__fluid'],
+    ...text['5xlarge__fluid'],
     fontWeight: fontWeight.bold,
     fontFamily: fontFamily.heading,
   },
   h2: {
-    ...text['3xlarge__fluid'],
+    ...text['4xlarge__fluid'],
     fontWeight: fontWeight.bold,
     fontFamily: fontFamily.heading,
   },
   h3: {
-    ...text['2xlarge__fluid'],
+    ...text['3xlarge__fluid'],
     fontWeight: fontWeight.bold,
     fontFamily: fontFamily.heading,
   },
   h4: {
-    ...text.xlarge__fluid,
+    ...text['2xlarge__fluid'],
     fontWeight: fontWeight.bold,
-    fontFamily: fontFamily.heading,
+    fontFamily: fontFamily.base,
   },
   h5: {
+    ...text.xlarge__fluid,
+    fontWeight: fontWeight.bold,
+    fontFamily: fontFamily.base,
+  },
+  h6: {
     ...text.large__fluid,
     fontWeight: fontWeight.bold,
-    fontFamily: fontFamily.heading,
+    fontFamily: fontFamily.base,
   },
 }
 

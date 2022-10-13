@@ -3,7 +3,6 @@ import clsx from 'clsx'
 import { useTheme } from '@emotion/react'
 
 import { misc, text } from '../assets/styles/utility'
-import { generateGradient } from '../assets/styles/utility/gradient'
 
 import Container from './Container'
 
@@ -55,11 +54,7 @@ const Subnav = ({ children, className, ...rest }) => {
   return (
     <div
       css={{
-        background: generateGradient({
-          start: theme.color.panel.light,
-          stop: theme.color.panel.base,
-          position: 'to bottom',
-        }),
+        background: theme.brand.stone50,
         borderBottom: theme.border.large,
       }}
       className={clsx('CK__Subnav', className)}

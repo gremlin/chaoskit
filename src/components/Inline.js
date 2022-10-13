@@ -35,7 +35,14 @@ const Inline = ({ className, size = 'base', wrap = true, ...rest }) => {
 
 Inline.propTypes = {
   className: PropTypes.string,
-  size: PropTypes.oneOf(['small', 'base', 'medium', 'large', 'xlarge']),
+  size: PropTypes.oneOf([
+    'xsmall',
+    'small',
+    'base',
+    'medium',
+    'large',
+    'xlarge',
+  ]),
   wrap: PropTypes.bool,
 }
 

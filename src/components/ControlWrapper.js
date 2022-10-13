@@ -59,10 +59,10 @@ export const StylesControlWrapper = (theme, props = {}) => [
     boxShadow: theme.boxShadow.inset,
     background: theme.color.light.base,
     color: theme.fontColor.base,
-    border: theme.border.base,
+    border: `1px solid ${theme.brand.stone100}`,
 
     '&:focus-within': {
-      borderColor: theme.color.primary.base,
+      borderColor: theme.brand.stone100,
     },
   },
 

@@ -9,10 +9,10 @@ export const baseDefault = (theme) => ({
 })
 
 export const base = (theme) => ({
-  color: `${theme.color.primary.base} !important`,
+  color: `${theme.brand.secondaryBlue} !important`,
 
   '&:hover, &:focus': {
-    color: `${theme.color.primary.dark} !important`,
+    color: `${theme.brand.secondaryBlue} !important`,
   },
 })
 

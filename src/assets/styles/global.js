@@ -308,11 +308,10 @@ export const globalStyles = (theme) => [
     ],
 
     h6: [
+      theme.headingPreset.h6,
       {
         color: theme.fontColor.base,
-        ...theme.text.base,
         margin: `0 0 ${theme.space.base}px`,
-        fontWeight: theme.fontWeight.bold,
 
         '* + &': {
           marginTop: theme.space.large,

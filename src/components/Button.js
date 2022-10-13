@@ -157,7 +157,7 @@ export const StylesButtonDefault = (theme, props = {}) => [
       '.u-contrast &': {
         background: theme.brand.violet,
         color: theme.contrast.base,
-        borderColor: theme.contrast.base,
+        borderColor: theme.brand.violet,
 
         '&:hover, &:focus': {
           color: theme.contrast.base,
