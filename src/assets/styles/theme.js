@@ -217,9 +217,7 @@ const boxShadow = {
 }
 
 const fontFamily = {
-  priorBase:
-    'Sohne VF, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
-  mono: "'Sohne Mono', Consolas, monospace, serif",
+  mono: "'Inconsolata', Consolas, monospace, serif",
   base:
     '"FreightSans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
   heading: '"FreightDisp Pro", ui-monospace, monospace, serif',
