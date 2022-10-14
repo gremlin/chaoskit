@@ -2,15 +2,15 @@ import { fluidRange, rgba, shade, tint, timingFunctions } from 'polished'
 
 // @NOTE Filter generator https://codepen.io/zslabs/pen/xePEVN
 const brand = {
-  green: '#2E7D32',
+  green: '#22CC88',
   green__filter:
-    'brightness(0) saturate(100%) invert(42%) sepia(10%) saturate(2988%) hue-rotate(73deg) brightness(89%) contrast(85%)',
+    'brightness(0) saturate(100%) invert(86%) sepia(86%) saturate(7065%) hue-rotate(75deg) brightness(87%) contrast(81%)',
   teal: '#009580',
   teal__filter:
     'brightness(0) saturate(100%) invert(35%) sepia(90%) saturate(1053%) hue-rotate(140deg) brightness(94%) contrast(104%)',
-  blue: '#0288D1',
+  blue: '#3399FF',
   blue__filter:
-    'brightness(0) saturate(100%) invert(32%) sepia(99%) saturate(752%) hue-rotate(167deg) brightness(109%) contrast(106%)',
+    'brightness(0) saturate(100%) filter: invert(47%) sepia(93%) saturate(1306%) hue-rotate(189deg) brightness(98%) contrast(108%)',
   darkBlue: '#00458a',
   darkBlue__filter:
     'brightness(0) saturate(100%) invert(19%) sepia(93%) saturate(1468%) hue-rotate(190deg) brightness(90%) contrast(108%)',
@@ -38,15 +38,15 @@ const brand = {
   black: '#131313',
   black__filter:
     'brightness(0) saturate(100%) invert(3%) sepia(8%) saturate(12%) hue-rotate(314deg) brightness(101%) contrast(90%)',
-  red: '#D32F2F',
+  red: '#FF4466',
   red__filter:
-    'brightness(0) saturate(100%) invert(23%) sepia(95%) saturate(1719%) hue-rotate(339deg) brightness(95%) contrast(99%)',
+    'brightness(0) saturate(100%) invert(51%) sepia(52%) saturate(6704%) hue-rotate(325deg) brightness(103%) contrast(101%)',
   yellow: '#ffcf23',
   yellow__filter:
     'brightness(0) saturate(100%) invert(79%) sepia(82%) saturate(599%) hue-rotate(335deg) brightness(103%) contrast(102%)',
-  orange: '#ED6C02',
+  orange: '#FFCC55',
   orange__filter:
-    'brightness(0) saturate(100%) invert(47%) sepia(96%) saturate(2809%) hue-rotate(6deg) brightness(99%) contrast(98%)',
+    'brightness(0) saturate(100%) invert(97%) sepia(29%) saturate(5248%) hue-rotate(315deg) brightness(102%) contrast(102%)',
   violet: '#6633CC',
   violet__filter:
     'brightness(0) saturate(100%) invert(26%) sepia(72%) saturate(2407%) hue-rotate(248deg) brightness(79%) contrast(103%)',
@@ -62,9 +62,6 @@ const brand = {
   orchid400: '#CC33FF',
   orchid400__filter:
     'brightness(0) saturate(100%) invert(30%) sepia(78%) saturate(2215%) hue-rotate(267deg) brightness(96%) contrast(111%)',
-  secondaryBlue: '#3399FF',
-  secondaryBlue__filter:
-    'brightness(0) saturate(100%) filter: invert(47%) sepia(93%) saturate(1306%) hue-rotate(189deg) brightness(98%) contrast(108%)',
   mint: '#00FFCC',
   mint__filter:
     'brightness(0) saturate(100%) invert(87%) sepia(76%) saturate(4796%) hue-rotate(85deg) brightness(102%) contrast(103%)',
@@ -210,12 +207,13 @@ const borderRadius = {
 }
 
 const boxShadow = {
-  base: 'rgba(0,0,0,0.14) 0px 1px 5px -2px',
-  medium: '0 4px 6px -1px rgba(0,0,0,.08), 0 2px 4px -1px rgba(0,0,0,.04)',
-  large: '0 10px 15px -3px rgba(0,0,0,.08), 0 4px 6px -2px rgba(0,0,0,.04)',
-  xlarge: '0 20px 25px -5px rgba(0,0,0,.08), 0 10px 10px -5px rgba(0,0,0,.04)',
-  xlarge2: '0 25px 50px -12px rgba(0,0,0,.25)',
-  inset: 'inset 0 1px 3px rgba(0,0,0,.0625)',
+  small: '0 1px 2px rgba(47, 34, 86, 0.1)',
+  base: '0 3px 8px -1px rgba(47, 34, 86, 0.1)',
+  medium: '0 6px 20px -8px rgba(47, 34, 86, 0.1)',
+  large: '0 15px 35px -15px rgba(47, 34, 86, 0.1)',
+  xlarge: '0 20px 40px -15px rgba(47, 34, 86, 0.15)',
+  xlarge2: '0 25px 70px -20px rgba(47, 34, 86, 0.15)',
+  inset: 'inset 0 1px 3px rgba(47, 34, 86, 0.15)',
 }
 
 const fontFamily = {

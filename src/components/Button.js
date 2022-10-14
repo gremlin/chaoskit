@@ -214,7 +214,7 @@ export const StylesButtonPrimary = (theme, props = {}) => {
     theme.settings.button.gradient.enable &&
       generateButtonGradient({
         start: theme.brand.violet,
-        stop: theme.brand.secondaryBlue,
+        stop: theme.brand.blue,
       }),
   ]
 
@@ -236,7 +236,7 @@ export const StylesButtonPrimary = (theme, props = {}) => {
     theme.settings.button.gradient.enable &&
       generateButtonGradient({
         start: theme.brand.violet,
-        stop: theme.brand.secondaryBlue,
+        stop: theme.brand.blue,
       }),
 
     props.active && interactiveStyles,
