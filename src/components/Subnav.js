@@ -65,7 +65,7 @@ const Subnav = ({ children, className, ...rest }) => {
           misc.overflow,
           {
             display: 'flex',
-            justifyContent: 'space-between',
+            justifyContent: 'center',
             alignItems: 'center',
             height: StylesSubnavVariables(theme).height,
           },
