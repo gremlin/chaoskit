@@ -29,7 +29,7 @@ export const globalStyles = (theme) => [
       // 1
       fontFamily: theme.fontFamily.base,
       fontWeight: theme.fontWeight.base,
-      ...theme.text.base,
+      ...theme.text.medium,
       // 2
       textSizeAdjust: '100%',
       // 3
