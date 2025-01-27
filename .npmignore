@@ -1,8 +1,0 @@
-# Storybook
-.storybook/**/*
-
-# Docs
-src/assets/media/**/*
-
-# Build
-public/**/*
