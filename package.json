@@ -11,6 +11,7 @@
   "author": "Zach Schnackel <zach@gremlin.com>",
   "dependencies": {
     "@tippyjs/react": "4.2.5",
+    "react-textarea-autosize": "8.3.2",
     "what-input": "5.2.10"
   },
   "devDependencies": {
@@ -75,7 +76,6 @@
     "prettier": ">=2.2.1",
     "prismjs": ">=1.29.0",
     "react-dom": ">=17.0.1",
-    "react-textarea-autosize": ">=8.3.2",
     "react-use": "^17.2.1",
     "react": ">=17.0.1",
     "recursive-readdir-sync": ">=1.0.6",
